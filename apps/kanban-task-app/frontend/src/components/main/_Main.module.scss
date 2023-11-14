@@ -1,0 +1,36 @@
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
+@use '#Sass/components/buttons' as btn;
+
+.main {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--thm-bg-main);
+  border-top: 1px solid var(--thm-border-divider);
+  transition: a.$Theme-transition-bg, a.$Theme-transition-border;
+  overflow: hidden;
+
+  &__empty {
+    @include mx.header-l;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: f.px2em(32);
+    margin: 0 f.px2em(55);
+    text-align: center;
+    color: c.$col-1g;
+
+    & > button {
+      @include btn.btn-primary-l;
+      width: fit-content;
+      padding-left: f.px2em(18);
+      padding-right: f.px2em(18);
+    }
+  }
+}

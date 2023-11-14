@@ -1,0 +1,23 @@
+{
+  "name": "@packages/eslint-config",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "shared eslint configuration",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "type": "module",
+  "main": "eslint.config.js",
+  "dependencies": {
+    "@eslint/js": "^8",
+    "@typescript-eslint/eslint-plugin": "^6",
+    "@typescript-eslint/parser": "^6",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5",
+    "eslint-plugin-unicorn": "^49",
+    "globals": "^13"
+  },
+  "peerDependencies": {
+    "eslint": "^8"
+  }
+}

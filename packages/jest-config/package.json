@@ -1,0 +1,15 @@
+{
+  "name": "@packages/jest-config",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "shared jest configuration",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "peerDependencies": {
+    "@types/jest": "^29.5.1",
+    "jest": "^29"
+  }
+}

@@ -1,0 +1,49 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: c.$col-modal-bg;
+  backdrop-filter: blur(1px);
+  z-index: f.z('modal-container');
+  overflow-y: auto;
+}
+
+.animationFadeIn {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  animation: fadein 0.5s;
+}
+
+.subContainer {
+  flex-grow: 1;
+  max-width: 480px;
+  margin-inline: 16px;
+}
+
+.pointerEvents {
+  pointer-events: auto;
+}
+
+.noPointerEvents {
+  pointer-events: none;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// NOTE:  To accommodate increasing height of modal content forms (when user adds additional input fields), whilst respecting the flex center of the modal, the modal content has an additional wrapping container using auto margins to center and then form content has its own margin definition.

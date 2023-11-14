@@ -1,0 +1,44 @@
+services:
+
+  # Backend: NodeJS Express
+  node-api:
+    container_name: fem35-node-api-prod
+    build:
+      dockerfile: ./Dockerfile
+    image: fem35-nodejs-express-api
+    env_file:
+      - ./backend/.env.prod
+    networks:
+      - FEM35-Kanban
+
+  # Frontend: Nginx-React
+  react-app:
+    container_name: fem35-react-app-prod
+    build:
+      dockerfile: ./Dockerfile
+    image: fem35-react-app
+    env_file:
+      - ./frontend/.env.prod
+    depends_on:
+      - node-api
+    networks:
+      - FEM35-Kanban
+
+  # NGINX
+  nginx:
+    container_name: fem35-nginx-prod
+    restart: on-failure
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: fem35-nginx-prod
+    depends_on:
+      - node-api
+      - react-app
+    ports:
+      - 8080:80
+    networks:
+      - FEM35-Kanban
+
+networks:
+  FEM35-Kanban:

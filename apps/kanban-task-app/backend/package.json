@@ -1,0 +1,52 @@
+{
+  "name": "@apps/kanban-task-app-backend",
+  "version": "1.0.0",
+  "description": "FEM#35 Backend",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "main": "./dist/server.js",
+  "type": "module",
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "server"
+    ],
+    "exec": "node --loader ts-node/esm ./server/server.ts",
+    "ext": "ts, js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "watch": "tsc -w",
+    "compile": "npm run clean && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "start": "nodemon .",
+    "start:offline": "nodemon --exec 'node -r dotenv/config . dotenv_config_path=./.env.dev'",
+    "prod": "node .",
+    "prod:offline": "node -r dotenv/config . dotenv_config_path=./.env.prod",
+    "test": "jest --coverage --verbose",
+    "test:watch": "jest --watch",
+    "db-import": "ts-node ./server/config/dbImportData.ts --import",
+    "docker:build": "docker image build -f Dockerfile.prod -t $npm_package_config_dockerImageRepo:$npm_package_version .",
+    "docker:postbuild": "docker image tag $npm_package_config_dockerImageRepo:$npm_package_version $npm_package_config_dockerImageRepo:latest",
+    "docker:run": "docker run --name $npm_package_config_dockerImageName -d -p $npm_package_config_dockerImagePort:$npm_package_config_dockerInternalContainerPort $npm_package_config_dockerImageRepo",
+    "docker:clean": "docker rm -f $npm_package_config_imageName"
+  },
+  "config": {
+    "dockerImageRepo": "fem35image/backend",
+    "dockerImageName": "FEM35-NodeJS-Express",
+    "dockerImagePort": "4000",
+    "dockerInternalContainerPort": "4000"
+  },
+  "imports": {
+    "#Shared/*": "../shared/*",
+    "#Config/*": "./server/config/*",
+    "#Controllers/*": "./server/controllers/*",
+    "#Models/*": "./server/models/*",
+    "#Routes/*": "./server/routes/*",
+    "#Utils/*": "./server/utils/*"
+  }
+}

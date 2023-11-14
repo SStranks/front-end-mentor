@@ -1,0 +1,24 @@
+import { EslintConfig, ConfigPrettier } from '@packages/eslint-config';
+import { EslintConfigReact } from '@packages/eslint-config-react';
+import { EslintConfigExpress } from '@packages/eslint-config-express';
+
+export default [
+  ConfigPrettier,
+  {
+    ignores: ['**/node_modules', '**/dist', '**/build', '**/__snapshots__', '**/mocks'],
+  },
+  {
+    files: ['frontend/**/*.ts', 'frontend/**/*.tsx', 'frontend/**/*.jsx', 'frontend/**/*.js'],
+    languageOptions: { ...EslintConfig.languageOptions, ...EslintConfigReact.languageOptions },
+    plugins: { ...EslintConfig.plugins, ...EslintConfigReact.plugins },
+    rules: { ...EslintConfig.rules, ...EslintConfigReact.rules },
+    settings: { ...EslintConfig.settings, ...EslintConfigReact.settings },
+  },
+  {
+    files: ['backend/**/*.ts', 'backend/**/*.js'],
+    languageOptions: { ...EslintConfig.languageOptions, ...EslintConfigExpress.languageOptions },
+    plugins: { ...EslintConfig.plugins, ...EslintConfigExpress.plugins },
+    rules: { ...EslintConfig.rules, ...EslintConfigExpress.rules },
+    settings: { ...EslintConfig.settings, ...EslintConfigExpress.settings },
+  },
+];

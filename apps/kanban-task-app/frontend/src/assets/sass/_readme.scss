@@ -1,0 +1,78 @@
+/* -------------------------------- */
+/*           ~ Readme ~             */
+/* -------------------------------- */
+/*        [Kanban Task App]         */
+/* -------------------------------- */
+/*   Frontend Mentor Challenge      */
+/*   Difficulty: Guru               */
+/*   [www.frontendmentor.io]        */
+/* -------------------------------- */
+/*   version:   1.0                 */
+/*   date:      07/11/2022          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+/* -------------------------------- */
+
+/* -------------------------------- */
+/*   SCSS Architecture              */
+/* -------------------------------- */
+
+// Import 'global-imports' into top level App component.
+
+/* -------------------------------- */
+/*   Abstracts                      */
+/* -------------------------------- */
+
+// _animations
+//    - Theme Transitions
+//    - Keyframes
+// _colors
+//    - Primary
+//    - Secondary
+//    - Tertiary
+//    - Modal
+// _functions
+//    - Functions
+//    - Z-Index Manager
+// _media-queries
+//    - Breakpoints
+//    - Media Queries: Multiple
+//    - Media Queries: Specific
+// _mixins
+//    - Text: Header
+//    - Text: Body
+//    - Extend Click Area
+//    - Input: Text
+//    - Fluid Typography
+// _variables
+//    - Web Elements
+//    - Margin & Padding
+//    - Borders
+//    - Shadows
+
+/* -------------------------------- */
+/*   Base                           */
+/* -------------------------------- */
+
+// _font-face
+//    - Font Imports
+//    - Font-face Imports
+// _globals
+// _reset
+// _root
+// _themes
+//    - Light theme
+//    - Dark theme
+// _typography
+
+/* -------------------------------- */
+/*   Components                     */
+/* -------------------------------- */
+
+// _buttons
+//    - Default
+//    - Light Theme
+//    - Dark Theme
+// _checkbox
+// _dropdown
+// _input_text

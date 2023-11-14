@@ -1,0 +1,18 @@
+{
+  "name": "front-end-mentor",
+  "version": "1.0.0",
+  "description": "FrontEndMentor Challenges MonoRepo",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@packages/babel-config": "workspace:*",
+    "@packages/eslint-config": "workspace:*",
+    "@packages/eslint-config-express": "workspace:*",
+    "@packages/eslint-config-react": "workspace:*",
+    "@packages/jest-config": "workspace:*",
+    "@packages/prettier-config": "workspace:*",
+    "@packages/typescript-config": "workspace:*",
+    "@packages/webpack-config": "workspace:*"
+  }
+}

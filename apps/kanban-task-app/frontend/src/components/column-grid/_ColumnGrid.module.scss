@@ -1,0 +1,23 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+
+.columnGrid {
+  display: flex;
+  column-gap: f.px2em(24);
+  width: 100%;
+  height: 100%;
+  padding: f.px2em(24);
+  overflow: auto;
+
+  @include mq.media(mobile-all) {
+    padding: f.px2em(24) f.px2em(16);
+  }
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: f.px2em(20);
+}
