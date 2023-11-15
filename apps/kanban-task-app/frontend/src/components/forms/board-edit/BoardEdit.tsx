@@ -59,26 +59,18 @@ function BoardEdit(props: TProps): JSX.Element {
     const newFormData = validateInputs(formData);
     // If there are any empty inputs/objs in newFormData, abort form submission and merge the form state with the newFormData objs.
     if (Object.keys(newFormData).length > 0) {
-      return setFormData(
-        (prev) => ({ ...prev, ...newFormData } as typeof prev)
-      );
+      return setFormData((prev) => ({ ...prev, ...newFormData }) as typeof prev);
     }
     // All form inputs have been validated. Submit form data.
     const formInputData = new FormData(e.target as HTMLFormElement);
     console.log('BOARD EDIT', formInputData);
-    const { 'input-title': name, ...rest } = Object.fromEntries(
-      formInputData.entries()
-    );
+    const { 'input-title': name, ...rest } = Object.fromEntries(formInputData.entries());
     // Copy in old column data if applicable
     const newColumns = Object.entries(rest).map(([key, value]) => {
       const columnId = key.split('-')[2];
-      const columnIdx = activeBoard.columns.findIndex(
-        (c) => c._id === columnId
-      );
+      const columnIdx = activeBoard.columns.findIndex((c) => c._id === columnId);
 
-      return columnIdx !== -1
-        ? { ...activeBoard.columns[columnIdx], name: value }
-        : { name: value };
+      return columnIdx === -1 ? { name: value } : { ...activeBoard.columns[columnIdx], name: value };
     });
 
     // Format data according to schema
@@ -91,10 +83,7 @@ function BoardEdit(props: TProps): JSX.Element {
     // NOTE:  Need to think about column names in relation to IDs: 1) We need the IDs because if the user renames a column, how will we know which column to amend in the DB? 2) We need a warning that if they remove a column here then all task data will be erased!
     // NOTE:  Replacing the entire boards-columns data from the frontend, is this the best approach? Can we use .pre hook on the backend to amend column names/delete columns according to ID's passed perhaps?
     try {
-      const responseData: IBoard | undefined = await ApiService.patchBoard(
-        `${activeBoard._id}`,
-        newBoard
-      );
+      const responseData: IBoard | undefined = await ApiService.patchBoard(`${activeBoard._id}`, newBoard);
       if (!responseData) throw new Error('Could not patch board!');
 
       appDispatch({
@@ -174,10 +163,7 @@ function BoardEdit(props: TProps): JSX.Element {
         <div className={styles.form__group}>
           <p>Columns</p>
           <div className={styles.form__subTasks}>{columns}</div>
-          <button
-            type="button"
-            className={styles.form__btnNewColumn}
-            onClick={btnNewColumnClickHandler}>
+          <button type="button" className={styles.form__btnNewColumn} onClick={btnNewColumnClickHandler}>
             + Add New Column
           </button>
         </div>

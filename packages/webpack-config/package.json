@@ -3,15 +3,12 @@
   "version": "1.0.0",
   "private": "true",
   "description": "shared webpack configuration",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "license": "ISC",
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@types/webpack": "^5.28.5",
+    "@types/webpack": "^5",
     "autoprefixer": "^10",
     "babel-loader": "^9",
     "copy-webpack-plugin": "^11",
@@ -27,12 +24,6 @@
     "sass-loader": "^13",
     "style-loader": "^3",
     "ts-loader": "^9",
-    "webpack-merge": "^5"
-  },
-  "peerDependencies": {
-    "@babel/core": "^7",
-    "eslint": "^8",
-    "sass": "^1",
     "webpack": "^5",
     "webpack-cli": "^5",
     "webpack-dev-server": "^4",

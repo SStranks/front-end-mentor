@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "FrontEndMentor Challenges MonoRepo",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/SStranks/front-end-mentor"
+  },
   "license": "ISC",
   "type": "module",
+  "packageManager": "pnpm@8.10.3",
+  "engines": {
+    "node": ">= 16"
+  },
   "dependencies": {
     "@packages/babel-config": "workspace:*",
     "@packages/eslint-config": "workspace:*",

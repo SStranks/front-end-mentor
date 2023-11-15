@@ -2,36 +2,34 @@ import ESLintPlugin from 'eslint-webpack-plugin';
 import path from 'node:path';
 import url from 'node:url';
 
+const CWD = process.env.INIT_CWD;
+const CUR = path.dirname(url.fileURLToPath(import.meta.url));
+
 const CommonConfig = {
-  entry: './src/index.tsx',
+  context: CUR,
+  entry: path.resolve(process.env.INIT_CWD, './src/index.tsx'),
   target: 'web',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     // For use in CSS url() imports e.g url(~svg/desktop/a.svg)
     // Prefix with ~ to initiate module resolver
-    modules: [
-      path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/assets'),
-      path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'node_modules'),
-    ],
+    modules: ['node_modules', path.resolve(CWD, 'src/assets')],
     alias: {
-      '#Shared': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../shared'),
-      '#Img': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/assets/img'),
-      '#Sass': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/assets/sass'),
-      '#Svg': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/assets/svg'),
-      '#Components': path.resolve(
-        path.dirname(url.fileURLToPath(import.meta.url)),
-        'src/components'
-      ),
-      '#Context': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/context'),
-      '#Data': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/data'),
-      '#Features': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/features'),
-      '#Hooks': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/hooks'),
-      '#Layouts': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/layouts'),
-      '#Lib': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/lib'),
-      '#Pages': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/pages'),
-      '#Services': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/services'),
-      '#Types': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/types'),
-      '#Utils': path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src/utils'),
+      '#Shared': path.resolve(CWD, '../shared'),
+      '#Img': path.resolve(CWD, 'src/assets/img'),
+      '#Sass': path.resolve(CWD, 'src/assets/sass'),
+      '#Svg': path.resolve(CWD, 'src/assets/svg'),
+      '#Components': path.resolve(CWD, 'src/components'),
+      '#Context': path.resolve(CWD, 'src/context'),
+      '#Data': path.resolve(CWD, 'src/data'),
+      '#Features': path.resolve(CWD, 'src/features'),
+      '#Hooks': path.resolve(CWD, 'src/hooks'),
+      '#Layouts': path.resolve(CWD, 'src/layouts'),
+      '#Lib': path.resolve(CWD, 'src/lib'),
+      '#Pages': path.resolve(CWD, 'src/pages'),
+      '#Services': path.resolve(CWD, 'src/services'),
+      '#Types': path.resolve(CWD, 'src/types'),
+      '#Utils': path.resolve(CWD, 'src/utils'),
     },
   },
   module: {

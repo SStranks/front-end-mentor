@@ -1,11 +1,5 @@
-import {
-  AppDispatchContext,
-  AppStateContext,
-  IAppContextPayload,
-} from '#Context/AppContext';
-import RootModalDispatchContext, {
-  TRootModalDispatchContext,
-} from '#Context/RootModalContext';
+import { AppDispatchContext, AppStateContext, IAppContextPayload } from '#Context/AppContext';
+import RootModalDispatchContext, { TRootModalDispatchContext } from '#Context/RootModalContext';
 import useAppReducer from '#Hooks/useAppReducer';
 import Home from '#Pages/Home';
 import ApiService from '#Services/Services';
@@ -22,22 +16,17 @@ function App(): JSX.Element {
     localStoragePending: false,
     localStorageData: undefined,
   });
-  const [rootModalDispatch, setRootModalDispatch] =
-    useState<TRootModalDispatchContext>({} as TRootModalDispatchContext);
-  const [activeBoardId, setActiveBoardId] = useState<string>(
-    INITIAL_ACTIVEBOARD || ''
+  const [rootModalDispatch, setRootModalDispatch] = useState<TRootModalDispatchContext>(
+    {} as TRootModalDispatchContext,
   );
+  const [activeBoardId, setActiveBoardId] = useState<string>(INITIAL_ACTIVEBOARD || '');
 
   console.log('APP RENDER');
 
   // Commit tasks ordering to localStorage when tab/browser visibility changes and data is pending
   useEffect(() => {
     const saveTaskOrderToLocalStorage = () => {
-      if (
-        document.visibilityState === 'hidden' &&
-        state.localStoragePending &&
-        state.localStorageData
-      ) {
+      if (document.visibilityState === 'hidden' && state.localStoragePending && state.localStorageData) {
         window.localStorage.setItem('boards-taskOrder', state.localStorageData);
         appDispatch({
           type: 'localStoragePending',
@@ -46,11 +35,7 @@ function App(): JSX.Element {
       }
     };
     document.addEventListener('visibilitychange', saveTaskOrderToLocalStorage);
-    return () =>
-      document.removeEventListener(
-        'visibilitychange',
-        saveTaskOrderToLocalStorage
-      );
+    return () => document.removeEventListener('visibilitychange', saveTaskOrderToLocalStorage);
   }, [appDispatch, state.localStorageData, state.localStoragePending]);
 
   // TODO:  React Query. Separate out functionality - doing too many things.
@@ -96,21 +81,14 @@ function App(): JSX.Element {
   const data = { boardsList, activeBoard };
 
   return (
-    <RootModalDispatchContext.Provider
-      value={rootModalDispatch as TRootModalDispatchContext}>
+    <RootModalDispatchContext.Provider value={rootModalDispatch as TRootModalDispatchContext}>
       <AppDispatchContext.Provider value={appDispatch}>
         <AppStateContext.Provider value={state as TAppStateContext}>
           <RootModal setRootModalDispatch={setRootModalDispatch} />
           <Routes>
             <Route
               path="/"
-              element={
-                <Home
-                  boardData={data}
-                  activeBoardId={activeBoardId}
-                  setActiveBoardId={setActiveBoardId}
-                />
-              }
+              element={<Home boardData={data} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />}
             />
           </Routes>
         </AppStateContext.Provider>

@@ -5,13 +5,16 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'node:path';
 import url from 'node:url';
-import { merge } from 'webpack-merge';
-import common from './webpack.common.js';
 
-const ProdConfig = merge(common, {
+import { merge } from 'webpack-merge';
+import CommonConfig from './webpack.common.js';
+
+const CWD = process.env.INIT_CWD;
+
+const ProdConfig = {
   mode: 'production',
   output: {
-    path: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'dist'),
+    path: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'dist'),
     filename: 'main.[contenthash].js',
     assetModuleFilename: 'assets/[ext]/[name].[hash][ext]',
     clean: true,
@@ -59,8 +62,8 @@ const ProdConfig = merge(common, {
   plugins: [
     new MiniCssExtractPlugin(),
     new HTMLWebpackPlugin({
-      template: './src/index-template.html',
-      favicon: './src/favicon-32x32.png',
+      template: path.resolve(CWD, './src/index-template.html'),
+      favicon: path.resolve(CWD, './src/favicon-32x32.png'),
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
@@ -70,14 +73,14 @@ const ProdConfig = merge(common, {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'public'),
-          to: path.join(path.dirname(url.fileURLToPath(import.meta.url)), 'dist', 'public'),
+          from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public'),
+          to: path.join(CWD, url.fileURLToPath(import.meta.url), 'dist', 'public'),
           noErrorOnMissing: true,
         },
       ],
     }),
-    new Dotenv({ path: './.env.prod' }),
+    new Dotenv({ path: path.resolve(CWD, './.env.prod') }),
   ],
-});
+};
 
-export default ProdConfig;
+export default merge(CommonConfig, ProdConfig);

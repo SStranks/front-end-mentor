@@ -16,8 +16,8 @@
     "target": "ES5" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "lib": [
       "dom",
-      "es6",
       "dom.iterable",
+      "ES2021",
       "scripthost"
     ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,

@@ -2,38 +2,28 @@ import Dotenv from 'dotenv-webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import path from 'node:path';
 import url from 'node:url';
-import { merge } from 'webpack-merge';
-import common from './webpack.common.js';
 
-const DevConfig = merge(common, {
+import { merge } from 'webpack-merge';
+import CommonConfig from './webpack.common.js';
+
+const CWD = process.env.INIT_CWD;
+
+const DevConfig = {
   mode: 'development',
   output: {
-    path: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'dist'),
+    path: path.resolve(CWD, 'dist'),
     filename: 'main.js',
     publicPath: '/',
-    // assetModuleFilename: 'images/[name][ext]',
   },
   devtool: 'inline-source-map',
   devServer: {
     port: 3000,
     static: ['./public'],
     historyApiFallback: true,
-    /** "open"
-     * opens the browser after server is successfully started
-     */
     // NOTE:  Can't set 'open' to true; like Create-React-App, there is a bug with accessing the browser/ports from WSL2
     open: false,
-    /** "hot"
-     * enabling and disabling HMR. takes "true", "false" and "only".
-     * "only" is used if enable Hot Module Replacement without page
-     * refresh as a fallback in case of build failures
-     */
     hot: true,
-    /** "liveReload"
-     * disable live reload on the browser. "hot" must be set to false for this to work
-     */
     liveReload: true,
-    // historyApiFallback: true,
   },
   stats: {
     loggingDebug: ['sass-loader'],
@@ -63,11 +53,11 @@ const DevConfig = merge(common, {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: './src/index-template.html',
-      favicon: './src/favicon-32x32.png',
+      template: path.resolve(CWD, './src/index-template.html'),
+      favicon: path.resolve(CWD, './src/favicon-32x32.png'),
     }),
-    new Dotenv({ path: './.env.dev' }),
+    new Dotenv({ path: path.resolve(CWD, './.env.dev') }),
   ],
-});
+};
 
-export default DevConfig;
+export default merge(CommonConfig, DevConfig);

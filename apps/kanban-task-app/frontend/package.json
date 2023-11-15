@@ -9,10 +9,9 @@
   "prettier": "@packages/prettier-config",
   "jest": "@packages/jest-react-config",
   "scripts": {
-    "echo": "echo \"hello\"",
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "build:watch": "webpack --config webpack.dev.js --watch",
+    "start": "pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
+    "build": "pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
+    "build:watch": "pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
     "build:serve": "http-server ./dist",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -48,6 +47,7 @@
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.8.3",
+    "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
     "@types/react-beautiful-dnd": "^13.1.7",
     "@types/react-dom": "^18.2.15",
@@ -59,10 +59,6 @@
     "identity-obj-proxy": "^3.0.0",
     "sass": "^1.69.5",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5"
+    "typescript": "^5.2.2"
   }
 }
