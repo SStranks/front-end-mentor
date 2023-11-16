@@ -11,6 +11,18 @@
       "#Utils/*": ["utils/*"]
     }
   },
-  "include": ["server/**/*.ts", "dist"],
-  "exclude": ["node_modules"]
+
+  "ts-node": {
+    "esm": true,
+    "require": ["tsconfig-paths/register"],
+    "experimentalSpecifierResolution": "node"
+  },
+
+  "tsc-alias": {
+    "verbose": true,
+    "resolveFullPaths": true
+  },
+
+  "include": ["server/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

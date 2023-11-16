@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-null */
 import '@testing-library/jest-dom';
 
 // https://stackoverflow.com/questions/44249985/testing-code-that-uses-an-intersectionobserver

@@ -6,8 +6,19 @@
   "license": "ISC",
   "type": "module",
   "main": "./src/index.tsx",
-  "prettier": "@packages/prettier-config",
   "jest": "@packages/jest-react-config",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "last 2 versions"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "start": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
     "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
@@ -40,7 +51,7 @@
   },
   "devDependencies": {
     "@packages/babel-config": "workspace:*",
-    "@packages/jest-config": "workspace:*",
+    "@packages/jest-config-react": "workspace:*",
     "@packages/prettier-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
@@ -54,7 +65,6 @@
     "eslint-import-resolver-typescript": "^3",
     "history": "^5.3.0",
     "http-server": "^14.1.1",
-    "identity-obj-proxy": "^3.0.0",
     "sass": "^1.69.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"

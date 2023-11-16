@@ -1,0 +1,20 @@
+{
+  "name": "@packages/jest-config-react",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "shared jest react configuration",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "files": [
+    "jest.config.ts",
+    "jest.fileMock.ts",
+    "jest.setup.ts"
+  ],
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.1",
+    "jest-environment-jsdom": "^29.7.0",
+    "react-test-renderer": "^18.2.0"
+  }
+}

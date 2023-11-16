@@ -13,11 +13,13 @@
   "engines": {
     "node": ">= 16"
   },
+  "prettier": "@packages/prettier-config",
   "dependencies": {
     "@packages/babel-config": "workspace:*",
     "@packages/eslint-config": "workspace:*",
     "@packages/eslint-config-express": "workspace:*",
     "@packages/eslint-config-react": "workspace:*",
+    "@packages/eslint-config-react-test": "workspace:^",
     "@packages/jest-config": "workspace:*",
     "@packages/prettier-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",

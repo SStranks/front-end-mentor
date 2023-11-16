@@ -1,4 +1,5 @@
 import PluginReact from 'eslint-plugin-react';
+import PluginReactHooks from 'eslint-plugin-react-hooks';
 import PluginJSXA11Y from 'eslint-plugin-jsx-a11y';
 import ConfigAirBnb from 'eslint-config-airbnb';
 
@@ -22,11 +23,13 @@ export const EslintConfigReact = {
   },
   plugins: {
     react: PluginReact,
+    'react-hooks': PluginReactHooks,
     'jsx-a11y': PluginJSXA11Y,
   },
   rules: {
     ...ConfigAirBnb.rules,
     ...PluginReact.configs.recommended.rules,
+    ...PluginReactHooks.configs.recommended.rules,
     ...PluginJSXA11Y.configs.recommended.rules,
     'react/function-component-definition': 'off',
     'react/jsx-filename-extension': [
