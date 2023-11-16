@@ -1,0 +1,29 @@
+@use '../../../assets/sass/variables' as *;
+@use '../../../assets/sass/mixins' as *;
+@use '../../../assets/sass/functions' as f;
+
+.tag {
+  @include body-3;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min-content;
+  padding: f.px2em(6) f.px2em(16);
+  border-radius: $border-radius-1;
+  background-color: $pale-blue;
+  color: $royal-blue;
+
+  & input[type='radio'] {
+    display: none;
+  }
+
+  &:has(input[type='radio']:checked) {
+    background-color: $royal-blue;
+    color: $white;
+  }
+
+  @include media(tablet-regular) {
+    height: 30px;
+  }
+}

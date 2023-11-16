@@ -1,0 +1,93 @@
+@use '#Sass/variables' as *;
+
+.container {
+  position: relative;
+  width: fit-content;
+  color: inherit;
+
+  & p,
+  button {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+
+.dataBar {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 32px;
+
+  &__dateBtn {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: inherit;
+  }
+
+  & > button {
+    & > img {
+      height: fit-content;
+    }
+
+    &:disabled > img {
+      opacity: 25%;
+    }
+  }
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  &__date {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+
+    &:hover {
+      color: $color-1b;
+    }
+
+    &--active::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: $color-1a;
+      transform: translate(-50%, -50%);
+      opacity: 70%;
+      z-index: -1;
+    }
+
+    &--outOfBounds {
+      color: var(--color-form-calendar-day-inactive);
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.buttonsBar {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+
+  & > button {
+    color: inherit;
+  }
+}

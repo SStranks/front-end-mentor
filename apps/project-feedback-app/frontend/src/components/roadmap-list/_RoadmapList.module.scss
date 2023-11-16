@@ -1,0 +1,175 @@
+@use '../../assets/sass/mixins' as *;
+@use '../../assets/sass/variables' as *;
+@use '../../assets/sass/functions' as f;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  column-gap: f.px2em(30);
+  row-gap: f.px2em(32);
+  overflow-y: hidden;
+  height: 100%;
+
+  @include media(tablet-regular, tablet-small) {
+    column-gap: f.px2em(10);
+    row-gap: f.px2em(24);
+  }
+
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content auto;
+    padding: 0;
+  }
+
+  &__mobileNav {
+    $self: &;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 56px auto;
+    width: 100%;
+    border-bottom: 1px solid $fade-blue;
+
+    @include media(
+      desktop-large,
+      desktop-medium,
+      desktop-small,
+      tablet-regular,
+      tablet-small
+    ) {
+      display: none;
+    }
+
+    &__label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 8px;
+      color: $fade-blue;
+      text-align: center;
+
+      &__br {
+        display: none;
+        @include media(mobile-small, mobile-medium) {
+          display: block;
+        }
+      }
+
+      &:has(input[type='radio']:checked) {
+        color: $navy-blue;
+      }
+    }
+
+    &__radio {
+      display: none;
+    }
+
+    &__activebar {
+      height: 5px;
+    }
+
+    &__title {
+      // Only visible on mobile widths; Single title vs all three on larger devices
+      padding: 0 f.px2em(24);
+
+      h3 {
+        @include body-8;
+        color: $navy-blue;
+        margin-bottom: f.px2em(5);
+      }
+
+      p {
+        @include body-7;
+        color: $mute-blue;
+      }
+
+      @include media(
+        tablet-regular,
+        tablet-small,
+        desktop-large,
+        desktop-medium,
+        desktop-small
+      ) {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    @include media(mobile-large, mobile-medium, mobile-small) {
+      display: none;
+    }
+
+    & > h3 {
+      color: $navy-blue;
+
+      @include media(
+        tablet-regular,
+        tablet-small,
+        mobile-large,
+        mobile-medium,
+        mobile-small
+      ) {
+        @include body-5;
+      }
+    }
+
+    & > p {
+      color: $mute-blue;
+
+      @include media(
+        tablet-regular,
+        tablet-small,
+        mobile-large,
+        mobile-medium,
+        mobile-small
+      ) {
+        @include body-4;
+      }
+    }
+  }
+
+  &__subgrid {
+    grid-column: 1 / span 3;
+    display: grid;
+    grid-template-columns: inherit;
+    grid-auto-flow: column;
+    column-gap: inherit;
+    row-gap: f.px2em(24);
+    height: 100%;
+    overflow-y: auto;
+
+    & > div:last-child {
+      margin-bottom: 200px;
+    }
+
+    @include media(tablet-regular, tablet-small) {
+      row-gap: f.px2em(16);
+    }
+
+    @include media(mobile-large, mobile-medium, mobile-small) {
+      grid-column: 1;
+      display: flex;
+      flex-direction: column;
+      row-gap: f.px2em(16);
+      padding: 0 f.px2em(24);
+    }
+  }
+}
+
+.col1 {
+  grid-column: 1;
+  background-color: $mute-orange;
+}
+
+.col2 {
+  grid-column: 2;
+  background-color: $magenta;
+}
+
+.col3 {
+  grid-column: 3;
+  background-color: $sky-blue;
+}

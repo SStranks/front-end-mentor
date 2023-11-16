@@ -1,0 +1,25 @@
+# Env files
+**/.env
+**/.env.*
+
+# Keys
+**/*.key
+
+# Dependencies
+**/node_modules
+
+# Public
+frontend/public
+**/dist
+
+# Private Files
+**/private.*
+
+# FrontEndMentor
+*.sketch
+*.xd
+*.fig
+.DS_Store
+
+# VSCode
+.vscode

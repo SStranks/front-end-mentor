@@ -1,0 +1,56 @@
+@use '#Sass/variables' as *;
+@use '#Sass/mixins' as *;
+@use '#Sass/functions' as f;
+@use '#Sass/animations' as a;
+
+.container {
+  position: relative;
+  display: flex;
+  column-gap: f.px2em(8);
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  padding: f.px2em(13) 0;
+  border-radius: $border-radius-2;
+  font-weight: 700;
+  font-size: f.px2rem(16);
+  line-height: 1;
+  letter-spacing: f.px2rem(-0.25);
+
+  &__bullet {
+    min-width: 8px;
+    min-height: 8px;
+    border-radius: 100%;
+  }
+
+  &--paid {
+    background-color: var(--color-button-status-paid);
+    color: $color-4c;
+    transition: a.$Theme-transition;
+
+    & .container__bullet {
+      background-color: $color-4c;
+    }
+  }
+
+  &--pending {
+    background-color: var(--color-button-status-pending);
+    color: $color-4e;
+    transition: a.$Theme-transition;
+
+    & .container__bullet {
+      background-color: $color-4e;
+    }
+  }
+
+  &--draft {
+    background-color: var(--color-button-status-draft);
+    color: var(--color-button-status-draft-text);
+    transition: a.$Theme-transition;
+
+    & .container__bullet {
+      background-color: var(--color-button-status-draft-text);
+      transition: a.$Theme-transition;
+    }
+  }
+}

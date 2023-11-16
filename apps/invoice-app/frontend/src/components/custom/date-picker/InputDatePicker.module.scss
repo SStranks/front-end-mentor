@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-content: center;
+  font-family: inherit;
+  font-weight: 700;
+  color: inherit;
+
+  & > label {
+    color: inherit;
+  }
+}
+
+.input {
+  position: absolute;
+  border: none;
+  text-align: center;
+  width: 0;
+  height: 0;
+  opacity: 0;
+
+  &:disabled + label > .displayValue {
+    cursor: default;
+    opacity: 25%;
+  }
+}
+
+.inputDelimiter {
+  min-width: 0.15ch;
+  margin-inline: 2px;
+
+  &--inactive {
+    cursor: default;
+    opacity: 25%;
+  }
+}
+
+.displayValue {
+  padding: 1px;
+  color: inherit;
+}
+
+.active {
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-color: #3297fd;
+}

@@ -1,0 +1,20 @@
+/* -------------------------------- */
+/*          ~ Animations ~          */
+/* -------------------------------- */
+/*      [Project Feedback App]      */
+/* -------------------------------- */
+/*   Frontend Mentor Challenge      */
+/*   Difficulty: Guru               */
+/*   [www.frontendmentor.io]        */
+/* -------------------------------- */
+/*   version:   1.0                 */
+/*   date:      26/09/2022          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+/* -------------------------------- */
+
+/*   Imports                        */
+@use 'variables' as *;
+
+/*   Theme Transitions              */
+$Theme-transition: background 1s, color 1s, fill 1s;

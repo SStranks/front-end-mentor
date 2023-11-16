@@ -1,0 +1,64 @@
+@use '#Sass/variables' as *;
+@use '#Sass/mixins' as *;
+@use '#Sass/functions' as f;
+@use '#Sass/animations' as a;
+
+@mixin btn-theme-wrapper($transition: '', $border-radius: 0) {
+  border-radius: $border-radius;
+  transition: $transition;
+}
+
+@mixin btn-element {
+  @include btn-default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: f.px2em(17) f.px2em(24);
+  color: inherit;
+  background-color: transparent;
+  transition: a.$btn-hover;
+}
+
+@mixin btn-grey {
+  color: $color-2c;
+  background-color: var(--color-button-cancel);
+}
+
+@mixin btn-grey-hover {
+  &:hover {
+    background-color: $color-2a;
+  }
+}
+
+@mixin btn-purple {
+  color: $white;
+  background-color: $color-1a;
+}
+
+@mixin btn-purple-hover {
+  &:hover {
+    background-color: $color-5b;
+  }
+}
+
+@mixin btn-red {
+  color: $white;
+  background-color: $color-3a;
+}
+
+@mixin btn-red-hover {
+  &:hover {
+    background-color: $color-5a;
+  }
+}
+
+@mixin btn-navy {
+  color: $white;
+  background-color: $color-4a;
+}
+
+@mixin btn-navy-hover {
+  &:hover {
+    background-color: $color-2d;
+  }
+}

@@ -1,0 +1,20 @@
+@use '../../../assets/sass/variables' as *;
+@use '../../../assets/sass/mixins' as *;
+@use '../../../assets/sass/functions' as f;
+
+.container {
+  width: 100%;
+}
+
+.textarea {
+  @include textarea;
+  @include input-error;
+  position: relative;
+  min-height: 96px;
+}
+
+.error {
+  @include body-4;
+  margin-top: 8px;
+  color: $blood-red;
+}

@@ -1,0 +1,56 @@
+@use '../../assets/sass/variables' as *;
+@use '../../assets/sass/mixins' as *;
+@use '../../assets/sass/functions' as f;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: f.px2em(20);
+  height: 100%;
+  padding-bottom: 120px;
+  overflow-y: auto;
+
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    padding: 0 f.px2em(24);
+    padding-bottom: 120px;
+  }
+}
+
+.noList {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: f.px2em(110) f.px2em(24);
+  text-align: center;
+
+  @include media(mobile-all, mobile-large) {
+    margin: 0 24px;
+  }
+
+  & > img {
+    width: 130px;
+    height: auto;
+    margin-bottom: f.px2em(52);
+  }
+
+  & > span {
+    font-weight: 700;
+    font-size: f.px2rem(24);
+    line-height: f.px2rem(35);
+    letter-spacing: f.px2rem(-0.33);
+    margin-bottom: f.px2em(16);
+    color: $navy-blue;
+  }
+
+  & > p {
+    margin-bottom: f.px2em(48);
+    color: $mute-blue;
+  }
+}
+
+.btn {
+  width: 157px;
+  height: 44px;
+}

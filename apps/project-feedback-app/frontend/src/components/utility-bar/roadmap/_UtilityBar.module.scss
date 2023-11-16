@@ -1,0 +1,61 @@
+@use '../../../assets/sass/variables' as *;
+@use '../../../assets/sass/mixins' as *;
+@use '../../../assets/sass/functions' as f;
+
+.bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: f.px2em(27) f.px2em(40) f.px2em(27) f.px2em(32);
+  border-radius: $border-radius-1;
+  background-color: $navy-blue;
+  color: $white;
+
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    padding: f.px2em(26) f.px2em(24);
+    border-radius: 0;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    row-gap: f.px2em(2);
+  }
+
+  &__link {
+    @include body-5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: f.px2em(15);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 74%;
+      height: 0.1em;
+      background-color: $white;
+      opacity: 1;
+      transform: scale(0);
+      transform-origin: center;
+      transition: opacity 300ms, transform 600ms;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      transform: scale(1);
+    }
+
+    & img {
+      filter: brightness(100);
+    }
+  }
+
+  &__btn {
+    width: 158px;
+    height: 44px;
+  }
+}

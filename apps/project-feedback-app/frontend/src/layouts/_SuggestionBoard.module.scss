@@ -1,0 +1,76 @@
+@use '../assets/sass/mixins' as *;
+@use '../assets/sass/functions' as f;
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: f.px2em(94) f.px2em(40) f.px2em(40) f.px2em(40);
+
+  @include media(desktop-extra-small, tablet-small) {
+    padding-top: f.px2em(50);
+  }
+
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 255px) minmax(500px, 825px);
+  column-gap: f.px2em(30);
+  height: 100%;
+
+  &__subGrid1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: f.px2em(24);
+    height: 100%;
+
+    @include media(tablet-regular, tablet-small) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: f.px2em(10);
+    }
+
+    @include media(mobile-large, mobile-medium, mobile-small) {
+      display: grid;
+      grid-template-columns: 1fr;
+      height: 100px;
+      width: 100%;
+    }
+  }
+
+  &__subGrid2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: f.px2em(24);
+    height: 100%;
+    overflow-y: hidden;
+
+    & > main {
+      height: 100%;
+      overflow-y: hidden;
+    }
+  }
+
+  @include media(tablet-regular, tablet-small) {
+    grid-template-columns: 1fr;
+    row-gap: f.px2em(40);
+  }
+
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content auto;
+    row-gap: 0;
+  }
+
+  &__aside {
+    @include media(mobile-large, mobile-medium, mobile-small) {
+      display: none;
+    }
+  }
+}

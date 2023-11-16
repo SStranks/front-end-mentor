@@ -1,0 +1,70 @@
+/* -------------------------------- */
+/*          ~ Variables ~           */
+/* -------------------------------- */
+/*      [Project Feedback App]      */
+/* -------------------------------- */
+/*   Frontend Mentor Challenge      */
+/*   Difficulty: Guru               */
+/*   [www.frontendmentor.io]        */
+/* -------------------------------- */
+/*   version:   1.0                 */
+/*   date:      26/09/2022          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+/* -------------------------------- */
+
+/*   Colours: Primary               */
+$magenta: hsl(282deg, 83%, 52%);
+$sky-blue: hsl(204deg, 94%, 68%);
+$royal-blue: hsl(230deg, 76%, 59%);
+$pale-royal-blue: hsl(230deg, 100%, 91%);
+$dark-blue: hsl(230deg, 31%, 31%);
+$navy-blue: hsl(231deg, 33%, 34%);
+$pale-blue: hsl(231deg, 100%, 97%);
+$mute-blue: hsl(224deg, 20%, 49%);
+$pale-grey: hsl(230deg, 60%, 98%);
+$blood-red: hsl(0deg, 67%, 53%);
+$mute-orange: hsl(14deg, 83%, 74%);
+$white: hsl(0deg, 0%, 100%);
+$black: hsl(0deg, 0%, 0%);
+$grey: hsl(212deg, 23%, 69%);
+
+/*   Colours: Secondary             */
+/*   Placeholder Text               */
+$fade-blue: hsl(231deg, 20%, 63%);
+/*   Faded View Link                */
+$fade-blue-link: hsl(230deg, 89%, 74%);
+/*   Faded Buttons                  */
+$dim-magenta: hsl(282deg, 90%, 66%);
+$dim-royal-blue: hsl(230deg, 91%, 73%);
+$dim-navy-blue: hsl(231deg, 26%, 52%);
+$dim-blood-red: hsl(0deg, 69%, 72%);
+/*   Utility Bar Dropdown           */
+$dim-grey: hsla(230deg, 86%, 97%, 0.75);
+/*   Line Break                     */
+$line-break: hsla(231deg, 20%, 63%, 0.25);
+/*   Mobile Modal Background        */
+$mobile-modal-bg: hsla(0deg, 0%, 0%, 0.5);
+
+/*   Toaster Colors                 */
+$toast-red: hsl(0, 100%, 87%);
+$toast-mute-blue: hsl(230deg, 100%, 91%);
+
+/*   Breakpoints                    */
+$mobile-s: 320px;
+$mobile-m: 375px;
+$mobile-l: 425px;
+$tablet-s: 700px;
+$tablet: 768px;
+$desktop-s: 1024px;
+$desktop-m: 1440px;
+$desktop-l: 2560px;
+
+/*   Borders                        */
+$border-radius-1: 10px;
+$border-radius-2: 5px;
+$border-bottom-li: 1px solid hsla(0deg, 0%, 59%, 0.15);
+
+/*   Shadows                        */
+$box-shadow-1: 0px 0px 25px 10px hsla(224deg, 20%, 49%, 0.3);
+$box-shadow-2: 0px 4px 14px 0px hsla(0deg, 0%, 0%, 0.2);

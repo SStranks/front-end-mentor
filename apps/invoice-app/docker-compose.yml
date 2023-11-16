@@ -1,0 +1,14 @@
+name: "fem34-invoice-app"
+version: "3.7"
+services:
+
+  # Backend: NodeJS Express
+  node-api:
+    build:
+      context: ./backend
+
+  # Frontend: React App
+  react-app:
+    build:
+      context: ./frontend
+    profiles: [ "prod" ]

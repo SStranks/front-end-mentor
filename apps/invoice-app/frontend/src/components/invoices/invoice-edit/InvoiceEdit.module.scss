@@ -1,0 +1,326 @@
+@use '#Sass/variables' as *;
+@use '#Sass/mixins' as *;
+@use '#Sass/functions' as f;
+@use '#Sass/animations' as a;
+@use '#Sass/components/buttons' as btn;
+
+.container {
+  @include media(tablet-medium) {
+    margin-top: f.px2em(-24);
+  }
+
+  @include media(tablet-small) {
+    margin: f.px2em(-24) f.px2em(10) 0 f.px2em(10);
+  }
+
+  @include media(tablet-small, mobile-all) {
+    padding-bottom: f.px2em(105);
+  }
+
+  @include media(mobile-small) {
+    padding-bottom: f.px2em(135);
+  }
+
+  &__back {
+    display: flex;
+    column-gap: f.px2em(26);
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: f.px2em(32);
+
+    &:hover {
+      color: $color-2c;
+    }
+  }
+
+  &__statusBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: f.px2em(20) f.px2em(32);
+    margin-bottom: f.px2em(24);
+    background-color: var(--color-elements);
+    border-radius: $border-radius-1;
+    box-shadow: $box-shadow-1;
+    transition: a.$Theme-transition;
+
+    @include media(mobile-all) {
+      padding: f.px2em(20) f.px2em(24);
+    }
+
+    &__status {
+      display: flex;
+      align-items: center;
+      column-gap: f.px2em(16);
+
+      @include media(tablet-small, mobile-all) {
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
+    &__editBtn {
+      @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+      @include btn.btn-element;
+      @include btn.btn-grey;
+      @include btn.btn-grey-hover;
+    }
+
+    &__deleteBtn {
+      @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+      @include btn.btn-element;
+      @include btn.btn-red;
+      @include btn.btn-red-hover;
+    }
+
+    &__markPaidBtn {
+      @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+      @include btn.btn-element;
+      @include btn.btn-purple;
+      @include btn.btn-purple-hover;
+    }
+
+    &__buttons {
+      display: flex;
+      column-gap: f.px2em(8);
+
+      @include media(tablet-small, mobile-all) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: $edit-invoice-mobile-btns;
+        padding: f.px2em(20) f.px2em(24);
+        background-color: var(--color-elements);
+      }
+
+      @include media(mobile-small) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        row-gap: f.px2em(8);
+        height: fit-content;
+
+        & :nth-child(3) {
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+  }
+
+  &__invoice {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    padding: f.px2em(48);
+    background-color: var(--color-elements);
+    color: $color-2c;
+    border-radius: $border-radius-1;
+    box-shadow: $box-shadow-1;
+    transition: a.$Theme-transition;
+
+    @include media(tablet-small) {
+      padding: f.px2em(32);
+    }
+
+    @include media(mobile-all) {
+      padding: f.px2em(24);
+    }
+
+    &__identity {
+      grid-row: 1;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: f.px2em(20);
+
+      @include media(mobile-all) {
+        flex-direction: column;
+        row-gap: f.px2em(30);
+      }
+
+      &__code {
+        display: flex;
+        flex-direction: column;
+
+        &--black {
+          @include text-modifier-black;
+        }
+      }
+    }
+
+    &__details {
+      grid-row: 2 / 3;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+
+      @include media(mobile-all) {
+        grid-template-columns: repeat(2, auto);
+      }
+
+      &__date {
+        &--black {
+          @include text-modifier-black;
+          margin-top: f.px2em(12);
+        }
+      }
+
+      &__due {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: end;
+
+        &--black {
+          @include text-modifier-black;
+          margin-top: f.px2em(12);
+        }
+      }
+
+      &__recipient {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+
+        &--black {
+          @include text-modifier-black;
+          margin-top: f.px2em(12);
+          margin-bottom: f.px2em(8);
+        }
+      }
+
+      &__email {
+        grid-column: 3;
+
+        @include media(mobile-all) {
+          grid-column: 1;
+          margin-top: f.px2em(32);
+        }
+
+        &--black {
+          @include text-modifier-black;
+          margin-top: f.px2em(12);
+        }
+      }
+    }
+
+    &__payment {
+      border-radius: $border-radius-1 $border-radius-1 0 0;
+
+      &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: auto;
+        row-gap: f.px2em(32);
+        padding: f.px2em(32);
+        margin-top: f.px2em(45);
+        font-weight: 500;
+        background-color: var(--color-elements-2);
+        border-radius: $border-radius-1 $border-radius-1 0 0;
+        color: var(--color-text-p2);
+        transition: a.$Theme-transition;
+
+        @include media(mobile-all) {
+          grid-template-columns: 1fr;
+          row-gap: 24px;
+          padding: f.px2em(20);
+        }
+
+        &__title {
+          @include media(mobile-all) {
+            display: none;
+          }
+        }
+
+        &__name {
+          $parent: &;
+          text-align: left;
+
+          @include media(mobile-all) {
+            display: none;
+          }
+
+          &--black {
+            @extend #{$parent};
+            @include text-modifier-black;
+          }
+        }
+
+        &__qty {
+          text-align: center;
+          @include media(mobile-all) {
+            display: none;
+          }
+        }
+
+        &__price {
+          text-align: right;
+          @include media(mobile-all) {
+            display: none;
+          }
+        }
+
+        &__total {
+          $parent: &;
+          text-align: right;
+          @include media(mobile-all) {
+            display: none;
+          }
+
+          &--black {
+            @extend #{$parent};
+            @include text-modifier-black;
+          }
+        }
+
+        &__mobile {
+          display: none;
+          @include media(mobile-all) {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(2, auto);
+            row-gap: 8px;
+
+            &__name {
+              @include text-modifier-black;
+            }
+
+            &__price {
+              grid-column: 2;
+              grid-row: 1 / span 2;
+              @include text-modifier-black;
+              align-self: center;
+              text-align: right;
+            }
+          }
+        }
+      }
+
+      &__total {
+        grid-column: 1 / span 4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: f.px2em(24) f.px2em(32);
+        background-color: var(--color-elements-3);
+        color: $white;
+        border-radius: 0 0 $border-radius-1 $border-radius-1;
+        transition: a.$Theme-transition;
+
+        @include media(mobile-all) {
+          padding: f.px2em(24) f.px2em(24);
+        }
+
+        &__due {
+          font-size: f.px2em(14);
+          font-weight: 400;
+        }
+
+        &__total {
+          font-size: f.px2em(32);
+          font-weight: 500;
+
+          @include media(mobile-all) {
+            font-size: f.px2em(20);
+          }
+        }
+      }
+    }
+  }
+}

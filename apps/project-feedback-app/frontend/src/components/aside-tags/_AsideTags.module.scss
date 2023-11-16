@@ -1,0 +1,19 @@
+@use '../../assets/sass/variables' as *;
+@use '../../assets/sass/mixins' as *;
+@use '../../assets/sass/functions' as f;
+
+.container {
+  @include card;
+  height: 100%;
+
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    height: fit-content;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: f.px2em(14);
+  column-gap: f.px2em(8);
+}
