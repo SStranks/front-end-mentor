@@ -1,0 +1,180 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(auto, 1fr) minmax(min-content, 1fr);
+  align-items: center;
+  margin-bottom: f.px2em(160);
+  color: c.$col-1c;
+  background-color: c.$col-1a;
+  background-image: url(~svg/desktop/bg-pattern-hero-about-desktop.svg);
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  border-radius: v.$border-radius-1;
+  overflow: hidden;
+
+  @include mq.media(tablet-xlarge) {
+    margin-bottom: f.px2em(120);
+  }
+
+  @include mq.media(tablet-all, mobile-all) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    margin-bottom: f.px2em(120);
+    text-align: center;
+  }
+
+  @include mq.media(mobile-all) {
+    grid-template-rows: repeat(2, auto);
+    margin: 0 -24px;
+    border-radius: 0;
+  }
+
+  &__info {
+    padding: f.px2em(40) f.px2em(95);
+
+    @include mq.media(mobile-all) {
+      grid-row: 2;
+      padding: f.px2em(80) f.px2em(24);
+    }
+
+    & > h1 {
+      @include mx.header-h1;
+      @include mq.media(mobile-all) {
+        font-size: f.px2em(32);
+        line-height: 36px;
+      }
+    }
+
+    & > p {
+      margin-top: f.px2em(24);
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    justify-self: end;
+
+    @include mq.media(tablet-all) {
+      content: url(~img/tablet/image-about-hero.jpg);
+      order: -1;
+      object-fit: cover;
+    }
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: c.$col-2d;
+  border-radius: v.$border-radius-1;
+  overflow: hidden;
+
+  @include mq.media(tablet-all, mobile-all) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  @include mq.media(mobile-all) {
+    margin: 0 -24px;
+    border-radius: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: f.px2em(94);
+
+    @include mq.media(tablet-all) {
+      padding: f.px2em(68) f.px2em(60);
+    }
+
+    @include mq.media(mobile-all) {
+      padding: f.px2em(80) f.px2em(24);
+      text-align: center;
+    }
+
+    @include mq.media(mobile-small) {
+      padding: f.px2em(60) f.px2em(24);
+    }
+
+    & > h2 {
+      @include mx.header-h2;
+      color: c.$col-1a;
+      @include mq.media(mobile-all) {
+        font-size: f.px2em(32);
+        line-height: 36px;
+      }
+    }
+
+    & > p {
+      margin-top: f.px2em(24);
+    }
+  }
+}
+
+.cardNum1 {
+  background-image: url(~svg/desktop/bg-pattern-two-circles.svg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+
+  &__img {
+    object-fit: cover;
+
+    @include mq.media(tablet-all) {
+      content: url(~img/tablet/image-world-class-talent.jpg);
+    }
+    @include mq.media(mobile-all) {
+      content: url(~img/mobile/image-world-class-talent.jpg);
+      width: 100%;
+    }
+  }
+}
+
+.cardNum2 {
+  flex-direction: row-reverse;
+  background-image: url(~svg/desktop/bg-pattern-two-circles.svg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+
+  &__img {
+    object-fit: cover;
+
+    @include mq.media(tablet-all) {
+      content: url(~img/tablet/image-real-deal.jpg);
+    }
+  }
+
+  &__img {
+    @include mq.media(mobile-all) {
+      content: url(~img/mobile/image-real-deal.jpg);
+      width: 100%;
+    }
+  }
+}
+
+.locations {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  margin: f.px2em(160) 0;
+
+  @media only screen and (max-width: 850px) {
+    flex-direction: column;
+    margin: f.px2em(120) 0;
+  }
+
+  @include mq.media(tablet-all, mobile-all) {
+    flex-direction: column;
+  }
+
+  @include mq.media(mobile-all) {
+    margin: f.px2em(120) 0;
+  }
+}

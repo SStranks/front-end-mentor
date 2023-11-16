@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Appearance Component render matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container__sub-container"
+  >
+    <nav
+      className="nav"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          alt="Designo Site Home."
+          className="nav__logo"
+          src=""
+        />
+      </a>
+      <button
+        className="nav__btn"
+        onClick={[Function]}
+        type="button"
+      >
+        <img
+          alt=""
+          src=""
+        />
+      </button>
+      <div
+        className="nav__links"
+        id="nav-links"
+      >
+        <a
+          href="/about"
+          onClick={[Function]}
+        >
+          <p
+            className="nav__link"
+          >
+            our company
+          </p>
+        </a>
+        <a
+          href="/locations"
+          onClick={[Function]}
+        >
+          <p
+            className="nav__link"
+          >
+            locations
+          </p>
+        </a>
+        <a
+          href="/contact"
+          onClick={[Function]}
+        >
+          <p
+            className="nav__link"
+          >
+            contact
+          </p>
+        </a>
+      </div>
+    </nav>
+    <header
+      className="header"
+    >
+      <div
+        className="header__info"
+      >
+        <h1>
+          About Us
+        </h1>
+        <p>
+          Founded in 2010, we are a creative agency that produces lasting results for our clients. We’ve partnered with many startups, corporations, and nonprofits alike to craft designs that make real impact. We’re always looking forward to creating brands, products, and digital experiences that connect with our clients’ audiences.
+        </p>
+      </div>
+      <img
+        alt=""
+        className="header__img"
+        src=""
+      />
+    </header>
+    <section
+      aria-labelledby="section_1"
+      className="card card-1"
+    >
+      <img
+        alt=""
+        className="card-1__img"
+        src=""
+      />
+      <div
+        className="card__info"
+      >
+        <h2
+          id="section_1"
+        >
+          World-class talent
+        </h2>
+        <p>
+          We are a crew of strategists, problem-solvers, and technologists. Every design is thoughtfully crafted from concept to launch, ensuring success in its given market. We are constantly updating our skills in a myriad of platforms. 
+          <br />
+          <br />
+          Our team is multi-disciplinary and we are not merely interested in form — content and meaning are just as important. We give great importance to craftsmanship, service, and prompt delivery. Clients have always been impressed with our high-quality outcomes that encapsulates their brand’s story and mission.
+        </p>
+      </div>
+    </section>
+    <div
+      className="locations"
+    >
+      <div
+        className="quality"
+      >
+        <div
+          className="image"
+        >
+          <img
+            alt=""
+            src=""
+          />
+          <div
+            className="bg-circle"
+            style={
+              {
+                "transform": "rotate(0deg)",
+              }
+            }
+          />
+        </div>
+        <p
+          className="quality__title"
+        >
+          canada
+        </p>
+        <button
+          type="button"
+        >
+          see location
+        </button>
+      </div>
+      <div
+        className="quality"
+      >
+        <div
+          className="image"
+        >
+          <img
+            alt=""
+            src=""
+          />
+          <div
+            className="bg-circle"
+            style={
+              {
+                "transform": "rotate(270deg)",
+              }
+            }
+          />
+        </div>
+        <p
+          className="quality__title"
+        >
+          australia
+        </p>
+        <button
+          type="button"
+        >
+          see location
+        </button>
+      </div>
+      <div
+        className="quality"
+      >
+        <div
+          className="image"
+        >
+          <img
+            alt=""
+            src=""
+          />
+          <div
+            className="bg-circle"
+            style={
+              {
+                "transform": "rotate(90deg)",
+              }
+            }
+          />
+        </div>
+        <p
+          className="quality__title"
+        >
+          united kingdom
+        </p>
+        <button
+          type="button"
+        >
+          see location
+        </button>
+      </div>
+    </div>
+    <section
+      aria-labelledby="section_2"
+      className="card card-2"
+    >
+      <img
+        alt=""
+        className="card-2__img"
+        src=""
+      />
+      <div
+        className="card__info"
+      >
+        <h2
+          id="section_2"
+        >
+          The real deal
+        </h2>
+        <p>
+          As strategic partners in our clients’ businesses, we are ready to take on any challenge as our own. Solving real problems require empathy and collaboration, and we strive to bring a fresh perspective to every opportunity. We make design and technology more accessible and give you tools to measure success.
+          <br />
+          <br />
+          We are visual storytellers in appealing and captivating ways. By combining business and marketing strategies, we inspire audiences to take action and drive real results.
+        </p>
+      </div>
+    </section>
+  </div>
+  <footer
+    className="footer "
+  >
+    <div
+      className="footer__container"
+    >
+      <div
+        className="footer__hero"
+      >
+        <div>
+          <p
+            className="footer__hero__header"
+          >
+            Let's talk about your project
+          </p>
+          <p
+            className="footer__hero__body"
+          >
+            Ready to take it to the next level? Contact us today and find out how our expertise can help your business grow.
+          </p>
+        </div>
+        <button
+          className="footer__hero__button"
+          type="button"
+        >
+          get in touch
+        </button>
+      </div>
+      <div
+        className="footer__nav"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="Designo Site Home."
+            className="footer__logo"
+            src=""
+          />
+        </a>
+        <div
+          className="footer__links"
+        >
+          <a
+            href="/about"
+            onClick={[Function]}
+          >
+            <p
+              className="footer__link"
+            >
+              our company
+            </p>
+          </a>
+          <a
+            href="/locations"
+            onClick={[Function]}
+          >
+            <p
+              className="footer__link"
+            >
+              locations
+            </p>
+          </a>
+          <a
+            href="/contact"
+            onClick={[Function]}
+          >
+            <p
+              className="footer__link"
+            >
+              contact
+            </p>
+          </a>
+        </div>
+        <hr
+          className="footer__hr"
+        />
+      </div>
+      <div
+        className="footer__info"
+      >
+        <div
+          className="footer__details"
+        >
+          <div>
+            <p
+              className="footer__bold-text"
+            >
+              Designo Central Office
+            </p>
+            <p>
+              3386 Wellington Street
+            </p>
+            <p>
+              Toronto, Ontario M9C 3J5
+            </p>
+          </div>
+          <div
+            className="footer__bold-text"
+          >
+            <p>
+              Contact Us (Central Office)
+            </p>
+            <p>
+              P : +1 253-863-8967
+            </p>
+            <p>
+              M : contact@designo.co
+            </p>
+          </div>
+        </div>
+        <div
+          className="footer__icons"
+        >
+          <img
+            alt="Designo facebook media page."
+            src=""
+          />
+          <img
+            alt="Designo youtube media page."
+            src=""
+          />
+          <img
+            alt="Designo twitter media page."
+            src=""
+          />
+          <img
+            alt="Designo pinterest media page."
+            src=""
+          />
+          <img
+            alt="Designo instagram media page."
+            src=""
+          />
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

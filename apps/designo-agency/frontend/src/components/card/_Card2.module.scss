@@ -1,0 +1,53 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/variables' as v;
+
+.card {
+  border-radius: v.$border-radius-1;
+  overflow: hidden;
+
+  @include mq.media(tablet-all) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  & > img {
+    height: fit-content;
+    background-repeat: no-repeat;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: f.px2em(32);
+    text-align: center;
+    background-color: c.$col-2d;
+
+    @include mq.media(tablet-all) {
+      justify-content: center;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: c.$col-1a;
+
+      & > h3,
+      > p {
+        color: c.$col-1c;
+      }
+    }
+
+    & > h3 {
+      @include mx.header-h3;
+      color: c.$col-1a;
+      text-transform: uppercase;
+    }
+
+    & > p {
+      margin-top: f.px2em(16);
+    }
+  }
+}

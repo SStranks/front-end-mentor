@@ -1,0 +1,43 @@
+services:
+
+  # Backend: NodeJS Express
+  node-api:
+    container_name: fem36-node-api-prod
+    build:
+      dockerfile: ./Dockerfile
+    image: fem36-nodejs-express-api
+    env_file:
+      - ./backend/.env.prod
+    networks:
+      - FEM36
+
+  # Frontend: Nginx-React
+  react-app:
+    container_name: fem36-react-app-prod
+    build:
+      dockerfile: ./Dockerfile
+    image: fem36-react-app
+    env_file:
+      - ./frontend/.env.prod
+    depends_on:
+      - node-api
+    networks:
+      - FEM36
+
+  # NGINX
+  nginx:
+    container_name: nginx-prod
+    restart: on-failure
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - node-api
+      - react-app
+    ports:
+      - 8080:80
+    networks:
+      - FEM36
+
+networks:
+  FEM36:
