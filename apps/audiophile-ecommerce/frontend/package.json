@@ -1,0 +1,62 @@
+{
+  "name": "@apps/audiophile-client",
+  "version": "1.0.0",
+  "description": "FEM#37 Frontend",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "type": "module",
+  "main": "./src/index.tsx",
+  "prettier": "@packages/prettier-config",
+  "jest": "@packages/jest-react-config",
+  "scripts": {
+    "start": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
+    "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
+    "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
+    "build:serve": "http-server ./dist --brotli",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "docker:build": "docker image build -f Dockerfile.prod -t $npm_package_config_dockerImageRepo:$npm_package_version .",
+    "docker:postbuild": "docker image tag $npm_package_config_dockerImageRepo:$npm_package_version $npm_package_config_dockerImageRepo:latest",
+    "docker:run": "docker run --name $npm_package_config_dockerImageName -d -p $npm_package_config_dockerImagePort:$npm_package_config_dockerInternalContainerPort $npm_package_config_dockerImageRepo",
+    "docker:clean": "docker rm -f $npm_package_config_imageName"
+  },
+  "config": {
+    "dockerImageRepo": "fem37image/frontend",
+    "dockerImageName": "FEM37-React-Nginx",
+    "dockerImagePort": "3000",
+    "dockerInternalContainerPort": "3000"
+  },
+  "dependencies": {
+    "@rollbar/react": "^0.11.2",
+    "axios": "^1.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.11",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.18.0",
+    "react-transition-group": "^4.4.5",
+    "rollbar": "^2.26.2"
+  },
+  "devDependencies": {
+    "@packages/babel-config": "workspace:*",
+    "@packages/jest-config": "workspace:*",
+    "@packages/prettier-config": "workspace:*",
+    "@packages/typescript-config": "workspace:*",
+    "@packages/webpack-config": "workspace:*",
+    "@tanstack/eslint-plugin-query": "^5.8.3",
+    "@types/jest": "^29.5.8",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/react-test-renderer": "^18.0.6",
+    "@types/react-transition-group": "^4.4.9",
+    "eslint": "^8.53.0",
+    "eslint-import-resolver-typescript": "^3",
+    "history": "^5.3.0",
+    "http-server": "^14.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "sass": "^1.69.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

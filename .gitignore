@@ -6,8 +6,11 @@
 **/node_modules
 
 # Public
-**frontend/public
+**/public
 **/dist
+
+# Testing
+**/coverage
 
 # Private Files
 **/private.*

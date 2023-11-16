@@ -1,0 +1,47 @@
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/components/buttons' as btn;
+@use '#Sass/abstracts/variables' as v;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__img {
+    border-radius: v.$border-radius-1;
+  }
+
+  &__title {
+    @include mx.header-h5 using ($REM) {
+      margin: f.px2emParent(40, $REM) 0 f.px2emParent(32, $REM);
+    }
+    text-align: center;
+  }
+
+  &__btn {
+    @include btn.btn-default-1;
+    text-align: center;
+  }
+}
+
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
+
+.card {
+  &__title {
+    @include mq.media(tablet-mini) {
+      font-size: f.px2rem(20);
+    }
+
+    @include mq.media(tablet-micro) {
+      font-size: f.px2rem(18);
+    }
+
+    @include mq.media(mobile-all) {
+      margin: 32px 0;
+    }
+  }
+}

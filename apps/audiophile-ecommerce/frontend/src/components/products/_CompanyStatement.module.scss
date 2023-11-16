@@ -1,0 +1,79 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/variables' as v;
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1560px;
+  margin: 0 auto;
+
+  &__info {
+    align-self: center;
+    padding-right: f.px2em(125);
+  }
+
+  &__title {
+    @include mx.header-h2() using ($REM) {
+      margin-bottom: f.px2emParent(32, $REM);
+    }
+
+    & > span {
+      color: c.$col-1a;
+    }
+  }
+
+  &__statement {
+    @include mx.body-regular;
+    color: c.$col-3a;
+  }
+
+  &__img {
+    object-fit: cover;
+    border-radius: v.$border-radius-1;
+  }
+}
+
+.card {
+  // tablet-regular, tablet-small, tablet-mini, tablet-micro
+  @include mq.media(desktop-micro, tablet-all, mobile-all) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 63px;
+
+    &__info {
+      padding: 0 f.px2em(57);
+      text-align: center;
+    }
+
+    &__picture {
+      grid-row: 1;
+    }
+  }
+
+  @include mq.media(mobile-all) {
+    row-gap: 40px;
+
+    &__info {
+      padding: 0;
+    }
+
+    &__title {
+      @include mx.header-h2() using ($REM) {
+        $REM: f.px2rem(30);
+        margin-bottom: f.px2emParent(32, $REM);
+        font-size: $REM;
+      }
+    }
+
+    &__statement {
+      @include mx.body-regular;
+    }
+
+    &__picture {
+      grid-row: 1;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/variables' as v;
+
+.mainTag {
+  padding-top: 80px;
+}
+
+.btnBack {
+  @include mx.body-regular using ($REM) {
+    margin-bottom: f.px2emParent(56, $REM);
+  }
+  background-color: transparent;
+  color: c.$col-3a;
+  text-transform: capitalize;
+}
+
+.alternatives {
+  @include mx.header-h3() using ($REM) {
+    margin-bottom: f.px2emParent(64, $REM);
+  }
+  text-align: center;
+}
+
+.productDetailCard {
+  margin-bottom: f.px2em(160);
+}
+
+.productImageGrid {
+  margin-bottom: f.px2em(160);
+}
+
+.productExampleSeeList {
+  margin-bottom: f.px2em(160);
+}
+
+.productExampleShopList {
+  margin-bottom: f.px2em(160);
+}
+
+.companyStatement {
+  margin-bottom: f.px2em(40);
+}
+
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
+
+.mainTag {
+  @include mq.media(tablet-all) {
+    padding-top: 35px;
+  }
+
+  @include mq.media(mobile-all) {
+    padding-top: 16px;
+  }
+}
+
+.btnBack {
+  @include mq.media(tablet-all, mobile-all) {
+    margin-bottom: 24px;
+  }
+}
+
+.alternatives {
+  @include mq.media(mobile-all) {
+    font-size: f.px2rem(24);
+  }
+}
+
+.productImageGrid {
+  @include mq.media(tablet-all, mobile-all) {
+    margin-bottom: f.px2em(120);
+  }
+}
+
+.productExampleSeeList {
+  @include mq.media(mobile-all) {
+    margin-bottom: f.px2em(120);
+  }
+}
+
+.productDetailCard {
+  @include mq.media(tablet-all) {
+    margin-bottom: f.px2em(145);
+  }
+
+  @include mq.media(mobile-all) {
+    margin-bottom: f.px2em(88);
+  }
+}

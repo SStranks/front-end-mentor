@@ -11,6 +11,8 @@
     "@types/webpack": "^5",
     "autoprefixer": "^10",
     "babel-loader": "^9",
+    "brotli-webpack-plugin": "^1",
+    "compression-webpack-plugin": "^10",
     "copy-webpack-plugin": "^11",
     "css-loader": "^6",
     "css-minimizer-webpack-plugin": "^5",
@@ -18,6 +20,13 @@
     "eslint-webpack-plugin": "^4",
     "html-loader": "^4",
     "html-webpack-plugin": "^5",
+    "image-minimizer-webpack-plugin": "^3",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7",
+    "imagemin-mozjpeg": "^10",
+    "imagemin-pngquant": "^9",
+    "imagemin-svgo": "^10",
+    "imagemin-webp": "^8",
     "mini-css-extract-plugin": "^2",
     "postcss": "^8",
     "postcss-loader": "^7",
@@ -27,6 +36,7 @@
     "webpack": "^5",
     "webpack-cli": "^5",
     "webpack-dev-server": "^4",
+    "webpack-manifest-plugin": "^5",
     "webpack-merge": "^5"
   }
 }

@@ -1,0 +1,22 @@
+@use '#Sass/abstracts/media-queries' as mq;
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+}
+
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
+
+.list {
+  @include mq.media(tablet-all) {
+    column-gap: 10px;
+  }
+
+  @include mq.media(tablet-micro, mobile-all) {
+    grid-template-columns: 1fr;
+    row-gap: 56px;
+  }
+}

@@ -1,8 +1,9 @@
+import CopyPlugin from 'copy-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
-import path from 'node:path';
-import url from 'node:url';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
+import path from 'node:path';
 import { merge } from 'webpack-merge';
 import CommonConfig from './webpack.common.js';
 
@@ -18,7 +19,15 @@ const DevConfig = {
   devtool: 'inline-source-map',
   devServer: {
     port: 3000,
-    static: ['./public'],
+    static: [
+      {
+        directory: path.resolve(CWD, 'public'),
+        publicPath: '/',
+        staticOptions: {
+          extensions: ['jpeg', 'png'],
+        },
+      },
+    ],
     historyApiFallback: true,
     // NOTE:  Can't set 'open' to true; like Create-React-App, there is a bug with accessing the browser/ports from WSL2
     open: false,
@@ -53,9 +62,26 @@ const DevConfig = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(CWD, './src/index-template.html'),
+      template: path.resolve(CWD, './src/index-template.html.ejs'),
       favicon: path.resolve(CWD, './src/favicon-32x32.png'),
+      templateParameters: {
+        PUBLIC_URL: process.env.PUBLIC_URL,
+      },
     }),
+    new ImageMinimizerPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      exclude: [/favicon/i],
+      generator: [
+        {
+          type: 'asset',
+          implementation: ImageMinimizerPlugin.imageminGenerate,
+          options: {
+            plugins: ['imagemin-webp'],
+          },
+        },
+      ],
+    }),
+    new CopyPlugin({ patterns: ['public'] }),
     new Dotenv({ path: path.resolve(CWD, './.env.dev') }),
   ],
 };

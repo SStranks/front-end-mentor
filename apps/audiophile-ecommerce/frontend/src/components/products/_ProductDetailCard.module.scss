@@ -1,0 +1,186 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/variables' as v;
+@use '#Sass/components/buttons' as btn;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 160px;
+}
+
+.cardPrimary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__img {
+    object-fit: cover;
+    max-height: 815px;
+    border-radius: v.$border-radius-1;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 125px;
+  }
+
+  &__new {
+    @include mx.header-overline using ($REM) {
+      margin-bottom: f.px2emParent(16, $REM);
+    }
+    color: c.$col-1a;
+  }
+
+  &__title {
+    @include mx.header-h2() using ($REM) {
+      margin-bottom: f.px2emParent(32, $REM);
+    }
+  }
+
+  &__details {
+    @include mx.body-regular using ($REM) {
+      margin-bottom: f.px2emParent(32, $REM);
+    }
+    color: c.$col-3a;
+  }
+
+  &__price {
+    @include mx.header-h6 using ($REM) {
+      margin-bottom: f.px2emParent(50, $REM);
+    }
+  }
+
+  &__purchase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+.cardSecondary {
+  display: flex;
+  justify-content: space-between;
+
+  &__features {
+    margin-right: 125px;
+    white-space: pre-line;
+  }
+
+  &__header {
+    @include mx.header-h3() using ($REM) {
+      margin-bottom: f.px2emParent(32, $REM);
+    }
+    white-space: nowrap;
+  }
+
+  &__featuresInfo {
+    @include mx.body-regular;
+    color: c.$col-3a;
+  }
+
+  &__inBox {
+    min-width: 350px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: minmax(25px, auto) 1fr;
+    column-gap: 25px;
+    row-gap: 8px;
+    padding: 0;
+    list-style-type: none;
+
+    & > li {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: inherit;
+      column-gap: inherit;
+      padding: 0;
+    }
+
+    &__item {
+      grid-column: 2;
+      @include mx.body-regular;
+      color: c.$col-3a;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    &__quantity {
+      grid-column: 1;
+      // margin-right: 24px;
+      color: c.$col-1a;
+      font-weight: 700;
+    }
+  }
+}
+
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
+
+.container {
+  @include mq.media(tablet-all, mobile-all) {
+    row-gap: 88px;
+  }
+}
+
+.cardPrimary {
+  @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  &__picture {
+    @include mq.media(tablet-large, tablet-regular, tablet-small) {
+      aspect-ratio: 281/480;
+    }
+
+    @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+      aspect-ratio: 1/1;
+    }
+  }
+
+  &__info {
+    @include mq.media(tablet-all) {
+      padding-left: 70px;
+    }
+
+    @include mq.media(tablet-small) {
+      padding-left: 30px;
+    }
+
+    @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+      padding-left: 0;
+    }
+  }
+
+  &__title {
+    @include mq.media(mobile-all) {
+      font-size: f.px2rem(28);
+    }
+  }
+}
+
+.cardSecondary {
+  @include mq.media(tablet-all, mobile-all) {
+    flex-direction: column;
+    row-gap: 88px;
+  }
+
+  &__features {
+    @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+      margin-right: 0;
+    }
+  }
+
+  &__inBox {
+    @include mq.media(mobile-all) {
+      min-width: unset;
+    }
+  }
+}

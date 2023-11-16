@@ -1,8 +1,12 @@
+import BrotliPlugin from 'brotli-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 import path from 'node:path';
 import url from 'node:url';
 
@@ -13,6 +17,14 @@ const CWD = process.env.INIT_CWD;
 
 const ProdConfig = {
   mode: 'production',
+  // entry: {
+  //   app: './src/index.tsx',
+  //   script: './src/script.ts',
+  //   serviceWorker: {
+  //     import: './src/serviceWorker.ts',
+  //     filename: 'serviceWorker.js',
+  //   },
+  // },
   output: {
     path: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'dist'),
     filename: 'main.[contenthash].js',
@@ -57,18 +69,63 @@ const ProdConfig = {
     ],
   },
   optimization: {
-    minimizer: ['...', new CssMinimizerPlugin()],
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin(),
+      new ImageMinimizerPlugin({
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        exclude: [/favicon/i, /image-hero/i],
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              'imagemin-gifsicle',
+              'imagemin-mozjpeg',
+              'imagemin-pngquant',
+              'imagemin-svgo',
+            ],
+          },
+        },
+        generator: [
+          {
+            type: 'asset',
+            implementation: ImageMinimizerPlugin.imageminGenerate,
+            options: {
+              plugins: ['imagemin-webp'],
+            },
+          },
+        ],
+      }),
+    ],
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
     new HTMLWebpackPlugin({
-      template: path.resolve(CWD, './src/index-template.html'),
+      template: path.resolve(CWD, './src/index-template.html.ejs'),
       favicon: path.resolve(CWD, './src/favicon-32x32.png'),
+      templateParameters: {
+        PUBLIC_URL: process.env.PUBLIC_URL,
+      },
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
         removeComments: true,
       },
+    }),
+    new CompressionPlugin({
+      filename: '[path][base].gz',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.7,
+    }),
+    new BrotliPlugin({
+      asset: '[path].br[query]',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.7,
     }),
     new CopyPlugin({
       patterns: [
@@ -77,6 +134,16 @@ const ProdConfig = {
           to: path.join(CWD, url.fileURLToPath(import.meta.url), 'dist', 'public'),
           noErrorOnMissing: true,
         },
+        {
+          from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public/img'),
+          to: path.resolve(
+            CWD,
+            url.fileURLToPath(import.meta.url),
+            'img/[path][name].[contenthash][ext])'
+          ),
+        },
+        { from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public/robots.txt') },
+        { from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public/sitemap.xml') },
       ],
     }),
     new Dotenv({ path: path.resolve(CWD, './.env.prod') }),

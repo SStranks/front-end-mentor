@@ -1,0 +1,85 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
+@use '#Sass/components/buttons' as btn;
+
+.reverse {
+  flex-direction: row-reverse;
+  margin-left: 0;
+  margin-right: f.px2em(125);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__img {
+    object-fit: cover;
+    max-height: 540px;
+    border-radius: v.$border-radius-1;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-left: f.px2em(125);
+  }
+
+  &__new {
+    @include mx.header-overline using ($REM) {
+      margin-bottom: f.px2emParent(16, $REM);
+    }
+    color: c.$col-1a;
+  }
+
+  &__title {
+    @include mx.header-h2() using ($REM) {
+    }
+  }
+
+  &__details {
+    @include mx.body-regular using ($REM) {
+      margin: f.px2emParent(32, $REM) 0 f.px2emParent(40, $REM);
+    }
+  }
+
+  &__link {
+    @include btn.btn-default-1;
+  }
+}
+
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
+
+.card {
+  @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 52px;
+  }
+
+  @include mq.media(desktop-mini, desktop-micro, tablet-all) {
+    row-gap: 32px;
+  }
+
+  &__panel {
+    @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+  &__title {
+    @include mq.media(mobile-all) {
+      font-size: f.px2rem(28);
+    }
+  }
+}

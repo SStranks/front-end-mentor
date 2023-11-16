@@ -1,0 +1,23 @@
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+
+.container {
+  @include mx.header-subtitle using ($REM) {
+    padding: f.px2emParent(18, $REM);
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: c.$col-2b;
+  color: c.$col-2c;
+  margin: 15px 0 0 15px;
+  translate: calc(-100% - 15px) 0;
+  transition: translate 250ms ease-in-out;
+  z-index: f.z('skip-to');
+
+  &:focus {
+    translate: 0;
+  }
+}

@@ -9,9 +9,9 @@
   "prettier": "@packages/prettier-config",
   "jest": "@packages/jest-react-config",
   "scripts": {
-    "start": "pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
-    "build": "pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
-    "build:watch": "pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
+    "start": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
+    "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
+    "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
     "build:serve": "http-server ./dist",
     "test": "jest",
     "test:coverage": "jest --coverage",

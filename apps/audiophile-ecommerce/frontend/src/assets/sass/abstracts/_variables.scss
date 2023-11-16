@@ -1,0 +1,55 @@
+/* -------------------------------- */
+/*          ~ Variables ~           */
+/* -------------------------------- */
+/*      [Audiophile eCommerce]      */
+/* -------------------------------- */
+/*   Frontend Mentor Challenge      */
+/*   Difficulty: Guru               */
+/*   [www.frontendmentor.io]        */
+/* -------------------------------- */
+/*   version:   1.0                 */
+/*   date:      26/05/2023          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+/* -------------------------------- */
+
+/*   Imports                        */
+@use 'functions' as f;
+
+/* -------------------------------- */
+/*   Margin & Padding               */
+/* -------------------------------- */
+
+$padding-desktop-horizontal: f.px2em(165);
+$padding-desktop-small-horizontal: f.px2em(100);
+$padding-desktop-mini-horizontal: f.px2em(80);
+$padding-tablet-horizontal: f.px2em(60);
+$padding-tablet-small-horizontal: f.px2em(40);
+$padding-tablet-mini-horizontal: f.px2em(32);
+$padding-mobile-horizontal: f.px2em(24);
+
+$padding-desktop-vertical: f.px2em(120);
+$padding-mobile-vertical: f.px2em(60);
+// $padding-transition: padding 2500ms ease-out;
+// $grid-gap-transition: gap 1500ms ease-out;
+
+/* -------------------------------- */
+/*   Borders                        */
+/* -------------------------------- */
+
+$border-radius-1: 8px;
+
+/* -------------------------------- */
+/*   Shadows                        */
+/* -------------------------------- */
+
+$box-shadow-1: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+
+/* -------------------------------- */
+/*   Web Element                    */
+/* -------------------------------- */
+
+$navbar-dim-vertical: f.px2em(95);
+// $sidebar-dim-desktop: 103px;
+// $sidebar-dim-tablet: 80px;
+// $sidebar-dim-mobile: 72px;

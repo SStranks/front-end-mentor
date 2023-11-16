@@ -1,0 +1,24 @@
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/components/buttons' as btn;
+
+.container {
+  display: flex;
+  column-gap: 16px;
+
+  &__btn {
+    @include btn.btn-default-1;
+    max-height: 48px;
+    white-space: nowrap;
+  }
+}
+
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
+
+.container {
+  @include mq.media(mobile-small) {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+}
