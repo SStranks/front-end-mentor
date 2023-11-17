@@ -25,10 +25,10 @@ export const EslintConfig = {
   },
   plugins: {
     '@typescript-eslint': PluginTypescriptEslint,
-    prettier: PluginPrettier,
     unicorn: PluginUnicorn,
     import: PluginImport,
     jest: PluginJest,
+    prettier: PluginPrettier,
   },
   rules: {
     ...RecommendedEslint.configs.recommended.rules,
@@ -48,7 +48,7 @@ export const EslintConfig = {
     'unicorn/expiring-todo-comments': 'off',
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/no-array-for-each': 'off',
-    'unicorn/no-array-reduce': 'off',
+    'unicorn/no-array-reduce': 2,
     'unicorn/filename-case': [
       'error',
       {
@@ -62,7 +62,7 @@ export const EslintConfig = {
   },
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': ['*.ts', '*.tsx'],
+      '@typescript-eslint/parser': ['*.ts', '*.tsx', '*.html'],
     },
     ...PluginImport.configs.typescript.settings,
     'import/resolver': {

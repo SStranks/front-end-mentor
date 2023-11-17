@@ -11,13 +11,11 @@ const HeadphonesPage = lazy(() =>
     import('#Pages/headphones/HeadphonesPage'),
     // eslint-disable-next-line no-promise-executor-return
     new Promise((resolve) => setTimeout(resolve, 3000)), // ensures minimal delay
-  ]).then(([module]) => module)
+  ]).then(([module]) => module),
 );
 const EarphonesPage = lazy(() => import('#Pages/earphones/EarphonesPage'));
 const SpeakersPage = lazy(() => import('#Pages/speakers/SpeakersPage'));
-const ProductDetailsPage = lazy(
-  () => import('#Pages/product-details/ProductDetailsPage')
-);
+const ProductDetailsPage = lazy(() => import('#Pages/product-details/ProductDetailsPage'));
 const CheckoutPage = lazy(() => import('#Pages/checkout/CheckoutPage'));
 
 function App(): JSX.Element {
@@ -31,20 +29,11 @@ function App(): JSX.Element {
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/headphones" element={<HeadphonesPage />} />
-            <Route
-              path="/headphones/:productId"
-              element={<ProductDetailsPage />}
-            />
+            <Route path="/headphones/:productId" element={<ProductDetailsPage />} />
             <Route path="/speakers" element={<SpeakersPage />} />
-            <Route
-              path="/speakers/:productId"
-              element={<ProductDetailsPage />}
-            />
+            <Route path="/speakers/:productId" element={<ProductDetailsPage />} />
             <Route path="/earphones" element={<EarphonesPage />} />
-            <Route
-              path="/earphones/:productId"
-              element={<ProductDetailsPage />}
-            />
+            <Route path="/earphones/:productId" element={<ProductDetailsPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </Suspense>

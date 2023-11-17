@@ -7,4 +7,5 @@ export default {
   bracketSpacing: true,
   bracketSameLine: true,
   arrowParens: 'always',
+  trailingComma: 'es5',
 };

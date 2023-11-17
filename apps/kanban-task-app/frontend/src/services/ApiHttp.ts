@@ -3,16 +3,8 @@ import handleServiceError from './ApiServiceErrors';
 
 export interface IApiClient {
   get<TResponse>(url: string): Promise<TResponse>;
-  post<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ): Promise<TResponse>;
-  patch<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ): Promise<TResponse>;
+  post<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig): Promise<TResponse>;
+  patch<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig): Promise<TResponse>;
   delete(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse>;
 }
 
@@ -32,10 +24,7 @@ export default class ApiClient implements IApiClient {
     this.client = this.createAxiosClient();
   }
 
-  async get<TResponse>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<TResponse> {
+  async get<TResponse>(url: string, config?: AxiosRequestConfig): Promise<TResponse> {
     try {
       const res = await this.client.get<TResponse>(url, config);
       return res.data;
@@ -45,11 +34,7 @@ export default class ApiClient implements IApiClient {
     return {} as TResponse;
   }
 
-  async post<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ) {
+  async post<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig) {
     try {
       const res = await this.client.post(url, data, config);
       return res.data;
@@ -59,11 +44,7 @@ export default class ApiClient implements IApiClient {
     return {} as TResponse;
   }
 
-  async patch<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ) {
+  async patch<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig) {
     try {
       const res = await this.client.patch(url, data, config);
       return res.data;
