@@ -8,7 +8,6 @@ import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import path from 'node:path';
-import url from 'node:url';
 
 import { merge } from 'webpack-merge';
 import CommonConfig from './webpack.common.js';
@@ -26,7 +25,7 @@ const ProdConfig = {
   //   },
   // },
   output: {
-    path: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'dist'),
+    path: path.resolve(CWD, 'dist'),
     filename: 'main.[contenthash].js',
     assetModuleFilename: 'assets/[ext]/[name].[hash][ext]',
     clean: true,
@@ -78,12 +77,7 @@ const ProdConfig = {
         minimizer: {
           implementation: ImageMinimizerPlugin.imageminMinify,
           options: {
-            plugins: [
-              'imagemin-gifsicle',
-              'imagemin-mozjpeg',
-              'imagemin-pngquant',
-              'imagemin-svgo',
-            ],
+            plugins: ['imagemin-gifsicle', 'imagemin-mozjpeg', 'imagemin-pngquant', 'imagemin-svgo'],
           },
         },
         generator: [
@@ -130,20 +124,17 @@ const ProdConfig = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public'),
-          to: path.join(CWD, url.fileURLToPath(import.meta.url), 'dist', 'public'),
+          from: path.resolve(CWD, 'public'),
+          to: path.join(CWD, 'dist', 'public'),
           noErrorOnMissing: true,
         },
         {
-          from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public/img'),
-          to: path.resolve(
-            CWD,
-            url.fileURLToPath(import.meta.url),
-            'img/[path][name].[contenthash][ext])'
-          ),
+          from: path.resolve(CWD, 'public/img'),
+          to: path.resolve(CWD, 'img/[path][name].[contenthash][ext])'),
+          noErrorOnMissing: true,
         },
-        { from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public/robots.txt') },
-        { from: path.resolve(CWD, url.fileURLToPath(import.meta.url), 'public/sitemap.xml') },
+        { from: path.resolve(CWD, 'public/robots.txt'), noErrorOnMissing: true },
+        { from: path.resolve(CWD, 'public/sitemap.xml'), noErrorOnMissing: true },
       ],
     }),
     new Dotenv({ path: path.resolve(CWD, './.env.prod') }),

@@ -20,7 +20,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
     className="card__price"
   >
     $ 
-    123
+    123.00
   </p>
   <div
     data-testid="quantity-toggle-button"

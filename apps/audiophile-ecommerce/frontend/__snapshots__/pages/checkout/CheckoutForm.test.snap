@@ -25,12 +25,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </p>
       <label
         className="container checkout__inputText"
+        htmlFor="Name"
       >
         <p
           className="container__title"
-        />
+        >
+          Name
+        </p>
         <input
           className="container__input"
+          id="Name"
           name="Name"
           placeholder="Insert full name"
           required={true}
@@ -39,12 +43,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </label>
       <label
         className="container checkout__inputText"
+        htmlFor="Email Address"
       >
         <p
           className="container__title"
-        />
+        >
+          Email Address
+        </p>
         <input
           className="container__input"
+          id="Email Address"
           maxLength={256}
           name="Email Address"
           placeholder="Insert email address"
@@ -54,12 +62,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </label>
       <label
         className="container checkout__inputText"
+        htmlFor="Phone Number"
       >
         <p
           className="container__title"
-        />
+        >
+          Phone Number
+        </p>
         <input
           className="container__input"
+          id="Phone Number"
           name="Phone Number"
           placeholder="Insert phone number"
           required={true}
@@ -73,12 +85,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </p>
       <label
         className="container checkout__inputText gridColumnSpan"
+        htmlFor="Address"
       >
         <p
           className="container__title"
-        />
+        >
+          Address
+        </p>
         <input
           className="container__input"
+          id="Address"
           name="Address"
           placeholder="Insert address"
           required={true}
@@ -87,12 +103,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </label>
       <label
         className="container checkout__inputText"
+        htmlFor="ZIP Code"
       >
         <p
           className="container__title"
-        />
+        >
+          ZIP Code
+        </p>
         <input
           className="container__input"
+          id="ZIP Code"
           name="ZIP Code"
           placeholder="Insert ZIP code"
           required={true}
@@ -101,12 +121,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </label>
       <label
         className="container checkout__inputText"
+        htmlFor="City"
       >
         <p
           className="container__title"
-        />
+        >
+          City
+        </p>
         <input
           className="container__input"
+          id="City"
           name="City"
           placeholder="Insert city"
           required={true}
@@ -115,12 +139,16 @@ exports[`Appearance Component render matches snapshot 1`] = `
       </label>
       <label
         className="container checkout__inputText"
+        htmlFor="Country"
       >
         <p
           className="container__title"
-        />
+        >
+          Country
+        </p>
         <input
           className="container__input"
+          id="Country"
           name="Country"
           placeholder="Insert country"
           required={true}
@@ -251,7 +279,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
         className="summary__financial__total"
       >
         $ 
-        19.80
+        19.802
       </p>
       <p
         className="summary__financial__heading gridLastRow"
@@ -259,10 +287,10 @@ exports[`Appearance Component render matches snapshot 1`] = `
         grand total
       </p>
       <p
-        className="summary__financial__grandTotal gridLastRow"
+        className="summary__financial__grandTotal"
       >
         $ 
-        168.81
+        168.812
       </p>
     </div>
     <button

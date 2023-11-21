@@ -3,19 +3,7 @@
   "version": "1.0.0",
   "private": "true",
   "description": "shared babel configuration",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "license": "ISC",
-  "dependencies": {
-    "@babel/cli": "^7",
-    "@babel/core": "^7",
-    "@babel/eslint-parser": "^7",
-    "@babel/plugin-transform-runtime": "^7",
-    "@babel/preset-env": "^7",
-    "@babel/preset-react": "^7",
-    "@babel/preset-typescript": "^7",
-    "@babel/runtime": "^7"
-  }
+  "main": "babel.config.json"
 }

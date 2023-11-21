@@ -8,7 +8,7 @@ export const EslintConfigReactTest = {
   },
   rules: {
     ...PluginJestDom.configs.recommended.rules,
-    ...PluginTestingLibrary.rules,
+    ...PluginTestingLibrary.configs['react'].rules,
   },
 };
 

@@ -27,8 +27,9 @@
     "start:offline": "nodemon --exec 'node -r dotenv/config . dotenv_config_path=./.env.dev'",
     "prod": "node .",
     "prod:offline": "node -r dotenv/config . dotenv_config_path=./.env.prod",
-    "test": "jest --setupFiles dotenv/config --coverage --verbose",
-    "test:watch": "jest --setupFiles dotenv/config --watch",
+    "test": "jest --config ../../../jest.config.js --selectProjects KANBAN-TASK-APP-API",
+    "test:coverage": "jest --coverage --config ../../../jest.config.js --selectProjects KANBAN-TASK-APP-API",
+    "test:watch": "jest --watch --config ../../../jest.config.js --selectProjects KANBAN-TASK-APP-API",
     "db-import": "ts-node ./server/config/dbImportData.ts --import",
     "docker:build": "docker image build -f Dockerfile.prod -t $npm_package_config_dockerImageRepo:$npm_package_version .",
     "docker:postbuild": "docker image tag $npm_package_config_dockerImageRepo:$npm_package_version $npm_package_config_dockerImageRepo:latest",
@@ -62,11 +63,9 @@
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.9.0",
-    "eslint": "^8.53.0",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.6",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.2.2"
+    "tsconfig-paths": "^4.2.0"
   }
 }

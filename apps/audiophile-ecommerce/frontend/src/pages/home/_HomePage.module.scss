@@ -85,7 +85,7 @@
   justify-content: center;
   padding: 0 50px;
   background-color: c.$col-1a;
-  background-image: url('/src/assets/svg/desktop/pattern-circles.svg');
+  background-image: url('~svg/desktop/pattern-circles.svg');
   background-repeat: no-repeat;
   background-position: -200px -50px;
   border-radius: 8px;
@@ -193,14 +193,7 @@
 /* -------------------------------- */
 
 .hero {
-  @include mq.media(
-    desktop-mini,
-    desktop-micro,
-    tablet-large,
-    tablet-regular,
-    tablet-small,
-    tablet-mini
-  ) {
+  @include mq.media(desktop-mini, desktop-micro, tablet-large, tablet-regular, tablet-small, tablet-mini) {
     aspect-ratio: 256/243;
   }
 
@@ -240,14 +233,7 @@
   }
 
   &__container {
-    @include mq.media(
-      tablet-large,
-      tablet-regular,
-      tablet-small,
-      tablet-mini,
-      tablet-micro,
-      mobile-all
-    ) {
+    @include mq.media(tablet-large, tablet-regular, tablet-small, tablet-mini, tablet-micro, mobile-all) {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -258,14 +244,7 @@
   }
 
   &__product {
-    @include mq.media(
-      tablet-large,
-      tablet-regular,
-      tablet-small,
-      tablet-mini,
-      tablet-micro,
-      mobile-all
-    ) {
+    @include mq.media(tablet-large, tablet-regular, tablet-small, tablet-mini, tablet-micro, mobile-all) {
       text-align: center;
     }
 

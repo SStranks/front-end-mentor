@@ -20,7 +20,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
     />
     <source
       height="240px"
-      media="(max-width: 480px)"
+      media="(max-width: 576px)"
       srcSet=""
       width="654px"
     />

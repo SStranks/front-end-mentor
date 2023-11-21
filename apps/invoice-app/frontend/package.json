@@ -6,7 +6,6 @@
   "license": "ISC",
   "type": "module",
   "main": "./src/index.tsx",
-  "jest": "@packages/jest-react-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -24,8 +23,9 @@
     "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
     "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
     "build:serve": "http-server ./public",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test": "jest --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT",
+    "test:coverage": "jest --coverage --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT",
+    "test:watch": "jest --watch --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.8.4",
@@ -49,11 +49,9 @@
     "@types/react-dom": "^18.2.15",
     "@types/react-test-renderer": "^18.0.6",
     "@types/react-transition-group": "^4.4.9",
-    "eslint": "^8.53.0",
     "history": "^5.3.0",
     "http-server": "^14.1.1",
     "sass": "^1.69.5",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "ts-node": "^10.9.1"
   }
 }

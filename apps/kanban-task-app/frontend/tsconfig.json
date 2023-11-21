@@ -20,6 +20,6 @@
       "#Utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src/**/*", "../shared/*", "global.d.ts", "jest.setup.ts"],
+  "include": ["src/**/*", "../shared/*", "global.d.ts", "jest.config.ts"],
   "exclude": ["node_modules", "public", "dist"]
 }

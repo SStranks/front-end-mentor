@@ -1,20 +1,29 @@
-import type { Config } from 'jest';
+import 'identity-obj-proxy';
+import path from 'node:path';
+import url from 'node:url';
 
-const JestReactConfig: Config = {
+const CUR = path.dirname(url.fileURLToPath(import.meta.url));
+
+export default {
   roots: ['<rootDir>/src'],
   testEnvironment: 'jsdom',
   transform: {
-    '\\.[jt]sx?$': 'babel-jest',
+    '\\.[jt]sx?$': ['babel-jest', { rootMode: 'upward' }], // looks to monorepo root for babel.config
   },
-  verbose: true,
   moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
   // Runs special logic, such as cleaning up components
   // when using React Testing Library and adds special
   // extended assertions to Jest
-  setupFilesAfterEnv: ['<rootDir>/node_modules/@testing-library/jest-dom/extend-expect', '<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: [
+    path.resolve(CUR, './node_modules/@testing-library/jest-dom'),
+    path.resolve(CUR, './jest.setup.ts'),
+  ],
   snapshotResolver: '<rootDir>/__snapshots__/snapshotResolver.ts',
   moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/jest.fileMock.ts',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': path.resolve(
+      CUR,
+      './jest.fileMock.ts'
+    ),
     '\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^#Img/(.*)$': '<rootDir>/src/assets/img/$1',
     '^#Sass/(.*)$': '<rootDir>/src/assets/sass/$1',
@@ -32,5 +41,3 @@ const JestReactConfig: Config = {
     '^#Utils/(.*)$': '<rootDir>/src/utils/$1',
   },
 };
-
-export default JestReactConfig;

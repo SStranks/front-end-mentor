@@ -301,7 +301,9 @@ exports[`Appearance Component render matches snapshot 1`] = `
             </a>
           </div>
         </div>
-        <picture>
+        <picture
+          className="yx1Picture"
+        >
           <source
             height="320px"
             media="(min-wdith: 800px)"
@@ -322,7 +324,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
           />
           <img
             alt="product YX1 earphones"
-            className="yx1-img"
+            className="yx1Img"
             src="/img/home/desktop/image-earphones-yx1.jpg"
           />
         </picture>

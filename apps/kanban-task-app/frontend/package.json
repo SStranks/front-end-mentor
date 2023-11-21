@@ -6,7 +6,6 @@
   "license": "ISC",
   "type": "module",
   "main": "./src/index.tsx",
-  "jest": "@packages/jest-react-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -24,9 +23,9 @@
     "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
     "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
     "build:serve": "http-server ./dist",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test": "jest --config ../../../jest.config.js --selectProjects KANBAN-TASK-APP-CLIENT",
+    "test:coverage": "jest --coverage --config ../../../jest.config.js --selectProjects KANBAN-TASK-APP-CLIENT",
+    "test:watch": "jest --watch --config ../../../jest.config.js --selectProjects KANBAN-TASK-APP-CLIENT",
     "docker:build": "docker image build -f Dockerfile.prod -t $npm_package_config_dockerImageRepo:$npm_package_version .",
     "docker:postbuild": "docker image tag $npm_package_config_dockerImageRepo:$npm_package_version $npm_package_config_dockerImageRepo:latest",
     "docker:run": "docker run --name $npm_package_config_dockerImageName -d -p $npm_package_config_dockerImagePort:$npm_package_config_dockerInternalContainerPort $npm_package_config_dockerImageRepo",
@@ -53,7 +52,7 @@
   },
   "devDependencies": {
     "@packages/babel-config": "workspace:*",
-    "@packages/jest-config-react": "workspace:^",
+    "@packages/jest-config-react": "workspace:*",
     "@packages/prettier-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
@@ -63,11 +62,9 @@
     "@types/react-beautiful-dnd": "^13.1.7",
     "@types/react-dom": "^18.2.15",
     "@types/react-transition-group": "^4.4.9",
-    "eslint": "^8.53.0",
     "eslint-import-resolver-typescript": "^3",
     "history": "^5.3.0",
     "sass": "^1.69.5",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "ts-node": "^10.9.1"
   }
 }

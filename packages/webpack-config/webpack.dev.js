@@ -81,7 +81,7 @@ const DevConfig = {
         },
       ],
     }),
-    new CopyPlugin({ patterns: ['public'] }),
+    new CopyPlugin({ patterns: [{ from: path.resolve(CWD, './public'), noErrorOnMissing: true }] }),
     new Dotenv({ path: path.resolve(CWD, './.env.dev') }),
   ],
 };

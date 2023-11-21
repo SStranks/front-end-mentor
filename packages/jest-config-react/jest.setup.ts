@@ -1,58 +1,66 @@
-import '@testing-library/jest-dom';
+// import '@testing-library/jest-dom';
 
 // https://stackoverflow.com/questions/44249985/testing-code-that-uses-an-intersectionobserver
-function setupIntersectionObserverMock({
-  root = null,
-  rootMargin = '',
-  thresholds = [],
-  disconnect = () => null,
-  observe = () => null,
-  takeRecords = () => [],
-  unobserve = () => null,
-} = {}): void {
-  class MockIntersectionObserver implements IntersectionObserver {
-    readonly root: Element | null = root;
+// function setupIntersectionObserverMock({
+//   root = null,
+//   rootMargin = '',
+//   thresholds = [],
+//   disconnect = () => null,
+//   observe = () => null,
+//   takeRecords = () => [],
+//   unobserve = () => null,
+// } = {}): void {
+//   class MockIntersectionObserver implements IntersectionObserver {
+//     readonly root: Element | null = root;
 
-    readonly rootMargin: string = rootMargin;
+//     readonly rootMargin: string = rootMargin;
 
-    readonly thresholds: ReadonlyArray<number> = thresholds;
+//     readonly thresholds: ReadonlyArray<number> = thresholds;
 
-    disconnect: () => void = disconnect;
+//     disconnect: () => void = disconnect;
 
-    observe: (target: Element) => void = observe;
+//     observe: (target: Element) => void = observe;
 
-    takeRecords: () => IntersectionObserverEntry[] = takeRecords;
+//     takeRecords: () => IntersectionObserverEntry[] = takeRecords;
 
-    unobserve: (target: Element) => void = unobserve;
-  }
+//     unobserve: (target: Element) => void = unobserve;
+//   }
 
-  Object.defineProperty(window, 'IntersectionObserver', {
-    writable: true,
-    configurable: true,
-    value: MockIntersectionObserver,
-  });
+//   Object.defineProperty(window, 'IntersectionObserver', {
+//     writable: true,
+//     configurable: true,
+//     value: MockIntersectionObserver,
+//   });
 
-  Object.defineProperty(global, 'IntersectionObserver', {
-    writable: true,
-    configurable: true,
-    value: MockIntersectionObserver,
-  });
-}
+//   Object.defineProperty(global, 'IntersectionObserver', {
+//     writable: true,
+//     configurable: true,
+//     value: MockIntersectionObserver,
+//   });
+// }
 
-setupIntersectionObserverMock();
+// setupIntersectionObserverMock();
 
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation((query) => ({
-    matches: false,
-    media: query,
-    // eslint-disable-next-line unicorn/no-null
-    onchange: null,
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
+// Object.defineProperty(window, 'matchMedia', {
+//   writable: true,
+//   value: jest.fn().mockImplementation((query) => ({
+//     matches: false,
+//     media: query,
+//     // eslint-disable-next-line unicorn/no-null
+//     onchange: null,
+//     addEventListener: jest.fn(),
+//     removeEventListener: jest.fn(),
+//     dispatchEvent: jest.fn(),
+//   })),
+// });
+
+const mockIntersectionObserver = jest.fn();
+mockIntersectionObserver.mockReturnValue({
+  observe: () => null,
+  unobserve: () => null,
+  disconnect: () => null,
 });
+window.IntersectionObserver = mockIntersectionObserver;
 
 // Implicit ARIA Roles for getByRole:
 // https://www.w3.org/TR/html-aria/#docconformance

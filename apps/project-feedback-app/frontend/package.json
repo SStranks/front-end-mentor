@@ -6,7 +6,6 @@
   "license": "ISC",
   "type": "module",
   "main": "./src/index.tsx",
-  "jest": "@packages/jest-react-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -24,8 +23,9 @@
     "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
     "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
     "build:serve": "http-server ./dist",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test": "jest --config ../../../jest.config.js --selectProjects PROJECT-FEEDBACK-APP-CLIENT",
+    "test:coverage": "jest --coverage --config ../../../jest.config.js --selectProjects PROJECT-FEEDBACK-APP-CLIENT",
+    "test:watch": "jest --watch --config ../../../jest.config.js --selectProjects PROJECT-FEEDBACK-APP-CLIENT"
   },
   "dependencies": {
     "@rollbar/react": "^0.11.2",
@@ -46,9 +46,7 @@
     "@packages/prettier-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
-    "eslint": "^8.53.0",
     "http-server": "^14.1.1",
-    "sass": "^1.69.5",
-    "typescript": "^5.2.2"
+    "sass": "^1.69.5"
   }
 }

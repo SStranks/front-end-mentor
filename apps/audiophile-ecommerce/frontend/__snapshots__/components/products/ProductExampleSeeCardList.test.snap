@@ -23,7 +23,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
       />
       <source
         height="240px"
-        media="(max-width: 480px)"
+        media="(max-width: 576px)"
         srcSet="/img/shared/mobile/image-xx99-mark-one-headphones.jpg"
         width="654px"
       />
@@ -65,7 +65,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
       />
       <source
         height="240px"
-        media="(max-width: 480px)"
+        media="(max-width: 576px)"
         srcSet="/img/shared/mobile/image-xx59-headphones.jpg"
         width="654px"
       />
@@ -107,7 +107,7 @@ exports[`Appearance Component render matches snapshot 1`] = `
       />
       <source
         height="240px"
-        media="(max-width: 480px)"
+        media="(max-width: 576px)"
         srcSet="/img/shared/mobile/image-zx9-speaker.jpg"
         width="654px"
       />

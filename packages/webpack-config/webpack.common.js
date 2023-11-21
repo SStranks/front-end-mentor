@@ -6,14 +6,14 @@ const CWD = process.env.INIT_CWD;
 const CUR = path.dirname(url.fileURLToPath(import.meta.url));
 
 const CommonConfig = {
-  context: CUR,
+  // context: CUR,
   entry: path.resolve(process.env.INIT_CWD, './src/index.tsx'),
   target: 'web',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     // For use in CSS url() imports e.g url(~svg/desktop/a.svg)
     // Prefix with ~ to initiate module resolver
-    modules: ['node_modules', path.resolve(CWD, 'src/assets')],
+    modules: ['node_modules', path.resolve(CWD, './src/assets')],
     alias: {
       '#Shared': path.resolve(CWD, '../shared'),
       '#Img': path.resolve(CWD, 'src/assets/img'),
@@ -38,7 +38,12 @@ const CommonConfig = {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: [/node_modules/],
         use: [
-          'babel-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+            },
+          },
           {
             loader: 'ts-loader',
             options: {
