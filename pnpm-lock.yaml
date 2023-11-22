@@ -57,9 +57,6 @@ importers:
       '@rollbar/react':
         specifier: ^0.11.2
         version: 0.11.2(prop-types@15.8.1)(react@18.2.0)(rollbar@2.26.2)
-      '@types/jest':
-        specifier: ^29.5.8
-        version: 29.5.8
       axios:
         specifier: ^1.6.1
         version: 1.6.1
@@ -112,6 +109,9 @@ importers:
       '@testing-library/user-event':
         specifier: ^14.5.1
         version: 14.5.1(@testing-library/dom@9.3.3)
+      '@types/jest':
+        specifier: ^29.5.8
+        version: 29.5.8
       '@types/react':
         specifier: ^18.2.37
         version: 18.2.37
@@ -139,9 +139,6 @@ importers:
       sass:
         specifier: ^1.69.5
         version: 1.69.5
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.9.2)(typescript@5.2.2)
 
   apps/designo-agency/frontend:
     dependencies:
@@ -171,7 +168,7 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/babel-config
       '@packages/jest-config-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../packages/jest-config-react
       '@packages/prettier-config':
         specifier: workspace:*
@@ -182,6 +179,15 @@ importers:
       '@packages/webpack-config':
         specifier: workspace:*
         version: link:../../../packages/webpack-config
+      '@testing-library/jest-dom':
+        specifier: ^6.1.4
+        version: 6.1.4(@types/jest@29.5.8)(jest@29.7.0)
+      '@testing-library/react':
+        specifier: ^14.1.0
+        version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      '@testing-library/user-event':
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
@@ -206,9 +212,6 @@ importers:
       sass:
         specifier: ^1.69.5
         version: 1.69.5
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.9.2)(typescript@5.2.2)
 
   apps/invoice-app/backend:
     dependencies:
@@ -235,7 +238,7 @@ importers:
         version: 13.11.0
     devDependencies:
       '@packages/jest-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../packages/jest-config
       '@packages/prettier-config':
         specifier: workspace:*
@@ -273,6 +276,9 @@ importers:
 
   apps/invoice-app/frontend:
     dependencies:
+      '@rollbar/react':
+        specifier: ^0.11.2
+        version: 0.11.2(prop-types@15.8.1)(react@18.2.0)(rollbar@2.26.2)
       '@tanstack/react-query':
         specifier: ^5.8.4
         version: 5.8.4(react-dom@18.2.0)(react@18.2.0)
@@ -305,7 +311,7 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/babel-config
       '@packages/jest-config-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../packages/jest-config-react
       '@packages/prettier-config':
         specifier: workspace:*
@@ -316,6 +322,15 @@ importers:
       '@packages/webpack-config':
         specifier: workspace:*
         version: link:../../../packages/webpack-config
+      '@testing-library/jest-dom':
+        specifier: ^6.1.4
+        version: 6.1.4(@types/jest@29.5.8)(jest@29.7.0)
+      '@testing-library/react':
+        specifier: ^14.1.0
+        version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      '@testing-library/user-event':
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
@@ -340,9 +355,6 @@ importers:
       sass:
         specifier: ^1.69.5
         version: 1.69.5
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.9.2)(typescript@5.2.2)
 
   apps/kanban-task-app/backend:
     dependencies:
@@ -360,7 +372,7 @@ importers:
         version: 6.12.3
     devDependencies:
       '@packages/jest-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../packages/jest-config
       '@packages/prettier-config':
         specifier: workspace:*
@@ -444,6 +456,18 @@ importers:
       '@tanstack/eslint-plugin-query':
         specifier: ^5.8.3
         version: 5.8.3(eslint@8.53.0)(typescript@5.2.2)
+      '@testing-library/jest-dom':
+        specifier: ^6.1.4
+        version: 6.1.4(@types/jest@29.5.8)(jest@29.7.0)
+      '@testing-library/react':
+        specifier: ^14.1.0
+        version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      '@testing-library/user-event':
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
+      '@types/jest':
+        specifier: ^29.5.8
+        version: 29.5.8
       '@types/node':
         specifier: ^20.9.0
         version: 20.9.0
@@ -456,6 +480,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.15
+      '@types/react-test-renderer':
+        specifier: ^18.0.6
+        version: 18.0.6
       '@types/react-transition-group':
         specifier: ^4.4.9
         version: 4.4.9
@@ -465,12 +492,12 @@ importers:
       history:
         specifier: ^5.3.0
         version: 5.3.0
+      react-test-renderer:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
       sass:
         specifier: ^1.69.5
         version: 1.69.5
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.9.0)(typescript@5.2.2)
 
   apps/project-feedback-app/backend:
     dependencies:
@@ -506,7 +533,7 @@ importers:
         version: 13.11.0
     devDependencies:
       '@packages/jest-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../packages/jest-config
       '@packages/prettier-config':
         specifier: workspace:*
@@ -585,7 +612,7 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/babel-config
       '@packages/jest-config-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../packages/jest-config-react
       '@packages/prettier-config':
         specifier: workspace:*
@@ -596,9 +623,27 @@ importers:
       '@packages/webpack-config':
         specifier: workspace:*
         version: link:../../../packages/webpack-config
+      '@testing-library/jest-dom':
+        specifier: ^6.1.4
+        version: 6.1.4(@types/jest@29.5.8)(jest@29.7.0)
+      '@testing-library/react':
+        specifier: ^14.1.0
+        version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      '@testing-library/user-event':
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
+      '@types/jest':
+        specifier: ^29.5.8
+        version: 29.5.8
+      '@types/react-test-renderer':
+        specifier: ^18.0.6
+        version: 18.0.6
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
+      react-test-renderer:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
       sass:
         specifier: ^1.69.5
         version: 1.69.5
@@ -716,7 +761,7 @@ importers:
     dependencies:
       '@testing-library/jest-dom':
         specifier: ^6.1.4
-        version: 6.1.4(@types/jest@29.5.8)(jest@29.7.0)
+        version: 6.1.4(jest@29.7.0)
       identity-obj-proxy:
         specifier: ^3.0.0
         version: 3.0.0
@@ -2714,6 +2759,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/runtime@7.23.4:
     resolution: {integrity: sha512-2Yv65nlWnWlSpe3fXEyX5i7fx5kIKo4Qbcj+hMO0odwaneFjfXw5fdum+4yL20O0QiaHpia0cYQ9xpNMqrBwHg==}
@@ -3693,7 +3739,7 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       '@babel/code-frame': 7.22.13
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.4
       '@types/aria-query': 5.0.4
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -3735,7 +3781,7 @@ packages:
         optional: true
     dependencies:
       '@adobe/css-tools': 4.3.1
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.4
       '@types/jest': 29.5.8
       aria-query: 5.3.0
       chalk: 3.0.0
@@ -3745,6 +3791,35 @@ packages:
       lodash: 4.17.21
       redent: 3.0.0
 
+  /@testing-library/jest-dom@6.1.4(jest@29.7.0):
+    resolution: {integrity: sha512-wpoYrCYwSZ5/AxcrjLxJmCU6I5QAJXslEeSiMQqaWmP2Kzpd1LvF/qxmAIW2qposULGWq2gw30GgVNFLSc2Jnw==}
+    engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
+    peerDependencies:
+      '@jest/globals': '>= 28'
+      '@types/jest': '>= 28'
+      jest: '>= 28'
+      vitest: '>= 0.32'
+    peerDependenciesMeta:
+      '@jest/globals':
+        optional: true
+      '@types/jest':
+        optional: true
+      jest:
+        optional: true
+      vitest:
+        optional: true
+    dependencies:
+      '@adobe/css-tools': 4.3.1
+      '@babel/runtime': 7.23.2
+      aria-query: 5.3.0
+      chalk: 3.0.0
+      css.escape: 1.5.1
+      dom-accessibility-api: 0.5.16
+      jest: 29.7.0(@types/node@20.9.2)
+      lodash: 4.17.21
+      redent: 3.0.0
+    dev: false
+
   /@testing-library/react@14.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-hcvfZEEyO0xQoZeHmUbuMs7APJCGELpilL7bY+BaJaMP57aWc6q1etFwScnoZDheYjk4ESdlzPdQ33IbsKAK/A==}
     engines: {node: '>=14'}
@@ -3752,7 +3827,7 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.4
       '@testing-library/dom': 9.3.3
       '@types/react-dom': 18.2.15
       react: 18.2.0
@@ -12377,37 +12452,6 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 20.9.0
-      acorn: 8.11.2
-      acorn-walk: 8.3.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.2.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
-  /ts-node@10.9.1(@types/node@20.9.2)(typescript@5.2.2):
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 20.9.2
       acorn: 8.11.2
       acorn-walk: 8.3.0
       arg: 4.1.3

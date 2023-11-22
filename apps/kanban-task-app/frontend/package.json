@@ -19,6 +19,7 @@
     ]
   },
   "scripts": {
+    "clean": "rm -rf dist",
     "start": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
     "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
     "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
@@ -57,14 +58,19 @@
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.8.3",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/jest": "^29.5.8",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
     "@types/react-beautiful-dnd": "^13.1.7",
     "@types/react-dom": "^18.2.15",
+    "@types/react-test-renderer": "^18.0.6",
     "@types/react-transition-group": "^4.4.9",
     "eslint-import-resolver-typescript": "^3",
     "history": "^5.3.0",
-    "sass": "^1.69.5",
-    "ts-node": "^10.9.1"
+    "react-test-renderer": "^18.2.0",
+    "sass": "^1.69.5"
   }
 }

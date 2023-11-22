@@ -20,6 +20,7 @@
     "ext": "ts, js"
   },
   "scripts": {
+    "clean": "rm -rf dist",
     "watch": "tsc -w",
     "compile": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
     "start": "nodemon .",
@@ -56,7 +57,7 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
-    "@packages/jest-config": "workspace:^",
+    "@packages/jest-config": "workspace:*",
     "@packages/prettier-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@types/cors": "^2.8.13",
