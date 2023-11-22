@@ -23,7 +23,7 @@
     "start": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack-dev-server --config webpack.dev.js",
     "build": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.prod.js",
     "build:watch": "INIT_CWD=$PWD pnpm --filter @packages/webpack-config exec webpack --config webpack.dev.js --watch",
-    "build:serve": "http-server ./public",
+    "build:serve": "http-server ./dist --brotli",
     "test": "jest --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT",
     "test:coverage": "jest --coverage --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT",
     "test:watch": "jest --watch --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT"
@@ -50,6 +50,7 @@
     "@testing-library/react": "^14.1.0",
     "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^29.5.8",
+    "@types/node": "^20.9.4",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@types/react-test-renderer": "^18.0.6",

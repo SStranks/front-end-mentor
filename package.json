@@ -14,8 +14,14 @@
     "node": ">= 16"
   },
   "prettier": "@packages/prettier-config",
+  "scripts": {
+    "commitlint": "commitlint",
+    "lint": "eslint --ext js,jsx,ts,tsx",
+    "prepare": "husky install"
+  },
   "dependencies": {
     "@packages/babel-config": "workspace:*",
+    "@packages/commitlint-config": "workspace:*",
     "@packages/eslint-config": "workspace:*",
     "@packages/eslint-config-express": "workspace:*",
     "@packages/eslint-config-react": "workspace:*",
@@ -28,8 +34,18 @@
     "@packages/webpack-config": "workspace:*"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-transform-runtime": "^7.23.4",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@babel/runtime": "^7.23.4",
+    "@commitlint/cli": "^18.4.3",
     "eslint": "^8.53.0",
+    "husky": "^8.0.3",
     "jest": "^29.7.0",
+    "lint-staged": "^15.1.0",
     "typescript": "^5.2.2"
   }
 }

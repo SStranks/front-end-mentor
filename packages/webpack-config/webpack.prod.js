@@ -125,12 +125,12 @@ const ProdConfig = {
       patterns: [
         {
           from: path.resolve(CWD, 'public'),
-          to: path.join(CWD, 'dist', 'public'),
+          to: path.resolve(CWD, 'dist/public'),
           noErrorOnMissing: true,
         },
         {
           from: path.resolve(CWD, 'public/img'),
-          to: path.resolve(CWD, 'img/[path][name].[contenthash][ext])'),
+          to: path.resolve(CWD, 'dist/img/[path][name].[contenthash][ext])'),
           noErrorOnMissing: true,
         },
         { from: path.resolve(CWD, 'public/robots.txt'), noErrorOnMissing: true },

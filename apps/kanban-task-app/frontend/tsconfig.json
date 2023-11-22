@@ -18,7 +18,8 @@
       "#Services/*": ["src/services/*"],
       "#Types/*": ["src/types/*"],
       "#Utils/*": ["src/utils/*"]
-    }
+    },
+    "types": ["node", "@testing-library/jest-dom"]
   },
   "include": ["src/**/*", "../shared/*", "global.d.ts", "jest.config.ts"],
   "exclude": ["node_modules", "public", "dist"]
