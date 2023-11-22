@@ -11,12 +11,12 @@
   "type": "module",
   "packageManager": "pnpm@8.10.3",
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18"
   },
   "prettier": "@packages/prettier-config",
   "scripts": {
     "commitlint": "commitlint",
-    "lint": "eslint --ext js,jsx,ts,tsx",
+    "lint": "eslint",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -1,3 +1,3 @@
 export default {
-  '*.{js,jsx,ts,tsx}': 'pnpm lint',
+  '*.{js,jsx,ts,tsx}': 'eslint',
 };
