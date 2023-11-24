@@ -36,7 +36,8 @@
   }
 
   &__link {
-    @include mx.header-subtitle using ($rem) color: c.$col-2b;
+    @include mx.header-subtitle using ($rem);
+    color: c.$col-2b;
 
     &:hover {
       color: c.$col-1a;
