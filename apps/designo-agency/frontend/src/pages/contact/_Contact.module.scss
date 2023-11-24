@@ -11,7 +11,7 @@
   margin-bottom: f.px2em(160);
   color: c.$col-1c;
   background-color: c.$col-1a;
-  background-image: url('~svg/desktop/bg-pattern-hero-about-desktop.svg'); // TEST: .
+  background-image: url('~svg/desktop/bg-pattern-hero-about-desktop.svg');
   background-position: bottom left;
   background-repeat: no-repeat;
   border-radius: v.$border-radius-1;
@@ -210,7 +210,6 @@
   z-index: 1;
   margin: f.px2em(160) 0;
 
-  // TEST:  NEW MQ
   @media only screen and (width <= 850px) {
     flex-direction: column;
     margin: f.px2em(120) 0;

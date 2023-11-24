@@ -60,6 +60,23 @@ const DevConfig = {
       },
     ],
   },
+  optimization: {
+    minimizer: [
+      new ImageMinimizerPlugin({
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        exclude: [/favicon/i],
+        generator: [
+          {
+            type: 'asset',
+            implementation: ImageMinimizerPlugin.imageminGenerate,
+            options: {
+              plugins: ['imagemin-webp'],
+            },
+          },
+        ],
+      }),
+    ],
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: path.resolve(CWD, './src/index-template.html.ejs'),
@@ -67,19 +84,6 @@ const DevConfig = {
       templateParameters: {
         PUBLIC_URL: process.env.PUBLIC_URL,
       },
-    }),
-    new ImageMinimizerPlugin({
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      exclude: [/favicon/i],
-      generator: [
-        {
-          type: 'asset',
-          implementation: ImageMinimizerPlugin.imageminGenerate,
-          options: {
-            plugins: ['imagemin-webp'],
-          },
-        },
-      ],
     }),
     new CopyPlugin({ patterns: [{ from: path.resolve(CWD, './public'), noErrorOnMissing: true }] }),
     new Dotenv({ path: path.resolve(CWD, './.env.dev') }),

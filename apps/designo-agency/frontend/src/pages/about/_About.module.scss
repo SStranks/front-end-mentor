@@ -11,7 +11,7 @@
   margin-bottom: f.px2em(160);
   color: c.$col-1c;
   background-color: c.$col-1a;
-  background-image: url('~svg/desktop/bg-pattern-hero-about-desktop.svg'); // TEST: .
+  background-image: url('~svg/desktop/bg-pattern-hero-about-desktop.svg');
   background-position: bottom left;
   background-repeat: no-repeat;
   border-radius: v.$border-radius-1;
@@ -60,7 +60,7 @@
     justify-self: end;
 
     @include mq.media(tablet-all) {
-      content: url('~img/tablet/image-about-hero.jpg'); // TEST: .
+      content: url('~img/tablet/image-about-hero.jpg');
       order: -1;
       object-fit: cover;
     }
@@ -119,7 +119,7 @@
 }
 
 .cardNum1 {
-  background-image: url('~svg/desktop/bg-pattern-two-circles.svg'); // TEST: .
+  background-image: url('~svg/desktop/bg-pattern-two-circles.svg');
   background-repeat: no-repeat;
   background-position: bottom center;
 
@@ -127,10 +127,10 @@
     object-fit: cover;
 
     @include mq.media(tablet-all) {
-      content: url('~img/tablet/image-world-class-talent.jpg'); // TEST: .
+      content: url('~img/tablet/image-world-class-talent.jpg');
     }
     @include mq.media(mobile-all) {
-      content: url('~img/mobile/image-world-class-talent.jpg'); // TEST: .
+      content: url('~img/mobile/image-world-class-talent.jpg');
       width: 100%;
     }
   }
@@ -138,7 +138,7 @@
 
 .cardNum2 {
   flex-direction: row-reverse;
-  background-image: url('~svg/desktop/bg-pattern-two-circles.svg'); // TEST: .
+  background-image: url('~svg/desktop/bg-pattern-two-circles.svg');
   background-repeat: no-repeat;
   background-position: bottom left;
 
@@ -146,13 +146,13 @@
     object-fit: cover;
 
     @include mq.media(tablet-all) {
-      content: url('~img/tablet/image-real-deal.jpg'); // TEST: .
+      content: url('~img/tablet/image-real-deal.jpg');
     }
   }
 
   @include mq.media(mobile-all) {
     &__img {
-      content: url('~img/mobile/image-real-deal.jpg'); // TEST: .
+      content: url('~img/mobile/image-real-deal.jpg');
       width: 100%;
     }
   }
@@ -165,7 +165,6 @@
   z-index: 1;
   margin: f.px2em(160) 0;
 
-  // TEST: New MQ notation.
   @media only screen and (width <= 850px) {
     flex-direction: column;
     margin: f.px2em(120) 0;
