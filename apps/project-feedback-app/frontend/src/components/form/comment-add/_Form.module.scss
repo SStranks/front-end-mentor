@@ -37,7 +37,7 @@
 
   &__submitted {
     & textarea:invalid {
-      @include inputError;
+      @include input-error1;
     }
   }
 }

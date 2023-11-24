@@ -38,19 +38,22 @@ body {
   width: 100%;
   background: var(--color-background);
   color: var(--color-text-p);
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
   overflow-y: hidden;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: hsla(0deg, 0%, 0%, 0.1);
+  background-color: hsl(0deg 0% 0% / 10%);
 }
+
 ::-webkit-scrollbar {
   background-color: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: $pale-royal-blue;
   border-radius: 5px;
+
   &:vertical:hover {
     background-color: $dim-royal-blue;
   }
@@ -82,16 +85,17 @@ input {
   font-family: inherit;
   font-weight: inherit;
   color: var(--color-text-p);
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
   background-color: transparent;
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
   }
+
   &::placeholder {
     color: var(--color-text-p);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
   }
 }
 

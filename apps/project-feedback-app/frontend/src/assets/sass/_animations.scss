@@ -17,4 +17,7 @@
 @use 'variables' as *;
 
 /*   Theme Transitions              */
-$Theme-transition: background 1s, color 1s, fill 1s;
+$theme-transition:
+  background 1s,
+  color 1s,
+  fill 1s;

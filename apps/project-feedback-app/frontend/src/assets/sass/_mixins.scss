@@ -14,6 +14,7 @@
 /* -------------------------------- */
 
 /*   Imports                        */
+@use 'sass:math';
 @use './variables' as *;
 @use 'functions' as f;
 
@@ -94,12 +95,13 @@
 }
 
 /*   Errors                         */
-@mixin inputError {
+@mixin input-error1 {
   outline: 1px solid $blood-red;
 }
 
 @mixin input-error {
   $element: &;
+
   &--error {
     #{$element} {
       outline: 1px solid $blood-red;
@@ -128,32 +130,36 @@
 }
 
 @mixin btn-1 {
-  @include btn-default();
+  @include btn-default;
   background-color: $magenta;
+
   &:hover {
     background-color: hsla(#{$magenta}, 0.5);
   }
 }
 
 @mixin btn-2 {
-  @include btn-default();
+  @include btn-default;
   background-color: $royal-blue;
+
   &:hover {
     background-color: hsla(#{$royal-blue}, 0.5);
   }
 }
 
 @mixin btn-3 {
-  @include btn-default();
+  @include btn-default;
   background-color: $navy-blue;
+
   &:hover {
     background-color: hsla(#{$navy-blue}, 0.5);
   }
 }
 
 @mixin btn-4 {
-  @include btn-default();
+  @include btn-default;
   background-color: $blood-red;
+
   &:hover {
     background-color: hsla(#{$blood-red}, 0.5);
   }
@@ -165,6 +171,7 @@
   letter-spacing: 0.1ch;
   padding: f.px2em(16) f.px2em(52);
   background-color: $dark-blue;
+
   &:hover {
     background-color: hsla(#{$dark-blue}, 0.5);
     text-decoration: underline;
@@ -314,10 +321,10 @@
 // The last two arguments are for the smallest and largest font size.
 // Calculates line-height automatically.
 @mixin fluid-font($min-width, $max-width, $min-font-size, $max-font-size) {
-  $unit1: unit($min-width);
-  $unit2: unit($max-width);
-  $unit3: unit($min-font-size);
-  $unit4: unit($max-font-size);
+  $unit1: math.unit($min-width);
+  $unit2: math.unit($max-width);
+  $unit3: math.unit($min-font-size);
+  $unit4: math.unit($max-font-size);
   @if $unit1 == $unit2 and $unit1 == $unit3 and $unit1 == $unit4 {
     & {
       font-size: $min-font-size;
@@ -328,8 +335,7 @@
             ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
         );
         line-height: calc(
-          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
-            1.618 *
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * 1.618 *
             ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
         );
       }

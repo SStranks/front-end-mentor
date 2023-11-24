@@ -78,7 +78,7 @@
   &__submitted {
     & input[type='text']:invalid,
     textarea:invalid {
-      @include inputError;
+      @include input-error1;
     }
   }
 }
