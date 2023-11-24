@@ -10,7 +10,9 @@
   align-items: center;
   padding: f.px2em(64) 0;
 
-  @media only screen and (min-width: #{mq.$mobile-l + 1px}) and (max-width: 600px) {
+  // TEST: New MQ notation.
+  // @media only screen and (min-width: #{mq.$mobile-l + 1px}) and (max-width: 600px) {
+  @media only screen and (#{mq.$mobile-l + 1px} <= width <= 600px) {
     // Fixing the cramped top links at this range
     flex-direction: column;
     row-gap: 20px;

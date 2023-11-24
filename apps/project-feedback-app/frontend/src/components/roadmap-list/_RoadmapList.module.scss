@@ -6,14 +6,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  column-gap: f.px2em(30);
-  row-gap: f.px2em(32);
+  gap: f.px2em(32) f.px2em(30);
   overflow-y: hidden;
   height: 100%;
 
   @include media(tablet-regular, tablet-small) {
-    column-gap: f.px2em(10);
-    row-gap: f.px2em(24);
+    gap: f.px2em(24) f.px2em(10);
   }
 
   @include media(mobile-large, mobile-medium, mobile-small) {
@@ -30,13 +28,7 @@
     width: 100%;
     border-bottom: 1px solid $fade-blue;
 
-    @include media(
-      desktop-large,
-      desktop-medium,
-      desktop-small,
-      tablet-regular,
-      tablet-small
-    ) {
+    @include media(desktop-large, desktop-medium, desktop-small, tablet-regular, tablet-small) {
       display: none;
     }
 
@@ -85,13 +77,7 @@
         color: $mute-blue;
       }
 
-      @include media(
-        tablet-regular,
-        tablet-small,
-        desktop-large,
-        desktop-medium,
-        desktop-small
-      ) {
+      @include media(tablet-regular, tablet-small, desktop-large, desktop-medium, desktop-small) {
         display: none;
       }
     }
@@ -105,13 +91,7 @@
     & > h3 {
       color: $navy-blue;
 
-      @include media(
-        tablet-regular,
-        tablet-small,
-        mobile-large,
-        mobile-medium,
-        mobile-small
-      ) {
+      @include media(tablet-regular, tablet-small, mobile-large, mobile-medium, mobile-small) {
         @include body-5;
       }
     }
@@ -119,13 +99,7 @@
     & > p {
       color: $mute-blue;
 
-      @include media(
-        tablet-regular,
-        tablet-small,
-        mobile-large,
-        mobile-medium,
-        mobile-small
-      ) {
+      @include media(tablet-regular, tablet-small, mobile-large, mobile-medium, mobile-small) {
         @include body-4;
       }
     }

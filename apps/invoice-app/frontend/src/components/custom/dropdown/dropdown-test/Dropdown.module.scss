@@ -1,26 +1,26 @@
-@mixin baseStyle {
+@mixin base-style {
   width: 100%;
   padding: 8px 16px;
   color: white;
   border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  border-color: transparent transparent rgb(0 0 0 / 10%) transparent;
   cursor: pointer;
 }
 
-@mixin fontStyle {
+@mixin font-style {
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
 }
 
 .selectContainer {
-  @include fontStyle;
+  @include font-style;
   position: relative;
   width: 200px;
 }
 
 .select {
-  @include baseStyle;
+  @include base-style;
   font-size: inherit;
   font-weight: inherit;
   font-family: inherit;
@@ -35,7 +35,7 @@
 
 .selectList {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: dodgerblue;
   top: 100%;
   left: 0;
   right: 0;
@@ -45,8 +45,8 @@
     list-style: none;
 
     & label {
-      @include baseStyle;
-      @include fontStyle;
+      @include base-style;
+      @include font-style;
       display: block;
     }
 
@@ -67,9 +67,9 @@
 }
 
 .optionSelected {
-  background-color: hsla(0deg, 0%, 0%, 0.3);
+  background-color: hsl(0deg 0% 0% / 30%);
 }
 
 .optionHighlighted {
-  background-color: hsla(0deg, 0%, 0%, 0.1);
+  background-color: hsl(0deg 0% 0% / 10%);
 }

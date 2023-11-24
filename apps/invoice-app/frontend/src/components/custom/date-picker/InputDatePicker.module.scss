@@ -10,6 +10,11 @@
   }
 }
 
+.displayValue {
+  padding: 1px;
+  color: inherit;
+}
+
 .input {
   position: absolute;
   border: none;
@@ -20,7 +25,7 @@
 
   &:disabled + label > .displayValue {
     cursor: default;
-    opacity: 25%;
+    opacity: 0.25;
   }
 }
 
@@ -30,13 +35,8 @@
 
   &--inactive {
     cursor: default;
-    opacity: 25%;
+    opacity: 0.25;
   }
-}
-
-.displayValue {
-  padding: 1px;
-  color: inherit;
 }
 
 .active {

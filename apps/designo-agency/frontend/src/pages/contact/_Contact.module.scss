@@ -11,7 +11,7 @@
   margin-bottom: f.px2em(160);
   color: c.$col-1c;
   background-color: c.$col-1a;
-  background-image: url(~svg/desktop/bg-pattern-hero-about-desktop.svg);
+  background-image: url('~svg/desktop/bg-pattern-hero-about-desktop.svg'); // TEST: .
   background-position: bottom left;
   background-repeat: no-repeat;
   border-radius: v.$border-radius-1;
@@ -77,6 +77,86 @@
     }
   }
 
+  &__input {
+    position: relative;
+
+    & input[type='text'],
+    & input[type='tel'],
+    & input[type='email'],
+    textarea {
+      color: c.$col-1c;
+      outline: none;
+    }
+
+    & > input[type='text'],
+    & > input[type='tel'],
+    & > input[type='email'] {
+      height: 48px;
+      width: 100%;
+      padding: f.px2em(12);
+      border: none;
+      border-bottom: 1px solid c.$col-1c;
+
+      &::placeholder {
+        color: c.$col-1c;
+        opacity: 0.6;
+      }
+
+      &:hover {
+        border-bottom: 3px solid c.$col-1c;
+
+        &::placeholder {
+          opacity: 1;
+        }
+      }
+    }
+
+    & > textarea {
+      width: 100%;
+      height: 150px;
+      padding: f.px2em(12);
+      border: none;
+      border-bottom: 1px solid c.$col-1c;
+      resize: none;
+
+      &::placeholder {
+        color: c.$col-1c;
+        opacity: 0.6;
+      }
+
+      &:hover {
+        border-bottom: 3px solid c.$col-1c;
+
+        &::placeholder {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__error {
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      align-items: center;
+      justify-content: end;
+      column-gap: 9px;
+      max-width: 60%;
+
+      & > p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      & > img {
+        height: 20px;
+        width: auto;
+      }
+    }
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -121,85 +201,6 @@
       }
     }
   }
-
-  &__input {
-    position: relative;
-
-    & input[type='text'],
-    & input[type='tel'],
-    & input[type='email'],
-    textarea {
-      color: c.$col-1c;
-      outline: none;
-    }
-
-    & > input[type='text'],
-    & > input[type='tel'],
-    & > input[type='email'] {
-      height: 48px;
-      width: 100%;
-      padding: f.px2em(12);
-      border: none;
-      border-bottom: 1px solid c.$col-1c;
-
-      &::placeholder {
-        color: c.$col-1c;
-        opacity: 60%;
-      }
-
-      &:hover {
-        border-bottom: 3px solid c.$col-1c;
-        &::placeholder {
-          opacity: 100%;
-        }
-      }
-    }
-
-    & > textarea {
-      width: 100%;
-      height: 150px;
-      padding: f.px2em(12);
-      border: none;
-      border-bottom: 1px solid c.$col-1c;
-      resize: none;
-
-      &::placeholder {
-        color: c.$col-1c;
-        opacity: 60%;
-      }
-
-      &:hover {
-        border-bottom: 3px solid c.$col-1c;
-
-        &::placeholder {
-          opacity: 100%;
-        }
-      }
-    }
-
-    &__error {
-      display: none;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      align-items: center;
-      justify-content: end;
-      column-gap: 9px;
-      max-width: 60%;
-
-      & > p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      & > img {
-        height: 20px;
-        width: auto;
-      }
-    }
-  }
 }
 
 .locations {
@@ -209,7 +210,8 @@
   z-index: 1;
   margin: f.px2em(160) 0;
 
-  @media only screen and (max-width: 850px) {
+  // TEST:  NEW MQ
+  @media only screen and (width <= 850px) {
     flex-direction: column;
     margin: f.px2em(120) 0;
   }

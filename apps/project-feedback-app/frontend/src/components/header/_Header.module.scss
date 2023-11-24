@@ -21,13 +21,7 @@
   &__btn {
     background-color: transparent;
 
-    @include media(
-      tablet-regular,
-      tablet-small,
-      desktop-large,
-      desktop-medium,
-      desktop-small
-    ) {
+    @include media(tablet-regular, tablet-small, desktop-large, desktop-medium, desktop-small) {
       display: none;
     }
   }
@@ -69,6 +63,7 @@
     height: 100vh;
     background-color: $mobile-modal-bg;
   }
+
   &__side {
     display: flex;
     flex-direction: column;

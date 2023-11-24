@@ -21,10 +21,7 @@
 
 .bgCircle {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   height: 100%;
   width: 100%;
   background-image: url('~svg/desktop/bg-pattern-small-circle.svg');
@@ -40,7 +37,8 @@
   grid-template-rows: auto;
   justify-items: center;
 
-  @media only screen and (min-width: 769px) and (max-width: 850px) {
+  // TEST: New MQ notation
+  @media only screen and (769px <= width <= 850px) {
     margin-bottom: f.px2em(96);
   }
 

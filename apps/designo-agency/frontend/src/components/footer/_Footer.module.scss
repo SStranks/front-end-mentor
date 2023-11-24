@@ -51,7 +51,7 @@
     align-items: center;
     width: 100%;
     background-color: c.$col-1a;
-    background-image: url(~svg/desktop/bg-pattern-call-to-action.svg);
+    background-image: url('~svg/desktop/bg-pattern-call-to-action.svg'); // TEST: .
     background-position: center right;
     background-repeat: no-repeat;
     border-radius: 15px;
@@ -177,7 +177,7 @@
 
     & p {
       color: c.$col-1c;
-      opacity: 50%;
+      opacity: 0.5;
     }
   }
 
@@ -229,8 +229,8 @@
 
       &:hover {
         cursor: pointer;
-        filter: brightness(0) saturate(100%) invert(93%) sepia(66%)
-          saturate(940%) hue-rotate(293deg) brightness(89%) contrast(131%);
+        filter: brightness(0) saturate(100%) invert(93%) sepia(66%) saturate(940%) hue-rotate(293deg) brightness(89%)
+          contrast(131%);
       }
     }
   }

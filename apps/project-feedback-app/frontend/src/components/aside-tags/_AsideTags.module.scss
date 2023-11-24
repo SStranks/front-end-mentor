@@ -14,6 +14,5 @@
 .categories {
   display: flex;
   flex-wrap: wrap;
-  row-gap: f.px2em(14);
-  column-gap: f.px2em(8);
+  gap: f.px2em(14) f.px2em(8);
 }

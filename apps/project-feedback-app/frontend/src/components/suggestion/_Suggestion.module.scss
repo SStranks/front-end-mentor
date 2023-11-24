@@ -20,22 +20,15 @@
     & > div {
       grid-area: comment;
     }
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
-    grid-template-areas: 'main main' 'tag comment';
+
+    // grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: repeat(2, auto);
+    // TEST: .
+    grid-template-areas:
+      'main main' auto
+      'tag comment' auto
+      / repeat(2, 1fr);
     row-gap: f.px2em(16);
-  }
-
-  &:hover {
-    & .item__suggestion {
-      h3 {
-        color: $royal-blue;
-      }
-    }
-  }
-
-  & > :nth-child(2) {
-    flex-grow: 1;
   }
 
   &__suggestion {
@@ -53,6 +46,18 @@
       grid-column: span 2;
       grid-row: 1;
     }
+  }
+
+  &:hover {
+    & .item__suggestion {
+      h3 {
+        color: $royal-blue;
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    flex-grow: 1;
   }
 
   &__comment {

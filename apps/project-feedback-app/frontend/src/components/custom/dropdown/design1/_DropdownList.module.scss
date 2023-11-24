@@ -16,6 +16,12 @@
     transform: translate(-50%, 25%);
   }
 
+  &__img {
+    display: none;
+    width: fit-content;
+    height: fit-content;
+  }
+
   &__radio {
     display: none;
 
@@ -46,12 +52,6 @@
     &:not(:last-child) {
       border-bottom: $border-bottom-li;
     }
-  }
-
-  &__img {
-    display: none;
-    width: fit-content;
-    height: fit-content;
   }
 }
 

@@ -21,12 +21,12 @@
 
   @include mq.media(mobile-all) {
     row-gap: 12px;
-    background-color: hsla(0deg, 0%, 0%, 0.45);
+    background-color: hsl(0deg 0% 0% / 45%);
     background-blend-mode: multiply;
   }
 
   &:hover {
-    background-color: hsla(11deg, 73%, 66%, 1);
+    background-color: hsl(11deg 73% 66% / 100%);
     background-blend-mode: multiply;
   }
 
