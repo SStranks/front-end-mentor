@@ -16,8 +16,8 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.container {
-  @include mq.media(mobile-small) {
+@include mq.media(mobile-small) {
+  .container {
     flex-direction: column;
     row-gap: 16px;
   }

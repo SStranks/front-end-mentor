@@ -26,8 +26,8 @@
 /* -------------------------------- */
 
 @mixin btn-root {
-  @include mx.header-subtitle using ($REM) {
-    padding: f.px2emParent(15, $REM) f.px2emParent(30, $REM);
+  @include mx.header-subtitle using ($rem) {
+    padding: f.px2em-parent(15, $rem) f.px2em-parent(30, $rem);
   }
   display: flex;
   justify-content: center;

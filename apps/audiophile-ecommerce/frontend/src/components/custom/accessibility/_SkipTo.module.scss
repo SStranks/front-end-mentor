@@ -4,8 +4,8 @@
 @use '#Sass/abstracts/mixins' as mx;
 
 .container {
-  @include mx.header-subtitle using ($REM) {
-    padding: f.px2emParent(18, $REM);
+  @include mx.header-subtitle using ($rem) {
+    padding: f.px2em-parent(18, $rem);
   }
   position: fixed;
   top: 0;

@@ -24,6 +24,7 @@
 // Convert pixel value to REM. Returns 0 if input is 0, err if unit included
 @function px2rem($pixel) {
   @if math.is-unitless($pixel) {
+    /* stylelint-disable-next-line length-zero-no-unit */
     $rem-value: math.div($pixel, 16) + 0rem;
     $zero-safe-rem: if($pixel == 0, 0, $rem-value);
     @return $zero-safe-rem;
@@ -35,6 +36,7 @@
 // Convert pixel value to EM. Returns 0 if input is 0, err if unit included
 @function px2em($pixel) {
   @if math.is-unitless($pixel) {
+    /* stylelint-disable-next-line length-zero-no-unit */
     $em-value: math.div($pixel, 16) + 0em;
     $zero-safe-em: if($pixel == 0, 0, $em-value);
     @return $zero-safe-em;
@@ -45,9 +47,11 @@
 
 // Convert pixel value to EM, taking parent REM into consideration.
 // Returns 0 if input is 0, err if unit included
-@function px2emParent($pixel, $REM) {
+@function px2em-parent($pixel, $rem) {
   $val1: strip-unit($pixel);
-  $val2: strip-unit($REM);
+  $val2: strip-unit($rem);
+
+  /* stylelint-disable-next-line length-zero-no-unit */
   $em-value: math.div($val1, ($val2 * 16)) + 0em;
   $zero-safe-em: if($val1 == 0, 0, $em-value);
   @return $zero-safe-em;

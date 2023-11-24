@@ -10,8 +10,8 @@
 
 .btnBack {
   justify-self: start;
-  @include mx.body-regular using ($REM) {
-    margin-bottom: f.px2emParent(56, $REM);
+  @include mx.body-regular using ($rem) {
+    margin-bottom: f.px2em-parent(56, $rem);
   }
   background-color: transparent;
   color: c.$col-3a;
@@ -22,12 +22,14 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.mainTag {
-  @include mq.media(tablet-all) {
+@include mq.media(tablet-all) {
+  .mainTag {
     padding-top: 35px;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .mainTag {
     padding-top: 16px;
   }
 }

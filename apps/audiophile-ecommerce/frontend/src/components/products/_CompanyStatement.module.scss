@@ -16,8 +16,8 @@
   }
 
   &__title {
-    @include mx.header-h2() using ($REM) {
-      margin-bottom: f.px2emParent(32, $REM);
+    @include mx.header-h2() using ($rem) {
+      margin-bottom: f.px2em-parent(32, $rem);
     }
 
     & > span {
@@ -36,9 +36,9 @@
   }
 }
 
-.card {
-  // tablet-regular, tablet-small, tablet-mini, tablet-micro
-  @include mq.media(desktop-micro, tablet-all, mobile-all) {
+@include mq.media(desktop-micro, tablet-all, mobile-all) {
+  .card {
+    // tablet-regular, tablet-small, tablet-mini, tablet-micro
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     row-gap: 63px;
@@ -52,8 +52,10 @@
       grid-row: 1;
     }
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .card {
     row-gap: 40px;
 
     &__info {
@@ -61,10 +63,10 @@
     }
 
     &__title {
-      @include mx.header-h2() using ($REM) {
-        $REM: f.px2rem(30);
-        margin-bottom: f.px2emParent(32, $REM);
-        font-size: $REM;
+      @include mx.header-h2() using ($rem) {
+        $rem: f.px2rem(30);
+        margin-bottom: f.px2em-parent(32, $rem);
+        font-size: $rem;
       }
     }
 

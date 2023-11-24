@@ -29,28 +29,28 @@
   }
 
   &__new {
-    @include mx.header-overline using ($REM) {
-      margin-bottom: f.px2emParent(16, $REM);
+    @include mx.header-overline using ($rem) {
+      margin-bottom: f.px2em-parent(16, $rem);
     }
     color: c.$col-1a;
   }
 
   &__title {
-    @include mx.header-h2() using ($REM) {
-      margin-bottom: f.px2emParent(32, $REM);
+    @include mx.header-h2() using ($rem) {
+      margin-bottom: f.px2em-parent(32, $rem);
     }
   }
 
   &__details {
-    @include mx.body-regular using ($REM) {
-      margin-bottom: f.px2emParent(32, $REM);
+    @include mx.body-regular using ($rem) {
+      margin-bottom: f.px2em-parent(32, $rem);
     }
     color: c.$col-3a;
   }
 
   &__price {
-    @include mx.header-h6 using ($REM) {
-      margin-bottom: f.px2emParent(50, $REM);
+    @include mx.header-h6 using ($rem) {
+      margin-bottom: f.px2em-parent(50, $rem);
     }
   }
 
@@ -71,8 +71,8 @@
   }
 
   &__header {
-    @include mx.header-h3() using ($REM) {
-      margin-bottom: f.px2emParent(32, $REM);
+    @include mx.header-h3() using ($rem) {
+      margin-bottom: f.px2em-parent(32, $rem);
     }
     white-space: nowrap;
   }
@@ -89,8 +89,7 @@
   &__list {
     display: grid;
     grid-template-columns: minmax(25px, auto) 1fr;
-    column-gap: 25px;
-    row-gap: 8px;
+    gap: 8px 25px;
     padding: 0;
     list-style-type: none;
 
@@ -112,6 +111,7 @@
 
     &__quantity {
       grid-column: 1;
+
       // margin-right: 24px;
       color: c.$col-1a;
       font-weight: 700;
@@ -123,63 +123,85 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.container {
-  @include mq.media(tablet-all, mobile-all) {
+@include mq.media(tablet-all, mobile-all) {
+  .container {
     row-gap: 88px;
   }
 }
 
-.cardPrimary {
-  @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+@include mq.media(tablet-mini, tablet-micro, mobile-all) {
+  .cardPrimary {
     grid-template-columns: 1fr;
     row-gap: 32px;
   }
+}
 
-  &__picture {
-    @include mq.media(tablet-large, tablet-regular, tablet-small) {
+@include mq.media(tablet-large, tablet-regular, tablet-small) {
+  .cardPrimary {
+    &__picture {
       aspect-ratio: 281/480;
     }
+  }
+}
 
-    @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+@include mq.media(tablet-mini, tablet-micro, mobile-all) {
+  .cardPrimary {
+    &__picture {
       aspect-ratio: 1/1;
     }
   }
+}
 
-  &__info {
-    @include mq.media(tablet-all) {
+@include mq.media(tablet-all) {
+  .cardPrimary {
+    &__info {
       padding-left: 70px;
     }
+  }
+}
 
-    @include mq.media(tablet-small) {
+@include mq.media(tablet-small) {
+  .cardPrimary {
+    &__info {
       padding-left: 30px;
     }
+  }
+}
 
-    @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+@include mq.media(tablet-mini, tablet-micro, mobile-all) {
+  .cardPrimary {
+    &__info {
       padding-left: 0;
     }
   }
+}
 
-  &__title {
-    @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .cardPrimary {
+    &__title {
       font-size: f.px2rem(28);
     }
   }
 }
 
-.cardSecondary {
-  @include mq.media(tablet-all, mobile-all) {
+@include mq.media(tablet-all, mobile-all) {
+  .cardSecondary {
     flex-direction: column;
     row-gap: 88px;
   }
+}
 
-  &__features {
-    @include mq.media(tablet-mini, tablet-micro, mobile-all) {
+@include mq.media(tablet-mini, tablet-micro, mobile-all) {
+  .cardSecondary {
+    &__features {
       margin-right: 0;
     }
   }
+}
 
-  &__inBox {
-    @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .cardSecondary {
+    &__inBox {
       min-width: unset;
     }
   }

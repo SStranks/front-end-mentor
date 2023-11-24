@@ -9,8 +9,8 @@
 }
 
 .btnBack {
-  @include mx.body-regular using ($REM) {
-    margin-bottom: f.px2emParent(56, $REM);
+  @include mx.body-regular using ($rem) {
+    margin-bottom: f.px2em-parent(56, $rem);
   }
   background-color: transparent;
   color: c.$col-3a;
@@ -18,8 +18,8 @@
 }
 
 .alternatives {
-  @include mx.header-h3() using ($REM) {
-    margin-bottom: f.px2emParent(64, $REM);
+  @include mx.header-h3() using ($rem) {
+    margin-bottom: f.px2em-parent(64, $rem);
   }
   text-align: center;
 }
@@ -48,46 +48,50 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.mainTag {
-  @include mq.media(tablet-all) {
+@include mq.media(tablet-all) {
+  .mainTag {
     padding-top: 35px;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .mainTag {
     padding-top: 16px;
   }
 }
 
-.btnBack {
-  @include mq.media(tablet-all, mobile-all) {
+@include mq.media(tablet-all, mobile-all) {
+  .btnBack {
     margin-bottom: 24px;
   }
 }
 
-.alternatives {
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .alternatives {
     font-size: f.px2rem(24);
   }
 }
 
-.productImageGrid {
-  @include mq.media(tablet-all, mobile-all) {
+@include mq.media(tablet-all, mobile-all) {
+  .productImageGrid {
     margin-bottom: f.px2em(120);
   }
 }
 
-.productExampleSeeList {
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .productExampleSeeList {
     margin-bottom: f.px2em(120);
   }
 }
 
-.productDetailCard {
-  @include mq.media(tablet-all) {
+@include mq.media(tablet-all) {
+  .productDetailCard {
     margin-bottom: f.px2em(145);
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .productDetailCard {
     margin-bottom: f.px2em(88);
   }
 }

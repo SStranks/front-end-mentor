@@ -3,7 +3,7 @@ module.exports = {
   rules: {
     'declaration-empty-line-before': null,
     'selector-class-pattern': null,
-    'comment-empty-line-before': ['always', { ignore: ['after-comment'] }],
+    'comment-empty-line-before': ['always', { ignore: ['after-comment', 'stylelint-commands'] }],
     'selector-pseudo-class-no-unknown': [
       true,
       {

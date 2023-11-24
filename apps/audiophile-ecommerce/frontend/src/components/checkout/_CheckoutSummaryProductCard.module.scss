@@ -9,10 +9,9 @@
   font-weight: 700;
   display: grid;
   grid-template-areas:
-    'img title quantity'
-    'img price _';
-  grid-template-columns: 64px auto auto;
-  grid-template-rows: repeat(2, 1fr);
+    'img title quantity' 1fr
+    'img price _' 1fr
+    / 64px auto auto;
   column-gap: 16px;
   width: 100%;
 
@@ -35,8 +34,7 @@
 
   &__quantity {
     grid-area: quantity;
-    align-self: end;
-    justify-self: end;
+    place-self: end end;
     color: c.$col-3a;
   }
 }
@@ -45,8 +43,8 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.card {
-  @include mq.media(mobile-small) {
+@include mq.media(mobile-small) {
+  .card {
     grid-template-areas:
       'title quantity'
       'price _';

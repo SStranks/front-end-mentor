@@ -10,12 +10,14 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.list {
-  @include mq.media(tablet-all) {
+@include mq.media(tablet-all) {
+  .list {
     column-gap: 10px;
   }
+}
 
-  @include mq.media(tablet-micro, mobile-all) {
+@include mq.media(tablet-micro, mobile-all) {
+  .list {
     grid-template-columns: 1fr;
     row-gap: 56px;
   }

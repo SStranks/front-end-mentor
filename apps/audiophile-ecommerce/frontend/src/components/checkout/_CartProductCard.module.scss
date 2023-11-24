@@ -4,15 +4,26 @@
 @use '#Sass/abstracts/media-queries' as mq;
 @use '#Sass/abstracts/variables' as v;
 
+.a {
+  color: '#4f';
+}
+
 .card {
   @include mx.body-regular;
   font-weight: 700;
   display: grid;
+
+  // TEST:  Does this new concise syntax work as before?
   grid-template-areas:
-    'img title quantity'
-    'img price _';
-  grid-template-columns: 64px auto auto;
-  grid-template-rows: repeat(2, 1fr);
+    'img title quantity' 1fr
+    'img price _' 1fr
+    / 64px auto auto;
+
+  // grid-template-areas:
+  //   'img title quantity'
+  //   'img price _';
+  // grid-template-columns: 64px auto auto;
+  // grid-template-rows: repeat(2, 1fr);
   column-gap: 16px;
   width: 100%;
 
@@ -44,23 +55,26 @@
   margin-left: auto;
 }
 
-/* -------------------------------- */
-/*   Media Queries                  */
-/* -------------------------------- */
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
 
-.card {
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .card {
     grid-template-areas:
       'title quantity'
       'price _';
     grid-template-columns: auto auto;
+    color: #0000;
 
     &__img {
       display: none;
     }
   }
+}
 
-  @include mq.media(mobile-small) {
+@include mq.media(mobile-small) {
+  .card {
     grid-template-areas:
       'title'
       'quantity'
@@ -68,10 +82,8 @@
     grid-template-columns: 1fr;
     justify-items: center;
   }
-}
 
-.productQuantityBtn {
-  @include mq.media(mobile-small) {
+  .productQuantityBtn {
     grid-row: 1;
     margin-left: 0;
   }

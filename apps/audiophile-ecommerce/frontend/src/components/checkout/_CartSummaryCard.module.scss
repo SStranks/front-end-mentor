@@ -13,8 +13,7 @@
   border-radius: v.$border-radius-1;
 
   &__header {
-    @include mx.header-h6 using ($REM) {
-    }
+    @include mx.header-h6 using ($rem);
   }
 
   &__removeAllBtn {
@@ -41,8 +40,7 @@
 
   &__amount {
     justify-self: end;
-    @include mx.header-h6 using ($REM) {
-    }
+    @include mx.header-h6 using ($rem);
   }
 
   &__checkoutBtn {
@@ -57,8 +55,8 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.card {
-  @include mq.media(mobile-small) {
+@include mq.media(mobile-small) {
+  .card {
     &__total,
     &__amount {
       grid-column: 1 / span 2;

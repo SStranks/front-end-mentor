@@ -28,14 +28,14 @@
   }
 
   &__header {
-    @include mx.header-h3 using ($REM) {
-      margin-bottom: f.px2emParent(24, $REM);
+    @include mx.header-h3 using ($rem) {
+      margin-bottom: f.px2em-parent(24, $rem);
     }
   }
 
   &__subHeader {
-    @include mx.body-regular using ($REM) {
-      margin-bottom: f.px2emParent(34, $REM);
+    @include mx.body-regular using ($rem) {
+      margin-bottom: f.px2em-parent(34, $rem);
     }
     color: c.$col-3a;
   }
@@ -87,16 +87,15 @@
     transition: flex 1s;
 
     &__title {
-      @include mx.body-regular using ($REM) {
-        margin-bottom: f.px2emParent(8, $REM);
+      @include mx.body-regular using ($rem) {
+        margin-bottom: f.px2em-parent(8, $rem);
       }
       color: c.$col-3b;
       text-transform: uppercase;
     }
 
     &__amount {
-      @include mx.header-h6 using ($REM) {
-      }
+      @include mx.header-h6 using ($rem);
       color: c.$col-2b;
     }
 
@@ -109,19 +108,12 @@
 /* -------------------------------- */
 /*   Media Queries                  */
 /* -------------------------------- */
-
-.card {
-  @include mq.media(tablet-micro, mobile-all) {
+@include mq.media(tablet-micro, mobile-all) {
+  .card {
     padding: 32px;
   }
 
-  @include mq.media(mobile-small) {
-    column-gap: 0;
-  }
-}
-
-.orderDetails {
-  @include mq.media(tablet-micro, mobile-all) {
+  .orderDetails {
     grid-template-columns: 1fr;
     margin-bottom: 23px;
     border-radius: v.$border-radius-1;
@@ -135,8 +127,14 @@
       padding: 15px 24px;
     }
   }
+}
 
-  @include mq.media(mobile-small) {
+@include mq.media(mobile-small) {
+  .card {
+    column-gap: 0;
+  }
+
+  .orderDetails {
     &__items {
       padding: 18px;
     }

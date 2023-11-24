@@ -25,9 +25,7 @@
   }
 
   &__title {
-    @include mx.header-h2() using ($REM) {
-    }
-    color: c.$col-2b;
+    @include mx.header-h2() using ($rem) color: c.$col-2b;
   }
 }
 
@@ -52,43 +50,65 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.header {
-  &__hr {
-    @include mq.media(desktop-small) {
+@include mq.media(desktop-small) {
+  .header {
+    &__hr {
       margin: 0 v.$padding-desktop-small-horizontal;
     }
+  }
+}
 
-    @include mq.media(desktop-mini, desktop-micro) {
+@include mq.media(desktop-mini, desktop-micro) {
+  .header {
+    &__hr {
       margin: 0 v.$padding-desktop-mini-horizontal;
     }
+  }
+}
 
-    @include mq.media(tablet-large) {
+@include mq.media(tablet-large) {
+  .header {
+    &__hr {
       margin: 0 v.$padding-tablet-horizontal;
     }
+  }
+}
 
-    @include mq.media(tablet-regular, tablet-small) {
+@include mq.media(tablet-regular, tablet-small) {
+  .header {
+    &__hr {
       margin: 0 v.$padding-tablet-small-horizontal;
     }
+  }
+}
 
-    @include mq.media(tablet-mini, tablet-micro) {
+@include mq.media(tablet-mini, tablet-micro) {
+  .header {
+    &__hr {
       margin: 0 v.$padding-tablet-mini-horizontal;
     }
+  }
+}
 
-    @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .header {
+    &__hr {
       margin: 0 v.$padding-mobile-horizontal;
     }
   }
+}
 
-  &__title {
-    @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .header {
+    &__title {
       font-size: f.px2rem(28);
     }
   }
 }
 
-.grid {
-  // Linked/targeting the 'ProductInfoCard' component.
-  @include mq.media(desktop-large, desktop-medium, desktop-small) {
+@include mq.media(desktop-large, desktop-medium, desktop-small) {
+  .grid {
+    // Linked/targeting the 'ProductInfoCard' component.
     & > article:nth-child(even) {
       & > picture {
         order: 1;
@@ -100,9 +120,11 @@
       }
     }
   }
+}
 
-  // Linked/targeting the 'ProductInfoCard' component.
-  @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+// Linked/targeting the 'ProductInfoCard' component.
+@include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+  .grid {
     & > article:nth-child(even) {
       flex-direction: column;
 
@@ -111,16 +133,18 @@
       }
     }
   }
+}
 
-  @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+@include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+  .grid {
     grid-auto-rows: auto;
     row-gap: 120px;
     margin-bottom: f.px2em(120);
   }
 }
 
-.productExampleShopList {
-  @include mq.media(tablet-all, mobile-all) {
+@include mq.media(tablet-all, mobile-all) {
+  .productExampleShopList {
     margin-bottom: f.px2em(120);
   }
 }

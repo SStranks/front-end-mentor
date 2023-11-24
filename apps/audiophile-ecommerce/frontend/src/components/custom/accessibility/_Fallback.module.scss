@@ -14,10 +14,10 @@
   z-index: f.z('fallback');
 
   &__loading {
-    @include mx.header-subtitle using ($REM) {
-      $REM: f.px2rem(18);
-      font-size: $REM;
-      margin-top: f.px2emParent(10, $REM);
+    @include mx.header-subtitle using ($rem) {
+      $rem: f.px2rem(18);
+      font-size: $rem;
+      margin-top: f.px2em-parent(10, $rem);
     }
     color: c.$col-3b;
   }
@@ -38,18 +38,22 @@
         animation-delay: -150ms;
         animation-duration: 974ms;
       }
+
       &:nth-child(2) {
         animation-delay: -270ms;
         animation-duration: 833ms;
       }
+
       &:nth-child(3) {
         animation-delay: -820ms;
         animation-duration: 907ms;
       }
+
       &:nth-child(4) {
         animation-delay: -765ms;
         animation-duration: 858ms;
       }
+
       &:nth-child(5) {
         animation-delay: -545ms;
         animation-duration: 900ms;
@@ -63,6 +67,7 @@
     opacity: 0.35;
     height: 3px;
   }
+
   100% {
     opacity: 1;
     height: 100px;

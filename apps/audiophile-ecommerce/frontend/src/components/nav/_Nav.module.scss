@@ -34,6 +34,7 @@
   &__cartBtn {
     position: relative;
     background-color: transparent;
+
     &::before {
       content: '';
       position: absolute;
@@ -56,9 +57,7 @@
   }
 
   &__link {
-    @include mx.header-subtitle using ($REM) {
-    }
-    color: c.$col-2b;
+    @include mx.header-subtitle using ($rem) color: c.$col-2b;
 
     &:hover {
       color: c.$col-1a;
@@ -74,65 +73,69 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.nav {
-  @include mq.media(desktop-small) {
+@include mq.media(desktop-small) {
+  .nav {
     padding: f.px2em(35) v.$padding-desktop-small-horizontal;
   }
+}
 
-  @include mq.media(desktop-mini, desktop-micro) {
+@include mq.media(desktop-mini, desktop-micro) {
+  .nav {
     padding: f.px2em(35) v.$padding-desktop-mini-horizontal;
   }
+}
 
-  @include mq.media(tablet-large) {
+@include mq.media(tablet-large) {
+  .nav {
     padding: f.px2em(35) v.$padding-tablet-horizontal;
   }
+}
 
-  @include mq.media(tablet-regular, tablet-small) {
+@include mq.media(tablet-regular, tablet-small) {
+  .nav {
     padding: f.px2em(35) v.$padding-tablet-small-horizontal;
     justify-content: flex-start;
     column-gap: 42px;
   }
+}
 
-  @include mq.media(tablet-mini, tablet-micro) {
+@include mq.media(tablet-mini, tablet-micro) {
+  .nav {
     padding: f.px2em(35) v.$padding-tablet-mini-horizontal;
     justify-content: flex-start;
     column-gap: 42px;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .nav {
     padding: f.px2em(35) v.$padding-mobile-horizontal;
     justify-content: space-between;
   }
+}
 
-  &__menuBtn {
-    @include mq.media(
-      tablet-regular,
-      tablet-small,
-      tablet-mini,
-      tablet-micro,
-      mobile-all
-    ) {
+@include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro, mobile-all) {
+  .nav {
+    &__menuBtn {
       display: block;
       background-color: transparent;
       width: fit-content;
       height: fit-content;
     }
   }
+}
 
-  &__cartBtn {
-    @include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro) {
+@include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro) {
+  .nav {
+    &__cartBtn {
       margin-left: auto;
     }
   }
+}
 
-  &__links {
-    @include mq.media(
-      tablet-regular,
-      tablet-small,
-      tablet-mini,
-      tablet-micro,
-      mobile-all
-    ) {
+@include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro, mobile-all) {
+  .nav {
+    &__links {
       display: none;
     }
   }

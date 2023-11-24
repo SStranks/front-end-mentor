@@ -15,15 +15,16 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.list {
-  @include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro) {
+@include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro) {
+  .list {
     column-gap: 10px;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .list {
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
-    column-gap: 0;
-    row-gap: 16px;
+    gap: 16px 0;
   }
 }

@@ -29,20 +29,19 @@
   }
 
   &__new {
-    @include mx.header-overline using ($REM) {
-      margin-bottom: f.px2emParent(16, $REM);
+    @include mx.header-overline using ($rem) {
+      margin-bottom: f.px2em-parent(16, $rem);
     }
     color: c.$col-1a;
   }
 
   &__title {
-    @include mx.header-h2() using ($REM) {
-    }
+    @include mx.header-h2() using ($rem);
   }
 
   &__details {
-    @include mx.body-regular using ($REM) {
-      margin: f.px2emParent(32, $REM) 0 f.px2emParent(40, $REM);
+    @include mx.body-regular using ($rem) {
+      margin: f.px2em-parent(32, $rem) 0 f.px2em-parent(40, $rem);
     }
   }
 
@@ -55,20 +54,24 @@
 /*   Media Queries                  */
 /* -------------------------------- */
 
-.card {
-  @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+@include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+  .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 52px;
   }
+}
 
-  @include mq.media(desktop-mini, desktop-micro, tablet-all) {
+@include mq.media(desktop-mini, desktop-micro, tablet-all) {
+  .card {
     row-gap: 32px;
   }
+}
 
-  &__panel {
-    @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+@include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
+  .card {
+    &__panel {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -76,9 +79,11 @@
       text-align: center;
     }
   }
+}
 
-  &__title {
-    @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .card {
+    &__title {
       font-size: f.px2rem(28);
     }
   }
