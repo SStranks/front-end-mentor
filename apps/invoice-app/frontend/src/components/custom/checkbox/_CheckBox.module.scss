@@ -7,6 +7,18 @@
   column-gap: f.px2em(16);
   border-radius: 2px;
 
+  &__newCheckbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    background-color: var(--color-checkbox-unchecked);
+    border-radius: 2px;
+
+    // transition: a.$theme-transition-bg;
+  }
+
   &:hover {
     & .customCheckbox__newCheckbox {
       border: 1px solid var(--color-checkbox-hover);
@@ -24,17 +36,6 @@
     opacity: 0;
     height: 0;
     width: 0;
-  }
-
-  &__newCheckbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 16px;
-    width: 16px;
-    background-color: var(--color-checkbox-unchecked);
-    border-radius: 2px;
-    // transition: a.$Theme-transition-bg;
   }
 
   &__iconCheck {

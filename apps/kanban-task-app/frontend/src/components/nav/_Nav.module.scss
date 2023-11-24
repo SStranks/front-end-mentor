@@ -11,7 +11,7 @@
   width: 100%;
   height: v.$navbar-dim-height;
   background-color: var(--thm-bg-sidebar);
-  transition: a.$Theme-transition-bg;
+  transition: a.$theme-transition-bg;
 
   @include mq.media(tablet-large, tablet-medium) {
     // See DefaultLayout; subcontainer calculation requires variable
@@ -27,7 +27,7 @@
     position: relative;
     width: v.$sidebar-dim-width-l;
     border-right: 1px solid var(--thm-border-divider);
-    transition: a.$Theme-transition-border;
+    transition: a.$theme-transition-border;
 
     &--mobile {
       display: none;
@@ -55,7 +55,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       height: auto;
-      transition: a.$Theme-transition-opacity;
+      transition: a.$theme-transition-opacity;
 
       &--dark {
         opacity: var(--thm-nav-logo-dark);
@@ -82,7 +82,7 @@
     width: 100%;
     padding: 0 f.px2em(24);
     color: var(--thm-nav-h1);
-    transition: a.$Theme-transition-color;
+    transition: a.$theme-transition-color;
 
     @include mq.media(tablet-small, mobile-all) {
       padding-left: 0;
@@ -119,6 +119,7 @@
 
       @include mq.media(tablet-medium, tablet-small, mobile-all) {
         padding: f.px2em(10) f.px2em(18);
+
         & > span {
           display: none;
         }
@@ -132,6 +133,7 @@
 
     &__boardOptions {
       position: relative;
+
       & > img {
         min-height: 20px;
         min-width: 5px;
@@ -152,11 +154,12 @@
       background-color: var(--thm-dropdown-default-list-bg);
       border-radius: v.$border-radius-dropdown-list;
       box-shadow: v.$box-shadow-2;
-      transition: a.$Theme-transition-bg;
+      transition: a.$theme-transition-bg;
 
       & > p {
         cursor: pointer;
         width: 160px;
+
         &:hover {
           color: c.$col-1j;
         }

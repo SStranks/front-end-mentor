@@ -14,7 +14,7 @@
   background-color: var(--thm-chkbox-default-label-bg);
   color: var(--thm-chkbox-default-label-text);
   border-radius: v.$border-radius-forms-subtask;
-  transition: a.$Theme-transition-bg, a.$Theme-transition-color;
+  transition: a.$theme-transition-bg, a.$theme-transition-color;
 
   &:hover {
     background-color: c.$col-2f;
@@ -41,7 +41,7 @@
     background-color: var(--thm-chkbox-default-chkbox-bg);
     border: 1px solid c.$col-2c;
     border-radius: v.$border-radius-chkbx-2;
-    transition: a.$Theme-transition-bg;
+    transition: a.$theme-transition-bg;
   }
 
   &__iconCheck {

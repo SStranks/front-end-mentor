@@ -23,7 +23,7 @@
     height: 15px;
     border-radius: 100%;
 
-    @include mx.colorTheme using ($color) {
+    @include mx.color-theme using ($color) {
       background-color: $color;
     }
   }
@@ -44,7 +44,7 @@
   margin-top: f.px2em(23);
   background-color: var(--thm-column-bg);
   border-radius: v.$border-radius-column-empty;
-  transition: a.$Theme-transition-bg;
+  transition: a.$theme-transition-bg;
 
   &__btn {
     padding: f.px2em(8);
@@ -57,7 +57,7 @@
 }
 
 .droppable {
-  @include mx.colorTheme using ($color) {
+  @include mx.color-theme using ($color) {
     outline: 2px dashed $color;
     outline-offset: 10px;
     border-radius: v.$border-radius-task;

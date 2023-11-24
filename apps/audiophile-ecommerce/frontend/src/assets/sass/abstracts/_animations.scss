@@ -20,7 +20,10 @@
 /*   Theme Transitions              */
 /* -------------------------------- */
 
-$Theme-transition: background 1s, color 1s, fill 1s;
+$theme-transition:
+  background 1s,
+  color 1s,
+  fill 1s;
 
 /* -------------------------------- */
 /*   Element Transitions            */
@@ -73,6 +76,7 @@ $nav-sticky-transition: background-color 1s;
     visibility: visible;
     opacity: 0;
   }
+
   to {
     visibility: visible;
     opacity: 1;
@@ -83,6 +87,7 @@ $nav-sticky-transition: background-color 1s;
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }

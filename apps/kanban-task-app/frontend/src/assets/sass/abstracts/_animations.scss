@@ -21,11 +21,11 @@
 /*   Theme Transitions              */
 /* -------------------------------- */
 
-$Theme-transition-bg: background 1s;
-$Theme-transition-color: color 1s;
-$Theme-transition-fill: fill 1s;
-$Theme-transition-border: border 1s;
-$Theme-transition-opacity: opacity 1s;
+$theme-transition-bg: background 1s;
+$theme-transition-color: color 1s;
+$theme-transition-fill: fill 1s;
+$theme-transition-border: border 1s;
+$theme-transition-opacity: opacity 1s;
 
 /* -------------------------------- */
 /*   Keyframes                      */
@@ -35,15 +35,17 @@ $Theme-transition-opacity: opacity 1s;
   0% {
     width: $sidebar-dim-width-l;
   }
+
   100% {
-    width: 0px;
+    width: 0;
   }
 }
 
 @keyframes sidebar-hide-reverse-300 {
   0% {
-    width: 0px;
+    width: 0;
   }
+
   100% {
     width: $sidebar-dim-width-l;
   }
@@ -53,15 +55,17 @@ $Theme-transition-opacity: opacity 1s;
   0% {
     width: $sidebar-dim-width-m;
   }
+
   100% {
-    width: 0px;
+    width: 0;
   }
 }
 
 @keyframes sidebar-hide-reverse-260 {
   0% {
-    width: 0px;
+    width: 0;
   }
+
   100% {
     width: $sidebar-dim-width-m;
   }
@@ -69,45 +73,50 @@ $Theme-transition-opacity: opacity 1s;
 
 @keyframes sidebar-opacity {
   0% {
-    opacity: 100%;
+    opacity: 1;
   }
+
   100% {
     visibility: hidden;
-    opacity: 0%;
+    opacity: 0;
   }
 }
 
 @keyframes sidebar-opacity-reverse {
   0% {
     visibility: hidden;
-    opacity: 0%;
+    opacity: 0;
   }
+
   100% {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 
 @keyframes sidebar-theme-reverse {
   0% {
     visibility: hidden;
-    opacity: 0%;
+    opacity: 0;
   }
+
   100% {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 
 @keyframes sidebar-li {
   0% {
-    opacity: 100%;
+    opacity: 1;
     overflow-x: hidden;
   }
+
   25% {
-    opacity: 25%;
+    opacity: 0.25;
   }
+
   100% {
     visibility: hidden;
-    opacity: 0%;
+    opacity: 0;
     transform: translateX(-100%);
   }
 }
@@ -115,14 +124,16 @@ $Theme-transition-opacity: opacity 1s;
 @keyframes sidebar-li-reverse {
   0% {
     visibility: hidden;
-    opacity: 0%;
+    opacity: 0;
     transform: translateX(-100%);
   }
+
   25% {
-    opacity: 25%;
+    opacity: 0.25;
   }
+
   100% {
-    opacity: 100%;
+    opacity: 1;
     overflow-x: hidden;
   }
 }

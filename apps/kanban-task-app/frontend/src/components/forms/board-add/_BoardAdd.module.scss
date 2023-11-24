@@ -18,7 +18,7 @@
   margin: v.$margin-forms;
   background-color: var(--thm-form-bg);
   border-radius: v.$border-radius-forms;
-  transition: a.$Theme-transition-bg;
+  transition: a.$theme-transition-bg;
 
   @include mq.media(mobile-all) {
     padding: f.px2em(24);
@@ -27,11 +27,11 @@
   &__title {
     @include mx.header-l;
     color: var(--thm-form-header-text);
-    transition: a.$Theme-transition-color;
+    transition: a.$theme-transition-color;
   }
 
   &__group {
-    & > P {
+    & > p {
       @include mx.body-m;
       color: c.$col-1g;
       margin-bottom: f.px2em(8);

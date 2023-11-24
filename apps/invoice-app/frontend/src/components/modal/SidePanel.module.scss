@@ -15,7 +15,7 @@
   background-color: var(--color-sidebar-panel);
   border-radius: 0 $border-radius-4 $border-radius-4 0;
   z-index: f.z('modal-sidebar');
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
 
   @include media(tablet-all, mobile-all) {
     height: calc(100% - f.px2em(80));
@@ -34,7 +34,7 @@
     margin-left: 160px;
     margin-bottom: 48px;
     color: var(--color-text-h);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     @include media(tablet-all, mobile-all) {
       margin-left: 56px;
@@ -56,7 +56,7 @@
   max-width: 100%;
   padding: f.px2em(0) f.px2em(0) f.px2em(0) f.px2em(0);
   background-color: var(--color-sidebar-panel);
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
 
   @include media(tablet-medium, tablet-small, mobile-all) {
     margin-right: 0;

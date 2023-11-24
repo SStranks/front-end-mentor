@@ -14,6 +14,7 @@
 /* -------------------------------- */
 
 /*   Imports                        */
+@use 'sass:math';
 @use 'variables' as *;
 @use 'functions' as f;
 @use 'animations' as a;
@@ -51,7 +52,7 @@
 @mixin text-modifier-black {
   font-weight: 700;
   color: var(--color-text-p);
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
 }
 
 /*   Card                           */
@@ -95,7 +96,7 @@
     width: $x;
     height: $y;
     @if $visible == true {
-      background: rgba(239, 172, 207, 0.8);
+      background: rgb(239 172 207 / 80%);
     }
   }
 }
@@ -103,6 +104,7 @@
 /*   Errors                         */
 @mixin input-error {
   $element: &;
+
   &--error {
     #{$element} {
       outline: 1px solid $blood-red;
@@ -323,10 +325,10 @@
 // The last two arguments are for the smallest and largest font size.
 // Calculates line-height automatically.
 @mixin fluid-font($min-width, $max-width, $min-font-size, $max-font-size) {
-  $unit1: unit($min-width);
-  $unit2: unit($max-width);
-  $unit3: unit($min-font-size);
-  $unit4: unit($max-font-size);
+  $unit1: math.unit($min-width);
+  $unit2: math.unit($max-width);
+  $unit3: math.unit($min-font-size);
+  $unit4: math.unit($max-font-size);
   @if $unit1 == $unit2 and $unit1 == $unit3 and $unit1 == $unit4 {
     & {
       font-size: $min-font-size;
@@ -337,8 +339,7 @@
             ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
         );
         line-height: calc(
-          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
-            1.618 *
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * 1.618 *
             ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
         );
       }

@@ -12,11 +12,11 @@
   background-color: var(--thm-task-card);
   box-shadow: v.$box-shadow-1;
   border-radius: v.$border-radius-task;
-  transition: a.$Theme-transition-bg;
+  transition: a.$theme-transition-bg;
 
   &:hover {
     &.column {
-      @include mx.colorTheme using ($color) {
+      @include mx.color-theme using ($color) {
         outline: 1px solid $color;
       }
     }
@@ -24,27 +24,27 @@
 
   &:focus {
     &.column {
-      @include mx.colorTheme using ($color) {
+      @include mx.color-theme using ($color) {
         outline: 4px solid $color;
       }
     }
   }
 
   &__dragging {
-    @include mx.colorTheme(true) using ($color) {
+    @include mx.color-theme(true) using ($color) {
       outline: 4px solid $color;
     }
   }
 
   &__hoverOverDelete {
-    opacity: 65%;
+    opacity: 0.65;
   }
 
   &__task {
     @include mx.header-m;
     margin-bottom: f.px2em(8);
     color: var(--thm-task-title);
-    transition: a.$Theme-transition-color;
+    transition: a.$theme-transition-color;
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,12 +53,12 @@
   &__subtask {
     @include mx.body-m;
     color: c.$col-1g;
-    transition: a.$Theme-transition-color;
+    transition: a.$theme-transition-color;
   }
 }
 
 .deleteCard {
-  opacity: 10%;
+  opacity: 0.1;
   position: relative;
   display: flex;
   justify-content: center;
@@ -66,13 +66,13 @@
   height: 87.5px;
   background: repeating-linear-gradient(
     45deg,
-    rgba(255, 0, 0, 0.2),
-    rgba(255, 0, 0, 0.2) 10px,
+    rgb(255 0 0 / 20%),
+    rgb(255 0 0 / 20%) 10px,
     transparent 10px,
     transparent 20px
   );
   border-radius: v.$border-radius-task;
-  outline: 4px dashed rgba(255, 0, 0, 0.6);
+  outline: 4px dashed rgb(255 0 0 / 60%);
   outline-offset: -4px;
   transition: 0.5s all ease;
 
@@ -81,17 +81,18 @@
     position: absolute;
     top: 50%;
     left: 50%;
+
     // TODO:  Add in styles to SASS foundation files
     // color: var(--thm-task-title);
     padding: f.px2em(5) f.px2em(10);
     color: red;
     background-color: var(--thm-bg-main);
-    transition: a.$Theme-transition-color;
+    transition: a.$theme-transition-color;
     transform: translate(-50%, -50%);
   }
 
   &__dragging {
     opacity: 100;
-    outline-offset: 0px;
+    outline-offset: 0;
   }
 }

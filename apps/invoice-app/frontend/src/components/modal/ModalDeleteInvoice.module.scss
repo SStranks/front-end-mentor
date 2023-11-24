@@ -6,26 +6,25 @@
 
 .container {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 f.px2em(24);
+
   // To allow click-through to Modal component background
   pointer-events: none;
 
   &__card {
     @include body-3;
+
     // To allow click events for the ModalConfirmDelete card/buttons
     pointer-events: all;
     padding: f.px2em(48);
     color: $color-2b;
     background-color: var(--color-elements);
     border-radius: $border-radius-1;
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     @include media(mobile-all) {
       padding: f.px2em(32);
@@ -55,7 +54,7 @@
   }
 
   &__cancelBtn {
-    @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+    @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
     @include btn.btn-grey;
 
     & > button {
@@ -65,7 +64,7 @@
   }
 
   &__deleteBtn {
-    @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+    @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
     @include btn.btn-red;
 
     & > button {

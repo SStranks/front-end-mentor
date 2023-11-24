@@ -42,7 +42,7 @@
     background-color: var(--color-elements);
     border-radius: $border-radius-1;
     box-shadow: $box-shadow-1;
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     @include media(mobile-all) {
       padding: f.px2em(20) f.px2em(24);
@@ -60,21 +60,21 @@
     }
 
     &__editBtn {
-      @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+      @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
       @include btn.btn-element;
       @include btn.btn-grey;
       @include btn.btn-grey-hover;
     }
 
     &__deleteBtn {
-      @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+      @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
       @include btn.btn-element;
       @include btn.btn-red;
       @include btn.btn-red-hover;
     }
 
     &__markPaidBtn {
-      @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+      @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
       @include btn.btn-element;
       @include btn.btn-purple;
       @include btn.btn-purple-hover;
@@ -116,7 +116,7 @@
     color: $color-2c;
     border-radius: $border-radius-1;
     box-shadow: $box-shadow-1;
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     @include media(tablet-small) {
       padding: f.px2em(32);
@@ -214,7 +214,7 @@
         background-color: var(--color-elements-2);
         border-radius: $border-radius-1 $border-radius-1 0 0;
         color: var(--color-text-p2);
-        transition: a.$Theme-transition;
+        transition: a.$theme-transition;
 
         @include media(mobile-all) {
           grid-template-columns: 1fr;
@@ -301,7 +301,7 @@
         background-color: var(--color-elements-3);
         color: $white;
         border-radius: 0 0 $border-radius-1 $border-radius-1;
-        transition: a.$Theme-transition;
+        transition: a.$theme-transition;
 
         @include media(mobile-all) {
           padding: f.px2em(24) f.px2em(24);

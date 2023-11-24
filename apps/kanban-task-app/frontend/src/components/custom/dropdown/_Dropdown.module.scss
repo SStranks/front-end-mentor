@@ -19,7 +19,7 @@
     justify-content: space-between;
     width: 100%;
     color: var(--thm-dropdown-default-text);
-    transition: a.$Theme-transition-color;
+    transition: a.$theme-transition-color;
 
     &:focus {
       border-color: c.$col-1a;
@@ -37,7 +37,7 @@
   margin-top: f.px2em(10);
   background-color: var(--thm-dropdown-default-list-bg);
   border-radius: v.$border-radius-dropdown-list;
-  transition: a.$Theme-transition-bg;
+  transition: a.$theme-transition-bg;
 
   &__item {
     @include mx.body-l;

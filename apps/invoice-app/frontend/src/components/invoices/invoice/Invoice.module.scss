@@ -6,10 +6,7 @@
 .container {
   display: grid;
   grid-template-columns:
-    minmax(65px, max-content) minmax(115px, max-content) repeat(
-      2,
-      minmax(min-content, auto)
-    )
+    minmax(65px, max-content) minmax(115px, max-content) repeat(2, minmax(min-content, auto))
     104px minmax(min-content, max-content);
   grid-template-rows: 1fr;
   align-items: center;
@@ -20,7 +17,9 @@
   box-shadow: $box-shadow-1;
   border-radius: $border-radius-1;
   cursor: pointer;
-  transition: transform 0.2s, a.$Theme-transition;
+  transition:
+    transform 0.2s,
+    a.$theme-transition;
 
   &:hover {
     transform: scale(101.5%);
@@ -52,13 +51,13 @@
     &--black {
       display: inline-block;
       color: var(--color-text-p);
-      transition: a.$Theme-transition;
+      transition: a.$theme-transition;
     }
   }
 
   &__date {
     color: var(--color-text-p2);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
     margin-right: f.px2em(20);
 
     @include media(tablet-medium, tablet-small, mobile-all) {
@@ -70,7 +69,7 @@
 
   &__name {
     color: var(--color-text-p2);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
     margin-right: f.px2em(20);
 
     @include media(tablet-medium, tablet-small, mobile-all) {
@@ -87,7 +86,7 @@
     text-align: right;
     margin-right: f.px2em(20);
     color: var(--color-text-p);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     @include media(tablet-medium, tablet-small, mobile-all) {
       grid-column: 1;
@@ -99,8 +98,7 @@
   &__status {
     @include media(tablet-medium, tablet-small, mobile-all) {
       grid-row: 2 / 4;
-      align-self: center;
-      justify-self: end;
+      place-self: center end;
       margin: f.px2em(25) 0 f.px2em(15) 0;
     }
   }

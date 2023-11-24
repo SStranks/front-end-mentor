@@ -31,6 +31,7 @@ $navbar-dim-height: 96px;
 
 $padding-desktop: 0 165px 56px 165px;
 $margin-forms: f.px2em(50) 0;
+
 // $padding-transition: padding 2500ms ease-out;
 // $grid-gap-transition: gap 1500ms ease-out;
 
@@ -40,7 +41,6 @@ $margin-forms: f.px2em(50) 0;
 
 // Common radius across multiple elements
 $border-radius-1: 4px;
-
 $border-radius-btn-1: 24px;
 $border-radius-btn-2: 20px;
 $border-radius-chkbx-1: $border-radius-1;
@@ -59,5 +59,5 @@ $border-radius-forms-subtask: 4px;
 /*   Shadows                        */
 /* -------------------------------- */
 
-$box-shadow-1: 0px 4px 6px rgba(54, 78, 126, 0.1);
-$box-shadow-2: 0px 4px 6px rgba(55, 2, 124, 0.1);
+$box-shadow-1: 0 4px 6px rgb(54 78 126 / 10%);
+$box-shadow-2: 0 4px 6px rgb(55 2 124 / 10%);

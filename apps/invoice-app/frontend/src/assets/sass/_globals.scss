@@ -38,7 +38,7 @@ body {
   height: 100vh;
   background: var(--color-background);
   color: var(--color-text-p);
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
 
   & *::-webkit-scrollbar {
     width: 12px;
@@ -80,17 +80,18 @@ input {
   font-family: inherit;
   font-weight: inherit;
   color: var(--color-text-p);
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
   background-color: transparent;
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     appearance: none;
     margin: 0;
   }
+
   &::placeholder {
     color: var(--color-text-p);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
   }
 }
 

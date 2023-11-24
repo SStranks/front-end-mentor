@@ -24,6 +24,7 @@
 
     @include media(mobile-all) {
       padding: 0 8px;
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -44,7 +45,7 @@
     //     var(--color-background) 40%,
     //     rgba(255, 255, 255, 0) 100%
     //   );
-    //   transition: a.$Theme-transition;
+    //   transition: a.$theme-transition;
     // }
   }
 

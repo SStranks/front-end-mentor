@@ -8,15 +8,15 @@
   position: sticky;
   bottom: 0;
   display: flex;
-  justify-content: flex-end;
-  align-content: center;
+  place-content: center flex-end;
   max-width: 720px;
   padding: f.px2em(30) f.px2em(56) f.px2em(30) f.px2em(160);
   background-color: var(--color-sidebar-panel);
   border-radius: $border-radius-4;
+
   // To set the ::before z-index/Z-value
   transform-style: preserve-3d;
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
 
   @include media(tablet-large) {
     width: 100%;
@@ -37,11 +37,7 @@
     transform: translateY(-92%) translateZ(-1px);
     width: 100%;
     height: 200px;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.0001) 0%,
-      rgba(0, 0, 0, 0.1) 100%
-    );
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.01%) 0%, rgb(0 0 0 / 10%) 100%);
     transition: opacity 1s;
   }
 }
@@ -54,7 +50,7 @@
 }
 
 .btnCancel {
-  @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
   @include btn.btn-grey;
 
   & > button {
@@ -64,7 +60,7 @@
 }
 
 .btnDiscard {
-  @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
   @include btn.btn-grey;
 
   & > button {
@@ -74,7 +70,7 @@
 }
 
 .btnSaveDraft {
-  @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
   @include btn.btn-navy;
 
   & > button {
@@ -84,7 +80,7 @@
 }
 
 .btnSaveSend {
-  @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
   @include btn.btn-purple;
 
   & > button {
@@ -94,7 +90,7 @@
 }
 
 .btnSaveChanges {
-  @include btn.btn-theme-wrapper(a.$Theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
   @include btn.btn-purple;
 
   & > button {

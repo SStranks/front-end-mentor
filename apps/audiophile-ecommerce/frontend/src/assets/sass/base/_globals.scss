@@ -30,22 +30,26 @@ html {
 body {
   position: relative;
   width: 100%;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizespeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   overflow-y: overlay;
+
   &::-webkit-scrollbar-track {
-    background-color: hsla(0deg, 0%, 0%, 0.2);
+    background-color: hsl(0deg 0% 0% / 20%);
   }
+
   &::-webkit-scrollbar {
     background-color: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
-    background-color: hsla(0deg, 0%, 0%, 0.5);
+    background-color: hsl(0deg 0% 0% / 50%);
     border-radius: 5px;
+
     &:vertical:hover {
-      background-color: hsla(0deg, 0%, 100%, 0.75);
+      background-color: hsl(0deg 0% 100% / 75%);
     }
   }
 }
@@ -61,6 +65,7 @@ video {
 ul,
 ol {
   padding-left: 1em;
+
   & li {
     padding-left: 1.5em;
   }
@@ -81,17 +86,16 @@ input {
   font-size: inherit;
   font-family: inherit;
   font-weight: inherit;
-  transition: a.$Theme-transition;
+  transition: a.$theme-transition;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     appearance: none;
     margin: 0;
   }
 
   &::placeholder {
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
   }
 }
 

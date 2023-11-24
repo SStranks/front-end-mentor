@@ -11,6 +11,7 @@ $margin-btm: f.px2em(42);
 .form {
   position: relative;
   height: 100%;
+
   // REFACTOR:  Margin-left is currently the sidebar width, which is fixed.
   margin-left: 103px;
   margin-right: 12px;
@@ -142,8 +143,7 @@ $margin-btm: f.px2em(42);
       display: grid;
       grid-template-columns: 215px 46px 100px 60px auto;
       grid-template-rows: auto;
-      row-gap: f.px2em(18);
-      column-gap: f.px2em(16);
+      gap: f.px2em(16) f.px2em(18);
       align-items: center;
       color: var(--color-form-label);
 
@@ -154,12 +154,11 @@ $margin-btm: f.px2em(42);
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
         padding: f.px2em(17) f.px2em(24);
         border-radius: $border-radius-3;
         color: var(--color-form-label);
         background-color: var(--color-form-input-button);
-        transition: a.$Theme-transition;
+        transition: a.$theme-transition;
 
         &:hover {
           background-color: $color-2a;
@@ -178,7 +177,7 @@ $margin-btm: f.px2em(42);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     &:focus {
       outline: none;
@@ -196,7 +195,7 @@ $margin-btm: f.px2em(42);
     font-weight: initial;
 
     &:has(input:disabled) {
-      opacity: 50%;
+      opacity: 0.5;
     }
 
     & > :last-child {
@@ -231,10 +230,7 @@ $margin-btm: f.px2em(42);
     }
 
     // Custom dropdown component
-    &
-      .form__inputLabel:has(
-        > div[data-input-element='paymentTerms'] input:invalid
-      ) {
+    & .form__inputLabel:has(> div[data-input-element='paymentTerms'] input:invalid) {
       color: $color-3a;
 
       & > div[data-input-element='paymentTerms'] {

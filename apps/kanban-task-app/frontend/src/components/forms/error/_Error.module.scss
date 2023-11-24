@@ -18,7 +18,7 @@
   margin: v.$margin-forms;
   background-color: var(--thm-form-bg);
   border-radius: v.$border-radius-forms;
-  transition: a.$Theme-transition-bg;
+  transition: a.$theme-transition-bg;
 
   @include mq.media(mobile-all) {
     padding: f.px2em(24);

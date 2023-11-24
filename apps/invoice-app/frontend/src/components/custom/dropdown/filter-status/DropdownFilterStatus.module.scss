@@ -43,12 +43,12 @@
 
   & > h3 {
     color: var(--color-text-p);
-    transition: a.$Theme-transition;
+    transition: a.$theme-transition;
 
     & > span {
       @include media(mobile-all) {
         display: none;
-        transition: a.$Theme-transition;
+        transition: a.$theme-transition;
       }
     }
   }

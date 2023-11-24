@@ -3,6 +3,13 @@ module.exports = {
   rules: {
     'declaration-empty-line-before': null,
     'selector-class-pattern': null,
+    'comment-empty-line-before': ['always', { ignore: ['after-comment'] }],
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['vertical', 'horizontal'],
+      },
+    ],
   },
   overrides: [
     {

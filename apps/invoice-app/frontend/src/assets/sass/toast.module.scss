@@ -6,12 +6,12 @@
   padding: 16px 24px;
   background-color: var(--color-toast-bg);
   color: var(--color-toast-text);
-  transition: $Theme-transition;
+  transition: $theme-transition;
 }
 
-.toastSuccess {
-  // background-color: purple;
-}
+// .toastSuccess {
+//   background-color: purple;
+// }
 
 // .toastError {}
 

@@ -29,6 +29,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   // Width to be determined by encapsulating DIV
   // width: 100%;
   font-size: f.px2rem(15);
@@ -47,7 +48,8 @@
   background-color: c.$col-1c;
   color: c.$col-2b;
   border-radius: v.$border-radius-btn-1;
-  // transition: a.$Theme-transition-bg, a.$Theme-transition-color;
+
+  // transition: a.$theme-transition-bg, a.$theme-transition-color;
 
   &:hover {
     background-color: c.$col-2a;
@@ -65,7 +67,8 @@
   background-color: c.$col-1a;
   color: c.$col-1c;
   border-radius: v.$border-radius-btn-1;
-  // transition: a.$Theme-transition-bg, a.$Theme-transition-color;
+
+  // transition: a.$theme-transition-bg, a.$theme-transition-color;
 
   &:hover {
     background-color: c.$col-2a;
