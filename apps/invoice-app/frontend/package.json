@@ -28,7 +28,9 @@
     "test:coverage": "jest --coverage --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT",
     "test:watch": "jest --watch --config ../../../jest.config.js --selectProjects INVOICE-APP-CLIENT",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sassdoc:build": "pnpm exec sassdoc ./src --dest ./.sassdoc",
+    "sassdoc:serve": "http-server ./.sassdoc"
   },
   "dependencies": {
     "@rollbar/react": "^0.11.2",

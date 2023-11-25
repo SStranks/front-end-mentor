@@ -6,7 +6,7 @@ import { EslintConfigExpress } from '@packages/eslint-config-express';
 export default [
   ConfigPrettier,
   {
-    ignores: ['**/node_modules', '**/dist', '**/build', '**/__snapshots__', '**/mocks', '**/coverage'],
+    ignores: ['**/node_modules', '**/dist', '**/build', '**/__snapshots__', '**/mocks', '**/coverage', '**/.sassdoc'],
   },
   {
     // Client - React

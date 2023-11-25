@@ -32,7 +32,9 @@
     "docker:run": "docker run --name $npm_package_config_dockerImageName -d -p $npm_package_config_dockerImagePort:$npm_package_config_dockerInternalContainerPort $npm_package_config_dockerImageRepo",
     "docker:clean": "docker rm -f $npm_package_config_imageName",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sassdoc:build": "pnpm exec sassdoc ./src --dest ./.sassdoc",
+    "sassdoc:serve": "http-server ./.sassdoc"
   },
   "config": {
     "dockerImageRepo": "fem37image/frontend",
@@ -55,6 +57,7 @@
     "@packages/babel-config": "workspace:*",
     "@packages/jest-config-react": "workspace:*",
     "@packages/prettier-config": "workspace:*",
+    "@packages/sassdoc-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.8.3",
