@@ -16,8 +16,6 @@
 ////
 /// --- SASSDOC
 /// @group Mixins
-/// @author Simon Stranks
-///
 ////
 
 /*   Imports                        */
@@ -44,6 +42,10 @@
 /* -------------------------------- */
 /*   Text: Header                   */
 /* -------------------------------- */
+
+/// H1 header styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-h1 {
   $rem: f.px2rem(56);
   font-size: $rem;
@@ -54,6 +56,9 @@
   @content ($rem);
 }
 
+/// H2 header styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-h2 {
   $rem: f.px2rem(40);
   font-size: $rem;
@@ -64,6 +69,9 @@
   @content ($rem);
 }
 
+/// H3 header styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-h3 {
   $rem: f.px2rem(32);
   font-size: $rem;
@@ -74,6 +82,9 @@
   @content ($rem);
 }
 
+/// H4 header styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-h4 {
   $rem: f.px2rem(28);
   font-size: $rem;
@@ -84,6 +95,9 @@
   @content ($rem);
 }
 
+/// H5 header styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-h5 {
   $rem: f.px2rem(24);
   font-size: $rem;
@@ -94,6 +108,9 @@
   @content ($rem);
 }
 
+/// H6 header styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-h6 {
   $rem: f.px2rem(18);
   font-size: $rem;
@@ -104,6 +121,9 @@
   @content ($rem);
 }
 
+/// Header 'overline' styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-overline {
   $rem: f.px2rem(14);
   font-size: $rem;
@@ -114,6 +134,9 @@
   @content ($rem);
 }
 
+/// Header 'subtitle' styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin header-subtitle {
   $rem: f.px2rem(14);
   font-size: f.px2rem(13);
@@ -128,6 +151,9 @@
 /*   Text: Body                     */
 /* -------------------------------- */
 
+/// Body Regular styling
+/// @require px2rem Pixel to REM converter <>
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
 @mixin body-regular {
   $rem: f.px2rem(15);
   font-size: $rem;
@@ -140,6 +166,7 @@
 /*   Text: Decoration               */
 /* -------------------------------- */
 
+/// Link underline styling
 @mixin text-link-underline {
   cursor: pointer;
   text-decoration-line: underline;
@@ -150,6 +177,10 @@
 /*   Extend Click Area              */
 /* -------------------------------- */
 
+/// Extends the click area around clickable elements
+/// @parameter {Percentage} $x [175%] - Extend horizontal clickable area
+/// @parameter {Percentage} $y [150] - Extend horizontal clickable area
+/// @parameter {Boolean} $visible [true] - Debug: Display the visible click area with a color.
 @mixin extend-clickarea($x: 175%, $y: 150%, $visible: true) {
   &::before {
     content: '';
@@ -169,6 +200,7 @@
 /*   Input: Text                    */
 /* -------------------------------- */
 
+/// Input text styling
 @mixin input-text {
   font-weight: 700;
   font-size: f.px2rem(14);

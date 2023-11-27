@@ -16,8 +16,6 @@
 ////
 /// --- SASSDOC
 /// @group Functions
-/// @author Simon Stranks
-///
 ////
 
 /*   Imports                        */
@@ -28,7 +26,8 @@
 /*   Functions                      */
 /* -------------------------------- */
 
-// Convert pixel value to REM. Returns 0 if input is 0, err if unit included
+/// Convert pixel value to REM. Returns 0 if input is 0, err if unit included
+/// @parameter {integer} $pixel - Unitless pixel integer
 @function px2rem($pixel) {
   @if math.is-unitless($pixel) {
     /* stylelint-disable-next-line length-zero-no-unit */
@@ -36,11 +35,12 @@
     $zero-safe-rem: if($pixel == 0, 0, $rem-value);
     @return $zero-safe-rem;
   } @else {
-    @error 'Don\'t use units when using the rem() function';
+    @error "Do not use units when using the rem() function";
   }
 }
 
-// Convert pixel value to EM. Returns 0 if input is 0, err if unit included
+/// Convert pixel value to EM. Returns 0 if input is 0, err if unit included
+/// @parameter {integer} $pixel - Unitless pixel integer
 @function px2em($pixel) {
   @if math.is-unitless($pixel) {
     /* stylelint-disable-next-line length-zero-no-unit */
@@ -48,12 +48,15 @@
     $zero-safe-em: if($pixel == 0, 0, $em-value);
     @return $zero-safe-em;
   } @else {
-    @error 'Don\'t use units when using the em() function';
+    @error "Do not use units when using the em() function";
   }
 }
 
-// Convert pixel value to EM, taking parent REM into consideration.
-// Returns 0 if input is 0, err if unit included
+/// Convert pixel value to EM, taking parent REM into consideration.
+/// @parameter {Integer} $pixel - Pixel (unit or unitless)
+/// @parameter {Integer} $rem - REM (unit or unitless)
+/// @require strip-unit Remove unit from number <>
+/// @return {Number<em>} Returns an EM value, or 0 if input was 0 with a unit.
 @function px2em-parent($pixel, $rem) {
   $val1: strip-unit($pixel);
   $val2: strip-unit($rem);
@@ -64,7 +67,9 @@
   @return $zero-safe-em;
 }
 
-// Removes the unit of a number
+/// Removes the unit from a number
+/// @parameter {Integer} $number A number with a unit suffix.
+/// @return {Number} Returns a unitless number.
 @function strip-unit($number) {
   @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
     @return math.div($number, ($number * 0 + 1));
@@ -79,6 +84,14 @@
 
 // Order determined by '$z-indexes' list
 // Organise $z-indexes and call function with relevant element name.
+/// Z-Index Manager
+/// @parameter {String} $name String provided at instantiation, referring to the element having Z-Index set.
+/// @parameter {Variable} $z-indexes List of string names of elements; ranked in descending order of Z-Index.
+/// @require $z-indexes List of string name representations of elements to be ordered.
+/// @example
+///   .component {
+///     z-index: z('Modal')
+///   }
 @function z($name, $z-indexes-list: $z-indexes) {
   @if index($z-indexes-list, $name) {
     @return (length($z-indexes-list) - index($z-indexes-list, $name)) + 1;
@@ -89,5 +102,5 @@
   }
 }
 
-// Z-Index List. Descending order of Z height; 0, 1, 2..
+/// Z-Index List. Descending order of Z-Index; 0, 1, 2..
 $z-indexes: ('fallback', 'skip-to', 'nav', 'modal', 'menuCart', 'menuModal');
