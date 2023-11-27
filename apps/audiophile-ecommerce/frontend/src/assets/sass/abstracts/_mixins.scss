@@ -13,12 +13,33 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Mixins
+/// @author Simon Stranks
+///
+////
+
 /*   Imports                        */
 @use 'sass:math';
 @use 'animations' as a;
 @use 'colors' as c;
 @use 'functions' as f;
 @use 'variables' as v;
+@use '../base/themes' as thm;
+
+/* -------------------------------- */
+/*   :root Theme Variables          */
+/* -------------------------------- */
+
+/// Maps over the default color theme map and adds each key/value as a new root variable.
+/// @parameter {map} $theme [thm.$light-theme] - Sass Map of element strings and color values
+/// @output CSS Variable: e.g. `--thm-text-header: #000000`
+@mixin root-theme-map-to-variables($theme: thm.$light-theme) {
+  @each $theme-item, $value in $theme {
+    --thm-#{$theme-item}: #{$value};
+  }
+}
 
 /* -------------------------------- */
 /*   Text: Header                   */

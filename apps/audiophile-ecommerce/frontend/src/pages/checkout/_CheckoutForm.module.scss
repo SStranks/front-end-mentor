@@ -128,12 +128,12 @@
     }
 
     &__total {
-      @include mx.header-h6 using ($rem);
+      @include mx.header-h6;
       justify-self: end;
     }
 
     &__grandTotal {
-      @include mx.header-h6 using ($rem);
+      @include mx.header-h6;
       justify-self: end;
       margin-top: 18px;
       color: c.$col-1a;

@@ -25,7 +25,7 @@
   }
 
   &__title {
-    @include mx.header-h2() using ($rem);
+    @include mx.header-h2;
     color: c.$col-2b;
   }
 }

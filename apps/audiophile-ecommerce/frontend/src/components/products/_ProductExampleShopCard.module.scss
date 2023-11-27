@@ -46,7 +46,7 @@
     z-index: 1;
 
     &__text {
-      @include mx.header-subtitle using ($rem);
+      @include mx.header-subtitle;
       color: c.$col-3a;
     }
 

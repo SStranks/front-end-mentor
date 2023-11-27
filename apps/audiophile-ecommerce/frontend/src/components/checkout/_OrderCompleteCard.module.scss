@@ -95,7 +95,7 @@
     }
 
     &__amount {
-      @include mx.header-h6 using ($rem);
+      @include mx.header-h6;
       color: c.$col-2b;
     }
 

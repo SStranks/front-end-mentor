@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Resets
+////
+
 /*   Imports                        */
 
 /* -------------------------------- */
@@ -27,6 +32,7 @@
   margin: 0;
 }
 
+/// Default scroll behaviour for entire document
 html:focus-within {
   scroll-behavior: smooth;
 }

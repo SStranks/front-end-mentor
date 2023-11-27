@@ -36,7 +36,7 @@
   }
 
   &__link {
-    @include mx.header-subtitle using ($rem);
+    @include mx.header-subtitle;
     color: c.$col-2b;
 
     &:hover {
@@ -123,11 +123,11 @@
 @include mq.media(mobile-all) {
   .footer {
     padding: f.px2em(52) v.$padding-mobile-horizontal f.px2em(38) v.$padding-mobile-horizontal;
-  }
 
-  &::before {
-    left: 50%;
-    transform: translate(-50%, 0);
+    &::before {
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
   }
 }
 

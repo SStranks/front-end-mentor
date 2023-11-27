@@ -4,10 +4,6 @@
 @use '#Sass/abstracts/media-queries' as mq;
 @use '#Sass/abstracts/variables' as v;
 
-.a {
-  color: '#4f';
-}
-
 .card {
   @include mx.body-regular;
   font-weight: 700;

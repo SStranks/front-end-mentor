@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Variables
+////
+
 /*   Imports                        */
 @use 'functions' as f;
 
@@ -20,14 +25,40 @@
 /*   Margin & Padding               */
 /* -------------------------------- */
 
+/// Horizontal padding for desktop sized screens
+/// @type number (em)
 $padding-desktop-horizontal: f.px2em(165);
+
+/// Horizontal padding for small desktop sized screens
+/// @type number (em)
 $padding-desktop-small-horizontal: f.px2em(100);
+
+/// Horizontal padding for mini desktop sized screens
+/// @type number (em)
 $padding-desktop-mini-horizontal: f.px2em(80);
+
+/// Horizontal padding for tablet sized screens
+/// @type number (em)
 $padding-tablet-horizontal: f.px2em(60);
+
+/// Horizontal padding for small tablet sized screens
+/// @type number (em)
 $padding-tablet-small-horizontal: f.px2em(40);
+
+/// Horizontal padding for mini tablet sized screens
+/// @type number (em)
 $padding-tablet-mini-horizontal: f.px2em(32);
+
+/// Horizontal padding for mobile sized screens
+/// @type number (em)
 $padding-mobile-horizontal: f.px2em(24);
+
+/// Vertical padding for desktop sized screens
+/// @type number (em)
 $padding-desktop-vertical: f.px2em(120);
+
+/// Vertical padding for mobile sized screens
+/// @type number (em)
 $padding-mobile-vertical: f.px2em(60);
 
 // $padding-transition: padding 2500ms ease-out;
@@ -37,18 +68,24 @@ $padding-mobile-vertical: f.px2em(60);
 /*   Borders                        */
 /* -------------------------------- */
 
+/// Equal four corner border radius
+/// @type number (pixel)
 $border-radius-1: 8px;
 
 /* -------------------------------- */
 /*   Shadows                        */
 /* -------------------------------- */
 
+/// Box shadow variation; light black
+/// @type pixel pixel pixel pixel rgb
 $box-shadow-1: 0 10px 10px -10px rgb(72 84 159 / 10%);
 
 /* -------------------------------- */
 /*   Web Element                    */
 /* -------------------------------- */
 
+/// Navigation bar vertical dimension
+/// @type number (pixel)
 $navbar-dim-vertical: f.px2em(95);
 
 // $sidebar-dim-desktop: 103px;

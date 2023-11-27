@@ -13,6 +13,13 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Animations
+/// @author Simon Stranks
+///
+////
+
 /*   Imports                        */
 @use 'variables' as *;
 
@@ -20,14 +27,25 @@
 /*   Theme Transitions              */
 /* -------------------------------- */
 
-$theme-transition:
-  background 1s,
-  color 1s,
-  fill 1s;
+/// Provides the transition durations for background, color, and fill properties.
+/// @example
+///   .class {
+///     transition: $theme-transition
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
+
+$theme-transition: background 1s color 1s fill 1s;
 
 /* -------------------------------- */
 /*   Element Transitions            */
 /* -------------------------------- */
+
+/// Provides the transition durations for background, color, and fill properties.
+/// @example
+///   .class {
+///     transition: $nav-sticky-transition
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
 
 $nav-sticky-transition: background-color 1s;
 
