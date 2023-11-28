@@ -1,7 +1,7 @@
 {
   "name": "@apps/feedback-app-client",
   "version": "1.0.0",
-  "description": "FEM#37 Frontend",
+  "description": "FEM#33 Frontend",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "license": "ISC",
   "type": "module",

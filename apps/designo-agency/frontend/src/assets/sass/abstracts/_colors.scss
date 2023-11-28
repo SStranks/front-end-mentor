@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Colors
+////
+
 /*   Imports                        */
 @use 'variables' as *;
 
@@ -20,22 +25,42 @@
 /*   Primary Colors                 */
 /* -------------------------------- */
 
-$col-1a: hsl(11deg 73% 66%); // Peach
-$col-1b: hsl(270deg 3% 11%); // Black
-$col-1c: hsl(0deg 0% 100%); // White
+/// Primary - Peach
+/// @type Color
+$col-1a: hsl(11deg 73% 66%);
+
+/// Primary - Black
+/// @type Color
+$col-1b: hsl(270deg 3% 11%);
+
+/// Primary - White
+/// @type Color
+$col-1c: hsl(0deg 0% 100%);
 
 /* -------------------------------- */
 /*   Secondary Colors               */
 /* -------------------------------- */
 
-$col-2a: hsl(11deg 100% 80%); // Light Peach
-$col-2b: hsl(264deg 5% 20%); // Dark Grey
-$col-2c: hsl(210deg 17% 95%); // Light Grey
-$col-2d: hsl(14deg 76% 97%); // Light Grey
+/// Secondary - Light Peach
+/// @type Color
+$col-2a: hsl(11deg 100% 80%);
+
+/// Secondary - Dark Grey
+/// @type Color
+$col-2b: hsl(264deg 5% 20%);
+
+/// Secondary - Light Grey
+/// @type Color
+$col-2c: hsl(210deg 17% 95%);
+
+/// Secondary - Light Grey
+/// @type Color
+$col-2d: hsl(14deg 76% 97%);
 
 /* -------------------------------- */
 /*   Tertiary Colors                */
 /* -------------------------------- */
 
-// Modal
+/// Modal - Translucent Black
+/// @type Color
 $col-modal-bg: hsl(0deg 0% 0% / 50%);

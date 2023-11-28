@@ -13,13 +13,19 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Functions
+////
+
 /*   Imports                        */
 @use 'sass:math';
 
 /*   Functions                      */
 /* -------------------------------- */
 
-// Convert pixel value to REM. Returns 0 if input is 0, err if unit included
+/// Convert pixel value to REM. Returns 0 if input is 0, err if unit included
+/// @parameter {integer} $pixel - Unitless pixel integer
 @function px2rem($pixel) {
   @if math.is-unitless($pixel) {
     $rem-value: math.div($pixel, 16) + rem;
@@ -30,7 +36,8 @@
   }
 }
 
-// Convert pixel value to EM. Returns 0 if input is 0, err if unit included
+/// Convert pixel value to EM. Returns 0 if input is 0, err if unit included
+/// @parameter {integer} $pixel - Unitless pixel integer
 @function px2em($pixel) {
   @if math.is-unitless($pixel) {
     $em-value: math.div($pixel, 16) + em;
@@ -41,8 +48,16 @@
   }
 }
 
-// Z-Index Manager. Order determined by $z-indexes.
+// Order determined by '$z-indexes' list
 // Organise $z-indexes and call function with relevant element name.
+/// Z-Index Manager
+/// @parameter {String} $name String provided at instantiation, referring to the element having Z-Index set.
+/// @parameter {Variable} $z-indexes List of string names of elements; ranked in descending order of Z-Index.
+/// @require $z-indexes List of string name representations of elements to be ordered.
+/// @example
+///   .component {
+///     z-index: z('Modal')
+///   }
 @function z($name, $z-indexes-list: $z-indexes) {
   @if index($z-indexes-list, $name) {
     @return (length($z-indexes-list) - index($z-indexes-list, $name)) + 1;
@@ -53,11 +68,5 @@
   }
 }
 
-// Z-Index List. Descending order of Z height.
-$z-indexes: (
-  'sidebar',
-  'sidebar-logo',
-  'modal-sidebar',
-  'modal-container',
-  'main'
-);
+/// Z-Index List. Descending order of Z-Index; 0, 1, 2..
+$z-indexes: ('sidebar', 'sidebar-logo', 'modal-sidebar', 'modal-container', 'main');

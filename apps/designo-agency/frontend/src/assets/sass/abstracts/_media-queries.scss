@@ -13,27 +13,67 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Media-Queries
+////
+
 /*   Imports                        */
 
 /* -------------------------------- */
 /*   Breakpoints                    */
 /* -------------------------------- */
 
+/// Media-Query Breakpoint: Mobile Small
+/// @type Number (px)
 $mobile-s: 320px;
+
+/// Media-Query Breakpoint: Mobile Medium
+/// @type Number (px)
 $mobile-m: 375px;
+
+/// Media-Query Breakpoint: Mobile Large
+/// @type Number (px)
 $mobile-l: 480px;
+
+/// Media-Query Breakpoint: Tablet Small
+/// @type Number (px)
 $tablet-s: 576px;
+
+/// Media-Query Breakpoint: Tablet Medium
+/// @type Number (px)
 $tablet-m: 667px;
+
+/// Media-Query Breakpoint: Tablet Large
+/// @type Number (px)
 $tablet-l: 768px;
+
+/// Media-Query Breakpoint: Desktop Small
+/// @type Number (px)
 $desktop-s: 1024px;
+
+/// Media-Query Breakpoint: Desktop Medium
+/// @type Number (px)
 $desktop-m: 1440px;
+
+/// Media-Query Breakpoint: Desktop Large
+/// @type Number (px)
 $desktop-l: 1920px;
+
+/// Media-Query Breakpoint: Desktop Extra-large
+/// @type Number (px)
 $desktop-xl: 2560px;
 
 /* -------------------------------- */
 /*   Media Queries: Multiple        */
 /* -------------------------------- */
 
+/// Provide one or more media-query mixins to target an element
+/// @parameter {String} $args - One or more media-query mixin names as strings.
+/// @example
+///   @include media(mobile-small, mobile-large) {
+///     background-color: red;
+///   }
 @mixin media($args...) {
   @each $arg in $args {
     @if $arg == 'mobile-small' {
@@ -103,72 +143,84 @@ $desktop-xl: 2560px;
 /*   Media Queries: Specific        */
 /* -------------------------------- */
 
+/// Media-query targeting small mobile screens.
 @mixin mobile-small {
   @media only screen and (min-width: #{$mobile-s}) and (max-width: #{$mobile-m - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting large mobile screens.
 @mixin mobile-large {
   @media only screen and (min-width: #{$mobile-m}) and (max-width: #{$mobile-l}) {
     @content;
   }
 }
 
+/// Media-query targeting all mobile screens.
 @mixin mobile-all {
   @media only screen and (max-width: #{$mobile-l}) {
     @content;
   }
 }
 
+/// Media-query targeting small tablet screens.
 @mixin tablet-small {
   @media only screen and (min-width: #{$mobile-l + 1px}) and (max-width: #{$tablet-s - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting medium tablet screens.
 @mixin tablet-medium {
   @media only screen and (min-width: #{$tablet-s}) and (max-width: #{$tablet-m - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting large tablet screens.
 @mixin tablet-large {
   @media only screen and (min-width: #{$tablet-m}) and (max-width: #{$tablet-l}) {
     @content;
   }
 }
 
+/// Media-query targeting extra-large tablet screens.
 @mixin tablet-xlarge {
   @media only screen and (min-width: #{$tablet-l + 1px}) and (max-width: #{$desktop-s - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting all tablet screens.
 @mixin tablet-all {
   @media only screen and (min-width: #{$mobile-l + 1px}) and (max-width: #{$tablet-l}) {
     @content;
   }
 }
 
+/// Media-query targeting small desktop screens.
 @mixin desktop-small {
   @media only screen and (min-width: #{$desktop-s}) and (max-width: #{$desktop-m - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting medium desktop screens.
 @mixin desktop-medium {
   @media only screen and (min-width: #{$desktop-m}) and (max-width: #{$desktop-l - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting large desktop screens.
 @mixin desktop-large {
   @media only screen and (min-width: #{$desktop-l}) and (max-width: #{$desktop-xl - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting extra-large desktop screens.
 @mixin desktop-xlarge {
   @media only screen and (min-width: #{$desktop-xl}) {
     @content;

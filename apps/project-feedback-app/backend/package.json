@@ -1,7 +1,7 @@
 {
   "name": "@apps/feedback-app-api",
   "version": "1.0.0",
-  "description": "FEM#35 Backend",
+  "description": "FEM#33 Backend",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "license": "ISC",
   "main": "./dist/server.js",

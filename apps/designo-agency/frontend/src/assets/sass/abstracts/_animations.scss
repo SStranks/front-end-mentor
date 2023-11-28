@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Animations
+////
+
 /*   Imports                        */
 @use 'variables' as *;
 @use 'media-queries' as mq;
@@ -21,9 +26,37 @@
 /*   Theme Transitions              */
 /* -------------------------------- */
 
+/// Provides the transition durations for background property.
+/// @example
+///   .class {
+///     transition: $theme-transition-bg
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
+
 $theme-transition-bg: background 1s;
+
+/// Provides the transition durations for color property.
+/// @example
+///   .class {
+///     transition: $theme-transition-color
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
 $theme-transition-color: color 1s;
+
+/// Provides the transition durations for fill property.
+/// @example
+///   .class {
+///     transition: $theme-transition-fill
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
 $theme-transition-fill: fill 1s;
+
+/// Provides the transition durations for border property.
+/// @example
+///   .class {
+///     transition: $theme-transition-border
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
 $theme-transition-border: border 1s;
 
 /* -------------------------------- */

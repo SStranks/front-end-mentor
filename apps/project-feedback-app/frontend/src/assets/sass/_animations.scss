@@ -13,11 +13,21 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Animations
+////
+
 /*   Imports                        */
 @use 'variables' as *;
 
 /*   Theme Transitions              */
-$theme-transition:
-  background 1s,
-  color 1s,
-  fill 1s;
+
+/// Provides the transition durations for the background property of the theme transition.
+/// @example
+///   .class {
+///     transition: $theme-transition
+///   }
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/transition MDN: CSS Transition
+
+$theme-transition: background 1s color 1s fill 1s;
