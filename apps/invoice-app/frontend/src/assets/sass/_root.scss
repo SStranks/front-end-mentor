@@ -13,10 +13,15 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Root
+////
+
 /*   Imports                        */
 @use './variables' as *;
 
-/*  Themes                          */
+/// Document root
 :root {
   --color-background: #{$color-3c};
   --color-text-p: #{$color-2d};
@@ -51,6 +56,8 @@
   // --color-input-text: #{$Dark_Grey};
 }
 
+/// Class applied to body tag to overwrite default variables
+/// @require {Map} $dark-theme dark theme map
 .dark-theme {
   --color-background: #{$color-3d};
   --color-text-p: #{$white};

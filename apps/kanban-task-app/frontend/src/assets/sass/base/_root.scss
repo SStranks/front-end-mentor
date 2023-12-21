@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Root
+////
+
 /*   Imports                        */
 @use './themes' as thm;
 
@@ -20,6 +25,7 @@
 /*   Root                           */
 /* -------------------------------- */
 
+/// Document root
 :root {
   // Establish default theme color variables
   @each $theme-item, $value in thm.$light-theme {

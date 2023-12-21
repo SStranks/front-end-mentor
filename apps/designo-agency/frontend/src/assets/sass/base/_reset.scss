@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Resets
+////
+
 /*   Imports                        */
 
 /* -------------------------------- */
@@ -27,6 +32,7 @@
   margin: 0;
 }
 
+/// Default scroll behaviour for entire document
 html:focus-within {
   scroll-behavior: smooth;
 }
@@ -39,12 +45,12 @@ select {
   background-color: transparent;
 }
 
-/* Elements that don't have a class get default styles */
+/// Elements that don't have a class get default styles
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+/// Remove all animations, transitions and smooth scroll for people that prefer not to see them
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;

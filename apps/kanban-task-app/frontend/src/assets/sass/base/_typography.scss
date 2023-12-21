@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Typography
+////
+
 /*   Imports                        */
 @use '../abstracts/variables' as v;
 @use 'font-face' as *;
@@ -21,11 +26,13 @@
 /*   Font                           */
 /* -------------------------------- */
 
+/// Sets the default font-family for the webpage.
 html,
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/// Sets the default font-family for all headers, parapgraphs, and spans, acrossthe webpage.
 h1,
 h2,
 h3,
@@ -37,6 +44,7 @@ span {
   font-family: inherit;
 }
 
+/// Removes the default text-decoration styling for links; not visited, visited, active, and hover.
 a,
 a:visited,
 a:active,

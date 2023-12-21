@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Themes
+////
+
 /*   Imports                        */
 @use '../abstracts/colors' as *;
 
@@ -22,6 +27,8 @@
 /*  Referenced in _root.scss        */
 /* -------------------------------- */
 
+/// Light Theme Map
+/// @type Map
 $light-theme: (
   bg-main: #{$col-1i},
   bg-sidebar: #{$White},
@@ -57,6 +64,8 @@ $light-theme: (
 /*   Dark Theme                     */
 /* -------------------------------- */
 
+/// Dark Theme Map
+/// @type Map
 // $dark-theme: (
 //   bg-main: #{$col-1d},
 //   bg-sidebar: #{$col-1e},
@@ -88,12 +97,13 @@ $light-theme: (
 //   task-title: #{$White},
 // );
 
-// Class applied to body tag to overwrite default variables
-// .dark-theme {
-//   @each $theme-item, $value in $dark-theme {
-//     --thm-#{$theme-item}: #{$value};
-//   }
-// }
+/// Class applied to body tag to overwrite default variables
+/// @require {Map} $dark-theme dark theme map
+.dark-theme {
+  @each $theme-item, $value in $dark-theme {
+    --thm-#{$theme-item}: #{$value};
+  }
+}
 
 /* -------------------------------- */
 /*   Alt Theme                      */
