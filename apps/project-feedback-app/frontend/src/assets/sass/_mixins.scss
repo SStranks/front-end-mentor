@@ -13,54 +13,76 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Mixins
+////
+
 /*   Imports                        */
 @use 'sass:math';
 @use './variables' as *;
 @use 'functions' as f;
 
 /*   Text: Body                     */
+
+/// Body styling - 1
+/// @require px2rem Pixel to REM converter <>
 @mixin body-1 {
   font-weight: 400;
   font-size: f.px2rem(16);
   line-height: f.px2rem(23);
 }
 
+/// Body styling - 2
+/// @require px2rem Pixel to REM converter <>
 @mixin body-2 {
   font-weight: 400;
   font-size: f.px2rem(15);
   line-height: f.px2rem(22);
 }
 
+/// Body styling - 3
+/// @require px2rem Pixel to REM converter <>
 @mixin body-3 {
   font-weight: 600;
   font-size: f.px2rem(13);
   line-height: f.px2rem(19);
 }
 
+/// Body styling - 4
+/// @require px2rem Pixel to REM converter <>
 @mixin body-4 {
   font-weight: 400;
   font-size: f.px2rem(14);
   line-height: f.px2rem(19);
 }
 
+/// Body styling - 5
+/// @require px2rem Pixel to REM converter <>
 @mixin body-5 {
   font-weight: 700;
   font-size: f.px2rem(14);
   line-height: f.px2rem(19);
 }
 
+/// Body styling - 6
+/// @require px2rem Pixel to REM converter <>
 @mixin body-6 {
   font-weight: 700;
   font-size: f.px2rem(13);
   line-height: f.px2rem(19);
 }
 
+/// Body styling - 7
+/// @require px2rem Pixel to REM converter <>
 @mixin body-7 {
   font-weight: 400;
   font-size: f.px2rem(13);
   line-height: f.px2rem(19);
 }
 
+/// Body styling - 8
+/// @require px2rem Pixel to REM converter <>
 @mixin body-8 {
   font-weight: 700;
   font-size: f.px2rem(18);
@@ -68,6 +90,10 @@
 }
 
 /*   Card                           */
+/// Card Styling
+/// @require px2em Pixel to EM converter <>
+/// @require $white color variable
+/// @require $border-radius-1 border radius variable
 @mixin card {
   background-color: $white;
   border-radius: $border-radius-1;
@@ -75,6 +101,14 @@
 }
 
 /*   Text Area                      */
+/// TextArea Styling
+/// @require {mixin} body-2 body styling mixin
+/// @require px2em Pixel to EM converter <>
+/// @require $pale-blue color variable
+/// @require $navy-blue color variable
+/// @require $fade-blue color variable
+/// @require $royal-blue color variable
+/// @require $border-radius-2 border radius variable
 @mixin textarea {
   @include body-2;
   border: none;
@@ -95,10 +129,15 @@
 }
 
 /*   Errors                         */
+/// Input Error - 1
+/// @require $blood-red color variable
 @mixin input-error1 {
   outline: 1px solid $blood-red;
 }
 
+/// Input Error
+/// @require $blood-red color variable
+/// @require {mixin} body-4 body styling mixin
 @mixin input-error {
   $element: &;
 
@@ -122,6 +161,9 @@
 }
 
 /*   Buttons                        */
+/// Button (Default) styling
+/// @require px2rem Pixel to REM converter <>
+/// @require px2em Pixel to EM converter <>
 @mixin btn-default {
   font-size: f.px2rem(16);
   font-weight: 700;
@@ -129,6 +171,9 @@
   padding: f.px2em(12) f.px2em(52);
 }
 
+/// Button styling - 1
+/// @require {mixin} btn-default Button (Default) styling
+/// @require $magenta color variable
 @mixin btn-1 {
   @include btn-default;
   background-color: $magenta;
@@ -138,6 +183,9 @@
   }
 }
 
+/// Button styling - 2
+/// @require {mixin} btn-default Button (Default) styling
+/// @require $royal-blue color variable
 @mixin btn-2 {
   @include btn-default;
   background-color: $royal-blue;
@@ -147,6 +195,9 @@
   }
 }
 
+/// Button styling - 3
+/// @require {mixin} btn-default Button (Default) styling
+/// @require $navy-blue color variable
 @mixin btn-3 {
   @include btn-default;
   background-color: $navy-blue;
@@ -156,6 +207,9 @@
   }
 }
 
+/// Button styling - 4
+/// @require {mixin} btn-default Button (Default) styling
+/// @require $blood-red color variable
 @mixin btn-4 {
   @include btn-default;
   background-color: $blood-red;
@@ -165,6 +219,10 @@
   }
 }
 
+/// Button (Back) styling
+/// /// @require px2rem Pixel to REM converter <>
+/// @require px2em Pixel to EM converter <>
+/// @require $dark-blue color variable
 @mixin btn-back {
   font-size: f.px2rem(16);
   font-weight: 700;
@@ -189,6 +247,12 @@
 // desktop-l:  2560px;
 
 /*   Media Queries: Multiple        */
+/// Provide one or more media-query mixins to target an element
+/// @parameter {String} $args - One or more media-query mixin names as strings.
+/// @example
+///   @include media(mobile-small, mobile-large) {
+///     background-color: red;
+///   }
 @mixin media($args...) {
   @each $arg in $args {
     @if $arg == 'mobile-small' {
@@ -250,66 +314,77 @@
 }
 
 /*   Media Queries: Specific        */
+/// Media-query targeting small mobile screens.
 @mixin mobile-small {
   @media (min-width: #{$mobile-s}) and (max-width: #{$mobile-m - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting medium mobile screens.
 @mixin mobile-medium {
   @media (min-width: #{$mobile-m}) and (max-width: #{$mobile-l - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting large mobile screens.
 @mixin mobile-large {
   @media (min-width: #{$mobile-l}) and (max-width: #{$tablet-s - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting all mobile screens.
 @mixin mobile-all {
   @media (min-width: #{$mobile-s}) and (max-width: #{$mobile-l - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting small tablet screens.
 @mixin tablet-small {
   @media (min-width: #{$tablet-s}) and (max-width: #{$tablet - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting regular tablet screens.
 @mixin tablet-regular {
   @media (min-width: #{$tablet}) and (max-width: #{$desktop-s - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting all tablet screens.
 @mixin tablet-all {
   @media (min-width: #{$tablet-s}) and (max-width: #{$tablet - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting extra-small desktop screens.
 @mixin desktop-extra-small {
   @media (min-width: #{$tablet}) and (max-width: #{$desktop-s - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting small desktop screens.
 @mixin desktop-small {
   @media (min-width: #{$desktop-s}) and (max-width: #{$desktop-m - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting medium desktop screens.
 @mixin desktop-medium {
   @media (min-width: #{$desktop-m}) and (max-width: #{$desktop-l - 1px}) {
     @content;
   }
 }
 
+/// Media-query targeting large desktop screens.
 @mixin desktop-large {
   @media (min-width: #{$desktop-l}) {
     @content;

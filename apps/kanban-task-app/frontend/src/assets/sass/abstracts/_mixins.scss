@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Mixins
+////
+
 /*   Imports                        */
 @use 'sass:list';
 @use 'sass:math';
@@ -24,24 +29,33 @@
 /* -------------------------------- */
 /*   Text: Header                   */
 /* -------------------------------- */
+
+/// Header (extra-large) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-xl {
   font-weight: 700;
   font-size: f.px2rem(24);
   line-height: f.px2rem(30);
 }
 
+/// Header (large) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-l {
   font-weight: 700;
   font-size: f.px2rem(18);
   line-height: f.px2rem(23);
 }
 
+/// Header (medium) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-m {
   font-weight: 700;
   font-size: f.px2rem(15);
   line-height: f.px2rem(19);
 }
 
+/// Header (small) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-s {
   font-weight: 700;
   font-size: f.px2rem(12);
@@ -53,12 +67,16 @@
 /*   Text: Body                     */
 /* -------------------------------- */
 
+/// Body (large) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin body-l {
   font-weight: 500;
   font-size: f.px2rem(13);
   line-height: f.px2rem(23);
 }
 
+/// Body (medium) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin body-m {
   font-weight: 700;
   font-size: f.px2rem(12);
@@ -69,6 +87,10 @@
 /*   Extend Click Area              */
 /* -------------------------------- */
 
+/// Extends the click area around clickable elements
+/// @parameter {Percentage} $x [175%] - Extend horizontal clickable area
+/// @parameter {Percentage} $y [150] - Extend horizontal clickable area
+/// @parameter {Boolean} $visible [true] - Debug: Display the visible click area with a color.
 @mixin extend-clickarea($x: 175%, $y: 150%, $visible: true) {
   &::before {
     content: '';

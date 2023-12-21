@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Variables
+////
+
 /*   Imports                        */
 @use '#Sass/abstracts/functions' as f;
 
@@ -20,16 +25,33 @@
 /*   Web Elements                   */
 /* -------------------------------- */
 
+/// Sidebar dimension width (large)
+/// @type Number (px)
 $sidebar-dim-width-l: 300px;
+
+/// Sidebar dimension width (medium)
+/// @type Number (px)
 $sidebar-dim-width-m: 260px;
+
+/// Sidebar dimension width (small)
+/// @type Number (px)
 $sidebar-dim-width-s: 300px;
+
+/// Navbar dimension height
+/// @type Number (px)
 $navbar-dim-height: 96px;
 
 /* -------------------------------- */
 /*   Margin & Padding               */
 /* -------------------------------- */
 
+/// Padding; desktop screens
+/// @type Number (px)
 $padding-desktop: 0 165px 56px 165px;
+
+/// margin; Forms
+/// @require px2em Pixel to EM converter <>
+/// @type Number (px)
 $margin-forms: f.px2em(50) 0;
 
 // $padding-transition: padding 2500ms ease-out;
@@ -39,25 +61,71 @@ $margin-forms: f.px2em(50) 0;
 /*   Borders                        */
 /* -------------------------------- */
 
-// Common radius across multiple elements
+/// Border Radius - 1
+/// @type Number (px)
 $border-radius-1: 4px;
+
+/// Border Radius - Buttons - 1
+/// @type Number (px)
 $border-radius-btn-1: 24px;
+
+/// Border Radius - Buttons - 2
+/// @type Number (px)
 $border-radius-btn-2: 20px;
+
+/// Border Radius - Checkbox - 1
+/// @require $border-radius-1
+/// @type Number (px)
 $border-radius-chkbx-1: $border-radius-1;
+
+/// Border Radius - Checkbox - 1
+/// @type Number (px)
 $border-radius-chkbx-2: 2px;
+
+/// Border Radius - Input (text)
+/// @require $border-radius-1
+/// @type Number (px)
 $border-radius-input-text: $border-radius-1;
+
+/// Border Radius - Dropdowns
+/// @require $border-radius-1
+/// @type Number (px)
 $border-radius-dropdown: $border-radius-1;
+
+/// Border Radius - Dropdown list
+/// @type Number (px)
 $border-radius-dropdown-list: 8px;
+
+/// Border Radius - Sidebar List-Item
+/// @type Number (px)
 $border-radius-sidebar-li: 100px;
+
+/// Border Radius - Sidebar Theme
+/// @type Number (px)
 $border-radius-sidebar-theme: 6px;
+
+/// Border Radius - Task
+/// @type Number (px)
 $border-radius-task: 8px;
+
+/// Border Radius - Column Empty
+/// @type Number (px)
 $border-radius-column-empty: 6px;
+
+/// Border Radius - Forms
+/// @type Number (px)
 $border-radius-forms: 6px;
+
+/// Border Radius - Subtask
+/// @type Number (px)
 $border-radius-forms-subtask: 4px;
 
 /* -------------------------------- */
 /*   Shadows                        */
 /* -------------------------------- */
 
+/// Box Shadow - 1
 $box-shadow-1: 0 4px 6px rgb(54 78 126 / 10%);
+
+/// Box Shadow - 2
 $box-shadow-2: 0 4px 6px rgb(55 2 124 / 10%);

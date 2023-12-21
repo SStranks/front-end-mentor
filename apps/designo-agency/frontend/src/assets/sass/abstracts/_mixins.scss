@@ -13,6 +13,11 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Mixins
+////
+
 /*   Imports                        */
 @use 'sass:math';
 @use 'animations' as a;
@@ -23,12 +28,17 @@
 /* -------------------------------- */
 /*   Text: Header                   */
 /* -------------------------------- */
+
+/// H1 header styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-h1 {
   font-weight: 500;
   font-size: f.px2rem(48);
   line-height: f.px2rem(48);
 }
 
+/// H2 header styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-h2 {
   font-weight: 500;
   font-size: f.px2rem(40);
@@ -36,6 +46,8 @@
   letter-spacing: f.px2rem(2);
 }
 
+/// H3 header styling
+/// @require px2rem Pixel to REM converter <>
 @mixin header-h3 {
   font-weight: 500;
   font-size: f.px2rem(20);
@@ -47,12 +59,16 @@
 /*   Text: Body                     */
 /* -------------------------------- */
 
+/// Body (regular) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin body-r {
   font-weight: 400;
   font-size: f.px2rem(16);
   line-height: f.px2rem(26);
 }
 
+/// Body (nav-link) styling
+/// @require px2rem Pixel to REM converter <>
 @mixin body-nav-link {
   font-weight: 400;
   font-size: f.px2rem(14);
@@ -64,6 +80,7 @@
 /*   Text: Decoration               */
 /* -------------------------------- */
 
+/// Link underline styling
 @mixin text-link-underline {
   cursor: pointer;
   text-decoration-line: underline;
@@ -74,6 +91,10 @@
 /*   Extend Click Area              */
 /* -------------------------------- */
 
+/// Extends the click area around clickable elements
+/// @parameter {Percentage} $x [175%] - Extend horizontal clickable area
+/// @parameter {Percentage} $y [150] - Extend horizontal clickable area
+/// @parameter {Boolean} $visible [true] - Debug: Display the visible click area with a color.
 @mixin extend-clickarea($x: 175%, $y: 150%, $visible: true) {
   &::before {
     content: '';
@@ -93,6 +114,13 @@
 /*   Input: Text                    */
 /* -------------------------------- */
 
+/// Input (text) styling
+/// @require px2em Pixel to EM converter <>
+/// @require {mixin} body-l styling mixin
+/// @require $col-2c color variable
+/// @require $border-radius-input-text border radius variable
+/// @require $--thm-input-text-default-active-placeholder input text default active placeholder
+/// @require $theme-transition-color theme transition color variable
 @mixin input-text {
   @include body-l;
   padding: f.px2em(8) f.px2em(16);
