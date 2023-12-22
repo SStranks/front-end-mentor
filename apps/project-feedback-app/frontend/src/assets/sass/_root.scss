@@ -13,10 +13,15 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Root
+////
+
 /*   Imports                        */
 @use './variables' as *;
 
-/*  Themes                          */
+/// Document root
 :root {
   --color-background: #{$pale-grey};
 

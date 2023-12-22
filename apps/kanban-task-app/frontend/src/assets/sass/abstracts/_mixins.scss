@@ -182,6 +182,9 @@
 /*   Colors: Column, Bullets        */
 /* -------------------------------- */
 
+/// Generates sequential colors for columns and bullets
+/// @parameter {Boolean} $zero-index [false] - Determines whether index base is 0 or 1.
+/// @require $col-theme-list color theme list
 @mixin color-theme($zero-index: false) {
   $j: 0;
   @if $zero-index == true {

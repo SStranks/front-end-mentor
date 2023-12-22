@@ -116,13 +116,10 @@
 
 /// Input (text) styling
 /// @require px2em Pixel to EM converter <>
-/// @require {mixin} body-l styling mixin
 /// @require $col-2c color variable
 /// @require $border-radius-input-text border radius variable
-/// @require $--thm-input-text-default-active-placeholder input text default active placeholder
 /// @require $theme-transition-color theme transition color variable
 @mixin input-text {
-  @include body-l;
   padding: f.px2em(8) f.px2em(16);
   background-color: transparent;
   border: 1px solid c.$col-2c;

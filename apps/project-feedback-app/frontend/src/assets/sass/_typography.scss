@@ -13,12 +13,18 @@
 /*   website:   github.com/SStranks */
 /* -------------------------------- */
 
+////
+/// --- SASSDOC
+/// @group Typography
+////
+
 /*   Imports                        */
 @use 'variables' as *;
 @use 'functions' as f;
 @import 'https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap';
 
 /*   Font                           */
+/// Sets the default font-family for the webpage.
 html,
 body {
   // 400 Regular. 600 Semi-bold. 700 Bold.
@@ -27,6 +33,7 @@ body {
 
 /*   Text                           */
 // For <p> see mixins for multiple definitions
+/// H1 Styling
 h1 {
   font-weight: 700;
   font-size: f.px2rem(24);
@@ -34,6 +41,7 @@ h1 {
   letter-spacing: f.px2rem(-0.33);
 }
 
+/// H2 Styling
 h2 {
   font-weight: 700;
   font-size: f.px2rem(20);
@@ -41,6 +49,7 @@ h2 {
   letter-spacing: f.px2rem(-0.25);
 }
 
+/// H3 Styling
 h3 {
   font-weight: 700;
   font-size: f.px2rem(18);
@@ -48,6 +57,7 @@ h3 {
   letter-spacing: f.px2rem(-0.25);
 }
 
+/// H4 Styling
 h4 {
   font-weight: 700;
   font-size: f.px2rem(14);
@@ -55,6 +65,7 @@ h4 {
   letter-spacing: f.px2rem(-0.2);
 }
 
+/// Span Styling
 span {
   font-size: 16px;
   font-weight: 700;
@@ -63,11 +74,8 @@ span {
   // color: $Very_Dark_Blue;
 }
 
-a {
-  color: inherit;
-  text-decoration: 0;
-}
-
+/// Removes the default text-decoration styling for links; not visited, visited, active, and hover.
+a,
 a:visited,
 a:active,
 a:hover {
