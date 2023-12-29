@@ -126,11 +126,12 @@ const ProdConfig = {
         {
           from: path.resolve(CWD, 'public'),
           to: path.resolve(CWD, 'dist/public'),
+          globOptions: { ignore: ['**/img/**'] },
           noErrorOnMissing: true,
         },
         {
           from: path.resolve(CWD, 'public/img'),
-          to: path.resolve(CWD, 'dist/img/[path][name].[contenthash][ext])'),
+          to: path.resolve(CWD, 'dist/img/[path][name].[contenthash][ext]'),
           noErrorOnMissing: true,
         },
         { from: path.resolve(CWD, 'public/robots.txt'), noErrorOnMissing: true },

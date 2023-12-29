@@ -1,0 +1,41 @@
+# Based on pnpm.io/docker
+# Primary Stage: Node Image with PNPM
+FROM node:18-alpine3.17 as primary
+RUN apk --no-cache add curl
+RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+# Secondary Stage: MonoRepo Dependencies
+FROM primary as secondary
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm fetch --frozen-lockfile --ignore-scripts
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --offline
+
+
+# # Tertiary Stage: Specific App Deployment
+FROM secondary as tertiary
+COPY apps/kanban-task-app/backend/package.json apps/kanban-task-app/backend/package.json
+RUN pnpm --filter=@apps/kanban-task-app-api deploy --dev pruned
+# COPY --from=secondary /app/dev /service
+# WORKDIR /service
+# LABEL version="1.0"
+# LABEL description="Image: FEM MONOREPO DEV"
+# EXPOSE 4000
+
+# ARG APP
+# RUN pnpm deploy --filter @apps/kanban-task-app-api --dev /dev/app
+
+
+# Quaternary Stage: Final Development Image
+# FROM secondary as tertiary
+# COPY --from=secondary /dev/app /app
+# # FROM tertiary as quaternary
+# # COPY --from=tertiary /dev/app /app
+# WORKDIR /app
+
+# LABEL version="1.0"
+# LABEL description="Image: FEM MONOREPO DEV"
+# EXPOSE 4000

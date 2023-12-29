@@ -57,7 +57,6 @@
     "@packages/babel-config": "workspace:*",
     "@packages/jest-config-react": "workspace:*",
     "@packages/prettier-config": "workspace:*",
-    "@packages/sassdoc-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@packages/webpack-config": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.8.3",

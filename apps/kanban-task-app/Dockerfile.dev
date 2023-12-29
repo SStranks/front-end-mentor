@@ -1,0 +1,25 @@
+# Based on pnpm.io/docker
+
+# Primary Stage: Node Image with PNPM
+FROM node:18-alpine3.17 as primary
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+
+# Secondary Stage: Development
+FROM primary as secondary
+COPY /backend/package.json /usr/src/app/
+WORKDIR /usr/src/app
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --dev
+
+
+## Tertiary Stage: Pruned
+FROM secondary as tertiary
+COPY --from=secondary /dev/node_modules /backend/node_modules
+WORKDIR /backend
+
+LABEL version="1.0"
+LABEL description="Image: FEM MONOREPO DEV"
+EXPOSE 4000
+
