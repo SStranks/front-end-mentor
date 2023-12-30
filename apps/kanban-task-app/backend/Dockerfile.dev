@@ -1,0 +1,8 @@
+# WIP: Not in use.
+
+# Primary Stage: Node Image with PNPM
+FROM node:18-alpine3.17 as primary
+RUN corepack enable
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+

@@ -1,19 +1,21 @@
 services:
 
-  # Backend: NodeJS Express
+  # Backend: NodeJS Express  
   node-api:
     container_name: fem33-node-api-dev
     image: node:18-alpine3.17
     working_dir: /backend
-    depends_on:
-      - mongodb-1
+    command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
+      - ./shared:/shared:ro
       - ./backend:/backend:ro
+      - ../../node_modules:/node_modules:ro
     env_file:
       - ./backend/.env.dev
-    command: npm start
+    depends_on:
+      - mongo-db
 
   # Frontend: React App
   # Use 'npm start' from ./frontend to init webpack-dev-server

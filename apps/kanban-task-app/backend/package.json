@@ -23,7 +23,7 @@
     "clean": "rm -rf dist",
     "watch": "tsc -w",
     "compile": "npm run clean && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
-    "start": "pnpm nodemon .",
+    "start": "nodemon .",
     "start:offline": "nodemon --exec 'node -r dotenv/config . dotenv_config_path=./.env.dev'",
     "prod": "node .",
     "prod:offline": "node -r dotenv/config . dotenv_config_path=./.env.prod",
