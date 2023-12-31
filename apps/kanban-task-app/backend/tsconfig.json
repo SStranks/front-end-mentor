@@ -1,5 +1,5 @@
 {
-  // "extends": "@packages/typescript-config/nodejs", // BUG:  PNPM/Docker/TS doesn't support symlink extends
+  // "extends": "@packages/typescript-config/nodejs", // BUG:  Typescript bug - still unresolved in 5.3.3
   "extends": "./tsconfig.node.json",
   "compilerOptions": {
     "baseUrl": "./server",
