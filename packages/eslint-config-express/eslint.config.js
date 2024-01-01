@@ -1,6 +1,6 @@
 import PluginImport from 'eslint-plugin-import';
-import PluginNode from 'eslint-plugin-node';
 import PluginSecurity from 'eslint-plugin-security';
+import PluginNode from 'eslint-plugin-n';
 
 import ConfigAirBnbBase from 'eslint-config-airbnb-base';
 
@@ -20,15 +20,14 @@ export const EslintConfigExpress = {
     },
   },
   plugins: {
-    PluginImport,
-    PluginNode,
-    PluginSecurity,
+    // import: PluginImport,
+    // security: PluginSecurity,
+    // n: PluginNode,
   },
   rules: {
     ...ConfigAirBnbBase.rules,
-    ...PluginSecurity.configs.recommended.rules,
-    ...PluginNode.configs.recommended.rules,
-    ...PluginSecurity.configs.recommended.rules,
+    // ...PluginSecurity.configs.recommended.rules,
+    // ...PluginNode.configs['flat/recommended-script'],
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'no-console': 'off',
     'arrow-body-style': 'off',

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import rateLimit from 'express-rate-limit';
 import Rollbar from 'rollbar';
 
@@ -14,8 +14,8 @@ const rollbarClient = async (req: Request) => {
       'X-Rollbar-Access-Token': `${process.env.ROLLBAR_POST_CLIENT_ITEM}`,
     },
   })
-    .then((res: Response) => res.json())
-    .then((json: JSON) => console.log(json))
+    .then((res) => res.json())
+    .then((json) => console.log(json))
     .catch((error: Error) => console.log(error));
 };
 

@@ -25,8 +25,10 @@ export default [
     // API - NodeJS Express + Testing (Jest)
     files: ['apps/*/backend/**/*.ts', 'apps/*/backend/**/*.js'],
     languageOptions: { ...EslintConfig.languageOptions, ...EslintConfigExpress.languageOptions },
-    plugins: { ...EslintConfig.plugins, ...EslintConfigExpress.plugins },
-    rules: { ...EslintConfig.rules, ...EslintConfigExpress.rules },
+    plugins: { ...EslintConfig.plugins },
+    rules: { ...EslintConfig.rules },
+    // plugins: { ...EslintConfig.plugins, ...EslintConfigExpress.plugins },
+    // rules: { ...EslintConfig.rules, ...EslintConfigExpress.rules },
     settings: { ...EslintConfig.settings, ...EslintConfigExpress.settings },
   },
   {

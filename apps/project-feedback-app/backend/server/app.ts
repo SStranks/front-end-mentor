@@ -5,10 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 
 import globalErrorHandler from '#Controllers/errorController';
-import {
-  rollbarClient,
-  rollbarRateLimit,
-} from '#Controllers/rollbarController';
+import { rollbarClient, rollbarRateLimit } from '#Controllers/rollbarController';
 import commentRouter from '#Routes/commentRoutes';
 import requestRouter from '#Routes/requestRoutes';
 import AppError from '#Utils/appError';

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable unicorn/numeric-separators-style */
 import AppError from '#Utils/appError';
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import { ErrorRequestHandler, Request, Response } from 'express';
 import { rollbarServer } from './rollbarController';
 
 const handleCastErrorDB = (err: any) => {
@@ -11,21 +11,16 @@ const handleCastErrorDB = (err: any) => {
 
 const handleDuplicateFieldsDB = (err: any) => {
   if (err.errmsg) {
-    const value = // eslint-disable-next-line security/detect-unsafe-regex
-      ((err.errmsg as string).match(/(["'])(\\?.)*?\1/) as Array<string>)[0];
+    // const value = // XXXeslint-disable-next-line security/detect-unsafe-regex
+    const value = ((err.errmsg as string).match(/(["'])(\\?.)*?\1/) as Array<string>)[0];
     const message = `Duplicate field value: ${value}. Please use another value!`;
     return new AppError(message, 400);
   }
-  return new AppError(
-    'Error: Duplicate field value; Error handler misconfiguration.',
-    400
-  );
+  return new AppError('Error: Duplicate field value; Error handler misconfiguration.', 400);
 };
 
 const handleValidationErrorDB = (err: any) => {
-  const errors = (Object.values(err.errors) as Record<string, unknown>[]).map(
-    (el) => el.message
-  );
+  const errors = (Object.values(err.errors) as Record<string, unknown>[]).map((el) => el.message);
   const message = `Invalid input data. ${errors.join('. ')}`;
   return new AppError(message, 400);
 };
@@ -58,12 +53,7 @@ const sendErrorProd = (err: any, res: Response) => {
   }
 };
 
-const globalErrorHandler: ErrorRequestHandler = (
-  err: any,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-): void => {
+const globalErrorHandler: ErrorRequestHandler = (err: any, _req: Request, res: Response): void => {
   let error = { ...err };
   error.message = err.message;
   error.statusCode = err.statusCode || 500;
@@ -77,8 +67,7 @@ const globalErrorHandler: ErrorRequestHandler = (
     // MongoDB Duplicate Fields Error.
     if (error.code === 11000) error = handleDuplicateFieldsDB(error);
     // MongoDB Validation Error
-    if (error.name === 'ValidationError')
-      error = handleValidationErrorDB(error);
+    if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
 
     sendErrorProd(error, res);
   }

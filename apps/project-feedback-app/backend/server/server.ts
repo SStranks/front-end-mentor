@@ -24,9 +24,7 @@ connectDB();
 const PORT = process.env.NODE_DOCKER_PORT || 3000;
 
 const server = app.listen(PORT, () => {
-  console.log(
-    `Server running successfuly in ${process.env.NODE_ENV} mode on Port ${PORT}`
-  );
+  console.log(`Server running successfuly in ${process.env.NODE_ENV} mode on Port ${PORT}`);
 });
 
 // Unhandled Rejection Errors
