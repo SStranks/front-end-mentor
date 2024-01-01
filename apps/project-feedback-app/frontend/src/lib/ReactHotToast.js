@@ -32,7 +32,7 @@ const toasterOptions = {
       style: {
         background: styles.colorToastRed,
         color: 'white',
-        textShadow: '0px 0px 8px hsla(0deg, 0%, 0%, 0.3)',
+        textShadow: '0px 0px 8px hsl(0deg 0% 0% / 30%)',
       },
     },
   },

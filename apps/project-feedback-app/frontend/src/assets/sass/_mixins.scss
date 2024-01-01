@@ -179,7 +179,7 @@
   background-color: $magenta;
 
   &:hover {
-    background-color: hsla(#{$magenta}, 0.5);
+    background-color: hsl(from $magenta h s l / 50%);
   }
 }
 
@@ -191,7 +191,7 @@
   background-color: $royal-blue;
 
   &:hover {
-    background-color: hsla(#{$royal-blue}, 0.5);
+    background-color: hsl(from $royal-blue h s l / 50%);
   }
 }
 
@@ -203,7 +203,7 @@
   background-color: $navy-blue;
 
   &:hover {
-    background-color: hsla(#{$navy-blue}, 0.5);
+    background-color: hsl(from $navy-blue h s l / 50%);
   }
 }
 
@@ -215,7 +215,7 @@
   background-color: $blood-red;
 
   &:hover {
-    background-color: hsla(#{$blood-red}, 0.5);
+    background-color: hsl(from $blood-red h s l / 50%);
   }
 }
 
@@ -231,7 +231,7 @@
   background-color: $dark-blue;
 
   &:hover {
-    background-color: hsla(#{$dark-blue}, 0.5);
+    background-color: hsl(from $dark-blue h s l / 50%);
     text-decoration: underline;
   }
 }

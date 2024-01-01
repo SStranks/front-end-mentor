@@ -7,7 +7,7 @@ module.exports = {
     'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ['vertical', 'horizontal'],
+        ignorePseudoClasses: ['vertical', 'horizontal', 'export'],
       },
     ],
   },
