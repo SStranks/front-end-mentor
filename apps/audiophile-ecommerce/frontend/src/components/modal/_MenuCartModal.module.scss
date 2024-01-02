@@ -24,28 +24,44 @@
   background-color: c.$col-3a;
   overflow-y: auto;
   z-index: f.z('modal');
+}
 
-  @include mq.media(desktop-small) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(desktop-small) {
+  .container {
     padding-inline: v.$padding-desktop-small-horizontal;
   }
+}
 
-  @include mq.media(desktop-mini, desktop-micro) {
+@include mq.media(desktop-mini, desktop-micro) {
+  .container {
     padding-inline: v.$padding-desktop-mini-horizontal;
   }
+}
 
-  @include mq.media(tablet-large) {
+@include mq.media(tablet-large) {
+  .container {
     padding-inline: v.$padding-tablet-horizontal;
   }
+}
 
-  @include mq.media(tablet-regular, tablet-small) {
+@include mq.media(tablet-regular, tablet-small) {
+  .container {
     padding-inline: v.$padding-tablet-small-horizontal;
   }
+}
 
-  @include mq.media(tablet-mini, tablet-micro) {
+@include mq.media(tablet-mini, tablet-micro) {
+  .container {
     padding-inline: v.$padding-tablet-mini-horizontal;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .container {
     padding-inline: v.$padding-mobile-horizontal;
   }
 }

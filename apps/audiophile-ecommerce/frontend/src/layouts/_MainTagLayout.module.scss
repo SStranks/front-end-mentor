@@ -10,43 +10,50 @@
     margin: 0 auto;
     max-width: 1400px;
   }
+}
 
-  @include mq.media(desktop-small) {
-    // background-color: green;
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(desktop-small) {
+  .main {
     padding: v.$padding-desktop-vertical v.$padding-desktop-small-horizontal;
-  }
-
-  @include mq.media(desktop-mini) {
-    // background-color: red;
-    padding: v.$padding-desktop-vertical v.$padding-desktop-mini-horizontal;
-  }
-
-  @include mq.media(desktop-micro) {
-    // background-color: red;
-    padding: v.$padding-desktop-vertical v.$padding-desktop-mini-horizontal;
-  }
-
-  @include mq.media(tablet-large) {
-    // background-color: blue;
-    padding: v.$padding-desktop-vertical v.$padding-tablet-horizontal;
-  }
-
-  @include mq.media(tablet-regular, tablet-small) {
-    // background-color: purple;
-    padding: v.$padding-desktop-vertical v.$padding-tablet-small-horizontal;
-  }
-
-  @include mq.media(tablet-mini, tablet-micro) {
-    // background-color: gold;
-    padding: v.$padding-desktop-vertical v.$padding-tablet-mini-horizontal;
-  }
-
-  @include mq.media(mobile-all) {
-    // background-color: cyan;
-    padding: v.$padding-mobile-vertical v.$padding-mobile-horizontal;
   }
 }
 
-/* -------------------------------- */
-/*   Media Queries                  */
-/* -------------------------------- */
+@include mq.media(desktop-mini) {
+  .main {
+    padding: v.$padding-desktop-vertical v.$padding-desktop-mini-horizontal;
+  }
+}
+
+@include mq.media(desktop-micro) {
+  .main {
+    padding: v.$padding-desktop-vertical v.$padding-desktop-mini-horizontal;
+  }
+}
+
+@include mq.media(tablet-large) {
+  .main {
+    padding: v.$padding-desktop-vertical v.$padding-tablet-horizontal;
+  }
+}
+
+@include mq.media(tablet-regular, tablet-small) {
+  .main {
+    padding: v.$padding-desktop-vertical v.$padding-tablet-small-horizontal;
+  }
+}
+
+@include mq.media(tablet-mini, tablet-micro) {
+  .main {
+    padding: v.$padding-desktop-vertical v.$padding-tablet-mini-horizontal;
+  }
+}
+
+@include mq.media(mobile-all) {
+  .main {
+    padding: v.$padding-mobile-vertical v.$padding-mobile-horizontal;
+  }
+}

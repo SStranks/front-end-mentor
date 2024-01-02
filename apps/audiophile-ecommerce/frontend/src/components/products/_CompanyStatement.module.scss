@@ -36,6 +36,10 @@
   }
 }
 
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
 @include mq.media(desktop-micro, tablet-all, mobile-all) {
   .card {
     // tablet-regular, tablet-small, tablet-mini, tablet-micro

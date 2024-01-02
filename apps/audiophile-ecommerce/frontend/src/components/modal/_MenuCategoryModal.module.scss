@@ -27,16 +27,26 @@
 .elementContainer {
   background-color: c.$col-2b;
   border-radius: 0 0 v.$border-radius-1 v.$border-radius-1;
+}
 
-  @include mq.media(tablet-regular, tablet-small) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(tablet-regular, tablet-small) {
+  .elementContainer {
     padding: f.px2em(32) v.$padding-tablet-small-horizontal;
   }
+}
 
-  @include mq.media(tablet-mini, tablet-micro) {
+@include mq.media(tablet-mini, tablet-micro) {
+  .elementContainer {
     padding: f.px2em(32) v.$padding-tablet-mini-horizontal;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(mobile-all) {
+  .elementContainer {
     padding: f.px2em(32) v.$padding-mobile-horizontal;
   }
 }
