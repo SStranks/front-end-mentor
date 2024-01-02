@@ -21,16 +21,6 @@
   height: fit-content;
   padding-top: f.px2em(92);
   margin-bottom: f.px2em(200);
-
-  @include media(
-    tablet-regular,
-    tablet-small,
-    mobile-large,
-    mobile-medium,
-    mobile-small
-  ) {
-    padding: f.px2em(56) f.px2em(20) f.px2em(0);
-  }
 }
 
 .nav {
@@ -42,5 +32,15 @@
   & > a:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-regular, tablet-small, mobile-large, mobile-medium, mobile-small) {
+  .modal {
+    padding: f.px2em(56) f.px2em(20) f.px2em(0);
   }
 }

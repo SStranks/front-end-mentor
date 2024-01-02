@@ -9,11 +9,6 @@
   height: 100%;
   padding-bottom: 120px;
   overflow-y: auto;
-
-  @include media(mobile-large, mobile-medium, mobile-small) {
-    padding: 0 f.px2em(24);
-    padding-bottom: 120px;
-  }
 }
 
 .noList {
@@ -24,10 +19,6 @@
   align-items: center;
   padding: f.px2em(110) f.px2em(24);
   text-align: center;
-
-  @include media(mobile-all, mobile-large) {
-    margin: 0 24px;
-  }
 
   & > img {
     width: 130px;
@@ -53,4 +44,39 @@
 .btn {
   width: 157px;
   height: 44px;
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(mobile-all) {
+  .noList {
+    margin: 0 24px;
+  }
+}
+
+@include media(mobile-large) {
+  .list {
+    padding: 0 f.px2em(24);
+    padding-bottom: 120px;
+  }
+
+  .noList {
+    margin: 0 24px;
+  }
+}
+
+@include media(mobile-medium) {
+  .list {
+    padding: 0 f.px2em(24);
+    padding-bottom: 120px;
+  }
+}
+
+@include media(mobile-small) {
+  .list {
+    padding: 0 f.px2em(24);
+    padding-bottom: 120px;
+  }
 }

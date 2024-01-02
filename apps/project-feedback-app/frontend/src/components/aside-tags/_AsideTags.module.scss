@@ -5,14 +5,20 @@
 .container {
   @include card;
   height: 100%;
-
-  @include media(mobile-large, mobile-medium, mobile-small) {
-    height: fit-content;
-  }
 }
 
 .categories {
   display: flex;
   flex-wrap: wrap;
   gap: f.px2em(14) f.px2em(8);
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(mobile-large, mobile-medium, mobile-small) {
+  .container {
+    height: fit-content;
+  }
 }

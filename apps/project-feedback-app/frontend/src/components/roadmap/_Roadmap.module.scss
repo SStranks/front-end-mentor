@@ -33,25 +33,11 @@
   background-color: $white;
   color: $mute-blue;
 
-  @include media(tablet-regular, tablet-small) {
-    padding: f.px2em(24) f.px2em(20);
-  }
-
   &__status {
     display: flex;
     align-items: center;
     column-gap: f.px2em(15);
     margin-bottom: f.px2em(8);
-
-    @include media(
-      tablet-regular,
-      tablet-small,
-      mobile-large,
-      mobile-medium,
-      mobile-small
-    ) {
-      @include body-7;
-    }
   }
 
   &__bullet {
@@ -80,30 +66,10 @@
       cursor: pointer;
       color: $royal-blue;
     }
-
-    @include media(
-      tablet-regular,
-      tablet-small,
-      mobile-large,
-      mobile-medium,
-      mobile-small
-    ) {
-      @include body-6;
-    }
   }
 
   &__content {
     margin-bottom: f.px2em(16);
-
-    @include media(
-      tablet-regular,
-      tablet-small,
-      mobile-large,
-      mobile-medium,
-      mobile-small
-    ) {
-      @include body-7;
-    }
   }
 
   &__UI {
@@ -119,6 +85,94 @@
 
     & img {
       height: fit-content;
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-regular) {
+  .innerCard {
+    padding: f.px2em(24) f.px2em(20);
+
+    &__status {
+      @include body-7;
+    }
+
+    &__title {
+      @include body-6;
+    }
+
+    &__content {
+      @include body-7;
+    }
+  }
+}
+
+@include media(tablet-small) {
+  .innerCard {
+    padding: f.px2em(24) f.px2em(20);
+
+    &__status {
+      @include body-7;
+    }
+
+    &__title {
+      @include body-6;
+    }
+
+    &__content {
+      @include body-7;
+    }
+  }
+}
+
+@include media(mobile-large) {
+  .innerCard {
+    &__status {
+      @include body-7;
+    }
+
+    &__title {
+      @include body-6;
+    }
+
+    &__content {
+      @include body-7;
+    }
+  }
+}
+
+@include media(mobile-medium) {
+  .innerCard {
+    &__status {
+      @include body-7;
+    }
+
+    &__title {
+      @include body-6;
+    }
+
+    &__content {
+      @include body-7;
+    }
+  }
+}
+
+@include media(mobile-small) {
+  .innerCard {
+    &__status {
+      @include body-7;
+    }
+
+    &__title {
+      @include body-6;
+    }
+
+    &__content {
+      @include body-7;
     }
   }
 }

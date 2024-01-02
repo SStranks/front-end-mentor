@@ -12,11 +12,6 @@
   background-color: $navy-blue;
   color: $white;
 
-  @include media(mobile-large, mobile-medium, mobile-small) {
-    padding: f.px2em(26) f.px2em(24);
-    border-radius: 0;
-  }
-
   &__nav {
     display: flex;
     flex-direction: column;
@@ -41,7 +36,9 @@
       opacity: 1;
       transform: scale(0);
       transform-origin: center;
-      transition: opacity 300ms, transform 600ms;
+      transition:
+        opacity 300ms,
+        transform 600ms;
     }
 
     &:hover::after,
@@ -57,5 +54,30 @@
   &__btn {
     width: 158px;
     height: 44px;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(mobile-large) {
+  .bar {
+    padding: f.px2em(26) f.px2em(24);
+    border-radius: 0;
+  }
+}
+
+@include media(mobile-medium) {
+  .bar {
+    padding: f.px2em(26) f.px2em(24);
+    border-radius: 0;
+  }
+}
+
+@include media(mobile-small) {
+  .bar {
+    padding: f.px2em(26) f.px2em(24);
+    border-radius: 0;
   }
 }

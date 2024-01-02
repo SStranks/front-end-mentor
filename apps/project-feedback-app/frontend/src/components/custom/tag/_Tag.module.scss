@@ -22,8 +22,14 @@
     background-color: $royal-blue;
     color: $white;
   }
+}
 
-  @include media(tablet-regular) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-regular) {
+  .tag {
     height: 30px;
   }
 }
