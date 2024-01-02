@@ -11,8 +11,8 @@ const handleCastErrorDB = (err: any) => {
 
 const handleDuplicateFieldsDB = (err: any) => {
   if (err.errmsg) {
-    // const value = // XXXeslint-disable-next-line security/detect-unsafe-regex
-    const value = ((err.errmsg as string).match(/(["'])(\\?.)*?\1/) as Array<string>)[0];
+    const value = // eslint-disable-next-line security/detect-unsafe-regex
+      ((err.errmsg as string).match(/(["'])(\\?.)*?\1/) as Array<string>)[0];
     const message = `Duplicate field value: ${value}. Please use another value!`;
     return new AppError(message, 400);
   }

@@ -31,6 +31,7 @@ export const EslintConfigExpress = {
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'no-console': 'off',
     'arrow-body-style': 'off',
+    'n/no-missing-import': 'off',
   },
 };
 
