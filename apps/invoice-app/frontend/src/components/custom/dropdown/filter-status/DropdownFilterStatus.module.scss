@@ -35,29 +35,40 @@
   background-color: transparent;
 
   @include extend-clickarea(120%, 150%, false);
-  @include media(mobile-small) {
-    flex-direction: column;
-    justify-content: center;
-    row-gap: 4px;
-  }
 
   & > h3 {
     color: var(--color-text-p);
     transition: a.$theme-transition;
-
-    & > span {
-      @include media(mobile-all) {
-        display: none;
-        transition: a.$theme-transition;
-      }
-    }
   }
 
   & > img {
     height: fit-content;
     margin-left: f.px2em(16);
+  }
+}
 
-    @include media(mobile-small) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(mobile-all) {
+  .btn {
+    & > h3 {
+      & > span {
+        display: none;
+        transition: a.$theme-transition;
+      }
+    }
+  }
+}
+
+@include media(mobile-small) {
+  .btn {
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 4px;
+
+    & > img {
       margin-left: 0;
     }
   }

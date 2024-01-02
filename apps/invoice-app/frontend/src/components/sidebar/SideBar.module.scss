@@ -12,19 +12,6 @@
   border-radius: 0 20px 20px 0;
   z-index: f.z('sidebar');
 
-  @include media(tablet-all, mobile-all) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: $sidebar-dim-tablet;
-    border-radius: 0;
-  }
-
-  @include media(mobile-all) {
-    height: $sidebar-dim-mobile;
-  }
-
   &__logo {
     position: relative;
     display: flex;
@@ -35,16 +22,6 @@
     background-color: $color-1a;
     border-radius: 0 20px 20px 0;
     overflow: hidden;
-
-    @include media(tablet-all) {
-      width: 80px;
-      height: $sidebar-dim-tablet;
-    }
-
-    @include media(mobile-all) {
-      width: 72px;
-      height: $sidebar-dim-mobile;
-    }
 
     &::before {
       content: '';
@@ -60,14 +37,6 @@
       width: 40px;
       height: auto;
       z-index: f.z('sidebar-logo');
-
-      @include media(tablet-all) {
-        width: 30px;
-      }
-
-      @include media(mobile-all) {
-        width: 28px;
-      }
     }
   }
 
@@ -76,10 +45,6 @@
     justify-content: center;
     margin-top: auto;
     margin-bottom: f.px2em(32);
-
-    @include media(tablet-all, mobile-all) {
-      margin: 0 f.px2em(24) 0 auto;
-    }
   }
 
   &__user {
@@ -92,8 +57,67 @@
     & > img {
       display: none;
     }
+  }
+}
 
-    @include media(tablet-all, mobile-all) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-all) {
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: $sidebar-dim-tablet;
+    border-radius: 0;
+
+    &__logo {
+      width: 80px;
+      height: $sidebar-dim-tablet;
+
+      & > img {
+        width: 30px;
+      }
+    }
+
+    &__themeswitch {
+      margin: 0 f.px2em(24) 0 auto;
+    }
+
+    &__user {
+      height: 100%;
+      padding: f.px2em(24);
+      border-top: none;
+      border-left: 1px solid $color-2b;
+    }
+  }
+}
+
+@include media(mobile-all) {
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: $sidebar-dim-mobile;
+    border-radius: 0;
+
+    &__logo {
+      width: 72px;
+      height: $sidebar-dim-mobile;
+
+      & > img {
+        width: 28px;
+      }
+    }
+
+    &__themeswitch {
+      margin: 0 f.px2em(24) 0 auto;
+    }
+
+    &__user {
       height: 100%;
       padding: f.px2em(24);
       border-top: none;

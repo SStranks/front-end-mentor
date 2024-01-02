@@ -17,41 +17,14 @@
   background-repeat: no-repeat;
   border-radius: v.$border-radius-1;
 
-  @include mq.media(tablet-all, tablet-xlarge) {
-    margin-bottom: f.px2em(120);
-  }
-
-  @include mq.media(mobile-all) {
-    padding: f.px2em(105) f.px2em(24);
-    margin: 0 -24px f.px2em(95);
-    border-radius: 0;
-  }
-
-  @include mq.media(mobile-small) {
-    padding: f.px2em(80) f.px2em(24);
-  }
-
   & > h1 {
     @include mx.header-h1;
-    @include mq.media(mobile-all) {
-      font-size: f.px2em(32);
-      line-height: 36px;
-    }
   }
 
   & > p {
     max-width: 40%;
     margin-top: f.px2em(24);
     text-align: center;
-
-    @include mq.media(tablet-all) {
-      max-width: 65%;
-    }
-
-    @include mq.media(mobile-all) {
-      max-width: 100%;
-      font-size: f.px2em(15);
-    }
   }
 }
 
@@ -61,16 +34,6 @@
   grid-template-rows: repeat(2, 1fr);
   gap: 32px;
   margin-bottom: f.px2em(160);
-
-  @include mq.media(tablet-xlarge) {
-    margin-bottom: f.px2em(120);
-  }
-
-  @include mq.media(tablet-all, mobile-all) {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin-bottom: f.px2em(120);
-  }
 }
 
 .viewgrid {
@@ -80,15 +43,78 @@
   grid-template-columns: repeat(2, 1fr);
   height: 308px;
   column-gap: 30px;
+}
 
-  @include mq.media(tablet-all, mobile-all) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(tablet-all) {
+  .header {
+    margin-bottom: f.px2em(120);
+
+    & > p {
+      max-width: 65%;
+    }
+  }
+
+  .examplegrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: f.px2em(120);
+  }
+
+  .viewgrid {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 200px);
     row-gap: 24px;
     height: unset;
   }
+}
 
-  @include mq.media(mobile-all) {
+@include mq.media(tablet-xlarge) {
+  .header {
+    margin-bottom: f.px2em(120);
+  }
+
+  .examplegrid {
+    margin-bottom: f.px2em(120);
+  }
+}
+
+@include mq.media(mobile-all) {
+  .header {
+    padding: f.px2em(105) f.px2em(24);
+    margin: 0 -24px f.px2em(95);
+    border-radius: 0;
+
+    & > h1 {
+      font-size: f.px2em(32);
+      line-height: 36px;
+    }
+
+    & > p {
+      max-width: 100%;
+      font-size: f.px2em(15);
+    }
+  }
+
+  .examplegrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: f.px2em(120);
+  }
+
+  .viewgrid {
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 250px);
+    row-gap: 24px;
+    height: unset;
+  }
+}
+
+@include mq.media(mobile-small) {
+  .header {
+    padding: f.px2em(80) f.px2em(24);
   }
 }

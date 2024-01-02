@@ -8,11 +8,6 @@
   border-radius: v.$border-radius-1;
   overflow: hidden;
 
-  @include mq.media(tablet-all) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   & > img {
     height: fit-content;
     background-repeat: no-repeat;
@@ -25,10 +20,6 @@
     padding: f.px2em(32);
     text-align: center;
     background-color: c.$col-2d;
-
-    @include mq.media(tablet-all) {
-      justify-content: center;
-    }
 
     & > h3 {
       @include mx.header-h3;
@@ -48,6 +39,21 @@
       > p {
         color: c.$col-1c;
       }
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(tablet-all) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__info {
+      justify-content: center;
     }
   }
 }

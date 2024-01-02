@@ -19,12 +19,6 @@
   color: c.$col-1c;
   row-gap: f.px2em(24);
 
-  @include mq.media(mobile-all) {
-    row-gap: 12px;
-    background-color: hsl(0deg 0% 0% / 45%);
-    background-blend-mode: multiply;
-  }
-
   &:hover {
     background-color: hsl(11deg 73% 66% / 100%);
     background-blend-mode: multiply;
@@ -35,12 +29,6 @@
     padding: 0 f.px2em(8);
     text-align: center;
     z-index: 2;
-
-    @include mq.media(mobile-all) {
-      font-size: f.px2em(28);
-      line-height: 36px;
-      letter-spacing: 1.4px;
-    }
   }
 
   &__view {
@@ -56,6 +44,24 @@
 
     & > img {
       height: fit-content;
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(mobile-all) {
+  .card {
+    row-gap: 12px;
+    background-color: hsl(0deg 0% 0% / 45%);
+    background-blend-mode: multiply;
+
+    & > h2 {
+      font-size: f.px2em(28);
+      line-height: 36px;
+      letter-spacing: 1.4px;
     }
   }
 }

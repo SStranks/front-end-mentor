@@ -18,12 +18,6 @@
   & > p {
     flex-grow: 1;
     margin: 0 f.px2em(14);
-
-    & > span {
-      @include media(tablet-small, mobile-all) {
-        display: none;
-      }
-    }
   }
 
   &__icon {
@@ -44,4 +38,28 @@
 
 .hidden {
   display: none;
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-small) {
+  .button {
+    & > p {
+      & > span {
+        display: none;
+      }
+    }
+  }
+}
+
+@include media(mobile-all) {
+  .button {
+    & > p {
+      & > span {
+        display: none;
+      }
+    }
+  }
 }

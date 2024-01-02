@@ -9,10 +9,6 @@
   margin-bottom: f.px2em(24);
   overflow-y: hidden;
 
-  @include media(tablet-all) {
-    margin-bottom: f.px2em(24);
-  }
-
   &__invoices {
     height: 100%;
     position: relative;
@@ -21,14 +17,6 @@
     row-gap: f.px2em(16);
     padding: f.px2em(5) 8px 0 f.px2em(7);
     overflow-y: scroll;
-
-    @include media(mobile-all) {
-      padding: 0 8px;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
 
     // Can't transition linear-gradients :(
 
@@ -66,6 +54,28 @@
       margin-top: f.px2em(24);
       color: $color-2b;
       text-align: center;
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-all) {
+  .container {
+    margin-bottom: f.px2em(24);
+  }
+}
+
+@include media(mobile-all) {
+  .container {
+    &__invoices {
+      padding: 0 8px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 }

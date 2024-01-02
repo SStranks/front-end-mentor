@@ -8,24 +8,48 @@
 
   &__subContainer {
     padding: v.$padding-desktop;
+  }
+}
 
-    @include mq.desktop-small {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.desktop-small {
+  .container {
+    &__subContainer {
       padding: v.$padding-desktop-small;
     }
+  }
+}
 
-    @include mq.tablet-xlarge {
+@include mq.tablet-xlarge {
+  .container {
+    &__subContainer {
       padding: v.$padding-tablet-xl;
     }
+  }
+}
 
-    @include mq.media(tablet-large) {
+@include mq.media(tablet-large) {
+  .container {
+    &__subContainer {
       padding: v.$padding-tablet;
     }
+  }
+}
 
-    @include mq.media(tablet-medium, tablet-small) {
+@include mq.media(tablet-medium, tablet-small) {
+  .container {
+    &__subContainer {
       padding: v.$padding-tablet-small;
     }
+  }
+}
 
-    @include mq.mobile-all {
+@include mq.mobile-all {
+  .container {
+    &__subContainer {
       padding: v.$padding-mobile;
     }
   }

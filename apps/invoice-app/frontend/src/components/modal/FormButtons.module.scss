@@ -18,16 +18,6 @@
   transform-style: preserve-3d;
   transition: a.$theme-transition;
 
-  @include media(tablet-large) {
-    width: 100%;
-  }
-
-  @include media(tablet-medium, tablet-small, mobile-all) {
-    width: 100%;
-    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
-    border-radius: 0;
-  }
-
   &::before {
     content: '';
     pointer-events: none;
@@ -96,5 +86,38 @@
   & > button {
     @include btn.btn-element;
     @include btn.btn-purple-hover;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-large) {
+  .container {
+    width: 100%;
+  }
+}
+
+@include media(tablet-medium) {
+  .container {
+    width: 100%;
+    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
+    border-radius: 0;
+  }
+}
+
+@include media(tablet-small) {
+  .container {
+    width: 100%;
+    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
+    border-radius: 0;
+  }
+}
+@include media(mobile-all) {
+  .container {
+    width: 100%;
+    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
+    border-radius: 0;
   }
 }

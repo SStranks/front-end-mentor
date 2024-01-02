@@ -11,25 +11,9 @@
   padding-left: f.px2em(7);
 
   &__titleblock {
-    & > h1 {
-      @include media(mobile-all, tablet-small) {
-        font-size: f.px2rem(32);
-      }
-
-      @include media(mobile-small) {
-        font-size: f.px2rem(24);
-      }
-    }
-
     & > p {
       @include body-1;
       margin-top: f.px2em(6);
-
-      & > span {
-        @include media(tablet-small, mobile-all) {
-          display: none;
-        }
-      }
     }
   }
 
@@ -37,9 +21,59 @@
     display: flex;
     align-items: center;
     column-gap: f.px2em(40.5);
+  }
+}
 
-    @include media(tablet-small, mobile-all) {
-      column-gap: f.px2em(20);
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-small) {
+  .container {
+    &__titleblock {
+      & > h1 {
+        font-size: f.px2rem(32);
+      }
+
+      & > p {
+        & > span {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__controls {
+    column-gap: f.px2em(20);
+  }
+}
+
+@include media(mobile-all) {
+  .container {
+    &__titleblock {
+      & > h1 {
+        font-size: f.px2rem(32);
+      }
+
+      & > p {
+        & > span {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__controls {
+    column-gap: f.px2em(20);
+  }
+}
+
+@include media(mobile-small) {
+  .container {
+    &__titleblock {
+      & > h1 {
+        font-size: f.px2rem(24);
+      }
     }
   }
 }

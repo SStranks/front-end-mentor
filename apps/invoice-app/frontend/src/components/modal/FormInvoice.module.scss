@@ -19,19 +19,6 @@ $margin-btm: f.px2em(42);
   padding-inline: f.px2em(56);
   overflow-y: scroll;
 
-  @include media(tablet-all, mobile-all) {
-    margin-left: 0;
-  }
-
-  @include media(tablet-medium, tablet-small, mobile-all) {
-    padding-inline: f.px2em(32);
-    margin: 0;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -56,10 +43,6 @@ $margin-btm: f.px2em(42);
     column-gap: f.px2em(24);
     margin-bottom: $margin-btm;
 
-    @include media(tablet-medium, tablet-small, mobile-all) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     & > p {
       margin-bottom: f.px2em(24);
       font-weight: 700;
@@ -69,16 +52,6 @@ $margin-btm: f.px2em(42);
     &__street {
       grid-column: 1 / span 3;
       margin-bottom: f.px2em(24);
-
-      @include media(tablet-medium, tablet-small, mobile-all) {
-        grid-column: 1 / span 2;
-      }
-    }
-
-    &__country {
-      @include media(tablet-medium, tablet-small, mobile-all) {
-        grid-column: 1 / 2;
-      }
     }
   }
 
@@ -89,25 +62,11 @@ $margin-btm: f.px2em(42);
     column-gap: f.px2em(24);
     margin-bottom: $margin-btm;
 
-    @include media(tablet-medium, tablet-small, mobile-all) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     &__name,
     &__email,
     &__address {
       grid-column: 1 / span 3;
       margin-bottom: f.px2em(24);
-
-      @include media(tablet-medium, tablet-small, mobile-all) {
-        grid-column: 1 / span 2;
-      }
-    }
-
-    &__country {
-      @include media(tablet-medium, tablet-small, mobile-all) {
-        grid-column: 1 / span 2;
-      }
     }
 
     & > p {
@@ -241,6 +200,118 @@ $margin-btm: f.px2em(42);
     // Custom FormItem component
     & input[data-input-element='formItem']:invalid {
       border: 1px solid $color-3a;
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include media(tablet-all) {
+  .form {
+    margin-left: 0;
+  }
+}
+
+@include media(tablet-medium) {
+  .form {
+    padding-inline: f.px2em(32);
+    margin: 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__from {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__street {
+        grid-column: 1 / span 2;
+      }
+
+      &__country {
+        grid-column: 1 / 2;
+      }
+    }
+
+    &__to {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__name,
+      &__email,
+      &__address,
+      &__country {
+        grid-column: 1 / span 2;
+      }
+    }
+  }
+}
+
+@include media(tablet-small) {
+  .form {
+    padding-inline: f.px2em(32);
+    margin: 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__from {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__street {
+        grid-column: 1 / span 2;
+      }
+
+      &__country {
+        grid-column: 1 / 2;
+      }
+    }
+
+    &__to {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__name,
+      &__email,
+      &__address,
+      &__country {
+        grid-column: 1 / span 2;
+      }
+    }
+  }
+}
+
+@include media(mobile-all) {
+  .form {
+    margin: 0;
+    padding-inline: f.px2em(32);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__from {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__street {
+        grid-column: 1 / span 2;
+      }
+
+      &__country {
+        grid-column: 1 / 2;
+      }
+    }
+
+    &__to {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__name,
+      &__email,
+      &__address,
+      &__country {
+        grid-column: 1 / span 2;
+      }
     }
   }
 }
