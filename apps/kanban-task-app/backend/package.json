@@ -16,7 +16,6 @@
     "watch": [
       "server"
     ],
-    "exec222": "node --loader ts-node/esm ./server/server.ts",
     "exec": "node --loader tsx ./server/server.ts",
     "ext": "ts, js"
   },
