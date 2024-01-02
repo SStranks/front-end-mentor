@@ -21,10 +21,6 @@
   border-radius: v.$border-radius-forms;
   transition: a.$theme-transition-bg;
 
-  @include mq.media(mobile-all) {
-    padding: f.px2em(24);
-  }
-
   &__title {
     @include mx.header-l;
     color: var(--thm-form-header-text);
@@ -147,5 +143,15 @@
 
   & .titleInput__input {
     border: 1px solid c.$col-1j;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(mobile-all) {
+  .form {
+    padding: f.px2em(24);
   }
 }

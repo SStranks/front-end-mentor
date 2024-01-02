@@ -20,10 +20,6 @@
   border-radius: v.$border-radius-forms;
   transition: a.$theme-transition-bg;
 
-  @include mq.media(mobile-all) {
-    padding: f.px2em(24);
-  }
-
   &__header {
     display: flex;
     justify-content: space-between;
@@ -103,4 +99,14 @@
   width: 100%;
   padding: f.px2em(12);
   border-radius: v.$border-radius-forms-subtask;
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(mobile-all) {
+  .form {
+    padding: f.px2em(24);
+  }
 }

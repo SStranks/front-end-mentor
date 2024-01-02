@@ -13,16 +13,6 @@
   background-color: var(--thm-bg-sidebar);
   transition: a.$theme-transition-bg;
 
-  @include mq.media(tablet-large, tablet-medium) {
-    // See DefaultLayout; subcontainer calculation requires variable
-    height: calc(v.$navbar-dim-height - 16px);
-  }
-
-  @include mq.media(tablet-small, mobile-all) {
-    // See DefaultLayout; subcontainer calculation requires variable
-    height: calc(v.$navbar-dim-height - 32px);
-  }
-
   &__logo {
     position: relative;
     width: v.$sidebar-dim-width-l;
@@ -31,22 +21,6 @@
 
     &--mobile {
       display: none;
-      @include mq.media(tablet-small, mobile-all) {
-        display: block;
-        height: auto;
-        margin: 0 f.px2em(16);
-      }
-    }
-
-    @include mq.media(tablet-large, tablet-medium) {
-      width: v.$sidebar-dim-width-m;
-    }
-
-    @include mq.media(tablet-small, mobile-all) {
-      display: flex;
-      align-items: center;
-      width: fit-content;
-      border-right: none;
     }
 
     &__img {
@@ -59,16 +33,10 @@
 
       &--dark {
         opacity: var(--thm-nav-logo-dark);
-        @include mq.media(tablet-small, mobile-all) {
-          display: none;
-        }
       }
 
       &--light {
         opacity: var(--thm-nav-logo-light);
-        @include mq.media(tablet-small, mobile-all) {
-          display: none;
-        }
       }
     }
   }
@@ -83,22 +51,10 @@
     padding: 0 f.px2em(24);
     color: var(--thm-nav-h1);
     transition: a.$theme-transition-color;
-
-    @include mq.media(tablet-small, mobile-all) {
-      padding-left: 0;
-    }
   }
 
   &__title {
     @include mx.header-xl;
-    @include mq.media(tablet-large, tablet-medium, tablet-small, mobile-all) {
-      @include mx.header-l;
-      min-width: 0;
-      padding-right: f.px2em(10);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
   }
 
   &__controls {
@@ -115,19 +71,6 @@
 
       & > img {
         display: none;
-      }
-
-      @include mq.media(tablet-medium, tablet-small, mobile-all) {
-        padding: f.px2em(10) f.px2em(18);
-
-        & > span {
-          display: none;
-        }
-
-        & > img {
-          display: block;
-          margin: 0 f.px2em(4);
-        }
       }
     }
 
@@ -162,6 +105,175 @@
 
         &:hover {
           color: c.$col-1j;
+        }
+      }
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(tablet-large) {
+  .navbar {
+    // See DefaultLayout; subcontainer calculation requires variable
+    height: calc(v.$navbar-dim-height - 16px);
+
+    &__logo {
+      width: v.$sidebar-dim-width-m;
+    }
+
+    &__title {
+      @include mx.header-l;
+      min-width: 0;
+      padding-right: f.px2em(10);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@include mq.media(tablet-medium) {
+  .navbar {
+    // See DefaultLayout; subcontainer calculation requires variable
+    height: calc(v.$navbar-dim-height - 16px);
+
+    &__logo {
+      width: v.$sidebar-dim-width-m;
+    }
+
+    &__title {
+      @include mx.header-l;
+      min-width: 0;
+      padding-right: f.px2em(10);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__controls {
+      &__addTask {
+        padding: f.px2em(10) f.px2em(18);
+
+        & > span {
+          display: none;
+        }
+
+        & > img {
+          display: block;
+          margin: 0 f.px2em(4);
+        }
+      }
+    }
+  }
+}
+
+@include mq.media(tablet-small) {
+  .navbar {
+    // See DefaultLayout; subcontainer calculation requires variable
+    height: calc(v.$navbar-dim-height - 32px);
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      border-right: none;
+
+      &--mobile {
+        display: block;
+        height: auto;
+        margin: 0 f.px2em(16);
+      }
+
+      &__img {
+        &--dark,
+        &--light {
+          display: none;
+        }
+      }
+    }
+
+    &__head {
+      padding-left: 0;
+    }
+
+    &__title {
+      @include mx.header-l;
+      min-width: 0;
+      padding-right: f.px2em(10);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__controls {
+      &__addTask {
+        padding: f.px2em(10) f.px2em(18);
+
+        & > span {
+          display: none;
+        }
+
+        & > img {
+          display: block;
+          margin: 0 f.px2em(4);
+        }
+      }
+    }
+  }
+}
+
+@include mq.media(mobile-all) {
+  .navbar {
+    // See DefaultLayout; subcontainer calculation requires variable
+    height: calc(v.$navbar-dim-height - 32px);
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      border-right: none;
+
+      &--mobile {
+        display: block;
+        height: auto;
+        margin: 0 f.px2em(16);
+      }
+
+      &__img {
+        &--dark,
+        &--light {
+          display: none;
+        }
+      }
+    }
+
+    &__head {
+      padding-left: 0;
+    }
+
+    &__title {
+      @include mx.header-l;
+      min-width: 0;
+      padding-right: f.px2em(10);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__controls {
+      &__addTask {
+        padding: f.px2em(10) f.px2em(18);
+
+        & > span {
+          display: none;
+        }
+
+        & > img {
+          display: block;
+          margin: 0 f.px2em(4);
         }
       }
     }

@@ -20,10 +20,6 @@
   border-radius: v.$border-radius-forms;
   transition: a.$theme-transition-bg;
 
-  @include mq.media(mobile-all) {
-    padding: f.px2em(24);
-  }
-
   &__title {
     @include mx.header-l;
     color: c.$col-1j;
@@ -42,5 +38,15 @@
   &__btnDelete {
     @include btn.btn-destructive;
     width: 100%;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(mobile-all) {
+  .error {
+    padding: f.px2em(24);
   }
 }

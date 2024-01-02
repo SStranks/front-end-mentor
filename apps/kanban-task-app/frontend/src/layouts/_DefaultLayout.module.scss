@@ -9,12 +9,24 @@
     display: flex;
     width: 100%;
     height: calc(100% - v.$navbar-dim-height);
+  }
+}
 
-    @include mq.media(tablet-large, tablet-medium) {
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(tablet-large, tablet-medium) {
+  .container {
+    &__subContainer {
       height: calc(100% - v.$navbar-dim-height + 16px);
     }
+  }
+}
 
-    @include mq.media(tablet-small, mobile-all) {
+@include mq.media(tablet-small, mobile-all) {
+  .container {
+    &__subContainer {
       height: calc(100% - v.$navbar-dim-height + 32px);
     }
   }

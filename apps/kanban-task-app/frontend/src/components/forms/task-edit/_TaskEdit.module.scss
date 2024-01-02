@@ -20,10 +20,6 @@
   border-radius: v.$border-radius-forms;
   transition: a.$theme-transition-bg;
 
-  @include mq.media(mobile-all) {
-    padding: f.px2em(24);
-  }
-
   &__title {
     @include mx.header-l;
     color: var(--thm-form-header-text);
@@ -58,5 +54,15 @@
 
   &__btnSaveForm {
     @include btn.btn-primary-s;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(mobile-all) {
+  .form {
+    padding: f.px2em(24);
   }
 }
