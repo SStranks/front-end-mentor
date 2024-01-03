@@ -8,7 +8,7 @@
   @include mx.body-regular;
   font-weight: 700;
   display: grid;
-  grid-template-areas:
+  grid-template:
     'img title quantity' 1fr
     'img price _' 1fr
     / 64px auto auto;
@@ -45,10 +45,10 @@
 
 @include mq.media(mobile-small) {
   .card {
-    grid-template-areas:
+    grid-template:
       'title quantity'
-      'price _';
-    grid-template-columns: auto auto;
+      'price _'
+      / auto auto;
 
     &__img {
       display: none;

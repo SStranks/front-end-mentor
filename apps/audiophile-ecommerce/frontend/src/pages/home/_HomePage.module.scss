@@ -467,6 +467,12 @@
   }
 }
 
+@include mq.media(tablet-mini, tablet-micro, mobile-all) {
+  .yx1 {
+    grid-column: 1 / span 2;
+  }
+}
+
 @include mq.media(desktop-mini, desktop-micro, tablet-large) {
   .yx1 {
     &__container {
@@ -485,9 +491,7 @@
 @include mq.media(tablet-regular, tablet-small) {
   .yx1 {
     &__container {
-      &__subContainer {
-        padding: 0 8%;
-      }
+      padding: 0 8%;
     }
   }
 }
@@ -495,19 +499,7 @@
 @include mq.media(tablet-mini, tablet-micro, mobile-all) {
   .yx1 {
     &__container {
-      &__subContainer {
-        padding: 41px 24px;
-      }
-    }
-  }
-}
-
-@include mq.media(tablet-mini, tablet-micro, mobile-all) {
-  .yx1 {
-    &__container {
-      &__subContainer {
-        grid-column: 1 / span 2;
-      }
+      padding: 41px 24px;
     }
   }
 }

@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 @use '#Sass/abstracts/colors' as c;
 @use '#Sass/abstracts/functions' as f;
 @use '#Sass/abstracts/mixins' as mx;
@@ -9,17 +10,11 @@
   font-weight: 700;
   display: grid;
 
-  // TEST:  Does this new concise syntax work as before?
-  grid-template-areas:
+  grid-template:
     'img title quantity' 1fr
     'img price _' 1fr
     / 64px auto auto;
 
-  // grid-template-areas:
-  //   'img title quantity'
-  //   'img price _';
-  // grid-template-columns: 64px auto auto;
-  // grid-template-rows: repeat(2, 1fr);
   column-gap: 16px;
   width: 100%;
 
@@ -61,7 +56,6 @@
       'title quantity'
       'price _';
     grid-template-columns: auto auto;
-    color: #0000;
 
     &__img {
       display: none;
