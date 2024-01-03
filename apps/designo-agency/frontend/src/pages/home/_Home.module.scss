@@ -38,7 +38,6 @@
   overflow: hidden;
 
   &__info {
-    z-index: 5;
     max-width: 60%;
 
     & > h1 {
@@ -149,6 +148,12 @@
       transform: translate(0, -40px) scale(120%);
     }
   }
+
+  .viewgrid {
+    & > :nth-child(1) {
+      grid-row: 1 / span 2;
+    }
+  }
 }
 
 @include mq.media(tablet-medium) {
@@ -242,6 +247,7 @@
   }
 
   .hero {
+    flex-direction: column;
     height: 850px;
     margin: 0 -24px f.px2em(120);
     padding: f.px2em(80) f.px2em(24) 0;
@@ -250,12 +256,17 @@
     background-position: left center;
 
     &__info {
+      max-width: unset;
+      text-align: center;
+
       & > h1 {
         font-size: f.px2em(32);
         line-height: 36px;
       }
 
       & > p {
+        padding: 0;
+        margin: f.px2em(20) 0;
         font-size: f.px2em(15);
       }
 
@@ -283,3 +294,7 @@
     row-gap: 35px;
   }
 }
+
+// ------------------
+// ------------------
+// ------------------
