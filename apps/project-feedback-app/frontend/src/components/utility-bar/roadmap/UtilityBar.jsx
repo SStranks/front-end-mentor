@@ -21,12 +21,7 @@ function UtilityBar() {
         <h3>Roadmap</h3>
       </div>
       <div className={styles.bar__btn}>
-        <Button
-          text="+ Add Feedback"
-          onClick={() => setModalOpen(true)}
-          disabled={false}
-          classList={['bg-magenta']}
-        />
+        <Button text="+ Add Feedback" onClick={() => setModalOpen(true)} disabled={false} classList={['bg-magenta']} />
       </div>
       <Modal handleClose={() => setModalOpen(false)} modalOpen={modalOpen}>
         <FormFeedbackNew setModalOpen={() => setModalOpen(false)} />

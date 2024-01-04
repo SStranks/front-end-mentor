@@ -25,6 +25,10 @@
     align-items: center;
     column-gap: f.px2em(15);
 
+    & > p {
+      color: $white;
+    }
+
     &::after {
       content: '';
       position: absolute;

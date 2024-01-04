@@ -27,15 +27,8 @@ function Header(props) {
           <p>Feedback Board</p>
         </div>
       </Link>
-      <button
-        className={styles.header__btn}
-        type="button"
-        onClick={btnModalHandler}>
-        <img
-          className={styles.header__icon}
-          src={modalActive ? IconModalClose : IconModalHamburger}
-          alt=""
-        />
+      <button className={styles.header__btn} type="button" onClick={btnModalHandler}>
+        <img className={styles.header__icon} src={modalActive ? IconModalClose : IconModalHamburger} alt="" />
       </button>
       {modalActive ? (
         <div className={styles.mobileModal}>

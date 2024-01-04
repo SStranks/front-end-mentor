@@ -110,7 +110,7 @@
       margin: f.px2em(25) 0 f.px2em(15) 0;
     }
 
-    &__arrowRight {
+    &__arrowright {
       display: none;
     }
   }
@@ -145,7 +145,7 @@
       margin: f.px2em(25) 0 f.px2em(15) 0;
     }
 
-    &__arrowRight {
+    &__arrowright {
       display: none;
     }
   }
@@ -179,7 +179,7 @@
       margin: f.px2em(25) 0 f.px2em(15) 0;
     }
 
-    &__arrowRight {
+    &__arrowright {
       display: none;
     }
   }
@@ -188,5 +188,14 @@
 @include media(mobile-small) {
   .container {
     padding: f.px2em(8) f.px2em(12) f.px2em(8) f.px2em(16);
+
+    &__date {
+      white-space: nowrap;
+      font-size: f.px2rem(14);
+    }
+
+    &__amount {
+      font-size: f.px2rem(18);
+    }
   }
 }

@@ -54,13 +54,10 @@
 
 @include media(mobile-large) {
   .item {
-    // grid-template-columns: repeat(2, 1fr);
-    // grid-template-rows: repeat(2, auto);
-    // TEST: .
-    grid-template-areas:
+    grid-template:
       'main main' auto
       'tag comment' auto
-      / repeat(2, 1fr);
+      / 1fr 1fr;
     row-gap: f.px2em(16);
 
     & > form {
@@ -87,13 +84,10 @@
 }
 @include media(mobile-medium) {
   .item {
-    // grid-template-columns: repeat(2, 1fr);
-    // grid-template-rows: repeat(2, auto);
-    // TEST: .
-    grid-template-areas:
+    grid-template:
       'main main' auto
       'tag comment' auto
-      / repeat(2, 1fr);
+      / 1fr 1fr;
     row-gap: f.px2em(16);
 
     & > form {
@@ -121,13 +115,10 @@
 
 @include media(mobile-small) {
   .item {
-    // grid-template-columns: repeat(2, 1fr);
-    // grid-template-rows: repeat(2, auto);
-    // TEST: .
-    grid-template-areas:
+    grid-template:
       'main main' auto
       'tag comment' auto
-      / repeat(2, 1fr);
+      / 1fr 1fr;
     row-gap: f.px2em(16);
 
     & > form {
