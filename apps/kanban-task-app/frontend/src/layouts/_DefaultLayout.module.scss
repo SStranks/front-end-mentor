@@ -18,7 +18,7 @@
 
 @include mq.media(tablet-large, tablet-medium) {
   .container {
-    &__subContainer {
+    &__subcontainer {
       height: calc(100% - v.$navbar-dim-height + 16px);
     }
   }
@@ -26,7 +26,7 @@
 
 @include mq.media(tablet-small, mobile-all) {
   .container {
-    &__subContainer {
+    &__subcontainer {
       height: calc(100% - v.$navbar-dim-height + 32px);
     }
   }

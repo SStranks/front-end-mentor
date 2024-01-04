@@ -185,8 +185,13 @@
       margin: 0 f.px2em(12) f.px2em(48) f.px2em(12);
     }
 
+    &__theme {
+      margin-left: 0;
+    }
+
     &__hide {
-      margin: f.px2em(30) 0 0 f.px2em(11);
+      margin-left: 0;
+      padding-left: 0;
     }
   }
 
@@ -208,7 +213,12 @@
     }
 
     &__hide {
-      margin: f.px2em(30) 0 0 f.px2em(11);
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    &__theme {
+      margin-left: 0;
     }
   }
 
@@ -229,7 +239,12 @@
     }
 
     &__hide {
-      margin: f.px2em(30) 0 0 f.px2em(11);
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    &__theme {
+      margin-left: 0;
     }
   }
 
