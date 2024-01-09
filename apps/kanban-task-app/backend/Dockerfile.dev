@@ -1,8 +1,13 @@
-# WIP: Not in use.
+# // NOTE:  Not to be used - still trying to ascertain uid/gid best practices.
+# Primary Stage
+FROM node:18-alpine3.17
+LABEL version="1.0"
+LABEL description="Image: #35 Kanban: API: Node Express"
 
-# Primary Stage: Node Image with PNPM
-FROM node:18-alpine3.17 as primary
-RUN corepack enable
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+WORKDIR /app/backend
+COPY ./package.json .
+USER root
+RUN addgroup -S devApp && adduser -S devApp -G devApp
+USER devApp
+EXPOSE 4000
 

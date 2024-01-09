@@ -4,12 +4,14 @@ services:
   node-api:
     container_name: fem35-node-api-prod
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.prod
     image: fem35-nodejs-express-api
     env_file:
       - ./backend/.env.prod
     networks:
       - FEM35-Kanban
+    security_opt:
+      - no-new-privileges
 
   # Frontend: Nginx-React
   react-app:
@@ -23,6 +25,8 @@ services:
       - node-api
     networks:
       - FEM35-Kanban
+    security_opt:
+      - no-new-privileges
 
   # NGINX
   nginx:
@@ -39,6 +43,8 @@ services:
       - 8080:80
     networks:
       - FEM35-Kanban
+    security_opt:
+      - no-new-privileges
 
 networks:
   FEM35-Kanban:

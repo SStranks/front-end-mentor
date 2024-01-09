@@ -16,7 +16,7 @@
     "watch": [
       "server"
     ],
-    "exec": "node --loader tsx ./server/server.ts",
+    "exec": "node --import tsx ./server/server.ts",
     "ext": "ts, js"
   },
   "scripts": {

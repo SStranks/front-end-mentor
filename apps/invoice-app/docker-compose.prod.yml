@@ -10,6 +10,8 @@ services:
       - ./backend/.env.prod
     networks:
       - FEM34
+    security_opt:
+      - no-new-privileges
 
   # Frontend: Nginx-React
   react-app:
@@ -23,6 +25,8 @@ services:
       - node-api
     networks:
       - FEM34
+    security_opt:
+      - no-new-privileges
 
   # NGINX
   nginx:
@@ -38,6 +42,8 @@ services:
       - 8080:80
     networks:
       - FEM34
+    security_opt:
+      - no-new-privileges
 
 networks:
   FEM34:

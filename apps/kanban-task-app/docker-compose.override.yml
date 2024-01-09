@@ -2,20 +2,28 @@ services:
 
   # Backend: NodeJS Express  
   node-api:
+    # build:
+    #   dockerfile: Dockerfile.dev
     container_name: fem35-node-api-dev
     image: node:18-alpine3.17
-    working_dir: /backend
+    working_dir: /app/backend
     command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
-      - ./shared:/shared:ro
-      - ./backend:/backend:ro
+      - ./shared:/app/shared:ro
+      - ./backend:/app/backend:ro
       - ../../node_modules:/node_modules:ro
+    # develop:
+    #   watch:
+    #     - path: ./backend/package.json
+    #       action: rebuild
     env_file:
       - ./backend/.env.dev
     depends_on:
       - mongo-db
+    security_opt:
+      - no-new-privileges
 
   # DB: MongoDB
   mongo-db:
@@ -29,6 +37,8 @@ services:
       - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - mongodb-data:/data/db
+    security_opt:
+      - no-new-privileges
 
   # DB: MongoDB Express
   mongo-express:
@@ -45,6 +55,8 @@ services:
       - ME_CONFIG_BASICAUTH_PASSWORD=$MONGOEXP_BASICAUTH_PASS
     volumes:
       - mongodb-data:/data/db
+    security_opt:
+      - no-new-privileges
 
 volumes:
   mongodb-data:

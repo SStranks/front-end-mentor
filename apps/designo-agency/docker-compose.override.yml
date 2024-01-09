@@ -14,6 +14,8 @@ services:
       - ./backend/.env.dev
     depends_on:
       - mongo-db
+    security_opt:
+      - no-new-privileges
     # networks:
     #   - container-network
 
@@ -32,6 +34,8 @@ services:
       - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - mongodb-data:/data/db
+    security_opt:
+      - no-new-privileges
 
   # DB: MongoDB Express - DEV ONLY
   mongo-express:
@@ -48,6 +52,8 @@ services:
       - ME_CONFIG_BASICAUTH_PASSWORD=$MONGOEXP_BASICAUTH_PASS
     volumes:
       - mongodb-data:/data/db
+    security_opt:
+      - no-new-privileges
 
 volumes:
   mongodb-data:

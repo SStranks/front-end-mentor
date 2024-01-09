@@ -2,7 +2,7 @@
   "name": "@apps/kanban-task-app-api",
   "version": "1.0.0",
   "description": "FEM#35 Backend",
-  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "author": "Simon Stranks2 <sstranks0@gmail.com> <https://github.com/SStranks>",
   "license": "ISC",
   "main": "./dist/server.js",
   "type": "module",
@@ -16,7 +16,7 @@
     "watch": [
       "server"
     ],
-    "exec": "node --loader tsx ./server/server.ts",
+    "exec": "node --import tsx ./server/server.ts",
     "ext": "ts, js"
   },
   "scripts": {

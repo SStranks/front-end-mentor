@@ -4,18 +4,20 @@ services:
   node-api:
     container_name: fem33-node-api-dev
     image: node:18-alpine3.17
-    working_dir: /backend
+    working_dir: /app/backend
     command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
-      - ./shared:/shared:ro
-      - ./backend:/backend:ro
+      - ./shared:/app/shared:ro
+      - ./backend:/app/backend:ro
       - ../../node_modules:/node_modules:ro
     env_file:
       - ./backend/.env.dev
     depends_on:
       - mongodb-1
+    security_opt:
+      - no-new-privileges
 
   # Frontend: React App
   # Use 'npm start' from ./frontend to init webpack-dev-server
@@ -33,6 +35,8 @@ services:
     volumes:
       - mongodb-data:/data/db
     command: --replSet $MONGODB_REPLSET --bind_ip_all --keyFile /data/mongo.key
+    security_opt:
+      - no-new-privileges
 
   # Convert MongoDB from standalone to replica set
   mongo-setup:
@@ -52,6 +56,8 @@ services:
     volumes:
       - ./backend/mongo/mongo-init.sh:/data/mongo-init.sh
     command: sh /data/mongo-init.sh
+    security_opt:
+      - no-new-privileges
 
   # DB: MongoDB Express
   mongo-express:
@@ -70,6 +76,8 @@ services:
       - ME_CONFIG_BASICAUTH_PASSWORD=$MONGOEXP_BASICAUTH_PASS
     volumes:
       - mongodb-data:/data/db
+    security_opt:
+      - no-new-privileges
 
 volumes:
   mongodb-data:

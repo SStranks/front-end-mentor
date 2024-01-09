@@ -8,3 +8,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
+    security_opt:
+      - no-new-privileges
