@@ -41,7 +41,12 @@ export const EslintConfigReact = {
     'react/jsx-uses-react': 0,
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
-    'react/require-default-props': 'error',
+    'react/require-default-props': [
+      1,
+      {
+        functions: 'defaultArguments',
+      },
+    ],
   },
   settings: {
     react: {

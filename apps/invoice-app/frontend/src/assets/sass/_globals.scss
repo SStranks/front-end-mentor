@@ -70,9 +70,9 @@ img {
 
 button {
   cursor: pointer;
-  background-color: transparent;
   border: none;
   text-decoration: none;
+  background-color: transparent;
 
   &:disabled {
     cursor: not-allowed;

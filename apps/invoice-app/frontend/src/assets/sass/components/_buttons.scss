@@ -1,5 +1,5 @@
 @use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
+@use '#Sass/mixins' as mx;
 @use '#Sass/functions' as f;
 @use '#Sass/animations' as a;
 
@@ -9,7 +9,7 @@
 }
 
 @mixin btn-element {
-  @include btn-default;
+  @include mx.btn-default;
   display: flex;
   justify-content: center;
   align-items: center;
