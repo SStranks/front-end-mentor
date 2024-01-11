@@ -1,11 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSearchParams } from 'react-router-dom';
-import {
-  CommentsList,
-  FormCommentAdd,
-  Suggestion,
-  UtilityBarFeedback,
-} from '../components';
+import { CommentsList, FormCommentAdd, Suggestion, UtilityBarFeedback } from '../components';
 
 import styles from './_FeedbackDetail.module.scss';
 

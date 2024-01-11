@@ -4,7 +4,6 @@
 
 .outerCard {
   border-radius: $border-radius-2;
-  background-color: $mute-orange;
 
   &--planned {
     grid-column: 1;
@@ -26,9 +25,11 @@
 }
 
 .innerCard {
-  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: f.px2em(32);
+  margin-top: 5px;
   border-radius: 0 0 $border-radius-2 $border-radius-2;
   background-color: $white;
   color: $mute-blue;

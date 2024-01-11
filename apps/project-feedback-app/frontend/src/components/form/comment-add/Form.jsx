@@ -11,11 +11,7 @@ import styles from './_Form.module.scss';
 const postComment = async (variables) => {
   const { requestId, _, requestBody } = variables;
   try {
-    const responseData = await ApiService.postComment(
-      requestId,
-      _,
-      requestBody
-    );
+    const responseData = await ApiService.postComment(requestId, _, requestBody);
     return responseData;
   } catch (error) {
     throw new Error(error.message);
@@ -76,13 +72,9 @@ function Form(props) {
         required
       />
       <div className={styles.form__bar}>
-        <p>{charsRemain} Characters left</p>
+        <p className={styles.form__bar__charsRemain}>{charsRemain} Characters left</p>
         <div className={styles.form__btnPost}>
-          <ButtonSubmit
-            text="Post Comment"
-            disabled={false}
-            classList={['bg-magenta']}
-          />
+          <ButtonSubmit text="Post Comment" disabled={false} classList={['bg-magenta']} />
         </div>
       </div>
     </form>

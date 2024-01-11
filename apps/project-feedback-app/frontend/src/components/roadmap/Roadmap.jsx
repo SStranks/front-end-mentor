@@ -12,21 +12,14 @@ function Roadmap(props) {
     <div className={`${styles.outerCard} ${styles[`outerCard--${status}`]}`}>
       <div className={styles.innerCard}>
         <div className={styles.innerCard__status}>
-          <div
-            className={`${styles.innerCard__bullet} ${
-              styles[`innerCard__bullet--${status}`]
-            }`}
-          />
+          <div className={`${styles.innerCard__bullet} ${styles[`innerCard__bullet--${status}`]}`} />
           <p>{`${status[0].toUpperCase()}${status.slice(1)}`}</p>
         </div>
-        <Link to={`/feedback?requestId=${id}`}>
+        <Link to={`/feedback?requestId=${id}`} className={styles.innerCard__linkA}>
           <h3 className={styles.innerCard__title}>{title}</h3>
           <p className={styles.innerCard__content}>{description}</p>
         </Link>
-        <Tag
-          title={`${category[0].toUpperCase()}${category.slice(1)}`}
-          disabled
-        />
+        <Tag title={`${category[0].toUpperCase()}${category.slice(1)}`} disabled />
         <div className={styles.innerCard__UI}>
           <Upvote flexRow upvotes={upvotes} requestId={id} />
           <div className={styles.innerCard__comment}>

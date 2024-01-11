@@ -8,6 +8,12 @@ import styles from './_RoadmapList.module.scss';
 // Width at which mobile request.status filtering becomes actives
 const mediaQuery = '(width < 700px)';
 
+const columns = {
+  planned: 1,
+  'in-progress': 2,
+  live: 3,
+};
+
 function RoadmapList(props) {
   const { requests } = props;
   const isMobileFilter = useMediaQuery(mediaQuery);
@@ -61,8 +67,7 @@ function RoadmapList(props) {
             onChange={radioInputHandler}
             defaultChecked
           />
-          Planned <br className={styles.grid__mobileNav__label__br} />(
-          {plannedNum})
+          Planned <br className={styles.grid__mobileNav__label__br} />({plannedNum})
         </label>
         <label className={styles.grid__mobileNav__label} htmlFor="in-progress">
           <input
@@ -73,8 +78,7 @@ function RoadmapList(props) {
             id="in-progress"
             onChange={radioInputHandler}
           />
-          In-Progress <br className={styles.grid__mobileNav__label__br} />(
-          {inProgressNum})
+          In-Progress <br className={styles.grid__mobileNav__label__br} />({inProgressNum})
         </label>
         <label className={styles.grid__mobileNav__label} htmlFor="live">
           <input
@@ -88,13 +92,8 @@ function RoadmapList(props) {
           Live <br className={styles.grid__mobileNav__label__br} />({liveNum})
         </label>
         <div
-          className={`${styles.grid__mobileNav__activebar} ${
-            requestStatusFilter === 'planned'
-              ? styles.col1
-              : requestStatusFilter === 'in-progress'
-              ? styles.col2
-              : styles.col3
-          }`}
+          className={`${styles.grid__mobileNav__activebar} ${styles[`col${columns[requestStatusFilter]}`]}
+          `}
         />
       </form>
       <div className={styles.grid__mobileNav__title}>

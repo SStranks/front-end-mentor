@@ -24,6 +24,10 @@
     justify-content: space-between;
     align-items: center;
     color: $mute-blue;
+
+    &__charsRemain {
+      margin-right: 8px;
+    }
   }
 
   &__btnPost {
@@ -57,5 +61,9 @@
 @include media(mobile-small) {
   .form {
     padding: f.px2em(24);
+
+    &__bar {
+      font-size: f.px2rem(13);
+    }
   }
 }
