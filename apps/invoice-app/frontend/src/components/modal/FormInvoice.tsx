@@ -1,7 +1,7 @@
 import InputDate from '#Components/custom/date-picker/InputDate';
 import DropdownPaymentTerms from '#Components/custom/dropdown/payment-terms/DropdownPaymentTerms';
 import useComponentIdGenerator from '#Hooks/useComponentIdGenerator';
-import { IInvoice, IItem, TBody } from '#Services/ApiServiceClient';
+import { IInvoice, TBody } from '#Services/ApiServiceClient';
 import ApiService from '#Services/Services';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
@@ -17,25 +17,22 @@ async function postInvoice(requestBody: TBody) {
   return responseData;
 }
 
-async function patchInvoice(variables: {
-  invoiceId: string;
-  requestBody: TBody;
-}) {
+async function patchInvoice(variables: { invoiceId: string; requestBody: TBody }) {
   const { invoiceId, requestBody } = variables;
   const responseData = await ApiService.patchInvoice(invoiceId, requestBody);
   if (!responseData) throw new Error('Unable to update invoice');
   return responseData;
 }
 
-interface INewFormItem {
-  id: string;
-  name: undefined;
-  quantity: undefined;
-  price: undefined;
-  total: undefined;
-}
+// interface INewFormItem {
+//   id: string;
+//   name: undefined;
+//   quantity: undefined;
+//   price: undefined;
+//   total: undefined;
+// }
 
-type FormItem = INewFormItem & IItem;
+// type TFormItem = INewFormItem & IItem;
 
 const newFormItem = (id: number) => {
   return {
@@ -51,8 +48,7 @@ interface IProps {
   invoice?: IInvoice;
 }
 
-function FormInvoice(props: IProps): JSX.Element {
-  const { invoice } = props;
+function FormInvoice({ invoice = undefined }: IProps): JSX.Element {
   const generateId = useComponentIdGenerator();
   const [formItems, setFormItems] = useState(invoice?.items || []);
   const queryClient = useQueryClient();
@@ -72,9 +68,7 @@ function FormInvoice(props: IProps): JSX.Element {
     formElement.classList.add(styles.form__submitted);
 
     // Focus on first invalid input
-    const firstInvalidInput = formElement.querySelector(
-      ':invalid'
-    ) as HTMLInputElement;
+    const firstInvalidInput = formElement.querySelector(':invalid') as HTMLInputElement;
     firstInvalidInput?.focus();
 
     // Add error validation message to invalid fields
@@ -83,9 +77,7 @@ function FormInvoice(props: IProps): JSX.Element {
       invalidInputs.forEach((el) => {
         const inputLabels = (el as HTMLInputElement)?.labels;
         if (inputLabels && inputLabels[0]?.firstElementChild) {
-          inputLabels[0].firstElementChild.textContent = (
-            el as HTMLInputElement
-          ).validationMessage;
+          inputLabels[0].firstElementChild.textContent = (el as HTMLInputElement).validationMessage;
         }
       });
     }
@@ -115,7 +107,7 @@ function FormInvoice(props: IProps): JSX.Element {
       const items = ((listItemsObj) => {
         const obj: { [x: string]: { [y: string]: string } } = {};
         Object.entries(listItemsObj).forEach(([key, value]) => {
-          const [_A, index, _B, property] = key.split('-');
+          const [, index, , property] = key.split('-');
           obj[index] ??= {};
           obj[index][property] = value as string;
         });
@@ -151,9 +143,7 @@ function FormInvoice(props: IProps): JSX.Element {
       };
 
       // Submit buttons are external to form; utilize name attribute to determine action.
-      const submitButtonName = (
-        (e.nativeEvent as SubmitEvent)?.submitter as HTMLButtonElement
-      )?.name;
+      const submitButtonName = ((e.nativeEvent as SubmitEvent)?.submitter as HTMLButtonElement)?.name;
 
       if (submitButtonName === 'saveDraft') {
         toast.promise(mutateAsyncPostInvoice(requestBody), {
@@ -222,17 +212,11 @@ function FormInvoice(props: IProps): JSX.Element {
   });
 
   return (
-    <form
-      id="submitFormInvoice"
-      className={styles.form}
-      onSubmit={formOnSumbit}
-      noValidate>
+    <form id="submitFormInvoice" className={styles.form} onSubmit={formOnSumbit} noValidate>
+      <p className={styles.form__billFrom}>Bill From</p>
       <div className={styles.form__from}>
-        <p>Bill From</p>
         <div className={styles.form__from__street}>
-          <label
-            htmlFor="senderAddressStreet"
-            className={styles.form__inputLabel}>
+          <label htmlFor="senderAddressStreet" className={styles.form__inputLabel}>
             Street Address
             <p className={styles.form__inputError} />
             <input
@@ -257,9 +241,7 @@ function FormInvoice(props: IProps): JSX.Element {
             required
           />
         </label>
-        <label
-          htmlFor="senderAddressPostCode"
-          className={styles.form__inputLabel}>
+        <label htmlFor="senderAddressPostCode" className={styles.form__inputLabel}>
           Post Code
           <p className={styles.form__inputError} />
           <input
@@ -271,9 +253,7 @@ function FormInvoice(props: IProps): JSX.Element {
             required
           />
         </label>
-        <label
-          htmlFor="senderAddressCountry"
-          className={styles.form__inputLabel}>
+        <label htmlFor="senderAddressCountry" className={`${styles.form__inputLabel} ${styles.form__from__country}`}>
           Country
           <p className={styles.form__inputError} />
           <input
@@ -286,11 +266,9 @@ function FormInvoice(props: IProps): JSX.Element {
           />
         </label>
       </div>
+      <p className={styles.form__billTo}>Bill To</p>
       <div className={styles.form__to}>
-        <p>Bill To</p>
-        <label
-          htmlFor="clientName"
-          className={`${styles.form__inputLabel} ${styles.form__to__name}`}>
+        <label htmlFor="clientName" className={`${styles.form__inputLabel} ${styles.form__to__name}`}>
           Client&#39;s Name
           <p className={styles.form__inputError} />
           <input
@@ -302,9 +280,7 @@ function FormInvoice(props: IProps): JSX.Element {
             required
           />
         </label>
-        <label
-          htmlFor="clientEmail"
-          className={`${styles.form__inputLabel} ${styles.form__to__email}`}>
+        <label htmlFor="clientEmail" className={`${styles.form__inputLabel} ${styles.form__to__email}`}>
           Client&#39;s Email
           <p className={styles.form__inputError} />
           <input
@@ -317,9 +293,7 @@ function FormInvoice(props: IProps): JSX.Element {
             required
           />
         </label>
-        <label
-          htmlFor="clientAddressStreet"
-          className={`${styles.form__inputLabel} ${styles.form__to__address}`}>
+        <label htmlFor="clientAddressStreet" className={`${styles.form__inputLabel} ${styles.form__to__address}`}>
           Street Address
           <p className={styles.form__inputError} />
           <input
@@ -343,9 +317,7 @@ function FormInvoice(props: IProps): JSX.Element {
             required
           />
         </label>
-        <label
-          htmlFor="clientAddressPostCode"
-          className={styles.form__inputLabel}>
+        <label htmlFor="clientAddressPostCode" className={styles.form__inputLabel}>
           Post Code
           <p className={styles.form__inputError} />
           <input
@@ -357,9 +329,7 @@ function FormInvoice(props: IProps): JSX.Element {
             required
           />
         </label>
-        <label
-          htmlFor="clientAddressCountry"
-          className={`${styles.form__inputLabel} ${styles.form__to__country}`}>
+        <label htmlFor="clientAddressCountry" className={`${styles.form__inputLabel} ${styles.form__to__country}`}>
           Country
           <p className={styles.form__inputError} />
           <input
@@ -388,14 +358,9 @@ function FormInvoice(props: IProps): JSX.Element {
         <label htmlFor="paymentTerms" className={styles.form__inputLabel}>
           Payment Terms
           <p className={styles.form__inputError} />
-          <DropdownPaymentTerms
-            value={invoice?.paymentTerms}
-            labelId="paymentTerms"
-          />
+          <DropdownPaymentTerms value={invoice?.paymentTerms} labelId="paymentTerms" />
         </label>
-        <label
-          htmlFor="description"
-          className={`${styles.form__inputLabel} ${styles.form__details__description}`}>
+        <label htmlFor="description" className={`${styles.form__inputLabel} ${styles.form__details__description}`}>
           Project Description
           <p className={styles.form__inputError} />
           <input
@@ -417,10 +382,7 @@ function FormInvoice(props: IProps): JSX.Element {
           <p>Price</p>
           <p>Total</p>
           {formItemsComponents}
-          <button
-            type="button"
-            className={styles.form__itemlist__grid__btnAddItem}
-            onClick={addNewFormItemOnClick}>
+          <button type="button" className={styles.form__itemlist__grid__btnAddItem} onClick={addNewFormItemOnClick}>
             + Add New Item
           </button>
         </div>

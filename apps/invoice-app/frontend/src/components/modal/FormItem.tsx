@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/no-useless-undefined */
+/* eslint-disable unicorn/no-null */
 import InputPrice from '#Components/custom/input/InputPrice';
 import IconDelete from '#Svg/icon-delete.svg';
 import currencyFormatter from '#Utils/currencyFormatter';
@@ -15,29 +17,23 @@ export interface IProps {
   deleteItem: (id: string) => void;
 }
 
-function FormItem(props: IProps): JSX.Element {
-  const {
-    id,
-    index,
-    itemName: itemNameProp,
-    quantity: quantityProp,
-    price: priceProp,
-    total: totalProp,
-    deleteItem,
-  } = props;
+function FormItem({
+  id,
+  index,
+  itemName: itemNameProp = undefined,
+  quantity: quantityProp = undefined,
+  price: priceProp = undefined,
+  total: totalProp = undefined,
+  deleteItem,
+}: IProps): JSX.Element {
   const [itemName, setItemName] = useState<string>(itemNameProp ?? '');
-  const [quantity, setQuantity] = useState<number | undefined>(
-    quantityProp ?? 1
-  );
-  const [price, setPrice] = useState<number | string | undefined>(
-    priceProp ?? 0
-  );
+  const [quantity, setQuantity] = useState<number | undefined>(quantityProp ?? 1);
+  const [price, setPrice] = useState<number | string | undefined>(priceProp ?? 0);
   const [total, setTotal] = useState<number>(totalProp ?? 0);
   const quantityRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (quantity !== undefined && price !== undefined)
-      setTotal(quantity * Number(price));
+    if (quantity !== undefined && price !== undefined) setTotal(quantity * Number(price));
   }, [quantity, price]);
 
   const nameOnChange = (e: React.ChangeEvent) => {
@@ -51,16 +47,20 @@ function FormItem(props: IProps): JSX.Element {
       case e.key === 'ArrowUp':
       case e.key === 'ArrowDown':
       case e.key === 'ArrowLeft':
-      case e.key === 'ArrowRight':
+      case e.key === 'ArrowRight': {
         return null;
+      }
       case e.key === '-':
       case e.key === '+':
-      case e.key === 'e':
+      case e.key === 'e': {
         return e.preventDefault();
-      case quantity === 0 && e.key === '0':
+      }
+      case quantity === 0 && e.key === '0': {
         return e.preventDefault();
-      default:
+      }
+      default: {
         return null;
+      }
     }
   };
 
@@ -120,8 +120,8 @@ function FormItem(props: IProps): JSX.Element {
         appendClass={`${styles.price} ${styles.input}`}
       />
       <p className={styles.total}>{currencyFormatter(total)}</p>
-      <button type="button" onClick={deleteOnClick}>
-        <img className={styles.deleteBtn} src={IconDelete} alt="" />
+      <button type="button" onClick={deleteOnClick} className={styles.deleteBtn}>
+        <img src={IconDelete} alt="" />
       </button>
     </div>
   );

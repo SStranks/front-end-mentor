@@ -17,10 +17,7 @@ function Dropdown(props: IProps): JSX.Element {
 
   useEffect(() => {
     const clickHandler = (e: MouseEvent) => {
-      if (
-        e.target !== listRef.current &&
-        !dropdownContainerRef.current?.contains(e.target as HTMLElement)
-      ) {
+      if (e.target !== listRef.current && !dropdownContainerRef.current?.contains(e.target as HTMLElement)) {
         listRef.current?.classList.add('hidden');
       }
     };
@@ -47,24 +44,9 @@ function Dropdown(props: IProps): JSX.Element {
         <img ref={iconArrowRef} src={ArrowDown} alt="" />
       </button>
       <div className={`${styles.list} hidden`} ref={listRef}>
-        <CheckBox
-          title="Draft"
-          checked={filterStatus.draft}
-          inputName="draft"
-          onClick={setFilterStatus}
-        />
-        <CheckBox
-          title="Pending"
-          checked={filterStatus.pending}
-          inputName="pending"
-          onClick={setFilterStatus}
-        />
-        <CheckBox
-          title="Paid"
-          checked={filterStatus.paid}
-          inputName="paid"
-          onClick={setFilterStatus}
-        />
+        <CheckBox title="Draft" checked={filterStatus.draft} inputName="draft" onClick={setFilterStatus} />
+        <CheckBox title="Pending" checked={filterStatus.pending} inputName="pending" onClick={setFilterStatus} />
+        <CheckBox title="Paid" checked={filterStatus.paid} inputName="paid" onClick={setFilterStatus} />
       </div>
     </div>
   );

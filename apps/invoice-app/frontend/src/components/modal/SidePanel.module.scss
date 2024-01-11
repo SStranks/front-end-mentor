@@ -113,8 +113,8 @@
 @include media(mobile-all) {
   .container {
     width: 100%;
-    height: calc(100% - f.px2em(80));
-    margin-top: f.px2em(80);
+    height: calc(100% - f.px2em(72));
+    margin-top: f.px2em(72);
     border-radius: 0;
 
     &__title {

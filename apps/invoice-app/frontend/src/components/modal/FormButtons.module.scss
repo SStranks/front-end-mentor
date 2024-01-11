@@ -102,7 +102,7 @@
 @include media(tablet-medium) {
   .container {
     width: 100%;
-    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
+    padding: f.px2em(20) f.px2em(24);
     border-radius: 0;
   }
 }
@@ -110,14 +110,23 @@
 @include media(tablet-small) {
   .container {
     width: 100%;
-    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
+    padding: f.px2em(20) f.px2em(24);
     border-radius: 0;
   }
 }
+
 @include media(mobile-all) {
   .container {
     width: 100%;
-    padding: f.px2em(20) f.px2em(24) f.px2em(20) 0;
+    padding: f.px2em(20) f.px2em(24);
     border-radius: 0;
+  }
+}
+
+@include media(mobile-small) {
+  .container {
+    & button {
+      font-size: f.px2rem(12);
+    }
   }
 }

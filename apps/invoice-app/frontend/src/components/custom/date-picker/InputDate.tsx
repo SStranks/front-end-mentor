@@ -5,11 +5,7 @@ import InputDateCalendar from './InputDateCalendar';
 import InputDatePicker from './InputDatePicker';
 import { formatDate, isValidDate } from './dateUtil';
 
-const setInitialDate = (
-  initialDate: string | undefined,
-  min: Date | undefined,
-  max: Date | undefined
-) => {
+const setInitialDate = (initialDate: string | undefined, min: Date | undefined, max: Date | undefined) => {
   // Create date; remove time portion.
   let date = initialDate ? new Date(initialDate) : new Date();
   date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -44,13 +40,18 @@ interface IProps {
 }
 
 // NOTE:  Improved keyboard accessibility; if the user increments the month/year, and the day is invalid (too high) then it automatically reduces the day to the largest valid value for that month.
-function DatePicker(props: IProps): JSX.Element {
-  const { initialDate, min, max, labelId, name, disabled, required } = props;
+function DatePicker({
+  initialDate = undefined,
+  min = undefined,
+  max = undefined,
+  labelId = undefined,
+  name = undefined,
+  disabled = undefined,
+  required = undefined,
+}: IProps): JSX.Element {
   const { current: minDate } = useRef(validatePropDate(min));
   const { current: maxDate } = useRef(validatePropDate(max));
-  const [currentDate, setCurrentDate] = useState<Date>(
-    setInitialDate(initialDate, minDate, maxDate)
-  );
+  const [currentDate, setCurrentDate] = useState<Date>(setInitialDate(initialDate, minDate, maxDate));
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownContainerRef = useRef<HTMLDivElement>(null);
@@ -61,11 +62,7 @@ function DatePicker(props: IProps): JSX.Element {
     // Handle clicks outside of component; close dropdown
     const container = dropdownContainerRef.current;
     const clickHandler = (e: MouseEvent) => {
-      if (
-        isDropdownOpen &&
-        e.target !== dropdownPanelRef.current &&
-        !container?.contains(e.target as HTMLElement)
-      ) {
+      if (isDropdownOpen && e.target !== dropdownPanelRef.current && !container?.contains(e.target as HTMLElement)) {
         e.preventDefault();
         setIsDropdownOpen(false);
       }
@@ -74,14 +71,16 @@ function DatePicker(props: IProps): JSX.Element {
     // Handle keyboard event; spacebar to open dropdown
     const keyHandler = (e: KeyboardEvent) => {
       switch (e.key) {
-        case ' ':
+        case ' ': {
           setIsDropdownOpen(true);
           break;
+        }
         case 'Escape':
-        case 'Esc':
+        case 'Esc': {
           setIsDropdownOpen(false);
           dropdownButtonRef.current?.focus();
           break;
+        }
         default:
       }
     };
@@ -115,7 +114,6 @@ function DatePicker(props: IProps): JSX.Element {
         />
         <button
           type="button"
-          className={styles.dropdownSelect__iconBtn}
           onClick={() => setIsDropdownOpen((prev) => !prev)}
           ref={dropdownButtonRef}
           disabled={disabled}>

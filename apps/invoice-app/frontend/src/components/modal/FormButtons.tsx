@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null */
 import { PropsWithChildren, useContext } from 'react';
 import styles from './FormButtons.module.scss';
 import { ModalContext } from './Modal';
