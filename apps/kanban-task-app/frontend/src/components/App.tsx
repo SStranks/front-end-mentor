@@ -17,7 +17,7 @@ function App(): JSX.Element {
     localStorageData: undefined,
   });
   const [rootModalDispatch, setRootModalDispatch] = useState<TRootModalDispatchContext>(
-    {} as TRootModalDispatchContext,
+    {} as TRootModalDispatchContext
   );
   const [activeBoardId, setActiveBoardId] = useState<string>(INITIAL_ACTIVEBOARD || '');
 
@@ -84,7 +84,7 @@ function App(): JSX.Element {
     <RootModalDispatchContext.Provider value={rootModalDispatch as TRootModalDispatchContext}>
       <AppDispatchContext.Provider value={appDispatch}>
         <AppStateContext.Provider value={state as TAppStateContext}>
-          <RootModal setRootModalDispatch={setRootModalDispatch} />
+          <RootModal activeBoardId={activeBoardId} setRootModalDispatch={setRootModalDispatch} />
           <Routes>
             <Route
               path="/"

@@ -1,5 +1,6 @@
 @use '#Sass/abstracts/colors' as c;
 @use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   position: fixed;
@@ -11,6 +12,10 @@
   backdrop-filter: blur(1px);
   z-index: f.z('modal-container');
   overflow-y: auto;
+}
+
+.container[data-modal-type='mobile-aside'] {
+  top: calc(v.$navbar-dim-height - 32px);
 }
 
 .animationFadeIn {

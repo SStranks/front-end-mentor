@@ -49,15 +49,30 @@
     min-width: 0;
     width: 100%;
     padding: 0 f.px2em(24);
-    color: var(--thm-nav-h1);
     transition: a.$theme-transition-color;
   }
 
-  &__title {
-    @include mx.header-xl;
+  &__leftControls {
+    display: flex;
+
+    &__title {
+      @include mx.header-xl;
+    }
+
+    &__mobileAsideBtn {
+      position: relative;
+      @include mx.extend-clickarea(250%, 300%, false);
+      display: none;
+      align-self: center;
+      margin-right: auto;
+
+      & > img {
+        transform: scale(150%) translateY(1px);
+      }
+    }
   }
 
-  &__controls {
+  &__rightControls {
     position: relative;
     display: flex;
     align-items: center;
@@ -124,13 +139,15 @@
       width: v.$sidebar-dim-width-m;
     }
 
-    &__title {
-      @include mx.header-l;
-      min-width: 0;
-      padding-right: f.px2em(10);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    &__leftControls {
+      &__title {
+        @include mx.header-l;
+        min-width: 0;
+        padding-right: f.px2em(10);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
 }
@@ -144,16 +161,18 @@
       width: v.$sidebar-dim-width-m;
     }
 
-    &__title {
-      @include mx.header-l;
-      min-width: 0;
-      padding-right: f.px2em(10);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    &__leftControls {
+      &__title {
+        @include mx.header-l;
+        min-width: 0;
+        padding-right: f.px2em(10);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
-    &__controls {
+    &__rightControls {
       &__addTask {
         padding: f.px2em(10) f.px2em(18);
 
@@ -199,16 +218,18 @@
       padding-left: 0;
     }
 
-    &__title {
-      @include mx.header-l;
-      min-width: 0;
-      padding-right: f.px2em(10);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    &__leftControls {
+      &__title {
+        @include mx.header-l;
+        min-width: 0;
+        padding-right: f.px2em(10);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
-    &__controls {
+    &__rightControls {
       &__addTask {
         padding: f.px2em(10) f.px2em(18);
 
@@ -254,16 +275,28 @@
       padding-left: 0;
     }
 
-    &__title {
-      @include mx.header-l;
-      min-width: 0;
-      padding-right: f.px2em(10);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    &__leftControls {
+      &__title {
+        @include mx.header-l;
+        min-width: 0;
+        padding-right: f.px2em(10);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &__mobileAsideBtn {
+        display: block;
+
+        &--reverse {
+          & > img {
+            transform: scale(150%) translateY(1px) rotate(180deg);
+          }
+        }
+      }
     }
 
-    &__controls {
+    &__rightControls {
       &__addTask {
         padding: f.px2em(10) f.px2em(18);
 

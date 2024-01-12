@@ -1,6 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
 // import BoardAdd from '#Components/forms/board-add/BoardAdd';
+// NOTE:  What is boardAdd2??
+import Aside from '#Components/aside/Aside';
 import BoardAdd2 from '#Components/forms/board-add/BoardAdd2';
 import BoardDelete from '#Components/forms/board-del/BoardDel';
 import BoardEdit from '#Components/forms/board-edit/BoardEdit';
@@ -26,6 +28,7 @@ const MODAL_COMPONENTS = {
   'board-add': BoardAdd2,
   'board-edit': BoardEdit,
   'board-delete': BoardDelete,
+  'mobile-aside': Aside,
 };
 
 const ACTIONS = {
@@ -63,15 +66,17 @@ const reducer = (
   state: TRootModalState,
   action: TRootModalContextAction
 ): TRootModalState => {
-  console.log('SWITCH', state, initialState);
+  // console.log('SWITCH', state, initialState);
   switch (action.type) {
     case ACTIONS.OPENMODAL: {
       return openModal(state, action);
     }
     case ACTIONS.CLOSEMODAL: {
+      if (state.modalType.at(-1) === 'mobile-aside') dispatchEvent(new Event('modal-mobile-aside-close'));
       return closeModal(state);
     }
     case ACTIONS.CLOSEALL: {
+      if (state.modalType.includes('mobile-aside')) dispatchEvent(new Event('modal-mobile-aside-close'));
       return {
         modalType: [],
         modalProps: [],
@@ -84,13 +89,12 @@ const reducer = (
 };
 
 type TProps = {
-  setRootModalDispatch: React.Dispatch<
-    React.SetStateAction<React.Dispatch<TRootModalContextAction>>
-  >;
+  activeBoardId: string;
+  setRootModalDispatch: React.Dispatch<React.SetStateAction<React.Dispatch<TRootModalContextAction>>>;
 };
 
 function RootModal(props: TProps): JSX.Element | null {
-  const { setRootModalDispatch } = props;
+  const { activeBoardId, setRootModalDispatch } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -121,22 +125,17 @@ function RootModal(props: TProps): JSX.Element | null {
   // eslint-disable-next-line unicorn/no-null
   if (state.modalType.length <= 0) return null;
 
+  // NOTE:  activeBoardId is required for the Aside mobile modal.
   const activeComponents = state.modalType.map((el, i) => {
-    const ModalComponent =
-      MODAL_COMPONENTS[el as keyof typeof MODAL_COMPONENTS];
-    const modalProps = state.modalProps[i];
-    // const modalProps = state.modalProps[el as keyof typeof MODAL_COMPONENTS];
+    const ModalComponent = MODAL_COMPONENTS[el as keyof typeof MODAL_COMPONENTS];
+    const modalProps = { ...state.modalProps[i], activeBoardId };
     return (
-      // eslint-disable-next-line react/no-array-index-key, @typescript-eslint/no-explicit-any
-      <div
-        className={`${styles.animationFadeIn} ${styles.noPointerEvents}`}
-        key={i}>
+      <div className={`${styles.animationFadeIn} ${styles.noPointerEvents}`} key={i}>
         <div className={`${styles.subContainer}`}>
           <div className={styles.pointerEvents}>
             <ModalComponent
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               {...(modalProps as any)}
-              // key={i}
             />
           </div>
         </div>
@@ -155,10 +154,11 @@ function RootModal(props: TProps): JSX.Element | null {
 
   return ReactDOM.createPortal(
     <div
+      id="root-modal"
       className={`${styles.container} ${styles.animationFadeIn}`}
       onClickCapture={modalClickHandler}
-      id="root-modal">
-      {activeComponents[activeComponents.length - 1]}
+      data-modal-type={state.modalType[0]}>
+      {activeComponents.at(-1)}
     </div>,
     domNode
   );

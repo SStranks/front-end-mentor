@@ -2,7 +2,7 @@
 @use '#Sass/abstracts/functions' as f;
 
 .toggleSlider {
-  & label {
+  & > label {
     position: relative;
     display: inline-block;
     width: 40px;

@@ -16,15 +16,15 @@ function DefaultLayout(props: TProps): JSX.Element {
   return (
     <div className={styles.container}>
       <Nav
+        activeBoardId={activeBoardId}
+        boardsList={boardData.boardsList}
         activeBoard={boardData.activeBoard}
         setActiveBoardId={setActiveBoardId}
       />
       <div className={styles.container__subcontainer}>
-        <Aside
-          boardsList={boardData.boardsList}
-          activeBoardId={activeBoardId}
-          setActiveBoardId={setActiveBoardId}
-        />
+        <div className={styles.container__subcontainer__aside}>
+          <Aside boardsList={boardData.boardsList} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />
+        </div>
         <Main activeBoard={boardData.activeBoard} />
       </div>
     </div>

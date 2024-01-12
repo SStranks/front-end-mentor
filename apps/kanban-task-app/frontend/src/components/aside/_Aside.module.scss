@@ -230,6 +230,7 @@
     animation: sidebar-hide-reverse-260 2s forwards;
   }
 }
+
 @include mq.media(tablet-small) {
   .sidebar {
     width: 260px;
@@ -258,7 +259,45 @@
 }
 
 @include mq.media(mobile-all) {
+  .mobileModal {
+    position: fixed;
+    top: calc(0px + v.$navbar-dim-height - 32px);
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    background-color: c.$col-modal-bg;
+    backdrop-filter: blur(1px);
+  }
+
   .sidebar {
-    display: none;
+    // NOTE:  Sidebar visible at desktop-tablet is turned off through defaultLayout.tsx DIV, to allow separate rendering on mobile devices through RootModal.
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    justify-content: unset;
+    margin-inline: auto;
+    width: unset;
+    height: fit-content;
+    max-width: 80%;
+    border-radius: v.$border-radius-dropdown-mobile-aside;
+
+    &__boards {
+      & > h2 {
+        margin: f.px2em(24) f.px2em(32);
+      }
+    }
+
+    &__controls {
+      margin: f.px2em(16) f.px2em(24) f.px2em(20) 0;
+    }
+
+    &__hide {
+      display: none;
+    }
+
+    &__show {
+      display: none;
+    }
   }
 }

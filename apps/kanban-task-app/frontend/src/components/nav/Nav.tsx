@@ -2,21 +2,51 @@ import type { IBoard } from '#Shared/types';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import IconAddTaskMobile from '#Svg/icon-add-task-mobile.svg';
 import IconEllipsis from '#Svg/icon-vertical-ellipsis.svg';
+import IconChevronDown from '#Svg/icon-chevron-down.svg';
 import LogoDark from '#Svg/logo-dark.svg';
 import LogoLight from '#Svg/logo-light.svg';
 import LogoMobile from '#Svg/logo-mobile.svg';
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import styles from './_Nav.module.scss';
+import { TBoardInfo } from '#Types/types';
 
 type TProps = {
   activeBoard: IBoard | undefined;
+  activeBoardId: string;
+  boardsList: TBoardInfo;
   setActiveBoardId: React.Dispatch<React.SetStateAction<string>>;
 };
 
 function Nav(props: TProps): JSX.Element {
-  const { activeBoard, setActiveBoardId } = props;
+  const { activeBoard, activeBoardId, boardsList, setActiveBoardId } = props;
   const modalDispatch = useContext(RootModalDispatchContext);
   const boardOptionsRef = useRef<HTMLDivElement>(null);
+  const mobileAsideBtn = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const mobileAsideHandler = () => {
+      mobileAsideBtn.current?.classList.remove(styles['navbar__leftControls__mobileAsideBtn--reverse']);
+    };
+    addEventListener('modal-mobile-aside-close', mobileAsideHandler);
+
+    return () => removeEventListener('modal-mobile-aside-close', mobileAsideHandler);
+  }, []);
+
+  const mobileAsideClickHandler = () => {
+    if (mobileAsideBtn.current?.classList.contains(styles['navbar__leftControls__mobileAsideBtn--reverse'])) {
+      return modalDispatch({
+        type: 'close-modal',
+      });
+    }
+
+    // NOTE:  RootModal emits event on mobile aside close, to control chevron styles.
+    mobileAsideBtn.current?.classList.add(styles['navbar__leftControls__mobileAsideBtn--reverse']);
+    modalDispatch({
+      type: 'open-modal',
+      modalType: 'mobile-aside',
+      modalProps: { activeBoardId, boardsList, setActiveBoardId },
+    });
+  };
 
   const boardMenuClickHandler = () => {
     boardOptionsRef.current?.classList.toggle('hidden');
@@ -57,41 +87,35 @@ function Nav(props: TProps): JSX.Element {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar__logo}>
-        <img
-          src={LogoDark}
-          className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--dark']}`}
-          alt=""
-        />
-        <img
-          src={LogoLight}
-          className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--light']}`}
-          alt=""
-        />
-        <img
-          src={LogoMobile}
-          className={`${styles['navbar__logo--mobile']}`}
-          alt=""
-        />
+        <img src={LogoDark} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--dark']}`} alt="" />
+        <img src={LogoLight} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--light']}`} alt="" />
+        <img src={LogoMobile} className={`${styles['navbar__logo--mobile']}`} alt="" />
       </div>
       <div className={styles.navbar__head}>
-        <h1 className={styles.navbar__title}>{activeBoard?.name}</h1>
-        <div className={styles.navbar__controls}>
+        <div className={styles.navbar__leftControls}>
+          <h1 className={styles.navbar__leftControls__title}>{activeBoard?.name}</h1>
           <button
             type="button"
-            className={styles.navbar__controls__addTask}
+            onClick={mobileAsideClickHandler}
+            className={styles.navbar__leftControls__mobileAsideBtn}
+            ref={mobileAsideBtn}>
+            <img src={IconChevronDown} alt="" />
+          </button>
+        </div>
+        <div className={styles.navbar__rightControls}>
+          <button
+            type="button"
+            className={styles.navbar__rightControls__addTask}
             onClick={addTaskBtnClickHandler}
             disabled={activeBoard?.columns.length === 0}>
             <img src={IconAddTaskMobile} alt="" />
             <span>+ Add New Task</span>
           </button>
-          <button
-            type="button"
-            onClick={boardMenuClickHandler}
-            className={styles.navbar__controls__boardOptions}>
+          <button type="button" onClick={boardMenuClickHandler} className={styles.navbar__rightControls__boardOptions}>
             <img src={IconEllipsis} alt="" />
           </button>
           <div
-            className={`${styles.navbar__controls__dropdownMenu} hidden`}
+            className={`${styles.navbar__rightControls__dropdownMenu} hidden`}
             onClickCapture={boardOptionsClickHandler}
             ref={boardOptionsRef}>
             <p>Edit Board</p>
