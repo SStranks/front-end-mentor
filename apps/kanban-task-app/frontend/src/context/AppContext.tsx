@@ -1,11 +1,14 @@
+import { TAction } from '#Hooks/useAppReducer';
+import { IBoard, IColumn, ITask } from '#Shared/types';
 import { TAppStateContext } from '#Types/types';
 import React from 'react';
 
 export interface IAppContextPayload {
   id: { boardId: string; columnId?: string; taskId?: string };
-  data: {
-    [key: string]: unknown;
-  };
+  // data: {
+  //   [key: string]: unknown;
+  // };
+  data: IBoard | IColumn | ITask | null;
 }
 
 export interface IAppContextLocalStorage {
@@ -19,7 +22,8 @@ export type TAppContextAction = {
   localStorage?: IAppContextLocalStorage;
 };
 
-type TAppDispatchContext = React.Dispatch<TAppContextAction>;
+// type TAppDispatchContext = React.Dispatch<TAppContextAction>;
+type TAppDispatchContext = React.Dispatch<TAction>;
 
 export const AppDispatchContext = React.createContext<TAppDispatchContext>({} as TAppDispatchContext);
 

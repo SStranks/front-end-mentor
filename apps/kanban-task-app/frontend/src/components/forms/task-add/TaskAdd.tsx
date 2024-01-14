@@ -5,11 +5,7 @@ import Dropdown from '#Components/custom/dropdown/Dropdown';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextSubtask from '#Components/custom/input-text/InputTextSubtask';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
-import {
-  AppDispatchContext,
-  AppStateContext,
-  IAppContextPayload,
-} from '#Context/AppContext';
+import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import useComponentIdGenerator from '#Hooks/useComponentIdGenerator';
 import ApiService from '#Services/Services';
@@ -71,9 +67,7 @@ function TaskAdd(props: TProps): JSX.Element {
     const newFormData = validateInputs(formData);
     // If there are any empty inputs/objs in newFormData, abort form submission and merge the form state with the newFormData objs.
     if (Object.keys(newFormData).length > 0) {
-      return setFormData(
-        (prev) => ({ ...prev, ...newFormData } as typeof prev)
-      );
+      return setFormData((prev) => ({ ...prev, ...newFormData }) as typeof prev);
     }
     const formInputData = new FormData(e.target as HTMLFormElement);
     // Format data according to schema
@@ -93,24 +87,21 @@ function TaskAdd(props: TProps): JSX.Element {
       })),
     } as IPostTaskRequestDTO;
 
-    const selectedColumn = activeBoard.columns.find(
-      (c) => c.name === status
-    ) as IColumn;
+    const selectedColumn = activeBoard.columns.find((c) => c.name === status) as IColumn;
     const columnId = selectedColumn._id;
 
     // Send data to backend API
     try {
-      const responseData: IBoard | undefined = await ApiService.postTask(
-        activeBoard._id,
-        columnId,
-        newTask
-      );
+      const responseData = await ApiService.postTask(activeBoard._id, columnId, newTask);
       if (!responseData) throw new Error('Could not post task!');
 
       modalDispatch({ type: 'close-modal' });
       return appDispatch({
         type: 'add-task',
-        payload: responseData as unknown as IAppContextPayload,
+        payload: {
+          id: { boardId: responseData._id },
+          data: responseData,
+        },
       });
     } catch (error) {
       console.error(error);
@@ -189,10 +180,7 @@ function TaskAdd(props: TProps): JSX.Element {
         <div className={styles.form__group}>
           <p>Sub-Tasks</p>
           <div className={styles.form__subTasks}>{subTasks}</div>
-          <button
-            type="button"
-            className={styles.form__btnNewSubTask}
-            onClick={btnNewSubtaskClickHandler}>
+          <button type="button" className={styles.form__btnNewSubTask} onClick={btnNewSubtaskClickHandler}>
             + Add New Sub-Task
           </button>
         </div>

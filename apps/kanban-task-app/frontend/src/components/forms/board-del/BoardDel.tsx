@@ -23,7 +23,7 @@ function BoardDelete(props: TProps): JSX.Element {
 
         appDispatch({
           type: 'delete-board',
-          payload: { id: { boardId: activeBoardId }, data: { x: undefined } },
+          payload: { id: { boardId: activeBoardId } },
         });
         setActiveBoardId(state.boards[0]._id || '');
         return modalDispatch({ type: 'close-modal' });

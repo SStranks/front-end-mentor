@@ -1,5 +1,4 @@
 import type { IBoard } from '#Shared/types';
-import { IAppContextPayload, TAppContextAction } from '#Context/AppContext';
 import { TAppStateContext } from '#Types/types';
 import { IOrderedTasks, generateOrderedTasks, orderStateTasks } from '#Utils/taskSorting';
 import { useCallback, useReducer } from 'react';
@@ -14,9 +13,9 @@ const setLocalStorageData = (state: TAppStateContext) => {
   return { ...state, localStorageData };
 };
 
-const setInitialState = (state: TAppStateContext, payload: IAppContextPayload) => {
-  const data: unknown = payload;
-  let newState = { ...state, boards: data as IBoard[] };
+const setInitialState = (state: TAppStateContext, payload: TActionHelper<'set-initial'>) => {
+  const { data } = payload;
+  let newState = { ...state, boards: data };
 
   // Synchronise API data with localStorage ordering of tasks
   const localStorageTaskOrderJSON = window.localStorage.getItem('boards-taskOrder');
@@ -31,9 +30,9 @@ const setInitialState = (state: TAppStateContext, payload: IAppContextPayload) =
   return newState;
 };
 
-const addTask = (state: TAppStateContext, payload: IAppContextPayload) => {
+const addTask = (state: TAppStateContext, payload: TActionHelper<'add-task'>) => {
   let newState = { ...state };
-  const newBoard = payload as unknown as IBoard;
+  const newBoard = payload.data;
   const board = newState.boards.findIndex((b) => b._id === newBoard._id);
   newState.boards[board] = newBoard;
   newState = setLocalStoragePending(newState, true);
@@ -41,18 +40,18 @@ const addTask = (state: TAppStateContext, payload: IAppContextPayload) => {
   return newState;
 };
 
-const updateTask = (state: TAppStateContext, payload: IAppContextPayload) => {
+const updateTask = (state: TAppStateContext, payload: TActionHelper<'update-task'>) => {
   console.log('UPDATETASK REDUCER');
   let newState = { ...state };
-  const boardId = payload.id?.boardId;
+  const { boardId } = payload.id;
   const boardIdx = newState.boards.findIndex((b) => b._id === boardId);
-  newState.boards[boardIdx] = payload.data?.board as IBoard;
+  newState.boards[boardIdx] = payload.data;
   newState = setLocalStoragePending(newState, true);
   newState = setLocalStorageData(newState);
   return newState;
 };
 
-const deleteTask = (state: TAppStateContext, payload: IAppContextPayload) => {
+const deleteTask = (state: TAppStateContext, payload: TActionHelper<'delete-task'>) => {
   let newState = { ...state };
   const { boardId, columnId, taskId } = payload.id;
   const boardIdx = newState.boards.findIndex((b) => b._id === boardId);
@@ -64,76 +63,71 @@ const deleteTask = (state: TAppStateContext, payload: IAppContextPayload) => {
   return newState;
 };
 
-const addBoard = (state: TAppStateContext, payload: IAppContextPayload) => {
+const addBoard = (state: TAppStateContext, payload: TActionHelper<'add-board'>) => {
   console.log('ADDBOARD REDUCER', state, payload);
-  const newBoard = payload.data as unknown as IBoard;
+  const newBoard = payload.data;
   let newState = { ...state, boards: [...state.boards, newBoard] };
   newState = setLocalStoragePending(newState, true);
   newState = setLocalStorageData(newState);
   return newState;
 };
 
-const editBoard = (state: TAppStateContext, payload: IAppContextPayload) => {
+const editBoard = (state: TAppStateContext, payload: TActionHelper<'edit-board'>) => {
   console.log('EDITBOARD REDUCER', payload);
   let newState = { ...state };
-  const boardIdx = newState.boards.findIndex((b) => b._id === payload.id?.boardId);
-  newState.boards[boardIdx] = payload.data as unknown as IBoard;
+  const boardIdx = newState.boards.findIndex((b) => b._id === payload.id.boardId);
+  newState.boards[boardIdx] = payload.data;
   newState = setLocalStoragePending(newState, true);
   newState = setLocalStorageData(newState);
   return newState;
 };
 
-const deleteBoard = (state: TAppStateContext, payload: IAppContextPayload) => {
-  const filterBoards = state.boards.filter((b) => b._id !== payload.id?.boardId);
+const deleteBoard = (state: TAppStateContext, payload: TActionHelper<'delete-board'>) => {
+  const filterBoards = state.boards.filter((b) => b._id !== payload.id.boardId);
   let newState = { ...state, boards: filterBoards };
   newState = setLocalStoragePending(newState, true);
   newState = setLocalStorageData(newState);
   return newState;
 };
 
-const ACTIONS = {
-  SETLOCALSTORAGEPENDING: 'localStoragePending',
-  SETINITIALSTATE: 'set-initial',
-  ADDTASK: 'add-task',
-  UPDATETASK: 'update-task',
-  DELETETASK: 'delete-task',
-  ADDBOARD: 'add-board',
-  EDITBOARD: 'edit-board',
-  DELETEBOARD: 'delete-board',
-};
+export type TAction =
+  | { type: 'add-task'; payload: { id: { boardId: string }; data: IBoard } }
+  | { type: 'update-task'; payload: { id: { boardId: string }; data: IBoard } }
+  | { type: 'delete-task'; payload: { id: { boardId: string; columnId: string; taskId: string } } }
+  | { type: 'add-board'; payload: { id: { boardId: string }; data: IBoard } }
+  | { type: 'edit-board'; payload: { id: { boardId: string }; data: IBoard } }
+  | { type: 'delete-board'; payload: { id: { boardId: string } } }
+  | { type: 'localStoragePending'; localStorage: { localStoragePending: boolean } }
+  | { type: 'set-initial'; payload: { data: IBoard[] } };
 
-const reducer = (state: TAppStateContext, action: TAppContextAction): TAppStateContext => {
+type TActionPayloads = Exclude<TAction, { type: 'localStoragePending' }>;
+
+type TActionHelper<T extends string> = Extract<TActionPayloads, { type: T }>['payload'];
+
+const reducer = (state: TAppStateContext, action: TAction): TAppStateContext => {
   switch (action.type) {
-    case ACTIONS.SETLOCALSTORAGEPENDING: {
-      if (action.localStorage?.localStoragePending === undefined) throw new Error('Reducer payload undefined');
+    case 'localStoragePending': {
       return setLocalStoragePending(state, action.localStorage.localStoragePending);
     }
-    case ACTIONS.SETINITIALSTATE: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'set-initial': {
       return setInitialState(state, action.payload);
     }
-    case ACTIONS.ADDTASK: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'add-task': {
       return addTask(state, action.payload);
     }
-    case ACTIONS.UPDATETASK: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'update-task': {
       return updateTask(state, action.payload);
     }
-    case ACTIONS.DELETETASK: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'delete-task': {
       return deleteTask(state, action.payload);
     }
-    case ACTIONS.ADDBOARD: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'add-board': {
       return addBoard(state, action.payload);
     }
-    case ACTIONS.EDITBOARD: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'edit-board': {
       return editBoard(state, action.payload);
     }
-    case ACTIONS.DELETEBOARD: {
-      if (action.payload === undefined) throw new Error('Reducer payload undefined');
+    case 'delete-board': {
       return deleteBoard(state, action.payload);
     }
     default: {
@@ -142,7 +136,7 @@ const reducer = (state: TAppStateContext, action: TAppContextAction): TAppStateC
   }
 };
 
-function useAppReducer(initialState: TAppStateContext): [TAppStateContext, React.Dispatch<TAppContextAction>] {
+function useAppReducer(initialState: TAppStateContext): [TAppStateContext, React.Dispatch<TAction>] {
   const [state, unstableDispatch] = useReducer(reducer, initialState);
   const dispatch = useCallback(unstableDispatch, [unstableDispatch]);
   return [state, dispatch];

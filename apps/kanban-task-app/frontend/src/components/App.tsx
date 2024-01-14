@@ -1,4 +1,4 @@
-import { AppDispatchContext, AppStateContext, IAppContextPayload } from '#Context/AppContext';
+import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
 import RootModalDispatchContext, { TRootModalDispatchContext } from '#Context/RootModalContext';
 import useAppReducer from '#Hooks/useAppReducer';
 import Home from '#Pages/Home';
@@ -43,15 +43,13 @@ function App(): JSX.Element {
     // Fetch data from backend
     (async function fetchData() {
       try {
-        const responseData: unknown = await ApiService.getAllBoards();
+        const responseData = await ApiService.getAllBoards();
         if (!responseData) throw new Error('Unable to get boards!');
-
-        // console.log("USE EFFECT", responseData);
 
         // Set API Data into local state
         return appDispatch({
           type: 'set-initial',
-          payload: responseData as IAppContextPayload,
+          payload: { data: responseData },
         });
       } catch (error) {
         console.error(error);

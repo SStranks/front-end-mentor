@@ -56,7 +56,7 @@ function BoardEdit(props: TProps): JSX.Element {
         type: 'edit-board',
         payload: {
           id: { boardId: activeBoard._id },
-          data: { ...responseData },
+          data: responseData,
         },
       });
     } catch (error) {

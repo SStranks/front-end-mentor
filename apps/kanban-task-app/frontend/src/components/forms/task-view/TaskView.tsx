@@ -1,7 +1,4 @@
-import {
-  IPatchTaskColumnRequestDTO,
-  IPostTaskRequestDTO,
-} from '#Services/ApiRequestDto';
+import { IPatchTaskColumnRequestDTO, IPostTaskRequestDTO } from '#Services/ApiRequestDto';
 import CheckBox from '#Components/custom/checkbox/CheckBox';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
 import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
@@ -41,6 +38,7 @@ type SubtaskType = {
 // TODO:  Need to refactor handling of generating inputs/checkboxes, as it is similar but different to group inputs on other forms (different properties; value vs title, isCompleted vs error, etc)
 const genSubtaskInputs = (task: ITask): SubtaskType => {
   console.log('GEN SUB TASK', task);
+  // eslint-disable-next-line unicorn/no-array-reduce
   return task.subtasks.reduce((acc, cur) => {
     const key = `input-checkbox-${cur._id}`;
     acc[key] = {
@@ -92,28 +90,21 @@ function TaskView(props: TProps): JSX.Element {
           try {
             const newTask = {
               status: formData['input-status'].value,
-              subtasks: Object.values(formData['input-group-subtasks']).map(
-                (t) => ({
-                  title: t.title,
-                  isCompleted: t.value,
-                })
-              ),
+              subtasks: Object.values(formData['input-group-subtasks']).map((t) => ({
+                title: t.title,
+                isCompleted: t.value,
+              })),
             } as IPostTaskRequestDTO;
             const { boardId, columnId, taskId } = selectTask;
 
-            const responseData = await ApiService.patchTask(
-              boardId,
-              columnId,
-              taskId,
-              newTask
-            );
+            const responseData = await ApiService.patchTask(boardId, columnId, taskId, newTask);
             if (!responseData) throw new Error('Could not patch task!');
 
             return appDispatch({
               type: 'update-task',
               payload: {
                 id: { boardId },
-                data: { board: responseData },
+                data: responseData,
               },
             });
           } catch (error) {
@@ -131,12 +122,10 @@ function TaskView(props: TProps): JSX.Element {
               title: task.title,
               description: task.description,
               status: formData['input-status'].value,
-              subtasks: Object.values(formData['input-group-subtasks']).map(
-                (t) => ({
-                  title: t.title,
-                  isCompleted: t.value,
-                })
-              ),
+              subtasks: Object.values(formData['input-group-subtasks']).map((t) => ({
+                title: t.title,
+                isCompleted: t.value,
+              })),
             };
             const { boardId, columnId, taskId } = selectTask;
             const newColumnId = formData['input-status'].columnId;
@@ -145,16 +134,12 @@ function TaskView(props: TProps): JSX.Element {
               newColumnId,
               newTask,
             } as IPatchTaskColumnRequestDTO;
-            const responseData = await ApiService.patchTaskColumn(
-              boardId,
-              columnId,
-              data
-            );
+            const responseData = await ApiService.patchTaskColumn(boardId, columnId, data);
             if (!responseData) throw new Error('Could not patch task column!');
 
             return appDispatch({
               type: 'update-task',
-              payload: { id: { boardId }, data: { board: responseData } },
+              payload: { id: { boardId }, data: responseData },
             });
           } catch (error) {
             console.error(error);
@@ -211,22 +196,18 @@ function TaskView(props: TProps): JSX.Element {
     }
   };
 
-  const tasksComplete = Object.values(formData['input-group-subtasks']).filter(
-    (t) => t.value
-  ).length;
+  const tasksComplete = Object.values(formData['input-group-subtasks']).filter((t) => t.value).length;
 
-  const subtasksElems = Object.values(formData['input-group-subtasks']).map(
-    (t) => (
-      <CheckBox
-        key={t._id}
-        title={t.title}
-        checked={t.value}
-        inputName={t.inputName}
-        groupId={t.groupId}
-        returnData={returnDataHandler}
-      />
-    )
-  );
+  const subtasksElems = Object.values(formData['input-group-subtasks']).map((t) => (
+    <CheckBox
+      key={t._id}
+      title={t.title}
+      checked={t.value}
+      inputName={t.inputName}
+      groupId={t.groupId}
+      returnData={returnDataHandler}
+    />
+  ));
 
   return (
     <form className={styles.container} id="form-1">
@@ -234,10 +215,7 @@ function TaskView(props: TProps): JSX.Element {
         <div className={styles.taskView__header}>
           <p>{task.title}</p>
           <div className={styles.taskView__menu}>
-            <button
-              type="button"
-              className={styles.taskView__menu__btn}
-              onClick={menuBtnClickHandler}>
+            <button type="button" className={styles.taskView__menu__btn} onClick={menuBtnClickHandler}>
               <img src={IconVerticalEllipsis} alt="" />
             </button>
             <div

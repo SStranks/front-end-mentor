@@ -90,7 +90,6 @@ function ColumnGrid(props: TProps): JSX.Element {
           type: 'delete-task',
           payload: {
             id: { boardId, columnId, taskId },
-            data: { x: undefined },
           },
         });
       } catch (error) {
@@ -135,7 +134,7 @@ function ColumnGrid(props: TProps): JSX.Element {
 
     appDispatch({
       type: 'update-task',
-      payload: { id: { boardId }, data: { board } },
+      payload: { id: { boardId }, data: board },
     });
   };
 

@@ -1,7 +1,4 @@
-import type {
-  IPatchTaskColumnRequestDTO,
-  IPatchTaskRequestDTO,
-} from '#Services/ApiRequestDto';
+import type { IPatchTaskColumnRequestDTO, IPatchTaskRequestDTO } from '#Services/ApiRequestDto';
 import type { ITask } from '#Shared/types';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
 import InputText from '#Components/custom/input-text/InputText';
@@ -24,6 +21,7 @@ import React, { useContext, useState } from 'react';
 import styles from './_TaskEdit.module.scss';
 
 const genGroupInputs = (task: ITask) => {
+  // eslint-disable-next-line unicorn/no-array-reduce
   return task.subtasks.reduce((acc, cur) => {
     const key = `input-subtask-${cur._id}`;
     acc[key] = {
@@ -78,9 +76,7 @@ function TaskEdit(props: TProps): JSX.Element {
     const newFormData = validateInputs(formData);
     // If there are any empty inputs/objs in newFormData, abort form submission and merge the form state with the newFormData objs.
     if (Object.keys(newFormData).length > 0) {
-      return setFormData(
-        (prev) => ({ ...prev, ...newFormData } as typeof prev)
-      );
+      return setFormData((prev) => ({ ...prev, ...newFormData }) as typeof prev);
     }
     // All form inputs have been validated. Submit form data.
     const formInputData = new FormData(e.target as HTMLFormElement);
@@ -101,9 +97,8 @@ function TaskEdit(props: TProps): JSX.Element {
       const subtaskId = key.split('-')[2];
       const subtaskIdx = task.subtasks.findIndex((st) => st._id === subtaskId);
 
-      return subtaskIdx !== -1
-        ? { ...task.subtasks[subtaskIdx], title: value }
-        : { title: value };
+      // eslint-disable-next-line unicorn/no-negated-condition
+      return subtaskIdx !== -1 ? { ...task.subtasks[subtaskIdx], title: value } : { title: value };
     });
 
     const newTask = {
@@ -119,30 +114,21 @@ function TaskEdit(props: TProps): JSX.Element {
     try {
       let responseData;
       if (columnId === newColumnId) {
-        responseData = await ApiService.patchTask(
-          boardId,
-          columnId,
-          taskId,
-          newTask
-        );
+        responseData = await ApiService.patchTask(boardId, columnId, taskId, newTask);
       } else {
         const data = {
           taskId,
           newColumnId,
           newTask,
         } as IPatchTaskColumnRequestDTO;
-        responseData = await ApiService.patchTaskColumn(
-          boardId,
-          columnId,
-          data
-        );
+        responseData = await ApiService.patchTaskColumn(boardId, columnId, data);
       }
 
       if (!responseData) throw new Error('Could not patch task!');
 
       appDispatch({
         type: 'update-task',
-        payload: { id: { boardId }, data: { board: responseData } },
+        payload: { id: { boardId }, data: responseData },
       });
       return modalDispatch({ type: 'close-all', modalType: undefined });
     } catch (error) {
@@ -223,10 +209,7 @@ function TaskEdit(props: TProps): JSX.Element {
         <div className={styles.form__group}>
           <p>Sub-Tasks</p>
           <div className={styles.form__subTasks}>{subTasks}</div>
-          <button
-            type="button"
-            className={styles.form__btnNewSubTask}
-            onClick={btnNewSubtaskClickHandler}>
+          <button type="button" className={styles.form__btnNewSubTask} onClick={btnNewSubtaskClickHandler}>
             + Add New Sub-Task
           </button>
         </div>

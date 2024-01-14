@@ -56,7 +56,7 @@ function BoardAdd(props: TProps): JSX.Element {
         type: 'add-board',
         payload: {
           id: { boardId: responseData._id },
-          data: { ...responseData },
+          data: responseData,
         },
       });
       return setActiveBoardId(responseData._id);
