@@ -1,10 +1,4 @@
-import {
-  createOne,
-  deleteOne,
-  getAll,
-  getOne,
-  updateOne,
-} from '#Config/dbHandlers.js';
+import { createOne, deleteOne, getAll, getOne, updateOne } from '#Config/dbHandlers.js';
 import { Board } from '#Models/boardModel.js';
 
 const getBoard = getOne(Board);

@@ -7,10 +7,7 @@ import type {
   IPatchTaskRequestDTO,
   IPatchTaskColumnRequestDTO,
 } from './ApiRequestDto';
-import type {
-  IBoardResponseDTO,
-  IAllBoardsResponseDTO,
-} from './ApiResponseDto';
+import type { IBoardResponseDTO, IAllBoardsResponseDTO } from './ApiResponseDto';
 import { IApiClient } from './ApiHttp';
 
 interface IApiResponse<T> {
@@ -22,32 +19,12 @@ interface IApiResponse<T> {
 export interface IApiServiceClient {
   getAllBoards(): Promise<IBoard[] | undefined>;
   postBoard(data: IPostBoardRequestDTO): Promise<IBoard | undefined>;
-  patchBoard(
-    boardId: string,
-    data: IPatchBoardRequestDTO
-  ): Promise<IBoard | undefined>;
+  patchBoard(boardId: string, data: IPatchBoardRequestDTO): Promise<IBoard | undefined>;
   deleteBoard(boardId: string): Promise<number | boolean>;
-  postTask(
-    boardId: string,
-    columnId: string,
-    data: IPostTaskRequestDTO
-  ): Promise<IBoard | undefined>;
-  patchTask(
-    boardId: string,
-    columnId: string,
-    taskId: string,
-    data: IPatchTaskRequestDTO
-  ): Promise<IBoard | undefined>;
-  patchTaskColumn(
-    boardId: string,
-    columnId: string,
-    data: IPatchTaskColumnRequestDTO
-  ): Promise<IBoard | undefined>;
-  deleteTask(
-    boardId: string,
-    columnId: string,
-    taskId: string
-  ): Promise<number | boolean>;
+  postTask(boardId: string, columnId: string, data: IPostTaskRequestDTO): Promise<IBoard | undefined>;
+  patchTask(boardId: string, columnId: string, taskId: string, data: IPatchTaskRequestDTO): Promise<IBoard | undefined>;
+  patchTaskColumn(boardId: string, columnId: string, data: IPatchTaskColumnRequestDTO): Promise<IBoard | undefined>;
+  deleteTask(boardId: string, columnId: string, taskId: string): Promise<number | boolean>;
 }
 
 export default class ApiServiceClient implements IApiServiceClient {
@@ -59,9 +36,7 @@ export default class ApiServiceClient implements IApiServiceClient {
 
   async getAllBoards(): Promise<IBoard[] | undefined> {
     try {
-      const response = await this.ApiServiceClient.get<
-        IApiResponse<IAllBoardsResponseDTO>
-      >('/boards');
+      const response = await this.ApiServiceClient.get<IApiResponse<IAllBoardsResponseDTO>>('/boards');
       const {
         data: { data: responseData },
       } = response;
@@ -74,10 +49,10 @@ export default class ApiServiceClient implements IApiServiceClient {
 
   async postBoard(data: IPostBoardRequestDTO): Promise<IBoard | undefined> {
     try {
-      const response = await this.ApiServiceClient.post<
-        IPostBoardRequestDTO,
-        IApiResponse<IBoardResponseDTO>
-      >('/boards', data);
+      const response = await this.ApiServiceClient.post<IPostBoardRequestDTO, IApiResponse<IBoardResponseDTO>>(
+        '/boards',
+        data
+      );
       const {
         data: { data: responseData },
       } = response;
@@ -88,15 +63,12 @@ export default class ApiServiceClient implements IApiServiceClient {
     }
   }
 
-  async patchBoard(
-    boardId: string,
-    data: IPatchBoardRequestDTO
-  ): Promise<IBoard | undefined> {
+  async patchBoard(boardId: string, data: IPatchBoardRequestDTO): Promise<IBoard | undefined> {
     try {
-      const response = await this.ApiServiceClient.patch<
-        IPatchBoardRequestDTO,
-        IApiResponse<IBoardResponseDTO>
-      >(`boards/${boardId}`, data);
+      const response = await this.ApiServiceClient.patch<IPatchBoardRequestDTO, IApiResponse<IBoardResponseDTO>>(
+        `boards/${boardId}`,
+        data
+      );
       const {
         data: { data: responseData },
       } = response;
@@ -118,16 +90,12 @@ export default class ApiServiceClient implements IApiServiceClient {
     }
   }
 
-  async postTask(
-    boardId: string,
-    columnId: string,
-    data: IPostTaskRequestDTO
-  ): Promise<IBoard | undefined> {
+  async postTask(boardId: string, columnId: string, data: IPostTaskRequestDTO): Promise<IBoard | undefined> {
     try {
-      const response = await this.ApiServiceClient.post<
-        IPostTaskRequestDTO,
-        IApiResponse<IBoardResponseDTO>
-      >(`boards/${boardId}/${columnId}`, data);
+      const response = await this.ApiServiceClient.post<IPostTaskRequestDTO, IApiResponse<IBoardResponseDTO>>(
+        `boards/${boardId}/${columnId}`,
+        data
+      );
       const {
         data: { data: responseData },
       } = response;
@@ -145,10 +113,10 @@ export default class ApiServiceClient implements IApiServiceClient {
     data: IPatchTaskRequestDTO
   ): Promise<IBoard | undefined> {
     try {
-      const response = await this.ApiServiceClient.patch<
-        IPatchTaskRequestDTO,
-        IApiResponse<IBoardResponseDTO>
-      >(`boards/${boardId}/${columnId}/${taskId}`, data);
+      const response = await this.ApiServiceClient.patch<IPatchTaskRequestDTO, IApiResponse<IBoardResponseDTO>>(
+        `boards/${boardId}/${columnId}/${taskId}`,
+        data
+      );
       const {
         data: { data: responseData },
       } = response;
@@ -165,10 +133,7 @@ export default class ApiServiceClient implements IApiServiceClient {
     data: IPatchTaskColumnRequestDTO
   ): Promise<IBoard | undefined> {
     try {
-      const response = await this.ApiServiceClient.patch<
-        IPatchTaskColumnRequestDTO,
-        IApiResponse<IBoardResponseDTO>
-      >(
+      const response = await this.ApiServiceClient.patch<IPatchTaskColumnRequestDTO, IApiResponse<IBoardResponseDTO>>(
         `boards/${boardId}/${columnId}
       `,
         data
@@ -183,15 +148,9 @@ export default class ApiServiceClient implements IApiServiceClient {
     }
   }
 
-  async deleteTask(
-    boardId: string,
-    columnId: string,
-    taskId: string
-  ): Promise<number | boolean> {
+  async deleteTask(boardId: string, columnId: string, taskId: string): Promise<number | boolean> {
     try {
-      const response = await this.ApiServiceClient.delete(
-        `boards/${boardId}/${columnId}/${taskId}`
-      );
+      const response = await this.ApiServiceClient.delete(`boards/${boardId}/${columnId}/${taskId}`);
       const { status: statusCode } = response;
       return statusCode;
     } catch (error) {

@@ -21,7 +21,7 @@ function App(): JSX.Element {
   );
   const [activeBoardId, setActiveBoardId] = useState<string>(INITIAL_ACTIVEBOARD || '');
 
-  console.log('APP RENDER');
+  // console.log('APP RENDER');
 
   // Commit tasks ordering to localStorage when tab/browser visibility changes and data is pending
   useEffect(() => {

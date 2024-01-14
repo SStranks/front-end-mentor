@@ -21,10 +21,6 @@ export type TAppContextAction = {
 
 type TAppDispatchContext = React.Dispatch<TAppContextAction>;
 
-export const AppDispatchContext = React.createContext<TAppDispatchContext>(
-  {} as TAppDispatchContext
-);
+export const AppDispatchContext = React.createContext<TAppDispatchContext>({} as TAppDispatchContext);
 
-export const AppStateContext = React.createContext<TAppStateContext>(
-  {} as TAppStateContext
-);
+export const AppStateContext = React.createContext<TAppStateContext>({} as TAppStateContext);

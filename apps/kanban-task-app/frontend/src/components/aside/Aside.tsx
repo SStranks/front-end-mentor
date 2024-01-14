@@ -40,7 +40,6 @@ type TProps = {
 
 function Aside(props: TProps): JSX.Element {
   const { boardsList, activeBoardId, setActiveBoardId } = props;
-  console.log(activeBoardId);
   const modalDispatch = useContext(RootModalDispatchContext);
 
   const numOfBoards = boardsList.length;

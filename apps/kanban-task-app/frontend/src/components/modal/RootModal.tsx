@@ -1,9 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
-// import BoardAdd from '#Components/forms/board-add/BoardAdd';
-// NOTE:  What is boardAdd2??
 import Aside from '#Components/aside/Aside';
-import BoardAdd2 from '#Components/forms/board-add/BoardAdd2';
+import BoardAdd from '#Components/forms/board-add/BoardAdd';
 import BoardDelete from '#Components/forms/board-del/BoardDel';
 import BoardEdit from '#Components/forms/board-edit/BoardEdit';
 import Error from '#Components/forms/error/Error';
@@ -25,7 +23,7 @@ const MODAL_COMPONENTS = {
   'task-view': TaskView,
   'task-edit': TaskEdit,
   'task-delete': TaskDelete,
-  'board-add': BoardAdd2,
+  'board-add': BoardAdd,
   'board-edit': BoardEdit,
   'board-delete': BoardDelete,
   'mobile-aside': Aside,

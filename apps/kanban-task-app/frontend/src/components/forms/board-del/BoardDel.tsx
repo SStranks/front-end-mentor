@@ -47,20 +47,14 @@ function BoardDelete(props: TProps): JSX.Element {
       <form className={styles.form}>
         <p className={styles.form__title}>Delete this board?</p>
         <p className={styles.form__description}>
-          Are you sure you want to delete the &apos;Platform Launch&apos; board?
-          This action will remove all columns and tasks and cannot be reversed.
+          Are you sure you want to delete the &apos;Platform Launch&apos; board? This action will remove all columns and
+          tasks and cannot be reversed.
         </p>
         <div className={styles.form__btnGroup}>
-          <button
-            type="button"
-            onClick={deleteBtnClickHandler}
-            className={styles.form__btnDelete}>
+          <button type="button" onClick={deleteBtnClickHandler} className={styles.form__btnDelete}>
             Delete
           </button>
-          <button
-            type="button"
-            onClick={cancelBtnClickHandler}
-            className={styles.form__btnCancel}>
+          <button type="button" onClick={cancelBtnClickHandler} className={styles.form__btnCancel}>
             Cancel
           </button>
         </div>

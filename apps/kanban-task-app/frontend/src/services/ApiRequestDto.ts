@@ -2,12 +2,12 @@ import type { IColumn, ITask, ISubTask } from '#Shared/types';
 
 export interface IPostBoardRequestDTO {
   name: string;
-  columns: Exclude<IColumn, '_id' | 'tasks'>[];
+  columns: Omit<IColumn, '_id' | 'tasks'>[];
 }
 
 export interface IPatchBoardRequestDTO {
   name: string;
-  columns: Exclude<IColumn, '_id' | 'tasks'>[];
+  columns: Omit<IColumn, '_id' | 'tasks'>[];
 }
 
 export interface IPostTaskRequestDTO {
