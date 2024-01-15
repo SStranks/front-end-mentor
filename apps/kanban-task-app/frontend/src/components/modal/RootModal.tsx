@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/jsx-props-no-spreading */
 import Aside from '#Components/aside/Aside';
 import BoardAdd from '#Components/forms/board-add/BoardAdd';
 import BoardDelete from '#Components/forms/board-del/BoardDel';

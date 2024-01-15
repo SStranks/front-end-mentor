@@ -47,8 +47,6 @@ function BoardAdd(props: TProps): JSX.Element {
       const responseData = await ApiService.postBoard(newBoard);
       if (!responseData) throw new Error('Unable to post board!');
 
-      console.log('ADDBOARD', responseData);
-
       modalDispatch({
         type: 'close-modal',
       });

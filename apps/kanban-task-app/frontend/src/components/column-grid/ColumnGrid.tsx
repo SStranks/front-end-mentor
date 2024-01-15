@@ -21,9 +21,6 @@ function ColumnGrid(props: TProps): JSX.Element {
   const modalDispatch = useContext(RootModalDispatchContext);
   const [dragActive, setDragActive] = useState<boolean>(false);
 
-  // console.log('COLUMN GRID RENDER', activeBoard);
-  // console.log('COLUMN GRID RENDER', dragActive);
-
   const columns = activeBoard?.columns.map((el, i) => (
     <div className={styles.columnContainer} key={el._id}>
       <Droppable droppableId={`${i}`}>
