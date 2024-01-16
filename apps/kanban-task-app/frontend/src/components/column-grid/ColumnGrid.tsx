@@ -56,10 +56,11 @@ function ColumnGrid(props: TProps): JSX.Element {
     const element = (e.target as HTMLElement).closest('[data-task-id]');
     if (element !== null) {
       const { boardId, columnId, taskId } = (element as HTMLElement).dataset;
+      console.log(boardId, columnId, taskId);
       modalDispatch({
         type: 'open-modal',
         modalType: 'task-view',
-        modalProps: { selectTask: { boardId, columnId, taskId } },
+        modalProps: { selectedTask: { boardId, columnId, taskId } },
       });
     }
   };

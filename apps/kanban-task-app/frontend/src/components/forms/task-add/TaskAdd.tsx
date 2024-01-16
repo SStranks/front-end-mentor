@@ -1,4 +1,4 @@
-import type { IBoard, IColumn, ISubTask } from '#Shared/types';
+import type { IBoard, IColumn } from '#Shared/types';
 import { AppDispatchContext } from '#Context/AppContext';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import IconCross from '#Svg/icon-cross.svg';
@@ -8,6 +8,7 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import DropdownNew from '#Components/custom/dropdown/DropdownNew';
 import styles from './_TaskAdd.module.scss';
 
+// TODO:  In EditTask too - extract somewhere else.
 const placeholderText = [
   'e.g. Make coffee',
   'e.g. Drink coffee and smile',
@@ -17,6 +18,7 @@ const placeholderText = [
   'e.g. Enjoy coffee and smile more',
 ];
 
+// TODO:  In EditTask too - extract somewhere else.
 type TFormValues = {
   title: string;
   description: string;
@@ -51,20 +53,17 @@ function TaskAdd(props: TProps): JSX.Element {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+    // console.log(data);
 
     // Format data according to schema
     const newTask = {
       title: data.title,
       description: data.description,
       status: data.status,
-      subtasks: data.subTasks.map(
-        (subtask) =>
-          ({
-            title: subtask.name,
-            isCompleted: false,
-          }) as ISubTask
-      ),
+      subtasks: data.subTasks.map((subtask) => ({
+        title: subtask.name,
+        isCompleted: false,
+      })),
     };
     const selectedColumn = activeBoard.columns.find((c) => c.name === data.status) as IColumn;
     const columnId = selectedColumn._id;
@@ -151,7 +150,7 @@ function TaskAdd(props: TProps): JSX.Element {
               <DropdownNew
                 name="status"
                 currentListItem={value}
-                listItems={taskStatus.statusArr.map((i) => ({ item: i }))}
+                listItems={taskStatus.statusArr.map((status) => ({ item: status }))}
                 updateRHF={onChange}
               />
             )}
