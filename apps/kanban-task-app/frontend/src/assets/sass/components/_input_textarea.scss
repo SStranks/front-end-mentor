@@ -1,5 +1,5 @@
 /* -------------------------------- */
-/*         ~ Input: Text ~          */
+/*       ~ Input: Textarea ~        */
 /* -------------------------------- */
 /*        [Kanban Task App]         */
 /* -------------------------------- */
@@ -19,29 +19,20 @@
 @use '../abstracts/mixins' as mx;
 @use '../abstracts/variables' as v;
 @use '../base/themes' as t;
+@use './input_text' as input-text;
 
 /* -------------------------------- */
 /*   Default                        */
 /* -------------------------------- */
 
-@mixin input-text-default {
-  @include mx.body-l;
-  padding: f.px2em(8) f.px2em(16);
-  color: var(--thm-input-text-default-active-text);
-  background-color: var(--thm-input-text-default-bg);
-  border-radius: v.$border-radius-input-text;
-  border: 1px solid c.$col-2c;
-
-  &::placeholder {
-    color: var(--thm-input-text-default-active-placeholder);
-  }
-
-  &:focus {
-    outline: 1px solid c.$col-1a;
-  }
+@mixin input-textarea-default {
+  @include input-text.input-text-default;
+  min-height: 112px;
+  max-height: 250px;
+  resize: vertical;
 }
 
-@mixin input-text-default-error {
+@mixin input-textarea-default-error {
   color: c.$col-1j;
   border: 1px solid c.$col-1j;
 
@@ -50,12 +41,11 @@
   }
 }
 
-@mixin input-text-default-container-error {
+@mixin input-textarea-default-container-error {
   @include mx.body-l;
   content: "Can't be empty";
   position: absolute;
-  top: 0;
-  bottom: 0;
+  bottom: 12px;
   right: 16px;
   display: flex;
   align-items: center;

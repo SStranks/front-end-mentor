@@ -1,10 +1,5 @@
 /* eslint-disable unicorn/filename-case */
-import {
-  TInputProp,
-  TNestedInputProp,
-  TNewFormData,
-  TReturnData,
-} from '#Types/types';
+import { TInputProp, TNestedInputProp, TNewFormData, TReturnData } from '#Types/types';
 
 export function isInput(input: unknown): input is TInputProp {
   return (input as Record<string, TInputProp>).inputName !== undefined;
@@ -27,11 +22,7 @@ export function genGroupInputs(arg: string[], name: string) {
 
 // Adds single input to an existing group of inputs.
 // Generate unique Id local/in the component and pass in. Previous state is amended and returned;
-export function addInputToGroup<T>(
-  uniqueId: string,
-  group: string,
-  prevState: T
-): T {
+export function addInputToGroup<T>(uniqueId: string, group: string, prevState: T): T {
   const newInput = {
     value: '',
     error: false,
@@ -48,8 +39,7 @@ export function addInputToGroup<T>(
 }
 
 export function deleteInputFromGroup<T>(data: TReturnData, prevState: T): T {
-  const { [data.groupId as keyof typeof prevState]: inputGroup, ...rest } =
-    prevState;
+  const { [data.groupId as keyof typeof prevState]: inputGroup, ...rest } = prevState;
   delete inputGroup[data.inputName as keyof typeof inputGroup];
   return { [data.groupId as string]: inputGroup, ...rest } as typeof prevState;
 }
@@ -83,9 +73,7 @@ export function updateInput<T>(data: TReturnData, prevState: T): T {
 }
 
 // Check all inputs for value as empty string. Return object containing objects of each input that fails validation, with error set to true.
-export function validateInputs<T extends TNewFormData>(
-  formData: T
-): typeof newFormData {
+export function validateInputs<T extends TNewFormData>(formData: T): typeof newFormData {
   const newFormData = {} as TNewFormData;
   Object.entries(formData).forEach(([key, prop]) => {
     // Typeguard: If input is single, or group of inputs.

@@ -1,13 +1,12 @@
-import IconCheck from '#Svg/icon-check.svg';
 import { useState } from 'react';
+import IconCheck from '#Svg/icon-check.svg';
 import styles from './_CheckBox.module.scss';
 
 type TProps = {
   id: string;
   title: string;
   checked: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  updateRHF: (...event: any[]) => void;
+  updateRHF: (...event: unknown[]) => void;
 };
 
 // NOTE:  For consumption by React Hook Form.

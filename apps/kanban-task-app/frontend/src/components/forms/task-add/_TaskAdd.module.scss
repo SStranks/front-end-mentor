@@ -6,6 +6,7 @@
 @use '#Sass/abstracts/variables' as v;
 @use '#Sass/components/buttons' as btn;
 @use '#Sass/components/input_text' as input-text;
+@use '#Sass/components/input_textarea' as input-textarea;
 
 .container {
   margin: auto 0;
@@ -22,12 +23,6 @@
   border-radius: v.$border-radius-forms;
   transition: a.$theme-transition-bg;
 
-  &__title {
-    @include mx.header-l;
-    color: var(--thm-form-header-text);
-    transition: a.$theme-transition-color;
-  }
-
   &__group {
     & > p {
       @include mx.body-m;
@@ -36,11 +31,87 @@
     }
   }
 
-  &__subTasks {
+  &__title {
+    @include mx.header-l;
+    color: var(--thm-form-header-text);
+    transition: a.$theme-transition-color;
+  }
+
+  &__titleInput {
+    position: relative;
+    width: 100%;
+
+    & > input[type='text'] {
+      @include input-text.input-text-default;
+      width: 100%;
+    }
+
+    &--error {
+      &::after {
+        @include input-text.input-text-default-container-error;
+      }
+
+      & > input[type='text'] {
+        @include input-text.input-text-default-error;
+      }
+    }
+  }
+
+  &__descriptionInput {
+    position: relative;
+    width: 100%;
+
+    & > textarea {
+      @include input-textarea.input-textarea-default;
+      width: 100%;
+    }
+
+    &--error {
+      &::after {
+        @include input-textarea.input-textarea-default-container-error;
+      }
+
+      & > textarea {
+        @include input-textarea.input-textarea-default-error;
+      }
+    }
+  }
+
+  &__listItems {
     display: flex;
     flex-direction: column;
     row-gap: f.px2em(12);
     margin-bottom: f.px2em(12);
+  }
+
+  &__subTask {
+    display: flex;
+    align-items: center;
+    column-gap: f.px2em(16);
+
+    &__container {
+      position: relative;
+      width: 100%;
+
+      & > input[type='text'] {
+        @include input-text.input-text-default;
+        width: 100%;
+      }
+
+      &--error {
+        &::after {
+          @include input-text.input-text-default-container-error;
+        }
+
+        & > input[type='text'] {
+          @include input-text.input-text-default-error;
+        }
+
+        & + button > .icon {
+          filter: invert(51%) sepia(51%) saturate(4416%) hue-rotate(330deg) brightness(99%) contrast(87%);
+        }
+      }
+    }
   }
 
   &__btnNewSubTask {
@@ -50,115 +121,6 @@
 
   &__btnCreateTask {
     @include btn.btn-primary-s;
-  }
-}
-
-.titleInput {
-  position: relative;
-  width: 100%;
-
-  &__input {
-    @include input-text.input-text-default;
-    width: 100%;
-
-    &:focus {
-      outline: 1px solid c.$col-1a;
-    }
-  }
-}
-
-.titleError {
-  &.titleInput::after {
-    @include mx.body-l;
-    content: "Can't be empty";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    color: c.$col-1j;
-  }
-
-  & .titleInput__input {
-    border: 1px solid c.$col-1j;
-  }
-}
-
-.descriptionInput {
-  position: relative;
-  width: 100%;
-
-  &__input {
-    @include input-text.input-text-default;
-    width: 100%;
-    min-height: 112px;
-    max-height: 250px;
-    resize: vertical;
-
-    &:focus {
-      outline: 1px solid c.$col-1a;
-    }
-  }
-}
-
-.descriptionError {
-  &.descriptionInput::after {
-    @include mx.body-l;
-    content: "Can't be empty";
-    position: absolute;
-    bottom: 12px;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    color: c.$col-1j;
-  }
-
-  & .descriptionInput__input {
-    border: 1px solid c.$col-1j;
-  }
-}
-
-.subTask {
-  display: flex;
-  align-items: center;
-  column-gap: f.px2em(16);
-
-  &__container {
-    position: relative;
-    width: 100%;
-  }
-
-  &__input {
-    @include input-text.input-text-default;
-    position: relative;
-    width: 100%;
-
-    &:focus {
-      outline: 1px solid c.$col-1a;
-    }
-  }
-}
-
-.subTaskError {
-  & .subTask__container::after {
-    @include mx.body-l;
-    content: "Can't be empty";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    color: c.$col-1j;
-  }
-
-  & .subTask__input {
-    border: 1px solid c.$col-1j;
-  }
-
-  & .icon {
-    filter: invert(51%) sepia(51%) saturate(4416%) hue-rotate(330deg) brightness(99%) contrast(87%);
   }
 }
 

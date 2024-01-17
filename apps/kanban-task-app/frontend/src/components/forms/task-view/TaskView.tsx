@@ -1,14 +1,14 @@
-import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import IconVerticalEllipsis from '#Svg/icon-vertical-ellipsis.svg';
-import { TSelectTask } from '#Types/types';
+import type { TSelectTask } from '#Types/types';
+import type { ISubTask } from '#Shared/types';
 import { useContext, useEffect, useMemo, useRef } from 'react';
-import styles from './_TaskView.module.scss';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import DropdownNew from '#Components/custom/dropdown/DropdownNew';
-import { ISubTask } from '#Shared/types';
 import CheckBox from '#Components/custom/checkbox/CheckBox';
+import RootModalDispatchContext from '#Context/RootModalContext';
+import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
 import ApiService from '#Services/Services';
+import IconVerticalEllipsis from '#Svg/icon-vertical-ellipsis.svg';
+import styles from './_TaskView.module.scss';
 
 type TFormValues = {
   subtasks: ISubTask[];
@@ -25,13 +25,13 @@ function TaskView(props: TProps): JSX.Element {
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { task, columnList } = useMemo(() => {
+  const { task, statusArr } = useMemo(() => {
     const board = state.boards.find((el) => el._id === selectedTask.boardId);
     const columnList = board?.columns.map((el) => ({ item: el.name, id: el._id }));
     const column = board?.columns.find((el) => el._id === selectedTask.columnId);
     const task = column?.tasks.find((el) => el._id === selectedTask.taskId);
     if (!task || !columnList) throw new Error('Incongruence in data!');
-    return { task, columnList };
+    return { task, statusArr: columnList };
   }, [state, selectedTask]);
   const { handleSubmit, control, getValues } = useForm<TFormValues>({
     defaultValues: {
@@ -115,7 +115,7 @@ function TaskView(props: TProps): JSX.Element {
             }
           };
 
-          const newColumnId = columnList.find((c) => c.item === data.status)?.id as string;
+          const newColumnId = statusArr.find((c) => c.item === data.status)?.id as string;
           if (columnId === newColumnId) {
             updateTask();
           } else {
@@ -138,7 +138,7 @@ function TaskView(props: TProps): JSX.Element {
       modalDispatch({
         type: 'open-modal',
         modalType: 'task-edit',
-        modalProps: { task, selectedTask, columnList },
+        modalProps: { task, selectedTask, statusArr },
       });
     }
     if (element.innerHTML === 'Delete Task') {
@@ -196,7 +196,7 @@ function TaskView(props: TProps): JSX.Element {
             control={control}
             name="status"
             render={({ field: { onChange, value } }) => (
-              <DropdownNew name="input-status" currentListItem={value} listItems={columnList} updateRHF={onChange} />
+              <DropdownNew name="input-status" currentListItem={value} listItems={statusArr} updateRHF={onChange} />
             )}
           />
         </div>

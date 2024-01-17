@@ -5,6 +5,8 @@
 @use '#Sass/abstracts/media-queries' as mq;
 @use '#Sass/abstracts/variables' as v;
 @use '#Sass/components/buttons' as btn;
+@use '#Sass/components/input_text' as input-text;
+@use '#Sass/components/input_textarea' as input-textarea;
 
 .container {
   margin: auto 0;
@@ -20,12 +22,6 @@
   border-radius: v.$border-radius-forms;
   transition: a.$theme-transition-bg;
 
-  &__title {
-    @include mx.header-l;
-    color: var(--thm-form-header-text);
-    transition: a.$theme-transition-color;
-  }
-
   &__group {
     & > p {
       @include mx.body-m;
@@ -34,16 +30,86 @@
     }
   }
 
-  &__subTasks {
+  &__title {
+    @include mx.header-l;
+    color: var(--thm-form-header-text);
+    transition: a.$theme-transition-color;
+  }
+
+  &__titleInput {
+    position: relative;
+    width: 100%;
+
+    & > input[type='text'] {
+      @include input-text.input-text-default;
+      width: 100%;
+    }
+
+    &--error {
+      &::after {
+        @include input-text.input-text-default-container-error;
+      }
+
+      & > input[type='text'] {
+        @include input-text.input-text-default-error;
+      }
+    }
+  }
+
+  &__descriptionInput {
+    position: relative;
+    width: 100%;
+
+    & > textarea {
+      @include input-textarea.input-textarea-default;
+      width: 100%;
+    }
+
+    &--error {
+      &::after {
+        @include input-textarea.input-textarea-default-container-error;
+      }
+
+      & > textarea {
+        @include input-textarea.input-textarea-default-error;
+      }
+    }
+  }
+
+  &__listItems {
     display: flex;
     flex-direction: column;
     row-gap: f.px2em(12);
     margin-bottom: f.px2em(12);
+  }
 
-    &__input {
-      display: flex;
-      align-items: center;
-      column-gap: f.px2em(16);
+  &__subTask {
+    display: flex;
+    align-items: center;
+    column-gap: f.px2em(16);
+
+    &__container {
+      position: relative;
+      width: 100%;
+
+      & > input[type='text'] {
+        @include input-text.input-text-default;
+        width: 100%;
+      }
+
+      &--error {
+        &::after {
+          @include input-text.input-text-default-container-error;
+        }
+
+        & > input[type='text'] {
+          @include input-text.input-text-default-error;
+        }
+
+        & + button > .icon {
+          filter: invert(51%) sepia(51%) saturate(4416%) hue-rotate(330deg) brightness(99%) contrast(87%);
+        }
+      }
     }
   }
 

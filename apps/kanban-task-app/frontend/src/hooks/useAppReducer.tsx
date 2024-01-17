@@ -1,7 +1,7 @@
 import type { IBoard } from '#Shared/types';
-import { TAppStateContext } from '#Types/types';
-import { IOrderedTasks, generateOrderedTasks, orderStateTasks } from '#Utils/taskSorting';
+import type { TAppStateContext } from '#Types/types';
 import { useCallback, useReducer } from 'react';
+import { IOrderedTasks, generateOrderedTasks, orderStateTasks } from '#Utils/taskSorting';
 
 const setLocalStoragePending = (state: TAppStateContext, localStoragePending: boolean) => {
   return { ...state, localStoragePending };

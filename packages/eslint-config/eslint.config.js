@@ -49,7 +49,7 @@ export const EslintConfig = {
     'unicorn/expiring-todo-comments': 'off',
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/no-array-for-each': 'off',
-    'unicorn/no-array-reduce': 2,
+    'unicorn/no-array-reduce': 'off',
     'unicorn/filename-case': [
       'error',
       {

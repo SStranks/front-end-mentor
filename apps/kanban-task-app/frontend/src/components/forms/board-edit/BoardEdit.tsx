@@ -1,17 +1,12 @@
-import IconCross from '#Svg/icon-cross.svg';
+import type { TFormBoardValues } from '../shared';
+import type { IBoard } from '#Shared/types';
+import { useContext } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
 import { AppDispatchContext } from '#Context/AppContext';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
-import type { IBoard } from '#Shared/types';
-
-import { useContext } from 'react';
+import IconCross from '#Svg/icon-cross.svg';
 import styles from './_BoardEdit.module.scss';
-import { useFieldArray, useForm } from 'react-hook-form';
-
-type TFormValues = {
-  title: string;
-  columns: { name: string }[];
-};
 
 type TProps = {
   activeBoard: IBoard;
@@ -26,8 +21,8 @@ function BoardEdit(props: TProps): JSX.Element {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<TFormValues>({
-    defaultValues: { title: activeBoard.name, columns: [...activeBoard.columns] },
+  } = useForm<TFormBoardValues>({
+    defaultValues: { name: activeBoard.name, columns: [...activeBoard.columns] },
   });
   const { fields, append, remove } = useFieldArray({
     name: 'columns',
@@ -38,7 +33,7 @@ function BoardEdit(props: TProps): JSX.Element {
   const onSubmit = handleSubmit(async (data) => {
     // Format data according to schema
     const newBoard = {
-      name: data.title,
+      name: data.name,
       columns: data.columns,
     };
 
@@ -75,32 +70,19 @@ function BoardEdit(props: TProps): JSX.Element {
         <p className={styles.form__title}>Edit Board</p>
         <div className={styles.form__group}>
           <p>Name</p>
-          <div className={`${styles.titleInput} ${errors.title ? styles.titleError : ''}`}>
-            <input
-              // NOTE:  Title to name?
-              {...register('title', { required: 'Input required' })}
-              className={styles.titleInput__input}
-              type="text"
-              placeholder="e.g. Web Design"
-            />
+          <div className={`${styles.form__titleInput} ${errors.name ? styles['form__titleInput--error'] : ''}`}>
+            <input {...register('name', { required: 'Input required' })} type="text" placeholder="e.g. Web Design" />
           </div>
-          {/* <InputText
-            placeholder="e.g. Web Design"
-            inputName={formData['input-title'].inputName}
-            value={formData['input-title'].value}
-            groupId={undefined}
-            error={formData['input-title'].error}
-            returnData={returnDataHandler}
-          /> */}
         </div>
         <div className={styles.form__group}>
           <p>Columns</p>
-          <div className={styles.listItems}>
+          <div className={styles.form__listItems}>
             {fields.map((field, index) => (
-              <div
-                className={`${styles.subTask} ${errors?.columns?.[index]?.name ? styles.subTaskError : ''}`}
-                key={field.id}>
-                <div className={styles.subTask__container}>
+              <div className={styles.form__subTask} key={field.id}>
+                <div
+                  className={`${styles.form__subTask__container} ${
+                    errors?.columns?.[index]?.name ? styles['form__subTask__container--error'] : ''
+                  }`}>
                   <input
                     {...register(`columns.${index}.name` as const, { required: true })}
                     type="text"

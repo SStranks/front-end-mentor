@@ -1,30 +1,13 @@
 import type { IBoard, IColumn } from '#Shared/types';
-import { AppDispatchContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import IconCross from '#Svg/icon-cross.svg';
-import ApiService from '#Services/Services';
 import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import DropdownNew from '#Components/custom/dropdown/DropdownNew';
+import { AppDispatchContext } from '#Context/AppContext';
+import RootModalDispatchContext from '#Context/RootModalContext';
+import ApiService from '#Services/Services';
+import { placeholderText, TFormTaskValues } from '../shared';
+import IconCross from '#Svg/icon-cross.svg';
 import styles from './_TaskAdd.module.scss';
-
-// TODO:  In EditTask too - extract somewhere else.
-const placeholderText = [
-  'e.g. Make coffee',
-  'e.g. Drink coffee and smile',
-  'e.g. Think about coffee some more',
-  'e.g. Go make another cup of coffee',
-  'e.g. Schedule time to purchase more coffee',
-  'e.g. Enjoy coffee and smile more',
-];
-
-// TODO:  In EditTask too - extract somewhere else.
-type TFormValues = {
-  title: string;
-  description: string;
-  subTasks: { name: string }[];
-  status: string;
-};
 
 type TProps = {
   activeBoard: IBoard;
@@ -40,9 +23,9 @@ function TaskAdd(props: TProps): JSX.Element {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<TFormValues>({
+  } = useForm<TFormTaskValues>({
     defaultValues: {
-      subTasks: [{ name: '' }, { name: '' }],
+      subTasks: [{ title: '' }, { title: '' }],
       status: taskStatus.current,
     },
   });
@@ -53,15 +36,13 @@ function TaskAdd(props: TProps): JSX.Element {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    // console.log(data);
-
     // Format data according to schema
     const newTask = {
       title: data.title,
       description: data.description,
       status: data.status,
       subtasks: data.subTasks.map((subtask) => ({
-        title: subtask.name,
+        title: subtask.title,
         isCompleted: false,
       })),
     };
@@ -97,18 +78,16 @@ function TaskAdd(props: TProps): JSX.Element {
         <p className={styles.form__title}>Add New Task</p>
         <div className={styles.form__group}>
           <p>Title</p>
-          <div className={`${styles.titleInput} ${errors.title ? styles.titleError : ''}`}>
-            <input
-              {...register('title', { required: 'Input required' })}
-              className={styles.titleInput__input}
-              type="text"
-              placeholder="e.g. Web Design"
-            />
+          <div className={`${styles.form__titleInput} ${errors.title ? styles['form__titleInput--error'] : ''}`}>
+            <input {...register('title', { required: 'Input required' })} type="text" placeholder="e.g. Web Design" />
           </div>
         </div>
         <div className={styles.form__group}>
           <p>Description</p>
-          <div className={`${styles.descriptionInput} ${errors.description ? styles.descriptionError : ''}`}>
+          <div
+            className={`${styles.form__descriptionInput} ${
+              errors.description ? styles['form__descriptionInput--error'] : ''
+            }`}>
             <textarea
               {...register('description', { required: 'Input required' })}
               className={styles.descriptionInput__input}
@@ -118,16 +97,16 @@ function TaskAdd(props: TProps): JSX.Element {
         </div>
         <div className={styles.form__group}>
           <p>Sub-Tasks</p>
-          <div className={styles.form__subTasks}>
+          <div className={styles.form__listItems}>
             {fields.map((field, index) => (
-              <div
-                className={`${styles.subTask} ${errors?.subTasks?.[index]?.name ? styles.subTaskError : ''}`}
-                key={field.id}>
-                <div className={styles.subTask__container}>
+              <div className={styles.form__subTask} key={field.id}>
+                <div
+                  className={`${styles.form__subTask__container} ${
+                    errors?.subTasks?.[index]?.title ? styles['form__subTask__container--error'] : ''
+                  }`}>
                   <input
-                    {...register(`subTasks.${index}.name` as const, { required: true })}
+                    {...register(`subTasks.${index}.title` as const, { required: true })}
                     type="text"
-                    className={styles.subTask__input}
                     placeholder={placeholderText[index % placeholderText.length]}
                   />
                 </div>
@@ -137,7 +116,10 @@ function TaskAdd(props: TProps): JSX.Element {
               </div>
             ))}
           </div>
-          <button type="button" className={styles.form__btnNewSubTask} onClick={() => append({ name: '' })}>
+          <button
+            type="button"
+            className={styles.form__btnNewSubTask}
+            onClick={() => append({ title: '', isCompleted: false })}>
             + Add New Sub-Task
           </button>
         </div>
