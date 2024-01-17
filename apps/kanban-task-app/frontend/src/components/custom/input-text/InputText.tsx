@@ -1,38 +1,27 @@
-import { TReturnData } from '#Types/types';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import styles from './_InputText.module.scss';
 
 type TProps = {
   placeholder: string;
   inputName: string;
   value: string;
-  groupId: string | undefined;
   error: boolean;
-  returnData: (arg: TReturnData) => void;
+  updateRHF: (...event: unknown[]) => void;
 };
 
+// NOTE:  This component is for consumption by React Hook Form <Controller />
 function InputText(props: TProps): JSX.Element {
-  const { placeholder, inputName, value, groupId, error, returnData } = props;
-  const [text, setText] = useState('');
-  // DEBUG:  Is this ref being utilized?
-  const element = useRef<HTMLDivElement>(null);
+  const { placeholder, inputName, value, error, updateRHF } = props;
+  const [text, setText] = useState(value || '');
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setText(e.currentTarget?.value);
+    const inputValue = e.currentTarget?.value;
+    setText(inputValue);
+    updateRHF(inputValue);
   };
-
-  const onBlurHandler = () => {
-    returnData({ inputName, value: text, groupId });
-  };
-
-  useEffect(() => {
-    setText(value);
-  }, [value]);
 
   return (
-    <div
-      className={`${styles.container} ${error && !text ? styles.error : ''}`}
-      ref={element}>
+    <div className={`${styles.container} ${error ? styles.error : ''}`}>
       <input
         type="text"
         className={styles.container__input}
@@ -40,7 +29,6 @@ function InputText(props: TProps): JSX.Element {
         placeholder={placeholder}
         value={text}
         onChange={onChangeHandler}
-        onBlur={onBlurHandler}
       />
     </div>
   );

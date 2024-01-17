@@ -1,11 +1,12 @@
 import type { TFormBoardValues } from '../shared';
 import { useContext } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { AppDispatchContext } from '#Context/AppContext';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
 import styles from './_BoardAdd.module.scss';
+import InputText from '#Components/custom/input-text/InputText';
 
 type TProps = {
   setActiveBoardId: React.Dispatch<React.SetStateAction<string>>;
@@ -16,7 +17,6 @@ function BoardAdd(props: TProps): JSX.Element {
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
@@ -32,6 +32,8 @@ function BoardAdd(props: TProps): JSX.Element {
   });
 
   const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+
     // Format data according to schema
     const newBoard = {
       name: data.name,
@@ -70,21 +72,40 @@ function BoardAdd(props: TProps): JSX.Element {
         <p className={styles.form__titleHeader}>Add New Board</p>
         <div className={styles.form__group}>
           <p>Name</p>
-          <div className={`${styles.form__titleInput} ${errors.name ? styles['form__titleInput--error'] : ''}`}>
-            <input {...register('name', { required: 'Input required' })} type="text" placeholder="e.g. Web Design" />
-          </div>
+          <Controller
+            control={control}
+            name="name"
+            rules={{ required: true }}
+            render={({ field: { onChange, value } }) => (
+              <InputText
+                placeholder="e.g Web Design"
+                inputName="name"
+                value={value}
+                error={!!errors.name}
+                updateRHF={onChange}
+              />
+            )}
+          />
         </div>
         <div className={styles.form__group}>
           <p>Columns</p>
           <div className={styles.form__listItems}>
             {fields.map((field, index) => (
               <div className={styles.form__subTask} key={field.id}>
-                <div
-                  className={`${styles.form__subTask__container} ${
-                    errors?.columns?.[index]?.name ? styles['form__subTask__container--error'] : ''
-                  }`}>
-                  <input {...register(`columns.${index}.name` as const, { required: true })} type="text" />
-                </div>
+                <Controller
+                  control={control}
+                  name={`columns.${index}.name` as const}
+                  rules={{ required: true }}
+                  render={({ field: { onChange, value } }) => (
+                    <InputText
+                      placeholder="Insert Column Name"
+                      inputName={`columns.${index}.name`}
+                      value={value}
+                      error={!!errors?.columns?.[index]?.name}
+                      updateRHF={onChange}
+                    />
+                  )}
+                />
                 <button type="button" onClick={() => remove(index)}>
                   <img src={IconCross} alt="" className={styles.icon} />
                 </button>

@@ -9,15 +9,27 @@
   &__input {
     @include input-text.input-text-default;
     width: 100%;
+
+    &:focus {
+      outline: 1px solid c.$col-1a;
+    }
   }
 }
 
 .error {
   &.container::after {
-    @include input-text.input-text-default-container-error;
+    @include mx.body-l;
+    content: "Can't be empty";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    color: c.$col-1j;
   }
 
   & .container__input {
-    @include input-text.input-text-default-error;
+    border: 1px solid c.$col-1j;
   }
 }

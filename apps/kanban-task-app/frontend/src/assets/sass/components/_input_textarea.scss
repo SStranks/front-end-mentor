@@ -30,6 +30,10 @@
   min-height: 112px;
   max-height: 250px;
   resize: vertical;
+
+  &:focus {
+    outline: 1px solid c.$col-1a;
+  }
 }
 
 @mixin input-textarea-default-error {
