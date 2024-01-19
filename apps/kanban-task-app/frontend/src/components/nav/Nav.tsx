@@ -1,14 +1,15 @@
+import type { TBoardInfo } from '#Types/types';
 import type { IBoard } from '#Shared/types';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import IconAddTaskMobile from '#Svg/icon-add-task-mobile.svg';
 import IconEllipsis from '#Svg/icon-vertical-ellipsis.svg';
 import IconChevronDown from '#Svg/icon-chevron-down.svg';
-import LogoDark from '#Svg/logo-dark.svg';
-import LogoLight from '#Svg/logo-light.svg';
-import LogoMobile from '#Svg/logo-mobile.svg';
+// import LogoDark from '#Svg/logo-dark.svg';
+// import LogoLight from '#Svg/logo-light.svg';
+// import LogoMobile from '#Svg/logo-mobile.svg';
 import { useContext, useEffect, useRef } from 'react';
 import styles from './_Nav.module.scss';
-import { TBoardInfo } from '#Types/types';
+import Logo from '#Components/logo/Logo';
 
 type TProps = {
   activeBoard: IBoard | undefined;
@@ -55,7 +56,7 @@ function Nav(props: TProps): JSX.Element {
   const addTaskBtnClickHandler = () => {
     const taskStatus = {
       current: activeBoard?.columns[0]?.name,
-      statusArr: activeBoard?.columns?.map((c) => c.name),
+      statusArr: activeBoard?.columns?.map(({ name, _id }) => ({ name, _id })),
     };
     modalDispatch({
       type: 'open-modal',
@@ -87,9 +88,10 @@ function Nav(props: TProps): JSX.Element {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar__logo}>
-        <img src={LogoDark} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--dark']}`} alt="" />
+        <Logo />
+        {/* <img src={LogoDark} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--dark']}`} alt="" />
         <img src={LogoLight} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--light']}`} alt="" />
-        <img src={LogoMobile} className={`${styles['navbar__logo--mobile']}`} alt="" />
+        <img src={LogoMobile} className={`${styles['navbar__logo--mobile']}`} alt="" /> */}
       </div>
       <div className={styles.navbar__head}>
         <div className={styles.navbar__leftControls}>

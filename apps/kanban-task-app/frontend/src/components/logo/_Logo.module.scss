@@ -1,0 +1,78 @@
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+
+.container {
+  display: contents;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  transition: a.$theme-transition-opacity;
+
+  &--logoDark {
+    opacity: var(--thm-nav-logo-dark);
+  }
+
+  &--logoLight {
+    opacity: var(--thm-nav-logo-light);
+  }
+
+  &--logoMobile {
+    display: none;
+  }
+}
+
+/* -------------------------------- 
+ ----      Media Queries       ----          
+ -------------------------------- */
+
+@include mq.media(tablet-small, mobile-all) {
+  .logo {
+    &--logoDark,
+    &--logoLight {
+      display: none;
+    }
+
+    &--logoMobile {
+      display: block;
+      height: auto;
+      margin: 0 f.px2em(16);
+    }
+  }
+}
+
+/* -------------------------------- 
+ ----       Animations         ----          
+ -------------------------------- */
+
+.logoRect_0 {
+  animation: 474ms ease-out infinite alternate rectangle;
+  animation-delay: 0ms;
+}
+
+.logoRect_1 {
+  animation: 533ms ease-in infinite alternate rectangle;
+  animation-delay: 120ms;
+}
+
+.logoRect_2 {
+  animation: 607ms linear infinite alternate rectangle;
+  animation-delay: 75ms;
+}
+
+@keyframes rectangle {
+  0% {
+    transform-origin: 0 100%;
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform-origin: 0 100%;
+    transform: scaleY(0.5);
+  }
+}

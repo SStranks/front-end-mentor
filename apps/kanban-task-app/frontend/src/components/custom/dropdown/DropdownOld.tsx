@@ -1,18 +1,17 @@
 import IconDown from '#Svg/icon-chevron-down.svg';
-import { useEffect, useRef, useState } from 'react';
-import styles from './_Dropdown.module.scss';
+import { TReturnData } from '#Types/types';
+import { useEffect, useRef } from 'react';
+import styles from './_DropdownOld.module.scss';
 
 type TProps = {
   name: string;
   currentListItem: string;
-  listItems: { item: string; id?: string }[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  updateRHF: (...event: any[]) => void;
+  listItems: string[][];
+  returnData: (data: TReturnData) => void;
 };
 
 function Dropdown(props: TProps): JSX.Element {
-  const { name, currentListItem, listItems, updateRHF } = props;
-  const [status, setStatus] = useState<string>(currentListItem);
+  const { name, currentListItem, listItems, returnData } = props;
   const dropdownContainer = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -44,12 +43,14 @@ function Dropdown(props: TProps): JSX.Element {
 
   const listItemClickHandler = (e: React.MouseEvent) => {
     dropdownClickHandler();
-    const status = (e.target as HTMLButtonElement).value;
-    setStatus(status);
-    updateRHF(status);
+    returnData({
+      inputName: 'input-status',
+      value: (e.target as HTMLButtonElement).value,
+      columnId: (e.target as HTMLButtonElement).dataset.columnId,
+    });
   };
 
-  const listElems = listItems.map(({ item, id }, i) => (
+  const listElems = listItems.map(([item, id], i) => (
     <button
       // eslint-disable-next-line react/no-array-index-key
       key={i}
@@ -64,7 +65,7 @@ function Dropdown(props: TProps): JSX.Element {
 
   return (
     <div className={styles.dropdown} ref={dropdownContainer}>
-      <input type="text" value={status} name={name} className={styles.dropdown__input} readOnly />
+      <input type="text" value={currentListItem} name={name} className={styles.dropdown__input} readOnly />
       <button type="button" className={styles.dropdown__button} onClick={dropdownClickHandler}>
         {currentListItem}
         <img src={IconDown} alt="" />

@@ -2,7 +2,7 @@ import type { TSelectTask } from '#Types/types';
 import type { ISubTask } from '#Shared/types';
 import { useContext, useEffect, useMemo, useRef } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import DropdownNew from '#Components/custom/dropdown/DropdownNew';
+import Dropdown from '#Components/custom/dropdown/Dropdown';
 import CheckBox from '#Components/custom/checkbox/CheckBox';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
@@ -27,13 +27,18 @@ function TaskView(props: TProps): JSX.Element {
   const menuRef = useRef<HTMLDivElement>(null);
   const { task, statusArr } = useMemo(() => {
     const board = state.boards.find((el) => el._id === selectedTask.boardId);
-    const columnList = board?.columns.map((el) => ({ item: el.name, id: el._id }));
+    const columnList = board?.columns.map((el) => ({ name: el.name, _id: el._id }));
     const column = board?.columns.find((el) => el._id === selectedTask.columnId);
     const task = column?.tasks.find((el) => el._id === selectedTask.taskId);
     if (!task || !columnList) throw new Error('Incongruence in data!');
     return { task, statusArr: columnList };
   }, [state, selectedTask]);
-  const { handleSubmit, control, getValues } = useForm<TFormValues>({
+  const {
+    formState: { isDirty },
+    handleSubmit,
+    control,
+    getValues,
+  } = useForm<TFormValues>({
     defaultValues: {
       subtasks: task.subtasks.map((subtask) => ({
         _id: subtask._id,
@@ -48,80 +53,83 @@ function TaskView(props: TProps): JSX.Element {
     control,
   });
 
-  // Ensures that useEffect cleanup doesn't submit data back to App state if returnDataHandler is changing this components state.
+  console.log('TASKVIEW RENDER', isDirty);
+
   const isFormUpdating = useRef<boolean>(false);
+  const onSubmit = handleSubmit(async (data) => {
+    const { boardId, columnId, taskId } = selectedTask;
+    const newTask = {
+      title: task.title,
+      description: task.description,
+      status: data.status,
+      subtasks: data.subtasks.map((subtask) => ({
+        _id: subtask._id,
+        title: subtask.title,
+        isCompleted: subtask.isCompleted,
+      })),
+    };
+
+    const updateTask = async () => {
+      try {
+        const responseData = await ApiService.patchTask(boardId, columnId, taskId, newTask);
+        if (!responseData) throw new Error('Could not patch task!');
+
+        return appDispatch({
+          type: 'update-task',
+          payload: {
+            id: { boardId },
+            data: responseData,
+          },
+        });
+      } catch (error) {
+        console.error(error);
+        return modalDispatch({
+          type: 'open-modal',
+          modalType: 'error',
+          modalProps: { title: task.title },
+        });
+      }
+    };
+
+    const updateTaskColumn = async (newColumnId: string) => {
+      try {
+        const data = {
+          taskId,
+          newColumnId,
+          newTask: { ...newTask, _id: taskId },
+        };
+
+        const responseData = await ApiService.patchTaskColumn(boardId, columnId, data);
+        if (!responseData) throw new Error('Could not patch task column!');
+
+        return appDispatch({
+          type: 'update-task',
+          payload: { id: { boardId }, data: responseData },
+        });
+      } catch (error) {
+        console.error(error);
+        return modalDispatch({
+          type: 'open-modal',
+          modalType: 'error',
+          modalProps: { title: task.title },
+        });
+      }
+    };
+
+    const newColumnId = statusArr.find((c) => c.name === data.status)?._id as string;
+    if (columnId === newColumnId) {
+      updateTask();
+    } else {
+      updateTaskColumn(newColumnId);
+    }
+  });
 
   useEffect(() => {
     isFormUpdating.current = false;
     return () => {
-      if (!isFormUpdating.current) {
-        handleSubmit(async (data) => {
-          const { boardId, columnId, taskId } = selectedTask;
-          const newTask = {
-            title: task.title,
-            description: task.description,
-            status: data.status,
-            subtasks: data.subtasks.map((subtask) => ({
-              _id: subtask._id,
-              title: subtask.title,
-              isCompleted: subtask.isCompleted,
-            })),
-          };
-
-          const updateTask = async () => {
-            try {
-              const responseData = await ApiService.patchTask(boardId, columnId, taskId, newTask);
-              if (!responseData) throw new Error('Could not patch task!');
-
-              return appDispatch({
-                type: 'update-task',
-                payload: {
-                  id: { boardId },
-                  data: responseData,
-                },
-              });
-            } catch (error) {
-              console.error(error);
-              return modalDispatch({
-                type: 'open-modal',
-                modalType: 'error',
-                modalProps: { title: task.title },
-              });
-            }
-          };
-
-          const updateTaskColumn = async (newColumnId: string) => {
-            try {
-              const data = {
-                taskId,
-                newColumnId,
-                newTask: { ...newTask, _id: taskId },
-              };
-
-              const responseData = await ApiService.patchTaskColumn(boardId, columnId, data);
-              if (!responseData) throw new Error('Could not patch task column!');
-
-              return appDispatch({
-                type: 'update-task',
-                payload: { id: { boardId }, data: responseData },
-              });
-            } catch (error) {
-              console.error(error);
-              return modalDispatch({
-                type: 'open-modal',
-                modalType: 'error',
-                modalProps: { title: task.title },
-              });
-            }
-          };
-
-          const newColumnId = statusArr.find((c) => c.item === data.status)?.id as string;
-          if (columnId === newColumnId) {
-            updateTask();
-          } else {
-            updateTaskColumn(newColumnId);
-          }
-        })();
+      if (isDirty && !isFormUpdating.current) {
+        console.log('SUBMITTING', isFormUpdating.current, onSubmit);
+        onSubmit();
       }
     };
   });
@@ -196,7 +204,7 @@ function TaskView(props: TProps): JSX.Element {
             control={control}
             name="status"
             render={({ field: { onChange, value } }) => (
-              <DropdownNew name="input-status" currentListItem={value} listItems={statusArr} updateRHF={onChange} />
+              <Dropdown name="input-status" currentListItem={value} listItems={statusArr} updateRHF={onChange} />
             )}
           />
         </div>

@@ -1,4 +1,4 @@
-import type { IBoard } from '#Shared/types';
+import type { IBoard, IColumn } from '#Shared/types';
 
 export type TBoardInfo = { name: string; id: string }[];
 
@@ -7,6 +7,8 @@ export type TAppStateContext = {
   localStoragePending: boolean;
   localStorageData: string | undefined;
 };
+
+export type TStatusArr = Omit<IColumn, 'tasks'>;
 
 export type TSelectTask = {
   boardId: string;

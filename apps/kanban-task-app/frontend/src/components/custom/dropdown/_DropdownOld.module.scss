@@ -1,0 +1,47 @@
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
+@use '#Sass/components/input_text' as input-text;
+
+.dropdown {
+  position: relative;
+
+  .dropdown__input {
+    display: none;
+  }
+
+  .dropdown__button {
+    @include input-text.input-text-default;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--thm-dropdown-default-text);
+    transition: a.$theme-transition-color;
+
+    &:focus {
+      border-color: c.$col-1a;
+    }
+  }
+}
+
+.list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: f.px2em(16);
+  margin-top: f.px2em(10);
+  background-color: var(--thm-dropdown-default-list-bg);
+  border-radius: v.$border-radius-dropdown-list;
+  transition: a.$theme-transition-bg;
+
+  &__item {
+    @include mx.body-l;
+    background-color: transparent;
+    color: c.$col-1g;
+  }
+}

@@ -1,7 +1,7 @@
 import type { IBoard, IColumn } from '#Shared/types';
 import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import DropdownNew from '#Components/custom/dropdown/DropdownNew';
+import Dropdown from '#Components/custom/dropdown/Dropdown';
 import { AppDispatchContext } from '#Context/AppContext';
 import RootModalDispatchContext from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
@@ -10,10 +10,11 @@ import IconCross from '#Svg/icon-cross.svg';
 import styles from './_TaskAdd.module.scss';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
+import { TStatusArr } from '#Types/types';
 
 type TProps = {
   activeBoard: IBoard;
-  taskStatus: { current: string; statusArr: string[] };
+  taskStatus: { current: string; statusArr: TStatusArr[] };
 };
 
 function TaskAdd(props: TProps): JSX.Element {
@@ -149,12 +150,7 @@ function TaskAdd(props: TProps): JSX.Element {
             control={control}
             name="status"
             render={({ field: { onChange, value } }) => (
-              <DropdownNew
-                name="status"
-                currentListItem={value}
-                listItems={taskStatus.statusArr.map((status) => ({ item: status }))}
-                updateRHF={onChange}
-              />
+              <Dropdown name="status" currentListItem={value} listItems={taskStatus.statusArr} updateRHF={onChange} />
             )}
           />
         </div>
