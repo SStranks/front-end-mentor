@@ -8,6 +8,7 @@
   "type": "module",
   "main": "eslint.config.js",
   "dependencies": {
+    "@tanstack/eslint-plugin-query": "^5.8.3",
     "eslint-config-airbnb": "^19",
     "eslint-plugin-jsx-a11y": "^6",
     "eslint-plugin-react": "^7",
