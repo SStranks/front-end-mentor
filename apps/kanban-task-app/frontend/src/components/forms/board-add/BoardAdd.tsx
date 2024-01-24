@@ -7,6 +7,7 @@ import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
 import styles from './_BoardAdd.module.scss';
 import InputText from '#Components/custom/input-text/InputText';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   setActiveBoardId: React.Dispatch<React.SetStateAction<string>>;
@@ -16,6 +17,8 @@ function BoardAdd(props: TProps): JSX.Element {
   const { setActiveBoardId } = props;
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const isLoading = useLoading();
+  const setLoadingUpdate = useLoadingUpdate();
   const {
     handleSubmit,
     control,
@@ -41,6 +44,7 @@ function BoardAdd(props: TProps): JSX.Element {
     };
 
     // Send data to backend API
+    setLoadingUpdate(true);
     try {
       const responseData = await ApiService.postBoard(newBoard);
       if (!responseData) throw new Error('Unable to post board!');
@@ -63,6 +67,8 @@ function BoardAdd(props: TProps): JSX.Element {
         modalType: 'error',
         modalProps: { title: newBoard.name },
       });
+    } finally {
+      setLoadingUpdate(false);
     }
   });
 
@@ -116,7 +122,7 @@ function BoardAdd(props: TProps): JSX.Element {
             + Add New Column
           </button>
         </div>
-        <button type="submit" className={styles.form__btnCreateBoard}>
+        <button type="submit" className={styles.form__btnCreateBoard} disabled={isLoading}>
           Create New Board
         </button>
       </form>

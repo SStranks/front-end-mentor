@@ -8,6 +8,7 @@ import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
 import styles from './_BoardEdit.module.scss';
 import InputText from '#Components/custom/input-text/InputText';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   activeBoard: IBoard;
@@ -17,6 +18,8 @@ function BoardEdit(props: TProps): JSX.Element {
   const { activeBoard } = props;
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const isLoading = useLoading();
+  const setLoadingUpdate = useLoadingUpdate();
   const {
     handleSubmit,
     control,
@@ -40,6 +43,7 @@ function BoardEdit(props: TProps): JSX.Element {
     // NOTE:  Need to think about column names in relation to IDs: 1) We need the IDs because if the user renames a column, how will we know which column to amend in the DB? 2) We need a warning that if they remove a column here then all task data will be erased!
     // NOTE:  Replacing the entire boards-columns data from the frontend, is this the best approach? Can we use .pre hook on the backend to amend column names/delete columns according to ID's passed perhaps?
     // Send data to backend API
+    setLoadingUpdate(true);
     try {
       const responseData = await ApiService.patchBoard(`${activeBoard._id}`, newBoard);
       if (!responseData) throw new Error('Could not patch board!');
@@ -61,6 +65,8 @@ function BoardEdit(props: TProps): JSX.Element {
         modalType: 'error',
         modalProps: { title: activeBoard.name },
       });
+    } finally {
+      setLoadingUpdate(false);
     }
   });
 
@@ -114,7 +120,7 @@ function BoardEdit(props: TProps): JSX.Element {
             + Add New Column
           </button>
         </div>
-        <button type="submit" className={styles.form__btnCreateBoard}>
+        <button type="submit" className={styles.form__btnCreateBoard} disabled={isLoading}>
           Save Changes
         </button>
       </form>

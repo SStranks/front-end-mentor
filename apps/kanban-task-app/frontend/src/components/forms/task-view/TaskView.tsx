@@ -9,6 +9,7 @@ import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
 import ApiService from '#Services/Services';
 import IconVerticalEllipsis from '#Svg/icon-vertical-ellipsis.svg';
 import styles from './_TaskView.module.scss';
+import { useLoadingUpdate } from '#Context/LoadingContext';
 
 type TFormValues = {
   subtasks: ISubTask[];
@@ -24,6 +25,7 @@ function TaskView(props: TProps): JSX.Element {
   const state = useContext(AppStateContext);
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const setLoadingUpdate = useLoadingUpdate();
   const menuRef = useRef<HTMLDivElement>(null);
   const { task, statusArr } = useMemo(() => {
     const board = state.boards.find((el) => el._id === selectedTask.boardId);
@@ -70,6 +72,7 @@ function TaskView(props: TProps): JSX.Element {
     };
 
     const updateTask = async () => {
+      setLoadingUpdate(true);
       try {
         const responseData = await ApiService.patchTask(boardId, columnId, taskId, newTask);
         if (!responseData) throw new Error('Could not patch task!');
@@ -88,10 +91,13 @@ function TaskView(props: TProps): JSX.Element {
           modalType: 'error',
           modalProps: { title: task.title },
         });
+      } finally {
+        setLoadingUpdate(false);
       }
     };
 
     const updateTaskColumn = async (newColumnId: string) => {
+      setLoadingUpdate(true);
       try {
         const data = {
           taskId,
@@ -113,6 +119,8 @@ function TaskView(props: TProps): JSX.Element {
           modalType: 'error',
           modalProps: { title: task.title },
         });
+      } finally {
+        setLoadingUpdate(false);
       }
     };
 

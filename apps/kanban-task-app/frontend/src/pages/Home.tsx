@@ -10,13 +10,7 @@ type TProps = {
 
 function Home(props: TProps): JSX.Element {
   const { boardData, activeBoardId, setActiveBoardId } = props;
-  return (
-    <DefaultLayout
-      boardData={boardData}
-      activeBoardId={activeBoardId}
-      setActiveBoardId={setActiveBoardId}
-    />
-  );
+  return <DefaultLayout boardData={boardData} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />;
 }
 
 export default Home;

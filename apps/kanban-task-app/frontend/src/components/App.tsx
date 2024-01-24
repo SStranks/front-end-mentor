@@ -7,10 +7,12 @@ import { TAppStateContext } from '#Types/types';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import RootModal from './modal/RootModal';
+import { useLoadingUpdate } from '#Context/LoadingContext';
 
 const INITIAL_ACTIVEBOARD = window.localStorage.getItem('active-board');
 
 function App(): JSX.Element {
+  const setLoadingUpdate = useLoadingUpdate();
   const [state, appDispatch] = useAppReducer({
     boards: [],
     localStoragePending: false,
@@ -38,10 +40,10 @@ function App(): JSX.Element {
     return () => document.removeEventListener('visibilitychange', saveTaskOrderToLocalStorage);
   }, [appDispatch, state.localStorageData, state.localStoragePending]);
 
-  // TODO:  React Query. Separate out functionality - doing too many things.
   useEffect(() => {
     // Fetch data from backend
     (async function fetchData() {
+      setLoadingUpdate(true);
       try {
         const responseData = await ApiService.getAllBoards();
         if (!responseData) throw new Error('Unable to get boards!');
@@ -58,9 +60,11 @@ function App(): JSX.Element {
           modalType: 'error',
           modalProps: { title: 'App' },
         });
+      } finally {
+        setLoadingUpdate(false);
       }
     })();
-  }, [appDispatch, rootModalDispatch]);
+  }, [appDispatch, rootModalDispatch, setLoadingUpdate]);
 
   useEffect(() => {
     // Always set current active board to local storage

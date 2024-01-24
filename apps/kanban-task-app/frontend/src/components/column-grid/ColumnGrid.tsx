@@ -10,6 +10,7 @@ import DeleteTask from '#Components/task/DeleteTask';
 import { AppDispatchContext } from '#Context/AppContext';
 import ApiService from '#Services/Services';
 import styles from './_ColumnGrid.module.scss';
+import { useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   activeBoard: IBoard | undefined;
@@ -19,6 +20,7 @@ function ColumnGrid(props: TProps): JSX.Element {
   const { activeBoard } = props;
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const setLoadingUpdate = useLoadingUpdate();
   const [dragActive, setDragActive] = useState<boolean>(false);
 
   const columns = activeBoard?.columns.map((el, i) => (
@@ -79,6 +81,8 @@ function ColumnGrid(props: TProps): JSX.Element {
       const columnId = board.columns[Number(result.source.droppableId)]._id;
       const [task] = board.columns[Number(result.source.droppableId)].tasks.splice(result.source.index, 1);
       const taskId = task._id;
+
+      setLoadingUpdate(true);
       try {
         const responseData = await ApiService.deleteTask(boardId, columnId, taskId);
         if (!responseData) throw new Error('Could not delete task!');
@@ -91,6 +95,8 @@ function ColumnGrid(props: TProps): JSX.Element {
         });
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoadingUpdate(false);
       }
       return;
     }
@@ -107,6 +113,7 @@ function ColumnGrid(props: TProps): JSX.Element {
 
     // If task is being moved to another column, update API
     if (fromColumnId !== toColumnId) {
+      setLoadingUpdate(true);
       try {
         const { _id, ...rest } = reorderedTask;
         const newTask = { ...rest, _id };
@@ -126,6 +133,8 @@ function ColumnGrid(props: TProps): JSX.Element {
           1
         );
         board.columns[Number(result.source.droppableId)].tasks.splice(result.source.index, 0, reverseTask);
+      } finally {
+        setLoadingUpdate(false);
       }
     }
 

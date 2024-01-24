@@ -11,6 +11,7 @@ import IconCross from '#Svg/icon-cross.svg';
 import styles from './_TaskEdit.module.scss';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   task: ITask;
@@ -22,6 +23,8 @@ function TaskEdit(props: TProps): JSX.Element {
   const { task, selectedTask, statusArr } = props;
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const isLoading = useLoading();
+  const setLoadingUpdate = useLoadingUpdate();
   const {
     handleSubmit,
     control,
@@ -61,6 +64,7 @@ function TaskEdit(props: TProps): JSX.Element {
     const newColumnId = statusArr.find((status) => status.name === data.status)?._id as string;
 
     // Send data to backend API
+    setLoadingUpdate(true);
     try {
       let responseData;
       if (columnId === newColumnId) {
@@ -88,6 +92,8 @@ function TaskEdit(props: TProps): JSX.Element {
         modalType: 'error',
         modalProps: { title: task.title },
       });
+    } finally {
+      setLoadingUpdate(false);
     }
   });
 
@@ -171,7 +177,7 @@ function TaskEdit(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <button type="submit" className={styles.form__btnSaveForm}>
+        <button type="submit" className={styles.form__btnSaveForm} disabled={isLoading}>
           Save Changes
         </button>
       </form>

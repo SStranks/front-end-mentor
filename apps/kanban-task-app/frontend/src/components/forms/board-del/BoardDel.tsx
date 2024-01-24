@@ -3,6 +3,7 @@ import RootModalDispatchContext from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import { useContext } from 'react';
 import styles from './_BoardDel.module.scss';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   activeBoardId: string;
@@ -13,10 +14,13 @@ function BoardDelete(props: TProps): JSX.Element {
   const { activeBoardId, setActiveBoardId } = props;
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const isLoading = useLoading();
+  const setLoadingUpdate = useLoadingUpdate();
   const state = useContext(AppStateContext);
 
   const deleteBtnClickHandler = () => {
     (async () => {
+      setLoadingUpdate(true);
       try {
         const responseData = await ApiService.deleteBoard(`${activeBoardId}`);
         if (!responseData) throw new Error('Could not delete board!');
@@ -34,6 +38,8 @@ function BoardDelete(props: TProps): JSX.Element {
           modalType: 'error',
           modalProps: { title: 'board deletion' },
         });
+      } finally {
+        setLoadingUpdate(false);
       }
     })();
   };
@@ -51,7 +57,7 @@ function BoardDelete(props: TProps): JSX.Element {
           tasks and cannot be reversed.
         </p>
         <div className={styles.form__btnGroup}>
-          <button type="button" onClick={deleteBtnClickHandler} className={styles.form__btnDelete}>
+          <button type="button" onClick={deleteBtnClickHandler} className={styles.form__btnDelete} disabled={isLoading}>
             Delete
           </button>
           <button type="button" onClick={cancelBtnClickHandler} className={styles.form__btnCancel}>

@@ -11,6 +11,7 @@ import styles from './_TaskAdd.module.scss';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
 import { TStatusArr } from '#Types/types';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   activeBoard: IBoard;
@@ -21,6 +22,8 @@ function TaskAdd(props: TProps): JSX.Element {
   const { activeBoard, taskStatus } = props;
   const appDispatch = useContext(AppDispatchContext);
   const modalDispatch = useContext(RootModalDispatchContext);
+  const setLoadingUpdate = useLoadingUpdate();
+  const isLoading = useLoading();
   const {
     handleSubmit,
     control,
@@ -52,6 +55,7 @@ function TaskAdd(props: TProps): JSX.Element {
     const columnId = selectedColumn._id;
 
     // Send data to backend API
+    setLoadingUpdate(true);
     try {
       const responseData = await ApiService.postTask(activeBoard._id, columnId, newTask);
       if (!responseData) throw new Error('Could not post task!');
@@ -71,6 +75,8 @@ function TaskAdd(props: TProps): JSX.Element {
         modalType: 'error',
         modalProps: { title: activeBoard.name },
       });
+    } finally {
+      setLoadingUpdate(false);
     }
   });
 
@@ -154,7 +160,7 @@ function TaskAdd(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <button type="submit" className={styles.form__btnCreateTask}>
+        <button type="submit" className={styles.form__btnCreateTask} disabled={isLoading}>
           Create Task
         </button>
       </form>
