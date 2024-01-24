@@ -1,16 +1,14 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import type { IBoard } from '#Shared/types';
-import Column from '#Components/column/Column';
-import ColumnEmpty from '#Components/column/ColumnEmpty';
-import RootModalDispatchContext from '#Context/RootModalContext';
 import React, { useContext, useState } from 'react';
 import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
-
-import DeleteTask from '#Components/task/DeleteTask';
 import { AppDispatchContext } from '#Context/AppContext';
+import { useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
+import Column from '#Components/column/Column';
+import ColumnEmpty from '#Components/column/ColumnEmpty';
+import DeleteTask from '#Components/task/DeleteTask';
 import ApiService from '#Services/Services';
 import styles from './_ColumnGrid.module.scss';
-import { useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   activeBoard: IBoard | undefined;
@@ -19,7 +17,7 @@ type TProps = {
 function ColumnGrid(props: TProps): JSX.Element {
   const { activeBoard } = props;
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const setLoadingUpdate = useLoadingUpdate();
   const [dragActive, setDragActive] = useState<boolean>(false);
 

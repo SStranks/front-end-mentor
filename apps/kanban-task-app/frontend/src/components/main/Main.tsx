@@ -1,7 +1,6 @@
 import type { IBoard } from '#Shared/types';
 import ColumnGrid from '#Components/column-grid/ColumnGrid';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import { useContext } from 'react';
+import { useRootModalContext } from '#Context/RootModalContext';
 import styles from './_Main.module.scss';
 
 type TProps = {
@@ -10,7 +9,7 @@ type TProps = {
 
 function Main(props: TProps): JSX.Element {
   const { activeBoard } = props;
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const isBoardEmpty = activeBoard?.columns.length === 0;
 
   const addNewBtnClickHandler = () => {
@@ -31,11 +30,7 @@ function Main(props: TProps): JSX.Element {
     </div>
   );
 
-  return (
-    <main className={styles.main}>
-      {isBoardEmpty ? emptyBoard : <ColumnGrid activeBoard={activeBoard} />}
-    </main>
-  );
+  return <main className={styles.main}>{isBoardEmpty ? emptyBoard : <ColumnGrid activeBoard={activeBoard} />}</main>;
 }
 
 export default Main;

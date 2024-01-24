@@ -1,9 +1,9 @@
-import { AppDispatchContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
 import { useContext } from 'react';
-import styles from './_TaskDel.module.scss';
+import { AppDispatchContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
+import ApiService from '#Services/Services';
+import styles from './_TaskDel.module.scss';
 
 type TProps = {
   id: { boardId: string; columnId: string; taskId: string };
@@ -12,7 +12,7 @@ type TProps = {
 function TaskDelete(props: TProps): JSX.Element {
   const { id } = props;
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const setLoadingUpdate = useLoadingUpdate();
   const isLoading = useLoading();
 

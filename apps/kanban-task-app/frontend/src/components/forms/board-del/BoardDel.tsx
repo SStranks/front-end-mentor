@@ -1,9 +1,9 @@
-import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
 import { useContext } from 'react';
-import styles from './_BoardDel.module.scss';
+import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
+import ApiService from '#Services/Services';
+import styles from './_BoardDel.module.scss';
 
 type TProps = {
   activeBoardId: string;
@@ -13,7 +13,7 @@ type TProps = {
 function BoardDelete(props: TProps): JSX.Element {
   const { activeBoardId, setActiveBoardId } = props;
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();
   const state = useContext(AppStateContext);

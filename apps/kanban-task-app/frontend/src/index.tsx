@@ -6,22 +6,23 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { LoadingProvider } from '#Context/LoadingContext';
+import { RootModalProvider } from '#Context/RootModalContext';
 
 const container = document.querySelector('#root');
 const root = createRoot(container as Element);
 
 root.render(
-  // <React.StrictMode>
   // <RollbarProvider>
   //   <RollbarErrorBoundary fallbackUI={ErrorFallback}>
   <React.StrictMode>
     <BrowserRouter>
-      <LoadingProvider>
-        <App />
-      </LoadingProvider>
+      <RootModalProvider>
+        <LoadingProvider>
+          <App />
+        </LoadingProvider>
+      </RootModalProvider>
     </BrowserRouter>
   </React.StrictMode>
   //   </RollbarErrorBoundary>
   // </RollbarProvider>
-  // </React.StrictMode>
 );

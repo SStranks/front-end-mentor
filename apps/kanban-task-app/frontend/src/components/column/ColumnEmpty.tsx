@@ -1,6 +1,5 @@
 import type { IBoard } from '#Shared/types';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import { useContext } from 'react';
+import { useRootModalContext } from '#Context/RootModalContext';
 import styles from './_Column.module.scss';
 
 type TProps = {
@@ -9,9 +8,10 @@ type TProps = {
 
 function ColumnEmpty(props: TProps): JSX.Element {
   const { activeBoard } = props;
-  const rootModalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
+
   const newColumnBtnClickHandler = () => {
-    rootModalDispatch({
+    modalDispatch({
       type: 'open-modal',
       modalType: 'board-edit',
       modalProps: { activeBoard },
@@ -20,10 +20,7 @@ function ColumnEmpty(props: TProps): JSX.Element {
 
   return (
     <div className={styles.columnEmpty}>
-      <button
-        type="button"
-        className={styles.columnEmpty__btn}
-        onClick={newColumnBtnClickHandler}>
+      <button type="button" className={styles.columnEmpty__btn} onClick={newColumnBtnClickHandler}>
         <p>+ New Column</p>
       </button>
     </div>

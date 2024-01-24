@@ -3,12 +3,12 @@ import type { IBoard } from '#Shared/types';
 import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { AppDispatchContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
+import InputText from '#Components/custom/input-text/InputText';
 import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
 import styles from './_BoardEdit.module.scss';
-import InputText from '#Components/custom/input-text/InputText';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 
 type TProps = {
   activeBoard: IBoard;
@@ -17,7 +17,7 @@ type TProps = {
 function BoardEdit(props: TProps): JSX.Element {
   const { activeBoard } = props;
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();
   const {

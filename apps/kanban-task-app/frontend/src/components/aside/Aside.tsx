@@ -1,12 +1,11 @@
+import type { TBoardInfo } from '#Types/types';
 import Toggle from '#Components/custom/toggle/Toggle';
-import RootModalDispatchContext from '#Context/RootModalContext';
+import { useRootModalContext } from '#Context/RootModalContext';
 import IconBoard from '#Svg/icon-board.svg';
 import IconDarkTheme from '#Svg/icon-dark-theme.svg';
 import IconHideSidebar from '#Svg/icon-hide-sidebar.svg';
 import IconLightTheme from '#Svg/icon-light-theme.svg';
 import IconShowSidebar from '#Svg/icon-show-sidebar.svg';
-import { TBoardInfo } from '#Types/types';
-import { useContext } from 'react';
 import styles from './_Aside.module.scss';
 
 // NOTE:  The animation delay variables in SASS (--delay-X) are set here; controlling the list items delay dynamically and calculating the delay for the sidebar hide animation to accomodate the list length.
@@ -40,7 +39,7 @@ type TProps = {
 
 function Aside(props: TProps): JSX.Element {
   const { boardsList, activeBoardId, setActiveBoardId } = props;
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
 
   const numOfBoards = boardsList.length;
   const boardListItems = (boardsList as TBoardInfo).map(({ name, id }, i) => (

@@ -2,7 +2,7 @@ import type { TFormBoardValues } from '../shared';
 import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { AppDispatchContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
+import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
 import styles from './_BoardAdd.module.scss';
@@ -15,8 +15,8 @@ type TProps = {
 
 function BoardAdd(props: TProps): JSX.Element {
   const { setActiveBoardId } = props;
+  const modalDispatch = useRootModalContext();
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();
   const {

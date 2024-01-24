@@ -1,17 +1,17 @@
 import type { IBoard, IColumn } from '#Shared/types';
+import type { TStatusArr } from '#Types/types';
 import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
 import { AppDispatchContext } from '#Context/AppContext';
-import RootModalDispatchContext from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
-import { TFormTaskValues, placeholderText } from '../shared';
-import IconCross from '#Svg/icon-cross.svg';
-import styles from './_TaskAdd.module.scss';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
-import { TStatusArr } from '#Types/types';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
+import ApiService from '#Services/Services';
+import IconCross from '#Svg/icon-cross.svg';
+import { TFormTaskValues, placeholderText } from '../shared';
+import styles from './_TaskAdd.module.scss';
 
 type TProps = {
   activeBoard: IBoard;
@@ -21,7 +21,7 @@ type TProps = {
 function TaskAdd(props: TProps): JSX.Element {
   const { activeBoard, taskStatus } = props;
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const setLoadingUpdate = useLoadingUpdate();
   const isLoading = useLoading();
   const {

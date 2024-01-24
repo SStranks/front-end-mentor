@@ -2,14 +2,14 @@ import type { TSelectTask } from '#Types/types';
 import type { ISubTask } from '#Shared/types';
 import { useContext, useEffect, useMemo, useRef } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import Dropdown from '#Components/custom/dropdown/Dropdown';
 import CheckBox from '#Components/custom/checkbox/CheckBox';
-import RootModalDispatchContext from '#Context/RootModalContext';
+import Dropdown from '#Components/custom/dropdown/Dropdown';
 import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
+import { useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconVerticalEllipsis from '#Svg/icon-vertical-ellipsis.svg';
 import styles from './_TaskView.module.scss';
-import { useLoadingUpdate } from '#Context/LoadingContext';
 
 type TFormValues = {
   subtasks: ISubTask[];
@@ -24,7 +24,7 @@ function TaskView(props: TProps): JSX.Element {
   const { selectedTask } = props;
   const state = useContext(AppStateContext);
   const appDispatch = useContext(AppDispatchContext);
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const setLoadingUpdate = useLoadingUpdate();
   const menuRef = useRef<HTMLDivElement>(null);
   const { task, statusArr } = useMemo(() => {
@@ -54,8 +54,6 @@ function TaskView(props: TProps): JSX.Element {
     name: 'subtasks',
     control,
   });
-
-  console.log('TASKVIEW RENDER', isDirty);
 
   const isFormUpdating = useRef<boolean>(false);
   const onSubmit = handleSubmit(async (data) => {

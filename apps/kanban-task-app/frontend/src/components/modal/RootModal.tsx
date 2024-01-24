@@ -1,3 +1,6 @@
+import type { TRootModalState } from '#Types/types';
+import { useEffect, useReducer } from 'react';
+import ReactDOM from 'react-dom';
 import Aside from '#Components/aside/Aside';
 import BoardAdd from '#Components/forms/board-add/BoardAdd';
 import BoardDelete from '#Components/forms/board-del/BoardDel';
@@ -7,10 +10,7 @@ import TaskAdd from '#Components/forms/task-add/TaskAdd';
 import TaskDelete from '#Components/forms/task-del/TaskDel';
 import TaskEdit from '#Components/forms/task-edit/TaskEdit';
 import TaskView from '#Components/forms/task-view/TaskView';
-import { TRootModalContextAction } from '#Context/RootModalContext';
-import { TRootModalState } from '#Types/types';
-import { useEffect, useReducer } from 'react';
-import ReactDOM from 'react-dom';
+import { TRootModalContextAction, useRootModalUpdateContext } from '#Context/RootModalContext';
 import styles from './_RootModal.module.scss';
 
 const domNode = document.querySelector('#modal') as HTMLElement;
@@ -86,12 +86,12 @@ const reducer = (
 
 type TProps = {
   activeBoardId: string;
-  setRootModalDispatch: React.Dispatch<React.SetStateAction<React.Dispatch<TRootModalContextAction>>>;
 };
 
 function RootModal(props: TProps): JSX.Element | null {
-  const { activeBoardId, setRootModalDispatch } = props;
+  const { activeBoardId } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
+  const setRootModalDispatch = useRootModalUpdateContext();
 
   useEffect(() => {
     // Lift dispatch to App component

@@ -1,5 +1,4 @@
-import RootModalDispatchContext from '#Context/RootModalContext';
-import { useContext } from 'react';
+import { useRootModalContext } from '#Context/RootModalContext';
 import styles from './_Error.module.scss';
 
 type TProps = {
@@ -8,7 +7,7 @@ type TProps = {
 
 function Error(props: TProps): JSX.Element {
   const { title } = props;
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
 
   const proceedBtnClickHandler = () => {
     modalDispatch({
@@ -21,14 +20,10 @@ function Error(props: TProps): JSX.Element {
       <div className={styles.error}>
         <p className={styles.error__title}>Submission Error</p>
         <p className={styles.error__description}>
-          There was an error transferring data for &apos;{title}&apos;. Please
-          try again!
+          There was an error transferring data for &apos;{title}&apos;. Please try again!
         </p>
         <div className={styles.error__btnGroup}>
-          <button
-            type="button"
-            className={styles.error__btnDelete}
-            onClick={proceedBtnClickHandler}>
+          <button type="button" className={styles.error__btnDelete} onClick={proceedBtnClickHandler}>
             Proceed
           </button>
         </div>

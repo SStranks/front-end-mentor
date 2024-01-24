@@ -1,29 +1,27 @@
+import type { TAppStateContext } from '#Types/types';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import RootModal from '#Components/modal/RootModal';
 import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
-import RootModalDispatchContext, { TRootModalDispatchContext } from '#Context/RootModalContext';
+import { useLoadingUpdate } from '#Context/LoadingContext';
+import { useRootModalContext } from '#Context/RootModalContext';
 import useAppReducer from '#Hooks/useAppReducer';
 import Home from '#Pages/Home';
 import ApiService from '#Services/Services';
-import { TAppStateContext } from '#Types/types';
-import { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import RootModal from './modal/RootModal';
-import { useLoadingUpdate } from '#Context/LoadingContext';
 
 const INITIAL_ACTIVEBOARD = window.localStorage.getItem('active-board');
 
 function App(): JSX.Element {
   const setLoadingUpdate = useLoadingUpdate();
+  const rootModalDispatch = useRootModalContext();
   const [state, appDispatch] = useAppReducer({
     boards: [],
     localStoragePending: false,
     localStorageData: undefined,
   });
-  const [rootModalDispatch, setRootModalDispatch] = useState<TRootModalDispatchContext>(
-    {} as TRootModalDispatchContext
-  );
   const [activeBoardId, setActiveBoardId] = useState<string>(INITIAL_ACTIVEBOARD || '');
 
-  // console.log('APP RENDER');
+  console.log('APP RENDER');
 
   // Commit tasks ordering to localStorage when tab/browser visibility changes and data is pending
   useEffect(() => {
@@ -71,8 +69,6 @@ function App(): JSX.Element {
     window.localStorage.setItem('active-board', activeBoardId);
   }, [activeBoardId]);
 
-  // console.log('STATE', state.boards);
-
   const boardsList = state.boards?.map((board) => ({
     name: board.name,
     id: board._id,
@@ -83,19 +79,17 @@ function App(): JSX.Element {
   const data = { boardsList, activeBoard };
 
   return (
-    <RootModalDispatchContext.Provider value={rootModalDispatch as TRootModalDispatchContext}>
-      <AppDispatchContext.Provider value={appDispatch}>
-        <AppStateContext.Provider value={state as TAppStateContext}>
-          <RootModal activeBoardId={activeBoardId} setRootModalDispatch={setRootModalDispatch} />
-          <Routes>
-            <Route
-              path="/"
-              element={<Home boardData={data} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />}
-            />
-          </Routes>
-        </AppStateContext.Provider>
-      </AppDispatchContext.Provider>
-    </RootModalDispatchContext.Provider>
+    <AppDispatchContext.Provider value={appDispatch}>
+      <AppStateContext.Provider value={state as TAppStateContext}>
+        <RootModal activeBoardId={activeBoardId} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home boardData={data} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />}
+          />
+        </Routes>
+      </AppStateContext.Provider>
+    </AppDispatchContext.Provider>
   );
 }
 

@@ -1,15 +1,12 @@
 import type { TBoardInfo } from '#Types/types';
 import type { IBoard } from '#Shared/types';
-import RootModalDispatchContext from '#Context/RootModalContext';
+import { useEffect, useRef } from 'react';
+import Logo from '#Components/logo/Logo';
+import { useRootModalContext } from '#Context/RootModalContext';
 import IconAddTaskMobile from '#Svg/icon-add-task-mobile.svg';
 import IconEllipsis from '#Svg/icon-vertical-ellipsis.svg';
 import IconChevronDown from '#Svg/icon-chevron-down.svg';
-// import LogoDark from '#Svg/logo-dark.svg';
-// import LogoLight from '#Svg/logo-light.svg';
-// import LogoMobile from '#Svg/logo-mobile.svg';
-import { useContext, useEffect, useRef } from 'react';
 import styles from './_Nav.module.scss';
-import Logo from '#Components/logo/Logo';
 
 type TProps = {
   activeBoard: IBoard | undefined;
@@ -20,7 +17,7 @@ type TProps = {
 
 function Nav(props: TProps): JSX.Element {
   const { activeBoard, activeBoardId, boardsList, setActiveBoardId } = props;
-  const modalDispatch = useContext(RootModalDispatchContext);
+  const modalDispatch = useRootModalContext();
   const boardOptionsRef = useRef<HTMLDivElement>(null);
   const mobileAsideBtn = useRef<HTMLButtonElement>(null);
 
@@ -89,9 +86,6 @@ function Nav(props: TProps): JSX.Element {
     <nav className={styles.navbar}>
       <div className={styles.navbar__logo}>
         <Logo />
-        {/* <img src={LogoDark} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--dark']}`} alt="" />
-        <img src={LogoLight} className={`${styles.navbar__logo__img} ${styles['navbar__logo__img--light']}`} alt="" />
-        <img src={LogoMobile} className={`${styles['navbar__logo--mobile']}`} alt="" /> */}
       </div>
       <div className={styles.navbar__head}>
         <div className={styles.navbar__leftControls}>
