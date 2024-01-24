@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { LoadingProvider } from '#Context/LoadingContext';
 import { RootModalProvider } from '#Context/RootModalContext';
+import { AppProvider } from '#Context/AppContext';
 
 const container = document.querySelector('#root');
 const root = createRoot(container as Element);
@@ -18,7 +19,9 @@ root.render(
     <BrowserRouter>
       <RootModalProvider>
         <LoadingProvider>
-          <App />
+          <AppProvider>
+            <App />
+          </AppProvider>
         </LoadingProvider>
       </RootModalProvider>
     </BrowserRouter>

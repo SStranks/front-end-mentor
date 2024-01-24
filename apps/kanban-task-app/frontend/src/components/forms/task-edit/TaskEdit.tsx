@@ -1,11 +1,10 @@
 import type { ITask } from '#Shared/types';
 import type { TSelectTask, TStatusArr } from '#Types/types';
-import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
-import { AppDispatchContext } from '#Context/AppContext';
+import { useAppDispatchContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
@@ -21,7 +20,7 @@ type TProps = {
 
 function TaskEdit(props: TProps): JSX.Element {
   const { task, selectedTask, statusArr } = props;
-  const appDispatch = useContext(AppDispatchContext);
+  const appDispatch = useAppDispatchContext();
   const modalDispatch = useRootModalContext();
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();

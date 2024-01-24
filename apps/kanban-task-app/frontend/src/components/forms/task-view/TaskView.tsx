@@ -1,15 +1,15 @@
 import type { TSelectTask } from '#Types/types';
 import type { ISubTask } from '#Shared/types';
-import { useContext, useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import CheckBox from '#Components/custom/checkbox/CheckBox';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
-import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
 import { useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconVerticalEllipsis from '#Svg/icon-vertical-ellipsis.svg';
 import styles from './_TaskView.module.scss';
+import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
 
 type TFormValues = {
   subtasks: ISubTask[];
@@ -22,19 +22,19 @@ type TProps = {
 
 function TaskView(props: TProps): JSX.Element {
   const { selectedTask } = props;
-  const state = useContext(AppStateContext);
-  const appDispatch = useContext(AppDispatchContext);
+  const appState = useAppStateContext();
+  const appDispatch = useAppDispatchContext();
   const modalDispatch = useRootModalContext();
   const setLoadingUpdate = useLoadingUpdate();
   const menuRef = useRef<HTMLDivElement>(null);
   const { task, statusArr } = useMemo(() => {
-    const board = state.boards.find((el) => el._id === selectedTask.boardId);
+    const board = appState.boards.find((el) => el._id === selectedTask.boardId);
     const columnList = board?.columns.map((el) => ({ name: el.name, _id: el._id }));
     const column = board?.columns.find((el) => el._id === selectedTask.columnId);
     const task = column?.tasks.find((el) => el._id === selectedTask.taskId);
     if (!task || !columnList) throw new Error('Incongruence in data!');
     return { task, statusArr: columnList };
-  }, [state, selectedTask]);
+  }, [appState, selectedTask]);
   const {
     formState: { isDirty },
     handleSubmit,

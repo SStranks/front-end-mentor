@@ -1,8 +1,7 @@
 import type { TFormBoardValues } from '../shared';
 import type { IBoard } from '#Shared/types';
-import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import { AppDispatchContext } from '#Context/AppContext';
+import { useAppDispatchContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import InputText from '#Components/custom/input-text/InputText';
@@ -16,7 +15,7 @@ type TProps = {
 
 function BoardEdit(props: TProps): JSX.Element {
   const { activeBoard } = props;
-  const appDispatch = useContext(AppDispatchContext);
+  const appDispatch = useAppDispatchContext();
   const modalDispatch = useRootModalContext();
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();

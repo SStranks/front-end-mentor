@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { AppDispatchContext } from '#Context/AppContext';
+import { useAppDispatchContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
@@ -11,7 +10,7 @@ type TProps = {
 
 function TaskDelete(props: TProps): JSX.Element {
   const { id } = props;
-  const appDispatch = useContext(AppDispatchContext);
+  const appDispatch = useAppDispatchContext();
   const modalDispatch = useRootModalContext();
   const setLoadingUpdate = useLoadingUpdate();
   const isLoading = useLoading();

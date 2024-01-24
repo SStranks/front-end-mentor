@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
+import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
@@ -12,11 +11,11 @@ type TProps = {
 
 function BoardDelete(props: TProps): JSX.Element {
   const { activeBoardId, setActiveBoardId } = props;
-  const appDispatch = useContext(AppDispatchContext);
+  const appState = useAppStateContext();
+  const appDispatch = useAppDispatchContext();
   const modalDispatch = useRootModalContext();
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();
-  const state = useContext(AppStateContext);
 
   const deleteBtnClickHandler = () => {
     (async () => {
@@ -29,7 +28,7 @@ function BoardDelete(props: TProps): JSX.Element {
           type: 'delete-board',
           payload: { id: { boardId: activeBoardId } },
         });
-        setActiveBoardId(state.boards[0]._id || '');
+        setActiveBoardId(appState.boards[0]._id || '');
         return modalDispatch({ type: 'close-modal' });
       } catch (error) {
         console.error(error);

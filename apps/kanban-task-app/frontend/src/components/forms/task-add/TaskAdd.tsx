@@ -1,9 +1,8 @@
 import type { IBoard, IColumn } from '#Shared/types';
 import type { TStatusArr } from '#Types/types';
-import { useContext } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
-import { AppDispatchContext } from '#Context/AppContext';
+import { useAppDispatchContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import InputText from '#Components/custom/input-text/InputText';
@@ -20,10 +19,10 @@ type TProps = {
 
 function TaskAdd(props: TProps): JSX.Element {
   const { activeBoard, taskStatus } = props;
-  const appDispatch = useContext(AppDispatchContext);
+  const appDispatch = useAppDispatchContext();
   const modalDispatch = useRootModalContext();
-  const setLoadingUpdate = useLoadingUpdate();
   const isLoading = useLoading();
+  const setLoadingUpdate = useLoadingUpdate();
   const {
     handleSubmit,
     control,

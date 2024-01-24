@@ -1,11 +1,9 @@
-import type { TAppStateContext } from '#Types/types';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import RootModal from '#Components/modal/RootModal';
-import { AppDispatchContext, AppStateContext } from '#Context/AppContext';
+import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
 import { useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
-import useAppReducer from '#Hooks/useAppReducer';
 import Home from '#Pages/Home';
 import ApiService from '#Services/Services';
 
@@ -14,11 +12,13 @@ const INITIAL_ACTIVEBOARD = window.localStorage.getItem('active-board');
 function App(): JSX.Element {
   const setLoadingUpdate = useLoadingUpdate();
   const rootModalDispatch = useRootModalContext();
-  const [state, appDispatch] = useAppReducer({
-    boards: [],
-    localStoragePending: false,
-    localStorageData: undefined,
-  });
+  const appState = useAppStateContext();
+  const appDispatch = useAppDispatchContext();
+  // const [state, appDispatch] = useAppReducer({
+  //   boards: [],
+  //   localStoragePending: false,
+  //   localStorageData: undefined,
+  // });
   const [activeBoardId, setActiveBoardId] = useState<string>(INITIAL_ACTIVEBOARD || '');
 
   console.log('APP RENDER');
@@ -26,8 +26,8 @@ function App(): JSX.Element {
   // Commit tasks ordering to localStorage when tab/browser visibility changes and data is pending
   useEffect(() => {
     const saveTaskOrderToLocalStorage = () => {
-      if (document.visibilityState === 'hidden' && state.localStoragePending && state.localStorageData) {
-        window.localStorage.setItem('boards-taskOrder', state.localStorageData);
+      if (document.visibilityState === 'hidden' && appState.localStoragePending && appState.localStorageData) {
+        window.localStorage.setItem('boards-taskOrder', appState.localStorageData);
         appDispatch({
           type: 'localStoragePending',
           localStorage: { localStoragePending: false },
@@ -36,7 +36,7 @@ function App(): JSX.Element {
     };
     document.addEventListener('visibilitychange', saveTaskOrderToLocalStorage);
     return () => document.removeEventListener('visibilitychange', saveTaskOrderToLocalStorage);
-  }, [appDispatch, state.localStorageData, state.localStoragePending]);
+  }, [appDispatch, appState.localStorageData, appState.localStoragePending]);
 
   useEffect(() => {
     // Fetch data from backend
@@ -69,27 +69,29 @@ function App(): JSX.Element {
     window.localStorage.setItem('active-board', activeBoardId);
   }, [activeBoardId]);
 
-  const boardsList = state.boards?.map((board) => ({
+  const boardsList = appState.boards?.map((board) => ({
     name: board.name,
     id: board._id,
   }));
 
-  const activeBoard = state.boards?.find((item) => item._id === activeBoardId);
+  const activeBoard = appState.boards?.find((item) => item._id === activeBoardId);
 
   const data = { boardsList, activeBoard };
 
   return (
-    <AppDispatchContext.Provider value={appDispatch}>
-      <AppStateContext.Provider value={state as TAppStateContext}>
-        <RootModal activeBoardId={activeBoardId} />
-        <Routes>
-          <Route
-            path="/"
-            element={<Home boardData={data} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />}
-          />
-        </Routes>
-      </AppStateContext.Provider>
-    </AppDispatchContext.Provider>
+    // <AppDispatchContext.Provider value={appDispatch}>
+    //   <AppStateContext.Provider value={appState as TAppStateContext}>
+    <>
+      <RootModal activeBoardId={activeBoardId} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home boardData={data} activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId} />}
+        />
+      </Routes>
+    </>
+    //   </AppStateContext.Provider>
+    // </AppDispatchContext.Provider>
   );
 }
 
