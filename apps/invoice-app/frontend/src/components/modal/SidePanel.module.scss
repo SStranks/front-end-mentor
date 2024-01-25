@@ -1,7 +1,9 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   position: absolute;
@@ -13,12 +15,12 @@
   width: 85%;
   margin-right: 100px;
   background-color: var(--color-sidebar-panel);
-  border-radius: 0 $border-radius-4 $border-radius-4 0;
+  border-radius: 0 v.$border-radius-4 v.$border-radius-4 0;
   z-index: f.z('modal-sidebar');
   transition: a.$theme-transition;
 
   &__title {
-    @include body-4;
+    @include mx.body-4;
     font-size: f.px2rem(30);
     margin-top: 36px;
     margin-left: 160px;
@@ -27,7 +29,7 @@
     transition: a.$theme-transition;
 
     &__hash {
-      color: $color-2b;
+      color: c.$color-2b;
     }
   }
 }
@@ -69,7 +71,7 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(tablet-all) {
+@include mq.media(tablet-all) {
   .container {
     height: calc(100% - f.px2em(80));
     margin-top: f.px2em(80);
@@ -80,7 +82,7 @@
   }
 }
 
-@include media(tablet-medium) {
+@include mq.media(tablet-medium) {
   .container {
     width: 100%;
     border-radius: 0;
@@ -95,7 +97,7 @@
   }
 }
 
-@include media(tablet-small) {
+@include mq.media(tablet-small) {
   .container {
     width: 100%;
     border-radius: 0;
@@ -110,7 +112,7 @@
   }
 }
 
-@include media(mobile-all) {
+@include mq.media(mobile-all) {
   .container {
     width: 100%;
     height: calc(100% - f.px2em(72));

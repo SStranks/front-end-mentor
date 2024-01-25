@@ -1,11 +1,10 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
 
 .container {
   position: fixed;
   inset: 0;
-  background-color: $modal-bg;
+  background-color: c.$modal-bg;
   backdrop-filter: blur(2px);
   z-index: f.z('modal-container');
 }

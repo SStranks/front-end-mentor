@@ -1,8 +1,10 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
 @use '#Sass/components/buttons' as btn;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   position: fixed;
@@ -16,19 +18,19 @@
   pointer-events: none;
 
   &__card {
-    @include body-3;
+    @include mx.body-3;
 
     // To allow click events for the ModalConfirmDelete card/buttons
     pointer-events: all;
     padding: f.px2em(48);
-    color: $color-2b;
+    color: c.$color-2b;
     background-color: var(--color-elements);
-    border-radius: $border-radius-1;
+    border-radius: v.$border-radius-1;
     transition: a.$theme-transition;
 
     &__title {
-      @include body-4;
-      @include text-modifier-black;
+      @include mx.body-4;
+      @include mx.text-modifier-black;
       margin-bottom: f.px2em(12);
     }
 
@@ -46,7 +48,7 @@
   }
 
   &__cancelBtn {
-    @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+    @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
     @include btn.btn-grey;
 
     & > button {
@@ -56,7 +58,7 @@
   }
 
   &__deleteBtn {
-    @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+    @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
     @include btn.btn-red;
 
     & > button {
@@ -70,7 +72,7 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(mobile-all) {
+@include mq.media(mobile-all) {
   .container {
     &__card {
       padding: f.px2em(32);

@@ -1,6 +1,7 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   display: flex;
@@ -12,7 +13,7 @@
 
   &__titleblock {
     & > p {
-      @include body-1;
+      @include mx.body-1;
       margin-top: f.px2em(6);
     }
   }
@@ -28,7 +29,7 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(tablet-small) {
+@include mq.media(tablet-small) {
   .container {
     &__titleblock {
       & > h1 {
@@ -48,7 +49,7 @@
   }
 }
 
-@include media(mobile-all) {
+@include mq.media(mobile-all) {
   .container {
     &__titleblock {
       & > h1 {
@@ -68,7 +69,7 @@
   }
 }
 
-@include media(mobile-small) {
+@include mq.media(mobile-small) {
   .container {
     &__titleblock {
       & > h1 {

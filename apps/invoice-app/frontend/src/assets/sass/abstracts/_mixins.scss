@@ -20,9 +20,11 @@
 
 /*   Imports                        */
 @use 'sass:math';
-@use 'variables' as *;
-@use 'functions' as f;
+
 @use 'animations' as a;
+@use 'colors' as c;
+@use 'functions' as f;
+@use 'variables' as v;
 
 /// Body styling - 1
 /// @require px2rem Pixel to REM converter <>
@@ -32,7 +34,7 @@
   font-size: f.px2rem(16);
   line-height: f.px2rem(15);
   letter-spacing: f.px2rem(-0.25);
-  color: $color-2b;
+  color: c.$color-2b;
 }
 
 /// Body styling - 2
@@ -75,8 +77,8 @@
 /// @require $white color variable
 /// @require $border-radius-1 border radius variable
 @mixin card {
-  background-color: $white;
-  border-radius: $border-radius-1;
+  background-color: c.$white;
+  border-radius: v.$border-radius-1;
   padding: f.px2em(24);
 }
 
@@ -91,19 +93,19 @@
 @mixin textarea {
   @include body-2;
   border: none;
-  border-radius: $border-radius-2;
+  border-radius: v.$border-radius-2;
   resize: vertical;
   width: 100%;
   padding: f.px2em(16) f.px2em(24);
-  background-color: $pale-blue;
-  color: $navy-blue;
+  background-color: c.$pale-blue;
+  color: c.$navy-blue;
 
   &::placeholder {
-    color: $fade-blue;
+    color: c.$fade-blue;
   }
 
   &:focus {
-    outline: 1px solid $royal-blue;
+    outline: 1px solid c.$royal-blue;
   }
 }
 
@@ -138,10 +140,10 @@
 
   &--error {
     #{$element} {
-      outline: 1px solid $blood-red;
+      outline: 1px solid c.$blood-red;
 
       &:focus {
-        outline: 1px solid $blood-red;
+        outline: 1px solid c.$blood-red;
       }
     }
 
@@ -150,7 +152,7 @@
       @include body-4;
       left: 0;
       bottom: 0;
-      color: $blood-red;
+      color: c.$blood-red;
     }
   }
 }
@@ -165,7 +167,7 @@
   font-family: inherit;
   line-height: f.px2rem(15);
   letter-spacing: -0.25px;
-  color: $white;
+  color: c.$white;
   height: 48px;
   border-radius: 24px;
 }
@@ -218,163 +220,6 @@
 //     text-decoration: underline;
 //   }
 // }
-
-/*   Breakpoints                    */
-
-// $mobile-s: 320px;
-// $mobile-m: 375px;
-// $mobile-l: 480px;
-// $tablet-s: 576px;
-// $tablet-m: 667px;
-// $tablet-l: 768px;
-// $desktop-s: 1024px;
-// $desktop-m: 1440px;
-// $desktop-l: 2560px;
-
-/*   Media Queries: Multiple        */
-/// Provide one or more media-query mixins to target an element
-/// @parameter {String} $args - One or more media-query mixin names as strings.
-/// @example
-///   @include media(mobile-small, mobile-large) {
-///     background-color: red;
-///   }
-@mixin media($args...) {
-  @each $arg in $args {
-    @if $arg == 'mobile-small' {
-      @include mobile-small {
-        @content;
-      }
-    }
-    @if $arg == 'mobile-large' {
-      @include mobile-large {
-        @content;
-      }
-    }
-    @if $arg == 'mobile-all' {
-      @include mobile-all {
-        @content;
-      }
-    }
-    @if $arg == 'tablet-small' {
-      @include tablet-small {
-        @content;
-      }
-    }
-    @if $arg == 'tablet-medium' {
-      @include tablet-medium {
-        @content;
-      }
-    }
-    @if $arg == 'tablet-large' {
-      @include tablet-large {
-        @content;
-      }
-    }
-    @if $arg == 'tablet-extra-large' {
-      @include tablet-extra-large {
-        @content;
-      }
-    }
-    @if $arg == 'tablet-all' {
-      @include tablet-all {
-        @content;
-      }
-    }
-    @if $arg == 'desktop-small' {
-      @include desktop-small {
-        @content;
-      }
-    }
-    @if $arg == 'desktop-medium' {
-      @include desktop-medium {
-        @content;
-      }
-    }
-    @if $arg == 'desktop-large' {
-      @include desktop-large {
-        @content;
-      }
-    }
-  }
-}
-
-/*   Media Queries: Specific        */
-/// Media-query targeting small mobile screens.
-@mixin mobile-small {
-  @media only screen and (min-width: #{$mobile-s}) and (max-width: #{$mobile-m - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting large mobile screens.
-@mixin mobile-large {
-  @media only screen and (min-width: #{$mobile-m}) and (max-width: #{$mobile-l - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting all mobile screens.
-@mixin mobile-all {
-  @media only screen and (max-width: #{$mobile-l - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting small tablet screens.
-@mixin tablet-small {
-  @media only screen and (min-width: #{$mobile-l}) and (max-width: #{$tablet-s - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting medium tablet screens.
-@mixin tablet-medium {
-  @media only screen and (min-width: #{$tablet-s}) and (max-width: #{$tablet-m - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting large tablet screens.
-@mixin tablet-large {
-  @media only screen and (min-width: #{$tablet-m}) and (max-width: #{$tablet-l - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting extra-large tablet screens.
-@mixin tablet-extra-large {
-  @media only screen and (min-width: #{$tablet-l}) and (max-width: #{$desktop-s - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting all tablet screens.
-@mixin tablet-all {
-  @media only screen and (min-width: #{$mobile-l}) and (max-width: #{$desktop-s - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting small desktop screens.
-@mixin desktop-small {
-  @media only screen and (min-width: #{$desktop-s}) and (max-width: #{$desktop-m - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting medium desktop screens.
-@mixin desktop-medium {
-  @media only screen and (min-width: #{$desktop-m}) and (max-width: #{$desktop-l - 1px}) {
-    @content;
-  }
-}
-
-/// Media-query targeting large desktop screens.
-@mixin desktop-large {
-  @media only screen and (min-width: #{$desktop-l}) {
-    @content;
-  }
-}
 
 /*   Fluid Typogrpahy               */
 // The first two arguments are for screen resolutions from which the font will be responsive.

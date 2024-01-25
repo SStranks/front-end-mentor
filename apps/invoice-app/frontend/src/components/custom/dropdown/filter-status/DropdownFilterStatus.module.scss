@@ -1,7 +1,8 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   position: relative;
@@ -33,7 +34,7 @@
   justify-content: space-between;
   align-items: center;
 
-  @include extend-clickarea(120%, 150%, false);
+  @include mx.extend-clickarea(120%, 150%, false);
 
   & > h3 {
     color: var(--color-text-p);
@@ -50,7 +51,7 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(mobile-all) {
+@include mq.media(mobile-all) {
   .btn {
     & > h3 {
       & > span {
@@ -61,7 +62,7 @@
   }
 }
 
-@include media(mobile-small) {
+@include mq.media(mobile-small) {
   .btn {
     flex-direction: column;
     justify-content: center;

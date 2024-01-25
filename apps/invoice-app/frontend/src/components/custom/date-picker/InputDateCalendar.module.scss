@@ -1,4 +1,4 @@
-@use '#Sass/variables' as *;
+@use '#Sass/abstracts/colors' as c;
 
 .container {
   position: relative;
@@ -53,7 +53,7 @@
     color: inherit;
 
     &:hover {
-      color: $color-1b;
+      color: c.$color-1b;
     }
 
     &--active::before {
@@ -64,7 +64,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background-color: $color-1a;
+      background-color: c.$color-1a;
       transform: translate(-50%, -50%);
       opacity: 0.7;
       z-index: -1;

@@ -1,19 +1,20 @@
-@use '#Sass/variables' as *;
-@use '#Sass/animations' as a;
-@use '#Sass/functions' as f;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/variables' as v;
 
 .input {
   width: 100%;
   padding: f.px2em(15) f.px2em(20);
   background-color: var(--color-form-input-bg);
   border: 1px solid var(--color-form-input-border);
-  border-radius: $border-radius-5;
+  border-radius: v.$border-radius-5;
   font-weight: 700;
   transition: a.$theme-transition;
 
   &:focus {
     outline: none;
-    border: 1px solid $color-1a;
+    border: 1px solid c.$color-1a;
   }
 }
 

@@ -1,5 +1,5 @@
 /* -------------------------------- */
-/*          ~ Typography ~          */
+/*          ~ Font-Face ~           */
 /* -------------------------------- */
 /*          [Invoice App]           */
 /* -------------------------------- */
@@ -15,14 +15,20 @@
 
 ////
 /// --- SASSDOC
-/// @group Typography
+/// @group Font-Face
 ////
 
 /*   Imports                        */
-@use 'variables' as *;
-@use 'functions' as f;
+
+/* -------------------------------- */
+/*   Font Imports                   */
+/* -------------------------------- */
 
 // @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+
+/* -------------------------------- */
+/*   Font-face Imports              */
+/* -------------------------------- */
 
 @font-face {
   font-family: 'League Spartan';
@@ -60,60 +66,4 @@
     U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   ascent-override: 85%;
   descent-override: 20%;
-}
-
-/// Sets the default font-family for the webpage.
-html,
-body {
-  // 400 Regular. 600 Semi-bold. 700 Bold.
-  font-family: 'League Spartan', sans-serif;
-}
-
-/// H1 Styling
-h1 {
-  font-weight: 700;
-  font-size: f.px2rem(38);
-  line-height: 1;
-
-  // line-height: f.px2rem(36);
-  letter-spacing: f.px2rem(-1);
-}
-
-/// H2 Styling
-h2 {
-  font-weight: 700;
-  font-size: f.px2rem(26);
-  line-height: 1;
-  letter-spacing: f.px2rem(-0.63);
-}
-
-/// H3 Styling
-h3 {
-  font-weight: 700;
-  font-size: f.px2rem(16);
-  line-height: f.px2rem(24);
-
-  // letter-spacing: f.px2rem(-0.8);
-}
-
-/// H4 Styling
-h4 {
-  font-weight: 700;
-  font-size: f.px2rem(12);
-  line-height: f.px2rem(15);
-  letter-spacing: f.px2rem(-0.25);
-}
-
-// span {
-//   font-size: 16px;
-//   font-weight: 700;
-//   line-height: 26px;
-// }
-
-/// Removes the default text-decoration styling for links; not visited, visited, active, and hover.
-a,
-a:visited,
-a:active,
-a:hover {
-  text-decoration: 0;
 }

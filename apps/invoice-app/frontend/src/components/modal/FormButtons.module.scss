@@ -1,8 +1,10 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
 @use '#Sass/components/buttons' as btn;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   position: sticky;
@@ -12,7 +14,7 @@
   max-width: 720px;
   padding: f.px2em(30) f.px2em(56) f.px2em(30) f.px2em(160);
   background-color: var(--color-sidebar-panel);
-  border-radius: $border-radius-4;
+  border-radius: v.$border-radius-4;
 
   // To set the ::before z-index/Z-value
   transform-style: preserve-3d;
@@ -40,7 +42,7 @@
 }
 
 .btnCancel {
-  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
   @include btn.btn-grey;
 
   & > button {
@@ -50,7 +52,7 @@
 }
 
 .btnDiscard {
-  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
   @include btn.btn-grey;
 
   & > button {
@@ -60,7 +62,7 @@
 }
 
 .btnSaveDraft {
-  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
   @include btn.btn-navy;
 
   & > button {
@@ -70,7 +72,7 @@
 }
 
 .btnSaveSend {
-  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
   @include btn.btn-purple;
 
   & > button {
@@ -80,7 +82,7 @@
 }
 
 .btnSaveChanges {
-  @include btn.btn-theme-wrapper(a.$theme-transition, $border-radius-3);
+  @include btn.btn-theme-wrapper(a.$theme-transition, v.$border-radius-3);
   @include btn.btn-purple;
 
   & > button {
@@ -93,21 +95,13 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(tablet-large) {
+@include mq.media(tablet-large) {
   .container {
     width: 100%;
   }
 }
 
-@include media(tablet-medium) {
-  .container {
-    width: 100%;
-    padding: f.px2em(20) f.px2em(24);
-    border-radius: 0;
-  }
-}
-
-@include media(tablet-small) {
+@include mq.media(tablet-medium) {
   .container {
     width: 100%;
     padding: f.px2em(20) f.px2em(24);
@@ -115,7 +109,7 @@
   }
 }
 
-@include media(mobile-all) {
+@include mq.media(tablet-small) {
   .container {
     width: 100%;
     padding: f.px2em(20) f.px2em(24);
@@ -123,7 +117,15 @@
   }
 }
 
-@include media(mobile-small) {
+@include mq.media(mobile-all) {
+  .container {
+    width: 100%;
+    padding: f.px2em(20) f.px2em(24);
+    border-radius: 0;
+  }
+}
+
+@include mq.media(mobile-small) {
   .container {
     & button {
       font-size: f.px2rem(12);

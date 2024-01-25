@@ -1,4 +1,4 @@
-@use '#Sass/mixins' as *;
+@use '#Sass/abstracts/media-queries' as mq;
 
 .container {
   width: 40px;
@@ -13,7 +13,7 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(tablet-all, mobile-all) {
+@include mq.media(tablet-all, mobile-all) {
   .container {
     width: 32px;
     height: 32px;

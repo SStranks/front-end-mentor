@@ -1,7 +1,8 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
 
 .container {
   width: 100%;
@@ -52,7 +53,7 @@
 
     & > p {
       margin-top: f.px2em(24);
-      color: $color-2b;
+      color: c.$color-2b;
       text-align: center;
     }
   }
@@ -62,13 +63,13 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(tablet-all) {
+@include mq.media(tablet-all) {
   .container {
     margin-bottom: f.px2em(24);
   }
 }
 
-@include media(mobile-all) {
+@include mq.media(mobile-all) {
   .container {
     &__invoices {
       padding: 0 8px;

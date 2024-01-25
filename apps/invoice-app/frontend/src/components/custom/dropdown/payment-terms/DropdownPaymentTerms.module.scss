@@ -1,7 +1,8 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 // REFACTOR:  Error styles to be refactored into 'base' SASS
 .container {
@@ -9,11 +10,11 @@
   width: 100%;
   background-color: var(--color-form-input-bg);
   border: 1px solid var(--color-form-input-border);
-  border-radius: $border-radius-5;
+  border-radius: v.$border-radius-5;
   transition: a.$theme-transition;
 
   &:has(:focus) {
-    border: 1px solid $color-1a;
+    border: 1px solid c.$color-1a;
   }
 
   & button {
@@ -30,7 +31,7 @@
   width: 100%;
   padding: f.px2em(15) f.px2em(20);
   color: var(--color-text-p);
-  border-radius: $border-radius-5;
+  border-radius: v.$border-radius-5;
   transition: a.$theme-transition;
 
   &__hiddenInput {
@@ -60,7 +61,7 @@
   background-color: var(--color-form-dropdown);
   transform: translateY(calc(100% + 8px));
   box-shadow: 0 10px 20px 0 var(--color-dropshadow);
-  border-radius: $border-radius-5;
+  border-radius: v.$border-radius-5;
   transition: a.$theme-transition;
 
   // REFACTOR:  Add to dropdown manager
@@ -80,7 +81,7 @@
         text-align: left;
 
         &:hover {
-          color: $color-1a;
+          color: c.$color-1a;
         }
       }
     }

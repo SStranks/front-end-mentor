@@ -1,7 +1,8 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   position: relative;
@@ -11,7 +12,7 @@
   justify-content: center;
   width: 104px;
   padding: f.px2em(13) 0;
-  border-radius: $border-radius-2;
+  border-radius: v.$border-radius-2;
   font-weight: 700;
   font-size: f.px2rem(16);
   line-height: 1;
@@ -25,21 +26,21 @@
 
   &--paid {
     background-color: var(--color-button-status-paid);
-    color: $color-4c;
+    color: c.$color-4c;
     transition: a.$theme-transition;
 
     & .container__bullet {
-      background-color: $color-4c;
+      background-color: c.$color-4c;
     }
   }
 
   &--pending {
     background-color: var(--color-button-status-pending);
-    color: $color-4e;
+    color: c.$color-4e;
     transition: a.$theme-transition;
 
     & .container__bullet {
-      background-color: $color-4e;
+      background-color: c.$color-4e;
     }
   }
 

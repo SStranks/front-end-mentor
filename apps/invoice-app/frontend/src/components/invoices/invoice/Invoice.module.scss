@@ -1,7 +1,9 @@
-@use '#Sass/variables' as *;
-@use '#Sass/mixins' as *;
-@use '#Sass/functions' as f;
-@use '#Sass/animations' as a;
+@use '#Sass/abstracts/animations' as a;
+@use '#Sass/abstracts/colors' as c;
+@use '#Sass/abstracts/functions' as f;
+@use '#Sass/abstracts/media-queries' as mq;
+@use '#Sass/abstracts/mixins' as mx;
+@use '#Sass/abstracts/variables' as v;
 
 .container {
   display: grid;
@@ -14,8 +16,8 @@
   width: 100%;
   padding: f.px2em(16) f.px2em(24) f.px2em(16) f.px2em(32);
   background-color: var(--color-elements);
-  box-shadow: $box-shadow-1;
-  border-radius: $border-radius-1;
+  box-shadow: v.$box-shadow-1;
+  border-radius: v.$border-radius-1;
   cursor: pointer;
   transition:
     transform 0.2s,
@@ -23,7 +25,7 @@
 
   &:hover {
     transform: scale(101.5%);
-    outline: 1px solid $color-1a;
+    outline: 1px solid c.$color-1a;
   }
 
   &__code {
@@ -31,7 +33,7 @@
     font-size: f.px2rem(15);
     line-height: f.px2rem(15);
     letter-spacing: f.px2rem(-0.25);
-    color: $color-2c;
+    color: c.$color-2c;
     margin-right: f.px2em(20);
 
     &--black {
@@ -75,82 +77,13 @@
  ----      Media Queries       ----          
  -------------------------------- */
 
-@include media(tablet-large) {
+@include mq.media(tablet-large) {
   .container {
     padding: f.px2em(16) f.px2em(24);
   }
 }
 
-@include media(tablet-medium) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: f.px2em(16) f.px2em(24);
-
-    &__date {
-      grid-column: 1;
-      grid-row: 2;
-      align-self: end;
-    }
-
-    &__name {
-      justify-self: end;
-      margin: 0;
-    }
-
-    &__amount {
-      grid-column: 1;
-      grid-row: 3;
-      justify-self: start;
-    }
-
-    &__status {
-      grid-row: 2 / 4;
-      place-self: center end;
-      margin: f.px2em(25) 0 f.px2em(15) 0;
-    }
-
-    &__arrowright {
-      display: none;
-    }
-  }
-}
-
-@include media(tablet-small) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: f.px2em(16) f.px2em(24);
-
-    &__date {
-      grid-column: 1;
-      grid-row: 2;
-      align-self: end;
-    }
-
-    &__name {
-      justify-self: end;
-      margin: 0;
-    }
-
-    &__amount {
-      grid-column: 1;
-      grid-row: 3;
-      justify-self: start;
-    }
-
-    &__status {
-      grid-row: 2 / 4;
-      place-self: center end;
-      margin: f.px2em(25) 0 f.px2em(15) 0;
-    }
-
-    &__arrowright {
-      display: none;
-    }
-  }
-}
-@include media(mobile-all) {
+@include mq.media(tablet-medium) {
   .container {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -185,7 +118,76 @@
   }
 }
 
-@include media(mobile-small) {
+@include mq.media(tablet-small) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: f.px2em(16) f.px2em(24);
+
+    &__date {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: end;
+    }
+
+    &__name {
+      justify-self: end;
+      margin: 0;
+    }
+
+    &__amount {
+      grid-column: 1;
+      grid-row: 3;
+      justify-self: start;
+    }
+
+    &__status {
+      grid-row: 2 / 4;
+      place-self: center end;
+      margin: f.px2em(25) 0 f.px2em(15) 0;
+    }
+
+    &__arrowright {
+      display: none;
+    }
+  }
+}
+@include mq.media(mobile-all) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: f.px2em(16) f.px2em(24);
+
+    &__date {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: end;
+    }
+
+    &__name {
+      justify-self: end;
+      margin: 0;
+    }
+
+    &__amount {
+      grid-column: 1;
+      grid-row: 3;
+      justify-self: start;
+    }
+
+    &__status {
+      grid-row: 2 / 4;
+      place-self: center end;
+      margin: f.px2em(25) 0 f.px2em(15) 0;
+    }
+
+    &__arrowright {
+      display: none;
+    }
+  }
+}
+
+@include mq.media(mobile-small) {
   .container {
     padding: f.px2em(8) f.px2em(12) f.px2em(8) f.px2em(16);
 
