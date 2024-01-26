@@ -1,8 +1,8 @@
 import type { IBoard } from '#Shared/types';
+import type { TBoardInfo } from '#Types/types';
 import Aside from '#Components/aside/Aside';
 import Main from '#Components/main/Main';
 import Nav from '#Components/nav/Nav';
-import { TBoardInfo } from '#Types/types';
 import styles from './_DefaultLayout.module.scss';
 
 type TProps = {

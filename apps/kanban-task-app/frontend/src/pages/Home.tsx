@@ -1,6 +1,6 @@
 import type { IBoard } from '#Shared/types';
+import type { TBoardInfo } from '#Types/types';
 import DefaultLayout from '#Layouts/DefaultLayout';
-import { TBoardInfo } from '#Types/types';
 
 type TProps = {
   boardData: { boardsList: TBoardInfo; activeBoard: IBoard | undefined };

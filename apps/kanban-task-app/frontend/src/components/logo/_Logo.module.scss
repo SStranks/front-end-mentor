@@ -51,28 +51,13 @@
  -------------------------------- */
 
 .logoRect_0 {
-  animation: 474ms ease-out infinite alternate rectangle;
-  animation-delay: 0ms;
+  @include a.logo1;
 }
 
 .logoRect_1 {
-  animation: 533ms ease-in infinite alternate rectangle;
-  animation-delay: 120ms;
+  @include a.logo2;
 }
 
 .logoRect_2 {
-  animation: 607ms linear infinite alternate rectangle;
-  animation-delay: 75ms;
-}
-
-@keyframes rectangle {
-  0% {
-    transform-origin: 0 100%;
-    transform: scaleY(1);
-  }
-
-  100% {
-    transform-origin: 0 100%;
-    transform: scaleY(0.5);
-  }
+  @include a.logo3;
 }

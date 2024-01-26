@@ -67,6 +67,25 @@ $theme-transition-border: border 1s;
 $theme-transition-opacity: opacity 1s;
 
 /* -------------------------------- */
+/*   Definitions                    */
+/* -------------------------------- */
+
+@mixin logo1 {
+  animation: 474ms ease-out infinite alternate rectangle;
+  animation-delay: 0ms;
+}
+
+@mixin logo2 {
+  animation: 533ms ease-in infinite alternate rectangle;
+  animation-delay: 120ms;
+}
+
+@mixin logo3 {
+  animation: 607ms linear infinite alternate rectangle;
+  animation-delay: 75ms;
+}
+
+/* -------------------------------- */
 /*   Keyframes                      */
 /* -------------------------------- */
 
@@ -174,6 +193,18 @@ $theme-transition-opacity: opacity 1s;
   100% {
     opacity: 1;
     overflow-x: hidden;
+  }
+}
+
+@keyframes rectangle {
+  0% {
+    transform-origin: 0 100%;
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform-origin: 0 100%;
+    transform: scaleY(0.5);
   }
 }
 

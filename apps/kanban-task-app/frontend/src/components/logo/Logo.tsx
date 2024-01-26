@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import styles from './_Logo.module.scss';
 import { useLoading } from '#Context/LoadingContext';
+import styles from './_Logo.module.scss';
 
 function Logo(): JSX.Element {
   const isLoading = useLoading();
