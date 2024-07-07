@@ -6,7 +6,7 @@
 
 .grid {
   display: grid;
-  grid-template-areas:
+  grid-template:
     'img1 img3' 1fr
     'img2 img3' 1fr
     / minmax(20%, 40%) 1fr;
@@ -54,11 +54,11 @@
 
 @include mq.media(mobile-all) {
   .grid {
-    grid-template-areas:
-      'img1' 1fr
-      'img2' 1fr
-      'img3' 1fr
-      / auto;
+    grid-template:
+      'img1' auto
+      'img2' auto
+      'img3' auto
+      / 1fr;
     gap: 20px 0;
   }
 }
