@@ -19,6 +19,7 @@
   width: 100%;
 
   &__img {
+    grid-area: img;
     height: 100%;
     min-width: 64px;
     grid-row: 1 / span 2;
@@ -27,6 +28,7 @@
   }
 
   &__title {
+    grid-area: title;
     align-self: end;
     font-size: f.px2rem(15);
     text-transform: uppercase;
@@ -40,6 +42,7 @@
 }
 
 .productQuantityBtn {
+  grid-area: quantity;
   grid-row: 1 / span 2;
   align-self: center;
   height: 32px;
@@ -52,10 +55,10 @@
 
 @include mq.media(mobile-all) {
   .card {
-    grid-template-areas:
+    grid-template:
       'title quantity'
-      'price _';
-    grid-template-columns: auto auto;
+      'price _'
+      / auto auto;
 
     &__img {
       display: none;
@@ -65,16 +68,17 @@
 
 @include mq.media(mobile-small) {
   .card {
-    grid-template-areas:
-      'title'
-      'quantity'
-      'price';
-    grid-template-columns: 1fr;
+    grid-template:
+      'title' 30px
+      'price' 30px
+      'quantity' 30px
+      / 1fr;
+    gap: 2px 0;
     justify-items: center;
   }
 
   .productQuantityBtn {
-    grid-row: 1;
-    margin-left: 0;
+    grid-row: unset;
+    margin-left: unset;
   }
 }

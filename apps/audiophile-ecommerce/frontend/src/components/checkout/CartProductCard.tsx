@@ -12,8 +12,7 @@ type ElemProps = {
 };
 
 function CartProductCard(props: ElemProps): JSX.Element {
-  const { productId, productImg, productTitle, productPrice, productQuantity } =
-    props;
+  const { productId, productImg, productTitle, productPrice, productQuantity } = props;
   const { decreaseCartItem, increaseCartItem } = useShoppingCartContext();
 
   const decreaseFn = () => {
