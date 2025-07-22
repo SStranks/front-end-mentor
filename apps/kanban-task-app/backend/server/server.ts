@@ -1,4 +1,5 @@
 import { configDotenv } from 'dotenv';
+// eslint-disable-next-line n/no-unpublished-import
 import { replaceTscAliasPaths } from 'tsc-alias';
 if (process.env.NODE_ENV === 'development') {
   configDotenv();
@@ -8,9 +9,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Unhandled Exception Errors: Needs to be before any runtime code.
-process.on('uncaughtException', (err: any) => {
+process.on('uncaughtException', (err: Error) => {
   console.log('Uncaught Exception. Shutting down server');
   console.log(err.name, err.message);
+  // eslint-disable-next-line n/no-process-exit
   process.exit(1);
 });
 
@@ -21,16 +23,15 @@ connectDB();
 const PORT = process.env.NODE_DOCKER_PORT || 3000;
 
 const server = app.listen(PORT, () => {
-  console.log(
-    `Server running successfuly in ${process.env.NODE_ENV} mode on Port ${PORT}`
-  );
+  console.log(`Server running successfuly in ${process.env.NODE_ENV} mode on Port ${PORT}`);
 });
 
 // Unhandled Rejection Errors
-process.on('unhandledRejection', (err: any) => {
+process.on('unhandledRejection', (err: Error) => {
   console.log('Unhandled Rejection. Shutting down server');
   console.log(err.name, err.message);
   server.close(() => {
+    // eslint-disable-next-line n/no-process-exit
     process.exit(1);
   });
 });
