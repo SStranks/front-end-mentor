@@ -57,9 +57,6 @@
     "mongoose": "^6.6.1"
   },
   "devDependencies": {
-    "@packages/jest-config": "workspace:*",
-    "@packages/prettier-config": "workspace:*",
-    "@packages/typescript-config": "workspace:*",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.9.0",
