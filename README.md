@@ -1,6 +1,7 @@
-# front-end-mentor
+![Repository Banner](https://sstranks.github.io/front-end-mentor/assets/repo_banner.jpg)
+<br>
 
-FrontEndMentor Projects/Challenges - MonoRepo
+_Frontend Mentor: My solutions to the 'Guru' level challenges available at https://www.frontendmentor.io/_.
 
 ## Structure
 
