@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
 
-pnpm lint-staged --quiet
+echo "[HUSKY: PRE-COMMIT] Running Lint-Staged on staged files..."
+pnpm exec lint-staged
+echo "[HUSKY: PRE-COMMIT] Linting successful"
