@@ -1,0 +1,199 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+---
+name: Vitest
+permissions: read-all
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/audiophile-ecommerce/frontend/**/*.test.*'
+      - 'apps/designo-agency/frontend/**/*.test.*'
+      - 'apps/invoice-app/backend/**/*.test.*'
+      - 'apps/invoice-app/frontend/**/*.test.*'
+      - 'apps/kanban-task-app/backend/**/*.test.*'
+      - 'apps/kanban-task-app/frontend/**/*.test.*'
+      - 'apps/project-feedback-app/backend/**/*.test.*'
+      - 'apps/project-feedback-app/frontend/**/*.test.*'
+
+  push:
+    branches: [main]
+    paths:
+      - 'apps/audiophile-ecommerce/frontend/**/*.test.*'
+      - 'apps/designo-agency/frontend/**/*.test.*'
+      - 'apps/invoice-app/backend/**/*.test.*'
+      - 'apps/invoice-app/frontend/**/*.test.*'
+      - 'apps/kanban-task-app/backend/**/*.test.*'
+      - 'apps/kanban-task-app/frontend/**/*.test.*'
+      - 'apps/project-feedback-app/backend/**/*.test.*'
+      - 'apps/project-feedback-app/frontend/**/*.test.*'
+
+  workflow_dispatch: {}
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      audiophile-ecommerce: ${{ steps.filter.outputs.audiophile-ecommerce }}
+      designo-agency: ${{ steps.filter.outputs.designo-agency }}
+      invoice-app: ${{ steps.filter.outputs.invoice-app }}
+      kanban-task-app: ${{ steps.filter.outputs.kanban-task-app }}
+      project-feedback-app: ${{ steps.filter.outputs.project-feedback-app }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            audiophile-ecommerce:
+              - 'apps/audiophile-ecommerce/frontend/**'
+            designo-agency:
+              - 'apps/designo-agency/frontend/**'
+            invoice-app:
+              - 'apps/invoice-app/backend/**'
+              - 'apps/invoice-app/frontend/**'
+            kanban-task-app:
+              - 'apps/kanban-task-app/backend/**'
+              - 'apps/kanban-task-app/frontend/**'
+            project-feedback-app:
+              - 'apps/project-feedback-app/backend/**'
+              - 'apps/project-feedback-app/frontend/**'
+
+  audiophile-ecommerce:
+    needs: changes
+    if: ${{ needs.changes.outputs.audiophile-ecommerce == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run client unit:tests
+        run: pnpm --filter @apps/audiophile-client test
+
+  designo-agency:
+    needs: changes
+    if: ${{ needs.changes.outputs.designo-agency == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run client unit:tests
+        run: pnpm --filter @apps/designo-client test
+
+  invoice-app:
+    needs: changes
+    if: ${{ needs.changes.outputs.invoice-app == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run client unit:tests
+        run: pnpm --filter @apps/invoice-app-client test
+
+      - name: Run server unit:tests
+        run: pnpm --filter @apps/invoice-app-api test
+
+  kanban-task-app:
+    needs: changes
+    if: ${{ needs.changes.outputs.kanban-task-app == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run client unit:tests
+        run: pnpm --filter @apps/kanban-task-app-client test
+
+      - name: Run server unit:tests
+        run: pnpm --filter @apps/kanban-task-app-api test
+
+  project-feedback-app:
+    needs: changes
+    if: ${{ needs.changes.outputs.project-feedback-app == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run client unit:tests
+        run: pnpm --filter @apps/feedback-app-client test
+
+      - name: Run server unit:tests
+        run: pnpm --filter @apps/feedback-app-api test
