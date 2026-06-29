@@ -35,6 +35,9 @@ importers:
       '@packages/jest-config-react':
         specifier: workspace:*
         version: link:packages/jest-config-react
+      '@packages/megalinter-config':
+        specifier: workspace:*
+        version: link:packages/megalinter-config
       '@packages/prettier-config':
         specifier: workspace:*
         version: link:packages/prettier-config
@@ -859,6 +862,8 @@ importers:
       '@types/node':
         specifier: ^20.9.2
         version: 20.9.2
+
+  packages/megalinter-config: {}
 
   packages/prettier-config: {}
 

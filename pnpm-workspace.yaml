@@ -6,12 +6,12 @@ allowBuilds:
   '@swc/core': true
   core-js: true
   core-js-pure: true
-  cwebp-bin: set this to true or false
+  cwebp-bin: true
   esbuild: true
-  gifsicle: set this to true or false
-  iltorb: set this to true or false
-  mozjpeg: set this to true or false
-  pngquant-bin: set this to true or false
+  gifsicle: true
+  iltorb: true
+  mozjpeg: true
+  pngquant-bin: true
   secp256k1: true
 
 minimumReleaseAge: 7200
