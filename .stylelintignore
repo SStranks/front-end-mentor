@@ -1,9 +1,0 @@
-**/node_modules
-**/.sassdoc
-**/dist
-**/build
-**/public
-**/private
-
-!*.css
-!*.scss

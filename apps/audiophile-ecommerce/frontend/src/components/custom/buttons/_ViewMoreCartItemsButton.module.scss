@@ -1,9 +1,0 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-
-.button {
-  font-weight: 700;
-  font-size: f.px2rem(12);
-  letter-spacing: f.px2rem(-0.21);
-  color: c.$col-3a;
-}

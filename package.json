@@ -1,11 +1,11 @@
 {
-  "name": "front-end-mentor",
+  "name": "front-end-mentor/docs",
   "version": "1.0.0",
   "description": "FrontEndMentor Challenges MonoRepo",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "repository": {
     "type": "github",
-    "url": "https://github.com/SStranks/front-end-mentor"
+    "url": "https://github.com/SStranks/front-end-mentor/docs"
   },
   "license": "ISC",
   "type": "module",
@@ -21,40 +21,17 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@packages/babel-config": "workspace:*",
     "@packages/commitlint-config": "workspace:*",
     "@packages/eslint-config": "workspace:*",
-    "@packages/eslint-config-express": "workspace:*",
-    "@packages/eslint-config-react": "workspace:*",
-    "@packages/eslint-config-react-test": "workspace:*",
-    "@packages/jest-config": "workspace:*",
-    "@packages/jest-config-node": "workspace:*",
-    "@packages/jest-config-react": "workspace:*",
     "@packages/prettier-config": "workspace:*",
-    "@packages/secretlint-config": "workspace:*",
-    "@packages/storybook-config": "workspace:*",
-    "@packages/stylelint-config": "workspace:*",
-    "@packages/typescript-config": "workspace:*",
-    "@packages/webpack-config": "workspace:*"
+    "@packages/secretlint-config": "workspace:*"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "@babel/eslint-parser": "^7.23.3",
-    "@babel/plugin-transform-runtime": "^7.23.4",
-    "@babel/preset-env": "^7.23.3",
-    "@babel/preset-react": "^7.23.3",
-    "@babel/preset-typescript": "^7.23.3",
-    "@babel/runtime": "^7.23.4",
     "@commitlint/cli": "^21.0.2",
     "eslint": "^8.57.1",
     "husky": "^9.1.7",
-    "jest": "^29.7.0",
     "lint-staged": "^17.0.8",
     "prettier": "^3.8.4",
-    "sassdoc": "^2.7.4",
-    "secretlint": "^13.0.2",
-    "storybook": "^7.5.3",
-    "stylelint": "^17.13.0",
-    "typescript": "^5.3.3"
+    "secretlint": "^13.0.2"
   }
 }
