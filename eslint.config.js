@@ -1,57 +1,194 @@
-import { EslintConfig, ConfigPrettier } from '@packages/eslint-config';
-import { EslintConfigReact } from '@packages/eslint-config-react';
-import { EslintConfigReactTest } from '@packages/eslint-config-react-test';
-import { EslintConfigExpress } from '@packages/eslint-config-express';
+/* eslint-disable perfectionist/sort-objects */
+import { ConfigPrettier, EslintConfigGlobal } from '@packages/eslint-config-global';
+import EslintConfigHTML from '@packages/eslint-config-html';
+import EslintConfigJavascript from '@packages/eslint-config-javascript';
+import { EslintConfigJSON, EslintConfigJSON5, EslintConfigJSONC } from '@packages/eslint-config-json';
+import EslintConfigNode from '@packages/eslint-config-node';
+import EslintConfigReact from '@packages/eslint-config-react';
+import EslintConfigTypescript, { createTypeScriptImportResolver, TSEslint } from '@packages/eslint-config-typescript';
+import EslintConfigYAML, { PluginEslintYAML } from '@packages/eslint-config-yaml';
+import { defineConfig } from 'eslint/config';
 
-export default [
+import path from 'node:path';
+
+export default defineConfig([
   {
-    ignores: ['**/node_modules', '**/dist', '**/build', '**/__snapshots__', '**/mocks', '**/coverage', '**/.sassdoc'],
-  },
-  {
-    // Client - React
-    files: [
-      'apps/*/frontend/**/*.ts',
-      'apps/*/frontend/**/*.tsx',
-      'apps/*/frontend/**/*.jsx',
-      'apps/*/frontend/**/*.js',
+    name: 'Global Ignores',
+    ignores: [
+      '**/node_modules/',
+      '**/dist/',
+      '**/build/',
+      '**/logs/',
+      '**/__snapshots__/',
+      '**/mocks/',
+      '**/coverage/',
+      '**/.sassdoc/',
+      '**/webpack/stats/',
+      '**/*.gen.*',
+      '**/graphql/generated/',
+      '**/private.*',
+      '**/private/*',
+      '**/migrations/meta/',
+      '**/routeTree.gen.ts',
+      '!**/.storybook/',
+      'pnpm-lock.yaml',
+      'pnpm-lock.*.yaml',
+      'pnpm-workspace.yaml',
+      'package-lock.json',
     ],
-    languageOptions: {
-      ...EslintConfig.languageOptions,
-      ...EslintConfigReact.languageOptions,
-    },
-    plugins: { ...EslintConfig.plugins, ...EslintConfigReact.plugins },
-    rules: { ...EslintConfig.rules, ...EslintConfigReact.rules },
-    settings: { ...EslintConfig.settings, ...EslintConfigReact.settings },
   },
   {
-    // API - NodeJS Express + Testing (Jest)
-    files: ['apps/*/backend/**/*.ts', 'apps/*/backend/**/*.js'],
-    languageOptions: {
-      ...EslintConfig.languageOptions,
-      ...EslintConfigExpress.languageOptions,
+    name: 'Global Configuration',
+    languageOptions: { ...EslintConfigGlobal.languageOptions },
+    plugins: { ...EslintConfigGlobal.plugins },
+    rules: { ...EslintConfigGlobal.rules },
+    settings: {
+      ...EslintConfigGlobal.settings,
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          alwaysTryTypes: true,
+          project: [
+            'tsconfig.json',
+            // TODO: Add apps configs here
+            'apps/audiophile-ecommerce/frontend/tsconfig.json',
+            // 'apps/crm/server/tsconfig.json',
+            // 'apps/crm/shared/tsconfig.json',
+          ],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        }),
+      ],
     },
-    plugins: { ...EslintConfig.plugins, ...EslintConfigExpress.plugins },
-    rules: { ...EslintConfig.rules, ...EslintConfigExpress.rules },
-    settings: { ...EslintConfig.settings, ...EslintConfigExpress.settings },
   },
   {
-    // Client - Testing (Jest + RTL)
-    files: ['apps/*/frontend/**/?(*.)+(spec|test).[jt]s?(x)'],
-    languageOptions: {
-      ...EslintConfig.languageOptions,
-      ...EslintConfigReact.languageOptions,
-    },
-    plugins: {
-      ...EslintConfig.plugins,
-      ...EslintConfigReact.plugins,
-      ...EslintConfigReactTest.plugins,
-    },
-    rules: {
-      ...EslintConfig.rules,
-      ...EslintConfigReact.rules,
-      ...EslintConfigReactTest.rules,
-    },
-    settings: { ...EslintConfig.settings, ...EslintConfigReact.settings },
+    name: 'Javascript Configuration',
+    files: ['**/*.js?(x)'],
+    languageOptions: { ...EslintConfigJavascript.languageOptions },
+    plugins: { ...EslintConfigJavascript.plugins },
+    rules: { ...EslintConfigJavascript.rules },
+    settings: { ...EslintConfigJavascript.settings },
   },
+  {
+    name: 'Typescript Configuration',
+    files: ['**/*.ts?(x)'],
+    extends: [TSEslint.configs.recommendedTypeChecked],
+    languageOptions: { ...EslintConfigTypescript.languageOptions },
+    plugins: { ...EslintConfigTypescript.plugins },
+    rules: { ...EslintConfigTypescript.rules },
+    settings: { ...EslintConfigTypescript.settings },
+  },
+  {
+    name: 'HTML Configuration',
+    files: ['**/*.html'],
+    ignores: ['**/*EmailTemplate.html'],
+    languageOptions: { ...EslintConfigHTML.languageOptions },
+    plugins: { ...EslintConfigHTML.plugins },
+    rules: { ...EslintConfigHTML.rules },
+  },
+  {
+    name: 'JSON Configuration',
+    files: ['**/*.json'],
+    ignores: ['**/tsconfig.json'],
+    extends: [...EslintConfigJSON.extends],
+    languageOptions: { ...EslintConfigJSON.languageOptions },
+    plugins: { ...EslintConfigJSON.plugins },
+  },
+  {
+    name: 'JSONC Configuration',
+    files: ['**/*.jsonc', '**/tsconfig.json'],
+    extends: [...EslintConfigJSONC.extends],
+    languageOptions: { ...EslintConfigJSONC.languageOptions },
+    plugins: { ...EslintConfigJSONC.plugins },
+  },
+  {
+    name: 'JSON5 Configuration',
+    files: ['**/*.json5'],
+    extends: [...EslintConfigJSON5.extends],
+    languageOptions: { ...EslintConfigJSON5.languageOptions },
+    plugins: { ...EslintConfigJSON5.plugins },
+  },
+  {
+    name: 'YAML Configuration',
+    files: ['**/*.yaml', '**/*.yml'],
+    extends: [PluginEslintYAML.configs.standard, PluginEslintYAML.configs.prettier],
+    languageOptions: { ...EslintConfigYAML.languageOptions },
+    plugins: { ...EslintConfigYAML.plugins },
+    rules: { ...EslintConfigYAML.rules },
+  },
+  {
+    name: 'Node Configuration',
+    files: ['**/webpack*.[jt]s'],
+    languageOptions: { ...EslintConfigNode.languageOptions },
+    plugins: { ...EslintConfigNode.plugins },
+    rules: { ...EslintConfigNode.rules },
+  },
+  // ============= PACKAGES =============
+  {
+    name: '@packages',
+    files: ['./*.[jt]s', 'packages/**/*.[jt]s'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, './'),
+      },
+    },
+  },
+  // ============= APPS =============
+  {
+    name: '@apps/audiophile-ecommerce/frontend: React + TypeScript',
+    files: [
+      'apps/audiophile-ecommerce/frontend/src/**/*.[jt]s?(x)',
+      'apps/audiophile-ecommerce/frontend/webpack/**/*.[jt]s?(x)',
+      'apps/audiophile-ecommerce/frontend/*.ts',
+    ],
+    ignores: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    languageOptions: {
+      ...EslintConfigReact.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/audiophile-ecommerce/frontend'),
+      },
+    },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: {
+      ...EslintConfigReact.settings,
+    },
+  },
+  // ===== OLD CONFIG STARTS HERE =====
+  // ===== OLD CONFIG STARTS HERE =====
+  // ===== OLD CONFIG STARTS HERE =====
+  // ===== OLD CONFIG STARTS HERE =====
+  // ===== OLD CONFIG STARTS HERE =====
+
+  // {
+  //   // API - NodeJS Express + Testing (Jest)
+  //   files: ['apps/*/backend/**/*.ts', 'apps/*/backend/**/*.js'],
+  //   languageOptions: {
+  //     ...EslintConfig.languageOptions,
+  //     ...EslintConfigExpress.languageOptions,
+  //   },
+  //   plugins: { ...EslintConfig.plugins, ...EslintConfigExpress.plugins },
+  //   rules: { ...EslintConfig.rules, ...EslintConfigExpress.rules },
+  //   settings: { ...EslintConfig.settings, ...EslintConfigExpress.settings },
+  // },
+  // {
+  //   // Client - Testing (Jest + RTL)
+  //   files: ['apps/*/frontend/**/?(*.)+(spec|test).[jt]s?(x)'],
+  //   languageOptions: {
+  //     ...EslintConfig.languageOptions,
+  //     ...EslintConfigReact.languageOptions,
+  //   },
+  //   plugins: {
+  //     ...EslintConfig.plugins,
+  //     ...EslintConfigReact.plugins,
+  //     ...EslintConfigReactTest.plugins,
+  //   },
+  //   rules: {
+  //     ...EslintConfig.rules,
+  //     ...EslintConfigReact.rules,
+  //     ...EslintConfigReactTest.rules,
+  //   },
+  //   settings: { ...EslintConfig.settings, ...EslintConfigReact.settings },
+  // },
   ConfigPrettier,
-];
+]);

@@ -1,16 +1,15 @@
 {
-  "name": "@packages/eslint-config-express",
+  "name": "@packages/eslint-config-node",
   "version": "1.0.0",
   "private": true,
-  "description": "shared eslint express configuration",
+  "description": "node eslint configuration",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "license": "ISC",
   "type": "module",
   "main": "config.js",
   "types": "index.d.ts",
   "devDependencies": {
-    "@eslint/compat": "^2.1.0",
-    "eslint-plugin-security": "^4.0.0",
+    "eslint-plugin-n": "^18.0.0",
     "globals": "^17.5.0"
   }
 }
