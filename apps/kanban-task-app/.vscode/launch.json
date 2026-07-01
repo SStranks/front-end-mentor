@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome against localhost; Docker; React",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/frontend",
+      "skipFiles": ["${workspaceFolder}/frontend/<node_internals>/**", "${workspaceFolder}/frontend/node_modules/**"]
+    }
+  ]
+}

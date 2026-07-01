@@ -1,0 +1,7 @@
+{
+  "eslint.useFlatConfig": true,
+  "eslint.debug": true,
+  "eslint.workingDirectories": [{ "directory": "." }],
+  "stylelint.packageManager": "pnpm",
+  "svg.preview.background": "transparent"
+}
