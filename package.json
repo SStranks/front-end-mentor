@@ -21,7 +21,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@packages/babel-config": "workspace:*",
     "@packages/commitlint-config": "workspace:*",
     "@packages/eslint-config": "workspace:*",
     "@packages/eslint-config-express": "workspace:*",
@@ -39,13 +38,6 @@
     "@packages/webpack-config": "workspace:*"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.0",
-    "@babel/eslint-parser": "^8.0.0",
-    "@babel/plugin-transform-runtime": "^8.0.0",
-    "@babel/preset-env": "^8.0.0",
-    "@babel/preset-react": "^8.0.0",
-    "@babel/preset-typescript": "^8.0.0",
-    "@babel/runtime": "^8.0.0",
     "@commitlint/cli": "^21.0.2",
     "eslint": "^8.57.1",
     "husky": "^9.1.7",
@@ -54,7 +46,6 @@
     "prettier": "^3.8.4",
     "sassdoc": "^2.7.4",
     "secretlint": "^13.0.2",
-    "storybook": "^7.5.3",
     "stylelint": "^17.13.0",
     "typescript": "^6.0.3"
   }

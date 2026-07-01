@@ -45,7 +45,13 @@
     "rollbar": "^2.26.2"
   },
   "devDependencies": {
-    "@packages/babel-config": "workspace:*",
+    "@babel/core": "8.0.0",
+    "@babel/eslint-parser": "8.0.0",
+    "@babel/plugin-transform-runtime": "8.0.0",
+    "@babel/preset-env": "8.0.0",
+    "@babel/preset-react": "8.0.0",
+    "@babel/preset-typescript": "8.0.0",
+    "@babel/runtime": "8.0.0",
     "@packages/jest-config-react": "workspace:*",
     "@packages/prettier-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
