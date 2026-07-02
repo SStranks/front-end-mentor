@@ -1,9 +1,9 @@
 {
   "references": [
-    // { "path": "./tsconfig.src.json" },
-    // { "path": "./tsconfig.test.json" },
-    // { "path": "./tsconfig.configs.json" },
-    // { "path": "./.storybook/tsconfig.json" },
+    { "path": "./tsconfig.src.json" },
+    { "path": "./tsconfig.test.json" },
+    { "path": "./tsconfig.configs.json" },
+    { "path": "./.storybook/tsconfig.json" },
     { "path": "./webpack/tsconfig.json" }
   ]
 }
