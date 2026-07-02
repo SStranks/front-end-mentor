@@ -1,4 +1,5 @@
-/** @type { import('@storybook/react').Preview } */
+import type { Preview } from '@storybook/react-webpack5';
+
 const preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -9,6 +10,6 @@ const preview = {
       },
     },
   },
-};
+} satisfies Preview;
 
 export default preview;

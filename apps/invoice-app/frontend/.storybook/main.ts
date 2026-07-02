@@ -1,12 +1,14 @@
-/** @type { import('@storybook/react-webpack5').StorybookConfig } */
-const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+/* eslint-disable perfectionist/sort-objects */
+import type { StorybookConfig } from '@storybook/react-webpack5';
+
+const config: StorybookConfig = {
   addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-styling-webpack',
+    '@storybook/addon-webpack5-compiler-babel',
     {
       name: '@storybook/addon-styling-webpack',
 
@@ -40,8 +42,8 @@ const config = {
                 options: {
                   // Want to add more Sass options? Read more here: https://webpack.js.org/loaders/sass-loader/#options
                   implementation: require.resolve('sass'),
-                  sourceMap: true,
                   sassOptions: {},
+                  sourceMap: true,
                 },
               },
             ],
@@ -50,12 +52,14 @@ const config = {
       },
     },
   ],
+  docs: {
+    defaultName: 'Documentation',
+    docsMode: true,
+  },
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 };
 export default config;
