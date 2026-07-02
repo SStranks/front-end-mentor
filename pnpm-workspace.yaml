@@ -3,6 +3,7 @@ packages:
   - 'packages/**'
 
 allowBuilds:
+  '@parcel/watcher': true
   '@swc/core': true
   core-js: true
   core-js-pure: true
@@ -13,6 +14,7 @@ allowBuilds:
   mozjpeg: true
   pngquant-bin: true
   secp256k1: true
+  unrs-resolver: true
 
 minimumReleaseAge: 7200
 minimumReleaseAgeExclude:
