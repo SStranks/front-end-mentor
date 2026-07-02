@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["jest.config.ts"],
+  "exclude": [],
+  "compilerOptions": { "composite": true, "noEmit": false, "allowImportingTsExtensions": false, "types": ["node"] }
+}

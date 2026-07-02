@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["src/**/*", "global.d.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/private*.*",
+    "src/**/private/*",
+    "src/**/*.test.*",
+    "src/**/*.spec.*",
+    "src/tests/*"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "outDir": "./dist",
+    "typeRoots": ["./node_modules/@types"]
+  }
+}
