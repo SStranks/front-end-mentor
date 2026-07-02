@@ -49,10 +49,11 @@ export default defineConfig([
           alwaysTryTypes: true,
           project: [
             'tsconfig.json',
-            // TODO: Add apps configs here
             'apps/audiophile-ecommerce/frontend/tsconfig.json',
-            // 'apps/crm/server/tsconfig.json',
-            // 'apps/crm/shared/tsconfig.json',
+            'apps/designo-agency/frontend/tsconfig.json',
+            'apps/invoice-app/frontend/tsconfig.json',
+            'apps/kanban-task-app/frontend/tsconfig.json',
+            'apps/project-feedback-app/frontend/tsconfig.json',
           ],
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         }),
@@ -121,7 +122,9 @@ export default defineConfig([
     plugins: { ...EslintConfigNode.plugins },
     rules: { ...EslintConfigNode.rules },
   },
+  // ====================================
   // ============= PACKAGES =============
+  // ====================================
   {
     name: '@packages',
     files: ['./*.[jt]s', 'packages/**/*.[jt]s'],
@@ -132,12 +135,16 @@ export default defineConfig([
       },
     },
   },
-  // ============= APPS =============
+  // ====================================
+  // =============== APPS ===============
+  // ====================================
+  // ------- audiophile-ecommerce -------
   {
     name: '@apps/audiophile-ecommerce/frontend: React + TypeScript',
     files: [
       'apps/audiophile-ecommerce/frontend/src/**/*.[jt]s?(x)',
       'apps/audiophile-ecommerce/frontend/webpack/**/*.[jt]s?(x)',
+      'apps/audiophile-ecommerce/frontend/.storybook/**/*.[jt]s?(x)',
       'apps/audiophile-ecommerce/frontend/*.ts',
     ],
     ignores: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
@@ -146,6 +153,94 @@ export default defineConfig([
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/audiophile-ecommerce/frontend'),
+      },
+    },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: {
+      ...EslintConfigReact.settings,
+    },
+  },
+  {
+    name: '@apps/designo-agency/frontend: React + TypeScript',
+    files: [
+      'apps/designo-agency/frontend/src/**/*.[jt]s?(x)',
+      'apps/designo-agency/frontend/webpack/**/*.[jt]s?(x)',
+      'apps/designo-agency/frontend/.storybook/**/*.[jt]s?(x)',
+      'apps/designo-agency/frontend/*.ts',
+    ],
+    ignores: ['apps/designo-agency/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    languageOptions: {
+      ...EslintConfigReact.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/designo-agency/frontend'),
+      },
+    },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: {
+      ...EslintConfigReact.settings,
+    },
+  },
+  {
+    name: '@apps/invoice-app/frontend: React + TypeScript',
+    files: [
+      'apps/invoice-app/frontend/src/**/*.[jt]s?(x)',
+      'apps/invoice-app/frontend/webpack/**/*.[jt]s?(x)',
+      'apps/invoice-app/frontend/.storybook/**/*.[jt]s?(x)',
+      'apps/invoice-app/frontend/*.ts',
+    ],
+    ignores: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    languageOptions: {
+      ...EslintConfigReact.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/frontend'),
+      },
+    },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: {
+      ...EslintConfigReact.settings,
+    },
+  },
+  {
+    name: '@apps/kanban-task-app/frontend: React + TypeScript',
+    files: [
+      'apps/kanban-task-app/frontend/src/**/*.[jt]s?(x)',
+      'apps/kanban-task-app/frontend/webpack/**/*.[jt]s?(x)',
+      'apps/kanban-task-app/frontend/.storybook/**/*.[jt]s?(x)',
+      'apps/kanban-task-app/frontend/*.ts',
+    ],
+    ignores: ['apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    languageOptions: {
+      ...EslintConfigReact.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/frontend'),
+      },
+    },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: {
+      ...EslintConfigReact.settings,
+    },
+  },
+  {
+    name: '@apps/project-feedback-app/frontend: React + TypeScript',
+    files: [
+      'apps/project-feedback-app/frontend/src/**/*.[jt]s?(x)',
+      'apps/project-feedback-app/frontend/webpack/**/*.[jt]s?(x)',
+      'apps/project-feedback-app/frontend/.storybook/**/*.[jt]s?(x)',
+      'apps/project-feedback-app/frontend/*.ts',
+    ],
+    ignores: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    languageOptions: {
+      ...EslintConfigReact.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/frontend'),
       },
     },
     plugins: { ...EslintConfigReact.plugins },
