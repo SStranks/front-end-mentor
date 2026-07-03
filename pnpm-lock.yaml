@@ -87,9 +87,6 @@ importers:
       prettier:
         specifier: ^3.8.4
         version: 3.8.4
-      sassdoc:
-        specifier: ^2.7.4
-        version: 2.7.4(chokidar@3.6.0)
       secretlint:
         specifier: ^13.0.2
         version: 13.0.2
