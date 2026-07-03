@@ -1,0 +1,40 @@
+/* eslint-disable jsonc/no-comments */
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["src/**/*", "src/**/*.json"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "mongo",
+    "**/private.*",
+    "**/private/*",
+    "src/tests/*",
+    "src/**/*.test.*",
+    "src/**/*.spec.*"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "types": ["node", "express"]
+  },
+
+  "ts-node": {
+    "esm": true,
+    "require": ["tsconfig-paths/register"],
+    "experimentalSpecifierResolution": "node"
+  },
+
+  "tsc-alias": {
+    "verbose": true,
+    "resolveFullPaths": true,
+    "replacers": {
+      "base-url": {
+        "enabled": false
+      }
+    }
+  }
+}

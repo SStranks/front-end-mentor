@@ -1,29 +1,7 @@
 {
-  // "extends": "@packages/typescript-config/nodejs", // BUG:  PNPM/Docker/TS doesn't support symlink extends
-  "extends": "./tsconfig.node.json",
-  "compilerOptions": {
-    "baseUrl": "./server",
-    "paths": {
-      "#Shared/*": ["../../shared/*"],
-      "#Config/*": ["config/*"],
-      "#Controllers/*": ["controllers/*"],
-      "#Models/*": ["models/*"],
-      "#Routes/*": ["routes/*"],
-      "#Utils/*": ["utils/*"]
-    }
-  },
-
-  "ts-node": {
-    "esm": true,
-    "require": ["tsconfig-paths/register"],
-    "experimentalSpecifierResolution": "node"
-  },
-
-  "tsc-alias": {
-    "verbose": true,
-    "resolveFullPaths": true
-  },
-
-  "include": ["server/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "references": [
+    { "path": "./tsconfig.src.json" },
+    { "path": "./tsconfig.configs.json" },
+    { "path": "./tsconfig.test.json" }
+  ]
 }

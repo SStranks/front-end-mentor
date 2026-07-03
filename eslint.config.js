@@ -1,4 +1,5 @@
 /* eslint-disable perfectionist/sort-objects */
+import EslintConfigExpress from '@packages/eslint-config-express';
 import { ConfigPrettier, EslintConfigGlobal } from '@packages/eslint-config-global';
 import EslintConfigHTML from '@packages/eslint-config-html';
 import EslintConfigJavascript from '@packages/eslint-config-javascript';
@@ -138,7 +139,9 @@ export default defineConfig([
   // ====================================
   // =============== APPS ===============
   // ====================================
+  // ------------------------------------
   // ------- audiophile-ecommerce -------
+  // ------------------------------------
   {
     name: '@apps/audiophile-ecommerce/frontend: React + TypeScript',
     files: [
@@ -161,6 +164,9 @@ export default defineConfig([
       ...EslintConfigReact.settings,
     },
   },
+  // ------------------------------------
+  // ---------- designo-agency ----------
+  // ------------------------------------
   {
     name: '@apps/designo-agency/frontend: React + TypeScript',
     files: [
@@ -183,6 +189,9 @@ export default defineConfig([
       ...EslintConfigReact.settings,
     },
   },
+  // ------------------------------------
+  // ----------- invoice-app ------------
+  // ------------------------------------
   {
     name: '@apps/invoice-app/frontend: React + TypeScript',
     files: [
@@ -206,6 +215,26 @@ export default defineConfig([
     },
   },
   {
+    name: '@apps/invoice-app/backend: NodeJS Express + Testing (Node)',
+    files: ['apps/invoice-app/backend/server/**/*.[jt]s', 'apps/invoice-app/backend/*.[jt]s'],
+    languageOptions: {
+      ...EslintConfigNode.languageOptions,
+      ...EslintConfigExpress.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/backend'),
+      },
+    },
+    plugins: { ...EslintConfigNode.plugins, ...EslintConfigExpress.plugins },
+    rules: { ...EslintConfigNode.rules, ...EslintConfigExpress.rules },
+    settings: {
+      ...EslintConfigExpress.settings,
+    },
+  },
+  // ------------------------------------
+  // --------- kanban-task=-app ---------
+  // ------------------------------------
+  {
     name: '@apps/kanban-task-app/frontend: React + TypeScript',
     files: [
       'apps/kanban-task-app/frontend/src/**/*.[jt]s?(x)',
@@ -228,6 +257,26 @@ export default defineConfig([
     },
   },
   {
+    name: '@apps/kanban-task-app/backend: NodeJS Express + Testing (Node)',
+    files: ['apps/kanban-task-app/backend/server/**/*.[jt]s', 'apps/kanban-task-app/backend/*.[jt]s'],
+    languageOptions: {
+      ...EslintConfigNode.languageOptions,
+      ...EslintConfigExpress.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/backend'),
+      },
+    },
+    plugins: { ...EslintConfigNode.plugins, ...EslintConfigExpress.plugins },
+    rules: { ...EslintConfigNode.rules, ...EslintConfigExpress.rules },
+    settings: {
+      ...EslintConfigExpress.settings,
+    },
+  },
+  // ------------------------------------
+  // ------- project-feedback-app -------
+  // ------------------------------------
+  {
     name: '@apps/project-feedback-app/frontend: React + TypeScript',
     files: [
       'apps/project-feedback-app/frontend/src/**/*.[jt]s?(x)',
@@ -249,41 +298,22 @@ export default defineConfig([
       ...EslintConfigReact.settings,
     },
   },
-  // ===== OLD CONFIG STARTS HERE =====
-  // ===== OLD CONFIG STARTS HERE =====
-  // ===== OLD CONFIG STARTS HERE =====
-  // ===== OLD CONFIG STARTS HERE =====
-  // ===== OLD CONFIG STARTS HERE =====
-
-  // {
-  //   // API - NodeJS Express + Testing (Jest)
-  //   files: ['apps/*/backend/**/*.ts', 'apps/*/backend/**/*.js'],
-  //   languageOptions: {
-  //     ...EslintConfig.languageOptions,
-  //     ...EslintConfigExpress.languageOptions,
-  //   },
-  //   plugins: { ...EslintConfig.plugins, ...EslintConfigExpress.plugins },
-  //   rules: { ...EslintConfig.rules, ...EslintConfigExpress.rules },
-  //   settings: { ...EslintConfig.settings, ...EslintConfigExpress.settings },
-  // },
-  // {
-  //   // Client - Testing (Jest + RTL)
-  //   files: ['apps/*/frontend/**/?(*.)+(spec|test).[jt]s?(x)'],
-  //   languageOptions: {
-  //     ...EslintConfig.languageOptions,
-  //     ...EslintConfigReact.languageOptions,
-  //   },
-  //   plugins: {
-  //     ...EslintConfig.plugins,
-  //     ...EslintConfigReact.plugins,
-  //     ...EslintConfigReactTest.plugins,
-  //   },
-  //   rules: {
-  //     ...EslintConfig.rules,
-  //     ...EslintConfigReact.rules,
-  //     ...EslintConfigReactTest.rules,
-  //   },
-  //   settings: { ...EslintConfig.settings, ...EslintConfigReact.settings },
-  // },
+  {
+    name: '@apps/project-feedback-app/backend: NodeJS Express + Testing (Node)',
+    files: ['apps/project-feedback-app/backend/server/**/*.[jt]s', 'apps/project-feedback-app/backend/*.[jt]s'],
+    languageOptions: {
+      ...EslintConfigNode.languageOptions,
+      ...EslintConfigExpress.languageOptions,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/backend'),
+      },
+    },
+    plugins: { ...EslintConfigNode.plugins, ...EslintConfigExpress.plugins },
+    rules: { ...EslintConfigNode.rules, ...EslintConfigExpress.rules },
+    settings: {
+      ...EslintConfigExpress.settings,
+    },
+  },
   ConfigPrettier,
 ]);
