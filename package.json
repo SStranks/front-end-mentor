@@ -29,7 +29,7 @@
     "@packages/eslint-config-json": "workspace:*",
     "@packages/eslint-config-node": "workspace:*",
     "@packages/eslint-config-react": "workspace:*",
-    "@packages/eslint-config-react-test": "workspace:*",
+    "@packages/eslint-config-react-vitest": "workspace:*",
     "@packages/eslint-config-typescript": "workspace:*",
     "@packages/eslint-config-yaml": "workspace:*",
     "@packages/jest-config": "workspace:*",
@@ -38,7 +38,6 @@
     "@packages/megalinter-config": "workspace:*",
     "@packages/prettier-config": "workspace:*",
     "@packages/secretlint-config": "workspace:*",
-    "@packages/storybook-config": "workspace:*",
     "@packages/stylelint-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "@packages/vitest-config": "workspace:*"

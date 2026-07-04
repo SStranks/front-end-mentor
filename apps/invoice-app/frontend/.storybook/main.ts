@@ -1,65 +1,53 @@
 /* eslint-disable perfectionist/sort-objects */
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/react-vite';
+
+import { mergeConfig } from 'vite';
+
+import fs from 'node:fs';
+import path from 'node:path';
+import url from 'node:url';
+
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const publicDir = path.resolve(__dirname, '../public');
 
 const config: StorybookConfig = {
+  framework: '@storybook/react-vite',
+  stories: ['../src/stories/*.mdx', '../src/stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     '@storybook/addon-links',
-    '@storybook/addon-interactions',
-    '@storybook/addon-styling-webpack',
+    '@storybook/addon-vitest',
     '@storybook/addon-webpack5-compiler-babel',
-    {
-      name: '@storybook/addon-styling-webpack',
-
-      options: {
-        rules: [
-          {
-            test: /\.css$/,
-            sideEffects: true,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: {},
-              },
-            ],
-          },
-          {
-            test: /\.s[ac]ss$/,
-            sideEffects: true,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 2,
-                },
-              },
-              require.resolve('resolve-url-loader'),
-              {
-                loader: require.resolve('sass-loader'),
-                options: {
-                  // Want to add more Sass options? Read more here: https://webpack.js.org/loaders/sass-loader/#options
-                  implementation: require.resolve('sass'),
-                  sassOptions: {},
-                  sourceMap: true,
-                },
-              },
-            ],
-          },
-        ],
-      },
-    },
   ],
-  docs: {
-    defaultName: 'Documentation',
-    docsMode: true,
+  staticDirs: fs.existsSync(publicDir) ? ['../public'] : [],
+  core: {
+    disableTelemetry: true,
   },
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
+  viteFinal: (config) => {
+    return mergeConfig(config, {
+      resolve: {
+        // BUG: 'vite-tsconfig-paths' does not work here; upstream bug in Vite Sass preprocessor
+        alias: {
+          '#Shared': path.resolve(__dirname, '../../shared'),
+          '#Img': path.resolve(__dirname, '../src/assets/img'),
+          '#Sass': path.resolve(__dirname, '../src/assets/sass'),
+          '#Svg': path.resolve(__dirname, '../src/assets/svg'),
+          '#Components': path.resolve(__dirname, '../src/components'),
+          '#Context': path.resolve(__dirname, '../src/context'),
+          '#Data': path.resolve(__dirname, '../src/data'),
+          '#Features': path.resolve(__dirname, '../src/features'),
+          '#Hooks': path.resolve(__dirname, '../src/hooks'),
+          '#Layouts': path.resolve(__dirname, '../src/layouts'),
+          '#Lib': path.resolve(__dirname, '../src/lib'),
+          '#Pages': path.resolve(__dirname, '../src/pages'),
+          '#Services': path.resolve(__dirname, '../src/services'),
+          '#Types': path.resolve(__dirname, '../src/types'),
+          '#Utils': path.resolve(__dirname, '../src/utils'),
+        },
+      },
+    });
   },
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 };
+
 export default config;
