@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<div
+  aria-labelledby="productTitle"
+  className="_card_af0d2e"
+>
+  <img
+    alt="productTitle"
+    className="_card__img_af0d2e"
+    src="productImage"
+  />
+  <p
+    className="_card__title_af0d2e"
+    id="productTitle"
+  >
+    productTitle
+  </p>
+  <p
+    className="_card__price_af0d2e"
+  >
+    $ 
+    123.00
+  </p>
+  <div
+    data-testid="quantity-toggle-button"
+  />
+</div>
+`;

@@ -2,28 +2,27 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import ProductExampleSeeCard from './ProductExampleSeeCard';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ProductExampleSeeCard
-            productImages={{
-              desktop: '',
-              tablet: '',
-              mobile: '',
-            }}
-            productTitle="dummyProductTitle"
-            productCategory=""
-            productId={0}
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ProductExampleSeeCard
+          productImages={{
+            desktop: '',
+            mobile: '',
+            tablet: '',
+          }}
+          productTitle="dummyProductTitle"
+          productCategory=""
+          productId={0}
+        />
+      </BrowserRouter>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -31,8 +30,8 @@ describe('Appearance', () => {
       <ProductExampleSeeCard
         productImages={{
           desktop: '',
-          tablet: '',
           mobile: '',
+          tablet: '',
         }}
         productTitle="dummyProductTitle"
         productCategory=""
@@ -46,8 +45,8 @@ describe('Appearance', () => {
       name: /^dummyProductTitle$/,
     });
     const h5Text = screen.getByRole('heading', {
-      name: /^dummyProductTitle$/,
       level: 5,
+      name: /^dummyProductTitle$/,
     });
     const link = screen.getByRole('link', { name: /^see product$/ });
 
@@ -61,14 +60,14 @@ describe('Appearance', () => {
 describe('Functionality', () => {
   test('Link should navigate to `/productCategory/productId` page', async () => {
     const history = createMemoryHistory({ initialEntries: ['/dummyRoute'] });
-    history.push = jest.fn();
+    const spyPush = vi.spyOn(history, 'push');
     render(
       <Router location={history.location} navigator={history}>
         <ProductExampleSeeCard
           productImages={{
             desktop: '',
-            tablet: '',
             mobile: '',
+            tablet: '',
           }}
           productTitle="dummyProductTitle"
           productCategory="dummyCategory"
@@ -80,8 +79,8 @@ describe('Functionality', () => {
     const link = screen.getByRole('link', { name: /^see product$/ });
     await userEvent.click(link);
 
-    expect(history.push).toHaveBeenCalledTimes(1);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(1);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/dummyCategory/1',

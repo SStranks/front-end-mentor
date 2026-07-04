@@ -1,8 +1,11 @@
-import ProductExampleShopList from '#Components/products/ProductExampleShopList';
-import useModalClose from '#Hooks/useModalClose';
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+
+import ProductExampleShopList from '#Components/products/ProductExampleShopList';
+import useModalClose from '#Hooks/useModalClose';
+
 import ReactPortal from './ReactPortal';
+
 import styles from './_MenuCategoryModal.module.scss';
 
 const scrollUnlock = () => {
@@ -10,9 +13,9 @@ const scrollUnlock = () => {
 };
 
 type ElemProps = {
+  modalButtonRef: React.Ref<HTMLButtonElement>;
   modalOpen: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  modalButtonRef: React.Ref<HTMLButtonElement>;
 };
 
 function MenuCategoryModal(props: ElemProps): JSX.Element {
@@ -35,8 +38,8 @@ function MenuCategoryModal(props: ElemProps): JSX.Element {
           exitActive: 'modal-exit-active',
         }}
         nodeRef={nodeRef}>
-        <div className={styles.container} ref={nodeRef}>
-          <div className={styles.elementContainer} ref={modalContentsRef}>
+        <div className={styles['container']} ref={nodeRef} data-testid="container">
+          <div className={styles['elementContainer']} ref={modalContentsRef}>
             <ProductExampleShopList />
           </div>
         </div>

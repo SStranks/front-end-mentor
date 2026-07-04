@@ -1,43 +1,28 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import Quality from './Quality';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Quality
-            title="dummyTitle"
-            caption="dummyCaption"
-            illustration="imgURL"
-            bgRotation="0deg"
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Quality title="dummyTitle" caption="dummyCaption" illustration="imgURL" bgRotation="0deg" />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(
-      <Quality
-        title="dummyTitle"
-        caption="dummyCaption"
-        illustration="imgURL"
-        bgRotation="90deg"
-      />,
-      { wrapper: BrowserRouter }
-    );
+    render(<Quality title="dummyTitle" caption="dummyCaption" illustration="imgURL" bgRotation="90deg" />, {
+      wrapper: BrowserRouter,
+    });
 
-    const component = container.firstChild;
     const img = screen.getByRole('img');
-    const bgCircle = document.querySelector('div.bg-circle');
+    const bgCircle = screen.getByTestId('background circle');
     const titleText = screen.getByText('dummyTitle');
     const captionText = screen.getByTestId('caption');
 
-    expect(component).toBeInTheDocument();
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute('src', 'imgURL');
     expect(bgCircle).toBeInTheDocument();
@@ -47,15 +32,9 @@ describe('Appearance', () => {
   });
 
   test('If caption prop is empty, <p> should not render', () => {
-    render(
-      <Quality
-        title="dummyTitle"
-        caption=""
-        illustration="imgURL"
-        bgRotation="90deg"
-      />,
-      { wrapper: BrowserRouter }
-    );
+    render(<Quality title="dummyTitle" caption="" illustration="imgURL" bgRotation="90deg" />, {
+      wrapper: BrowserRouter,
+    });
 
     const captionText = screen.queryByTestId('caption');
 

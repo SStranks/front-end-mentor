@@ -1,18 +1,18 @@
 import styles from './_Card2.module.scss';
 
 type ElemProps = {
-  title: string | JSX.Element;
   caption: string;
   image: string;
+  title: string | JSX.Element;
 };
 
 function Card2(props: ElemProps): JSX.Element {
   const { title, caption, image } = props;
 
   return (
-    <div className={styles.card}>
+    <div className={styles['card']} data-testid="Card2">
       <img src={image} alt="" />
-      <div className={styles.card__info}>
+      <div className={styles['card__info']}>
         <h3>{title}</h3>
         <p>{caption}</p>
       </div>

@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="_quality_a78d56"
+  >
+    <div
+      class="_image_a78d56"
+    >
+      <img
+        alt=""
+        src="imgURL"
+      />
+      <div
+        class="_bgCircle_a78d56"
+        style="transform: rotate(0deg);"
+      />
+    </div>
+    <p
+      class="_quality__title_a78d56"
+    >
+      dummyTitle
+    </p>
+    <p
+      class="_quality__caption_a78d56"
+      data-testid="caption"
+    >
+      dummyCaption
+    </p>
+  </div>
+</DocumentFragment>
+`;

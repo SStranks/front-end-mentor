@@ -1,0 +1,145 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<div
+  className="_container_f148f3 additionalStyles"
+>
+  <div
+    className="_cardPrimary_f148f3"
+  >
+    <picture
+      className="_cardPrimary__picture_f148f3"
+    >
+      <source
+        height="1120px"
+        media="(min-width: 992px)"
+        srcSet=""
+        width="1080px"
+      />
+      <source
+        height="960px"
+        media="(min-width: 667px)"
+        srcSet=""
+        width="562px"
+      />
+      <source
+        height="654px"
+        media="(max-width: 666px)"
+        srcSet=""
+        width="654px"
+      />
+      <img
+        alt="dummyProductTitle"
+        className="_cardPrimary__img_f148f3"
+        src=""
+      />
+    </picture>
+    <div
+      className="_cardPrimary__info_f148f3"
+    >
+      <p
+        className="_cardPrimary__new_f148f3"
+      >
+        new product
+      </p>
+      <h2
+        className="_cardPrimary__title_f148f3"
+      >
+        dummyProductTitle
+      </h2>
+      <p
+        className="_cardPrimary__details_f148f3"
+      >
+        dummyProductDescription
+      </p>
+      <p
+        className="_cardPrimary__price_f148f3"
+      >
+        $ 
+        99.01
+      </p>
+      <div
+        className="_cardPrimary__purchase_f148f3"
+      >
+        <div
+          className="_container_04c138"
+        >
+          <div
+            className="_button_497d8e undefined"
+          >
+            <button
+              onClick={[Function]}
+              type="button"
+            >
+              -
+            </button>
+            <p
+              className="_button__quantity_497d8e"
+            >
+              1
+            </p>
+            <button
+              onClick={[Function]}
+              type="button"
+            >
+              +
+            </button>
+          </div>
+          <button
+            className="_container__btn_04c138"
+            onClick={[Function]}
+            type="button"
+          >
+            add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="_cardSecondary_f148f3"
+  >
+    <div
+      className="_cardSecondary__features_f148f3"
+    >
+      <h3
+        className="_cardSecondary__header_f148f3"
+      >
+        features
+      </h3>
+      <p
+        className="_cardSecondary__featuresInfo_f148f3"
+      >
+        dummyProductFeatures
+      </p>
+    </div>
+    <div
+      className="_cardSecondary__inBox_f148f3"
+    >
+      <h3
+        className="_cardSecondary__header_f148f3"
+      >
+        in the box
+      </h3>
+      <ul
+        className="_cardSecondary__list_f148f3"
+      >
+        <li>
+          <p
+            className="_cardSecondary__list__quantity_f148f3"
+          >
+            1
+            x
+          </p>
+          <p
+            className="_cardSecondary__list__item_f148f3"
+          >
+             
+            dummyItem
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

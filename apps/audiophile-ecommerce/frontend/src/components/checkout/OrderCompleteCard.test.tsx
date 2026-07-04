@@ -1,28 +1,24 @@
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
+import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+
 import OrderCompleteCard from './OrderCompleteCard';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const mockFn = jest.fn();
-    const tree = renderer
-      .create(
-        <ShoppingCartProvider>
-          <OrderCompleteCard modalClose={mockFn} />
-        </ShoppingCartProvider>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const mockFn = vi.fn();
+    const { asFragment } = render(
+      <ShoppingCartProvider>
+        <OrderCompleteCard modalClose={mockFn} />
+      </ShoppingCartProvider>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const mockFn = jest.fn();
-    localStorage.setItem(
-      'shopping-cart',
-      JSON.stringify([{ id: 1, quantity: 1 }])
-    );
+    const mockFn = vi.fn();
+    localStorage.setItem('shopping-cart', JSON.stringify([{ id: 1, quantity: 1 }]));
 
     render(
       <ShoppingCartProvider>
@@ -31,18 +27,14 @@ describe('Appearance', () => {
     );
 
     const component = screen.getByLabelText('thank you for your order');
-    const iconCheck = document.querySelector('img.card__circle__check');
+    const iconCheck = screen.getByRole('img', { name: /checked/i });
     const textH3 = screen.getByRole('heading', {
-      name: 'thank you for your order',
       level: 3,
+      name: 'thank you for your order',
     });
-    const textInfo = screen.getByText(
-      'You will receive an email conformation shortly'
-    );
+    const textInfo = screen.getByText('You will receive an email conformation shortly');
     const textGrandTotal = screen.getByText('grand total');
-    const textTotalAmount = screen.getByText(
-      /^\$(0|[1-9]\d{0,2})(,\d{3})*(\.\d{1,2})?$/
-    );
+    const textTotalAmount = screen.getByText(/^\$(0|[1-9]\d{0,2})(,\d{3})*(\.\d{1,2})?$/);
     const backToHomeBtn = screen.getByRole('button', { name: 'back to home' });
     const hrSeparator = screen.queryByRole('separator');
     const btns = screen.queryAllByRole('button');
@@ -55,12 +47,11 @@ describe('Appearance', () => {
     expect(textTotalAmount).toBeInTheDocument();
     expect(backToHomeBtn).toBeInTheDocument();
     expect(hrSeparator).not.toBeInTheDocument();
-    // eslint-disable-next-line jest-dom/prefer-in-document
     expect(btns).toHaveLength(1);
   });
 
   test('When cart has more than one type of item, hr and `view more` button should be visible', () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     localStorage.setItem(
       'shopping-cart',
       JSON.stringify([
@@ -85,7 +76,7 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   test('Clicking `back to home` button fires closes modal', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
 
     render(
       <ShoppingCartProvider>

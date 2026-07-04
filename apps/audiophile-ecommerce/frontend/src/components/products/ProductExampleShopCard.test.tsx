@@ -2,34 +2,23 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import ProductExampleShopCard from './ProductExampleShopCard';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ProductExampleShopCard
-            productName="dummyProductName"
-            productImg=""
-            productShopURL=""
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ProductExampleShopCard productName="dummyProductName" productImg="" productShopURL="" />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    render(
-      <ProductExampleShopCard
-        productName="dummyProductName"
-        productImg=""
-        productShopURL=""
-      />,
-      { wrapper: BrowserRouter }
-    );
+    render(<ProductExampleShopCard productName="dummyProductName" productImg="" productShopURL="" />, {
+      wrapper: BrowserRouter,
+    });
 
     const component = screen.getByRole('link');
     const cardContent = screen.getByLabelText('see all dummyProductName shop');
@@ -48,22 +37,18 @@ describe('Appearance', () => {
 describe('Functionality', () => {
   test('Clicking link should navigate to productShopURL', async () => {
     const history = createMemoryHistory({ initialEntries: ['/dummyRoute'] });
-    history.push = jest.fn();
+    const spyPush = vi.spyOn(history, 'push');
     render(
       <Router location={history.location} navigator={history}>
-        <ProductExampleShopCard
-          productName=""
-          productImg=""
-          productShopURL="dummyURL"
-        />
+        <ProductExampleShopCard productName="" productImg="" productShopURL="dummyURL" />
       </Router>
     );
 
     const component = screen.getByRole('link');
 
     await userEvent.click(component);
-    expect(history.push).toHaveBeenCalledTimes(1);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(1);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/dummyURL',

@@ -1,68 +1,59 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
+
 import App from './App';
 
 const ROUTES = {
-  erroneous: '/erroneous',
-  home: '/',
-  speakers: '/speakers',
-  headphones: '/headphones',
-  earphones: '/earphones',
-  productDetailSpeakers: '/speakers/1',
-  productDetailHeadphones: '/headphones/1',
-  productDetailEarphones: '/earphones/1',
   checkout: '/checkout',
+  earphones: '/earphones',
+  erroneous: '/erroneous',
+  headphones: '/headphones',
+  home: '/',
+  productDetailEarphones: '/earphones/1',
+  productDetailHeadphones: '/headphones/1',
+  productDetailSpeakers: '/speakers/1',
+  speakers: '/speakers',
 };
 
-jest.mock('#Pages/home/HomePage', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-home" />;
-    },
-  };
-});
+vi.mock('#Pages/home/HomePage', () => ({
+  default: () => <div data-testid="page-home" />,
+}));
 
-jest.mock('#Pages/headphones/HeadphonesPage', () => {
+vi.mock('#Pages/headphones/HeadphonesPage', () => {
   return {
-    __esModule: true,
     default: () => {
       return <div data-testid="page-headphones" />;
     },
   };
 });
 
-jest.mock('#Pages/speakers/SpeakersPage', () => {
+vi.mock('#Pages/speakers/SpeakersPage', () => {
   return {
-    __esModule: true,
     default: () => {
       return <div data-testid="page-speakers" />;
     },
   };
 });
 
-jest.mock('#Pages/earphones/EarphonesPage', () => {
+vi.mock('#Pages/earphones/EarphonesPage', () => {
   return {
-    __esModule: true,
     default: () => {
       return <div data-testid="page-earphones" />;
     },
   };
 });
 
-jest.mock('#Pages/checkout/CheckoutPage', () => {
+vi.mock('#Pages/checkout/CheckoutPage', () => {
   return {
-    __esModule: true,
     default: () => {
       return <div data-testid="page-checkout" />;
     },
   };
 });
 
-jest.mock('#Pages/product-details/ProductDetailsPage', () => {
+vi.mock('#Pages/product-details/ProductDetailsPage', () => {
   return {
-    __esModule: true,
     default: () => {
       return <div data-testid="page-product-details" />;
     },
@@ -81,7 +72,7 @@ describe('Static Routes', () => {
     // NOTE:  Push after render to ensure redirect is enacted
     history.push(ROUTES.erroneous);
 
-    const HomePage = await waitFor(() => screen.getByTestId('page-home'));
+    const HomePage = await screen.findByTestId('page-home');
 
     expect(HomePage).toBeInTheDocument();
   });
@@ -95,7 +86,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const HomePage = screen.getByTestId('page-home');
+    const HomePage = await screen.findByTestId('page-home');
 
     expect(HomePage).toBeInTheDocument();
   });
@@ -110,10 +101,8 @@ describe('Static Routes', () => {
     );
 
     // NOTE:  Timeout 4000ms: To account for dummy delay established in <App>
-    const HeadphonesPage = await waitFor(
-      () => screen.getByTestId('page-headphones'),
-      { timeout: 4000 }
-    );
+    // eslint-disable-next-line testing-library/prefer-find-by
+    const HeadphonesPage = await waitFor(() => screen.getByTestId('page-headphones'), { timeout: 4000 });
 
     expect(HeadphonesPage).toBeInTheDocument();
   });
@@ -127,9 +116,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const SpeakersPage = await waitFor(() =>
-      screen.getByTestId('page-speakers')
-    );
+    const SpeakersPage = await screen.findByTestId('page-speakers');
 
     expect(SpeakersPage).toBeInTheDocument();
   });
@@ -143,9 +130,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const EarphonesPage = await waitFor(() =>
-      screen.getByTestId('page-earphones')
-    );
+    const EarphonesPage = await screen.findByTestId('page-earphones');
 
     expect(EarphonesPage).toBeInTheDocument();
   });
@@ -159,9 +144,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const CheckoutPage = await waitFor(() =>
-      screen.getByTestId('page-checkout')
-    );
+    const CheckoutPage = await screen.findByTestId('page-checkout');
 
     expect(CheckoutPage).toBeInTheDocument();
   });
@@ -178,9 +161,7 @@ describe('Dynamic Routes', () => {
       </Router>
     );
 
-    const ProductDetailsPage = await waitFor(() =>
-      screen.getByTestId('page-product-details')
-    );
+    const ProductDetailsPage = await screen.findByTestId('page-product-details');
 
     expect(ProductDetailsPage).toBeInTheDocument();
   });
@@ -195,9 +176,7 @@ describe('Dynamic Routes', () => {
       </Router>
     );
 
-    const ProductDetailsPage = await waitFor(() =>
-      screen.getByTestId('page-product-details')
-    );
+    const ProductDetailsPage = await screen.findByTestId('page-product-details');
 
     expect(ProductDetailsPage).toBeInTheDocument();
   });
@@ -212,9 +191,7 @@ describe('Dynamic Routes', () => {
       </Router>
     );
 
-    const ProductDetailsPage = await waitFor(() =>
-      screen.getByTestId('page-product-details')
-    );
+    const ProductDetailsPage = await screen.findByTestId('page-product-details');
 
     expect(ProductDetailsPage).toBeInTheDocument();
   });

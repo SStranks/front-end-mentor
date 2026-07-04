@@ -1,12 +1,11 @@
 import Card1 from '#Components/card/Card1';
 import Nav from '#Components/nav/Nav';
 import Quality from '#Components/quality/Quality';
-import DefaultLayout from '#Layouts/DefaultLayout';
-
 import ImgAppDesign from '#Img/desktop/image-app-design.jpg';
 import ImgGraphicDesign from '#Img/desktop/image-graphic-design.jpg';
 import ImgHero from '#Img/desktop/image-hero-phone.png';
 import ImgWebDesign from '#Img/desktop/image-web-design-large.jpg';
+import DefaultLayout from '#Layouts/DefaultLayout';
 import SvgBgLeaf from '#Svg/desktop/bg-pattern-leaf.svg';
 import SvgFriendly from '#Svg/desktop/illustration-friendly.svg';
 import SvgPassionate from '#Svg/desktop/illustration-passionate.svg';
@@ -18,36 +17,26 @@ function Home(): JSX.Element {
   return (
     <DefaultLayout>
       <Nav />
-      <img
-        className={styles.bgLeafTop}
-        src={SvgBgLeaf}
-        alt=""
-        data-testid="bgImgTop"
-      />
-      <section className={styles.hero} aria-label="hero section">
-        <div className={styles.hero__info}>
+      <img className={styles['bgLeafTop']} src={SvgBgLeaf} alt="" data-testid="bgImgTop" />
+      <section className={styles['hero']} aria-label="hero section">
+        <div className={styles['hero__info']}>
           <h1>Award-winning custom designs and digital branding solutions</h1>
           <p>
-            With over 10 years in the industry, we are experienced in creating
-            fully responsive websites, app design, and engaging brand
-            experiences. Find out more about our services.
+            With over 10 years in the industry, we are experienced in creating fully responsive websites, app design,
+            and engaging brand experiences. Find out more about our services.
           </p>
-          <button type="button" className={styles.hero__btn}>
+          <button type="button" className={styles['hero__btn']}>
             learn more
           </button>
         </div>
         <img src={ImgHero} alt="" />
       </section>
-      <div className={styles.viewgrid}>
+      <div className={styles['viewgrid']} data-testid="viewgrid">
         <Card1 title="web design" image={ImgWebDesign} url="/webdesign" />
         <Card1 title="app design" image={ImgAppDesign} url="/appdesign" />
-        <Card1
-          title="graphic design"
-          image={ImgGraphicDesign}
-          url="/graphicdesign"
-        />
+        <Card1 title="graphic design" image={ImgGraphicDesign} url="/graphicdesign" />
       </div>
-      <div className={styles.qualities}>
+      <div className={styles['qualities']} data-testid="qualities">
         <Quality
           title="passionate"
           caption="Each project starts with an in-depth brand research to ensure we only create products that serve a purpose. We merge art, design, and technology into exciting new solutions."
@@ -67,12 +56,7 @@ function Home(): JSX.Element {
           bgRotation="90deg"
         />
       </div>
-      <img
-        className={styles.bgLeafBottom}
-        src={SvgBgLeaf}
-        alt=""
-        data-testid="bgImgBottom"
-      />
+      <img className={styles['bgLeafBottom']} src={SvgBgLeaf} alt="" data-testid="bgImgBottom" />
     </DefaultLayout>
   );
 }

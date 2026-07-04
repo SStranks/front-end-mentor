@@ -1,16 +1,22 @@
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
+import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+
 import CheckoutPage from './CheckoutPage';
 
-const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+const mockedUsedNavigate = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+
+  return {
+    ...actual,
+    useNavigate: () => mockedUsedNavigate,
+  };
+});
 
 beforeEach(() => {
   mockedUsedNavigate.mockReset();
@@ -18,16 +24,14 @@ beforeEach(() => {
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ShoppingCartProvider>
-            <CheckoutPage />
-          </ShoppingCartProvider>
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ShoppingCartProvider>
+          <CheckoutPage />
+        </ShoppingCartProvider>
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -64,7 +68,7 @@ describe('Functionality', () => {
     await userEvent.click(backBtn);
     await waitFor(() => {
       expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
-      expect(mockedUsedNavigate).toHaveBeenCalledWith(-1);
     });
+    expect(mockedUsedNavigate).toHaveBeenCalledWith(-1);
   });
 });

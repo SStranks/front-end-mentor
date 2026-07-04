@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<a
+  className="_card__shop__text_354178"
+  href="/"
+  onClick={[Function]}
+>
+  <div
+    aria-label="see all dummyProductName shop"
+    className="_card_354178"
+  >
+    <div
+      className="_card__bg_354178"
+    />
+    <img
+      alt=""
+      className="_card__img_354178"
+      height="380px"
+      src=""
+      width="438px"
+    />
+    <p
+      className="_card__name_354178"
+    >
+      dummyProductName
+    </p>
+    <div
+      className="_card__shop_354178"
+    >
+      <p
+        className="_card__shop__text_354178"
+      >
+        shop
+      </p>
+      <img
+        alt=""
+        className="_card__shop__img_354178"
+        height="12px"
+        src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+        width="8px"
+      />
+    </div>
+  </div>
+</a>
+`;

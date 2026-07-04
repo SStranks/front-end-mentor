@@ -2,28 +2,26 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import Card from './Card1';
+
+import Card1 from './Card1';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Card title="dummyTitle" image="imgURL" url="dummyURL" />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Card1 title="dummyTitle" image="imgURL" url="dummyURL" />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    render(<Card title="dummyTitle" image="imgURL" url="dummyURL" />, {
+    render(<Card1 title="dummyTitle" image="imgURL" url="dummyURL" />, {
       wrapper: BrowserRouter,
     });
 
     const component = screen.getByRole('link');
-    const bgImg = document.querySelector('div.card');
+    const bgImg = screen.getByTestId('Card1');
     const headerText = screen.getByRole('heading', { level: 2 });
     const iconImg = screen.getByRole('img');
     const bodyText = screen.getByText(/view projects/i);
@@ -40,18 +38,18 @@ describe('Appearance', () => {
 describe('Functionality', () => {
   test('Navigation Links direct to the correct page', async () => {
     const history = createMemoryHistory({ initialEntries: ['/dummyRoute'] });
-    history.push = jest.fn();
+    const pushSpy = vi.spyOn(history, 'push');
     render(
       <Router location={history.location} navigator={history}>
-        <Card title="dummyTitle" image="imgURL" url="dummyURL" />
+        <Card1 title="dummyTitle" image="imgURL" url="dummyURL" />
       </Router>
     );
 
     const link = screen.getByRole('link');
 
     await userEvent.click(link);
-    expect(history.push).toHaveBeenCalledTimes(1);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(pushSpy).toHaveBeenCalledTimes(1);
+    expect(pushSpy).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/dummyURL',

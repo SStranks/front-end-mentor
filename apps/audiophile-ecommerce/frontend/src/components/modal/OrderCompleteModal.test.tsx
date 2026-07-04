@@ -1,9 +1,12 @@
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+import type { Mock } from 'vitest';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
+import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+
 import OrderCompleteModal from './OrderCompleteModal';
 
 let $root: HTMLDivElement;
@@ -20,32 +23,30 @@ afterEach(() => {
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = vi.fn((element) => {
       return element as React.ReactPortal;
     });
 
-    const mockSetModalFn = jest.fn();
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ShoppingCartProvider>
-            <OrderCompleteModal modalOpen modalClose={mockSetModalFn} />
-          </ShoppingCartProvider>
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const mockSetModalFn = vi.fn();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ShoppingCartProvider>
+          <OrderCompleteModal modalOpen modalClose={mockSetModalFn} />
+        </ShoppingCartProvider>
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
 
-    (ReactDOM.createPortal as jest.Mock).mockClear();
+    (ReactDOM.createPortal as Mock).mockClear();
   });
 
   test('Component base should be fully rendered', () => {
-    const mockSetModalFn = jest.fn();
+    const mockSetModalFn = vi.fn();
     const { container } = render(
       <ShoppingCartProvider>
         <OrderCompleteModal modalOpen modalClose={mockSetModalFn} />
       </ShoppingCartProvider>,
-      { wrapper: BrowserRouter, container: $root }
+      { container: $root, wrapper: BrowserRouter }
     );
 
     const componentPortal = container;
@@ -58,12 +59,12 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   test('Clicking `back to home` button fires close modal call', async () => {
-    const mockSetModalFn = jest.fn();
+    const mockSetModalFn = vi.fn();
     render(
       <ShoppingCartProvider>
         <OrderCompleteModal modalOpen modalClose={mockSetModalFn} />
       </ShoppingCartProvider>,
-      { wrapper: BrowserRouter, container: $root }
+      { container: $root, wrapper: BrowserRouter }
     );
 
     const backBtn = screen.getByRole('button', { name: 'back to home' });

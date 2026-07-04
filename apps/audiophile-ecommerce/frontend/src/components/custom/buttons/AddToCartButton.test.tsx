@@ -1,14 +1,12 @@
-import {
-  ShoppingCartProvider,
-  useShoppingCartContext,
-} from '#Context/ShoppingCartContext';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
+import { ShoppingCartProvider, useShoppingCartContext } from '#Context/ShoppingCartContext';
+
 import AddToCartButton from './AddToCartButton';
 
 // NOTE:  Comment block: To test if child component is passed props
-const mockChildComponent = jest.fn();
+const mockChildComponent = vi.fn();
 // expect(mockChildComponent).toHaveBeenCalledWith(
 //   expect.objectContaining({
 //     open: true,
@@ -16,9 +14,7 @@ const mockChildComponent = jest.fn();
 //   })
 // );
 
-// eslint-disable-next-line unicorn/consistent-function-scoping
-jest.mock('./QuantityToggleButton', () => ({
-  __esModule: true,
+vi.mock('./QuantityToggleButton', () => ({
   default: (props: unknown) => {
     mockChildComponent(props);
     return <div data-testid="quantity-toggle-button" />;
@@ -27,18 +23,16 @@ jest.mock('./QuantityToggleButton', () => ({
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer.create(<AddToCartButton productId={1} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<AddToCartButton productId={1} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(<AddToCartButton productId={1} />);
+    render(<AddToCartButton productId={1} />);
 
-    const component = container.querySelector('div');
     const QuantityToggleButton = screen.getByTestId('quantity-toggle-button');
     const button = screen.getByRole('button');
 
-    expect(component).toBeInTheDocument();
     expect(QuantityToggleButton).toBeInTheDocument();
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent('add to cart');
@@ -73,11 +67,7 @@ describe('Functionality', () => {
 
     expect(testContextCartTotal).toBeEmptyDOMElement();
     await userEvent.click(button);
-    expect(testContextCartTotal).toContainElement(
-      screen.getByTestId('cartItem')
-    );
-    expect(screen.getByTestId('cartItem')).toHaveTextContent(
-      'id: 1 || quantity: 1'
-    );
+    expect(testContextCartTotal).toContainElement(screen.getByTestId('cartItem'));
+    expect(screen.getByTestId('cartItem')).toHaveTextContent('id: 1 || quantity: 1');
   });
 });

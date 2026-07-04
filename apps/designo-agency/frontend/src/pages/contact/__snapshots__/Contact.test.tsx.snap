@@ -1,0 +1,388 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="_container_638b9b"
+  >
+    <div
+      class="_container__subContainer_638b9b"
+    >
+      <nav
+        class="_nav_4097f0"
+      >
+        <a
+          href="/"
+        >
+          <img
+            alt="Designo Site Home."
+            class="_nav__logo_4097f0"
+            src="/src/assets/img/desktop/logo-dark.png"
+          />
+        </a>
+        <button
+          class="_nav__btn_4097f0"
+          type="button"
+        >
+          <img
+            alt=""
+            src="data:image/svg+xml,%3csvg%20width='24'%20height='20'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20fill='%231D1C1E'%20fill-rule='evenodd'%3e%3cpath%20d='M0%200h24v4H0zM0%208h24v4H0zM0%2016h24v4H0z'/%3e%3c/g%3e%3c/svg%3e"
+          />
+        </button>
+        <div
+          class="_nav__links_4097f0"
+          id="nav-links"
+        >
+          <a
+            href="/about"
+          >
+            <p
+              class="_nav__link_4097f0"
+            >
+              our company
+            </p>
+          </a>
+          <a
+            href="/locations"
+          >
+            <p
+              class="_nav__link_4097f0"
+            >
+              locations
+            </p>
+          </a>
+          <a
+            href="/contact"
+          >
+            <p
+              class="_nav__link_4097f0"
+            >
+              contact
+            </p>
+          </a>
+        </div>
+      </nav>
+      <header
+        class="_header_7c02a7"
+      >
+        <div
+          class="_header__container_7c02a7"
+        >
+          <div
+            class="_header__info_7c02a7"
+          >
+            <h1>
+              Contact Us
+            </h1>
+            <p>
+              Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help your business grow. If you are looking for unique digital experiences that’s relatable to your users, drop us a line.
+            </p>
+          </div>
+        </div>
+        <form
+          aria-label="form"
+          class="_header__form_7c02a7"
+          novalidate=""
+        >
+          <div
+            class="_header__input_7c02a7"
+          >
+            <input
+              pattern="/\\p{L}/u"
+              placeholder="Name"
+              required=""
+              type="text"
+            />
+            <div
+              class="_header__input__error_7c02a7"
+            >
+              <p />
+              <img
+                alt=""
+                src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='10'%20cy='10'%20r='10'%20fill='%23FFF'/%3e%3cpath%20fill='%23E7816B'%20d='M11%2014v2H9v-2h2zm0-9v7H9V5h2z'/%3e%3c/g%3e%3c/svg%3e"
+              />
+            </div>
+          </div>
+          <div
+            class="_header__input_7c02a7"
+          >
+            <input
+              placeholder="Email Address"
+              required=""
+              type="email"
+            />
+            <div
+              class="_header__input__error_7c02a7"
+            >
+              <p />
+              <img
+                alt=""
+                src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='10'%20cy='10'%20r='10'%20fill='%23FFF'/%3e%3cpath%20fill='%23E7816B'%20d='M11%2014v2H9v-2h2zm0-9v7H9V5h2z'/%3e%3c/g%3e%3c/svg%3e"
+              />
+            </div>
+          </div>
+          <div
+            class="_header__input_7c02a7"
+          >
+            <input
+              pattern="[0-9]"
+              placeholder="Phone"
+              required=""
+              type="tel"
+            />
+            <div
+              class="_header__input__error_7c02a7"
+            >
+              <p />
+              <img
+                alt=""
+                src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='10'%20cy='10'%20r='10'%20fill='%23FFF'/%3e%3cpath%20fill='%23E7816B'%20d='M11%2014v2H9v-2h2zm0-9v7H9V5h2z'/%3e%3c/g%3e%3c/svg%3e"
+              />
+            </div>
+          </div>
+          <div
+            class="_header__input_7c02a7"
+          >
+            <textarea
+              placeholder="Your Message"
+              required=""
+              rows="20"
+            />
+            <div
+              class="_header__input__error_7c02a7"
+            >
+              <p />
+              <img
+                alt=""
+                src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='10'%20cy='10'%20r='10'%20fill='%23FFF'/%3e%3cpath%20fill='%23E7816B'%20d='M11%2014v2H9v-2h2zm0-9v7H9V5h2z'/%3e%3c/g%3e%3c/svg%3e"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+          >
+            submit
+          </button>
+        </form>
+      </header>
+      <div
+        class="_locations_7c02a7"
+      >
+        <div
+          class="_quality_bc3328"
+        >
+          <div
+            class="_image_bc3328"
+          >
+            <img
+              alt=""
+              src="/src/assets/svg/desktop/illustration-canada.svg"
+            />
+            <div
+              class="_bgCircle_bc3328"
+              style="transform: rotate(0deg);"
+            />
+          </div>
+          <p
+            class="_quality__title_bc3328"
+          >
+            canada
+          </p>
+          <button
+            type="button"
+          >
+            see location
+          </button>
+        </div>
+        <div
+          class="_quality_bc3328"
+        >
+          <div
+            class="_image_bc3328"
+          >
+            <img
+              alt=""
+              src="/src/assets/svg/desktop/illustration-australia.svg"
+            />
+            <div
+              class="_bgCircle_bc3328"
+              style="transform: rotate(270deg);"
+            />
+          </div>
+          <p
+            class="_quality__title_bc3328"
+          >
+            australia
+          </p>
+          <button
+            type="button"
+          >
+            see location
+          </button>
+        </div>
+        <div
+          class="_quality_bc3328"
+        >
+          <div
+            class="_image_bc3328"
+          >
+            <img
+              alt=""
+              src="/src/assets/svg/desktop/illustration-united-kingdom.svg"
+            />
+            <div
+              class="_bgCircle_bc3328"
+              style="transform: rotate(90deg);"
+            />
+          </div>
+          <p
+            class="_quality__title_bc3328"
+          >
+            united kingdom
+          </p>
+          <button
+            type="button"
+          >
+            see location
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="_footer_957d6c "
+    >
+      <div
+        class="_footer__container_957d6c"
+      >
+        <div
+          class="_footer__hero_957d6c"
+        >
+          <div>
+            <p
+              class="_footer__hero__header_957d6c"
+            >
+              Let's talk about your project
+            </p>
+            <p
+              class="_footer__hero__body_957d6c"
+            >
+              Ready to take it to the next level? Contact us today and find out how our expertise can help your business grow.
+            </p>
+          </div>
+          <button
+            class="_footer__hero__button_957d6c"
+            type="button"
+          >
+            get in touch
+          </button>
+        </div>
+        <div
+          class="_footer__nav_957d6c"
+        >
+          <a
+            href="/"
+          >
+            <img
+              alt="Designo Site Home."
+              class="_footer__logo_957d6c"
+              src="/src/assets/img/desktop/logo-light.png"
+            />
+          </a>
+          <div
+            class="_footer__links_957d6c"
+          >
+            <a
+              href="/about"
+            >
+              <p
+                class="_footer__link_957d6c"
+              >
+                our company
+              </p>
+            </a>
+            <a
+              href="/locations"
+            >
+              <p
+                class="_footer__link_957d6c"
+              >
+                locations
+              </p>
+            </a>
+            <a
+              href="/contact"
+            >
+              <p
+                class="_footer__link_957d6c"
+              >
+                contact
+              </p>
+            </a>
+          </div>
+          <hr
+            class="_footer__hr_957d6c"
+          />
+        </div>
+        <div
+          class="_footer__info_957d6c"
+        >
+          <div
+            class="_footer__details_957d6c"
+          >
+            <div>
+              <p
+                class="_footer__boldText_957d6c"
+              >
+                Designo Central Office
+              </p>
+              <p>
+                3386 Wellington Street
+              </p>
+              <p>
+                Toronto, Ontario M9C 3J5
+              </p>
+            </div>
+            <div
+              class="_footer__boldText_957d6c"
+            >
+              <p>
+                Contact Us (Central Office)
+              </p>
+              <p>
+                P : +1 253-863-8967
+              </p>
+              <p>
+                M : contact@designo.co
+              </p>
+            </div>
+          </div>
+          <div
+            class="_footer__icons_957d6c"
+          >
+            <img
+              alt="Designo facebook media page."
+              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M22.675%200H1.325C.593%200%200%20.593%200%201.325v21.351C0%2023.407.593%2024%201.325%2024H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1%201.893-4.788%204.659-4.788%201.325%200%202.463.099%202.795.143v3.24l-1.918.001c-1.504%200-1.795.715-1.795%201.763v2.313h3.587l-.467%203.622h-3.12V24h6.116c.73%200%201.323-.593%201.323-1.325V1.325C24%20.593%2023.407%200%2022.675%200z'%20fill='%23E7816B'%20fill-rule='nonzero'/%3e%3c/svg%3e"
+            />
+            <img
+              alt="Designo youtube media page."
+              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12%200C5.373%200%200%205.373%200%2012s5.373%2012%2012%2012%2012-5.373%2012-12S18.627%200%2012%200zm4.441%2016.892c-2.102.144-6.784.144-8.883%200C5.282%2016.736%205.017%2015.622%205%2012c.017-3.629.285-4.736%202.558-4.892%202.099-.144%206.782-.144%208.883%200C18.718%207.264%2018.982%208.378%2019%2012c-.018%203.629-.285%204.736-2.559%204.892zM10%209.658l4.917%202.338L10%2014.342V9.658z'%20fill='%23E7816B'%20fill-rule='nonzero'/%3e%3c/svg%3e"
+            />
+            <img
+              alt="Designo twitter media page."
+              src="data:image/svg+xml,%3csvg%20width='24'%20height='20'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24%202.557a9.83%209.83%200%2001-2.828.775A4.932%204.932%200%200023.337.608a9.864%209.864%200%2001-3.127%201.195A4.916%204.916%200%200016.616.248c-3.179%200-5.515%202.966-4.797%206.045A13.978%2013.978%200%20011.671%201.149a4.93%204.93%200%20001.523%206.574%204.903%204.903%200%2001-2.229-.616c-.054%202.281%201.581%204.415%203.949%204.89a4.935%204.935%200%2001-2.224.084%204.928%204.928%200%20004.6%203.419A9.9%209.9%200%20010%2017.54a13.94%2013.94%200%20007.548%202.212c9.142%200%2014.307-7.721%2013.995-14.646A10.025%2010.025%200%200024%202.557z'%20fill='%23E7816B'%20fill-rule='nonzero'/%3e%3c/svg%3e"
+            />
+            <img
+              alt="Designo pinterest media page."
+              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12%200C5.373%200%200%205.372%200%2012c0%205.084%203.163%209.426%207.627%2011.174-.105-.949-.2-2.405.042-3.441.218-.937%201.407-5.965%201.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914%202.171-2.914%201.023%200%201.518.769%201.518%201.69%200%201.029-.655%202.568-.994%203.995-.283%201.194.599%202.169%201.777%202.169%202.133%200%203.772-2.249%203.772-5.495%200-2.873-2.064-4.882-5.012-4.882-3.414%200-5.418%202.561-5.418%205.207%200%201.031.397%202.138.893%202.738a.36.36%200%2001.083.345l-.333%201.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649%200-3.785%202.75-7.262%207.929-7.262%204.163%200%207.398%202.967%207.398%206.931%200%204.136-2.607%207.464-6.227%207.464-1.216%200-2.359-.631-2.75-1.378l-.748%202.853c-.271%201.043-1.002%202.35-1.492%203.146C9.57%2023.812%2010.763%2024%2012%2024c6.627%200%2012-5.373%2012-12%200-6.628-5.373-12-12-12z'%20fill='%23E7816B'%20fill-rule='nonzero'/%3e%3c/svg%3e"
+            />
+            <img
+              alt="Designo instagram media page."
+              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12%202.163c3.204%200%203.584.012%204.85.07%203.252.148%204.771%201.691%204.919%204.919.058%201.265.069%201.645.069%204.849%200%203.205-.012%203.584-.069%204.849-.149%203.225-1.664%204.771-4.919%204.919-1.266.058-1.644.07-4.85.07-3.204%200-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849%200-3.204.013-3.583.07-4.849.149-3.227%201.664-4.771%204.919-4.919%201.266-.057%201.645-.069%204.849-.069zM12%200C8.741%200%208.333.014%207.053.072%202.695.272.273%202.69.073%207.052.014%208.333%200%208.741%200%2012c0%203.259.014%203.668.072%204.948.2%204.358%202.618%206.78%206.98%206.98C8.333%2023.986%208.741%2024%2012%2024c3.259%200%203.668-.014%204.948-.072%204.354-.2%206.782-2.618%206.979-6.98.059-1.28.073-1.689.073-4.948%200-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014%2015.259%200%2012%200zm0%205.838a6.162%206.162%200%20100%2012.324%206.162%206.162%200%20000-12.324zM12%2016a4%204%200%20110-8%204%204%200%20010%208zm6.406-11.845a1.44%201.44%200%20100%202.881%201.44%201.44%200%20000-2.881z'%20fill='%23E7816B'%20fill-rule='nonzero'/%3e%3c/svg%3e"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

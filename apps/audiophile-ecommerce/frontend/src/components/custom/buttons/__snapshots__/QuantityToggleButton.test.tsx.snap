@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<div
+  className="_button_497d8e additionalStyles"
+>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    -
+  </button>
+  <p
+    className="_button__quantity_497d8e"
+  >
+    123
+  </p>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    +
+  </button>
+</div>
+`;

@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<div
+  aria-labelledby="header"
+  className="_card_5085b8"
+>
+  <div
+    className="_card__circle_5085b8"
+  >
+    <img
+      alt=""
+      className="_card__circle__check_5085b8"
+      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='13'%20height='11'%3e%3cpath%20fill='none'%20stroke='%23AD1FEA'%20stroke-width='2'%20d='M1%205.233L4.522%209%2012%201'/%3e%3c/svg%3e"
+    />
+  </div>
+  <h3
+    className="_card__header_5085b8"
+    id="header"
+  >
+    thank you for your order
+  </h3>
+  <p
+    className="_card__subHeader_5085b8"
+  >
+    You will receive an email conformation shortly
+  </p>
+  <div
+    className="_orderDetails_5085b8"
+  >
+    <div
+      className="_orderDetails__items_5085b8"
+    />
+    <div
+      className="_orderDetails__grandTotal_5085b8"
+    >
+      <p
+        className="_orderDetails__grandTotal__title_5085b8"
+      >
+        grand total
+      </p>
+      <p
+        className="_orderDetails__grandTotal__amount_5085b8"
+      >
+        $
+        0.00
+      </p>
+    </div>
+  </div>
+  <button
+    className="_card__homeBtn_5085b8"
+    onClick={[Function]}
+    type="button"
+  >
+    back to home
+  </button>
+</div>
+`;

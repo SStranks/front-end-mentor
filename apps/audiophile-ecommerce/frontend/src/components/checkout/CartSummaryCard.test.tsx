@@ -1,16 +1,28 @@
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+import { vi } from 'vitest';
+
+import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+
 import CartSummaryCard from './CartSummaryCard';
 
-const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+type CartItem = {
+  id: number;
+  quantity: number;
+};
+
+const mockedUsedNavigate = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+
+  return {
+    ...actual,
+    useNavigate: () => mockedUsedNavigate,
+  };
+});
 
 beforeEach(() => {
   mockedUsedNavigate.mockReset();
@@ -18,22 +30,20 @@ beforeEach(() => {
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const mockFn = jest.fn();
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ShoppingCartProvider>
-            <CartSummaryCard closeCartModal={mockFn} />
-          </ShoppingCartProvider>
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const mockFn = vi.fn();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ShoppingCartProvider>
+          <CartSummaryCard closeCartModal={mockFn} />
+        </ShoppingCartProvider>
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const mockFn = jest.fn();
-    const { container } = render(
+    const mockFn = vi.fn();
+    render(
       <ShoppingCartProvider>
         <CartSummaryCard closeCartModal={mockFn} />
       </ShoppingCartProvider>,
@@ -42,7 +52,6 @@ describe('Appearance', () => {
       }
     );
 
-    const component = container.querySelector('div');
     const cartItemsQuantity = screen.getByText(/^cart \(\d\)$/);
     const removeAllBtn = screen.getByRole('button', {
       name: 'remove all products from cart',
@@ -50,7 +59,6 @@ describe('Appearance', () => {
     const cartItemsTotal = screen.getByText(/^\$ \d+\.\d{2}$/);
     const checkoutBtn = screen.getByRole('button', { name: 'checkout' });
 
-    expect(component).toBeInTheDocument();
     expect(cartItemsQuantity).toBeInTheDocument();
     expect(removeAllBtn).toBeInTheDocument();
     expect(cartItemsTotal).toBeInTheDocument();
@@ -58,9 +66,9 @@ describe('Appearance', () => {
   });
 
   test('If already on checkout route do not render goto checkout button', () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     const history = createMemoryHistory({ initialEntries: ['/checkout'] });
-    history.push = jest.fn();
+    history.push = vi.fn();
 
     render(
       <Router location={history.location} navigator={history}>
@@ -70,17 +78,14 @@ describe('Appearance', () => {
       </Router>
     );
 
-    expect(
-      screen.queryByRole('button', { name: 'checkout' })
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'checkout' })).not.toBeInTheDocument();
   });
 });
 
 describe('Functionality', () => {
-  // eslint-disable-next-line jest/no-commented-out-tests
   test('If cart is empty checkout button should be disabled', () => {
     // NOTE:  By default cart is empty as test is not accessing local storage in cart context.
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(
       <ShoppingCartProvider>
         <CartSummaryCard closeCartModal={mockFn} />
@@ -96,11 +101,8 @@ describe('Functionality', () => {
   });
 
   test('Clicking checkout button navigates to checkout route and closes modal', async () => {
-    const mockFn = jest.fn();
-    localStorage.setItem(
-      'shopping-cart',
-      JSON.stringify([{ id: 1, quantity: 1 }])
-    );
+    const mockFn = vi.fn();
+    localStorage.setItem('shopping-cart', JSON.stringify([{ id: 1, quantity: 1 }]));
 
     render(
       <ShoppingCartProvider>
@@ -115,16 +117,13 @@ describe('Functionality', () => {
     expect(mockFn).toHaveBeenCalledTimes(1);
     await waitFor(() => {
       expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
-      expect(mockedUsedNavigate).toHaveBeenCalledWith('/checkout');
     });
+    expect(mockedUsedNavigate).toHaveBeenCalledWith('/checkout');
   });
 
   test('Remove all button empties the context cart - should be empty array', async () => {
-    const mockFn = jest.fn();
-    localStorage.setItem(
-      'shopping-cart',
-      JSON.stringify([{ id: 1, quantity: 3 }])
-    );
+    const mockFn = vi.fn();
+    localStorage.setItem('shopping-cart', JSON.stringify([{ id: 1, quantity: 3 }]));
     render(
       <ShoppingCartProvider>
         <CartSummaryCard closeCartModal={mockFn} />
@@ -137,14 +136,12 @@ describe('Functionality', () => {
     const removeAllBtn = screen.getByRole('button', {
       name: 'remove all products from cart',
     });
-    const cartItems = JSON.parse(
-      localStorage.getItem('shopping-cart') as string
-    );
+    const getCartItems = () => JSON.parse(localStorage.getItem('shopping-cart') ?? '[]') as CartItem[];
 
-    expect(cartItems).toEqual([{ id: 1, quantity: 3 }]);
+    expect(getCartItems()).toEqual([{ id: 1, quantity: 3 }]);
+
     await userEvent.click(removeAllBtn);
-    expect(JSON.parse(localStorage.getItem('shopping-cart') as string)).toEqual(
-      []
-    );
+
+    expect(getCartItems()).toEqual([]);
   });
 });

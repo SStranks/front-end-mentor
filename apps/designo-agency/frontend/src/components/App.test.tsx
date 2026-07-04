@@ -1,81 +1,57 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
+
 import App from './App';
 
 const ROUTES = {
-  erroneous: '/erroneous',
-  home: '/',
-  webdesign: '/webdesign',
-  appdesign: '/appdesign',
-  graphicdesign: '/graphicdesign',
-  locations: '/locations',
   about: '/about',
+  appdesign: '/appdesign',
   contact: '/contact',
+  erroneous: '/erroneous',
+  graphicdesign: '/graphicdesign',
+  home: '/',
+  locations: '/locations',
+  webdesign: '/webdesign',
 };
 
-jest.mock('#Pages/home/Home', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-home" />;
-    },
-  };
-});
+vi.mock('#Pages/home/Homen', () => ({
+  default: () => <div data-testid="page-home" />,
+}));
 
-jest.mock('#Pages/web-design/WebDesign', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-webdesign" />;
-    },
-  };
-});
+vi.mock('#Pages/web-design/WebDesign', () => ({
+  default: () => <div data-testid="page-webdesign" />,
+}));
 
-jest.mock('#Pages/app-design/AppDesign', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-appdesign" />;
-    },
-  };
-});
+vi.mock('#Pages/app-design/AppDesign', () => ({
+  default: () => {
+    return <div data-testid="page-appdesign" />;
+  },
+}));
 
-jest.mock('#Pages/graphic-design/GraphicDesign', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-graphicdesign" />;
-    },
-  };
-});
+vi.mock('#Pages/graphic-design/GraphicDesign', () => ({
+  default: () => {
+    return <div data-testid="page-graphicdesign" />;
+  },
+}));
 
-jest.mock('#Pages/locations/Locations', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-locations" />;
-    },
-  };
-});
+vi.mock('#Pages/locations/Locations', () => ({
+  default: () => {
+    return <div data-testid="page-locations" />;
+  },
+}));
 
-jest.mock('#Pages/about/About', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-about" />;
-    },
-  };
-});
+vi.mock('#Pages/about/About', () => ({
+  default: () => {
+    return <div data-testid="page-about" />;
+  },
+}));
 
-jest.mock('#Pages/contact/Contact', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="page-contact" />;
-    },
-  };
-});
+vi.mock('#Pages/contact/Contact', () => ({
+  default: () => {
+    return <div data-testid="page-contact" />;
+  },
+}));
 
 describe('Static Routes', () => {
   test('non-designated routes should redirect and render home page', async () => {
@@ -89,7 +65,7 @@ describe('Static Routes', () => {
     // NOTE:  Push after render to ensure redirect is enacted
     history.push(ROUTES.erroneous);
 
-    const HomePage = await waitFor(() => screen.getByTestId('page-home'));
+    const HomePage = await screen.findByTestId('page-home');
 
     expect(HomePage).toBeInTheDocument();
   });
@@ -103,7 +79,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const HomePage = screen.getByTestId('page-home');
+    const HomePage = await screen.findByTestId('page-home');
 
     expect(HomePage).toBeInTheDocument();
   });
@@ -117,9 +93,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const WebDesignPage = await waitFor(() =>
-      screen.getByTestId('page-webdesign')
-    );
+    const WebDesignPage = await screen.findByTestId('page-webdesign');
 
     expect(WebDesignPage).toBeInTheDocument();
   });
@@ -133,9 +107,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const AppDesignPage = await waitFor(() =>
-      screen.getByTestId('page-appdesign')
-    );
+    const AppDesignPage = await screen.findByTestId('page-appdesign');
 
     expect(AppDesignPage).toBeInTheDocument();
   });
@@ -149,9 +121,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const GraphicDesignPage = await waitFor(() =>
-      screen.getByTestId('page-graphicdesign')
-    );
+    const GraphicDesignPage = await screen.findByTestId('page-graphicdesign');
 
     expect(GraphicDesignPage).toBeInTheDocument();
   });
@@ -165,9 +135,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const LocationsPage = await waitFor(() =>
-      screen.getByTestId('page-locations')
-    );
+    const LocationsPage = await screen.findByTestId('page-locations');
 
     expect(LocationsPage).toBeInTheDocument();
   });
@@ -180,7 +148,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const AboutPage = await waitFor(() => screen.getByTestId('page-about'));
+    const AboutPage = await screen.findByTestId('page-about');
 
     expect(AboutPage).toBeInTheDocument();
   });
@@ -194,7 +162,7 @@ describe('Static Routes', () => {
       </Router>
     );
 
-    const ContactPage = await waitFor(() => screen.getByTestId('page-contact'));
+    const ContactPage = await screen.findByTestId('page-contact');
 
     expect(ContactPage).toBeInTheDocument();
   });

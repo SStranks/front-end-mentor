@@ -1,19 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
 import ViewMoreCartItemsButton from './ViewMoreCartItemsButton';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const mockFn = jest.fn();
-    const tree = renderer
-      .create(<ViewMoreCartItemsButton cartItemLength={2} onClickFn={mockFn} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const mockFn = vi.fn();
+    const { asFragment } = render(<ViewMoreCartItemsButton cartItemLength={2} onClickFn={mockFn} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(<ViewMoreCartItemsButton cartItemLength={2} onClickFn={mockFn} />);
 
     const component = screen.getByRole('button');
@@ -25,7 +23,7 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   test('Clicking button fires callback', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(<ViewMoreCartItemsButton cartItemLength={2} onClickFn={mockFn} />);
 
     const component = screen.getByRole('button');
@@ -35,7 +33,7 @@ describe('Functionality', () => {
   });
 
   test('Clicking button should alternative text content', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(<ViewMoreCartItemsButton cartItemLength={2} onClickFn={mockFn} />);
 
     const component = screen.getByRole('button');
@@ -48,7 +46,7 @@ describe('Functionality', () => {
   });
 
   test('If cartItemLength is greater than 2, button text should be plural', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(<ViewMoreCartItemsButton cartItemLength={3} onClickFn={mockFn} />);
 
     const component = screen.getByRole('button');

@@ -1,29 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
 import QuantityToggleButton from './QuantityToggleButton';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     const currentValue = 123;
-    const tree = renderer
-      .create(
-        <QuantityToggleButton
-          appendClass="additionalStyles"
-          currentValue={currentValue}
-          increaseFn={mockFn}
-          decreaseFn={mockFn}
-        />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  test('Component base should be fully rendered', () => {
-    const mockFn = jest.fn();
-    const currentValue = 123;
-    const { container } = render(
+    const { asFragment } = render(
       <QuantityToggleButton
         appendClass="additionalStyles"
         currentValue={currentValue}
@@ -32,7 +16,22 @@ describe('Appearance', () => {
       />
     );
 
-    const component = container.querySelector('div');
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('Component base should be fully rendered', () => {
+    const mockFn = vi.fn();
+    const currentValue = 123;
+    render(
+      <QuantityToggleButton
+        appendClass="additionalStyles"
+        currentValue={currentValue}
+        increaseFn={mockFn}
+        decreaseFn={mockFn}
+      />
+    );
+
+    const component = screen.getByTestId('container');
     const buttons = screen.getAllByRole('button');
 
     expect(component).toHaveTextContent('123');
@@ -42,17 +41,12 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    const mockFn = jest.fn();
-    const { container } = render(
-      <QuantityToggleButton
-        appendClass="additionalStyles"
-        currentValue={1}
-        increaseFn={mockFn}
-        decreaseFn={mockFn}
-      />
+    const mockFn = vi.fn();
+    render(
+      <QuantityToggleButton appendClass="additionalStyles" currentValue={1} increaseFn={mockFn} decreaseFn={mockFn} />
     );
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('container');
 
     expect(component).toHaveClass('additionalStyles');
   });
@@ -60,15 +54,11 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   test('Buttons fire calls to parent; increase/decrease current value', async () => {
-    const mockFnDecrease = jest.fn();
-    const mockFnIncrease = jest.fn();
+    const mockFnDecrease = vi.fn();
+    const mockFnIncrease = vi.fn();
     const currentValue = 1;
     render(
-      <QuantityToggleButton
-        currentValue={currentValue}
-        increaseFn={mockFnIncrease}
-        decreaseFn={mockFnDecrease}
-      />
+      <QuantityToggleButton currentValue={currentValue} increaseFn={mockFnIncrease} decreaseFn={mockFnDecrease} />
     );
 
     const decreaseButton = screen.getByText('-');

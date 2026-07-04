@@ -1,12 +1,12 @@
 import styles from './_ProductQuantityButton.module.scss';
 
 type ElemProps = {
-  appendClass?: string;
   currentValue: number;
-  maxLimit?: number;
-  minLimit?: number;
   decreaseFn: (val: number) => void;
   increaseFn: (val: number) => void;
+  appendClass?: string;
+  maxLimit?: number;
+  minLimit?: number;
 };
 
 // Component requires decrease/increase functions; parent component should handle currentValue state.
@@ -29,11 +29,11 @@ function QuantityToggleButton(props: ElemProps): JSX.Element {
   };
 
   return (
-    <div className={`${styles.button} ${appendClass}`}>
+    <div className={`${styles['button']} ${appendClass}`} data-testid="container">
       <button onClick={decreaseBtn} type="button">
         -
       </button>
-      <p className={styles.button__quantity}>{currentValue}</p>
+      <p className={styles['button__quantity']}>{currentValue}</p>
       <button onClick={increaseBtn} type="button">
         +
       </button>

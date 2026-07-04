@@ -1,21 +1,20 @@
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
+import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+
 import Nav from './Nav';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Nav />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Nav />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -54,7 +53,7 @@ describe('Appearance', () => {
 describe('Functionality', () => {
   test('Navigation links direct/render correct page', async () => {
     const history = createMemoryHistory({ initialEntries: ['/dummyRoute'] });
-    history.push = jest.fn();
+    const spyPush = vi.spyOn(history, 'push');
     render(
       <Router location={history.location} navigator={history}>
         <Nav />
@@ -68,8 +67,8 @@ describe('Functionality', () => {
     const EarphonesLink = screen.getByRole('link', { name: /^earphones$/i });
 
     await userEvent.click(logoLink);
-    expect(history.push).toHaveBeenCalledTimes(1);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(1);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/',
@@ -84,8 +83,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(HomeLink);
-    expect(history.push).toHaveBeenCalledTimes(2);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(2);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/',
@@ -100,8 +99,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(HeadphoneLink);
-    expect(history.push).toHaveBeenCalledTimes(3);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(3);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/headphones',
@@ -116,8 +115,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(SpeakersLink);
-    expect(history.push).toHaveBeenCalledTimes(4);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(4);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/speakers',
@@ -132,8 +131,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(EarphonesLink);
-    expect(history.push).toHaveBeenCalledTimes(5);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(5);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/earphones',
@@ -156,9 +155,7 @@ describe('Functionality', () => {
       name: 'Menu Product Categories',
     });
 
-    expect(
-      screen.queryByLabelText(/see all \w+ shop/i)
-    ).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/see all \w+ shop/i)).not.toBeInTheDocument();
     await userEvent.click(menuBtn);
     expect(screen.getAllByLabelText(/^see all \w+ shop$/i)).toHaveLength(3);
   });
@@ -175,12 +172,8 @@ describe('Functionality', () => {
       name: 'Shopping Cart',
     });
 
-    expect(
-      screen.queryByRole('button', { name: /checkout/i })
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /checkout/i })).not.toBeInTheDocument();
     await userEvent.click(cartBtn);
-    expect(
-      screen.getByRole('button', { name: /checkout/i })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /checkout/i })).toBeInTheDocument();
   });
 });

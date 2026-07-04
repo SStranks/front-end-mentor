@@ -1,7 +1,8 @@
-import CheckoutSummaryProductCard from '#Components/checkout/CheckoutSummaryProductCard';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
+import CheckoutSummaryProductCard from '#Components/checkout/CheckoutSummaryProductCard';
+
 import CheckoutForm from './CheckoutForm';
 
 const DummyProductSummaryCard = (): JSX.Element => {
@@ -18,107 +19,48 @@ const DummyProductSummaryCard = (): JSX.Element => {
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const mockFn = jest.fn();
-    const tree = renderer
-      .create(
-        <CheckoutForm
-          totalAmount={99.01}
-          openOrderCompleteModal={mockFn}
-          productsList={[DummyProductSummaryCard()]}
-        />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const mockFn = vi.fn();
+    const { asFragment } = render(
+      <CheckoutForm totalAmount={99.01} openOrderCompleteModal={mockFn} productsList={[DummyProductSummaryCard()]} />
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(
-      <CheckoutForm
-        totalAmount={99.01}
-        openOrderCompleteModal={mockFn}
-        productsList={[DummyProductSummaryCard()]}
-      />
+      <CheckoutForm totalAmount={99.01} openOrderCompleteModal={mockFn} productsList={[DummyProductSummaryCard()]} />
     );
 
-    const component = screen.getByRole('form');
     // Checkout Container
-    const checkoutContainer = component.querySelector('div.checkout');
-    const checkoutTitle = within(checkoutContainer as HTMLElement).getByText(
-      /^checkout$/
-    );
-    const billingDetailsText = within(
-      checkoutContainer as HTMLElement
-    ).getByText(/^billing details$/);
-    const shippingInfoText = within(checkoutContainer as HTMLElement).getByText(
-      /^shipping info$/
-    );
-    const paymentDetailsText = within(
-      checkoutContainer as HTMLElement
-    ).getByText(/^payment details$/);
-    const paymentMethodText = within(
-      checkoutContainer as HTMLElement
-    ).getByText(/^payment method$/);
-    const nameInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert full name');
-    const emailInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert email address');
-    const phoneInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert phone number');
-    const addressInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert address');
-    const zipInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert ZIP code');
-    const cityInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert city');
-    const countryInput = within(
-      checkoutContainer as HTMLElement
-    ).getByPlaceholderText('Insert country');
-    const eMoneyRadioInput = within(checkoutContainer as HTMLElement).getByRole(
-      'radio',
-      { name: 'e-Money' }
-    );
-    const cashRadioInput = within(checkoutContainer as HTMLElement).getByRole(
-      'radio',
-      { name: 'cash' }
-    );
+    const checkoutContainer = screen.getByTestId('checkout container');
+    const checkoutTitle = within(checkoutContainer).getByText(/^checkout$/);
+    const billingDetailsText = within(checkoutContainer).getByText(/^billing details$/);
+    const shippingInfoText = within(checkoutContainer).getByText(/^shipping info$/);
+    const paymentDetailsText = within(checkoutContainer).getByText(/^payment details$/);
+    const paymentMethodText = within(checkoutContainer).getByText(/^payment method$/);
+    const nameInput = within(checkoutContainer).getByPlaceholderText('Insert full name');
+    const emailInput = within(checkoutContainer).getByPlaceholderText('Insert email address');
+    const phoneInput = within(checkoutContainer).getByPlaceholderText('Insert phone number');
+    const addressInput = within(checkoutContainer).getByPlaceholderText('Insert address');
+    const zipInput = within(checkoutContainer).getByPlaceholderText('Insert ZIP code');
+    const cityInput = within(checkoutContainer).getByPlaceholderText('Insert city');
+    const countryInput = within(checkoutContainer).getByPlaceholderText('Insert country');
+    const eMoneyRadioInput = within(checkoutContainer).getByRole('radio', { name: 'e-Money' });
+    const cashRadioInput = within(checkoutContainer).getByRole('radio', { name: 'cash' });
 
     // Summary Container
-    const summaryContainer = component.querySelector('div.summary');
-    const summaryTitle = within(summaryContainer as HTMLElement).getByText(
-      /^summary$/
-    );
-    const totalText = within(summaryContainer as HTMLElement).getByText(
-      /^total$/
-    );
-    const shippingText = within(summaryContainer as HTMLElement).getByText(
-      /^shipping$/
-    );
-    const vatText = within(summaryContainer as HTMLElement).getByText(
-      /^vat \(included\)$/
-    );
-    const grandTotalText = within(summaryContainer as HTMLElement).getByText(
-      /^grand total$/
-    );
-    const continueAndPayBtn = within(summaryContainer as HTMLElement).getByRole(
-      'button',
-      { name: 'continue & pay' }
-    );
-    const totalAmountsContainer = summaryContainer?.querySelector(
-      'div.summary__financial'
-    );
-    const totalAmountsTexts = within(
-      totalAmountsContainer as HTMLElement
-    ).getAllByText(/^\$ (0|[1-9]\d{0,2})(,\d{3})*(\.\d{1,2})?$/);
+    const summaryContainer = screen.getByTestId('checkout summary');
+    const summaryTitle = within(summaryContainer).getByText(/^summary$/);
+    const totalText = within(summaryContainer).getByText(/^total$/);
+    const shippingText = within(summaryContainer).getByText(/^shipping$/);
+    const vatText = within(summaryContainer).getByText(/^vat \(included\)$/);
+    const grandTotalText = within(summaryContainer).getByText(/^grand total$/);
+    const continueAndPayBtn = within(summaryContainer).getByRole('button', { name: 'continue & pay' });
+    const totalAmountsContainer = screen.getByTestId('summary financial');
+    const totalAmountsTexts = within(totalAmountsContainer).getAllByText(/^\$ (0|[1-9]\d{0,2})(,\d{3})*(\.\d{1,2})?$/);
 
     // Checkout Container
-    expect(component).toBeInTheDocument();
     expect(checkoutContainer).toBeInTheDocument();
     expect(checkoutTitle).toBeInTheDocument();
     expect(billingDetailsText).toBeInTheDocument();
@@ -149,55 +91,35 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   test('Clicking `e-Money` radio reveals two inputs: e-money number, e-money pin', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(
-      <CheckoutForm
-        totalAmount={99.01}
-        openOrderCompleteModal={mockFn}
-        productsList={[DummyProductSummaryCard()]}
-      />
+      <CheckoutForm totalAmount={99.01} openOrderCompleteModal={mockFn} productsList={[DummyProductSummaryCard()]} />
     );
 
     const eMoneyRadioInput = screen.getByRole('radio', { name: 'e-Money' });
 
-    expect(
-      screen.queryByPlaceholderText('Insert e-Money number')
-    ).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('Insert e-Money number')).not.toBeInTheDocument();
     await userEvent.click(eMoneyRadioInput);
-    expect(
-      screen.queryByPlaceholderText('Insert e-Money number')
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Insert e-Money number')).toBeInTheDocument();
   });
 
   test('Clicking `cash` radio reveals img and text content', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(
-      <CheckoutForm
-        totalAmount={99.01}
-        openOrderCompleteModal={mockFn}
-        productsList={[DummyProductSummaryCard()]}
-      />
+      <CheckoutForm totalAmount={99.01} openOrderCompleteModal={mockFn} productsList={[DummyProductSummaryCard()]} />
     );
 
     const cashRadioInput = screen.getByRole('radio', { name: 'cash' });
 
-    expect(
-      screen.queryByText(/The ‘Cash on Delivery’ option enables/)
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/The ‘Cash on Delivery’ option enables/)).not.toBeInTheDocument();
     await userEvent.click(cashRadioInput);
-    expect(
-      screen.queryByText(/The ‘Cash on Delivery’ option enables/)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/The ‘Cash on Delivery’ option enables/)).toBeInTheDocument();
   });
 
   test('Clicking form submit button when all inputs are invalid should add focus to first invalid input', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(
-      <CheckoutForm
-        totalAmount={99.01}
-        openOrderCompleteModal={mockFn}
-        productsList={[DummyProductSummaryCard()]}
-      />
+      <CheckoutForm totalAmount={99.01} openOrderCompleteModal={mockFn} productsList={[DummyProductSummaryCard()]} />
     );
 
     const nameInput = screen.getByPlaceholderText('Insert full name');
@@ -212,13 +134,9 @@ describe('Functionality', () => {
   });
 
   test('Clicking form submit button when all inputs are valid should fire order complete modal', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     render(
-      <CheckoutForm
-        totalAmount={99.01}
-        openOrderCompleteModal={mockFn}
-        productsList={[DummyProductSummaryCard()]}
-      />
+      <CheckoutForm totalAmount={99.01} openOrderCompleteModal={mockFn} productsList={[DummyProductSummaryCard()]} />
     );
 
     const nameInput = screen.getByPlaceholderText('Insert full name');

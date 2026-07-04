@@ -2,14 +2,19 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import ProductDetailLayout from './ProductDetailLayout';
 
-const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+const mockedUsedNavigate = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+
+  return {
+    ...actual,
+    useNavigate: () => mockedUsedNavigate,
+  };
+});
 
 beforeEach(() => {
   mockedUsedNavigate.mockReset();
@@ -20,14 +25,13 @@ describe('Appearance', () => {
     const history = createMemoryHistory();
     const state = { productCategory: 'speakers', productId: 5 };
     history.push('/', state);
-    const tree = renderer
-      .create(
-        <Router location={history.location} navigator={history}>
-          <ProductDetailLayout />
-        </Router>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <Router location={history.location} navigator={history}>
+        <ProductDetailLayout />
+      </Router>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -44,8 +48,8 @@ describe('Appearance', () => {
     const backBtn = screen.getByRole('button', { name: 'go back' });
     const alternativeProductsText = screen.getByText(/^you may also like$/);
     const productDetailCard = screen.getByRole('heading', {
-      name: 'in the box',
       level: 3,
+      name: 'in the box',
     });
     const productImageGrid = screen.getAllByRole('img', {
       name: /^.+ being used$/,
@@ -96,7 +100,7 @@ describe('Functionality', () => {
     await userEvent.click(backBtn);
     await waitFor(() => {
       expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
-      expect(mockedUsedNavigate).toHaveBeenCalledWith(-1);
     });
+    expect(mockedUsedNavigate).toHaveBeenCalledWith(-1);
   });
 });

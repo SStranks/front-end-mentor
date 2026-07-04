@@ -217,9 +217,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.15
-      '@types/react-test-renderer':
-        specifier: ^18.0.6
-        version: 18.0.6
       '@types/react-transition-group':
         specifier: ^4.4.9
         version: 4.4.9
@@ -283,9 +280,6 @@ importers:
       react-refresh:
         specifier: 0.18.0
         version: 0.18.0
-      react-test-renderer:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
       sass:
         specifier: ^1.100.0
         version: 1.100.0
@@ -455,9 +449,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.15
-      '@types/react-test-renderer':
-        specifier: ^18.0.6
-        version: 18.0.6
       '@types/react-transition-group':
         specifier: ^4.4.9
         version: 4.4.9
@@ -769,9 +760,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.15
-      '@types/react-test-renderer':
-        specifier: ^18.0.6
-        version: 18.0.6
       '@types/react-transition-group':
         specifier: ^4.4.9
         version: 4.4.9
@@ -1065,9 +1053,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.15
-      '@types/react-test-renderer':
-        specifier: ^18.0.6
-        version: 18.0.6
       '@types/react-transition-group':
         specifier: ^4.4.9
         version: 4.4.9
@@ -1391,9 +1376,6 @@ importers:
       '@types/node':
         specifier: ^20.9.4
         version: 20.9.4
-      '@types/react-test-renderer':
-        specifier: ^18.0.6
-        version: 18.0.6
       '@vitejs/plugin-react':
         specifier: 6.0.1
         version: 6.0.1(vite@8.1.0(@types/node@20.9.4)(esbuild@0.28.1)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))
@@ -1607,15 +1589,6 @@ importers:
       globals:
         specifier: ^17.5.0
         version: 17.7.0
-
-  packages/eslint-config-react-test:
-    dependencies:
-      eslint-plugin-jest-dom:
-        specifier: ^5.1.0
-        version: 5.1.0(@testing-library/dom@9.3.3)(eslint@9.39.4(jiti@2.6.1))
-      eslint-plugin-testing-library:
-        specifier: ^6.1.2
-        version: 6.1.2(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3)
 
   packages/eslint-config-react-vitest:
     devDependencies:
@@ -5317,9 +5290,6 @@ packages:
   '@types/react-redux@7.1.30':
     resolution: {integrity: sha512-i2kqM6YaUwFKduamV6QM/uHbb0eCP8f8ZQ/0yWf+BsAVVsZPRYJ9eeGWZ3uxLfWwwA0SrPRMTPTqsPFkY3HZdA==}
 
-  '@types/react-test-renderer@18.0.6':
-    resolution: {integrity: sha512-O2JT1J3/v/NaYHYmPf2DXBSqUGmp6iwhFPicES6Pc1Y90B9Qgu99mmaBGqfZFpVuXLzF/pNJB4K9ySL3iqFeXA==}
-
   '@types/react-transition-group@4.4.9':
     resolution: {integrity: sha512-ZVNmWumUIh5NhH8aMD9CR2hdW0fNuYInlocZHaZ+dgk/1K49j1w/HoAuK1ki+pgscQrOFRTlXeoURtuzEkV3dg==}
 
@@ -7667,16 +7637,6 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-jest-dom@5.1.0:
-    resolution: {integrity: sha512-JIXZp+E/h/aGlP/rQc4tuOejiHlZXg65qw8JAJMIJA5VsdjOkss/SYcRSqBrQuEOytEM8JvngUjcz31d1RrCrA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6', yarn: '>=1'}
-    peerDependencies:
-      '@testing-library/dom': ^8.0.0 || ^9.0.0
-      eslint: ^6.8.0 || ^7.0.0 || ^8.0.0
-    peerDependenciesMeta:
-      '@testing-library/dom':
-        optional: true
-
   eslint-plugin-jsonc@3.2.0:
     resolution: {integrity: sha512-eQSxJypkpNycQAFE/ph/j+bDD2MiCcojxNb+7nugYzuQZvELYg4YO1Cv1y/8MbjPIEw5u3Lx0VPOTlqJJIhPPw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
@@ -7743,12 +7703,6 @@ packages:
   eslint-plugin-security@4.0.1:
     resolution: {integrity: sha512-/lZCkOxPOWaf1jXAqgICrS8St3BMBccIPvhOSUYuV6VCr1o5nFVG998FnTLt6w2Nxb8Uo0nM8fzmnhp+GY/aEg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  eslint-plugin-testing-library@6.1.2:
-    resolution: {integrity: sha512-Ra16FeBlonfbScOIdZEta9o+OxtwDqiUt+4UCpIM42TuatyLdtfU/SbwnIzPcAszrbl58PGwyZ9YGU9dwIo/tA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
-    peerDependencies:
-      eslint: ^7.5.0 || ^8.0.0
 
   eslint-plugin-testing-library@7.16.2:
     resolution: {integrity: sha512-8gleGnQXK2ZA3hHwjCwpYTZvM+9VsrJ+/9kDI8CjqAQGAdMQOdn/rJNu7ZySENuiWlGKQWyZJ4ZjEg2zamaRHw==}
@@ -11505,10 +11459,6 @@ packages:
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
-
-  requireindex@1.2.0:
-    resolution: {integrity: sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==}
-    engines: {node: '>=0.10.5'}
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
@@ -17822,10 +17772,6 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       redux: 4.2.1
 
-  '@types/react-test-renderer@18.0.6':
-    dependencies:
-      '@types/react': 18.2.37
-
   '@types/react-transition-group@4.4.9':
     dependencies:
       '@types/react': 18.2.37
@@ -18753,9 +18699,9 @@ snapshots:
 
   array.prototype.flat@1.3.2:
     dependencies:
-      call-bind: 1.0.5
+      call-bind: 1.0.9
       define-properties: 1.2.1
-      es-abstract: 1.22.3
+      es-abstract: 1.24.2
       es-shim-unscopables: 1.0.2
 
   array.prototype.flatmap@1.3.2:
@@ -20796,14 +20742,6 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jest-dom@5.1.0(@testing-library/dom@9.3.3)(eslint@9.39.4(jiti@2.6.1)):
-    dependencies:
-      '@babel/runtime': 7.23.4
-      eslint: 9.39.4(jiti@2.6.1)
-      requireindex: 1.2.0
-    optionalDependencies:
-      '@testing-library/dom': 9.3.3
-
   eslint-plugin-jsonc@3.2.0(eslint@9.39.4(jiti@2.6.1)):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.4(jiti@2.6.1))
@@ -20918,14 +20856,6 @@ snapshots:
   eslint-plugin-security@4.0.1:
     dependencies:
       safe-regex: 2.1.1
-
-  eslint-plugin-testing-library@6.1.2(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3):
-    dependencies:
-      '@typescript-eslint/utils': 5.62.0(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3)
-      eslint: 9.39.4(jiti@2.6.1)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   eslint-plugin-testing-library@7.16.2(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
@@ -22397,7 +22327,7 @@ snapshots:
 
   is-async-function@2.0.0:
     dependencies:
-      has-tostringtag: 1.0.0
+      has-tostringtag: 1.0.2
 
   is-bigint@1.0.4:
     dependencies:
@@ -22489,7 +22419,7 @@ snapshots:
 
   is-generator-function@1.0.10:
     dependencies:
-      has-tostringtag: 1.0.0
+      has-tostringtag: 1.0.2
 
   is-gif@3.0.0:
     dependencies:
@@ -25391,8 +25321,6 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  requireindex@1.2.0: {}
-
   requires-port@1.0.0: {}
 
   resolve-cwd@3.0.0:
@@ -26995,7 +26923,7 @@ snapshots:
   typed-array-byte-length@1.0.3:
     dependencies:
       call-bind: 1.0.9
-      for-each: 0.3.3
+      for-each: 0.3.5
       gopd: 1.2.0
       has-proto: 1.2.0
       is-typed-array: 1.1.15
@@ -27012,7 +26940,7 @@ snapshots:
     dependencies:
       available-typed-arrays: 1.0.7
       call-bind: 1.0.9
-      for-each: 0.3.3
+      for-each: 0.3.5
       gopd: 1.2.0
       has-proto: 1.2.0
       is-typed-array: 1.1.15
@@ -27898,14 +27826,14 @@ snapshots:
   which-builtin-type@1.2.1:
     dependencies:
       call-bound: 1.0.4
-      function.prototype.name: 1.1.6
+      function.prototype.name: 1.2.0
       has-tostringtag: 1.0.2
       is-async-function: 2.0.0
       is-date-object: 1.1.0
       is-finalizationregistry: 1.1.1
       is-generator-function: 1.0.10
       is-regex: 1.2.1
-      is-weakref: 1.0.2
+      is-weakref: 1.1.1
       isarray: 2.0.5
       which-boxed-primitive: 1.1.1
       which-collection: 1.0.2

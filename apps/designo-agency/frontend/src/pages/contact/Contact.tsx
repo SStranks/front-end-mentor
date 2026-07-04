@@ -1,12 +1,11 @@
+import Location from '#Components/location/Location';
 import Nav from '#Components/nav/Nav';
 import DefaultLayout from '#Layouts/DefaultLayout';
-
 import IconError from '#Svg/desktop/icon-error.svg';
 import SvgAustralia from '#Svg/desktop/illustration-australia.svg';
 import SvgCanada from '#Svg/desktop/illustration-canada.svg';
 import SvgUnitedKingdom from '#Svg/desktop/illustration-united-kingdom.svg';
 
-import Location from '#Components/location/Location';
 import styles from './_Contact.module.scss';
 
 function Contact(): JSX.Element {
@@ -16,13 +15,11 @@ function Contact(): JSX.Element {
     const formElement = e.target as HTMLFormElement;
     const isValid = formElement.checkValidity();
 
-    formElement.classList.add(styles.header__form__submitted);
+    formElement.classList.add(styles['header__form__submitted'] as string);
 
     // Focus on first invalid input
-    const firstInvalidInput = formElement.querySelector(
-      ':invalid'
-    ) as HTMLInputElement;
-    firstInvalidInput?.focus();
+    const firstInvalidInput = formElement.querySelector(':invalid') as HTMLInputElement;
+    firstInvalidInput.focus();
 
     // NOTE:  Let inputs handle onInvalid state internally - see InputText for implementation.
     // Add error validation msg to invalid fields
@@ -45,47 +42,42 @@ function Contact(): JSX.Element {
   return (
     <DefaultLayout>
       <Nav />
-      <header className={styles.header}>
-        <div className={styles.header__container}>
-          <div className={styles.header__info}>
+      <header className={styles['header']}>
+        <div className={styles['header__container']}>
+          <div className={styles['header__info']}>
             <h1>Contact Us</h1>
             <p>
-              Ready to take it to the next level? Let’s talk about your project
-              or idea and find out how we can help your business grow. If you
-              are looking for unique digital experiences that’s relatable to
-              your users, drop us a line.
+              Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help
+              your business grow. If you are looking for unique digital experiences that’s relatable to your users, drop
+              us a line.
             </p>
           </div>
         </div>
-        <form
-          className={styles.header__form}
-          aria-label="form"
-          onSubmit={onSubmit}
-          noValidate>
-          <div className={styles.header__input}>
+        <form className={styles['header__form']} aria-label="form" onSubmit={onSubmit} noValidate>
+          <div className={styles['header__input']}>
             <input type="text" placeholder="Name" required pattern="/\p{L}/u" />
-            <div className={styles.header__input__error}>
+            <div className={styles['header__input__error']}>
               <p />
               <img src={IconError} alt="" />
             </div>
           </div>
-          <div className={styles.header__input}>
+          <div className={styles['header__input']}>
             <input type="email" placeholder="Email Address" required />
-            <div className={styles.header__input__error}>
+            <div className={styles['header__input__error']}>
               <p />
               <img src={IconError} alt="" />
             </div>
           </div>
-          <div className={styles.header__input}>
+          <div className={styles['header__input']}>
             <input type="tel" placeholder="Phone" required pattern="[0-9]" />
-            <div className={styles.header__input__error}>
+            <div className={styles['header__input__error']}>
               <p />
               <img src={IconError} alt="" />
             </div>
           </div>
-          <div className={styles.header__input}>
+          <div className={styles['header__input']}>
             <textarea rows={20} placeholder="Your Message" required />
-            <div className={styles.header__input__error}>
+            <div className={styles['header__input__error']}>
               <p />
               <img src={IconError} alt="" />
             </div>
@@ -93,18 +85,10 @@ function Contact(): JSX.Element {
           <button type="submit">submit</button>
         </form>
       </header>
-      <div className={styles.locations}>
+      <div className={styles['locations']} data-testid="locations">
         <Location title="canada" illustration={SvgCanada} bgRotation="0deg" />
-        <Location
-          title="australia"
-          illustration={SvgAustralia}
-          bgRotation="270deg"
-        />
-        <Location
-          title="united kingdom"
-          illustration={SvgUnitedKingdom}
-          bgRotation="90deg"
-        />
+        <Location title="australia" illustration={SvgAustralia} bgRotation="270deg" />
+        <Location title="united kingdom" illustration={SvgUnitedKingdom} bgRotation="90deg" />
       </div>
     </DefaultLayout>
   );

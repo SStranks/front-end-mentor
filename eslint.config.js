@@ -307,12 +307,12 @@ export default defineConfig([
   },
   {
     name: '@apps/kanban-task-app/frontend: Testing; Vitest + RTL',
-    files: ['@apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
     languageOptions: {
       ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: path.join(import.meta.dirname, '@apps/kanban-task-app/frontend'),
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/frontend'),
       },
     },
     plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
@@ -365,12 +365,12 @@ export default defineConfig([
   },
   {
     name: '@apps/project-feedback-app/frontend: Testing; Vitest + RTL',
-    files: ['@apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
     languageOptions: {
       ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: path.join(import.meta.dirname, '@apps/project-feedback-app/frontend'),
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/frontend'),
       },
     },
     plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },

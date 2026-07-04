@@ -2,19 +2,17 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, MemoryRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import Footer from './Footer';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Footer />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -63,7 +61,7 @@ describe('Appearance', () => {
 describe('Functionality', () => {
   test('Navigation Links direct to the correct page', async () => {
     const history = createMemoryHistory({ initialEntries: ['/dummyRoute'] });
-    history.push = jest.fn();
+    const pushSpy = vi.spyOn(history, 'push');
     render(
       <Router location={history.location} navigator={history}>
         <Footer />
@@ -76,8 +74,8 @@ describe('Functionality', () => {
     const contactLink = screen.getByRole('link', { name: 'contact' });
 
     await userEvent.click(homeLink);
-    expect(history.push).toHaveBeenCalledTimes(1);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(pushSpy).toHaveBeenCalledTimes(1);
+    expect(pushSpy).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/',
@@ -93,8 +91,8 @@ describe('Functionality', () => {
     );
 
     await userEvent.click(aboutLink);
-    expect(history.push).toHaveBeenCalledTimes(2);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(pushSpy).toHaveBeenCalledTimes(2);
+    expect(pushSpy).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/about',
@@ -110,8 +108,8 @@ describe('Functionality', () => {
     );
 
     await userEvent.click(locationsLink);
-    expect(history.push).toHaveBeenCalledTimes(3);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(pushSpy).toHaveBeenCalledTimes(3);
+    expect(pushSpy).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/locations',
@@ -127,8 +125,8 @@ describe('Functionality', () => {
     );
 
     await userEvent.click(contactLink);
-    expect(history.push).toHaveBeenCalledTimes(4);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(pushSpy).toHaveBeenCalledTimes(4);
+    expect(pushSpy).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/contact',

@@ -1,34 +1,31 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import Contact from './Contact';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Contact />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Contact />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(
+    render(
       <MemoryRouter initialEntries={['/contact']}>
         <Contact />
       </MemoryRouter>
     );
 
-    const component = container.firstChild;
     const nav = screen.getByRole('navigation');
     const header = screen.getByRole('banner');
     const footer = screen.getByRole('contentinfo');
     const h1Text = screen.getByRole('heading', {
-      name: /contact us/i,
       level: 1,
+      name: /contact us/i,
     });
     const headerText = screen.getByText(/ready to take it to/i);
 
@@ -39,9 +36,8 @@ describe('Appearance', () => {
     const msgTextArea = screen.getByPlaceholderText(/your message/i);
     const submitBtn = screen.getByRole('button', { name: 'submit' });
 
-    const locations = document.querySelector('div.qualities');
+    const locations = screen.getByTestId('locations');
 
-    expect(component).toBeInTheDocument();
     expect(nav).toBeInTheDocument();
     expect(header).toBeInTheDocument();
     expect(header).toContainElement(h1Text);
@@ -55,6 +51,6 @@ describe('Appearance', () => {
     expect(footer).toBeInTheDocument();
 
     expect(locations).toBeInTheDocument();
-    expect(locations?.children).toHaveLength(3);
+    expect(screen.getAllByTestId('location')).toHaveLength(3);
   });
 });

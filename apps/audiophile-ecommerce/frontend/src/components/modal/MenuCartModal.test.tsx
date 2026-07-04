@@ -1,9 +1,12 @@
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+import type { Mock } from 'vitest';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
+import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+
 import MenuCartModal from './MenuCartModal';
 
 let $root: HTMLDivElement;
@@ -20,48 +23,37 @@ afterEach(() => {
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = vi.fn((element) => {
       return element as React.ReactPortal;
     });
 
-    const mockSetModalFn = jest.fn();
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ShoppingCartProvider>
-            <MenuCartModal
-              modalOpen
-              setModal={mockSetModalFn}
-              // eslint-disable-next-line unicorn/no-null
-              modalButtonRef={null}
-            />
-          </ShoppingCartProvider>
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const mockSetModalFn = vi.fn();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ShoppingCartProvider>
+          <MenuCartModal modalOpen setModal={mockSetModalFn} modalButtonRef={null} />
+        </ShoppingCartProvider>
+      </BrowserRouter>
+    );
 
-    (ReactDOM.createPortal as jest.Mock).mockClear();
+    expect(asFragment()).toMatchSnapshot();
+
+    (ReactDOM.createPortal as Mock).mockClear();
   });
 
   test('Component base should be fully rendered', () => {
-    const mockSetModalFn = jest.fn();
+    const mockSetModalFn = vi.fn();
     const { container } = render(
       <ShoppingCartProvider>
-        <MenuCartModal
-          modalOpen
-          setModal={mockSetModalFn}
-          // eslint-disable-next-line unicorn/no-null
-          modalButtonRef={null}
-        />
+        <MenuCartModal modalOpen setModal={mockSetModalFn} modalButtonRef={null} />
       </ShoppingCartProvider>,
-      { wrapper: BrowserRouter, container: $root }
+      { container: $root, wrapper: BrowserRouter }
     );
 
     const componentPortal = container;
     const modalBtn = screen.getByRole('button', {
-      name: 'remove all products from cart',
       hidden: true,
+      name: 'remove all products from cart',
     });
 
     expect(componentPortal).toBeInTheDocument();
@@ -71,22 +63,17 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   test('Clicking outside modal contents/Pressing `Esc`, fires close modal call', async () => {
-    const mockSetModalFn = jest.fn();
-    const { container } = render(
+    const mockSetModalFn = vi.fn();
+    render(
       <ShoppingCartProvider>
-        <MenuCartModal
-          modalOpen
-          setModal={mockSetModalFn}
-          // eslint-disable-next-line unicorn/no-null
-          modalButtonRef={null}
-        />
+        <MenuCartModal modalOpen setModal={mockSetModalFn} modalButtonRef={null} />
       </ShoppingCartProvider>,
-      { wrapper: BrowserRouter, container: $root }
+      { container: $root, wrapper: BrowserRouter }
     );
 
-    const modalContainer = container.querySelector('div.container');
+    const modalContainer = screen.getByRole('container');
 
-    await userEvent.click(modalContainer as Element);
+    await userEvent.click(modalContainer);
     await userEvent.keyboard('{Escape}');
     expect(mockSetModalFn).toHaveBeenCalledTimes(2);
     expect(mockSetModalFn).toHaveBeenCalledWith(false);

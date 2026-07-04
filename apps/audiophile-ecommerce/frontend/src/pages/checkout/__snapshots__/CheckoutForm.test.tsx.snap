@@ -1,0 +1,304 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<form
+  aria-label="form"
+  className="_form_cba5aa"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div
+    className="_checkout_cba5aa"
+  >
+    <p
+      className="_checkout__header_cba5aa"
+    >
+      checkout
+    </p>
+    <div
+      className="_checkout__grid_cba5aa"
+    >
+      <p
+        className="_checkout__subHeader_cba5aa"
+      >
+        billing details
+      </p>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa"
+        htmlFor="Name"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          Name
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="Name"
+          name="Name"
+          placeholder="Insert full name"
+          required={true}
+          type="text"
+        />
+      </label>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa"
+        htmlFor="Email Address"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          Email Address
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="Email Address"
+          maxLength={256}
+          name="Email Address"
+          placeholder="Insert email address"
+          required={true}
+          type="email"
+        />
+      </label>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa"
+        htmlFor="Phone Number"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          Phone Number
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="Phone Number"
+          name="Phone Number"
+          placeholder="Insert phone number"
+          required={true}
+          type="tel"
+        />
+      </label>
+      <p
+        className="_checkout__subHeader_cba5aa"
+      >
+        shipping info
+      </p>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa _gridColumnSpan_cba5aa"
+        htmlFor="Address"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          Address
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="Address"
+          name="Address"
+          placeholder="Insert address"
+          required={true}
+          type="text"
+        />
+      </label>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa"
+        htmlFor="ZIP Code"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          ZIP Code
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="ZIP Code"
+          name="ZIP Code"
+          placeholder="Insert ZIP code"
+          required={true}
+          type="text"
+        />
+      </label>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa"
+        htmlFor="City"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          City
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="City"
+          name="City"
+          placeholder="Insert city"
+          required={true}
+          type="text"
+        />
+      </label>
+      <label
+        className="_container_429fb6 _checkout__inputText_cba5aa"
+        htmlFor="Country"
+      >
+        <p
+          className="_container__title_429fb6"
+        >
+          Country
+        </p>
+        <input
+          className="_container__input_429fb6"
+          id="Country"
+          name="Country"
+          placeholder="Insert country"
+          required={true}
+          type="text"
+        />
+      </label>
+      <p
+        className="_checkout__subHeader_cba5aa"
+      >
+        payment details
+      </p>
+      <div
+        className="_checkout__paymentMethod_cba5aa"
+      >
+        <p
+          className="_checkout__labelTitle_cba5aa"
+        >
+          payment method
+        </p>
+        <label
+          className="_label_a98f32 undefined"
+          htmlFor="e-Money"
+        >
+          <input
+            className="_label__radioBtn_a98f32"
+            id="e-Money"
+            name="payment method"
+            onChange={[Function]}
+            required={true}
+            type="radio"
+          />
+          <p
+            className="_label__title_a98f32"
+          >
+            e-Money
+          </p>
+        </label>
+        <label
+          className="_label_a98f32 _gridColumn2_cba5aa"
+          htmlFor="cash"
+        >
+          <input
+            className="_label__radioBtn_a98f32"
+            id="cash"
+            name="payment method"
+            onChange={[Function]}
+            required={true}
+            type="radio"
+          />
+          <p
+            className="_label__title_a98f32"
+          >
+            cash
+          </p>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="_summary_cba5aa"
+  >
+    <p
+      className="_summary__header_cba5aa"
+    >
+      summary
+    </p>
+    <div
+      className="_summary__products_cba5aa"
+    >
+      <div
+        className="_card_878a3b"
+      >
+        <img
+          alt="dummyProductTitle"
+          className="_card__img_878a3b"
+          src="dummyImgURL"
+        />
+        <p
+          className="_card__title_878a3b"
+        >
+          dummyProductTitle
+        </p>
+        <p
+          className="_card__price_878a3b"
+        >
+          $ 
+          123.45
+        </p>
+        <p
+          className="_card__quantity_878a3b"
+        >
+          x
+          3
+        </p>
+      </div>
+    </div>
+    <div
+      className="_summary__financial_cba5aa"
+    >
+      <p
+        className="_summary__financial__heading_cba5aa"
+      >
+        total
+      </p>
+      <p
+        className="_summary__financial__total_cba5aa"
+      >
+        $ 
+        99.01
+      </p>
+      <p
+        className="_summary__financial__heading_cba5aa"
+      >
+        shipping
+      </p>
+      <p
+        className="_summary__financial__total_cba5aa"
+      >
+        $ 
+        50
+      </p>
+      <p
+        className="_summary__financial__heading_cba5aa"
+      >
+        vat (included)
+      </p>
+      <p
+        className="_summary__financial__total_cba5aa"
+      >
+        $ 
+        19.802
+      </p>
+      <p
+        className="_summary__financial__heading_cba5aa _gridLastRow_cba5aa"
+      >
+        grand total
+      </p>
+      <p
+        className="_summary__financial__grandTotal_cba5aa"
+      >
+        $ 
+        168.812
+      </p>
+    </div>
+    <button
+      className="_summary__btn_cba5aa"
+      type="submit"
+    >
+      continue & pay
+    </button>
+  </div>
+</form>
+`;

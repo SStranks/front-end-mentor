@@ -1,21 +1,18 @@
-/* eslint-disable unicorn/no-null */
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import Footer from './Footer';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Footer />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -43,7 +40,7 @@ describe('Appearance', () => {
 describe('Functionality', () => {
   test('Navigation links direct/render correct page', async () => {
     const history = createMemoryHistory({ initialEntries: ['/dummyRoute'] });
-    history.push = jest.fn();
+    const spyPush = vi.spyOn(history, 'push');
     render(
       <Router location={history.location} navigator={history}>
         <Footer />
@@ -56,8 +53,8 @@ describe('Functionality', () => {
     const EarphonesLink = screen.getByRole('link', { name: /^earphones$/i });
 
     await userEvent.click(HomeLink);
-    expect(history.push).toHaveBeenCalledTimes(1);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(1);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/',
@@ -72,8 +69,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(HeadphoneLink);
-    expect(history.push).toHaveBeenCalledTimes(2);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(2);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/headphones',
@@ -88,8 +85,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(SpeakersLink);
-    expect(history.push).toHaveBeenCalledTimes(3);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(3);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/speakers',
@@ -104,8 +101,8 @@ describe('Functionality', () => {
       }
     );
     await userEvent.click(EarphonesLink);
-    expect(history.push).toHaveBeenCalledTimes(4);
-    expect(history.push).toHaveBeenCalledWith(
+    expect(spyPush).toHaveBeenCalledTimes(4);
+    expect(spyPush).toHaveBeenCalledWith(
       {
         hash: '',
         pathname: '/earphones',
@@ -121,7 +118,7 @@ describe('Functionality', () => {
     );
   });
 
-  test('Social media links hrefs are correctly defined', async () => {
+  test('Social media links hrefs are correctly defined', () => {
     render(<Footer />, { wrapper: BrowserRouter });
 
     const FacebookLink = screen.getByRole('link', {

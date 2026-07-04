@@ -1,37 +1,28 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import Location from './Location';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Location
-            title="dummyTitle"
-            illustration="imgURL"
-            bgRotation="0deg"
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <Location title="dummyTitle" illustration="imgURL" bgRotation="0deg" />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(
-      <Location title="dummyTitle" illustration="imgURL" bgRotation="90deg" />,
-      { wrapper: BrowserRouter }
-    );
+    render(<Location title="dummyTitle" illustration="imgURL" bgRotation="90deg" />, {
+      wrapper: BrowserRouter,
+    });
 
-    const component = container.firstChild;
     const img = screen.getByRole('img');
-    const bgCircle = document.querySelector('div.bg-circle');
+    const bgCircle = screen.getByTestId('background circle');
     const titleText = screen.getByText('dummyTitle');
     const btn = screen.getByRole('button', { name: 'see location' });
 
-    expect(component).toBeInTheDocument();
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute('src', 'imgURL');
     expect(bgCircle).toBeInTheDocument();

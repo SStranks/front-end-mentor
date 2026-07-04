@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="_nav_4097f0"
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="Designo Site Home."
+        class="_nav__logo_4097f0"
+        src="/src/assets/img/desktop/logo-dark.png"
+      />
+    </a>
+    <button
+      class="_nav__btn_4097f0"
+      type="button"
+    >
+      <img
+        alt=""
+        src="data:image/svg+xml,%3csvg%20width='24'%20height='20'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20fill='%231D1C1E'%20fill-rule='evenodd'%3e%3cpath%20d='M0%200h24v4H0zM0%208h24v4H0zM0%2016h24v4H0z'/%3e%3c/g%3e%3c/svg%3e"
+      />
+    </button>
+    <div
+      class="_nav__links_4097f0"
+      id="nav-links"
+    >
+      <a
+        href="/about"
+      >
+        <p
+          class="_nav__link_4097f0"
+        >
+          our company
+        </p>
+      </a>
+      <a
+        href="/locations"
+      >
+        <p
+          class="_nav__link_4097f0"
+        >
+          locations
+        </p>
+      </a>
+      <a
+        href="/contact"
+      >
+        <p
+          class="_nav__link_4097f0"
+        >
+          contact
+        </p>
+      </a>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
