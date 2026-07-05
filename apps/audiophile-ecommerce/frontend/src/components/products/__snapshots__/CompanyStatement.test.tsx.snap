@@ -1,55 +1,57 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<article
-  aria-labelledby="company statement"
-  className="_card_fe70ec undefined"
->
-  <div
-    className="_card__info_fe70ec"
+<DocumentFragment>
+  <article
+    aria-labelledby="company statement"
+    class="_card_fe70ec undefined"
   >
-    <h2
-      className="_card__title_fe70ec"
-      id="company statement"
+    <div
+      class="_card__info_fe70ec"
     >
-      Bringing you the 
-      <span>
-        best
-      </span>
-       audio gear
-    </h2>
-    <p
-      className="_card__statement_fe70ec"
+      <h2
+        class="_card__title_fe70ec"
+        id="company statement"
+      >
+        Bringing you the 
+        <span>
+          best
+        </span>
+         audio gear
+      </h2>
+      <p
+        class="_card__statement_fe70ec"
+      >
+        Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
+      </p>
+    </div>
+    <picture
+      class="_card__picture_fe70ec"
     >
-      Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
-    </p>
-  </div>
-  <picture
-    className="_card__picture_fe70ec"
-  >
-    <source
-      height="588"
-      media="(min-width: 1024px)"
-      srcSet="/img/shared/desktop/image-best-gear.jpg"
-      width="540"
-    />
-    <source
-      height="600"
-      media="(min-width: 576px)"
-      srcSet="/img/shared/tablet/image-best-gear.jpg"
-      width="1378"
-    />
-    <source
-      height="600"
-      media="(max-width: 575px)"
-      srcSet="/img/shared/mobile/image-best-gear.jpg"
-      width="654"
-    />
-    <img
-      alt="Furnishing our customers with the best gear"
-      className="_card__img_fe70ec"
-      src="/img/shared/desktop/image-best-gear.jpg"
-    />
-  </picture>
-</article>
+      <source
+        height="588"
+        media="(min-width: 1024px)"
+        srcset="/img/shared/desktop/image-best-gear.jpg"
+        width="540"
+      />
+      <source
+        height="600"
+        media="(min-width: 576px)"
+        srcset="/img/shared/tablet/image-best-gear.jpg"
+        width="1378"
+      />
+      <source
+        height="600"
+        media="(max-width: 575px)"
+        srcset="/img/shared/mobile/image-best-gear.jpg"
+        width="654"
+      />
+      <img
+        alt="Furnishing our customers with the best gear"
+        class="_card__img_fe70ec"
+        src="/img/shared/desktop/image-best-gear.jpg"
+      />
+    </picture>
+  </article>
+</DocumentFragment>
 `;

@@ -1,26 +1,24 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import ProductExampleShopList from './ProductExampleShopList';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ProductExampleShopList />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ProductExampleShopList />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(<ProductExampleShopList />, {
+    render(<ProductExampleShopList />, {
       wrapper: BrowserRouter,
     });
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('product_example_shop_list');
     const productLinks = screen.getAllByRole('link');
 
     expect(component).toBeInTheDocument();
@@ -28,12 +26,9 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    const { container } = render(
-      <ProductExampleShopList appendClass="additionalStyles" />,
-      { wrapper: BrowserRouter }
-    );
+    render(<ProductExampleShopList appendClass="additionalStyles" />, { wrapper: BrowserRouter });
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('product_example_shop_list');
 
     expect(component).toHaveClass('additionalStyles');
   });

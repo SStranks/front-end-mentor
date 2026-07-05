@@ -15,7 +15,7 @@ const ROUTES = {
   webdesign: '/webdesign',
 };
 
-vi.mock('#Pages/home/Homen', () => ({
+vi.mock('#Pages/home/Home', () => ({
   default: () => <div data-testid="page-home" />,
 }));
 

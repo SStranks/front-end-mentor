@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import MenuCartModal from '#Components/modal/MenuCartModal';
@@ -5,7 +6,7 @@ import MenuCategoryModal from '#Components/modal/MenuCategoryModal';
 import IconCart from '#Svg/desktop/icon-cart.svg';
 import Logo from '#Svg/desktop/logo.svg';
 import IconMenu from '#Svg/tablet/icon-hamburger.svg';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+
 import styles from './_Nav.module.scss';
 
 type ElemProps = {
@@ -38,8 +39,7 @@ function Nav(props: ElemProps): JSX.Element {
   };
 
   useLayoutEffect(() => {
-    document.body.style.overflow =
-      menuCartModal || menuCategoryModal ? 'hidden' : '';
+    document.body.style.overflow = menuCartModal || menuCategoryModal ? 'hidden' : '';
   });
 
   useLayoutEffect(() => {
@@ -47,12 +47,12 @@ function Nav(props: ElemProps): JSX.Element {
     const nav = document.querySelector('#primary-nav');
     if (!nav) return;
     // (nav as HTMLElement).classList.remove(styles.nav__tmp);
-    if (nav && location.pathname === '/') {
-      (nav as HTMLElement).classList.add(styles.nav__navLayoutEffect);
+    if (location.pathname === '/') {
+      (nav as HTMLElement).classList.add(styles['nav__navLayoutEffect'] as string);
     } else {
-      (nav as HTMLElement).classList.remove(styles.nav__navLayoutEffect);
       (nav as HTMLElement).classList.remove(
-        styles.nav__positionStickyTransition
+        styles['nav__navLayoutEffect'] as string,
+        styles['nav__positionStickyTransition'] as string
       );
     }
   }, [location.pathname]);
@@ -61,60 +61,40 @@ function Nav(props: ElemProps): JSX.Element {
     // Changing the colour of the nav bar when scrolling (sticky)
     const observer = new IntersectionObserver(
       ([e]) => {
-        e.target.classList.add(styles.nav__positionStickyTransition);
-        e.target.classList.toggle(
-          styles.nav__positionStickyBgColor,
-          e.intersectionRatio < 1
-        );
+        e?.target.classList.add(styles['nav__positionStickyTransition'] as string);
+        e?.target.classList.toggle(styles['nav__positionStickyBgColor'] as string, e.intersectionRatio < 1);
       },
       { threshold: [1] }
     );
 
-    if (navRef?.current) observer.observe(navRef.current);
+    if (navRef.current) observer.observe(navRef.current);
 
     return () => observer.disconnect();
   });
 
   return (
-    <nav
-      ref={navRef}
-      className={`${styles.nav} ${appendClass}`}
-      id="primary-nav"
-      aria-label="primary">
-      <button
-        className={styles.nav__menuBtn}
-        type="button"
-        onClick={toggleCategoryModal}
-        ref={menuCategoryBtnRef}>
-        <img
-          src={IconMenu}
-          alt="Menu Product Categories"
-          width="16"
-          height="15"
-        />
+    <nav ref={navRef} className={`${styles['nav']} ${appendClass}`} id="primary-nav" aria-label="primary">
+      <button className={styles['nav__menuBtn']} type="button" onClick={toggleCategoryModal} ref={menuCategoryBtnRef}>
+        <img src={IconMenu} alt="Menu Product Categories" width="16" height="15" />
       </button>
       <Link to="/">
         <img src={Logo} alt="Audiophile Home" width="143" height="25" />
       </Link>
-      <div className={styles.nav__links}>
-        <Link to="/" className={styles.nav__link}>
+      <div className={styles['nav__links']}>
+        <Link to="/" className={styles['nav__link']}>
           home
         </Link>
-        <Link to="/headphones" className={styles.nav__link}>
+        <Link to="/headphones" className={styles['nav__link']}>
           headphones
         </Link>
-        <Link to="/speakers" className={styles.nav__link}>
+        <Link to="/speakers" className={styles['nav__link']}>
           speakers
         </Link>
-        <Link to="/earphones" className={styles.nav__link}>
+        <Link to="/earphones" className={styles['nav__link']}>
           earphones
         </Link>
       </div>
-      <button
-        className={styles.nav__cartBtn}
-        type="button"
-        onClick={toggleCartModal}
-        ref={menuCartBtnRef}>
+      <button className={styles['nav__cartBtn']} type="button" onClick={toggleCartModal} ref={menuCartBtnRef}>
         <img src={IconCart} alt="Shopping Cart" width="23" height="20" />
       </button>
       <MenuCategoryModal
@@ -122,11 +102,7 @@ function Nav(props: ElemProps): JSX.Element {
         setModal={setMenuCategoryModal}
         modalButtonRef={menuCategoryBtnRef}
       />
-      <MenuCartModal
-        modalOpen={menuCartModal}
-        setModal={setMenuCartModal}
-        modalButtonRef={menuCartBtnRef}
-      />
+      <MenuCartModal modalOpen={menuCartModal} setModal={setMenuCartModal} modalButtonRef={menuCartBtnRef} />
     </nav>
   );
 }

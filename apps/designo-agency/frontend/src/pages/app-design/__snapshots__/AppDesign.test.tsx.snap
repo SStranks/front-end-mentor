@@ -74,9 +74,11 @@ exports[`Appearance > Component render matches snapshot 1`] = `
       </header>
       <div
         class="_examplegrid_6c9389"
+        data-testid="examplegrid"
       >
         <div
           class="_card_151f8f"
+          data-testid="Card2"
         >
           <img
             alt=""
@@ -95,6 +97,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         </div>
         <div
           class="_card_151f8f"
+          data-testid="Card2"
         >
           <img
             alt=""
@@ -113,6 +116,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         </div>
         <div
           class="_card_151f8f"
+          data-testid="Card2"
         >
           <img
             alt=""
@@ -131,6 +135,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         </div>
         <div
           class="_card_151f8f"
+          data-testid="Card2"
         >
           <img
             alt=""
@@ -149,6 +154,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         </div>
         <div
           class="_card_151f8f"
+          data-testid="Card2"
         >
           <img
             alt=""
@@ -170,12 +176,14 @@ exports[`Appearance > Component render matches snapshot 1`] = `
       </div>
       <div
         class="_viewgrid_6c9389"
+        data-testid="viewgrid"
       >
         <a
           href="/webdesign"
         >
           <div
             class="_card_893cd2"
+            data-testid="Card1"
             style="background-image: url("/src/assets/img/desktop/image-web-design-large.jpg");"
           >
             <h2>
@@ -199,6 +207,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         >
           <div
             class="_card_893cd2"
+            data-testid="Card1"
             style="background-image: url("/src/assets/img/desktop/image-graphic-design.jpg");"
           >
             <h2>

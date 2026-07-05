@@ -1,11 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<main
-  className="_main_2aacc9 undefined"
->
-  <div
-    className="_main__container_2aacc9"
-  />
-</main>
+<DocumentFragment>
+  <main
+    class="_main_2aacc9 undefined"
+  >
+    <div
+      class="_main__container_2aacc9"
+    />
+  </main>
+</DocumentFragment>
 `;

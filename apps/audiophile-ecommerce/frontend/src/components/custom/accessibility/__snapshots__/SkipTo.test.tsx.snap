@@ -1,12 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<a
-  className="_container_364847"
-  href="Dummy id"
-  onClick={[Function]}
->
-  Skip to 
-  Dummy name
-</a>
+<DocumentFragment>
+  <a
+    class="_container_364847"
+    href="Dummy id"
+  >
+    Skip to Dummy name
+  </a>
+</DocumentFragment>
 `;

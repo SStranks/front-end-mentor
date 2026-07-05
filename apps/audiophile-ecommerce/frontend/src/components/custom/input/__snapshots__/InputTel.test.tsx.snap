@@ -1,19 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<label
-  className="_container_429fb6 undefined"
-  htmlFor="label text"
->
-  <p
-    className="_container__title_429fb6"
+<DocumentFragment>
+  <label
+    class="_container_429fb6 undefined"
+    data-testid="input_tel"
+    for="label text"
   >
-    label text
-  </p>
-  <input
-    className="_container__input_429fb6"
-    id="label text"
-    type="tel"
-  />
-</label>
+    <p
+      class="_container__title_429fb6"
+    >
+      label text
+    </p>
+    <input
+      class="_container__input_429fb6"
+      id="label text"
+      type="tel"
+      value=""
+    />
+  </label>
+</DocumentFragment>
 `;

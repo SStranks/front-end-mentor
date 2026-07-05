@@ -1,11 +1,12 @@
 import ProductData from '#Data/Data.json';
+
 import ProductExampleSeeCard from './ProductExampleSeeCard';
 
 import styles from './_ProductExampleSeeCardList.module.scss';
 
 type ElemProps = {
-  appendClass?: string;
   currentProductId: number;
+  appendClass?: string;
 };
 
 function ProductExampleSeeCardList(props: ElemProps): JSX.Element {
@@ -33,7 +34,11 @@ function ProductExampleSeeCardList(props: ElemProps): JSX.Element {
     );
   });
 
-  return <div className={`${styles.list} ${appendClass}`}>{productItems}</div>;
+  return (
+    <div className={`${styles['list']} ${appendClass}`} data-testid="product_example_see_card_list">
+      {productItems}
+    </div>
+  );
 }
 
 export default ProductExampleSeeCardList;

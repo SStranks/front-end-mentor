@@ -1,6 +1,9 @@
-import { useShoppingCartContext } from '#Context/ShoppingCartContext';
 import { useState } from 'react';
+
+import { useShoppingCartContext } from '#Context/ShoppingCartContext';
+
 import QuantityToggleButton from './QuantityToggleButton';
+
 import styles from './_AddToCartButton.module.scss';
 
 type ElemProps = {
@@ -25,7 +28,7 @@ function AddToCartButton(props: ElemProps): JSX.Element {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles['container']}>
       <QuantityToggleButton
         currentValue={currentValue}
         minLimit={1}
@@ -33,10 +36,7 @@ function AddToCartButton(props: ElemProps): JSX.Element {
         decreaseFn={decreaseFn}
         increaseFn={increaseFn}
       />
-      <button
-        className={styles.container__btn}
-        type="button"
-        onClick={addProductToCart}>
+      <button className={styles['container__btn']} type="button" onClick={addProductToCart}>
         add to cart
       </button>
     </div>

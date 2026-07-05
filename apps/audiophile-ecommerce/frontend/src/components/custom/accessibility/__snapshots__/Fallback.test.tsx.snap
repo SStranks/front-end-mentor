@@ -1,32 +1,35 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  className="_fallback_1b9ce4 fallback-fade-in"
->
+<DocumentFragment>
   <div
-    className="_fallback__bars_1b9ce4"
+    class="_fallback_1b9ce4 fallback-fade-in"
+    data-testid="fallback"
   >
     <div
-      className="_fallback__bars__bar_1b9ce4"
-    />
-    <div
-      className="_fallback__bars__bar_1b9ce4"
-    />
-    <div
-      className="_fallback__bars__bar_1b9ce4"
-    />
-    <div
-      className="_fallback__bars__bar_1b9ce4"
-    />
-    <div
-      className="_fallback__bars__bar_1b9ce4"
-    />
+      class="_fallback__bars_1b9ce4"
+    >
+      <div
+        class="_fallback__bars__bar_1b9ce4"
+      />
+      <div
+        class="_fallback__bars__bar_1b9ce4"
+      />
+      <div
+        class="_fallback__bars__bar_1b9ce4"
+      />
+      <div
+        class="_fallback__bars__bar_1b9ce4"
+      />
+      <div
+        class="_fallback__bars__bar_1b9ce4"
+      />
+    </div>
+    <p
+      class="_fallback__loading_1b9ce4"
+    >
+      Loading
+    </p>
   </div>
-  <p
-    className="_fallback__loading_1b9ce4"
-  >
-    Loading
-  </p>
-</div>
+</DocumentFragment>
 `;

@@ -34,8 +34,11 @@ function CheckoutForm(props: ElemProps): JSX.Element {
     formElement.classList.add(styles['form__submitted'] as string);
 
     // Focus on first invalid input
-    const firstInvalidInput = formElement.querySelector(':invalid') as HTMLInputElement;
-    firstInvalidInput.focus();
+    const firstInvalidInput = [...formElement.elements].find(
+      (el): el is HTMLInputElement => el instanceof HTMLInputElement && !el.validity.valid
+    );
+
+    firstInvalidInput?.focus();
 
     // Submit if valid
     if (isValid) {
@@ -49,6 +52,7 @@ function CheckoutForm(props: ElemProps): JSX.Element {
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked && e.target.id === 'e-Money') setPaymentMethod('e-Money');
     if (e.target.checked && e.target.id === 'cash') setPaymentMethod('cash');
+    console.log('ass');
   };
 
   return (
@@ -58,21 +62,21 @@ function CheckoutForm(props: ElemProps): JSX.Element {
         <div className={styles['checkout__grid']}>
           <p className={styles['checkout__subHeader']}>billing details</p>
           <InputText
-            appendClass={styles['checkout__inputText']}
+            appendclass={styles['checkout__inputText']}
             name="Name"
             id="Name"
             placeholder="Insert full name"
             required
           />
           <InputEmail
-            appendClass={styles['checkout__inputText']}
+            appendclass={styles['checkout__inputText']}
             name="Email Address"
             id="Email Address"
             placeholder="Insert email address"
             required
           />
           <InputTel
-            appendClass={styles['checkout__inputText']}
+            appendclass={styles['checkout__inputText']}
             name="Phone Number"
             id="Phone Number"
             placeholder="Insert phone number"
@@ -81,28 +85,28 @@ function CheckoutForm(props: ElemProps): JSX.Element {
 
           <p className={styles['checkout__subHeader']}>shipping info</p>
           <InputText
-            appendClass={`${styles['checkout__inputText']} ${styles['gridColumnSpan']}`}
+            appendclass={`${styles['checkout__inputText']} ${styles['gridColumnSpan']}`}
             name="Address"
             id="Address"
             placeholder="Insert address"
             required
           />
           <InputText
-            appendClass={styles['checkout__inputText']}
+            appendclass={styles['checkout__inputText']}
             name="ZIP Code"
             id="ZIP Code"
             placeholder="Insert ZIP code"
             required
           />
           <InputText
-            appendClass={styles['checkout__inputText']}
+            appendclass={styles['checkout__inputText']}
             name="City"
             id="City"
             placeholder="Insert city"
             required
           />
           <InputText
-            appendClass={styles['checkout__inputText']}
+            appendclass={styles['checkout__inputText']}
             name="Country"
             id="Country"
             placeholder="Insert country"
@@ -111,26 +115,34 @@ function CheckoutForm(props: ElemProps): JSX.Element {
           <p className={styles['checkout__subHeader']}>payment details</p>
           <div className={styles['checkout__paymentMethod']}>
             <p className={styles['checkout__labelTitle']}>payment method</p>
-            <InputRadio name="payment method" id="e-Money" required onChange={onRadioChange} />
             <InputRadio
-              appendClass={styles['gridColumn2']}
+              name="payment method"
+              id="e-Money"
+              required
+              // checked={paymentMethod === 'e-Money'}
+              onChange={onRadioChange}
+            />
+            <InputRadio
+              appendclass={styles['gridColumn2']}
               name="payment method"
               id="cash"
               required
+              // checked={paymentMethod === 'cash'}
               onChange={onRadioChange}
             />
           </div>
+          <p>testicle</p>
           {paymentMethod === 'e-Money' && (
             <>
               <InputText
-                appendClass={styles['checkout__inputText']}
+                appendclass={styles['checkout__inputText']}
                 name="e-Money Number"
                 id="e-Money Number"
                 placeholder="Insert e-Money number"
                 required
               />
               <InputText
-                appendClass={styles['checkout__inputText']}
+                appendclass={styles['checkout__inputText']}
                 name="e-Money PIN"
                 id="e-Money PIN"
                 placeholder="Insert e-Money PIN"

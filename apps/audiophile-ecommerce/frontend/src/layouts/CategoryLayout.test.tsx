@@ -1,33 +1,31 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import CategoryLayout from './CategoryLayout';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <CategoryLayout
-            productCategory="dummyProductCategory"
-            productList={[
-              {
-                id: 1,
-                new: true,
-                productName: 'dummyProductName',
-                description: 'dummyDescription',
-                categoryImage: {
-                  desktop: 'desktopImgURL',
-                  tablet: 'tabletImgURL',
-                  mobile: 'mobileImgURL',
-                },
+    const { asFragment } = render(
+      <BrowserRouter>
+        <CategoryLayout
+          productCategory="dummyProductCategory"
+          productList={[
+            {
+              id: 1,
+              categoryImage: {
+                desktop: 'desktopImgURL',
+                mobile: 'mobileImgURL',
+                tablet: 'tabletImgURL',
               },
-            ]}
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+              description: 'dummyDescription',
+              new: true,
+              productName: 'dummyProductName',
+            },
+          ]}
+        />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -37,14 +35,14 @@ describe('Appearance', () => {
         productList={[
           {
             id: 1,
-            new: true,
-            productName: 'dummyProductName',
-            description: 'dummyDescription',
             categoryImage: {
               desktop: 'desktopImgURL',
-              tablet: 'tabletImgURL',
               mobile: 'mobileImgURL',
+              tablet: 'tabletImgURL',
             },
+            description: 'dummyDescription',
+            new: true,
+            productName: 'dummyProductName',
           },
         ]}
       />,
@@ -53,16 +51,13 @@ describe('Appearance', () => {
 
     const component = screen.getByRole('region');
     const headingH1 = screen.getByRole('heading', {
-      name: 'dummyProductCategory',
       level: 1,
+      name: 'dummyProductCategory',
     });
     const productArticle = screen.getByLabelText('dummyProductName');
 
     expect(component).toBeInTheDocument();
-    expect(component).toHaveAttribute(
-      'aria-labelledby',
-      'dummyProductCategory'
-    );
+    expect(component).toHaveAttribute('aria-labelledby', 'dummyProductCategory');
     expect(headingH1).toBeInTheDocument();
     expect(productArticle).toBeInTheDocument();
   });

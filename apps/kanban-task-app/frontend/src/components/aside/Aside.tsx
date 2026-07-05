@@ -1,4 +1,6 @@
+/* eslint-disable perfectionist/sort-objects */
 import type { TBoardInfo } from '#Types/types';
+
 import Toggle from '#Components/custom/toggle/Toggle';
 import { useRootModalContext } from '#Context/RootModalContext';
 import IconBoard from '#Svg/icon-board.svg';
@@ -6,6 +8,7 @@ import IconDarkTheme from '#Svg/icon-dark-theme.svg';
 import IconHideSidebar from '#Svg/icon-hide-sidebar.svg';
 import IconLightTheme from '#Svg/icon-light-theme.svg';
 import IconShowSidebar from '#Svg/icon-show-sidebar.svg';
+
 import styles from './_Aside.module.scss';
 
 // NOTE:  The animation delay variables in SASS (--delay-X) are set here; controlling the list items delay dynamically and calculating the delay for the sidebar hide animation to accomodate the list length.
@@ -18,8 +21,8 @@ const sidebarHide = () => {
 
   sidebarElement.style.setProperty('--delay-sidebar', `${listItems.length * 0.15 + 0.075}s`);
 
-  sidebarElement.classList.add(styles.animationHide);
-  sidebarElement.classList.remove(styles.animationShow);
+  sidebarElement.classList.add(styles['animationHide'] as string);
+  sidebarElement.classList.remove(styles['animationShow'] as string);
 };
 
 const sidebarShow = () => {
@@ -28,12 +31,12 @@ const sidebarShow = () => {
   listItems.forEach((el, i) => {
     (el as HTMLElement).style.setProperty('--delay-li', `${i}`);
   });
-  sidebarElement.classList.add(styles.animationShow);
+  sidebarElement.classList.add(styles['animationShow'] as string);
 };
 
 type TProps = {
-  boardsList: TBoardInfo;
   activeBoardId: string;
+  boardsList: TBoardInfo;
   setActiveBoardId: React.Dispatch<React.SetStateAction<string>>;
 };
 
@@ -42,8 +45,8 @@ function Aside(props: TProps): JSX.Element {
   const modalDispatch = useRootModalContext();
 
   const numOfBoards = boardsList.length;
-  const boardListItems = (boardsList as TBoardInfo).map(({ name, id }, i) => (
-    <li key={id} className={id === activeBoardId ? styles.active : ''} data-board-id={id} data-listnum={i + 1}>
+  const boardListItems = boardsList.map(({ name, id }, i) => (
+    <li key={id} className={id === activeBoardId ? styles['active'] : ''} data-board-id={id} data-listnum={i + 1}>
       <img src={IconBoard} alt="" />
       <p>{name}</p>
     </li>
@@ -64,30 +67,30 @@ function Aside(props: TProps): JSX.Element {
   };
 
   return (
-    <aside className={styles.sidebar} id="sidebar">
-      <div className={styles.sidebar__boards}>
+    <aside className={styles['sidebar']} id="sidebar">
+      <div className={styles['sidebar__boards']}>
         <h2>ALL BOARDS ({numOfBoards})</h2>
         <ul onClickCapture={onListClickHandler}>
           {boardListItems}
 
-          <li className={styles.newBoard} data-board-id="create-new" data-listnum>
+          <li className={styles['newBoard']} data-board-id="create-new" data-listnum>
             <img src={IconBoard} alt="" />
             <p>+ Create New Board</p>
           </li>
         </ul>
       </div>
-      <div className={styles.sidebar__controls}>
-        <div className={styles.sidebar__theme}>
+      <div className={styles['sidebar__controls']}>
+        <div className={styles['sidebar__theme']}>
           <img src={IconLightTheme} alt="" />
           <Toggle />
           <img src={IconDarkTheme} alt="" />
         </div>
-        <button type="button" className={styles.sidebar__hide} onClick={sidebarHide}>
+        <button type="button" className={styles['sidebar__hide']} onClick={sidebarHide}>
           <img src={IconHideSidebar} alt="" />
           <p>Hide Sidebar</p>
         </button>
       </div>
-      <button type="button" className={styles.sidebar__show} onClick={sidebarShow} id="sidebar-btn-show">
+      <button type="button" className={styles['sidebar__show']} onClick={sidebarShow} id="sidebar-btn-show">
         <img src={IconShowSidebar} alt="" />
       </button>
     </aside>

@@ -1,17 +1,17 @@
-import { render } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
+
 import Fallback from './Fallback';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer.create(<Fallback />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<Fallback />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(<Fallback />);
+    render(<Fallback />);
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('fallback');
 
     expect(component).toHaveTextContent(/loading/i);
   });

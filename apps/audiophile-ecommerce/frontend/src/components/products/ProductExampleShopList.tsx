@@ -5,20 +5,20 @@ import styles from './_ProductExampleShopList.module.scss';
 const productsList = [
   {
     id: 1,
-    name: 'headphones',
     image: '/img/shared/desktop/image-category-thumbnail-headphones.png',
+    name: 'headphones',
     productShopURL: '/headphones',
   },
   {
     id: 2,
-    name: 'speakers',
     image: '/img/shared/desktop/image-category-thumbnail-speakers.png',
+    name: 'speakers',
     productShopURL: '/speakers',
   },
   {
     id: 3,
-    name: 'earphones',
     image: '/img/shared/desktop/image-category-thumbnail-earphones.png',
+    name: 'earphones',
     productShopURL: '/earphones',
   },
 ];
@@ -41,7 +41,11 @@ function ProductExampleShopList(props: ElemProps): JSX.Element {
     );
   });
 
-  return <div className={`${styles.list} ${appendClass}`}>{productItems}</div>;
+  return (
+    <div className={`${styles['list']} ${appendClass}`} data-testid="product_example_shop_list">
+      {productItems}
+    </div>
+  );
 }
 
 export default ProductExampleShopList;

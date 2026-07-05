@@ -1,18 +1,19 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  className="_container_04c138"
->
+<DocumentFragment>
   <div
-    data-testid="quantity-toggle-button"
-  />
-  <button
-    className="_container__btn_04c138"
-    onClick={[Function]}
-    type="button"
+    class="_container_04c138"
   >
-    add to cart
-  </button>
-</div>
+    <div
+      data-testid="quantity-toggle-button"
+    />
+    <button
+      class="_container__btn_04c138"
+      type="button"
+    >
+      add to cart
+    </button>
+  </div>
+</DocumentFragment>
 `;

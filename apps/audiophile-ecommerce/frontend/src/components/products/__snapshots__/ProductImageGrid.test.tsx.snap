@@ -1,29 +1,32 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  className="_grid_90dc10 undefined"
->
-  <picture
-    className="_gridArea1_90dc10"
+<DocumentFragment>
+  <div
+    class="_grid_90dc10 undefined"
+    data-testid="product_image_grid"
   >
-    <source
-      media="(min-width: 1024px)"
-      srcSet="desktopImg"
-    />
-    <source
-      media="(min-width: 481px)"
-      srcSet="tabletImg"
-    />
-    <source
-      media="(max-width: 480px)"
-      srcSet="mobileImg"
-    />
-    <img
-      alt="dummyProductTitle being used"
-      className="_grid__img_90dc10"
-      src="desktopImg"
-    />
-  </picture>
-</div>
+    <picture
+      class="_gridArea1_90dc10"
+    >
+      <source
+        media="(min-width: 1024px)"
+        srcset="desktopImg"
+      />
+      <source
+        media="(min-width: 481px)"
+        srcset="tabletImg"
+      />
+      <source
+        media="(max-width: 480px)"
+        srcset="mobileImg"
+      />
+      <img
+        alt="dummyProductTitle being used"
+        class="_grid__img_90dc10"
+        src="desktopImg"
+      />
+    </picture>
+  </div>
+</DocumentFragment>
 `;

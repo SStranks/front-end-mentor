@@ -1,62 +1,63 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<article
-  aria-labelledby="dummyProductTitle"
-  className="_card_407cdb"
->
-  <picture>
-    <source
-      height="1120px"
-      media="(min-width: 1200px)"
-      srcSet="desktopImgURL"
-      width="1080px"
-    />
-    <source
-      height="960px"
-      media="(min-width: 481px) and (max-width: 1199px)"
-      srcSet="tabletImgURL"
-      width="562px"
-    />
-    <source
-      height="654px"
-      media="(max-width: 480px)"
-      srcSet="mobileImgURL"
-      width="654px"
-    />
-    <img
-      alt="dummyProductTitle"
-      className="_card__img_407cdb"
-      src="desktopImgURL"
-    />
-  </picture>
-  <div
-    className="_card__panel_407cdb"
+<DocumentFragment>
+  <article
+    aria-labelledby="dummyProductTitle"
+    class="_card_407cdb"
   >
-    <p
-      className="_card__new_407cdb"
+    <picture>
+      <source
+        height="1120px"
+        media="(min-width: 1200px)"
+        srcset="desktopImgURL"
+        width="1080px"
+      />
+      <source
+        height="960px"
+        media="(min-width: 481px) and (max-width: 1199px)"
+        srcset="tabletImgURL"
+        width="562px"
+      />
+      <source
+        height="654px"
+        media="(max-width: 480px)"
+        srcset="mobileImgURL"
+        width="654px"
+      />
+      <img
+        alt="dummyProductTitle"
+        class="_card__img_407cdb"
+        src="desktopImgURL"
+      />
+    </picture>
+    <div
+      class="_card__panel_407cdb"
     >
-      new product
-    </p>
-    <h2
-      className="_card__title_407cdb"
-      id="dummyProductTitle"
-    >
-      dummyProductTitle
-    </h2>
-    <p
-      className="_card__details_407cdb"
-    >
-      dummyProductDetails
-    </p>
-    <a
-      aria-label="See product dummyProductTitle"
-      className="_card__link_407cdb"
-      href="/dummyProductCategory/1"
-      onClick={[Function]}
-    >
-      see product
-    </a>
-  </div>
-</article>
+      <p
+        class="_card__new_407cdb"
+      >
+        new product
+      </p>
+      <h2
+        class="_card__title_407cdb"
+        id="dummyProductTitle"
+      >
+        dummyProductTitle
+      </h2>
+      <p
+        class="_card__details_407cdb"
+      >
+        dummyProductDetails
+      </p>
+      <a
+        aria-label="See product dummyProductTitle"
+        class="_card__link_407cdb"
+        href="/dummyProductCategory/1"
+      >
+        see product
+      </a>
+    </div>
+  </article>
+</DocumentFragment>
 `;

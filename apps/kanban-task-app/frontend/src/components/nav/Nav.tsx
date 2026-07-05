@@ -1,11 +1,15 @@
-import type { TBoardInfo } from '#Types/types';
+/* eslint-disable perfectionist/sort-objects */
 import type { IBoard } from '#Shared/types';
+import type { TBoardInfo } from '#Types/types';
+
 import { useEffect, useRef } from 'react';
+
 import Logo from '#Components/logo/Logo';
 import { useRootModalContext } from '#Context/RootModalContext';
 import IconAddTaskMobile from '#Svg/icon-add-task-mobile.svg';
-import IconEllipsis from '#Svg/icon-vertical-ellipsis.svg';
 import IconChevronDown from '#Svg/icon-chevron-down.svg';
+import IconEllipsis from '#Svg/icon-vertical-ellipsis.svg';
+
 import styles from './_Nav.module.scss';
 
 type TProps = {
@@ -23,7 +27,7 @@ function Nav(props: TProps): JSX.Element {
 
   useEffect(() => {
     const mobileAsideHandler = () => {
-      mobileAsideBtn.current?.classList.remove(styles['navbar__leftControls__mobileAsideBtn--reverse']);
+      mobileAsideBtn.current?.classList.remove(styles['navbar__leftControls__mobileAsideBtn--reverse'] as string);
     };
     addEventListener('modal-mobile-aside-close', mobileAsideHandler);
 
@@ -31,14 +35,14 @@ function Nav(props: TProps): JSX.Element {
   }, []);
 
   const mobileAsideClickHandler = () => {
-    if (mobileAsideBtn.current?.classList.contains(styles['navbar__leftControls__mobileAsideBtn--reverse'])) {
+    if (mobileAsideBtn.current?.classList.contains(styles['navbar__leftControls__mobileAsideBtn--reverse'] as string)) {
       return modalDispatch({
         type: 'close-modal',
       });
     }
 
     // NOTE:  RootModal emits event on mobile aside close, to control chevron styles.
-    mobileAsideBtn.current?.classList.add(styles['navbar__leftControls__mobileAsideBtn--reverse']);
+    mobileAsideBtn.current?.classList.add(styles['navbar__leftControls__mobileAsideBtn--reverse'] as string);
     modalDispatch({
       type: 'open-modal',
       modalType: 'mobile-aside',
@@ -53,7 +57,7 @@ function Nav(props: TProps): JSX.Element {
   const addTaskBtnClickHandler = () => {
     const taskStatus = {
       current: activeBoard?.columns[0]?.name,
-      statusArr: activeBoard?.columns?.map(({ name, _id }) => ({ name, _id })),
+      statusArr: activeBoard?.columns.map(({ name, _id }) => ({ name, _id })),
     };
     modalDispatch({
       type: 'open-modal',
@@ -83,35 +87,38 @@ function Nav(props: TProps): JSX.Element {
   };
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.navbar__logo}>
+    <nav className={styles['navbar']}>
+      <div className={styles['navbar__logo']}>
         <Logo />
       </div>
-      <div className={styles.navbar__head}>
-        <div className={styles.navbar__leftControls}>
-          <h1 className={styles.navbar__leftControls__title}>{activeBoard?.name}</h1>
+      <div className={styles['navbar__head']}>
+        <div className={styles['navbar__leftControls']}>
+          <h1 className={styles['navbar__leftControls__title']}>{activeBoard?.name}</h1>
           <button
             type="button"
             onClick={mobileAsideClickHandler}
-            className={styles.navbar__leftControls__mobileAsideBtn}
+            className={styles['navbar__leftControls__mobileAsideBtn']}
             ref={mobileAsideBtn}>
             <img src={IconChevronDown} alt="" />
           </button>
         </div>
-        <div className={styles.navbar__rightControls}>
+        <div className={styles['navbar__rightControls']}>
           <button
             type="button"
-            className={styles.navbar__rightControls__addTask}
+            className={styles['navbar__rightControls__addTask']}
             onClick={addTaskBtnClickHandler}
             disabled={activeBoard?.columns.length === 0}>
             <img src={IconAddTaskMobile} alt="" />
             <span>+ Add New Task</span>
           </button>
-          <button type="button" onClick={boardMenuClickHandler} className={styles.navbar__rightControls__boardOptions}>
+          <button
+            type="button"
+            onClick={boardMenuClickHandler}
+            className={styles['navbar__rightControls__boardOptions']}>
             <img src={IconEllipsis} alt="" />
           </button>
           <div
-            className={`${styles.navbar__rightControls__dropdownMenu} hidden`}
+            className={`${styles['navbar__rightControls__dropdownMenu']} hidden`}
             onClickCapture={boardOptionsClickHandler}
             ref={boardOptionsRef}>
             <p>Edit Board</p>

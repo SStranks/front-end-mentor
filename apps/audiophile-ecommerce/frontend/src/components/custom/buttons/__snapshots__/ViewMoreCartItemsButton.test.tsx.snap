@@ -1,11 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<button
-  className="_button_3adffc"
-  onClick={[Function]}
-  type="button"
->
-  and 1 other item
-</button>
+<DocumentFragment>
+  <button
+    class="_button_3adffc"
+    type="button"
+  >
+    and 1 other item
+  </button>
+</DocumentFragment>
 `;

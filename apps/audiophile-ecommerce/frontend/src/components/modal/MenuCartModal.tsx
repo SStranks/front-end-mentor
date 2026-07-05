@@ -38,7 +38,7 @@ function MenuCartModal(props: ElemProps): JSX.Element {
           exitActive: 'modal-exit-active',
         }}
         nodeRef={nodeRef}>
-        <div className={styles['container']} ref={nodeRef} data-testid="container">
+        <div className={styles['container']} ref={nodeRef} data-testid="menu_cart_modal">
           <CartSummaryCard closeCartModal={setModal} ref={modalContentsRef} />
         </div>
       </CSSTransition>

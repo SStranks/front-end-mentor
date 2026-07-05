@@ -1,41 +1,39 @@
 import { render, screen } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+
 import ProductImageGrid from './ProductImageGrid';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <ProductImageGrid
-          productImagesGallery={{
-            dummyProduct: {
-              mobile: 'mobileImg',
-              tablet: 'tabletImg',
-              desktop: 'desktopImg',
-            },
-          }}
-          productTitle="dummyProductTitle"
-        />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  test('Component base should be fully rendered', () => {
-    const { container } = render(
+    const { asFragment } = render(
       <ProductImageGrid
         productImagesGallery={{
           dummyProduct: {
+            desktop: 'desktopImg',
             mobile: 'mobileImg',
             tablet: 'tabletImg',
+          },
+        }}
+        productTitle="dummyProductTitle"
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('Component base should be fully rendered', () => {
+    render(
+      <ProductImageGrid
+        productImagesGallery={{
+          dummyProduct: {
             desktop: 'desktopImg',
+            mobile: 'mobileImg',
+            tablet: 'tabletImg',
           },
         }}
         productTitle="dummyProductTitle"
       />
     );
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('product_image_grid');
     const productImg = screen.getByRole('img', {
       name: 'dummyProductTitle being used',
     });
@@ -45,21 +43,21 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    const { container } = render(
+    render(
       <ProductImageGrid
         appendClass="additionalStyles"
         productImagesGallery={{
           dummyProduct: {
+            desktop: 'desktopImg',
             mobile: 'mobileImg',
             tablet: 'tabletImg',
-            desktop: 'desktopImg',
           },
         }}
         productTitle="dummyProductTitle"
       />
     );
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('product_image_grid');
 
     expect(component).toHaveClass('additionalStyles');
   });

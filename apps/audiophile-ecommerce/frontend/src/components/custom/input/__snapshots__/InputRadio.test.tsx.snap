@@ -1,19 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<label
-  className="_label_a98f32 undefined"
-  htmlFor="label text"
->
-  <input
-    className="_label__radioBtn_a98f32"
-    id="label text"
-    type="radio"
-  />
-  <p
-    className="_label__title_a98f32"
+<DocumentFragment>
+  <label
+    class="_label_a98f32 undefined"
+    data-testid="input_radio"
+    for="label text"
   >
-    label text
-  </p>
-</label>
+    <input
+      class="_label__radioBtn_a98f32"
+      id="label text"
+      type="radio"
+      value=""
+    />
+    <p
+      class="_label__title_a98f32"
+    >
+      label text
+    </p>
+  </label>
+</DocumentFragment>
 `;

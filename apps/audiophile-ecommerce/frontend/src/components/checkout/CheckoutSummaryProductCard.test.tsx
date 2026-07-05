@@ -1,24 +1,22 @@
 import { render, screen } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+
 import CheckoutSummaryProductCard from './CheckoutSummaryProductCard';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <CheckoutSummaryProductCard
-          productImg="imgURL"
-          productPrice={9.99}
-          productQuantity={3}
-          productTitle="dummyTitle"
-        />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <CheckoutSummaryProductCard
+        productImg="imgURL"
+        productPrice={9.99}
+        productQuantity={3}
+        productTitle="dummyTitle"
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(
+    render(
       <CheckoutSummaryProductCard
         productImg="imgURL"
         productPrice={9.99}
@@ -27,7 +25,7 @@ describe('Appearance', () => {
       />
     );
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('checkout_summary_product_card');
     const productImg = screen.getByRole('img');
     const productTitle = screen.getByText('dummyTitle');
     const productPrice = screen.getByText('$ 9.99');

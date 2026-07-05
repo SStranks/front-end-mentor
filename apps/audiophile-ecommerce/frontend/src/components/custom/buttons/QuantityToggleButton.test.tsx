@@ -31,7 +31,7 @@ describe('Appearance', () => {
       />
     );
 
-    const component = screen.getByTestId('container');
+    const component = screen.getByTestId('quality_toggle_button');
     const buttons = screen.getAllByRole('button');
 
     expect(component).toHaveTextContent('123');
@@ -46,7 +46,7 @@ describe('Appearance', () => {
       <QuantityToggleButton appendClass="additionalStyles" currentValue={1} increaseFn={mockFn} decreaseFn={mockFn} />
     );
 
-    const component = screen.getByTestId('container');
+    const component = screen.getByTestId('quality_toggle_button');
 
     expect(component).toHaveClass('additionalStyles');
   });

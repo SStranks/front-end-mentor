@@ -1,30 +1,31 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  className="_card_878a3b"
->
-  <img
-    alt="dummyTitle"
-    className="_card__img_878a3b"
-    src="imgURL"
-  />
-  <p
-    className="_card__title_878a3b"
+<DocumentFragment>
+  <div
+    class="_card_878a3b"
+    data-testid="checkout_summary_product_card"
   >
-    dummyTitle
-  </p>
-  <p
-    className="_card__price_878a3b"
-  >
-    $ 
-    9.99
-  </p>
-  <p
-    className="_card__quantity_878a3b"
-  >
-    x
-    3
-  </p>
-</div>
+    <img
+      alt="dummyTitle"
+      class="_card__img_878a3b"
+      src="imgURL"
+    />
+    <p
+      class="_card__title_878a3b"
+    >
+      dummyTitle
+    </p>
+    <p
+      class="_card__price_878a3b"
+    >
+      $ 9.99
+    </p>
+    <p
+      class="_card__quantity_878a3b"
+    >
+      x3
+    </p>
+  </div>
+</DocumentFragment>
 `;

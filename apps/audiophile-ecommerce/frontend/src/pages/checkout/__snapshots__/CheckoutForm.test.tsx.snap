@@ -1,304 +1,319 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<form
-  aria-label="form"
-  className="_form_cba5aa"
-  noValidate={true}
-  onSubmit={[Function]}
->
-  <div
-    className="_checkout_cba5aa"
+<DocumentFragment>
+  <form
+    aria-label="form"
+    class="_form_cba5aa"
+    novalidate=""
   >
-    <p
-      className="_checkout__header_cba5aa"
-    >
-      checkout
-    </p>
     <div
-      className="_checkout__grid_cba5aa"
+      class="_checkout_cba5aa"
+      data-testid="checkout container"
     >
       <p
-        className="_checkout__subHeader_cba5aa"
+        class="_checkout__header_cba5aa"
       >
-        billing details
-      </p>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa"
-        htmlFor="Name"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          Name
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="Name"
-          name="Name"
-          placeholder="Insert full name"
-          required={true}
-          type="text"
-        />
-      </label>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa"
-        htmlFor="Email Address"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          Email Address
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="Email Address"
-          maxLength={256}
-          name="Email Address"
-          placeholder="Insert email address"
-          required={true}
-          type="email"
-        />
-      </label>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa"
-        htmlFor="Phone Number"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          Phone Number
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="Phone Number"
-          name="Phone Number"
-          placeholder="Insert phone number"
-          required={true}
-          type="tel"
-        />
-      </label>
-      <p
-        className="_checkout__subHeader_cba5aa"
-      >
-        shipping info
-      </p>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa _gridColumnSpan_cba5aa"
-        htmlFor="Address"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          Address
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="Address"
-          name="Address"
-          placeholder="Insert address"
-          required={true}
-          type="text"
-        />
-      </label>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa"
-        htmlFor="ZIP Code"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          ZIP Code
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="ZIP Code"
-          name="ZIP Code"
-          placeholder="Insert ZIP code"
-          required={true}
-          type="text"
-        />
-      </label>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa"
-        htmlFor="City"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          City
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="City"
-          name="City"
-          placeholder="Insert city"
-          required={true}
-          type="text"
-        />
-      </label>
-      <label
-        className="_container_429fb6 _checkout__inputText_cba5aa"
-        htmlFor="Country"
-      >
-        <p
-          className="_container__title_429fb6"
-        >
-          Country
-        </p>
-        <input
-          className="_container__input_429fb6"
-          id="Country"
-          name="Country"
-          placeholder="Insert country"
-          required={true}
-          type="text"
-        />
-      </label>
-      <p
-        className="_checkout__subHeader_cba5aa"
-      >
-        payment details
+        checkout
       </p>
       <div
-        className="_checkout__paymentMethod_cba5aa"
+        class="_checkout__grid_cba5aa"
       >
         <p
-          className="_checkout__labelTitle_cba5aa"
+          class="_checkout__subHeader_cba5aa"
         >
-          payment method
+          billing details
         </p>
         <label
-          className="_label_a98f32 undefined"
-          htmlFor="e-Money"
+          class="_container_429fb6 _checkout__inputText_cba5aa"
+          data-testid="container"
+          for="Name"
         >
-          <input
-            className="_label__radioBtn_a98f32"
-            id="e-Money"
-            name="payment method"
-            onChange={[Function]}
-            required={true}
-            type="radio"
-          />
           <p
-            className="_label__title_a98f32"
+            class="_container__title_429fb6"
           >
-            e-Money
+            Name
           </p>
+          <input
+            class="_container__input_429fb6"
+            id="Name"
+            name="Name"
+            placeholder="Insert full name"
+            required=""
+            type="text"
+            value=""
+          />
         </label>
         <label
-          className="_label_a98f32 _gridColumn2_cba5aa"
-          htmlFor="cash"
+          class="_container_429fb6 _checkout__inputText_cba5aa"
+          data-testid="input_email"
+          for="Email Address"
         >
-          <input
-            className="_label__radioBtn_a98f32"
-            id="cash"
-            name="payment method"
-            onChange={[Function]}
-            required={true}
-            type="radio"
-          />
           <p
-            className="_label__title_a98f32"
+            class="_container__title_429fb6"
           >
-            cash
+            Email Address
           </p>
+          <input
+            class="_container__input_429fb6"
+            id="Email Address"
+            maxlength="256"
+            name="Email Address"
+            placeholder="Insert email address"
+            required=""
+            type="email"
+            value=""
+          />
         </label>
-      </div>
-    </div>
-  </div>
-  <div
-    className="_summary_cba5aa"
-  >
-    <p
-      className="_summary__header_cba5aa"
-    >
-      summary
-    </p>
-    <div
-      className="_summary__products_cba5aa"
-    >
-      <div
-        className="_card_878a3b"
-      >
-        <img
-          alt="dummyProductTitle"
-          className="_card__img_878a3b"
-          src="dummyImgURL"
-        />
-        <p
-          className="_card__title_878a3b"
+        <label
+          class="_container_429fb6 _checkout__inputText_cba5aa"
+          data-testid="input_tel"
+          for="Phone Number"
         >
-          dummyProductTitle
-        </p>
+          <p
+            class="_container__title_429fb6"
+          >
+            Phone Number
+          </p>
+          <input
+            class="_container__input_429fb6"
+            id="Phone Number"
+            name="Phone Number"
+            placeholder="Insert phone number"
+            required=""
+            type="tel"
+            value=""
+          />
+        </label>
         <p
-          className="_card__price_878a3b"
+          class="_checkout__subHeader_cba5aa"
         >
-          $ 
-          123.45
+          shipping info
         </p>
+        <label
+          class="_container_429fb6 _checkout__inputText_cba5aa _gridColumnSpan_cba5aa"
+          data-testid="container"
+          for="Address"
+        >
+          <p
+            class="_container__title_429fb6"
+          >
+            Address
+          </p>
+          <input
+            class="_container__input_429fb6"
+            id="Address"
+            name="Address"
+            placeholder="Insert address"
+            required=""
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          class="_container_429fb6 _checkout__inputText_cba5aa"
+          data-testid="container"
+          for="ZIP Code"
+        >
+          <p
+            class="_container__title_429fb6"
+          >
+            ZIP Code
+          </p>
+          <input
+            class="_container__input_429fb6"
+            id="ZIP Code"
+            name="ZIP Code"
+            placeholder="Insert ZIP code"
+            required=""
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          class="_container_429fb6 _checkout__inputText_cba5aa"
+          data-testid="container"
+          for="City"
+        >
+          <p
+            class="_container__title_429fb6"
+          >
+            City
+          </p>
+          <input
+            class="_container__input_429fb6"
+            id="City"
+            name="City"
+            placeholder="Insert city"
+            required=""
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          class="_container_429fb6 _checkout__inputText_cba5aa"
+          data-testid="container"
+          for="Country"
+        >
+          <p
+            class="_container__title_429fb6"
+          >
+            Country
+          </p>
+          <input
+            class="_container__input_429fb6"
+            id="Country"
+            name="Country"
+            placeholder="Insert country"
+            required=""
+            type="text"
+            value=""
+          />
+        </label>
         <p
-          className="_card__quantity_878a3b"
+          class="_checkout__subHeader_cba5aa"
         >
-          x
-          3
+          payment details
         </p>
+        <div
+          class="_checkout__paymentMethod_cba5aa"
+        >
+          <p
+            class="_checkout__labelTitle_cba5aa"
+          >
+            payment method
+          </p>
+          <label
+            class="_label_a98f32 undefined"
+            data-testid="input_radio"
+            for="e-Money"
+          >
+            <input
+              class="_label__radioBtn_a98f32"
+              id="e-Money"
+              name="payment method"
+              required=""
+              type="radio"
+              value=""
+            />
+            <p
+              class="_label__title_a98f32"
+            >
+              e-Money
+            </p>
+          </label>
+          <label
+            class="_label_a98f32 _gridColumn2_cba5aa"
+            data-testid="input_radio"
+            for="cash"
+          >
+            <input
+              class="_label__radioBtn_a98f32"
+              id="cash"
+              name="payment method"
+              required=""
+              type="radio"
+              value=""
+            />
+            <p
+              class="_label__title_a98f32"
+            >
+              cash
+            </p>
+          </label>
+        </div>
       </div>
     </div>
     <div
-      className="_summary__financial_cba5aa"
+      class="_summary_cba5aa"
+      data-testid="checkout summary"
     >
       <p
-        className="_summary__financial__heading_cba5aa"
+        class="_summary__header_cba5aa"
       >
-        total
+        summary
       </p>
-      <p
-        className="_summary__financial__total_cba5aa"
+      <div
+        class="_summary__products_cba5aa"
       >
-        $ 
-        99.01
-      </p>
-      <p
-        className="_summary__financial__heading_cba5aa"
+        <div
+          class="_card_878a3b"
+          data-testid="checkout_summary_product_card"
+        >
+          <img
+            alt="dummyProductTitle"
+            class="_card__img_878a3b"
+            src="dummyImgURL"
+          />
+          <p
+            class="_card__title_878a3b"
+          >
+            dummyProductTitle
+          </p>
+          <p
+            class="_card__price_878a3b"
+          >
+            $ 123.45
+          </p>
+          <p
+            class="_card__quantity_878a3b"
+          >
+            x3
+          </p>
+        </div>
+      </div>
+      <div
+        class="_summary__financial_cba5aa"
+        data-testid="summary financial"
       >
-        shipping
-      </p>
-      <p
-        className="_summary__financial__total_cba5aa"
+        <p
+          class="_summary__financial__heading_cba5aa"
+        >
+          total
+        </p>
+        <p
+          class="_summary__financial__total_cba5aa"
+        >
+          $ 99.01
+        </p>
+        <p
+          class="_summary__financial__heading_cba5aa"
+        >
+          shipping
+        </p>
+        <p
+          class="_summary__financial__total_cba5aa"
+        >
+          $ 50
+        </p>
+        <p
+          class="_summary__financial__heading_cba5aa"
+        >
+          vat (included)
+        </p>
+        <p
+          class="_summary__financial__total_cba5aa"
+        >
+          $ 19.802
+        </p>
+        <p
+          class="_summary__financial__heading_cba5aa _gridLastRow_cba5aa"
+        >
+          grand total
+        </p>
+        <p
+          class="_summary__financial__grandTotal_cba5aa"
+        >
+          $ 168.812
+        </p>
+      </div>
+      <button
+        class="_summary__btn_cba5aa"
+        type="submit"
       >
-        $ 
-        50
-      </p>
-      <p
-        className="_summary__financial__heading_cba5aa"
-      >
-        vat (included)
-      </p>
-      <p
-        className="_summary__financial__total_cba5aa"
-      >
-        $ 
-        19.802
-      </p>
-      <p
-        className="_summary__financial__heading_cba5aa _gridLastRow_cba5aa"
-      >
-        grand total
-      </p>
-      <p
-        className="_summary__financial__grandTotal_cba5aa"
-      >
-        $ 
-        168.812
-      </p>
+        continue & pay
+      </button>
     </div>
-    <button
-      className="_summary__btn_cba5aa"
-      type="submit"
-    >
-      continue & pay
-    </button>
-  </div>
-</form>
+  </form>
+</DocumentFragment>
 `;

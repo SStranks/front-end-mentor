@@ -1,25 +1,24 @@
-import App from '#Components/App';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
+import App from '#Components/App';
+
 import SkipTo from './SkipTo';
 
 const ROUTES = {
-  home: '/',
-  speakers: '/speakers',
-  headphones: '/headphones',
-  earphones: '/earphones',
-  productDetail: '/speakers/1',
   checkout: '/checkout',
+  earphones: '/earphones',
+  headphones: '/headphones',
+  home: '/',
+  productDetail: '/speakers/1',
+  speakers: '/speakers',
 };
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(<SkipTo contentName="Dummy name" contentId="Dummy id" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<SkipTo contentName="Dummy name" contentId="Dummy id" />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -211,13 +210,9 @@ describe('Functionality', () => {
         name: /Skip to Footer Content/,
       });
 
-      const mainContent = await screen.findByTestId(
-        'skipto-footer',
-        undefined,
-        {
-          timeout: 3000,
-        }
-      );
+      const mainContent = await screen.findByTestId('skipto-footer', undefined, {
+        timeout: 3000,
+      });
 
       expect(skipToMainContentLink).toBeInTheDocument();
       expect(mainContent).toBeInTheDocument();

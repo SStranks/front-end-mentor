@@ -1,274 +1,273 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<section
-  aria-labelledby="dummyProductCategory"
->
-  <header
-    className="_header_d28747"
+<DocumentFragment>
+  <section
+    aria-labelledby="dummyProductCategory"
   >
-    <hr
-      className="_header__hr_d28747"
-    />
-    <h1
-      className="_header__title_d28747"
-      id="dummyProductCategory"
+    <header
+      class="_header_d28747"
     >
-      dummyProductCategory
-    </h1>
-  </header>
-  <main
-    className="_main_2aacc9 undefined"
-    data-testid="skipto-main"
-    id="skipto-main"
-  >
-    <div
-      className="_main__container_2aacc9"
+      <hr
+        class="_header__hr_d28747"
+      />
+      <h1
+        class="_header__title_d28747"
+        id="dummyProductCategory"
+      >
+        dummyProductCategory
+      </h1>
+    </header>
+    <main
+      class="_main_2aacc9 undefined"
+      data-testid="skipto-main"
+      id="skipto-main"
     >
       <div
-        className="_grid_d28747"
-      >
-        <article
-          aria-labelledby="dummyProductName"
-          className="_card_407cdb"
-        >
-          <picture>
-            <source
-              height="1120px"
-              media="(min-width: 1200px)"
-              srcSet="desktopImgURL"
-              width="1080px"
-            />
-            <source
-              height="960px"
-              media="(min-width: 481px) and (max-width: 1199px)"
-              srcSet="tabletImgURL"
-              width="562px"
-            />
-            <source
-              height="654px"
-              media="(max-width: 480px)"
-              srcSet="mobileImgURL"
-              width="654px"
-            />
-            <img
-              alt="dummyProductName"
-              className="_card__img_407cdb"
-              src="desktopImgURL"
-            />
-          </picture>
-          <div
-            className="_card__panel_407cdb"
-          >
-            <p
-              className="_card__new_407cdb"
-            >
-              new product
-            </p>
-            <h2
-              className="_card__title_407cdb"
-              id="dummyProductName"
-            >
-              dummyProductName
-            </h2>
-            <p
-              className="_card__details_407cdb"
-            >
-              dummyDescription
-            </p>
-            <a
-              aria-label="See product dummyProductName"
-              className="_card__link_407cdb"
-              href="/dummyProductCategory/1"
-              onClick={[Function]}
-            >
-              see product
-            </a>
-          </div>
-        </article>
-      </div>
-      <div
-        className="_list_f03033 _productExampleShopList_d28747"
-      >
-        <a
-          className="_card__shop__text_354178"
-          href="/headphones"
-          onClick={[Function]}
-        >
-          <div
-            aria-label="see all headphones shop"
-            className="_card_354178"
-          >
-            <div
-              className="_card__bg_354178"
-            />
-            <img
-              alt=""
-              className="_card__img_354178"
-              height="380px"
-              src="/img/shared/desktop/image-category-thumbnail-headphones.png"
-              width="438px"
-            />
-            <p
-              className="_card__name_354178"
-            >
-              headphones
-            </p>
-            <div
-              className="_card__shop_354178"
-            >
-              <p
-                className="_card__shop__text_354178"
-              >
-                shop
-              </p>
-              <img
-                alt=""
-                className="_card__shop__img_354178"
-                height="12px"
-                src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
-                width="8px"
-              />
-            </div>
-          </div>
-        </a>
-        <a
-          className="_card__shop__text_354178"
-          href="/speakers"
-          onClick={[Function]}
-        >
-          <div
-            aria-label="see all speakers shop"
-            className="_card_354178"
-          >
-            <div
-              className="_card__bg_354178"
-            />
-            <img
-              alt=""
-              className="_card__img_354178"
-              height="380px"
-              src="/img/shared/desktop/image-category-thumbnail-speakers.png"
-              width="438px"
-            />
-            <p
-              className="_card__name_354178"
-            >
-              speakers
-            </p>
-            <div
-              className="_card__shop_354178"
-            >
-              <p
-                className="_card__shop__text_354178"
-              >
-                shop
-              </p>
-              <img
-                alt=""
-                className="_card__shop__img_354178"
-                height="12px"
-                src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
-                width="8px"
-              />
-            </div>
-          </div>
-        </a>
-        <a
-          className="_card__shop__text_354178"
-          href="/earphones"
-          onClick={[Function]}
-        >
-          <div
-            aria-label="see all earphones shop"
-            className="_card_354178"
-          >
-            <div
-              className="_card__bg_354178"
-            />
-            <img
-              alt=""
-              className="_card__img_354178"
-              height="380px"
-              src="/img/shared/desktop/image-category-thumbnail-earphones.png"
-              width="438px"
-            />
-            <p
-              className="_card__name_354178"
-            >
-              earphones
-            </p>
-            <div
-              className="_card__shop_354178"
-            >
-              <p
-                className="_card__shop__text_354178"
-              >
-                shop
-              </p>
-              <img
-                alt=""
-                className="_card__shop__img_354178"
-                height="12px"
-                src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
-                width="8px"
-              />
-            </div>
-          </div>
-        </a>
-      </div>
-      <article
-        aria-labelledby="company statement"
-        className="_card_fe70ec _companyStatement_d28747"
+        class="_main__container_2aacc9"
       >
         <div
-          className="_card__info_fe70ec"
+          class="_grid_d28747"
         >
-          <h2
-            className="_card__title_fe70ec"
-            id="company statement"
+          <article
+            aria-labelledby="dummyProductName"
+            class="_card_407cdb"
           >
-            Bringing you the 
-            <span>
-              best
-            </span>
-             audio gear
-          </h2>
-          <p
-            className="_card__statement_fe70ec"
-          >
-            Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
-          </p>
+            <picture>
+              <source
+                height="1120px"
+                media="(min-width: 1200px)"
+                srcset="desktopImgURL"
+                width="1080px"
+              />
+              <source
+                height="960px"
+                media="(min-width: 481px) and (max-width: 1199px)"
+                srcset="tabletImgURL"
+                width="562px"
+              />
+              <source
+                height="654px"
+                media="(max-width: 480px)"
+                srcset="mobileImgURL"
+                width="654px"
+              />
+              <img
+                alt="dummyProductName"
+                class="_card__img_407cdb"
+                src="desktopImgURL"
+              />
+            </picture>
+            <div
+              class="_card__panel_407cdb"
+            >
+              <p
+                class="_card__new_407cdb"
+              >
+                new product
+              </p>
+              <h2
+                class="_card__title_407cdb"
+                id="dummyProductName"
+              >
+                dummyProductName
+              </h2>
+              <p
+                class="_card__details_407cdb"
+              >
+                dummyDescription
+              </p>
+              <a
+                aria-label="See product dummyProductName"
+                class="_card__link_407cdb"
+                href="/dummyProductCategory/1"
+              >
+                see product
+              </a>
+            </div>
+          </article>
         </div>
-        <picture
-          className="_card__picture_fe70ec"
+        <div
+          class="_list_f03033 _productExampleShopList_d28747"
+          data-testid="product_example_shop_list"
         >
-          <source
-            height="588"
-            media="(min-width: 1024px)"
-            srcSet="/img/shared/desktop/image-best-gear.jpg"
-            width="540"
-          />
-          <source
-            height="600"
-            media="(min-width: 576px)"
-            srcSet="/img/shared/tablet/image-best-gear.jpg"
-            width="1378"
-          />
-          <source
-            height="600"
-            media="(max-width: 575px)"
-            srcSet="/img/shared/mobile/image-best-gear.jpg"
-            width="654"
-          />
-          <img
-            alt="Furnishing our customers with the best gear"
-            className="_card__img_fe70ec"
-            src="/img/shared/desktop/image-best-gear.jpg"
-          />
-        </picture>
-      </article>
-    </div>
-  </main>
-</section>
+          <a
+            class="_card__shop__text_354178"
+            href="/headphones"
+          >
+            <div
+              aria-label="see all headphones shop"
+              class="_card_354178"
+            >
+              <div
+                class="_card__bg_354178"
+              />
+              <img
+                alt=""
+                class="_card__img_354178"
+                height="380px"
+                src="/img/shared/desktop/image-category-thumbnail-headphones.png"
+                width="438px"
+              />
+              <p
+                class="_card__name_354178"
+              >
+                headphones
+              </p>
+              <div
+                class="_card__shop_354178"
+              >
+                <p
+                  class="_card__shop__text_354178"
+                >
+                  shop
+                </p>
+                <img
+                  alt=""
+                  class="_card__shop__img_354178"
+                  height="12px"
+                  src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+                  width="8px"
+                />
+              </div>
+            </div>
+          </a>
+          <a
+            class="_card__shop__text_354178"
+            href="/speakers"
+          >
+            <div
+              aria-label="see all speakers shop"
+              class="_card_354178"
+            >
+              <div
+                class="_card__bg_354178"
+              />
+              <img
+                alt=""
+                class="_card__img_354178"
+                height="380px"
+                src="/img/shared/desktop/image-category-thumbnail-speakers.png"
+                width="438px"
+              />
+              <p
+                class="_card__name_354178"
+              >
+                speakers
+              </p>
+              <div
+                class="_card__shop_354178"
+              >
+                <p
+                  class="_card__shop__text_354178"
+                >
+                  shop
+                </p>
+                <img
+                  alt=""
+                  class="_card__shop__img_354178"
+                  height="12px"
+                  src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+                  width="8px"
+                />
+              </div>
+            </div>
+          </a>
+          <a
+            class="_card__shop__text_354178"
+            href="/earphones"
+          >
+            <div
+              aria-label="see all earphones shop"
+              class="_card_354178"
+            >
+              <div
+                class="_card__bg_354178"
+              />
+              <img
+                alt=""
+                class="_card__img_354178"
+                height="380px"
+                src="/img/shared/desktop/image-category-thumbnail-earphones.png"
+                width="438px"
+              />
+              <p
+                class="_card__name_354178"
+              >
+                earphones
+              </p>
+              <div
+                class="_card__shop_354178"
+              >
+                <p
+                  class="_card__shop__text_354178"
+                >
+                  shop
+                </p>
+                <img
+                  alt=""
+                  class="_card__shop__img_354178"
+                  height="12px"
+                  src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+                  width="8px"
+                />
+              </div>
+            </div>
+          </a>
+        </div>
+        <article
+          aria-labelledby="company statement"
+          class="_card_fe70ec _companyStatement_d28747"
+        >
+          <div
+            class="_card__info_fe70ec"
+          >
+            <h2
+              class="_card__title_fe70ec"
+              id="company statement"
+            >
+              Bringing you the 
+              <span>
+                best
+              </span>
+               audio gear
+            </h2>
+            <p
+              class="_card__statement_fe70ec"
+            >
+              Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
+            </p>
+          </div>
+          <picture
+            class="_card__picture_fe70ec"
+          >
+            <source
+              height="588"
+              media="(min-width: 1024px)"
+              srcset="/img/shared/desktop/image-best-gear.jpg"
+              width="540"
+            />
+            <source
+              height="600"
+              media="(min-width: 576px)"
+              srcset="/img/shared/tablet/image-best-gear.jpg"
+              width="1378"
+            />
+            <source
+              height="600"
+              media="(max-width: 575px)"
+              srcset="/img/shared/mobile/image-best-gear.jpg"
+              width="654"
+            />
+            <img
+              alt="Furnishing our customers with the best gear"
+              class="_card__img_fe70ec"
+              src="/img/shared/desktop/image-best-gear.jpg"
+            />
+          </picture>
+        </article>
+      </div>
+    </main>
+  </section>
+</DocumentFragment>
 `;

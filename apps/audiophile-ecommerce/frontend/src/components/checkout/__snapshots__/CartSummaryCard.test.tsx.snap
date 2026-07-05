@@ -1,45 +1,42 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  className="_card_a23384"
->
-  <p
-    className="_card__header_a23384"
-  >
-    cart (
-    0
-    )
-  </p>
-  <button
-    aria-label="remove all products from cart"
-    className="_card__removeAllBtn_a23384"
-    onClick={[Function]}
-    type="button"
-  >
-    remove all
-  </button>
+<DocumentFragment>
   <div
-    className="_card__productList_a23384"
-  />
-  <p
-    className="_card__total_a23384"
+    class="_card_a23384"
   >
-    total
-  </p>
-  <p
-    className="_card__amount_a23384"
-  >
-    $ 
-    0.00
-  </p>
-  <button
-    className="_card__checkoutBtn_a23384"
-    disabled={true}
-    onClick={[Function]}
-    type="button"
-  >
-    checkout
-  </button>
-</div>
+    <p
+      class="_card__header_a23384"
+    >
+      cart (0)
+    </p>
+    <button
+      aria-label="remove all products from cart"
+      class="_card__removeAllBtn_a23384"
+      type="button"
+    >
+      remove all
+    </button>
+    <div
+      class="_card__productList_a23384"
+    />
+    <p
+      class="_card__total_a23384"
+    >
+      total
+    </p>
+    <p
+      class="_card__amount_a23384"
+    >
+      $ 0.00
+    </p>
+    <button
+      class="_card__checkoutBtn_a23384"
+      disabled=""
+      type="button"
+    >
+      checkout
+    </button>
+  </div>
+</DocumentFragment>
 `;

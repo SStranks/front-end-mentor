@@ -1,134 +1,134 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  className="_list_f03033 undefined"
->
-  <a
-    className="_card__shop__text_354178"
-    href="/headphones"
-    onClick={[Function]}
+<DocumentFragment>
+  <div
+    class="_list_f03033 undefined"
+    data-testid="product_example_shop_list"
   >
-    <div
-      aria-label="see all headphones shop"
-      className="_card_354178"
+    <a
+      class="_card__shop__text_354178"
+      href="/headphones"
     >
       <div
-        className="_card__bg_354178"
-      />
-      <img
-        alt=""
-        className="_card__img_354178"
-        height="380px"
-        src="/img/shared/desktop/image-category-thumbnail-headphones.png"
-        width="438px"
-      />
-      <p
-        className="_card__name_354178"
+        aria-label="see all headphones shop"
+        class="_card_354178"
       >
-        headphones
-      </p>
-      <div
-        className="_card__shop_354178"
-      >
-        <p
-          className="_card__shop__text_354178"
-        >
-          shop
-        </p>
+        <div
+          class="_card__bg_354178"
+        />
         <img
           alt=""
-          className="_card__shop__img_354178"
-          height="12px"
-          src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
-          width="8px"
+          class="_card__img_354178"
+          height="380px"
+          src="/img/shared/desktop/image-category-thumbnail-headphones.png"
+          width="438px"
         />
+        <p
+          class="_card__name_354178"
+        >
+          headphones
+        </p>
+        <div
+          class="_card__shop_354178"
+        >
+          <p
+            class="_card__shop__text_354178"
+          >
+            shop
+          </p>
+          <img
+            alt=""
+            class="_card__shop__img_354178"
+            height="12px"
+            src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+            width="8px"
+          />
+        </div>
       </div>
-    </div>
-  </a>
-  <a
-    className="_card__shop__text_354178"
-    href="/speakers"
-    onClick={[Function]}
-  >
-    <div
-      aria-label="see all speakers shop"
-      className="_card_354178"
+    </a>
+    <a
+      class="_card__shop__text_354178"
+      href="/speakers"
     >
       <div
-        className="_card__bg_354178"
-      />
-      <img
-        alt=""
-        className="_card__img_354178"
-        height="380px"
-        src="/img/shared/desktop/image-category-thumbnail-speakers.png"
-        width="438px"
-      />
-      <p
-        className="_card__name_354178"
+        aria-label="see all speakers shop"
+        class="_card_354178"
       >
-        speakers
-      </p>
-      <div
-        className="_card__shop_354178"
-      >
-        <p
-          className="_card__shop__text_354178"
-        >
-          shop
-        </p>
+        <div
+          class="_card__bg_354178"
+        />
         <img
           alt=""
-          className="_card__shop__img_354178"
-          height="12px"
-          src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
-          width="8px"
+          class="_card__img_354178"
+          height="380px"
+          src="/img/shared/desktop/image-category-thumbnail-speakers.png"
+          width="438px"
         />
+        <p
+          class="_card__name_354178"
+        >
+          speakers
+        </p>
+        <div
+          class="_card__shop_354178"
+        >
+          <p
+            class="_card__shop__text_354178"
+          >
+            shop
+          </p>
+          <img
+            alt=""
+            class="_card__shop__img_354178"
+            height="12px"
+            src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+            width="8px"
+          />
+        </div>
       </div>
-    </div>
-  </a>
-  <a
-    className="_card__shop__text_354178"
-    href="/earphones"
-    onClick={[Function]}
-  >
-    <div
-      aria-label="see all earphones shop"
-      className="_card_354178"
+    </a>
+    <a
+      class="_card__shop__text_354178"
+      href="/earphones"
     >
       <div
-        className="_card__bg_354178"
-      />
-      <img
-        alt=""
-        className="_card__img_354178"
-        height="380px"
-        src="/img/shared/desktop/image-category-thumbnail-earphones.png"
-        width="438px"
-      />
-      <p
-        className="_card__name_354178"
+        aria-label="see all earphones shop"
+        class="_card_354178"
       >
-        earphones
-      </p>
-      <div
-        className="_card__shop_354178"
-      >
-        <p
-          className="_card__shop__text_354178"
-        >
-          shop
-        </p>
+        <div
+          class="_card__bg_354178"
+        />
         <img
           alt=""
-          className="_card__shop__img_354178"
-          height="12px"
-          src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
-          width="8px"
+          class="_card__img_354178"
+          height="380px"
+          src="/img/shared/desktop/image-category-thumbnail-earphones.png"
+          width="438px"
         />
+        <p
+          class="_card__name_354178"
+        >
+          earphones
+        </p>
+        <div
+          class="_card__shop_354178"
+        >
+          <p
+            class="_card__shop__text_354178"
+          >
+            shop
+          </p>
+          <img
+            alt=""
+            class="_card__shop__img_354178"
+            height="12px"
+            src="data:image/svg+xml,%3csvg%20width='8'%20height='12'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.322%201l5%205-5%205'%20stroke='%23D87D4A'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+            width="8px"
+          />
+        </div>
       </div>
-    </div>
-  </a>
-</div>
+    </a>
+  </div>
+</DocumentFragment>
 `;

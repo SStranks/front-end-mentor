@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
 import InputEmail from './InputEmail';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer.create(<InputEmail id="label text" />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<InputEmail id="label text" />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(<InputEmail id="label text" />);
+    render(<InputEmail id="label text" />);
 
-    const component = container.querySelector('label');
+    const component = screen.getByTestId('input_email');
     const inputTypeText = screen.getByRole('textbox');
     const paragraphText = screen.getByText('label text');
 
@@ -22,11 +22,9 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    const { container } = render(
-      <InputEmail appendClass="additionalStyles" id="label text" />
-    );
+    render(<InputEmail appendClass="additionalStyles" id="label text" />);
 
-    const component = container.querySelector('label');
+    const component = screen.getByTestId('input_email');
 
     expect(component).toHaveClass('additionalStyles');
   });
@@ -44,15 +42,13 @@ describe('Functionality', () => {
   });
 
   test('Clicking label focuses on input', async () => {
-    const { container } = render(<InputEmail id="label text" />);
+    render(<InputEmail id="label text" />);
 
-    const component = container.querySelector('label');
+    const component = screen.getByTestId('input_email');
     const inputTypeText = screen.getByRole('textbox');
 
     expect(inputTypeText).not.toHaveFocus();
-    if (component) {
-      await userEvent.click(component);
-    }
+    await userEvent.click(component);
     expect(inputTypeText).toHaveFocus();
   });
 });

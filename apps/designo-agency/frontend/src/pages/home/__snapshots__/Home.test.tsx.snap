@@ -95,12 +95,14 @@ exports[`Appearance > Component render matches snapshot 1`] = `
       </section>
       <div
         class="_viewgrid_c8c997"
+        data-testid="viewgrid"
       >
         <a
           href="/webdesign"
         >
           <div
             class="_card_893cd2"
+            data-testid="Card1"
             style="background-image: url("/src/assets/img/desktop/image-web-design-large.jpg");"
           >
             <h2>
@@ -124,6 +126,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         >
           <div
             class="_card_893cd2"
+            data-testid="Card1"
             style="background-image: url("/src/assets/img/desktop/image-app-design.jpg");"
           >
             <h2>
@@ -147,6 +150,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
         >
           <div
             class="_card_893cd2"
+            data-testid="Card1"
             style="background-image: url("/src/assets/img/desktop/image-graphic-design.jpg");"
           >
             <h2>
@@ -168,6 +172,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
       </div>
       <div
         class="_qualities_c8c997"
+        data-testid="qualities"
       >
         <div
           class="_quality_a78d56"
@@ -181,6 +186,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             />
             <div
               class="_bgCircle_a78d56"
+              data-testid="background circle"
               style="transform: rotate(0deg);"
             />
           </div>
@@ -208,6 +214,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             />
             <div
               class="_bgCircle_a78d56"
+              data-testid="background circle"
               style="transform: rotate(270deg);"
             />
           </div>
@@ -235,6 +242,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             />
             <div
               class="_bgCircle_a78d56"
+              data-testid="background circle"
               style="transform: rotate(90deg);"
             />
           </div>

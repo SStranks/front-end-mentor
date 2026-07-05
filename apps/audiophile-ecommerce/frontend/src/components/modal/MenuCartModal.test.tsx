@@ -71,7 +71,7 @@ describe('Functionality', () => {
       { container: $root, wrapper: BrowserRouter }
     );
 
-    const modalContainer = screen.getByRole('container');
+    const modalContainer = screen.getByTestId('menu_cart_modal');
 
     await userEvent.click(modalContainer);
     await userEvent.keyboard('{Escape}');

@@ -1,46 +1,20 @@
 import { memo } from 'react';
+
 import styles from './_InputRadio.module.scss';
 
-//   // TODO:  Set value attribute
+// TODO:  Set value attribute
 interface ElemProps extends React.HTMLProps<HTMLInputElement> {
-  appendClass?: string;
+  appendclass?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputRadio = memo((props: ElemProps): JSX.Element => {
-  const {
-    appendClass,
-    onChange,
-    id,
-    checked,
-    defaultChecked,
-    disabled,
-    name,
-    ref,
-    required,
-    tabIndex,
-    title,
-    value,
-  } = props;
+  const { appendclass, id } = props;
 
   return (
-    <label className={`${styles.label} ${appendClass}`} htmlFor={id}>
-      <input
-        type="radio"
-        className={styles.label__radioBtn}
-        id={id}
-        checked={checked}
-        defaultChecked={defaultChecked}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        ref={ref}
-        required={required}
-        tabIndex={tabIndex}
-        title={title}
-        value={value}
-      />
-      <p className={styles.label__title}>{id}</p>
+    <label className={`${styles['label']} ${appendclass}`} htmlFor={id} data-testid="input_radio">
+      <input {...props} type="radio" className={styles['label__radioBtn']} />
+      <p className={styles['label__title']}>{id}</p>
     </label>
   );
 });

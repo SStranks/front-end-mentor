@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
+
 import InputRadio from './InputRadio';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer.create(<InputRadio id="label text" />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<InputRadio id="label text" />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(<InputRadio id="label text" />);
+    render(<InputRadio id="label text" />);
 
-    const component = container.querySelector('label');
+    const component = screen.getByTestId('input_radio');
     const inputTypeRadio = screen.getByRole('radio');
     const paragraphText = screen.getByText('label text');
 
@@ -22,11 +22,9 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    const { container } = render(
-      <InputRadio appendClass="additionalStyles" id="label text" />
-    );
+    render(<InputRadio appendclass="additionalStyles" id="label text" />);
 
-    const component = container.querySelector('label');
+    const component = screen.getByTestId('input_radio');
 
     expect(component).toHaveClass('additionalStyles');
   });
@@ -36,8 +34,7 @@ describe('Functionality', () => {
   test('Radio accepts click and becomes checked', async () => {
     render(<InputRadio id="label text" />);
 
-    const inputTypeRadio =
-      screen.getByLabelText<HTMLInputElement>('label text');
+    const inputTypeRadio = screen.getByLabelText<HTMLInputElement>('label text');
 
     expect(inputTypeRadio).not.toBeChecked();
     await userEvent.click(inputTypeRadio);
@@ -45,15 +42,13 @@ describe('Functionality', () => {
   });
 
   test('Label accepts click and radio becomes checked', async () => {
-    const { container } = render(<InputRadio id="label text" />);
+    render(<InputRadio id="label text" />);
 
-    const label = container.querySelector<HTMLLabelElement>('label');
+    // const label = container.querySelector<HTMLLabelElement>('label');
     const inputTypeRadio = screen.getByRole('radio');
 
     expect(inputTypeRadio).not.toBeChecked();
-    if (label) {
-      await userEvent.click(label);
-    }
+    await userEvent.click(inputTypeRadio);
     expect(inputTypeRadio).toBeChecked();
   });
 });

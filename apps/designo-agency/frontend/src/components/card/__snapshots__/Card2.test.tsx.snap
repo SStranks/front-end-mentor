@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="_card_151f8f"
+    data-testid="Card2"
+  >
+    <img
+      alt=""
+      src="imgURL"
+    />
+    <div
+      class="_card__info_151f8f"
+    >
+      <h3>
+        dummyTitle
+      </h3>
+      <p>
+        dummyCaption
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

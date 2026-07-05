@@ -1,18 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import CompanyStatement from './CompanyStatement';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <CompanyStatement />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <CompanyStatement />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
@@ -20,12 +18,10 @@ describe('Appearance', () => {
 
     const component = screen.getByRole('article');
     const h2Text = screen.getByRole('heading', {
-      name: /^Bringing you the best audio gear$/,
       level: 2,
+      name: /^Bringing you the best audio gear$/,
     });
-    const statementText = screen.getByText(
-      /^Located at the heart of New York City/
-    );
+    const statementText = screen.getByText(/^Located at the heart of New York City/);
     const statementImg = screen.getByRole('img', {
       name: /^Furnishing our customers with the best gear$/,
     });

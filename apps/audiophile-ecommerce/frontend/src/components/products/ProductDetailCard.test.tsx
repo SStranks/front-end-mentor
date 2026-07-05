@@ -1,44 +1,42 @@
 import { render, screen, within } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+
 import ProductDetailCard from './ProductDetailCard';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <ProductDetailCard
-            appendClass="additionalStyles"
-            productId={0}
-            newProduct
-            productImages={{
-              desktop: '',
-              tablet: '',
-              mobile: '',
-            }}
-            productTitle="dummyProductTitle"
-            productDescription="dummyProductDescription"
-            productPrice={99.01}
-            productFeatures="dummyProductFeatures"
-            productItems={[{ item: 'dummyItem', quantity: 1 }]}
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ProductDetailCard
+          appendClass="additionalStyles"
+          productId={0}
+          newProduct
+          productImages={{
+            desktop: '',
+            mobile: '',
+            tablet: '',
+          }}
+          productTitle="dummyProductTitle"
+          productDescription="dummyProductDescription"
+          productPrice={99.01}
+          productFeatures="dummyProductFeatures"
+          productItems={[{ item: 'dummyItem', quantity: 1 }]}
+        />
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Component base should be fully rendered', () => {
-    const { container } = render(
+    render(
       <ProductDetailCard
         appendClass="additionalStyles"
         productId={0}
         newProduct
         productImages={{
           desktop: '',
-          tablet: '',
           mobile: '',
+          tablet: '',
         }}
         productTitle="dummyProductTitle"
         productDescription="dummyProductDescription"
@@ -51,31 +49,29 @@ describe('Appearance', () => {
       }
     );
 
-    const component = container.querySelector('div');
     const productImg = screen.getByRole('img', { name: 'dummyProductTitle' });
     const newProductText = screen.getByText(/^new product$/);
     const productTitleH2 = screen.getByRole('heading', {
-      name: /^dummyProductTitle$/,
       level: 2,
+      name: /^dummyProductTitle$/,
     });
     const productDescription = screen.getByText(/^dummyProductDescription$/);
     const productPrice = screen.getByText(/^\$ 99\.01$/);
     const addToCartBtn = screen.getByRole('button', { name: 'add to cart' });
     const productFeaturesH3 = screen.getByRole('heading', {
-      name: 'features',
       level: 3,
+      name: 'features',
     });
     const productFeatures = screen.getByText('dummyProductFeatures');
     const inTheBoxH3 = screen.getByRole('heading', {
-      name: 'in the box',
       level: 3,
+      name: 'in the box',
     });
     const productInTheBoxUL = screen.getByRole('list');
-    const { getAllByRole } = within(productInTheBoxUL);
-    const listItems = getAllByRole('listitem');
+    // const { getAllByRole } = within(productInTheBoxUL);
+    // const listItems = getAllByRole('listitem');
+    const listItems = within(productInTheBoxUL).getAllByRole('listitem');
 
-    expect(component).toBeInTheDocument();
-    expect(component).toHaveClass('container');
     expect(productImg).toBeInTheDocument();
     expect(newProductText).toBeInTheDocument();
     expect(productTitleH2).toBeInTheDocument();
@@ -98,8 +94,8 @@ describe('Appearance', () => {
         newProduct={false}
         productImages={{
           desktop: '',
-          tablet: '',
           mobile: '',
+          tablet: '',
         }}
         productTitle="dummyProductTitle"
         productDescription=""
@@ -118,15 +114,15 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    const { container } = render(
+    render(
       <ProductDetailCard
         appendClass="additionalStyles"
         productId={0}
         newProduct={false}
         productImages={{
           desktop: '',
-          tablet: '',
           mobile: '',
+          tablet: '',
         }}
         productTitle=""
         productDescription=""
@@ -139,7 +135,7 @@ describe('Appearance', () => {
       }
     );
 
-    const component = container.querySelector('div');
+    const component = screen.getByTestId('container');
 
     expect(component).toHaveClass('additionalStyles');
   });

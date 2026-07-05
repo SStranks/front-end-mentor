@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Appearance > Component render matches snapshot 1`] = `
+<DocumentFragment>
+  <a
+    href="/dummyURL"
+  >
+    <div
+      class="_card_893cd2"
+      data-testid="Card1"
+      style="background-image: url("imgURL");"
+    >
+      <h2>
+        dummyTitle
+      </h2>
+      <div
+        class="_card__view_893cd2"
+      >
+        <p>
+          view projects
+        </p>
+        <img
+          alt=""
+          src="data:image/svg+xml,%3csvg%20width='7'%20height='10'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1%201l4%204-4%204'%20stroke='%23E7816B'%20stroke-width='2'%20fill='none'%20fill-rule='evenodd'/%3e%3c/svg%3e"
+        />
+      </div>
+    </div>
+  </a>
+</DocumentFragment>
+`;

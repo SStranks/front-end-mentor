@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
+
 import { useLoading } from '#Context/LoadingContext';
+
 import styles from './_Logo.module.scss';
 
 function Logo(): JSX.Element {
@@ -18,8 +20,8 @@ function Logo(): JSX.Element {
   }, [isLoading]);
 
   return (
-    <div className={styles.container} ref={container}>
-      <div className={`${styles.logo} ${styles['logo--logoDark']}`}>
+    <div className={styles['container']} ref={container}>
+      <div className={`${styles['logo']} ${styles['logo--logoDark']}`}>
         <svg width="153" height="26" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <path
@@ -35,7 +37,7 @@ function Logo(): JSX.Element {
           </g>
         </svg>
       </div>
-      <div className={`${styles.logo} ${styles['logo--logoLight']}`}>
+      <div className={`${styles['logo']} ${styles['logo--logoLight']}`}>
         <svg width="153" height="26" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <path

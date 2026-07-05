@@ -29,7 +29,7 @@ function QuantityToggleButton(props: ElemProps): JSX.Element {
   };
 
   return (
-    <div className={`${styles['button']} ${appendClass}`} data-testid="container">
+    <div className={`${styles['button']} ${appendClass}`} data-testid="quality_toggle_button">
       <button onClick={decreaseBtn} type="button">
         -
       </button>

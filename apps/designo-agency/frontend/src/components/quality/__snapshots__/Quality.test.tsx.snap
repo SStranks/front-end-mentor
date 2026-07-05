@@ -14,6 +14,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
       />
       <div
         class="_bgCircle_a78d56"
+        data-testid="background circle"
         style="transform: rotate(0deg);"
       />
     </div>

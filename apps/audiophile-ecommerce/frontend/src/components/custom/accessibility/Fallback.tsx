@@ -2,15 +2,15 @@ import styles from './_Fallback.module.scss';
 
 function Fallback(): JSX.Element {
   return (
-    <div className={`${styles.fallback} fallback-fade-in`}>
-      <div className={styles.fallback__bars}>
-        <div className={styles.fallback__bars__bar} />
-        <div className={styles.fallback__bars__bar} />
-        <div className={styles.fallback__bars__bar} />
-        <div className={styles.fallback__bars__bar} />
-        <div className={styles.fallback__bars__bar} />
+    <div className={`${styles['fallback']} fallback-fade-in`} data-testid="fallback">
+      <div className={styles['fallback__bars']}>
+        <div className={styles['fallback__bars__bar']} />
+        <div className={styles['fallback__bars__bar']} />
+        <div className={styles['fallback__bars__bar']} />
+        <div className={styles['fallback__bars__bar']} />
+        <div className={styles['fallback__bars__bar']} />
       </div>
-      <p className={styles.fallback__loading}>Loading</p>
+      <p className={styles['fallback__loading']}>Loading</p>
     </div>
   );
 }

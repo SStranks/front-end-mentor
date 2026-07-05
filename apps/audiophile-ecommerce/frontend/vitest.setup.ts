@@ -40,3 +40,14 @@ const localStorageMock = (function () {
 Object.defineProperty(globalThis, 'localStorage', {
   value: localStorageMock,
 });
+
+class IntersectionObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+
+globalThis.IntersectionObserver = IntersectionObserverMock as unknown as typeof IntersectionObserver;

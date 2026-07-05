@@ -1,45 +1,47 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Appearance > Component render matches snapshot 1`] = `
-<div
-  aria-label="see product dummyProductTitle"
-  className="_card_2c469d"
->
-  <picture>
-    <source
-      height="636px"
-      media="(min-width: 1200px)"
-      srcSet=""
-      width="700px"
-    />
-    <source
-      height="636px"
-      media="(min-width: 768px)"
-      srcSet=""
-      width="446px"
-    />
-    <source
-      height="240px"
-      media="(max-width: 576px)"
-      srcSet=""
-      width="654px"
-    />
-    <img
-      alt="dummyProductTitle"
-      className="_card__img_2c469d"
-      src=""
-    />
-  </picture>
-  <h5
-    className="_card__title_2c469d"
+<DocumentFragment>
+  <div
+    aria-label="see product dummyProductTitle"
+    class="_card_2c469d"
   >
-    dummyProductTitle
-  </h5>
-  <a
-    className="_card__btn_2c469d"
-    href="//0"
-  >
-    see product
-  </a>
-</div>
+    <picture>
+      <source
+        height="636px"
+        media="(min-width: 1200px)"
+        srcset=""
+        width="700px"
+      />
+      <source
+        height="636px"
+        media="(min-width: 768px)"
+        srcset=""
+        width="446px"
+      />
+      <source
+        height="240px"
+        media="(max-width: 576px)"
+        srcset=""
+        width="654px"
+      />
+      <img
+        alt="dummyProductTitle"
+        class="_card__img_2c469d"
+        src=""
+      />
+    </picture>
+    <h5
+      class="_card__title_2c469d"
+    >
+      dummyProductTitle
+    </h5>
+    <a
+      class="_card__btn_2c469d"
+      href="//0"
+    >
+      see product
+    </a>
+  </div>
+</DocumentFragment>
 `;

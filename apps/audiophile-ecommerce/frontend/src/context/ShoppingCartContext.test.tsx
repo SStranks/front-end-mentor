@@ -1,9 +1,7 @@
-import {
-  ShoppingCartProvider,
-  useShoppingCartContext,
-} from '#Context/ShoppingCartContext';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { ShoppingCartProvider, useShoppingCartContext } from '#Context/ShoppingCartContext';
 
 beforeEach(() => {
   localStorage.setItem(
@@ -16,15 +14,8 @@ beforeEach(() => {
 });
 
 const DummyContextConsumer = (): JSX.Element => {
-  const {
-    cartTotalPrice,
-    cartItemsCount,
-    cartItems,
-    increaseCartItem,
-    decreaseCartItem,
-    removeItem,
-    removeAllItems,
-  } = useShoppingCartContext();
+  const { cartTotalPrice, cartItemsCount, cartItems, increaseCartItem, decreaseCartItem, removeItem, removeAllItems } =
+    useShoppingCartContext();
 
   const increaseCartItemBtn = () => {
     increaseCartItem(1, 2);
@@ -71,7 +62,7 @@ describe('Functionality', () => {
       </ShoppingCartProvider>
     );
 
-    const component = screen.getByTestId('dummyUI');
+    const component = await screen.findByTestId('dummyUI');
     const cartTotalPrice = screen.getByTestId('cartTotalPrice');
     const cartItemsCount = screen.getByTestId('cartItemsCount');
     const cartItems = screen.getByTestId('cartItems');
@@ -79,9 +70,7 @@ describe('Functionality', () => {
     expect(component).toBeInTheDocument();
     expect(cartTotalPrice).toHaveTextContent(/^\d+$/);
     expect(cartItemsCount).toHaveTextContent('4');
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":1},{"id":2,"quantity":3}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1},{"id":2,"quantity":3}]');
   });
 
   test('IncreaseCartItem function increase item quanity', async () => {
@@ -97,13 +86,9 @@ describe('Functionality', () => {
       name: 'increaseCartItem',
     });
 
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":1},{"id":2,"quantity":3}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1},{"id":2,"quantity":3}]');
     await userEvent.click(increaseCartItemBtn);
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":3},{"id":2,"quantity":3}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":3},{"id":2,"quantity":3}]');
   });
 
   test('DecreaseCartItem function decrements by 1; removes item at 0', async () => {
@@ -118,13 +103,9 @@ describe('Functionality', () => {
       name: 'decreaseCartItem',
     });
 
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":1},{"id":2,"quantity":3}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1},{"id":2,"quantity":3}]');
     await userEvent.click(decreaseCartItemBtn);
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":1},{"id":2,"quantity":2}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1},{"id":2,"quantity":2}]');
     await userEvent.click(decreaseCartItemBtn);
     await userEvent.click(decreaseCartItemBtn);
     expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1}]');
@@ -140,9 +121,7 @@ describe('Functionality', () => {
     const cartItems = screen.getByTestId('cartItems');
     const removeItemBtn = screen.getByRole('button', { name: 'removeItem' });
 
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":1},{"id":2,"quantity":3}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1},{"id":2,"quantity":3}]');
     await userEvent.click(removeItemBtn);
     expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1}]');
   });
@@ -159,9 +138,7 @@ describe('Functionality', () => {
       name: 'removeAll',
     });
 
-    expect(cartItems).toHaveTextContent(
-      '[{"id":1,"quantity":1},{"id":2,"quantity":3}]'
-    );
+    expect(cartItems).toHaveTextContent('[{"id":1,"quantity":1},{"id":2,"quantity":3}]');
     await userEvent.click(removeAllItemBtn);
     expect(cartItems).toHaveTextContent('[]');
   });

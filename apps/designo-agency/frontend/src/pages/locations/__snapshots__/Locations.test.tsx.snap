@@ -64,6 +64,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
       </nav>
       <div
         class="_grid_7e438e"
+        data-testid="grid"
       >
         <div
           class="_grid__row_7e438e"
