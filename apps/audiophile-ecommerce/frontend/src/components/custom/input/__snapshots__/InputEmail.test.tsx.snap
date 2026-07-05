@@ -15,9 +15,7 @@ exports[`Appearance > Component render matches snapshot 1`] = `
     <input
       class="_container__input_429fb6"
       id="label text"
-      maxlength="256"
       type="email"
-      value=""
     />
   </label>
 </DocumentFragment>

@@ -35,13 +35,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             Name
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa"
             class="_container__input_429fb6"
             id="Name"
             name="Name"
             placeholder="Insert full name"
             required=""
             type="text"
-            value=""
           />
         </label>
         <label
@@ -55,14 +55,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             Email Address
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa"
             class="_container__input_429fb6"
             id="Email Address"
-            maxlength="256"
             name="Email Address"
             placeholder="Insert email address"
             required=""
             type="email"
-            value=""
           />
         </label>
         <label
@@ -76,13 +75,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             Phone Number
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa"
             class="_container__input_429fb6"
             id="Phone Number"
             name="Phone Number"
             placeholder="Insert phone number"
             required=""
             type="tel"
-            value=""
           />
         </label>
         <p
@@ -101,13 +100,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             Address
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa _gridColumnSpan_cba5aa"
             class="_container__input_429fb6"
             id="Address"
             name="Address"
             placeholder="Insert address"
             required=""
             type="text"
-            value=""
           />
         </label>
         <label
@@ -121,13 +120,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             ZIP Code
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa"
             class="_container__input_429fb6"
             id="ZIP Code"
             name="ZIP Code"
             placeholder="Insert ZIP code"
             required=""
             type="text"
-            value=""
           />
         </label>
         <label
@@ -141,13 +140,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             City
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa"
             class="_container__input_429fb6"
             id="City"
             name="City"
             placeholder="Insert city"
             required=""
             type="text"
-            value=""
           />
         </label>
         <label
@@ -161,13 +160,13 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             Country
           </p>
           <input
+            appendclass="_checkout__inputText_cba5aa"
             class="_container__input_429fb6"
             id="Country"
             name="Country"
             placeholder="Insert country"
             required=""
             type="text"
-            value=""
           />
         </label>
         <p
@@ -194,7 +193,6 @@ exports[`Appearance > Component render matches snapshot 1`] = `
               name="payment method"
               required=""
               type="radio"
-              value=""
             />
             <p
               class="_label__title_a98f32"
@@ -208,12 +206,12 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             for="cash"
           >
             <input
+              appendclass="_gridColumn2_cba5aa"
               class="_label__radioBtn_a98f32"
               id="cash"
               name="payment method"
               required=""
               type="radio"
-              value=""
             />
             <p
               class="_label__title_a98f32"
@@ -222,6 +220,9 @@ exports[`Appearance > Component render matches snapshot 1`] = `
             </p>
           </label>
         </div>
+        <p>
+          testicle
+        </p>
       </div>
     </div>
     <div

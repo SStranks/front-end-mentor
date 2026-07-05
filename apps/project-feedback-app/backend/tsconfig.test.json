@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["src/tests/*", "src/**/*.test.*", "src/**/*.spec.*", "global.d.ts"],
-  "exclude": ["node_modules", "src/**/private*", "**/private/*"],
+  "include": ["server/tests/*", "server/**/*.test.*", "server/**/*.spec.*", "global.d.ts"],
+  "exclude": ["node_modules", "server/**/private*", "**/private/*"],
   "references": [{ "path": "./tsconfig.src.json" }],
   "compilerOptions": {
     "composite": true,

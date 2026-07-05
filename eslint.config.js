@@ -64,7 +64,7 @@ export default defineConfig([
   },
   {
     name: 'Javascript Configuration',
-    files: ['**/*.js?(x)'],
+    files: ['**/*.js'],
     languageOptions: { ...EslintConfigJavascript.languageOptions },
     plugins: { ...EslintConfigJavascript.plugins },
     rules: { ...EslintConfigJavascript.rules },
@@ -237,6 +237,7 @@ export default defineConfig([
     languageOptions: {
       ...EslintConfigReact.languageOptions,
       parserOptions: {
+        ...EslintConfigReact.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/frontend'),
       },
@@ -249,12 +250,12 @@ export default defineConfig([
   },
   {
     name: '@apps/invoice-app/frontend: Testing; Vitest + RTL',
-    files: ['@apps/invoice-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
     languageOptions: {
       ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: path.join(import.meta.dirname, '@apps/invoice-app/frontend'),
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/frontend'),
       },
     },
     plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
@@ -353,6 +354,7 @@ export default defineConfig([
     languageOptions: {
       ...EslintConfigReact.languageOptions,
       parserOptions: {
+        ...EslintConfigReact.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/frontend'),
       },
@@ -369,6 +371,7 @@ export default defineConfig([
     languageOptions: {
       ...EslintConfigReact.languageOptions,
       parserOptions: {
+        ...EslintConfigReact.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/frontend'),
       },

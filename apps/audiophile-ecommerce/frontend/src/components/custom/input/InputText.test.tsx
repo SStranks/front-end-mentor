@@ -28,7 +28,7 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    render(<InputText appendClass="additionalStyles" id="label text" />);
+    render(<InputText appendclass="additionalStyles" id="label text" />);
 
     const component = screen.getByTestId('container');
 

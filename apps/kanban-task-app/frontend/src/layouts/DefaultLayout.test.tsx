@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
+import { LoadingProvider } from '#Context/LoadingContext';
+
 import DefaultLayout from './DefaultLayout';
 
 describe('Appearance', () => {
@@ -8,6 +10,29 @@ describe('Appearance', () => {
     const mockFn = vi.fn();
     const { asFragment } = render(
       <BrowserRouter>
+        <LoadingProvider>
+          <DefaultLayout
+            boardData={{
+              activeBoard: {
+                _id: '',
+                columns: [],
+                name: '',
+              },
+              boardsList: [],
+            }}
+            activeBoardId=""
+            setActiveBoardId={mockFn}
+          />
+        </LoadingProvider>
+      </BrowserRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('Component base should be fully rendered', () => {
+    const mockFn = vi.fn();
+    render(
+      <LoadingProvider>
         <DefaultLayout
           boardData={{
             activeBoard: {
@@ -20,26 +45,7 @@ describe('Appearance', () => {
           activeBoardId=""
           setActiveBoardId={mockFn}
         />
-      </BrowserRouter>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('Component base should be fully rendered', () => {
-    const mockFn = vi.fn();
-    render(
-      <DefaultLayout
-        boardData={{
-          activeBoard: {
-            _id: '',
-            columns: [],
-            name: '',
-          },
-          boardsList: [],
-        }}
-        activeBoardId=""
-        setActiveBoardId={mockFn}
-      />,
+      </LoadingProvider>,
       { wrapper: BrowserRouter }
     );
 

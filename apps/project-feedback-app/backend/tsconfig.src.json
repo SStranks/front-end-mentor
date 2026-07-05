@@ -1,24 +1,24 @@
 /* eslint-disable jsonc/no-comments */
 {
   "extends": "./tsconfig.base.json",
-  "include": ["src/**/*", "src/**/*.json"],
+  "include": ["server/**/*", "server/**/*.json"],
   "exclude": [
     "node_modules",
     "dist",
     "mongo",
     "**/private.*",
     "**/private/*",
-    "src/tests/*",
-    "src/**/*.test.*",
-    "src/**/*.spec.*"
+    "server/tests/*",
+    "server/**/*.test.*",
+    "server/**/*.spec.*"
   ],
   "compilerOptions": {
     "composite": true,
     "noEmit": false,
     "allowImportingTsExtensions": false,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "rootDir": "./server",
+    "typeRoots": ["./node_modules/@types", "./server/types"],
     "types": ["node", "express"]
   },
 

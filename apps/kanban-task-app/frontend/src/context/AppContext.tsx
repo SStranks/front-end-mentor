@@ -1,7 +1,12 @@
+import type { PropsWithChildren } from 'react';
+
+import type { TAction } from '#Hooks/useAppReducer';
 import type { IBoard, IColumn, ITask } from '#Shared/types';
 import type { TAppStateContext } from '#Types/types';
-import React, { PropsWithChildren, useContext } from 'react';
-import useAppReducer, { TAction } from '#Hooks/useAppReducer';
+
+import React, { useContext } from 'react';
+
+import useAppReducer from '#Hooks/useAppReducer';
 
 export interface IAppContextPayload {
   id: { boardId: string; columnId?: string; taskId?: string };
@@ -9,14 +14,14 @@ export interface IAppContextPayload {
 }
 
 export interface IAppContextLocalStorage {
-  localStoragePending?: boolean;
   localStorageData?: string; // JSON
+  localStoragePending?: boolean;
 }
 
 export type TAppContextAction = {
   type: string;
-  payload?: IAppContextPayload;
   localStorage?: IAppContextLocalStorage;
+  payload?: IAppContextPayload;
 };
 
 type TAppDispatchContext = React.Dispatch<TAction>;
@@ -39,8 +44,8 @@ export function useAppDispatchContext() {
 export function AppProvider({ children }: PropsWithChildren) {
   const [appState, appDispatch] = useAppReducer({
     boards: [],
-    localStoragePending: false,
     localStorageData: undefined,
+    localStoragePending: false,
   });
 
   return (

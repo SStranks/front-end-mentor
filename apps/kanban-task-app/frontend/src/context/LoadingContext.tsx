@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
-import { PropsWithChildren, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+
+import { createContext, useContext, useState } from 'react';
 
 type TLoadingContext = boolean;
 type TLoadingUpdateContext = React.Dispatch<React.SetStateAction<boolean>>;
 
-const LoadingContext = React.createContext<TLoadingContext | undefined>(undefined);
-const LoadingUpdateContext = React.createContext<TLoadingUpdateContext | undefined>(undefined);
+const LoadingContext = createContext<TLoadingContext | undefined>(undefined);
+const LoadingUpdateContext = createContext<TLoadingUpdateContext | undefined>(undefined);
 
 export function useLoading() {
   const context = useContext(LoadingContext);

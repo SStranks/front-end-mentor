@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
 import RootModal from '#Components/modal/RootModal';
 import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
 import { useLoadingUpdate } from '#Context/LoadingContext';
@@ -7,7 +8,7 @@ import { useRootModalContext } from '#Context/RootModalContext';
 import Home from '#Pages/Home';
 import ApiService from '#Services/Services';
 
-const INITIAL_ACTIVEBOARD = window.localStorage.getItem('active-board');
+const INITIAL_ACTIVEBOARD = globalThis.localStorage.getItem('active-board');
 
 function App(): JSX.Element {
   const setLoadingUpdate = useLoadingUpdate();
@@ -27,10 +28,10 @@ function App(): JSX.Element {
   useEffect(() => {
     const saveTaskOrderToLocalStorage = () => {
       if (document.visibilityState === 'hidden' && appState.localStoragePending && appState.localStorageData) {
-        window.localStorage.setItem('boards-taskOrder', appState.localStorageData);
+        globalThis.localStorage.setItem('boards-taskOrder', appState.localStorageData);
         appDispatch({
-          type: 'localStoragePending',
           localStorage: { localStoragePending: false },
+          type: 'localStoragePending',
         });
       }
     };
@@ -40,7 +41,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     // Fetch data from backend
-    (async function fetchData() {
+    void (async function fetchData() {
       setLoadingUpdate(true);
       try {
         const responseData = await ApiService.getAllBoards();
@@ -48,15 +49,15 @@ function App(): JSX.Element {
 
         // Set API Data into local state
         return appDispatch({
-          type: 'set-initial',
           payload: { data: responseData },
+          type: 'set-initial',
         });
       } catch (error) {
         console.error(error);
         return rootModalDispatch({
-          type: 'open-modal',
-          modalType: 'error',
           modalProps: { title: 'App' },
+          modalType: 'error',
+          type: 'open-modal',
         });
       } finally {
         setLoadingUpdate(false);
@@ -66,17 +67,17 @@ function App(): JSX.Element {
 
   useEffect(() => {
     // Always set current active board to local storage
-    window.localStorage.setItem('active-board', activeBoardId);
+    globalThis.localStorage.setItem('active-board', activeBoardId);
   }, [activeBoardId]);
 
-  const boardsList = appState.boards?.map((board) => ({
-    name: board.name,
+  const boardsList = appState.boards.map((board) => ({
     id: board._id,
+    name: board.name,
   }));
 
-  const activeBoard = appState.boards?.find((item) => item._id === activeBoardId);
+  const activeBoard = appState.boards.find((item) => item._id === activeBoardId);
 
-  const data = { boardsList, activeBoard };
+  const data = { activeBoard, boardsList };
 
   return (
     // <AppDispatchContext.Provider value={appDispatch}>

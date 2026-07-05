@@ -22,7 +22,7 @@ describe('Appearance', () => {
   });
 
   test('Appended classes should be added to component', () => {
-    render(<InputEmail appendClass="additionalStyles" id="label text" />);
+    render(<InputEmail appendclass="additionalStyles" id="label text" />);
 
     const component = screen.getByTestId('input_email');
 
