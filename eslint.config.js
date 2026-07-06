@@ -64,7 +64,7 @@ export default defineConfig([
   },
   {
     name: 'Javascript Configuration',
-    files: ['**/*.js'],
+    files: ['**/*.js?(x)'],
     languageOptions: { ...EslintConfigJavascript.languageOptions },
     plugins: { ...EslintConfigJavascript.plugins },
     rules: { ...EslintConfigJavascript.rules },
@@ -78,6 +78,14 @@ export default defineConfig([
     plugins: { ...EslintConfigTypescript.plugins },
     rules: { ...EslintConfigTypescript.rules },
     settings: { ...EslintConfigTypescript.settings },
+  },
+  {
+    name: 'React Configuration',
+    files: ['**/*.[jt]sx'],
+    languageOptions: { ...EslintConfigReact.languageOptions },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: { ...EslintConfigReact.settings },
   },
   {
     name: 'HTML Configuration',
@@ -144,129 +152,98 @@ export default defineConfig([
   // ------- audiophile-ecommerce -------
   // ------------------------------------
   {
-    name: '@apps/audiophile-ecommerce/frontend: React + TypeScript',
+    name: '@apps/audiophile-ecommerce/frontend',
     files: [
-      'apps/audiophile-ecommerce/frontend/src/**/*.[jt]s?(x)',
-      'apps/audiophile-ecommerce/frontend/webpack/**/*.[jt]s?(x)',
-      'apps/audiophile-ecommerce/frontend/.storybook/**/*.[jt]s?(x)',
-      'apps/audiophile-ecommerce/frontend/*.ts',
+      'apps/audiophile-ecommerce/frontend/src/**/*',
+      'apps/audiophile-ecommerce/frontend/webpack/**/*',
+      'apps/audiophile-ecommerce/frontend/.storybook/**/*',
+      'apps/audiophile-ecommerce/frontend/*',
     ],
-    ignores: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    ignores: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/audiophile-ecommerce/frontend'),
       },
-    },
-    plugins: { ...EslintConfigReact.plugins },
-    rules: { ...EslintConfigReact.rules },
-    settings: {
-      ...EslintConfigReact.settings,
     },
   },
   {
     name: '@apps/audiophile-ecommerce/frontend: Testing; Vitest + RTL',
-    files: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/audiophile-ecommerce/frontend'),
       },
     },
-    plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
-    rules: { ...EslintConfigReact.rules, ...EslintConfigReactVitest.rules },
-    settings: {
-      ...EslintConfigReact.settings,
-    },
+    plugins: { ...EslintConfigReactVitest.plugins },
+    rules: { ...EslintConfigReactVitest.rules },
   },
   // ------------------------------------
   // ---------- designo-agency ----------
   // ------------------------------------
   {
-    name: '@apps/designo-agency/frontend: React + TypeScript',
+    name: '@apps/designo-agency/frontend',
     files: [
-      'apps/designo-agency/frontend/src/**/*.[jt]s?(x)',
-      'apps/designo-agency/frontend/webpack/**/*.[jt]s?(x)',
-      'apps/designo-agency/frontend/.storybook/**/*.[jt]s?(x)',
-      'apps/designo-agency/frontend/*.ts',
+      'apps/designo-agency/frontend/src/**/*',
+      'apps/designo-agency/frontend/webpack/**/*',
+      'apps/designo-agency/frontend/.storybook/**/*',
+      'apps/designo-agency/frontend/*',
     ],
-    ignores: ['apps/designo-agency/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    ignores: ['apps/designo-agency/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/designo-agency/frontend'),
       },
-    },
-    plugins: { ...EslintConfigReact.plugins },
-    rules: { ...EslintConfigReact.rules },
-    settings: {
-      ...EslintConfigReact.settings,
     },
   },
   {
     name: '@apps/designo-agenc/frontend: Testing; Vitest + RTL',
-    files: ['apps/designo-agency/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/designo-agency/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/designo-agency/frontend'),
       },
     },
-    plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
-    rules: { ...EslintConfigReact.rules, ...EslintConfigReactVitest.rules },
-    settings: {
-      ...EslintConfigReact.settings,
-    },
+    plugins: { ...EslintConfigReactVitest.plugins },
+    rules: { ...EslintConfigReactVitest.rules },
   },
   // ------------------------------------
   // ----------- invoice-app ------------
   // ------------------------------------
   {
-    name: '@apps/invoice-app/frontend: React + TypeScript',
+    name: '@apps/invoice-app/frontend',
     files: [
-      'apps/invoice-app/frontend/src/**/*.[jt]s?(x)',
-      'apps/invoice-app/frontend/webpack/**/*.[jt]s?(x)',
-      'apps/invoice-app/frontend/.storybook/**/*.[jt]s?(x)',
-      'apps/invoice-app/frontend/*.ts',
+      'apps/invoice-app/frontend/src/**/*',
+      'apps/invoice-app/frontend/webpack/**/*',
+      'apps/invoice-app/frontend/.storybook/**/*',
+      'apps/invoice-app/frontend/*',
     ],
-    ignores: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    ignores: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
-        ...EslintConfigReact.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/frontend'),
       },
-    },
-    plugins: { ...EslintConfigReact.plugins },
-    rules: { ...EslintConfigReact.rules },
-    settings: {
-      ...EslintConfigReact.settings,
     },
   },
   {
     name: '@apps/invoice-app/frontend: Testing; Vitest + RTL',
-    files: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/frontend'),
       },
     },
-    plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
-    rules: { ...EslintConfigReact.rules, ...EslintConfigReactVitest.rules },
-    settings: {
-      ...EslintConfigReact.settings,
-    },
+    plugins: { ...EslintConfigReactVitest.plugins },
+    rules: { ...EslintConfigReactVitest.rules },
   },
   {
     name: '@apps/invoice-app/backend: NodeJS Express + Testing (Node)',
-    files: ['apps/invoice-app/backend/server/**/*.[jt]s', 'apps/invoice-app/backend/*.[jt]s'],
+    files: ['apps/invoice-app/backend/server/**/*', 'apps/invoice-app/backend/*'],
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
@@ -285,50 +262,42 @@ export default defineConfig([
   // --------- kanban-task=-app ---------
   // ------------------------------------
   {
-    name: '@apps/kanban-task-app/frontend: React + TypeScript',
+    name: '@apps/kanban-task-app/frontend',
     files: [
-      'apps/kanban-task-app/frontend/src/**/*.[jt]s?(x)',
-      'apps/kanban-task-app/frontend/webpack/**/*.[jt]s?(x)',
-      'apps/kanban-task-app/frontend/.storybook/**/*.[jt]s?(x)',
-      'apps/kanban-task-app/frontend/*.ts',
+      'apps/kanban-task-app/frontend/src/**/*',
+      'apps/kanban-task-app/frontend/webpack/**/*',
+      'apps/kanban-task-app/frontend/.storybook/**/*',
+      'apps/kanban-task-app/frontend/*',
     ],
-    ignores: ['apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    ignores: ['apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/frontend'),
       },
-    },
-    plugins: { ...EslintConfigReact.plugins },
-    rules: { ...EslintConfigReact.rules },
-    settings: {
-      ...EslintConfigReact.settings,
     },
   },
   {
     name: '@apps/kanban-task-app/frontend: Testing; Vitest + RTL',
     files: ['apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/frontend'),
       },
     },
-    plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
-    rules: { ...EslintConfigReact.rules, ...EslintConfigReactVitest.rules },
-    settings: {
-      ...EslintConfigReact.settings,
-    },
+    plugins: { ...EslintConfigReactVitest.plugins },
+    rules: { ...EslintConfigReactVitest.rules },
   },
   {
     name: '@apps/kanban-task-app/backend: NodeJS Express + Testing (Node)',
-    files: ['apps/kanban-task-app/backend/server/**/*.[jt]s', 'apps/kanban-task-app/backend/*.[jt]s'],
+    files: ['apps/kanban-task-app/backend/server/**/*', 'apps/kanban-task-app/backend/*'],
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
       parserOptions: {
+        ...EslintConfigNode.languageOptions.parserOptions,
+        ...EslintConfigExpress.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/backend'),
       },
@@ -343,52 +312,42 @@ export default defineConfig([
   // ------- project-feedback-app -------
   // ------------------------------------
   {
-    name: '@apps/project-feedback-app/frontend: React + TypeScript',
+    name: '@apps/project-feedback-app/frontend',
     files: [
-      'apps/project-feedback-app/frontend/src/**/*.[jt]s?(x)',
-      'apps/project-feedback-app/frontend/webpack/**/*.[jt]s?(x)',
-      'apps/project-feedback-app/frontend/.storybook/**/*.[jt]s?(x)',
-      'apps/project-feedback-app/frontend/*.ts',
+      'apps/project-feedback-app/frontend/src/**/*',
+      'apps/project-feedback-app/frontend/webpack/**/*',
+      'apps/project-feedback-app/frontend/.storybook/**/*',
+      'apps/project-feedback-app/frontend/*',
     ],
-    ignores: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    ignores: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
-        ...EslintConfigReact.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/frontend'),
       },
-    },
-    plugins: { ...EslintConfigReact.plugins },
-    rules: { ...EslintConfigReact.rules },
-    settings: {
-      ...EslintConfigReact.settings,
     },
   },
   {
     name: '@apps/project-feedback-app/frontend: Testing; Vitest + RTL',
-    files: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+    files: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
-      ...EslintConfigReact.languageOptions,
       parserOptions: {
-        ...EslintConfigReact.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/frontend'),
       },
     },
-    plugins: { ...EslintConfigReact.plugins, ...EslintConfigReactVitest.plugins },
-    rules: { ...EslintConfigReact.rules, ...EslintConfigReactVitest.rules },
-    settings: {
-      ...EslintConfigReact.settings,
-    },
+    plugins: { ...EslintConfigReactVitest.plugins },
+    rules: { ...EslintConfigReactVitest.rules },
   },
   {
     name: '@apps/project-feedback-app/backend: NodeJS Express + Testing (Node)',
-    files: ['apps/project-feedback-app/backend/server/**/*.[jt]s', 'apps/project-feedback-app/backend/*.[jt]s'],
+    files: ['apps/project-feedback-app/backend/server/**/*', 'apps/project-feedback-app/backend/*'],
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
       parserOptions: {
+        ...EslintConfigNode.languageOptions.parserOptions,
+        ...EslintConfigExpress.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/backend'),
       },
