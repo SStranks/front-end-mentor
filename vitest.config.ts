@@ -9,7 +9,7 @@ export default defineConfig({
       {
         test: {
           environment: 'jsdom',
-          include: ['apps/audiophile-ecommerce/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+          include: ['apps/audiophile-ecommerce/client/src/**/?(*.)+(spec|test).[jt]s?(x)'],
           name: 'audiophile-ecommerce-client',
         },
       },
@@ -19,7 +19,7 @@ export default defineConfig({
       {
         test: {
           environment: 'jsdom',
-          include: ['apps/designo-agency/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+          include: ['apps/designo-agency/client/src/**/?(*.)+(spec|test).[jt]s?(x)'],
           name: 'designo-agency-client',
         },
       },
@@ -29,14 +29,14 @@ export default defineConfig({
       {
         test: {
           environment: 'jsdom',
-          include: ['apps/invoice-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+          include: ['apps/invoice-app/client/src/**/?(*.)+(spec|test).[jt]s?(x)'],
           name: 'invoice-app-client',
         },
       },
       {
         test: {
           environment: 'node',
-          include: ['apps/invoice-app/backend/server/**/?(*.)+(spec|test).[jt]s'],
+          include: ['apps/invoice-app/server/server/**/?(*.)+(spec|test).[jt]s'],
           name: 'invoice-app-server',
         },
       },
@@ -46,14 +46,14 @@ export default defineConfig({
       {
         test: {
           environment: 'jsdom',
-          include: ['apps/kanban-task-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+          include: ['apps/kanban-task-app/client/src/**/?(*.)+(spec|test).[jt]s?(x)'],
           name: 'kanban-task-app-client',
         },
       },
       {
         test: {
           environment: 'node',
-          include: ['apps/kanban-task-app/backend/server/**/?(*.)+(spec|test).[jt]s'],
+          include: ['apps/kanban-task-app/server/server/**/?(*.)+(spec|test).[jt]s'],
           name: 'kanban-task-app-server',
         },
       },
@@ -63,14 +63,14 @@ export default defineConfig({
       {
         test: {
           environment: 'jsdom',
-          include: ['apps/project-feedback-app/frontend/src/**/?(*.)+(spec|test).[jt]s?(x)'],
+          include: ['apps/project-feedback-app/client/src/**/?(*.)+(spec|test).[jt]s?(x)'],
           name: 'project-feedback-app-client',
         },
       },
       {
         test: {
           environment: 'node',
-          include: ['apps/project-feedback-app/backend/server/**/?(*.)+(spec|test).[jt]s'],
+          include: ['apps/project-feedback-app/server/server/**/?(*.)+(spec|test).[jt]s'],
           name: 'project-feedback-app-server',
         },
       },

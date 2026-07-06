@@ -7,26 +7,26 @@ on: # yamllint disable-line rule:truthy
   pull_request:
     branches: [main]
     paths:
-      - 'apps/audiophile-ecommerce/frontend/**/*.test.*'
-      - 'apps/designo-agency/frontend/**/*.test.*'
-      - 'apps/invoice-app/backend/**/*.test.*'
-      - 'apps/invoice-app/frontend/**/*.test.*'
-      - 'apps/kanban-task-app/backend/**/*.test.*'
-      - 'apps/kanban-task-app/frontend/**/*.test.*'
-      - 'apps/project-feedback-app/backend/**/*.test.*'
-      - 'apps/project-feedback-app/frontend/**/*.test.*'
+      - 'apps/audiophile-ecommerce/client/**/*.test.*'
+      - 'apps/designo-agency/client/**/*.test.*'
+      - 'apps/invoice-app/server/**/*.test.*'
+      - 'apps/invoice-app/client/**/*.test.*'
+      - 'apps/kanban-task-app/server/**/*.test.*'
+      - 'apps/kanban-task-app/client/**/*.test.*'
+      - 'apps/project-feedback-app/server/**/*.test.*'
+      - 'apps/project-feedback-app/client/**/*.test.*'
 
   push:
     branches: [main]
     paths:
-      - 'apps/audiophile-ecommerce/frontend/**/*.test.*'
-      - 'apps/designo-agency/frontend/**/*.test.*'
-      - 'apps/invoice-app/backend/**/*.test.*'
-      - 'apps/invoice-app/frontend/**/*.test.*'
-      - 'apps/kanban-task-app/backend/**/*.test.*'
-      - 'apps/kanban-task-app/frontend/**/*.test.*'
-      - 'apps/project-feedback-app/backend/**/*.test.*'
-      - 'apps/project-feedback-app/frontend/**/*.test.*'
+      - 'apps/audiophile-ecommerce/client/**/*.test.*'
+      - 'apps/designo-agency/client/**/*.test.*'
+      - 'apps/invoice-app/server/**/*.test.*'
+      - 'apps/invoice-app/client/**/*.test.*'
+      - 'apps/kanban-task-app/server/**/*.test.*'
+      - 'apps/kanban-task-app/client/**/*.test.*'
+      - 'apps/project-feedback-app/server/**/*.test.*'
+      - 'apps/project-feedback-app/client*/*.test.*'
 
   workflow_dispatch: {}
 
@@ -46,18 +46,18 @@ jobs:
         with:
           filters: |
             audiophile-ecommerce:
-              - 'apps/audiophile-ecommerce/frontend/**'
+              - 'apps/audiophile-ecommerce/client/**'
             designo-agency:
-              - 'apps/designo-agency/frontend/**'
+              - 'apps/designo-agency/client/**'
             invoice-app:
-              - 'apps/invoice-app/backend/**'
-              - 'apps/invoice-app/frontend/**'
+              - 'apps/invoice-app/server/**'
+              - 'apps/invoice-app/client/**'
             kanban-task-app:
-              - 'apps/kanban-task-app/backend/**'
-              - 'apps/kanban-task-app/frontend/**'
+              - 'apps/kanban-task-app/server/**'
+              - 'apps/kanban-task-app/client/**'
             project-feedback-app:
-              - 'apps/project-feedback-app/backend/**'
-              - 'apps/project-feedback-app/frontend/**'
+              - 'apps/project-feedback-app/server/**'
+              - 'apps/project-feedback-app/client/**'
 
   audiophile-ecommerce:
     needs: changes
