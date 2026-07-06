@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { describe, it } from 'vitest';
 
 describe('component', () => {
-  it.todo('implement test');
+  it.todo('implement test', () => {});
 });
 
 // test('full app rendering', async () => {
