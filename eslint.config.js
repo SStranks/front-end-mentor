@@ -7,6 +7,7 @@ import { EslintConfigJSON, EslintConfigJSON5, EslintConfigJSONC } from '@package
 import EslintConfigNode from '@packages/eslint-config-node';
 import EslintConfigReact from '@packages/eslint-config-react';
 import EslintConfigReactVitest from '@packages/eslint-config-react-vitest';
+import EslintConfigStorybook from '@packages/eslint-config-storybook';
 import EslintConfigTypescript, { createTypeScriptImportResolver, TSEslint } from '@packages/eslint-config-typescript';
 import EslintConfigYAML, { PluginEslintYAML } from '@packages/eslint-config-yaml';
 import { defineConfig } from 'eslint/config';
@@ -86,6 +87,15 @@ export default defineConfig([
     plugins: { ...EslintConfigReact.plugins },
     rules: { ...EslintConfigReact.rules },
     settings: { ...EslintConfigReact.settings },
+  },
+  {
+    name: 'Storybook Configuration',
+    files: ['**/*.stories.*', '**/.storybook/**/*'],
+    plugins: { ...EslintConfigStorybook.plugins },
+    rules: { ...EslintConfigStorybook.rules },
+    settings: {
+      ...EslintConfigStorybook.settings,
+    },
   },
   {
     name: 'HTML Configuration',

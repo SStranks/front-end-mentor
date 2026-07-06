@@ -30,6 +30,7 @@
     "@packages/eslint-config-node": "workspace:*",
     "@packages/eslint-config-react": "workspace:*",
     "@packages/eslint-config-react-vitest": "workspace:*",
+    "@packages/eslint-config-storybook": "workspace:*",
     "@packages/eslint-config-typescript": "workspace:*",
     "@packages/eslint-config-yaml": "workspace:*",
     "@packages/jest-config": "workspace:*",
