@@ -1,8 +1,7 @@
-name: "fem37-audiophile"
-version: "3.7"
+name: 'fem37-audiophile'
+version: '3.7'
 services:
-
   # Frontend: Nginx
   nginx:
     build:
-      context: ./frontend
+      context: ./client

@@ -1,20 +1,20 @@
 {
   "folders": [
     {
-      "path": "../../../.."
+      "path": "../../../..",
     },
     {
-      "path": "../../"
+      "path": "../../",
     },
     {
-      "path": "../"
+      "path": "../",
     },
     {
-      "path": "../../33_project_feedback_app"
+      "path": "../../33_project_feedback_app",
     },
     {
-      "path": "../../37_audiophile_ecommerce"
-    }
+      "path": "../../37_audiophile_ecommerce",
+    },
   ],
 
   "settings": {
@@ -22,21 +22,21 @@
     "workbench.startupEditor": "none",
     "task.allowAutomaticTasks": "on",
     "path-intellisense.mappings": {
-      "#Img": "${workspaceFolder}/frontend/src/assets/img",
-      "#Sass": "${workspaceFolder}/frontend/src/assets/sass",
-      "#Svg": "${workspaceFolder}/frontend/src/assets/svg",
-      "#Components": "${workspaceFolder}/frontend/src/components",
-      "#Context": "${workspaceFolder}/frontend/src/context",
-      "#Data": "${workspaceFolder}/frontend/src/data",
-      "#Feature": "${workspaceFolder}/frontend/src/features",
-      "#Hooks": "${workspaceFolder}/frontend/src/hooks",
-      "#Layouts": "${workspaceFolder}/frontend/src/layouts",
-      "#Lib": "${workspaceFolder}/frontend/src/lib",
-      "#Pages": "${workspaceFolder}/frontend/src/pages",
-      "#Services": "${workspaceFolder}/frontend/src/services",
-      "#Types": "${workspaceFolder}/frontend/src/types",
-      "#Utils": "${workspaceFolder}/frontend/src/utils"
-    }
+      "#Img": "${workspaceFolder}/client/src/assets/img",
+      "#Sass": "${workspaceFolder}/client/src/assets/sass",
+      "#Svg": "${workspaceFolder}/client/src/assets/svg",
+      "#Components": "${workspaceFolder}/client/src/components",
+      "#Context": "${workspaceFolder}/client/src/context",
+      "#Data": "${workspaceFolder}/client/src/data",
+      "#Feature": "${workspaceFolder}/client/src/features",
+      "#Hooks": "${workspaceFolder}/client/src/hooks",
+      "#Layouts": "${workspaceFolder}/client/src/layouts",
+      "#Lib": "${workspaceFolder}/client/src/lib",
+      "#Pages": "${workspaceFolder}/client/src/pages",
+      "#Services": "${workspaceFolder}/client/src/services",
+      "#Types": "${workspaceFolder}/client/src/types",
+      "#Utils": "${workspaceFolder}/client/src/utils",
+    },
     // "prettier.prettierPath": "./node_modules"
-  }
+  },
 }

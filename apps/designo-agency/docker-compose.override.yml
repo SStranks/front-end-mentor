@@ -1,17 +1,16 @@
 services:
-
   # Backend: NodeJS Express
   node-api:
     container_name: fem36-node-api-dev
     image: node:18-alpine3.17
-    working_dir: /backend
+    working_dir: /server
     command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
-      - ./backend:/backend:ro
+      - ./server:/server:ro
     env_file:
-      - ./backend/.env.dev
+      - ./server/.env.dev
     depends_on:
       - mongo-db
     security_opt:
@@ -20,7 +19,7 @@ services:
     #   - container-network
 
     # Frontend: React App
-    # Use 'npm start' from ./frontend to init webpack-dev-server
+    # Use 'npm start' from ./client to init webpack-dev-server
 
     # DB: MongoDB
   mongo-db:

@@ -1,26 +1,25 @@
 services:
-
-  # Backend: NodeJS Express  
+  # Backend: NodeJS Express
   node-api:
     container_name: fem33-node-api-dev
     image: node:18-alpine3.17
-    working_dir: /app/backend
+    working_dir: /app/server
     command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
       - ./shared:/app/shared:ro
-      - ./backend:/app/backend:ro
+      - ./server:/app/server:ro
       - ../../node_modules:/node_modules:ro
     env_file:
-      - ./backend/.env.dev
+      - ./server/.env.dev
     depends_on:
       - mongodb-1
     security_opt:
       - no-new-privileges
 
   # Frontend: React App
-  # Use 'npm start' from ./frontend to init webpack-dev-server
+  # Use 'npm start' from ./client to init webpack-dev-server
 
   # DB: MongoDB
   mongodb-1:
@@ -46,7 +45,7 @@ services:
       - mongodb-1
     profiles:
       - enable-replicaset
-    restart: "no"
+    restart: 'no'
     environment:
       - MONGODB_USER
       - MONGODB_PASSWORD
@@ -54,7 +53,7 @@ services:
       - MONGODB_REPLSET
       - MONGODB_REPLSET_NODE1
     volumes:
-      - ./backend/mongo/mongo-init.sh:/data/mongo-init.sh
+      - ./server/mongo/mongo-init.sh:/data/mongo-init.sh
     command: sh /data/mongo-init.sh
     security_opt:
       - no-new-privileges

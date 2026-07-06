@@ -243,7 +243,7 @@ export default defineConfig([
   },
   {
     name: '@apps/invoice-app/server: NodeJS Express + Testing (Node)',
-    files: ['apps/invoice-app/server/server/**/*', 'apps/invoice-app/server/*'],
+    files: ['apps/invoice-app/server/src/**/*', 'apps/invoice-app/server/*'],
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
@@ -291,7 +291,7 @@ export default defineConfig([
   },
   {
     name: '@apps/kanban-task-app/server: NodeJS Express + Testing (Node)',
-    files: ['apps/kanban-task-app/server/server/**/*', 'apps/kanban-task-app/server/*'],
+    files: ['apps/kanban-task-app/server/src/**/*', 'apps/kanban-task-app/server/*'],
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
@@ -341,7 +341,7 @@ export default defineConfig([
   },
   {
     name: '@apps/project-feedback-app/server: NodeJS Express + Testing (Node)',
-    files: ['apps/project-feedback-app/server/server/**/*', 'apps/project-feedback-app/server/*'],
+    files: ['apps/project-feedback-app/server/src/**/*', 'apps/project-feedback-app/server/*'],
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,

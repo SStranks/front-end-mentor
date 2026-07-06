@@ -1,25 +1,24 @@
 services:
-
-  # Backend: NodeJS Express  
+  # Backend: NodeJS Express
   node-api:
     # build:
     #   dockerfile: Dockerfile.dev
     container_name: fem35-node-api-dev
     image: node:18-alpine3.17
-    working_dir: /app/backend
+    working_dir: /app/server
     command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
       - ./shared:/app/shared:ro
-      - ./backend:/app/backend:ro
+      - ./server:/app/server:ro
       - ../../node_modules:/node_modules:ro
     # develop:
     #   watch:
-    #     - path: ./backend/package.json
+    #     - path: ./server/package.json
     #       action: rebuild
     env_file:
-      - ./backend/.env.dev
+      - ./server/.env.dev
     depends_on:
       - mongo-db
     security_opt:

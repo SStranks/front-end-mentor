@@ -36,7 +36,7 @@ export default defineConfig({
       {
         test: {
           environment: 'node',
-          include: ['apps/invoice-app/server/server/**/?(*.)+(spec|test).[jt]s'],
+          include: ['apps/invoice-app/server/src/**/?(*.)+(spec|test).[jt]s'],
           name: 'invoice-app-server',
         },
       },
@@ -53,7 +53,7 @@ export default defineConfig({
       {
         test: {
           environment: 'node',
-          include: ['apps/kanban-task-app/server/server/**/?(*.)+(spec|test).[jt]s'],
+          include: ['apps/kanban-task-app/server/src/**/?(*.)+(spec|test).[jt]s'],
           name: 'kanban-task-app-server',
         },
       },
@@ -70,7 +70,7 @@ export default defineConfig({
       {
         test: {
           environment: 'node',
-          include: ['apps/project-feedback-app/server/server/**/?(*.)+(spec|test).[jt]s'],
+          include: ['apps/project-feedback-app/server/src/**/?(*.)+(spec|test).[jt]s'],
           name: 'project-feedback-app-server',
         },
       },

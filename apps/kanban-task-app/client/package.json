@@ -39,7 +39,7 @@
     "sassdoc:serve": "http-server ./.sassdoc"
   },
   "config": {
-    "dockerImageRepo": "fem35image/frontend",
+    "dockerImageRepo": "fem35image/client",
     "dockerImageName": "FEM35-React",
     "dockerImagePort": "3000",
     "dockerInternalContainerPort": "3000"

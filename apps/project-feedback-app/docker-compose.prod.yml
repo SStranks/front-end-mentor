@@ -1,5 +1,4 @@
 services:
-
   # Backend: NodeJS Express
   node-api:
     container_name: fem33-node-api-prod
@@ -7,7 +6,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem33-nodejs-express-api
     env_file:
-      - ./backend/.env.prod
+      - ./server/.env.prod
     networks:
       - FEM33
     security_opt:
@@ -20,7 +19,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem33-react-app
     env_file:
-      - ./frontend/.env.prod
+      - ./client/.env.prod
     depends_on:
       - node-api
     networks:

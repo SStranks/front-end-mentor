@@ -7,11 +7,11 @@ LABEL description="Prod Image: #37 Audiophile: React"
 # Required for Alpine - webpack; image-minimizer-plugins
 RUN apk add --no-cache autoconf automake file g++ libtool make nasm libpng-dev
 
-WORKDIR /frontend
-COPY package*.json /frontend
+WORKDIR /client
+COPY package*.json /client
 RUN npm install && npm cache clean --force
 
-COPY . /frontend
+COPY . /client
 
 RUN npm run build && npm prune --production
 
@@ -23,7 +23,7 @@ FROM nginx-1.24-alpine-brotli
 LABEL version="1.0"
 LABEL description="Prod Image: #37 Audiophile: NGINX"
 
-COPY --from=primary /frontend/dist /usr/share/nginx/html
+COPY --from=primary /client/dist /usr/share/nginx/html
 COPY ./nginx/default.conf ./nginx/headers.conf /etc/nginx/conf.d/
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./nginx/redirects.map /etc/nginx/redirects.map
