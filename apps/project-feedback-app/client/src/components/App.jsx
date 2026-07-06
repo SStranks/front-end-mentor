@@ -6,7 +6,7 @@ import Toaster from '../lib/ReactHotToast';
 import { Feedback, Home, Roadmap } from '../pages';
 
 function App() {
-  const [requests, isLoading, error] = useRequests();
+  const [requests, isLoading] = useRequests();
 
   return (
     <UserProvider>
