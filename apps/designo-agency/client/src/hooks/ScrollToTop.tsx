@@ -11,7 +11,6 @@ function ScrollToTop(): JSX.Element | null {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  // eslint-disable-next-line unicorn/no-null
   return null;
 }
 

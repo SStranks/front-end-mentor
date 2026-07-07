@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import LogoDark from '#Img/desktop/logo-dark.png';
 import IconClose from '#Svg/mobile/icon-close.svg';
 import IconMenu from '#Svg/mobile/icon-hamburger.svg';
+
 import styles from './_Nav.module.scss';
 
 function Nav(): JSX.Element {
@@ -19,12 +20,10 @@ function Nav(): JSX.Element {
   useEffect(() => {
     // DEBUG:  If hamburger icon is 'X' when resizing out of mobile and back, it persists.
     // Watch for window resize event
-    const mq = window.matchMedia('(max-width: 480px)');
+    const mq = globalThis.matchMedia('(max-width: 480px)');
     const links = document.querySelector('#nav-links');
     const addHidden = () => {
-      return mq.matches
-        ? links?.classList.add('hidden')
-        : links?.classList.remove('hidden');
+      return links?.classList.toggle('hidden', mq.matches);
     };
 
     addHidden();
@@ -34,26 +33,22 @@ function Nav(): JSX.Element {
   }, []);
 
   return (
-    <nav className={styles.nav}>
+    <nav className={styles['nav']}>
       <Link to="/">
-        <img
-          src={LogoDark}
-          alt="Designo Site Home."
-          className={styles.nav__logo}
-        />
+        <img src={LogoDark} alt="Designo Site Home." className={styles['nav__logo']} />
       </Link>
-      <button type="button" className={styles.nav__btn} onClick={mobileMenuBtn}>
+      <button type="button" className={styles['nav__btn']} onClick={mobileMenuBtn}>
         <img src={mobileMenuOpen ? IconClose : IconMenu} alt="" />
       </button>
-      <div id="nav-links" className={styles.nav__links}>
+      <div id="nav-links" className={styles['nav__links']}>
         <Link to="/about">
-          <p className={styles.nav__link}>our company</p>
+          <p className={styles['nav__link']}>our company</p>
         </Link>
         <Link to="/locations">
-          <p className={styles.nav__link}>locations</p>
+          <p className={styles['nav__link']}>locations</p>
         </Link>
         <Link to="/contact">
-          <p className={styles.nav__link}>contact</p>
+          <p className={styles['nav__link']}>contact</p>
         </Link>
       </div>
     </nav>

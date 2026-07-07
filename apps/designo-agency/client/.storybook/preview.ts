@@ -1,3 +1,4 @@
+/* eslint-disable storybook/story-exports */
 import type { Preview } from '@storybook/react-webpack5';
 
 const preview = {
