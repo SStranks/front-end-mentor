@@ -34,7 +34,6 @@ describe('Appearance', () => {
 
 describe('Functionality', () => {
   // NOTE:  Test ID manually added to components on lazy loaded pages; require 'await' to ensure page is loaded.
-  // NOTE:  Extra timeout added on findBy Query on Headphones page; accounts for deliberate fallback animation.
   // NOTE:  State passed to route on ProductDetail page; using category 'speakers' and productId '1'.
   describe('Clicking component should focus on `main content` on all route pages', () => {
     test('Home Page', async () => {
@@ -76,19 +75,22 @@ describe('Functionality', () => {
     });
 
     test('Headphones Page', async () => {
+      vi.useFakeTimers();
+
       render(
         <MemoryRouter initialEntries={[`${ROUTES.headphones}`]}>
           <App />
         </MemoryRouter>
       );
 
+      await vi.advanceTimersByTimeAsync(3005);
+      vi.useRealTimers();
+
       const skipToMainContentLink = screen.getByRole('link', {
         name: /Skip to Main Content/,
       });
 
-      const mainContent = await screen.findByTestId('skipto-main', undefined, {
-        timeout: 3000,
-      });
+      const mainContent = await screen.findByTestId('skipto-main');
 
       expect(skipToMainContentLink).toBeInTheDocument();
       expect(mainContent).toBeInTheDocument();
@@ -210,9 +212,7 @@ describe('Functionality', () => {
         name: /Skip to Footer Content/,
       });
 
-      const mainContent = await screen.findByTestId('skipto-footer', undefined, {
-        timeout: 3000,
-      });
+      const mainContent = await screen.findByTestId('skipto-footer');
 
       expect(skipToMainContentLink).toBeInTheDocument();
       expect(mainContent).toBeInTheDocument();
