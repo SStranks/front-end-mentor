@@ -223,6 +223,9 @@ importers:
       '@types/react-transition-group':
         specifier: ^4.4.9
         version: 4.4.9
+      '@types/serviceworker':
+        specifier: ^0.0.199
+        version: 0.0.199
       '@types/webpack-env':
         specifier: ^1.18.8
         version: 1.18.8
@@ -5305,6 +5308,9 @@ packages:
 
   '@types/serve-static@1.15.5':
     resolution: {integrity: sha512-PDRk21MnK70hja/YF8AHfC7yIsiQHn1rcXx7ijCFBX/k+XQJhQT/gw3xekXKJvx+5SXaMMS8oqQy09Mzvz2TuQ==}
+
+  '@types/serviceworker@0.0.199':
+    resolution: {integrity: sha512-F8Xa1kKQFYrc+TMhHMeKsbC2v1d8eMYJIXQqAukL4GQ+cATgFBPq+b6oHifhOwt8ZkzTdnpSyDvm6vrOBhjFsA==}
 
   '@types/sockjs@0.3.36':
     resolution: {integrity: sha512-MK9V6NzAS1+Ud7JV9lJLFqW85VbC9dq3LmwZCuBe4wBDgKC0Kj/jd8Xl+nSviU+Qc3+m7umHHyHg//2KSa0a0Q==}
@@ -17437,6 +17443,8 @@ snapshots:
       '@types/http-errors': 2.0.4
       '@types/mime': 3.0.4
       '@types/node': 20.9.4
+
+  '@types/serviceworker@0.0.199': {}
 
   '@types/sockjs@0.3.36':
     dependencies:

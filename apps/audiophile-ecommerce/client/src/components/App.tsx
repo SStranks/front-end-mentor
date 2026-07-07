@@ -1,17 +1,18 @@
+import { lazy, Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
 import DefaultLayout from '#Layouts/DefaultLayout';
 import HomePage from '#Pages/home/HomePage';
-import { Suspense, lazy } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+
 import Fallback from './custom/accessibility/Fallback';
 
 // NOTE:  Artifical demonstration of transition animation for lazy-loading.
 const HeadphonesPage = lazy(() =>
   Promise.all([
     import('#Pages/headphones/HeadphonesPage'),
-    // eslint-disable-next-line no-promise-executor-return
     new Promise((resolve) => setTimeout(resolve, 3000)), // ensures minimal delay
-  ]).then(([module]) => module),
+  ]).then(([module]) => module)
 );
 const EarphonesPage = lazy(() => import('#Pages/earphones/EarphonesPage'));
 const SpeakersPage = lazy(() => import('#Pages/speakers/SpeakersPage'));

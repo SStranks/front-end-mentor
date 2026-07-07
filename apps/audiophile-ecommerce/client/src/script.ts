@@ -1,10 +1,8 @@
 export default function Main() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/serviceWorker.js', { scope: '/' })
-      .then(() => {
-        console.log('Service Worker Registered');
-      });
+    void navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' }).then(() => {
+      console.log('Service Worker Registered');
+    });
   }
 }
 

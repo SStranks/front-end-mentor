@@ -1,10 +1,14 @@
-/// <reference lib="WebWorker" />
+/* eslint-disable perfectionist/sort-objects */
+// eslint-disable-next-line unicorn/require-module-specifiers
+export {};
 
-// export empty type because of tsc --isolatedModules flag
-export type {};
-declare const self: ServiceWorkerGlobalScope;
+declare const process: {
+  env: {
+    PUBLIC_URL?: string;
+  };
+};
 
-const domain = process.env.PUBLIC_URL as string;
+const domain = process.env.PUBLIC_URL ?? '';
 // const assets = fetch(`${domain}/assets-manifest.json`)
 //   .then((res) => res.json())
 //   .then((data) => console.log(data))
@@ -12,6 +16,8 @@ const domain = process.env.PUBLIC_URL as string;
 //   .catch(console.error);
 
 // console.log(`ASSETS: ${assets}`);
+
+const sw = globalThis as unknown as ServiceWorkerGlobalScope;
 
 const assets = {
   'app.css': 'app.css',
@@ -28,8 +34,7 @@ const assets = {
   '213.js': '213.c70bb08268dca622b3d5.js',
   '609.css': '609.css',
   '609.js': '609.4d23092bd064d4562bfc.js',
-  'img/shared/tablet/image-best-gear.jpg':
-    'img/shared/tablet/image-best-gear.37743784743ba76b4130.webp',
+  'img/shared/tablet/image-best-gear.jpg': 'img/shared/tablet/image-best-gear.37743784743ba76b4130.webp',
   'img/product-yx1-earphones/tablet/image-gallery-3.jpg':
     'img/product-yx1-earphones/tablet/image-gallery-3.f1ec8d3ee828b612d780.webp',
   'img/product-yx1-earphones/desktop/image-gallery-3.jpg':
@@ -40,22 +45,18 @@ const assets = {
     'img/product-xx99-mark-one-headphones/tablet/image-gallery-3.f9865f3b379acd877a1b.webp',
   'img/product-xx99-mark-one-headphones/mobile/image-gallery-3.jpg':
     'img/product-xx99-mark-one-headphones/mobile/image-gallery-3.3e676a24d637bb14b24e.webp',
-  'img/home/desktop/image-speaker-zx9.png':
-    'img/home/desktop/image-speaker-zx9.153cd899b91a08b22b1a.webp',
-  'img/shared/desktop/image-best-gear.jpg':
-    'img/shared/desktop/image-best-gear.4d4a28e9e7c9ab158dd8.webp',
+  'img/home/desktop/image-speaker-zx9.png': 'img/home/desktop/image-speaker-zx9.153cd899b91a08b22b1a.webp',
+  'img/shared/desktop/image-best-gear.jpg': 'img/shared/desktop/image-best-gear.4d4a28e9e7c9ab158dd8.webp',
   'img/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg':
     'img/product-xx99-mark-one-headphones/desktop/image-category-page-preview.3807b3ee0f183b6785c8.webp',
-  'img/shared/mobile/image-best-gear.jpg':
-    'img/shared/mobile/image-best-gear.28ded79e4776ecd29f87.webp',
+  'img/shared/mobile/image-best-gear.jpg': 'img/shared/mobile/image-best-gear.28ded79e4776ecd29f87.webp',
   'img/product-xx99-mark-one-headphones/desktop/image-product.jpg':
     'img/product-xx99-mark-one-headphones/desktop/image-product.69ed79fd0a5e5a81bee7.webp',
   'img/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg':
     'img/product-xx99-mark-one-headphones/desktop/image-gallery-3.aa600570262f6ad27889.webp',
   'img/product-zx7-speaker/tablet/image-gallery-3.jpg':
     'img/product-zx7-speaker/tablet/image-gallery-3.752d50026afdca761631.webp',
-  'img/home/tablet/image-header.jpg':
-    'img/home/tablet/image-header.13f7f18f9ae7b105ca12.webp',
+  'img/home/tablet/image-header.jpg': 'img/home/tablet/image-header.13f7f18f9ae7b105ca12.webp',
   'img/product-xx99-mark-two-headphones/tablet/image-gallery-3.jpg':
     'img/product-xx99-mark-two-headphones/tablet/image-gallery-3.c9e695f6dadb6fce76e1.webp',
   'img/shared/desktop/image-category-thumbnail-headphones.png':
@@ -64,8 +65,7 @@ const assets = {
     'img/product-zx9-speaker/mobile/image-gallery-2.add8167e75c03f37b2c7.webp',
   'img/product-zx7-speaker/mobile/image-gallery-3.jpg':
     'img/product-zx7-speaker/mobile/image-gallery-3.896e4cf0a7b65576a4ed.webp',
-  'img/home/desktop/image-hero.jpg':
-    'img/home/desktop/image-hero.55c18e980adf7658ae26.jpg',
+  'img/home/desktop/image-hero.jpg': 'img/home/desktop/image-hero.55c18e980adf7658ae26.jpg',
   'img/product-zx7-speaker/desktop/image-gallery-3.jpg':
     'img/product-zx7-speaker/desktop/image-gallery-3.50fbac0ea290904cad74.webp',
   'img/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg':
@@ -92,8 +92,7 @@ const assets = {
     'img/shared/desktop/image-category-thumbnail-earphones.6e8830d475e04b7b9627.webp',
   'img/product-yx1-earphones/mobile/image-gallery-1.jpg':
     'img/product-yx1-earphones/mobile/image-gallery-1.a5145b7aaff6a28f73aa.webp',
-  'img/home/mobile/image-header.jpg':
-    'img/home/mobile/image-header.d200a3583e72c7981f46.webp',
+  'img/home/mobile/image-header.jpg': 'img/home/mobile/image-header.d200a3583e72c7981f46.webp',
   'img/product-zx9-speaker/tablet/image-gallery-1.jpg':
     'img/product-zx9-speaker/tablet/image-gallery-1.25422a926c7e03f15fb4.webp',
   'img/product-zx7-speaker/desktop/image-category-page-preview.jpg':
@@ -140,10 +139,8 @@ const assets = {
     'img/product-zx7-speaker/desktop/image-gallery-2.0aebac5c242d93b311d7.webp',
   'img/product-xx59-headphones/mobile/image-gallery-1.jpg':
     'img/product-xx59-headphones/mobile/image-gallery-1.fd5bd9b42c82f9e79257.webp',
-  'img/home/tablet/image-speaker-zx9.png':
-    'img/home/tablet/image-speaker-zx9.14af4ebf7265ca4d0b0e.webp',
-  'img/home/desktop/image-speaker-zx7.jpg':
-    'img/home/desktop/image-speaker-zx7.3d4940e89ebadd9beb50.webp',
+  'img/home/tablet/image-speaker-zx9.png': 'img/home/tablet/image-speaker-zx9.14af4ebf7265ca4d0b0e.webp',
+  'img/home/desktop/image-speaker-zx7.jpg': 'img/home/desktop/image-speaker-zx7.3d4940e89ebadd9beb50.webp',
   'img/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg':
     'img/product-xx99-mark-two-headphones/mobile/image-category-page-preview.42ad246f85aec7b6d826.webp',
   'img/product-zx7-speaker/mobile/image-gallery-1.jpg':
@@ -174,8 +171,7 @@ const assets = {
     'img/product-yx1-earphones/desktop/image-product.1d1846889021c82a5606.webp',
   'img/product-xx59-headphones/desktop/image-gallery-1.jpg':
     'img/product-xx59-headphones/desktop/image-gallery-1.70968a6f1d475a35e6d9.webp',
-  'img/home/mobile/image-speaker-zx9.png':
-    'img/home/mobile/image-speaker-zx9.97769f2fb291eaed1868.webp',
+  'img/home/mobile/image-speaker-zx9.png': 'img/home/mobile/image-speaker-zx9.97769f2fb291eaed1868.webp',
   'img/product-xx59-headphones/desktop/image-product.jpg':
     'img/product-xx59-headphones/desktop/image-product.6febdca9d9630e5b7ebc.webp',
   'img/product-xx59-headphones/desktop/image-category-page-preview.jpg':
@@ -184,8 +180,7 @@ const assets = {
     'img/product-zx9-speaker/mobile/image-gallery-3.c41c82b2db3194541ce0.webp',
   'img/product-zx9-speaker/mobile/image-category-page-preview.jpg':
     'img/product-zx9-speaker/mobile/image-category-page-preview.7f5d920c3b971aa33dda.webp',
-  'img/home/tablet/image-earphones-yx1.jpg':
-    'img/home/tablet/image-earphones-yx1.21404fad8d187f84fc6f.webp',
+  'img/home/tablet/image-earphones-yx1.jpg': 'img/home/tablet/image-earphones-yx1.21404fad8d187f84fc6f.webp',
   'img/product-xx99-mark-two-headphones/tablet/image-product.jpg':
     'img/product-xx99-mark-two-headphones/tablet/image-product.e99a745d1175d2a0bb47.webp',
   'img/product-xx99-mark-two-headphones/mobile/image-product.jpg':
@@ -200,8 +195,7 @@ const assets = {
     'img/shared/desktop/image-xx99-mark-two-headphones.0ead05d95f8a7e5e17d2.webp',
   'img/product-xx59-headphones/mobile/image-gallery-3.jpg':
     'img/product-xx59-headphones/mobile/image-gallery-3.6e9fdbd4696f921c5fef.webp',
-  'img/home/mobile/image-speaker-zx7.jpg':
-    'img/home/mobile/image-speaker-zx7.82dc33d645ab18cf1ac1.webp',
+  'img/home/mobile/image-speaker-zx7.jpg': 'img/home/mobile/image-speaker-zx7.82dc33d645ab18cf1ac1.webp',
   'img/shared/tablet/image-xx99-mark-two-headphones.jpg':
     'img/shared/tablet/image-xx99-mark-two-headphones.36fc239b1d26047f2260.webp',
   'img/product-zx9-speaker/desktop/image-gallery-3.jpg':
@@ -216,32 +210,25 @@ const assets = {
     'img/product-zx9-speaker/mobile/image-product.c3c7f55aef290981df1c.webp',
   'img/product-yx1-earphones/tablet/image-category-page-preview.jpg':
     'img/product-yx1-earphones/tablet/image-category-page-preview.74e2f27bf0076604f473.webp',
-  'img/home/mobile/image-earphones-yx1.jpg':
-    'img/home/mobile/image-earphones-yx1.48e16a44bd58ed3be41e.webp',
-  'img/shared/desktop/image-zx9-speaker.jpg':
-    'img/shared/desktop/image-zx9-speaker.6941ee046dc69b16ef1c.webp',
-  'img/home/tablet/image-speaker-zx7.jpg':
-    'img/home/tablet/image-speaker-zx7.173a4cb5c7acfc7f300c.webp',
+  'img/home/mobile/image-earphones-yx1.jpg': 'img/home/mobile/image-earphones-yx1.48e16a44bd58ed3be41e.webp',
+  'img/shared/desktop/image-zx9-speaker.jpg': 'img/shared/desktop/image-zx9-speaker.6941ee046dc69b16ef1c.webp',
+  'img/home/tablet/image-speaker-zx7.jpg': 'img/home/tablet/image-speaker-zx7.173a4cb5c7acfc7f300c.webp',
   'img/product-yx1-earphones/mobile/image-category-page-preview.jpg':
     'img/product-yx1-earphones/mobile/image-category-page-preview.1e710ed30a8f1d2b6316.webp',
   'img/product-zx7-speaker/tablet/image-product.jpg':
     'img/product-zx7-speaker/tablet/image-product.229fae34cb81b846dee9.webp',
-  'img/shared/tablet/image-zx9-speaker.jpg':
-    'img/shared/tablet/image-zx9-speaker.6fc92e2f2d0520a60b68.webp',
+  'img/shared/tablet/image-zx9-speaker.jpg': 'img/shared/tablet/image-zx9-speaker.6fc92e2f2d0520a60b68.webp',
   'img/product-xx59-headphones/tablet/image-category-page-preview.jpg':
     'img/product-xx59-headphones/tablet/image-category-page-preview.d9c00b361e85112261f3.webp',
   'img/product-zx7-speaker/mobile/image-product.jpg':
     'img/product-zx7-speaker/mobile/image-product.4dc7e99c2ff099acdcef.webp',
   'img/product-yx1-earphones/mobile/image-gallery-2.jpg':
     'img/product-yx1-earphones/mobile/image-gallery-2.725f8ccd8894b15caa12.webp',
-  'img/shared/desktop/image-zx7-speaker.jpg':
-    'img/shared/desktop/image-zx7-speaker.cd69c97742ac8d169a6f.webp',
+  'img/shared/desktop/image-zx7-speaker.jpg': 'img/shared/desktop/image-zx7-speaker.cd69c97742ac8d169a6f.webp',
   'img/product-yx1-earphones/tablet/image-gallery-2.jpg':
     'img/product-yx1-earphones/tablet/image-gallery-2.01573141ec7491103b16.webp',
-  'img/shared/tablet/image-zx7-speaker.jpg':
-    'img/shared/tablet/image-zx7-speaker.62fe609453f87aa9fcf5.webp',
-  'img/home/desktop/image-earphones-yx1.jpg':
-    'img/home/desktop/image-earphones-yx1.97a00dea8ff1e007891d.webp',
+  'img/shared/tablet/image-zx7-speaker.jpg': 'img/shared/tablet/image-zx7-speaker.62fe609453f87aa9fcf5.webp',
+  'img/home/desktop/image-earphones-yx1.jpg': 'img/home/desktop/image-earphones-yx1.97a00dea8ff1e007891d.webp',
   'img/product-yx1-earphones/tablet/image-product.jpg':
     'img/product-yx1-earphones/tablet/image-product.1ea79aa3e440f09a8310.webp',
   'img/product-yx1-earphones/mobile/image-product.jpg':
@@ -256,75 +243,55 @@ const assets = {
     'img/product-yx1-earphones/desktop/image-gallery-2.e70abcaf9ade35800806.webp',
   'img/product-xx59-headphones/mobile/image-product.jpg':
     'img/product-xx59-headphones/mobile/image-product.36e2e9204c7d0452ea18.webp',
-  'img/shared/desktop/image-xx59-headphones.jpg':
-    'img/shared/desktop/image-xx59-headphones.e824b0c2d796e0d14be2.webp',
+  'img/shared/desktop/image-xx59-headphones.jpg': 'img/shared/desktop/image-xx59-headphones.e824b0c2d796e0d14be2.webp',
   'img/shared/mobile/image-xx99-mark-two-headphones.jpg':
     'img/shared/mobile/image-xx99-mark-two-headphones.f38a951d4068d0b5a728.webp',
   'img/product-xx59-headphones/tablet/image-gallery-2.jpg':
     'img/product-xx59-headphones/tablet/image-gallery-2.aec190b4ed29290ff468.webp',
   'img/product-xx59-headphones/mobile/image-gallery-2.jpg':
     'img/product-xx59-headphones/mobile/image-gallery-2.475a86d4eef72c90e981.webp',
-  'img/shared/tablet/image-xx59-headphones.jpg':
-    'img/shared/tablet/image-xx59-headphones.0bd49e4977500048a7b3.webp',
+  'img/shared/tablet/image-xx59-headphones.jpg': 'img/shared/tablet/image-xx59-headphones.0bd49e4977500048a7b3.webp',
   'assets/.svg/logo.svg': 'assets/.svg/logo.bf7edad389d38e0f95d5.svg',
-  'img/shared/mobile/image-zx9-speaker.jpg':
-    'img/shared/mobile/image-zx9-speaker.d98851175b3f36d2d467.webp',
-  'img/cart/image-xx99-mark-one-headphones.jpg':
-    'img/cart/image-xx99-mark-one-headphones.6e8b7beecd38c34ed5c4.webp',
+  'img/shared/mobile/image-zx9-speaker.jpg': 'img/shared/mobile/image-zx9-speaker.d98851175b3f36d2d467.webp',
+  'img/cart/image-xx99-mark-one-headphones.jpg': 'img/cart/image-xx99-mark-one-headphones.6e8b7beecd38c34ed5c4.webp',
   'img/product-xx59-headphones/desktop/image-gallery-2.jpg':
     'img/product-xx59-headphones/desktop/image-gallery-2.b66a7fced88d5b8017de.webp',
-  'img/cart/image-xx99-mark-two-headphones.jpg':
-    'img/cart/image-xx99-mark-two-headphones.74ff04c8e03f962c759d.webp',
+  'img/cart/image-xx99-mark-two-headphones.jpg': 'img/cart/image-xx99-mark-two-headphones.74ff04c8e03f962c759d.webp',
   'assets/.svg/icon-cash.svg': 'assets/.svg/icon-cash.662913859280cc5c6ead.svg',
-  'img/shared/mobile/image-zx7-speaker.jpg':
-    'img/shared/mobile/image-zx7-speaker.4f291ce98b1720c8fdda.webp',
+  'img/shared/mobile/image-zx7-speaker.jpg': 'img/shared/mobile/image-zx7-speaker.4f291ce98b1720c8fdda.webp',
   'favicon-32x32.png': 'favicon-32x32.png',
-  'img/cart/image-zx9-speaker.jpg':
-    'img/cart/image-zx9-speaker.92ab92da533bd5bc50aa.webp',
+  'img/cart/image-zx9-speaker.jpg': 'img/cart/image-zx9-speaker.92ab92da533bd5bc50aa.webp',
   'index.html': 'index.html',
-  'assets/.svg/icon-instagram.svg':
-    'assets/.svg/icon-instagram.9806f9840902a1458290.svg',
+  'assets/.svg/icon-instagram.svg': 'assets/.svg/icon-instagram.9806f9840902a1458290.svg',
   'assets/.svg/icon-cart.svg': 'assets/.svg/icon-cart.3f044dee9333470378fc.svg',
-  'img/cart/image-zx7-speaker.jpg':
-    'img/cart/image-zx7-speaker.e220712fdf96e30b4ca5.webp',
-  'img/shared/mobile/image-xx59-headphones.jpg':
-    'img/shared/mobile/image-xx59-headphones.2ba6720895c0b56145a7.webp',
-  'img/cart/image-yx1-earphones.jpg':
-    'img/cart/image-yx1-earphones.2815e69db1eccf31f6ce.webp',
-  'assets/.svg/icon-twitter.svg':
-    'assets/.svg/icon-twitter.d6504ef1fd2b3dd33fa5.svg',
-  'img/cart/image-xx59-headphones.jpg':
-    'img/cart/image-xx59-headphones.28078cf7210de9d7d876.webp',
-  'assets/.svg/icon-facebook.svg':
-    'assets/.svg/icon-facebook.7a43eb34d65a7ceecec4.svg',
-  'assets/.svg/pattern-circles.svg':
-    'assets/.svg/pattern-circles.f4df3610b83b818abbbe.svg',
-  'assets/.svg/icon-hamburger.svg':
-    'assets/.svg/icon-hamburger.8acf7655e141fd1a30d2.svg',
-  'assets/.svg/icon-check.svg':
-    'assets/.svg/icon-check.0fdb734289732870a2dc.svg',
-  'assets/.svg/icon-arrow-right.svg':
-    'assets/.svg/icon-arrow-right.76d7ef162f24034ea594.svg',
+  'img/cart/image-zx7-speaker.jpg': 'img/cart/image-zx7-speaker.e220712fdf96e30b4ca5.webp',
+  'img/shared/mobile/image-xx59-headphones.jpg': 'img/shared/mobile/image-xx59-headphones.2ba6720895c0b56145a7.webp',
+  'img/cart/image-yx1-earphones.jpg': 'img/cart/image-yx1-earphones.2815e69db1eccf31f6ce.webp',
+  'assets/.svg/icon-twitter.svg': 'assets/.svg/icon-twitter.d6504ef1fd2b3dd33fa5.svg',
+  'img/cart/image-xx59-headphones.jpg': 'img/cart/image-xx59-headphones.28078cf7210de9d7d876.webp',
+  'assets/.svg/icon-facebook.svg': 'assets/.svg/icon-facebook.7a43eb34d65a7ceecec4.svg',
+  'assets/.svg/pattern-circles.svg': 'assets/.svg/pattern-circles.f4df3610b83b818abbbe.svg',
+  'assets/.svg/icon-hamburger.svg': 'assets/.svg/icon-hamburger.8acf7655e141fd1a30d2.svg',
+  'assets/.svg/icon-check.svg': 'assets/.svg/icon-check.0fdb734289732870a2dc.svg',
+  'assets/.svg/icon-arrow-right.svg': 'assets/.svg/icon-arrow-right.76d7ef162f24034ea594.svg',
 };
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+sw.addEventListener('activate', (event) => {
+  event.waitUntil(sw.clients.claim());
 });
 
-self.addEventListener('install', () => {
-  self.skipWaiting();
+sw.addEventListener('install', () => {
+  void sw.skipWaiting();
 });
 
-self.addEventListener('fetch', (event) => {
+sw.addEventListener('fetch', (event: FetchEvent) => {
   const { url, method } = event.request;
 
-  if (
-    method === 'GET' &&
-    (url.endsWith('.jpg') || url.endsWith('.png') || url.endsWith('.webp'))
-  ) {
+  if (method === 'GET' && (url.endsWith('.jpg') || url.endsWith('.png') || url.endsWith('.webp'))) {
     const reqAsset = url.replace(domain, '');
-    const resAsset = assets[reqAsset as keyof typeof assets];
-    if (resAsset !== 'undefined') {
+    const assetMap = assets as Record<string, string>;
+    const resAsset = assetMap[reqAsset]; // Type is now: string | undefined
+    if (resAsset !== undefined) {
       const newResponse = `${domain}/${resAsset}`;
       event.respondWith(fetch(newResponse));
     }

@@ -1,17 +1,19 @@
 import CompanyStatement from '#Components/products/CompanyStatement';
 import ProductExampleShopList from '#Components/products/ProductExampleShopList';
 import ProductInfoCard from '#Components/products/ProductInfoCard';
+
 import MainTagLayout from './MainTagLayout';
+
 import styles from './_CategoryLayout.module.scss';
 
 type ElemProps = {
   productCategory: string;
   productList: {
     id: number;
+    categoryImage: { desktop: string; mobile: string; tablet: string };
+    description: string;
     new: boolean;
     productName: string;
-    description: string;
-    categoryImage: { desktop: string; tablet: string; mobile: string };
   }[];
 };
 
@@ -34,16 +36,16 @@ function CategoryLayout(props: ElemProps): JSX.Element {
 
   return (
     <section aria-labelledby={productCategory}>
-      <header className={styles.header}>
-        <hr className={styles.header__hr} />
-        <h1 className={styles.header__title} id={productCategory}>
+      <header className={styles['header']}>
+        <hr className={styles['header__hr']} />
+        <h1 className={styles['header__title']} id={productCategory}>
           {productCategory}
         </h1>
       </header>
       <MainTagLayout id="skipto-main" testId="skipto-main">
-        <div className={styles.grid}>{products}</div>
-        <ProductExampleShopList appendClass={styles.productExampleShopList} />
-        <CompanyStatement appendClass={styles.companyStatement} />
+        <div className={styles['grid']}>{products}</div>
+        <ProductExampleShopList appendClass={styles['productExampleShopList']} />
+        <CompanyStatement appendClass={styles['companyStatement']} />
       </MainTagLayout>
     </section>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import styles from './_ViewMoreCartItemsButton.module.scss';
 
 type ElemProps = {
@@ -16,7 +17,7 @@ function ViewMoreCartItemsButton(props: ElemProps): JSX.Element {
   };
 
   return (
-    <button className={styles.button} type="button" onClick={viewMoreBtnHandler}>
+    <button className={styles['button']} type="button" onClick={viewMoreBtnHandler}>
       {toggleText && `and ${cartItemLength - 1} other item${cartItemLength > 2 ? '(s)' : ''}`}
       {!toggleText && `View less`}
     </button>

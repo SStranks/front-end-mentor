@@ -17,7 +17,12 @@
   "prettier": "@packages/prettier-config",
   "scripts": {
     "commitlint": "commitlint",
-    "lint": "eslint",
+    "eslint:app": "bash scripts/eslint-app.sh",
+    "eslint:repo": "eslint apps/**/src/**/*.{js,ts,jsx,tsx}",
+    "eslint:config:print": "bash scripts/eslint-config.sh",
+    "eslint:config:inspect": "pnpx @eslint/config-inspector@latest build --outDir logs/eslint-config",
+    "secretlint:app": "bash scripts/secretlint-app.sh",
+    "stylelint:app": "bash scripts/stylelint-app.sh",
     "prepare": "husky"
   },
   "dependencies": {

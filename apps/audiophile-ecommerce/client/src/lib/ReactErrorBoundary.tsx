@@ -1,5 +1,7 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
+
 import { ErrorFallback } from '../components/ui/ReactErrorBoundaryErrorFallback';
 
 type TError = Error | undefined;
@@ -14,9 +16,7 @@ function logErrorToService(error: TError, info: TInfo): void {
 
 function ErrorBoundary({ children }: PropsWithChildren) {
   return (
-    <ReactErrorBoundary
-      FallbackComponent={ErrorFallback}
-      onError={logErrorToService}>
+    <ReactErrorBoundary FallbackComponent={ErrorFallback} onError={logErrorToService}>
       {children}
     </ReactErrorBoundary>
   );

@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["src/**/*", "global.d.ts"],
+  "include": ["src/**/*", "global.d.ts", "tsconfig.serviceworker.json"],
   "exclude": [
     "node_modules",
     "dist",

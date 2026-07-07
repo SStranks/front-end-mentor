@@ -90,7 +90,7 @@ export default defineConfig([
   },
   {
     name: 'Storybook Configuration',
-    files: ['**/*.stories.*', '**/.storybook/**/*'],
+    files: ['**/*.stories.*', '**/.storybook/**/*.{js,jsx,mjs,ts,tsx}'],
     plugins: { ...EslintConfigStorybook.plugins },
     rules: { ...EslintConfigStorybook.rules },
     settings: {

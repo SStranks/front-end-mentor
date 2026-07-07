@@ -9,7 +9,6 @@ function useBodyScrollToggle(): JSX.Element | null {
     document.body.style.overflow = 'unset';
   }, [pathname]);
 
-  // eslint-disable-next-line unicorn/no-null
   return null;
 }
 

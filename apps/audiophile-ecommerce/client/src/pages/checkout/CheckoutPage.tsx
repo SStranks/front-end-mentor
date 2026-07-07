@@ -1,11 +1,14 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import CheckoutSummaryProductCard from '#Components/checkout/CheckoutSummaryProductCard';
 import OrderCompleteModal from '#Components/modal/OrderCompleteModal';
 import { useShoppingCartContext } from '#Context/ShoppingCartContext';
 import ProductData from '#Data/Data.json';
 import MainTagLayout from '#Layouts/MainTagLayout';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import CheckoutForm from './CheckoutForm';
+
 import styles from './_CheckoutPage.module.scss';
 
 function CheckoutPage(): JSX.Element {
@@ -14,9 +17,7 @@ function CheckoutPage(): JSX.Element {
   const { cartItems, cartTotalPrice } = useShoppingCartContext();
 
   const productsList = cartItems.map((cartItem) => {
-    const productData = ProductData.find(
-      (product) => product.id === cartItem.id
-    );
+    const productData = ProductData.find((product) => product.id === cartItem.id);
 
     if (!productData) return false;
 
@@ -44,14 +45,8 @@ function CheckoutPage(): JSX.Element {
   const totalAmount = cartTotalPrice();
 
   return (
-    <MainTagLayout
-      appendClass={styles.mainTag}
-      id="skipto-main"
-      testId="skipto-main">
-      <button
-        className={styles.btnBack}
-        onClick={() => navHook(-1)}
-        type="button">
+    <MainTagLayout appendClass={styles['mainTag']} id="skipto-main" testId="skipto-main">
+      <button className={styles['btnBack']} onClick={() => navHook(-1)} type="button">
         go back
       </button>
       <CheckoutForm
@@ -59,10 +54,7 @@ function CheckoutPage(): JSX.Element {
         openOrderCompleteModal={openOrderCompleteModal}
         productsList={productsList}
       />
-      <OrderCompleteModal
-        modalOpen={modalOpen}
-        modalClose={closeOrderCompleteModal}
-      />
+      <OrderCompleteModal modalOpen={modalOpen} modalClose={closeOrderCompleteModal} />
     </MainTagLayout>
   );
 }

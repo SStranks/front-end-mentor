@@ -1,14 +1,16 @@
-import OrderCompleteCard from '#Components/checkout/OrderCompleteCard';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+
+import OrderCompleteCard from '#Components/checkout/OrderCompleteCard';
+
 import ReactPortal from './ReactPortal';
 
 import styles from './_OrderCompleteModal.module.scss';
 
 type ElemProps = {
-  modalOpen: boolean;
   modalClose: () => void;
+  modalOpen: boolean;
 };
 
 function OrderCompleteModal(props: ElemProps): JSX.Element {
@@ -30,7 +32,7 @@ function OrderCompleteModal(props: ElemProps): JSX.Element {
           exitActive: 'modal-exit-active',
         }}
         nodeRef={nodeRef}>
-        <div className={styles.container} ref={nodeRef}>
+        <div className={styles['container']} ref={nodeRef}>
           <OrderCompleteCard modalClose={modalClose} />
         </div>
       </CSSTransition>

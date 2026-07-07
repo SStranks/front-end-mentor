@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+
 import ReactPortal from './ReactPortal';
 
 describe('Functionality', () => {
@@ -10,7 +11,7 @@ describe('Functionality', () => {
       </ReactPortal>
     );
 
-    const componentPortal = document.querySelector('#modal');
+    const componentPortal = screen.getByTestId('react-portal');
 
     expect(container).toBeEmptyDOMElement();
     expect(componentPortal).toBeInTheDocument();

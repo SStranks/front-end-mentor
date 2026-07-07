@@ -1,8 +1,8 @@
 import styles from './_SkipTo.module.scss';
 
 type ElemProps = {
-  contentName: string;
   contentId: string;
+  contentName: string;
 };
 
 // Accessibility; hidden by default, allows users to skip page content
@@ -13,13 +13,13 @@ function SkipTo(props: ElemProps): JSX.Element {
   const onClickHandler = (e: React.MouseEvent) => {
     e.preventDefault();
     const element = document.querySelector(contentId) as HTMLElement;
-    element?.setAttribute('tabIndex', '0');
-    element?.focus();
-    element?.removeAttribute('tabIndex');
+    element.setAttribute('tabIndex', '0');
+    element.focus();
+    element.removeAttribute('tabIndex');
   };
 
   return (
-    <a className={styles.container} href={contentId} onClick={onClickHandler}>
+    <a className={styles['container']} href={contentId} onClick={onClickHandler}>
       Skip to {contentName}
     </a>
   );

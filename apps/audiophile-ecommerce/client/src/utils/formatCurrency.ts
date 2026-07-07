@@ -4,8 +4,8 @@
 // });
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
-  style: 'decimal',
   minimumFractionDigits: 2,
+  style: 'decimal',
 });
 
 export default function formatCurrency(number: number) {

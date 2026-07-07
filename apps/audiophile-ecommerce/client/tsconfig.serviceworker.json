@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ES2021", "WebWorker"],
+    "types": ["serviceworker"],
+    "noEmit": false
+  },
+  "include": ["src/serviceWorker.ts"]
+}
