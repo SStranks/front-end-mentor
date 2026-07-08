@@ -1,12 +1,10 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react';
-import styles from './Modal.module.scss';
+import type { PropsWithChildren } from 'react';
+
+import { createContext, useEffect, useMemo, useRef } from 'react';
+
 import useScrollLock from './useScrollLock';
+
+import styles from './Modal.module.scss';
 
 interface IContext {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,18 +33,9 @@ function Modal(props: PropsWithChildren<IProps>): JSX.Element | null {
     // On press of ESC key; close modal.
     const keyHandler = (e: KeyboardEvent) => {
       const { activeElement } = document;
-      const inputs = new Set([
-        'a',
-        'area',
-        'button',
-        'details',
-        'input',
-        'iframe',
-        'select',
-        'textarea',
-      ]);
+      const inputs = new Set(['a', 'area', 'button', 'details', 'input', 'iframe', 'select', 'textarea']);
       // Abort if an input has focus
-      if (activeElement && inputs.has(activeElement?.tagName.toLowerCase())) {
+      if (activeElement && inputs.has(activeElement.tagName.toLowerCase())) {
         return null;
       }
       return (e.key === 'Escape' || e.key === 'Esc') && setIsModalOpen(false);
@@ -54,14 +43,14 @@ function Modal(props: PropsWithChildren<IProps>): JSX.Element | null {
 
     if (isModalOpen) {
       current?.addEventListener('click', clickHandler);
-      document?.addEventListener('keyup', keyHandler);
+      document.addEventListener('keyup', keyHandler);
       // Disable TAB cycling on App
       document.querySelector('#root')?.setAttribute('inert', 'true');
     }
 
     return () => {
       current?.removeEventListener('click', clickHandler);
-      document?.removeEventListener('keyup', keyHandler);
+      document.removeEventListener('keyup', keyHandler);
       document.querySelector('#root')?.removeAttribute('inert');
     };
   }, [isModalOpen, setIsModalOpen]);
@@ -74,7 +63,7 @@ function Modal(props: PropsWithChildren<IProps>): JSX.Element | null {
 
   return (
     <ModalContext.Provider value={contextValue}>
-      <div className={styles.container} ref={modalRef}>
+      <div className={styles['container']} ref={modalRef}>
         {children}
       </div>
     </ModalContext.Provider>

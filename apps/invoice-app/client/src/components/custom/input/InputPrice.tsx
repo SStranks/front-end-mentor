@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react';
 
 interface IProps {
-  price?: string | number | undefined;
-  setPrice?: React.Dispatch<React.SetStateAction<number | string | undefined>>;
   name: string;
-  currencyFormatter?: (input: number) => string;
-  'data-input-element'?: string;
   required: boolean;
   appendClass?: string;
+  currencyFormatter?: (input: number) => string;
+  'data-input-element'?: string;
+  price?: string | number | undefined;
+  setPrice?: React.Dispatch<React.SetStateAction<number | string | undefined>>;
 }
 
 function InputPrice(props: IProps): JSX.Element {
@@ -20,9 +20,7 @@ function InputPrice(props: IProps): JSX.Element {
     required,
     appendClass,
   } = props;
-  const [priceInternal, setPriceInternal] = useState<
-    number | string | undefined
-  >(0);
+  const [priceInternal, setPriceInternal] = useState<number | string | undefined>(0);
 
   // If price is managed by parent component, use that components state setter function.
   const setPrice = (value: number | string | undefined) => {
@@ -37,8 +35,8 @@ function InputPrice(props: IProps): JSX.Element {
   const currencyFormatter = useMemo(() => {
     if (currencyFormatterProp === undefined) {
       const NUMBER_FORMATTER = new Intl.NumberFormat('en-US', {
-        minimumFractionDigits: 2,
         maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
         useGrouping: false,
       });
       const numberFormatter = (input: number) => NUMBER_FORMATTER.format(input);
@@ -54,16 +52,20 @@ function InputPrice(props: IProps): JSX.Element {
       case e.key === 'ArrowUp':
       case e.key === 'ArrowDown':
       case e.key === 'ArrowLeft':
-      case e.key === 'ArrowRight':
+      case e.key === 'ArrowRight': {
         return null;
+      }
       case e.key === '-':
       case e.key === '+':
-      case e.key === 'e':
+      case e.key === 'e': {
         return e.preventDefault();
-      case price === 0 && e.key === '0':
+      }
+      case price === 0 && e.key === '0': {
         return e.preventDefault();
-      default:
+      }
+      default: {
         return null;
+      }
     }
   };
 

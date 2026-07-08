@@ -1,7 +1,10 @@
-/* eslint-disable unicorn/no-null */
-import { PropsWithChildren, useContext } from 'react';
-import styles from './FormButtons.module.scss';
+import type { PropsWithChildren } from 'react';
+
+import { useContext } from 'react';
+
 import { ModalContext } from './Modal';
+
+import styles from './FormButtons.module.scss';
 
 // NOTE:  This is a compound component
 
@@ -12,7 +15,7 @@ import { ModalContext } from './Modal';
 function FormButtons(props: PropsWithChildren): JSX.Element {
   const { children } = props;
 
-  return <div className={styles.container}>{children}</div>;
+  return <div className={styles['container']}>{children}</div>;
 }
 
 /* -------------------------------- */
@@ -24,7 +27,7 @@ function CancelBtn(): JSX.Element | null {
   if (!contextValue) return null;
 
   return (
-    <div className={styles.btnCancel}>
+    <div className={styles['btnCancel']}>
       <button type="button" onClick={() => contextValue.setIsModalOpen(false)}>
         Cancel
       </button>
@@ -37,7 +40,7 @@ function DiscardBtn(): JSX.Element | null {
   if (!contextValue) return null;
 
   return (
-    <div className={styles.btnDiscard}>
+    <div className={styles['btnDiscard']}>
       <button type="button" onClick={() => contextValue.setIsModalOpen(false)}>
         Discard
       </button>
@@ -48,7 +51,7 @@ function DiscardBtn(): JSX.Element | null {
 // NOTE:  Buttons external to form; onSubmit references e.nativeEvent.submitter.name e.g 'saveDraft'
 function SaveDraftBtn(): JSX.Element | null {
   return (
-    <div className={styles.btnSaveDraft}>
+    <div className={styles['btnSaveDraft']}>
       <button type="submit" form="submitFormInvoice" name="saveDraft">
         Save as Draft
       </button>
@@ -58,7 +61,7 @@ function SaveDraftBtn(): JSX.Element | null {
 
 function SaveSendBtn(): JSX.Element | null {
   return (
-    <div className={styles.btnSaveSend}>
+    <div className={styles['btnSaveSend']}>
       <button type="submit" form="submitFormInvoice" name="saveSend">
         Save & Send
       </button>
@@ -68,7 +71,7 @@ function SaveSendBtn(): JSX.Element | null {
 
 function SaveChangesBtn(): JSX.Element | null {
   return (
-    <div className={styles.btnSaveChanges}>
+    <div className={styles['btnSaveChanges']}>
       <button type="submit" form="submitFormInvoice" name="saveChanges">
         Save Changes
       </button>

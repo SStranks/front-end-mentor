@@ -1,30 +1,24 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+
+import axios from 'axios';
+
 import handleServiceError from './ApiServiceErrors';
 
 export interface IApiClient {
-  get<TResponse>(url: string): Promise<TResponse>;
-  post<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ): Promise<TResponse>;
-  patch<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ): Promise<TResponse>;
   delete(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse>;
+  get<TResponse>(url: string): Promise<TResponse>;
+  patch<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig): Promise<TResponse>;
+  post<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig): Promise<TResponse>;
 }
 
 export default class ApiClient implements IApiClient {
-  private client: AxiosInstance;
+  private readonly client: AxiosInstance;
 
-  // eslint-disable-next-line class-methods-use-this
   protected createAxiosClient(): AxiosInstance {
     return axios.create({
-      baseURL: `${process.env.API_HOST}/api/v1`,
-      timeout: 5000,
+      baseURL: `${process.env['API_HOST']}/api/v1`,
       headers: { 'Content-Type': 'application/json' },
+      timeout: 5000,
     });
   }
 
@@ -32,10 +26,7 @@ export default class ApiClient implements IApiClient {
     this.client = this.createAxiosClient();
   }
 
-  async get<TResponse>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<TResponse> {
+  async get<TResponse>(url: string, config?: AxiosRequestConfig): Promise<TResponse> {
     try {
       const res = await this.client.get<TResponse>(url, config);
       return res.data;
@@ -45,13 +36,9 @@ export default class ApiClient implements IApiClient {
     return {} as TResponse;
   }
 
-  async post<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ) {
+  async post<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig) {
     try {
-      const res = await this.client.post(url, data, config);
+      const res = await this.client.post<TResponse>(url, data, config);
       return res.data;
     } catch (error) {
       handleServiceError(error);
@@ -59,13 +46,9 @@ export default class ApiClient implements IApiClient {
     return {} as TResponse;
   }
 
-  async patch<TRequest, TResponse>(
-    url: string,
-    data: TRequest,
-    config?: AxiosRequestConfig
-  ) {
+  async patch<TRequest, TResponse>(url: string, data: TRequest, config?: AxiosRequestConfig) {
     try {
-      const res = await this.client.patch(url, data, config);
+      const res = await this.client.patch<TResponse>(url, data, config);
       return res.data;
     } catch (error) {
       handleServiceError(error);

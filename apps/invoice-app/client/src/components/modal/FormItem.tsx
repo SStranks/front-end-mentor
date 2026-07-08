@@ -1,20 +1,20 @@
-/* eslint-disable unicorn/no-useless-undefined */
-/* eslint-disable unicorn/no-null */
+import { useRef, useState } from 'react';
+
 import InputPrice from '#Components/custom/input/InputPrice';
 import IconDelete from '#Svg/icon-delete.svg';
 import currencyFormatter from '#Utils/currencyFormatter';
 import numberFormatter from '#Utils/numberFormatter';
-import { useEffect, useRef, useState } from 'react';
+
 import styles from './FormItem.module.scss';
 
 export interface IProps {
   id: string;
+  deleteItem: (id: string) => void;
   index: number;
   itemName?: string;
-  quantity?: number;
   price?: number;
+  quantity?: number;
   total?: number;
-  deleteItem: (id: string) => void;
 }
 
 function FormItem({
@@ -23,18 +23,14 @@ function FormItem({
   itemName: itemNameProp = undefined,
   quantity: quantityProp = undefined,
   price: priceProp = undefined,
-  total: totalProp = undefined,
   deleteItem,
 }: IProps): JSX.Element {
   const [itemName, setItemName] = useState<string>(itemNameProp ?? '');
   const [quantity, setQuantity] = useState<number | undefined>(quantityProp ?? 1);
   const [price, setPrice] = useState<number | string | undefined>(priceProp ?? 0);
-  const [total, setTotal] = useState<number>(totalProp ?? 0);
   const quantityRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (quantity !== undefined && price !== undefined) setTotal(quantity * Number(price));
-  }, [quantity, price]);
+  const total = quantity !== undefined && price !== undefined ? quantity * Number(price) : 0;
 
   const nameOnChange = (e: React.ChangeEvent) => {
     setItemName((e.target as HTMLInputElement).value);
@@ -85,9 +81,9 @@ function FormItem({
   };
 
   return (
-    <div key={id} className={styles.container}>
+    <div key={id} className={styles['container']}>
       <input
-        className={`${styles.name} ${styles.input}`}
+        className={`${styles['name']} ${styles['input']}`}
         type="text"
         name={`listItem-${index}-${id}-name`}
         value={itemName}
@@ -96,7 +92,7 @@ function FormItem({
         required
       />
       <input
-        className={`${styles.quantity} ${styles.input}`}
+        className={`${styles['quantity']} ${styles['input']}`}
         type="number"
         name={`listItem-${index}-${id}-quantity`}
         ref={quantityRef}
@@ -117,10 +113,10 @@ function FormItem({
         currencyFormatter={numberFormatter}
         data-input-element="formItem"
         required
-        appendClass={`${styles.price} ${styles.input}`}
+        appendClass={`${styles['price']} ${styles['input']}`}
       />
-      <p className={styles.total}>{currencyFormatter(total)}</p>
-      <button type="button" onClick={deleteOnClick} className={styles.deleteBtn}>
+      <p className={styles['total']}>{currencyFormatter(total)}</p>
+      <button type="button" onClick={deleteOnClick} className={styles['deleteBtn']}>
         <img src={IconDelete} alt="" />
       </button>
     </div>

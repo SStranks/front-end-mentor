@@ -1,8 +1,6 @@
-import {
-  QueryClient,
-  QueryClientProvider as ReactQueryClientProvider,
-} from '@tanstack/react-query';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+
+import { QueryClient, QueryClientProvider as ReactQueryClientProvider } from '@tanstack/react-query';
 
 const config = {
   // queryCache: {},
@@ -18,11 +16,7 @@ const config = {
 const queryClient = new QueryClient(config);
 
 function QueryClientProvider({ children }: PropsWithChildren) {
-  return (
-    <ReactQueryClientProvider client={queryClient}>
-      {children}
-    </ReactQueryClientProvider>
-  );
+  return <ReactQueryClientProvider client={queryClient}>{children}</ReactQueryClientProvider>;
 }
 
 export default QueryClientProvider;

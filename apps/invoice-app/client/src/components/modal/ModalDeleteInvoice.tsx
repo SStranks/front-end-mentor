@@ -1,10 +1,14 @@
-import { IInvoice } from '#Services/ApiServiceClient';
-import ApiService from '#Services/Services';
+import type { IInvoice } from '#Services/ApiServiceClient';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+
+import ApiService from '#Services/Services';
+
 import { ModalContext } from './Modal';
+
 import styles from './ModalDeleteInvoice.module.scss';
 
 async function deleteInvoice(invoiceId: string) {
@@ -29,35 +33,32 @@ function ModalDeleteInvoice(props: IProps): JSX.Element | null {
   if (!contextValue) return null;
 
   const deleteInvoiceBtnClickHandler = () => {
-    toast.promise(mutateAsyncDeleteInvoice(invoice.id), {
+    void toast.promise(mutateAsyncDeleteInvoice(invoice.id), {
       loading: 'Deleting Invoice',
+      error: (error: Error) => `${error.message}`,
       success: () => {
         queryClient.removeQueries({ queryKey: [invoice.id] });
-        queryClient.invalidateQueries({ queryKey: ['invoices'] });
+        void queryClient.invalidateQueries({ queryKey: ['invoices'] });
         navigate('/');
         return 'Invoice Deleted';
       },
-      error: (error) => `${error.message}`,
     });
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.container__card}>
-        <p className={styles.container__card__title}>Confirm Deletion</p>
-        <p className={styles.container__card__message}>
-          Are you sure you want to delete invoice {invoice.slug}? This action
-          cannot be undone.
+    <div className={styles['container']}>
+      <div className={styles['container__card']}>
+        <p className={styles['container__card__title']}>Confirm Deletion</p>
+        <p className={styles['container__card__message']}>
+          Are you sure you want to delete invoice {invoice.slug}? This action cannot be undone.
         </p>
-        <div className={styles.container__card__buttons}>
-          <div className={styles.container__cancelBtn}>
-            <button
-              type="button"
-              onClick={() => contextValue.setIsModalOpen(false)}>
+        <div className={styles['container__card__buttons']}>
+          <div className={styles['container__cancelBtn']}>
+            <button type="button" onClick={() => contextValue.setIsModalOpen(false)}>
               Cancel
             </button>
           </div>
-          <div className={styles.container__deleteBtn}>
+          <div className={styles['container__deleteBtn']}>
             <button type="button" onClick={deleteInvoiceBtnClickHandler}>
               Delete
             </button>

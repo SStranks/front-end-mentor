@@ -1,5 +1,5 @@
-/* eslint-disable unicorn/filename-case */
 import { useQuery } from '@tanstack/react-query';
+
 import ApiService from '../services/Services';
 
 async function getAllInvoices() {
@@ -13,8 +13,8 @@ function useInvoices() {
     isError,
     data: invoices,
   } = useQuery({
-    queryKey: ['invoices'],
     queryFn: getAllInvoices,
+    queryKey: ['invoices'],
   });
 
   return [invoices, isLoading, isError] as const;

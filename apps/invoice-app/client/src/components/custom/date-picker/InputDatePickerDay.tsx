@@ -1,16 +1,19 @@
-import { RefObject, useRef, useState } from 'react';
+import type { RefObject } from 'react';
+
+import { useRef, useState } from 'react';
+
 import styles from './InputDatePicker.module.scss';
 
 interface IProps {
   currentDate: Date;
-  setCurrentDate: (date: Date) => void;
-  displayValue: string;
   currentDay: number;
   daysInMonth: number;
+  displayValue: string;
   inputRef: RefObject<HTMLInputElement>;
   rotateFocus: () => void;
-  labelId?: string;
+  setCurrentDate: (date: Date) => void;
   disabled?: boolean;
+  labelId?: string;
 }
 
 function InputDatePickerDay(props: IProps): JSX.Element {
@@ -34,101 +37,79 @@ function InputDatePickerDay(props: IProps): JSX.Element {
     let date = currentDay;
 
     switch (e.key) {
-      case 'ArrowUp':
+      case 'ArrowUp': {
         e.preventDefault();
         return setCurrentDate(
-          new Date(
-            new Date(currentDate).setDate(
-              currentDay + 1 > daysInMonth ? 1 : currentDay + 1
-            )
-          )
+          new Date(new Date(currentDate).setDate(currentDay + 1 > daysInMonth ? 1 : currentDay + 1))
         );
-      case 'ArrowDown':
+      }
+      case 'ArrowDown': {
         e.preventDefault();
         return setCurrentDate(
-          new Date(
-            new Date(currentDate).setDate(
-              currentDay - 1 < 1 ? daysInMonth : currentDay - 1
-            )
-          )
+          new Date(new Date(currentDate).setDate(currentDay - 1 < 1 ? daysInMonth : currentDay - 1))
         );
-      case '0':
+      }
+      case '0': {
         if (lastKeyPress) {
           const newDate = date * 10;
           rotateFocus();
-          return setCurrentDate(
-            new Date(
-              new Date(currentDate).setDate(Math.min(newDate, daysInMonth))
-            )
-          );
+          return setCurrentDate(new Date(new Date(currentDate).setDate(Math.min(newDate, daysInMonth))));
         }
         return setCurrentDate(new Date(new Date(currentDate).setDate(1)));
-      case '1':
+      }
+      case '1': {
         if (lastKeyPress) {
           if (lastKeyPress === '0') date = 0;
           const newDate = date * 10 + 1;
           rotateFocus();
-          return setCurrentDate(
-            new Date(
-              new Date(currentDate).setDate(Math.min(newDate, daysInMonth))
-            )
-          );
+          return setCurrentDate(new Date(new Date(currentDate).setDate(Math.min(newDate, daysInMonth))));
         }
         return setCurrentDate(new Date(new Date(currentDate).setDate(1)));
-      case '2':
+      }
+      case '2': {
         if (lastKeyPress) {
           if (lastKeyPress === '0') date = 0;
           const newDate = date * 10 + 2;
           rotateFocus();
-          return setCurrentDate(
-            new Date(
-              new Date(currentDate).setDate(Math.min(newDate, daysInMonth))
-            )
-          );
+          return setCurrentDate(new Date(new Date(currentDate).setDate(Math.min(newDate, daysInMonth))));
         }
         return setCurrentDate(new Date(new Date(currentDate).setDate(2)));
-      case '3':
+      }
+      case '3': {
         if (lastKeyPress) {
           if (lastKeyPress === '0') date = 0;
           const newDate = date * 10 + 3;
           rotateFocus();
-          return setCurrentDate(
-            new Date(
-              new Date(currentDate).setDate(Math.min(newDate, daysInMonth))
-            )
-          );
+          return setCurrentDate(new Date(new Date(currentDate).setDate(Math.min(newDate, daysInMonth))));
         }
         return setCurrentDate(new Date(new Date(currentDate).setDate(3)));
+      }
       case '4':
       case '5':
       case '6':
       case '7':
       case '8':
-      case '9':
+      case '9': {
         if (lastKeyPress) {
           if (lastKeyPress === '0') date = 0;
           const newDate = date * 10 + Number(e.key);
           rotateFocus();
-          return setCurrentDate(
-            new Date(
-              new Date(currentDate).setDate(Math.min(newDate, daysInMonth))
-            )
-          );
+          return setCurrentDate(new Date(new Date(currentDate).setDate(Math.min(newDate, daysInMonth))));
         }
-        return setCurrentDate(
-          new Date(new Date(currentDate).setDate(Number(e.key)))
-        );
-      default:
+        return setCurrentDate(new Date(new Date(currentDate).setDate(Number(e.key))));
+      }
+      default: {
         return null;
+      }
     }
   };
 
   const inputOnFocus = () => {
-    displayValueRef.current?.classList.add(styles.active);
+    displayValueRef.current?.classList.add(styles['active'] as string);
   };
 
   const inputOnBlur = () => {
-    displayValueRef.current?.classList.remove(styles.active);
+    displayValueRef.current?.classList.remove(styles['active'] as string);
     setLastKeyPress(null);
   };
 
@@ -136,7 +117,7 @@ function InputDatePickerDay(props: IProps): JSX.Element {
     <>
       <input
         type="text"
-        className={styles.input}
+        className={styles['input']}
         id={labelId}
         ref={inputRef}
         readOnly
@@ -149,7 +130,7 @@ function InputDatePickerDay(props: IProps): JSX.Element {
         disabled={disabled}
       />
       <label htmlFor={labelId}>
-        <p className={styles.displayValue} ref={displayValueRef}>
+        <p className={styles['displayValue']} ref={displayValueRef}>
           {displayValue}
         </p>
       </label>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+
 import styles from './Dropdown.module.scss';
 
 interface IProps {
   optionsArray: string[];
-  selectListRef: React.RefObject<HTMLUListElement>;
   selectContainerRef: React.RefObject<HTMLDivElement>;
+  selectListRef: React.RefObject<HTMLUListElement>;
 }
 
 function useDropdown(props: IProps) {
@@ -23,11 +24,8 @@ function useDropdown(props: IProps) {
 
     // Close dropdown if click outside component
     const clickHandler = (e: MouseEvent) => {
-      if (
-        e.target !== selectListRef.current &&
-        !selectContainerRef.current?.contains(e.target as HTMLElement)
-      ) {
-        selectListRef.current?.classList.add(styles['selectList--hidden']);
+      if (e.target !== selectListRef.current && !selectContainerRef.current?.contains(e.target as HTMLElement)) {
+        selectListRef.current?.classList.add(styles['selectList--hidden'] as string);
         e.preventDefault();
         setIsDropdownOpen(false);
       }
@@ -35,62 +33,70 @@ function useDropdown(props: IProps) {
 
     const keyHandler = (e: KeyboardEvent) => {
       switch (e.key) {
-        case 'Tab':
+        case 'Tab': {
           if (isDropdownOpen) {
             e.preventDefault();
-            setCurrentOption(optionsArray[highlightedIndex]);
+
+            const selectedOption = optionsArray[highlightedIndex];
+            if (selectedOption !== undefined) {
+              setCurrentOption(selectedOption);
+            }
+
             setIsDropdownOpen(false);
             selectContainer.current?.focus();
           }
           break;
+        }
         case 'Enter':
         case ' ':
-        case 'Space':
+        case 'Space': {
           if (isDropdownOpen) {
             e.preventDefault();
-            setCurrentOption(optionsArray[highlightedIndex]);
+
+            const selectedOption = optionsArray[highlightedIndex];
+            if (selectedOption !== undefined) {
+              setCurrentOption(selectedOption);
+            }
           }
           break;
-        case 'Escape':
+        }
+        case 'Escape': {
           e.preventDefault();
           setIsDropdownOpen(false);
           break;
+        }
         case 'Up':
-        case 'ArrowUp':
+        case 'ArrowUp': {
           if (!isDropdownOpen) {
             setIsDropdownOpen(true);
             return;
           }
           e.preventDefault();
-          setHighlightedIndex(
-            highlightedIndex <= 1
-              ? optionsArray.length - 1
-              : highlightedIndex - 1
-          );
+          setHighlightedIndex(highlightedIndex <= 1 ? optionsArray.length - 1 : highlightedIndex - 1);
           break;
+        }
         case 'Down':
-        case 'ArrowDown':
+        case 'ArrowDown': {
           if (!isDropdownOpen) {
             setIsDropdownOpen(true);
             return;
           }
           e.preventDefault();
-          setHighlightedIndex(
-            highlightedIndex + 1 === optionsArray.length
-              ? 1
-              : highlightedIndex + 1
-          );
+          setHighlightedIndex(highlightedIndex + 1 === optionsArray.length ? 1 : highlightedIndex + 1);
           break;
+        }
         case 'PageUp':
-        case 'Home':
+        case 'Home': {
           e.preventDefault();
           setHighlightedIndex(1);
           break;
+        }
         case 'PageDown':
-        case 'End':
+        case 'End': {
           e.preventDefault();
           setHighlightedIndex(optionsArray.length - 1);
           break;
+        }
         default:
       }
     };
@@ -101,21 +107,15 @@ function useDropdown(props: IProps) {
       document.removeEventListener('click', clickHandler);
       selectContainer.current?.removeEventListener('keydown', keyHandler);
     };
-  }, [
-    highlightedIndex,
-    isDropdownOpen,
-    optionsArray,
-    selectContainerRef,
-    selectListRef,
-  ]);
+  }, [highlightedIndex, isDropdownOpen, optionsArray, selectContainerRef, selectListRef]);
 
   return {
-    isDropdownOpen,
-    setIsDropdownOpen,
     currentOption,
-    setCurrentOption,
     highlightedIndex,
+    isDropdownOpen,
+    setCurrentOption,
     setHighlightedIndex,
+    setIsDropdownOpen,
   };
 }
 

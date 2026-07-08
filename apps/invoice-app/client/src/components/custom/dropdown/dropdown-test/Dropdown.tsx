@@ -1,43 +1,28 @@
 import { useRef } from 'react';
-import styles from './Dropdown.module.scss';
+
 import useDropdown from './useDropdown';
 
+import styles from './Dropdown.module.scss';
+
 interface IProps {
-  optionsArray?: string[];
-  namespace?: string;
   ariaLabel: string;
+  namespace?: string;
+  optionsArray?: string[];
 }
 
-const defaultOptions = [
-  'Select Option:',
-  'Option 1',
-  'Option 2',
-  'Option 3',
-  'Option 4',
-  'Option 5',
-];
+const defaultOptions = ['Select Option:', 'Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 
 function Dropdown(props: IProps): JSX.Element {
-  const {
-    optionsArray = defaultOptions,
-    namespace = 'default_select_namespace',
-    ariaLabel,
-  } = props;
+  const { optionsArray = defaultOptions, namespace = 'default_select_namespace', ariaLabel } = props;
   const selectContainerRef = useRef<HTMLDivElement>(null);
   const selectListRef = useRef<HTMLUListElement>(null);
-  const {
-    isDropdownOpen,
-    setIsDropdownOpen,
-    currentOption,
-    setCurrentOption,
-    highlightedIndex,
-    setHighlightedIndex,
-  } = useDropdown({ selectContainerRef, selectListRef, optionsArray });
+  const { isDropdownOpen, setIsDropdownOpen, currentOption, setCurrentOption, highlightedIndex, setHighlightedIndex } =
+    useDropdown({ optionsArray, selectContainerRef, selectListRef });
 
   return (
-    <div className={styles.selectContainer} ref={selectContainerRef}>
+    <div className={styles['selectContainer']} ref={selectContainerRef}>
       <button
-        className={styles.select}
+        className={styles['select']}
         type="button"
         onClick={() => setIsDropdownOpen((prev) => !prev)}
         role="combobox"
@@ -51,9 +36,7 @@ function Dropdown(props: IProps): JSX.Element {
         {currentOption}
       </button>
       <ul
-        className={`${styles.selectList} ${
-          isDropdownOpen ? '' : styles['selectList--hidden']
-        }`}
+        className={`${styles['selectList']} ${isDropdownOpen ? '' : styles['selectList--hidden']}`}
         id={`${namespace}_dropdown`}
         role="listbox"
         tabIndex={-1}
@@ -64,9 +47,9 @@ function Dropdown(props: IProps): JSX.Element {
             <li
               key={option}
               id={`${namespace}_element_${option}`}
-              className={`${styles.selectList__option} ${
-                option === currentOption ? styles.optionSelected : ''
-              } ${index === highlightedIndex ? styles.optionHighlighted : ''}`}
+              className={`${styles['selectList__option']} ${
+                option === currentOption ? styles['optionSelected'] : ''
+              } ${index === highlightedIndex ? styles['optionHighlighted'] : ''}`}
               onFocus={() => setHighlightedIndex(index)}
               onMouseOver={() => setHighlightedIndex(index)}
               role="option"

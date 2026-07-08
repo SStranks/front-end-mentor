@@ -1,32 +1,25 @@
+/* eslint-disable perfectionist/sort-objects */
 const DATE_FORMATTER = new Intl.DateTimeFormat('en-GB', {
-  year: 'numeric',
-  month: '2-digit',
   day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
 });
 
-export function formatDate(date: number | Date | undefined) {
-  // console.log('DATE', date);
+type DateString = `${string}/${string}/${string}`;
+export function formatDate(date: number | Date | undefined): DateString {
   const newDate = DATE_FORMATTER.formatToParts(date).map((obj) => {
     if (obj.type === 'year') {
       return obj.value.padStart(4, '0');
     }
     return obj.value;
   });
-  return newDate.join('');
+  return newDate.join('') as DateString;
 }
 
 export const DAYS_LETTER_SUNDAY = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 export const DAYS_LETTER_MONDAY = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
-export const DAYS_NUMERICAL = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-];
+export const DAYS_NUMERICAL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export const DAYS_STRING = {
   Sunday: 'Sun',
@@ -75,17 +68,11 @@ export const CUR_MONTH: number = +new Date().getMonth() + 1;
 export const CUR_DAY: number = +new Date().getDate();
 
 // Month; January = 1
-export function getNumberOfDaysInMonth(
-  year = CUR_YEAR,
-  month = CUR_MONTH
-): number {
+export function getNumberOfDaysInMonth(year = CUR_YEAR, month = CUR_MONTH): number {
   return new Date(year, month + 1, 0).getDate();
 }
 
-export function getDatePortions(
-  dateString: string,
-  delimiter: string
-): string[] {
+export function getDatePortions(dateString: string, delimiter: string): string[] {
   // '30/12/1999' => ['30', '12', '1999']
   return dateString.split(`${delimiter}`);
 }
@@ -99,13 +86,16 @@ export function isValidDate(date: string) {
   if (!/^(?:\d{2}\/){2}\d{4}$/.test(date)) {
     return false;
   }
-  const parts = date.split('/').map((p) => Number.parseInt(p, 10));
+
+  const [day, month, year] = date.split('/').map((p) => Number.parseInt(p, 10));
+
+  if (day === undefined || month === undefined || year === undefined) {
+    return false;
+  }
+
   // Adjust month value to zero-based
-  parts[1] -= 1;
-  const d = new Date(parts[2], parts[1], parts[0]);
-  return (
-    d.getDate() === parts[0] &&
-    d.getMonth() === parts[1] &&
-    d.getFullYear() === parts[2]
-  );
+  const adjustedMonth = month - 1;
+  const d = new Date(year, adjustedMonth, day);
+
+  return d.getDate() === day && d.getMonth() === adjustedMonth && d.getFullYear() === year;
 }

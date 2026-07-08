@@ -1,6 +1,8 @@
+import type { IInvoice } from '#Services/ApiServiceClient';
+
 import Invoice from '#Components/invoices/invoice/Invoice';
-import { IInvoice } from '#Services/ApiServiceClient';
 import IllustrationEmpty from '#Svg/illustration-empty.svg';
+
 import styles from './InvoiceList.module.scss';
 
 interface IProps {
@@ -26,17 +28,16 @@ function InvoiceList(props: IProps): JSX.Element {
       <img src={IllustrationEmpty} alt="" />
       <h2>There is nothing here</h2>
       <p>
-        Create an invoice by clicking the <b>New Invoice</b> button and get
-        started
+        Create an invoice by clicking the <b>New Invoice</b> button and get started
       </p>
     </>
   );
 
+  const containerClassname = invoices ? 'container__invoices' : 'container__noInvoices';
+
   return (
-    <div className={styles.container}>
-      {(invoices && (
-        <div className={styles.container__invoices}>{invoicesList}</div>
-      )) || <div className={styles.container__noInvoices}>{noInvoices}</div>}
+    <div className={styles['container']}>
+      <div className={styles[`${containerClassname}`]}>{invoices ? invoicesList : noInvoices}</div>
     </div>
   );
 }

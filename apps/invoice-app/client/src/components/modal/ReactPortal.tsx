@@ -1,4 +1,6 @@
-import { PropsWithChildren, useLayoutEffect, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+
+import { useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 // Creates a flexible ReactPortal component. Will insert DOM element if no wrappedId exists.
@@ -34,11 +36,12 @@ function ReactPortal({
       systemCreated = true;
       element = createWrapperAndAppendToBody(wrapperId);
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setWrapperElement(element);
 
     return () => {
       // delete the programatically created element
-      if (systemCreated && element?.parentNode) {
+      if (systemCreated && element.parentNode) {
         element.remove();
       }
     };

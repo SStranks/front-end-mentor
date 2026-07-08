@@ -1,17 +1,18 @@
 import IconCheck from '#Svg/icon-check.svg';
+
 import styles from './_CheckBox.module.scss';
 
 interface IFilterStatus {
   draft: boolean;
-  pending: boolean;
   paid: boolean;
+  pending: boolean;
 }
 
 type ElemProps = {
-  title: string;
   checked: boolean;
   inputName: string;
   onClick: React.Dispatch<React.SetStateAction<IFilterStatus>>;
+  title: string;
 };
 
 function CheckBox(props: ElemProps): JSX.Element {
@@ -25,23 +26,12 @@ function CheckBox(props: ElemProps): JSX.Element {
   };
 
   return (
-    <label htmlFor={inputName} className={styles.customCheckbox}>
-      <input
-        type="checkbox"
-        id={inputName}
-        checked={checked}
-        onChange={checkboxHandler}
-      />
-      <div className={styles.customCheckbox__newCheckbox}>
-        {checked && (
-          <img
-            src={IconCheck}
-            className={styles.customCheckbox__iconCheck}
-            alt=""
-          />
-        )}
+    <label htmlFor={inputName} className={styles['customCheckbox']}>
+      <input type="checkbox" id={inputName} checked={checked} onChange={checkboxHandler} />
+      <div className={styles['customCheckbox__newCheckbox']}>
+        {checked && <img src={IconCheck} className={styles['customCheckbox__iconCheck']} alt="" />}
       </div>
-      <p className={styles.customCheckbox__title}>{title}</p>
+      <p className={styles['customCheckbox__title']}>{title}</p>
     </label>
   );
 }

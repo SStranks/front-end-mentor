@@ -1,11 +1,13 @@
-import IconArrow from '#Svg/icon-arrow-down.svg';
 import { useEffect, useRef, useState } from 'react';
+
+import IconArrow from '#Svg/icon-arrow-down.svg';
+
 import styles from './DropdownPaymentTerms.module.scss';
 
 interface IProps {
   value: number | undefined;
-  labelId?: string;
   appendClass?: string;
+  labelId?: string;
 }
 
 function DropdownPaymentTerms(props: IProps): JSX.Element {
@@ -20,12 +22,7 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
     const { current } = containerRef;
     // Handle clicks outside of component; close dropdown
     const clickHandler = (e: MouseEvent) => {
-      if (
-        current &&
-        listOpen &&
-        e.target !== current &&
-        !current.contains(e.target as HTMLElement)
-      ) {
+      if (current && listOpen && e.target !== current && !current.contains(e.target as HTMLElement)) {
         setListOpen(false);
       }
     };
@@ -37,26 +34,28 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
       if (listOpen) {
         switch (e.key) {
           case 'Escape':
-          case 'Esc':
+          case 'Esc': {
             e.stopPropagation();
             dropdownBtnRef.current?.focus();
             setListOpen(false);
             break;
-          case 'ArrowUp':
+          }
+          case 'ArrowUp': {
             e.preventDefault();
             if (buttonElements) {
-              index =
-                (index - 1 + buttonElements.length) % buttonElements.length;
-              buttonElements[index].focus();
+              index = (index - 1 + buttonElements.length) % buttonElements.length;
+              buttonElements[index]?.focus();
             }
             break;
-          case 'ArrowDown':
+          }
+          case 'ArrowDown': {
             e.preventDefault();
             if (buttonElements) {
               index = (index + 1) % buttonElements.length;
-              buttonElements[index].focus();
+              buttonElements[index]?.focus();
             }
             break;
+          }
           default:
         }
       }
@@ -72,7 +71,7 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
 
   const dropdownBtnClickHandler = () => {
     setListOpen((prev) => !prev);
-    dropdownBtnRef.current?.classList.toggle(styles['dropdownBtn--active']);
+    dropdownBtnRef.current?.classList.toggle(styles['dropdownBtn--active'] as string);
   };
 
   const listItemClickHandler = (e: React.MouseEvent, val: number) => {
@@ -82,21 +81,13 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
     dropdownBtnRef.current?.focus();
   };
 
-  const displayValue = currentValue
-    ? `Net ${currentValue} Day${currentValue > 1 ? 's' : ''}`
-    : '';
+  const displayValue = currentValue ? `Net ${currentValue} Day${currentValue > 1 ? 's' : ''}` : '';
 
   return (
-    <div
-      className={`${styles.container} ${appendClass}`}
-      ref={containerRef}
-      data-input-element="paymentTerms">
+    <div className={`${styles['container']} ${appendClass}`} ref={containerRef} data-input-element="paymentTerms">
+      {/*  eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label htmlFor={labelId}>
-        <button
-          type="button"
-          className={styles.dropdownBtn}
-          onClick={dropdownBtnClickHandler}
-          ref={dropdownBtnRef}>
+        <button type="button" className={styles['dropdownBtn']} onClick={dropdownBtnClickHandler} ref={dropdownBtnRef}>
           <input
             type="text"
             className="hidden"
@@ -109,7 +100,7 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
           <input
             type="text"
             id={labelId}
-            className={styles.dropdownBtn__hiddenInput}
+            className={styles['dropdownBtn__hiddenInput']}
             value={displayValue}
             tabIndex={-1}
             readOnly
@@ -118,7 +109,7 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
         </button>
       </label>
       {listOpen && (
-        <div className={styles.dropdownList}>
+        <div className={styles['dropdownList']}>
           <ul ref={ULRef}>
             <li>
               <button type="button" onClick={(e) => listItemClickHandler(e, 1)}>
@@ -131,16 +122,12 @@ function DropdownPaymentTerms(props: IProps): JSX.Element {
               </button>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={(e) => listItemClickHandler(e, 14)}>
+              <button type="button" onClick={(e) => listItemClickHandler(e, 14)}>
                 Net 14 Days
               </button>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={(e) => listItemClickHandler(e, 30)}>
+              <button type="button" onClick={(e) => listItemClickHandler(e, 30)}>
                 Net 30 Days
               </button>
             </li>

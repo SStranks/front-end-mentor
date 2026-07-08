@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './InputDatePicker.module.scss';
+
+import { formatDate, getNumberOfDaysInMonth } from './dateUtil';
 import InputDatePickerDay from './InputDatePickerDay';
 import InputDatePickerMonth from './InputDatePickerMonth';
 import InputDatePickerYear from './InputDatePickerYear';
-import { formatDate, getNumberOfDaysInMonth } from './dateUtil';
+
+import styles from './InputDatePicker.module.scss';
 
 interface IProps {
-  currentDate?: Date;
-  setCurrentDate?: React.Dispatch<React.SetStateAction<Date>>;
-  min?: Date;
-  max?: Date;
   delimiter: '/' | ' ';
-  labelId?: string;
+  currentDate?: Date;
   disabled?: boolean;
+  labelId?: string;
+  max?: Date;
+  min?: Date;
+  setCurrentDate?: React.Dispatch<React.SetStateAction<Date>>;
 }
 
 function InputDatePicker(props: IProps): JSX.Element {
@@ -38,23 +40,21 @@ function InputDatePicker(props: IProps): JSX.Element {
     let constrainDate = date;
     if (min && date < min) constrainDate = min;
     if (max && date > max) constrainDate = max;
-    if (setCurrentDateProp === undefined)
-      return setCurrentDateInternal(constrainDate);
+    if (setCurrentDateProp === undefined) return setCurrentDateInternal(constrainDate);
     return setCurrentDateProp(constrainDate);
   };
 
   // If Date is managed by parent component, use that components state value.
-  const currentDate =
-    currentDateProp === undefined ? currentDateInternal : currentDateProp;
+  const currentDate = currentDateProp === undefined ? currentDateInternal : currentDateProp;
 
   const currentDay = currentDate.getDate();
   const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
   const daysInMonth = getNumberOfDaysInMonth(currentYear, currentMonth);
   const formattedDate = formatDate(currentDate).split('/');
-  const formattedDay = formattedDate[0];
-  const formattedMonth = formattedDate[1];
-  const formattedYear = formattedDate[2];
+  const formattedDay = formattedDate[0] as string;
+  const formattedMonth = formattedDate[1] as string;
+  const formattedYear = formattedDate[2] as string;
 
   // Get next input node focus; rotation amount (+/-)
   const rotateFocus = () => {
@@ -98,7 +98,7 @@ function InputDatePicker(props: IProps): JSX.Element {
   }, []);
 
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div className={styles['container']} ref={containerRef}>
       <InputDatePickerDay
         currentDate={currentDate}
         setCurrentDate={setCurrentDate}
@@ -110,12 +110,7 @@ function InputDatePicker(props: IProps): JSX.Element {
         labelId={labelId}
         disabled={disabled}
       />
-      <p
-        className={`${styles.inputDelimiter} ${
-          disabled ? styles['inputDelimiter--inactive'] : ''
-        }`}>
-        {delimiter}
-      </p>
+      <p className={`${styles['inputDelimiter']} ${disabled ? styles['inputDelimiter--inactive'] : ''}`}>{delimiter}</p>
       <InputDatePickerMonth
         currentDate={currentDate}
         setCurrentDate={setCurrentDate}
@@ -127,15 +122,13 @@ function InputDatePicker(props: IProps): JSX.Element {
           disabled ||
           (min !== undefined &&
             max !== undefined &&
-            min?.getFullYear() === max?.getFullYear() &&
-            min?.getMonth() === max?.getMonth())
+            min.getFullYear() === max.getFullYear() &&
+            min.getMonth() === max.getMonth())
         }
       />
       <p
-        className={`${styles.inputDelimiter} ${
-          disabled ||
-          (min?.getFullYear() === max?.getFullYear() &&
-            min?.getMonth() === max?.getMonth())
+        className={`${styles['inputDelimiter']} ${
+          disabled || (min?.getFullYear() === max?.getFullYear() && min?.getMonth() === max?.getMonth())
             ? styles['inputDelimiter--inactive']
             : ''
         }`}>
@@ -147,12 +140,7 @@ function InputDatePicker(props: IProps): JSX.Element {
         displayValue={formattedYear}
         currentYear={currentYear}
         inputRef={inputYearRef}
-        disabled={
-          disabled ||
-          (min !== undefined &&
-            max !== undefined &&
-            min?.getFullYear() === max?.getFullYear())
-        }
+        disabled={disabled || (min !== undefined && max !== undefined && min.getFullYear() === max.getFullYear())}
       />
     </div>
   );

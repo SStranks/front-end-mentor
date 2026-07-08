@@ -1,9 +1,12 @@
-import IconCalender from '#Svg/icon-calendar.svg';
 import { useEffect, useRef, useState } from 'react';
-import styles from './InputDate.module.scss';
+
+import IconCalender from '#Svg/icon-calendar.svg';
+
+import { formatDate, isValidDate } from './dateUtil';
 import InputDateCalendar from './InputDateCalendar';
 import InputDatePicker from './InputDatePicker';
-import { formatDate, isValidDate } from './dateUtil';
+
+import styles from './InputDate.module.scss';
 
 const setInitialDate = (initialDate: string | undefined, min: Date | undefined, max: Date | undefined) => {
   // Create date; remove time portion.
@@ -30,12 +33,12 @@ const validatePropDate = (date: Date | undefined): Date | undefined => {
 
 // Expect format: new Date('January 01, 1999') to avoid 0 based errors.
 interface IProps {
-  initialDate?: string;
-  min?: Date;
-  max?: Date;
-  labelId?: string;
-  name?: string;
   disabled?: boolean;
+  initialDate?: string;
+  labelId?: string;
+  max?: Date;
+  min?: Date;
+  name?: string;
   required?: boolean;
 }
 
@@ -49,8 +52,8 @@ function DatePicker({
   disabled = undefined,
   required = undefined,
 }: IProps): JSX.Element {
-  const { current: minDate } = useRef(validatePropDate(min));
-  const { current: maxDate } = useRef(validatePropDate(max));
+  const [minDate] = useState(() => validatePropDate(min));
+  const [maxDate] = useState(() => validatePropDate(max));
   const [currentDate, setCurrentDate] = useState<Date>(setInitialDate(initialDate, minDate, maxDate));
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
@@ -94,8 +97,8 @@ function DatePicker({
   }, [isDropdownOpen]);
 
   return (
-    <div className={styles.container} ref={dropdownContainerRef}>
-      <div className={styles.dropdownSelect}>
+    <div className={styles['container']} ref={dropdownContainerRef}>
+      <div className={styles['dropdownSelect']}>
         <input
           type="hidden"
           required={required}
@@ -121,7 +124,7 @@ function DatePicker({
         </button>
       </div>
       {isDropdownOpen && (
-        <div className={styles.dropdownPanel} ref={dropdownPanelRef}>
+        <div className={styles['dropdownPanel']} ref={dropdownPanelRef}>
           <InputDateCalendar
             currentDate={currentDate}
             setCurrentDate={setCurrentDate}

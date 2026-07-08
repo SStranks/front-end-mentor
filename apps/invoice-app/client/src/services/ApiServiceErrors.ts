@@ -1,4 +1,6 @@
-import axios, { AxiosResponse } from 'axios';
+import type { AxiosResponse } from 'axios';
+
+import axios from 'axios';
 
 interface IApiError extends AxiosResponse {
   data: {
@@ -11,7 +13,7 @@ export default function handleServiceError(error: unknown) {
     if (error.response) {
       // The request was made and the server responded with a status code that falls out of the range of 2xx
       const { headers, data, status } = error.response as IApiError;
-      if (data?.message) {
+      if (data.message) {
         console.error(data.message);
       }
       console.error(status);
