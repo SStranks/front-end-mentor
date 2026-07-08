@@ -1,4 +1,6 @@
 {
+  "compilerOptions": { "composite": true },
+  "files": [],
   "references": [
     { "path": "./.storybook/tsconfig.json" },
     { "path": "./tsconfig.configs.json" },

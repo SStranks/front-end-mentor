@@ -12,5 +12,15 @@
     "strictNullChecks": true
   },
   "include": ["*.ts", "packages"],
-  "exclude": ["node_modules", "apps", "logs"]
+  "exclude": ["node_modules", "apps", "logs"],
+  "references": [
+    { "path": "./apps/audiophile-ecommerce/client" },
+    { "path": "./apps/designo-agency/client" },
+    { "path": "./apps/invoice-app/client" },
+    { "path": "./apps/invoice-app/server" },
+    { "path": "./apps/kanban-task-app/client" },
+    { "path": "./apps/kanban-task-app/server" },
+    { "path": "./apps/project-feedback-app/client" },
+    { "path": "./apps/project-feedback-app/server" }
+  ]
 }
