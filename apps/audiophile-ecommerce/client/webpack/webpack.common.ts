@@ -4,7 +4,18 @@ import type { Configuration } from 'webpack';
 import path from 'node:path';
 import url from 'node:url';
 
+const { WEBPACK_PREFIX } = process.env;
+
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const prefix = 'import.meta.env';
+
+export const envKeys = Object.keys(process.env).reduce<{ [key: string]: string }>((acc, key) => {
+  if (WEBPACK_PREFIX && key.startsWith(WEBPACK_PREFIX)) {
+    const keyWithoutPrefix = key.slice(WEBPACK_PREFIX.length);
+    acc[`${prefix}.${keyWithoutPrefix}`] = JSON.stringify(process.env[key]);
+  }
+  return acc;
+}, {});
 
 const CommonConfig = {
   entry: path.resolve(__dirname, '../src/index.tsx'),

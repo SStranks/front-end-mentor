@@ -11,13 +11,14 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import { DefinePlugin } from 'webpack';
 import { merge } from 'webpack-merge';
 
 import path from 'node:path';
 import url from 'node:url';
 import zlib from 'node:zlib';
 
-import CommonConfig from './webpack.common.js';
+import CommonConfig, { envKeys } from './webpack.common.js';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -175,7 +176,7 @@ const ProdConfig = {
       new TerserPlugin({
         terserOptions: {
           compress: {
-            drop_console: ['log', 'info'],
+            drop_console: ['log', 'info', 'debug'],
           },
         },
       }),
@@ -284,6 +285,7 @@ const ProdConfig = {
         { from: path.resolve(__dirname, '../public/sitemap.xml'), noErrorOnMissing: true },
       ],
     }),
+    new DefinePlugin(envKeys),
   ],
 } satisfies Configuration;
 

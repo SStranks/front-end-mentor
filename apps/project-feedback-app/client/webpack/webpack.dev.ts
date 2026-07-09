@@ -7,12 +7,13 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
+import { DefinePlugin } from 'webpack';
 import { merge } from 'webpack-merge';
 
 import path from 'node:path';
 import url from 'node:url';
 
-import CommonConfig from './webpack.common';
+import CommonConfig, { envKeys } from './webpack.common';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -145,6 +146,7 @@ const DevConfig = {
       },
     }),
     new CopyPlugin({ patterns: [{ from: path.resolve(__dirname, '../public'), noErrorOnMissing: true }] }),
+    new DefinePlugin(envKeys),
   ],
 } satisfies Configuration;
 
