@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@packages/commitlint-config": "workspace:*",
+    "@packages/eslint-config-browser": "workspace:*",
     "@packages/eslint-config-express": "workspace:*",
     "@packages/eslint-config-global": "workspace:*",
     "@packages/eslint-config-html": "workspace:*",

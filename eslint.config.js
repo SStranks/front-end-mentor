@@ -1,4 +1,5 @@
 /* eslint-disable perfectionist/sort-objects */
+import EslintConfigBrowser from '@packages/eslint-config-browser';
 import EslintConfigExpress from '@packages/eslint-config-express';
 import { ConfigPrettier, EslintConfigGlobal } from '@packages/eslint-config-global';
 import EslintConfigHTML from '@packages/eslint-config-html';
@@ -174,11 +175,14 @@ export default defineConfig([
     ],
     ignores: ['apps/audiophile-ecommerce/client/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
+      ...EslintConfigBrowser.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/audiophile-ecommerce/client'),
       },
     },
+    plugins: { ...EslintConfigBrowser.plugins },
+    rules: { ...EslintConfigBrowser.rules },
   },
   {
     name: '@apps/audiophile-ecommerce/client: Testing; Vitest + RTL',
@@ -205,11 +209,14 @@ export default defineConfig([
     ],
     ignores: ['apps/designo-agency/client/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
+      ...EslintConfigBrowser.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/designo-agency/client'),
       },
     },
+    plugins: { ...EslintConfigBrowser.plugins },
+    rules: { ...EslintConfigBrowser.rules },
   },
   {
     name: '@apps/designo-agency/client: Testing; Vitest + RTL',
@@ -236,11 +243,14 @@ export default defineConfig([
     ],
     ignores: ['apps/invoice-app/client/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
+      ...EslintConfigBrowser.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/client'),
       },
     },
+    plugins: { ...EslintConfigBrowser.plugins },
+    rules: { ...EslintConfigBrowser.rules },
   },
   {
     name: '@apps/invoice-app/client: Testing; Vitest + RTL',
@@ -284,11 +294,14 @@ export default defineConfig([
     ],
     ignores: ['apps/kanban-task-app/client/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
+      ...EslintConfigBrowser.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/client'),
       },
     },
+    plugins: { ...EslintConfigBrowser.plugins },
+    rules: { ...EslintConfigBrowser.rules },
   },
   {
     name: '@apps/kanban-task-app/client: Testing; Vitest + RTL',
@@ -334,11 +347,14 @@ export default defineConfig([
     ],
     ignores: ['apps/project-feedback-app/client/src/**/?(*.)+(spec|test).*'],
     languageOptions: {
+      ...EslintConfigBrowser.languageOptions,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/client'),
       },
     },
+    plugins: { ...EslintConfigBrowser.plugins },
+    rules: { ...EslintConfigBrowser.rules },
   },
   {
     name: '@apps/project-feedback-app/client: Testing; Vitest + RTL',
