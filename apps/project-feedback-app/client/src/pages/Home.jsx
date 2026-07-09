@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import SuggestionBoard from '../layouts/SuggestionBoard';
 
 function Home(props) {

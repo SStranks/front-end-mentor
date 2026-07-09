@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import styles from './_Button.module.scss';
 
 function Button(props) {
@@ -17,19 +18,19 @@ function Button(props) {
 }
 
 Button.propTypes = {
+  classList: PropTypes.arrayOf(PropTypes.string),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
   text: PropTypes.string,
   value: PropTypes.string,
-  disabled: PropTypes.bool,
-  classList: PropTypes.arrayOf(PropTypes.string),
-  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
+  classList: PropTypes.arrayOf(PropTypes.string),
+  disabled: PropTypes.bool,
+  onClick: undefined,
   text: PropTypes.string,
   value: undefined,
-  disabled: PropTypes.bool,
-  classList: PropTypes.arrayOf(PropTypes.string),
-  onClick: undefined,
 };
 
 export default Button;

@@ -1,10 +1,13 @@
 import axios from 'axios';
+
+import { ENV } from '#Config/env';
+
 import handleServiceError from './ApiServiceErrors';
 
 const client = axios.create({
-  baseURL: `${process.env.API_HOST}/api/v1`,
-  timeout: 1000,
+  baseURL: `${ENV.apiHost}/api/v1`,
   headers: { 'Content-Type': 'application/json' },
+  timeout: 1000,
 });
 
 export default class ApiClient {

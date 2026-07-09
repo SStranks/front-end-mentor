@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/no-array-for-each */
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 
 import styles from './_AsideRoadmap.module.scss';

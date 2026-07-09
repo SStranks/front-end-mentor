@@ -1,5 +1,5 @@
-/* eslint-disable unicorn/filename-case */
 import { useQuery } from '@tanstack/react-query';
+
 import ApiService from '../services/Services';
 
 const getAllRequests = async function getAllRequests() {
@@ -18,8 +18,8 @@ function useRequests() {
     isError,
     data: requests,
   } = useQuery({
-    queryKey: ['requests'],
     queryFn: getAllRequests,
+    queryKey: ['requests'],
   });
 
   return [requests, isLoading, isError];

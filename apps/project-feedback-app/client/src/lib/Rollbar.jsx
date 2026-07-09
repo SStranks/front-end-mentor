@@ -1,11 +1,14 @@
-/* eslint-disable react/prop-types */
 import { ErrorBoundary, Provider } from '@rollbar/react';
 
+import { ENV } from '#Config/env';
+
 const rollbarConfig = {
-  enabled: process.env.ROLLBAR_ENABLED,
-  environment: process.env.NODE_ENV,
-  endpoint: `${process.env.API_HOST}/rollbar`,
+  enabled: ENV.rollbarEnabled,
+  endpoint: `${ENV.apiHost}/rollbar`,
+  environment: ENV.mode,
 };
+
+console.log('test');
 
 function RollbarProvider({ children }) {
   return <Provider config={rollbarConfig}>{children}</Provider>;

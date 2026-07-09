@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
+
 import IconMessage from '../../assets/svg/shared/icon-comments.svg';
 import Tag from '../custom/tag/Tag';
 import Upvote from '../custom/upvote/Upvote';
@@ -16,17 +16,12 @@ function Suggestion(props) {
         <div className={styles.item__suggestion}>
           <h3>{title}</h3>
           <p>{description}</p>
-          <Tag
-            title={`${category[0].toUpperCase()}${category.slice(1)}`}
-            active={active}
-          />
+          <Tag title={`${category[0].toUpperCase()}${category.slice(1)}`} active={active} />
         </div>
       </Link>
       <div className={styles.item__comment}>
         <img src={IconMessage} alt="" />
-        <span className={!comments ? `${styles.noComments}` : ''}>
-          {comments}
-        </span>
+        <span className={comments ? '' : `${styles.noComments}`}>{comments}</span>
       </div>
     </div>
   );

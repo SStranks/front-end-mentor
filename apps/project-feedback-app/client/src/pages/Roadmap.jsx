@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import RoadMapDetail from '../layouts/RoadmapDetail';
 
 function Roadmap(props) {

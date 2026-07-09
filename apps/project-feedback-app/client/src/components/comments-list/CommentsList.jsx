@@ -1,12 +1,13 @@
-/* eslint-disable react/prop-types */
 import { Fragment } from 'react';
+
 import useComments from '../../hooks/useGetAllComments.js';
 import Comment from '../comment/Comment.jsx';
+
 import styles from './_CommentsList.module.scss';
 
 function Comments(props) {
   const { request } = props;
-  const [comments, isLoading, error] = useComments(request);
+  const [comments] = useComments(request);
   const numberOfComments = comments?.results;
 
   const commentsList = comments?.data.map((el, i, arr) => (
@@ -21,7 +22,7 @@ function Comments(props) {
         replyingTo={el.replyingTo}
         replies={el.replies}
       />
-      {i !== arr.length - 1 ? <div className={styles.list__break} /> : ''}
+      {i === arr.length - 1 ? '' : <div className={styles.list__break} />}
     </Fragment>
   ));
 

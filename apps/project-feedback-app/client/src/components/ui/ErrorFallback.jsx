@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from './_ErrorFallback.module.scss';
 
 // NOTE:  Props for different packages

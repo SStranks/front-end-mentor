@@ -1,11 +1,12 @@
-/* eslint-disable react/prop-types */
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
+
 import { useUser } from '../../../context/UserContext';
 import ApiService from '../../../services/Services';
 import ButtonSubmit from '../../custom/button/ButtonSubmit';
 import InputTextArea from '../../custom/textarea/InputTextArea';
+
 import styles from './_Form.module.scss';
 
 const postComment = async (variables) => {
@@ -43,10 +44,11 @@ function Form(props) {
     if (isValid) {
       const dataObject = new FormData(formElement);
       const { comment: content } = Object.fromEntries(dataObject.entries());
-      const requestBody = { user, content };
+      const requestBody = { content, user };
       mutate(
-        { requestId, undefined, requestBody },
+        { requestBody, requestId, undefined },
         {
+          onError: () => toast.error('Comment Posting Failed'),
           onSuccess: () => {
             toast.success('Comment Posted!');
             formRef.current.reset();
@@ -54,7 +56,6 @@ function Form(props) {
             setCharsRemain(250);
             queryClient.invalidateQueries({ queryKey: ['requests'] });
           },
-          onError: () => toast.error('Comment Posting Failed'),
         }
       );
     }

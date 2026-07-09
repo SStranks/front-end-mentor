@@ -1,19 +1,9 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
+
 import styles from './_InputTextArea.module.scss';
 
 function InputTextarea(props) {
-  const {
-    name,
-    id,
-    cols,
-    rows,
-    defaultValue,
-    required,
-    placeholder,
-    onChangeCallback,
-    maxLength,
-  } = props;
+  const { name, id, cols, rows, defaultValue, required, placeholder, onChangeCallback, maxLength } = props;
   const [validationMessage, setValidationMessage] = useState();
 
   const onInvalid = (e) => {

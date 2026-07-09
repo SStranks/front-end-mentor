@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import IconMessage from '../../assets/svg/shared/icon-comments.svg';
 import Tag from '../custom/tag/Tag';
 import Upvote from '../custom/upvote/Upvote';
+
 import styles from './_Roadmap.module.scss';
 
 function Roadmap(props) {
@@ -34,22 +36,22 @@ function Roadmap(props) {
 
 Roadmap.propTypes = {
   id: PropTypes.string,
+  category: PropTypes.string,
+  comments: PropTypes.number,
+  description: PropTypes.string,
   status: PropTypes.string,
   title: PropTypes.string,
-  description: PropTypes.string,
-  category: PropTypes.string,
   upvotes: PropTypes.number,
-  comments: PropTypes.number,
 };
 
 Roadmap.defaultProps = {
   id: undefined,
+  category: undefined,
+  comments: undefined,
+  description: undefined,
   status: undefined,
   title: undefined,
-  description: undefined,
-  category: undefined,
   upvotes: undefined,
-  comments: undefined,
 };
 
 export default Roadmap;

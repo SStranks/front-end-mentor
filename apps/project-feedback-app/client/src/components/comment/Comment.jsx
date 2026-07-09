@@ -1,22 +1,19 @@
-/* eslint-disable react/prop-types */
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
+
 import ProfileIcon from '../../assets/img/image-elijah.jpg';
 import { useUser } from '../../context/UserContext';
 import ApiService from '../../services/Services';
 import ButtonSubmit from '../custom/button/ButtonSubmit';
 import InputTextarea from '../custom/textarea/InputTextArea';
+
 import styles from './_Comment.module.scss';
 
 const postReply = async (variables) => {
   const { requestId, commentId, requestBody } = variables;
   try {
-    const responseData = await ApiService.postComment(
-      requestId,
-      commentId,
-      requestBody
-    );
+    const responseData = await ApiService.postComment(requestId, commentId, requestBody);
     return responseData;
   } catch (error) {
     throw new Error(error.message);
@@ -24,16 +21,7 @@ const postReply = async (variables) => {
 };
 
 function Comment(props) {
-  const {
-    requestId,
-    commentId,
-    name,
-    username,
-    content,
-    parent,
-    replies,
-    replyingTo,
-  } = props;
+  const { requestId, commentId, name, username, content, parent, replies, replyingTo } = props;
   const [formActive, setFormActive] = useState(false);
   const user = useUser();
   const queryClient = useQueryClient();
@@ -59,17 +47,17 @@ function Comment(props) {
       const dataObject = new FormData(formElement);
       const { comment } = Object.fromEntries(dataObject.entries());
 
-      const requestBody = { user, content: comment };
+      const requestBody = { content: comment, user };
       mutate(
-        { requestId, commentId, requestBody },
+        { commentId, requestBody, requestId },
         {
+          onError: () => {
+            toast.error('Comment Posting Failed!');
+          },
           onSuccess: () => {
             toast.success('Comment Posted!');
             queryClient.invalidateQueries({ queryKey: ['requests'] });
             setFormActive(false);
-          },
-          onError: () => {
-            toast.error('Comment Posting Failed!');
           },
         }
       );
@@ -101,47 +89,25 @@ function Comment(props) {
           <h3 className={styles.comment__name}>{name}</h3>
           <p className={styles.comment__username}>@{username}</p>
         </div>
-        <button
-          className={styles.comment__btnreply}
-          onClick={btnReplyClickHandler}
-          type="button">
+        <button className={styles.comment__btnreply} onClick={btnReplyClickHandler} type="button">
           Reply
         </button>
       </div>
       {parent && replies ? (
         // Vertical line grid-row-end: Our CSS Grid is implicit, therefore we can't specify a span value in the CSS as the number is dynamic.
-        <div
-          className={styles.comment__verticalLine}
-          style={{ gridRowEnd: `${replies.length + 2}` }}
-        />
+        <div className={styles.comment__verticalLine} style={{ gridRowEnd: `${replies.length + 2}` }} />
       ) : (
         ''
       )}
       <p className={styles.comment__content}>
-        {replyingTo ? (
-          <span className={styles.comment__replyto}>@{replyingTo}</span>
-        ) : (
-          ''
-        )}
+        {replyingTo ? <span className={styles.comment__replyto}>@{replyingTo}</span> : ''}
         {content}
       </p>
       {formActive ? (
-        <form
-          className={styles.comment__form}
-          onSubmit={onSubmit}
-          id="reply"
-          noValidate>
-          <InputTextarea
-            name="comment"
-            maxLength={250}
-            placeholder="Type your reply here"
-            required
-          />
+        <form className={styles.comment__form} onSubmit={onSubmit} id="reply" noValidate>
+          <InputTextarea name="comment" maxLength={250} placeholder="Type your reply here" required />
           <div className={styles.comment__form__btn}>
-            <ButtonSubmit
-              classList={['w-117', 'bg-magenta']}
-              text="Post Reply"
-            />
+            <ButtonSubmit classList={['w-117', 'bg-magenta']} text="Post Reply" />
           </div>
         </form>
       ) : (

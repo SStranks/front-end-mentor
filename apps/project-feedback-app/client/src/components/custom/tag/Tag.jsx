@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from './_Tag.module.scss';
 
 function Tag(props) {
@@ -6,13 +5,7 @@ function Tag(props) {
 
   return (
     <label htmlFor={id} className={styles.tag} onChange={onChange}>
-      <input
-        type="radio"
-        name={name}
-        id={id}
-        defaultChecked={defaultChecked}
-        disabled={disabled}
-      />
+      <input type="radio" name={name} id={id} defaultChecked={defaultChecked} disabled={disabled} />
       {title}
     </label>
   );

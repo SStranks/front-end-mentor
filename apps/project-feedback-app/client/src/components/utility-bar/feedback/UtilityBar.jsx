@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import IconArrowBack from '../../../assets/svg/shared/icon-arrow-left.svg';
 import Button from '../../custom/button/Button';
 import FormFeedbackEdit from '../../form/feedback-edit/Form';
 import Modal from '../../modal/Modal';
+
 import styles from './_UtilityBar.module.scss';
 
 function UtilityBar(props) {
@@ -30,10 +31,7 @@ function UtilityBar(props) {
         </div>
       </div>
       <Modal handleClose={() => setModalOpen(false)} modalOpen={modalOpen}>
-        <FormFeedbackEdit
-          setModalOpen={() => setModalOpen(false)}
-          request={request}
-        />
+        <FormFeedbackEdit setModalOpen={() => setModalOpen(false)} request={request} />
       </Modal>
     </>
   );

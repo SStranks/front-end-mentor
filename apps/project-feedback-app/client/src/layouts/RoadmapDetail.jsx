@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { RoadmapList, UtilityBarRoadmap } from '../components';
+
 import styles from './_RoadmapDetail.module.scss';
 
 function RoadmapDetail(props) {

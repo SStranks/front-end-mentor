@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
+
 import IconArrowDown from '../../../../assets/svg/shared/icon-arrow-down.svg';
 import DropdownList from './DropdownList';
+
 import styles from './_Dropdown.module.scss';
 
 function Dropdown(props) {
@@ -20,28 +21,17 @@ function Dropdown(props) {
 
   return (
     <div className={styles.dropdown}>
-      <button
-        className={styles.dropdown__current}
-        onClick={btnClickHandler}
-        type="button">
+      <button className={styles.dropdown__current} onClick={btnClickHandler} type="button">
         <p className={styles.dropdown__sortBy}>
-          Sort by :{' '}
-          <span className={styles.dropdown__sortedBy}>{currentSort}</span>
+          Sort by : <span className={styles.dropdown__sortedBy}>{currentSort}</span>
         </p>
         <img
-          className={`${styles.dropdown__arrow} ${
-            active ? styles['dropdown__arrow--active'] : ''
-          }`}
+          className={`${styles.dropdown__arrow} ${active ? styles['dropdown__arrow--active'] : ''}`}
           src={IconArrowDown}
           alt=""
         />
       </button>
-      <DropdownList
-        listItems={listItems}
-        name="sort-by"
-        active={active}
-        onClickSelectSort={dropdownClickHandler}
-      />
+      <DropdownList listItems={listItems} name="sort-by" active={active} onClickSelectSort={dropdownClickHandler} />
     </div>
   );
 }

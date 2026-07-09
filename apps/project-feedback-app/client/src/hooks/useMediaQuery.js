@@ -1,6 +1,5 @@
-/* eslint-disable unicorn/filename-case */
-/* eslint-disable unicorn/no-null */
 import { useEffect, useState } from 'react';
+
 import useEventListener from './useEventListener';
 
 export default function useMediaQuery(mediaQuery) {
@@ -8,7 +7,7 @@ export default function useMediaQuery(mediaQuery) {
   const [mediaQueryList, setMediaQueryList] = useState(null);
 
   useEffect(() => {
-    const list = window.matchMedia(mediaQuery);
+    const list = globalThis.matchMedia(mediaQuery);
     setMediaQueryList(list);
     setIsMatch(list.matches);
   }, [mediaQuery]);

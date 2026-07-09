@@ -31,10 +31,7 @@ export default class ApiServiceClient {
 
   async patchRequest(requestId, body) {
     try {
-      const response = await this.ApiServiceClient.patch(
-        `requests/${requestId}`,
-        body
-      );
+      const response = await this.ApiServiceClient.patch(`requests/${requestId}`, body);
       const {
         data: { request: responseData },
       } = response;
@@ -47,9 +44,7 @@ export default class ApiServiceClient {
 
   async patchRequestUpvote(requestId, userId) {
     try {
-      const response = await this.ApiServiceClient.patch(
-        `/requests/${requestId}/upvote?userId=${userId}`
-      );
+      const response = await this.ApiServiceClient.patch(`/requests/${requestId}/upvote?userId=${userId}`);
       const {
         data: { request: responseData },
       } = response;
@@ -62,9 +57,7 @@ export default class ApiServiceClient {
 
   async deleteRequest(requestId) {
     try {
-      const response = await this.ApiServiceClient.delete(
-        `requests/${requestId}`
-      );
+      const response = await this.ApiServiceClient.delete(`requests/${requestId}`);
       const { status: statusCode } = response;
       return statusCode;
     } catch (error) {
@@ -75,9 +68,7 @@ export default class ApiServiceClient {
 
   async getAllComments(requestId) {
     try {
-      const response = await this.ApiServiceClient.get(
-        `/requests/comments/${requestId}`
-      );
+      const response = await this.ApiServiceClient.get(`/requests/comments/${requestId}`);
       const {
         data: { resComments: data },
         results,
@@ -91,9 +82,7 @@ export default class ApiServiceClient {
   }
 
   async postComment(requestId, commentId, body) {
-    const URL = commentId
-      ? `/comments?request=${requestId}&comment=${commentId}`
-      : `/comments?request=${requestId}`;
+    const URL = commentId ? `/comments?request=${requestId}&comment=${commentId}` : `/comments?request=${requestId}`;
 
     try {
       const response = await this.ApiServiceClient.post(URL, body);

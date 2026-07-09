@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
+
 import ErrorFallback from '../components/ui/ErrorFallback';
 
 function logErrorToService(error, info) {
@@ -9,9 +9,7 @@ function logErrorToService(error, info) {
 
 function ErrorBoundary({ children }) {
   return (
-    <ReactErrorBoundary
-      FallbackComponent={ErrorFallback}
-      onError={logErrorToService}>
+    <ReactErrorBoundary FallbackComponent={ErrorFallback} onError={logErrorToService}>
       {children}
     </ReactErrorBoundary>
   );

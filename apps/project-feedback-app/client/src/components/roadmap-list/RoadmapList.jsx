@@ -1,17 +1,17 @@
-/* eslint-disable unicorn/no-array-for-each */
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
+
 import useMediaQuery from '../../hooks/useMediaQuery';
 import Roadmap from '../roadmap/Roadmap';
+
 import styles from './_RoadmapList.module.scss';
 
 // Width at which mobile request.status filtering becomes actives
 const mediaQuery = '(width < 700px)';
 
 const columns = {
-  planned: 1,
   'in-progress': 2,
   live: 3,
+  planned: 1,
 };
 
 function RoadmapList(props) {

@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+
 import IconEditFeedback from '../../../assets/svg/shared/icon-edit-feedback.svg';
 import ApiService from '../../../services/Services';
 import Button from '../../custom/button/Button';
@@ -8,6 +8,7 @@ import ButtonSubmit from '../../custom/button/ButtonSubmit';
 import Dropdown from '../../custom/dropdown/design2/Dropdown';
 import InputText from '../../custom/input-text/InputText';
 import Textarea from '../../custom/textarea/InputTextArea';
+
 import styles from './_Form.module.scss';
 
 const CATEGORIES = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
@@ -43,10 +44,10 @@ function Form(props) {
         } = Object.fromEntries(dataObject.entries());
 
         const requestBody = {
-          title: newTitle,
           category: newCategory,
           description: newDescription,
           status: newStatus,
+          title: newTitle,
         };
         const responseData = await ApiService.patchRequest(id, requestBody);
 
@@ -85,11 +86,7 @@ function Form(props) {
       <div className={styles.form__category}>
         <h4>Category</h4>
         <p>Choose a category for your feedback</p>
-        <Dropdown
-          listItems={CATEGORIES}
-          name="category"
-          defaultValue={category}
-        />
+        <Dropdown listItems={CATEGORIES} name="category" defaultValue={category} />
       </div>
       <div className={styles.form__status}>
         <h4>Update Status</h4>
@@ -98,42 +95,18 @@ function Form(props) {
       </div>
       <div className={styles.form__detail}>
         <h4>Feedback Detail</h4>
-        <p>
-          Include any specific comments on what should be improved, added, etc
-        </p>
-        <Textarea
-          name="description"
-          id="description"
-          cols={30}
-          rows={10}
-          defaultValue={description}
-          required
-        />
+        <p>Include any specific comments on what should be improved, added, etc</p>
+        <Textarea name="description" id="description" cols={30} rows={10} defaultValue={description} required />
       </div>
       <div className={styles.form__bar}>
         <div className={styles.form__bar__btnDelete}>
-          <ButtonSubmit
-            text="Delete"
-            value="delete"
-            disabled={false}
-            classList={['bg-red']}
-          />
+          <ButtonSubmit text="Delete" value="delete" disabled={false} classList={['bg-red']} />
         </div>
         <div className={styles.form__bar__btnCancel}>
-          <Button
-            text="Cancel"
-            disabled={false}
-            classList={['bg-navy-blue']}
-            onClick={setModalOpen}
-          />
+          <Button text="Cancel" disabled={false} classList={['bg-navy-blue']} onClick={setModalOpen} />
         </div>
         <div className={styles.form__bar__btnSubmit}>
-          <ButtonSubmit
-            text="Edit Feedback"
-            value="submit"
-            disabled={false}
-            classList={['bg-magenta']}
-          />
+          <ButtonSubmit text="Edit Feedback" value="submit" disabled={false} classList={['bg-magenta']} />
         </div>
       </div>
     </form>

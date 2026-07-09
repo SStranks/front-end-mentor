@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from './_Button.module.scss';
 
 function ButtonSubmit(props) {
@@ -7,9 +6,7 @@ function ButtonSubmit(props) {
   return (
     <button
       type="submit"
-      className={`${styles.btn} ${styles[classList[0]]} ${
-        styles[classList[1]]
-      }`}
+      className={`${styles.btn} ${styles[classList[0]]} ${styles[classList[1]]}`}
       value={value}
       disabled={disabled}>
       <p>{text}</p>
