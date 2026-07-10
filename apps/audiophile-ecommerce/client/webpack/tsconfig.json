@@ -4,12 +4,11 @@
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "composite": true,
-    "noEmit": false,
+    "noEmit": true,
     "allowImportingTsExtensions": false,
     "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
-    "outDir": "./dist",
     "types": ["node", "webpack"]
   }
 }
