@@ -1,0 +1,10 @@
+{
+  "babelrcRoots": [
+    ".",
+    "apps/audiophile-ecommerce/client",
+    "apps/designo-agency/client",
+    "apps/invoice-app/client",
+    "apps/kanban-task-app/client",
+    "apps/project-feedback-app/client"
+  ]
+}
