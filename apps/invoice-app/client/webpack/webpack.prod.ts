@@ -42,14 +42,18 @@ const ProdConfig = {
         use: [
           {
             loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+              configFile: path.resolve(__dirname, '../.babelrc.json'),
+            },
           },
           {
             loader: 'ts-loader',
             options: {
               onlyCompileBundledFiles: true,
+              transpileOnly: true,
               compilerOptions: {
-                configFile: path.resolve(__dirname, '../tsconfig.src.json'),
-                transpileOnly: true,
+                configFile: path.resolve(__dirname, '../tsconfig.json'),
                 noEmit: false,
               },
             },
