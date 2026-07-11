@@ -4,7 +4,7 @@
     "paths": {
       "#Shared/*": ["../shared/*"],
       "#Img/*": ["./src/assets/img/*"],
-      "#Sass/*": ["./src/assets/sass/*"],
+      "@Sass/*": ["./src/assets/sass/*"],
       "#Svg/*": ["./src/assets/svg/*"],
       "#Components/*": ["./src/components/*"],
       "#Context/*": ["./src/context/*"],

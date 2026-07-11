@@ -1,6 +1,6 @@
-@use '#Sass/abstracts/animations' as a;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/animations' as a;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/media-queries' as mq;
 
 .container {
   display: contents;
@@ -27,8 +27,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-small, mobile-all) {
@@ -46,8 +46,8 @@
   }
 }
 
-/* -------------------------------- 
- ----       Animations         ----          
+/* --------------------------------
+ ----       Animations         ----
  -------------------------------- */
 
 .logoRect_0 {

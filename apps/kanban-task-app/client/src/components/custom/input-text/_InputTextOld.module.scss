@@ -1,6 +1,6 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/components/input_text' as input-text;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/components/input_text' as input-text;
 
 .container {
   position: relative;

@@ -1,7 +1,7 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/components/input_text' as input-text;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/components/input_text' as input-text;
 
 .subTask {
   display: flex;
@@ -42,7 +42,6 @@
   }
 
   & .icon {
-    filter: invert(51%) sepia(51%) saturate(4416%) hue-rotate(330deg)
-      brightness(99%) contrast(87%);
+    filter: invert(51%) sepia(51%) saturate(4416%) hue-rotate(330deg) brightness(99%) contrast(87%);
   }
 }

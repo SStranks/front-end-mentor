@@ -1,5 +1,5 @@
-@use '#Sass/abstracts/variables' as v;
-@use '#Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/variables' as v;
+@use '@Sass/abstracts/media-queries' as mq;
 
 .container {
   width: 100%;
@@ -12,8 +12,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-large, tablet-medium) {
