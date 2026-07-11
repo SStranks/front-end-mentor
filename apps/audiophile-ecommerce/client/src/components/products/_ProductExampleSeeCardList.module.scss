@@ -1,4 +1,4 @@
-@use '#Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/media-queries' as mq;
 
 .list {
   display: grid;
@@ -6,8 +6,8 @@
   column-gap: 30px;
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-all) {

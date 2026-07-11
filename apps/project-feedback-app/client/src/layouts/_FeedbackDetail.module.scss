@@ -1,5 +1,5 @@
-@use '../assets/sass/mixins' as *;
-@use '../assets/sass/functions' as f;
+@use '@Sass/mixins' as *;
+@use '@Sass/functions' as f;
 
 .container {
   display: flex;
@@ -31,8 +31,8 @@
   row-gap: f.px2em(24);
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include media(mobile-large) {

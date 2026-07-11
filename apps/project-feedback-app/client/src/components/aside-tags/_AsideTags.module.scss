@@ -1,6 +1,6 @@
-@use '../../assets/sass/variables' as *;
-@use '../../assets/sass/mixins' as *;
-@use '../../assets/sass/functions' as f;
+@use '@Sass/variables' as *;
+@use '@Sass/mixins' as *;
+@use '@Sass/functions' as f;
 
 .container {
   @include card;
@@ -13,8 +13,8 @@
   gap: f.px2em(14) f.px2em(8);
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include media(mobile-large, mobile-medium, mobile-small) {

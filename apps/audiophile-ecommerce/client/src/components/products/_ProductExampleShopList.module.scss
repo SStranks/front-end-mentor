@@ -1,8 +1,8 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/variables' as v;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/variables' as v;
 
 .list {
   display: grid;
@@ -11,8 +11,8 @@
   align-items: end;
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro) {

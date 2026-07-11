@@ -1,6 +1,6 @@
-@use '../../assets/sass/mixins' as *;
-@use '../../assets/sass/variables' as *;
-@use '../../assets/sass/functions' as f;
+@use '@Sass/mixins' as *;
+@use '@Sass/variables' as *;
+@use '@Sass/functions' as f;
 
 .grid {
   display: grid;
@@ -103,8 +103,8 @@
   background-color: $sky-blue;
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include media(desktop-large) {

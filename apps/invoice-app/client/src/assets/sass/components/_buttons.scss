@@ -1,7 +1,7 @@
-@use '#Sass/abstracts/animations' as a;
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/animations' as a;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/mixins' as mx;
 
 @mixin btn-theme-wrapper($transition: '', $border-radius: 0) {
   border-radius: $border-radius;

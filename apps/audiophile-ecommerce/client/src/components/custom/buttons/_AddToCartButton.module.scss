@@ -1,5 +1,5 @@
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/components/buttons' as btn;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/components/buttons' as btn;
 
 .container {
   display: flex;
@@ -12,8 +12,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(mobile-small) {

@@ -1,8 +1,8 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/variables' as v;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/variables' as v;
 
 .card {
   display: grid;
@@ -16,7 +16,7 @@
   }
 
   &__title {
-    @include mx.header-h2() using ($rem) {
+    @include mx.header-h2 using ($rem) {
       margin-bottom: f.px2em-parent(32, $rem);
     }
 
@@ -36,8 +36,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(desktop-micro, tablet-all, mobile-all) {
@@ -67,7 +67,7 @@
     }
 
     &__title {
-      @include mx.header-h2() using ($rem) {
+      @include mx.header-h2 using ($rem) {
         $rem: f.px2rem(30);
         margin-bottom: f.px2em-parent(32, $rem);
         font-size: $rem;

@@ -1,8 +1,8 @@
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/components/buttons' as btn;
-@use '#Sass/abstracts/variables' as v;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/components/buttons' as btn;
+@use '@Sass/abstracts/variables' as v;
 
 .card {
   display: flex;
@@ -26,8 +26,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-mini) {

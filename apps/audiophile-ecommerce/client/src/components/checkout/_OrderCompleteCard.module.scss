@@ -1,9 +1,9 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/variables' as v;
-@use '#Sass/components/buttons' as btn;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/variables' as v;
+@use '@Sass/components/buttons' as btn;
 
 .card {
   padding: 48px;
@@ -105,8 +105,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-micro, mobile-all) {

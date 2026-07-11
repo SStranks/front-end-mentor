@@ -1,8 +1,8 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/variables' as v;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/variables' as v;
 
 .mainTag {
   padding-top: 80px;
@@ -18,7 +18,7 @@
 }
 
 .alternatives {
-  @include mx.header-h3() using ($rem) {
+  @include mx.header-h3 using ($rem) {
     margin-bottom: f.px2em-parent(64, $rem);
   }
   text-align: center;
@@ -44,8 +44,8 @@
   margin-bottom: f.px2em(40);
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-all) {

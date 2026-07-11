@@ -1,11 +1,11 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/variables' as v;
-@use '#Sass/components/buttons' as btn;
-@use '#Sass/components/form' as form;
-@use '#Sass/components/radio' as radio;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/variables' as v;
+@use '@Sass/components/buttons' as btn;
+@use '@Sass/components/form' as form;
+@use '@Sass/components/radio' as radio;
 
 @mixin grid-column-span {
   grid-column: 1 / span 2;
@@ -20,7 +20,7 @@
   border-radius: 8px;
 
   &__header {
-    @include mx.header-h3() using ($rem) {
+    @include mx.header-h3 using ($rem) {
       margin: f.px2em-parent(6, $rem) 0 f.px2em-parent(40, $rem);
     }
   }
@@ -154,8 +154,8 @@
   grid-column: 2;
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-all, mobile-all) {

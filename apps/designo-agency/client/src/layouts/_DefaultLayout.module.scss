@@ -1,7 +1,7 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/variables' as v;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/variables' as v;
 
 .container {
   background-color: c.$col-1c;
@@ -11,8 +11,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.desktop-small {

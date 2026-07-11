@@ -1,9 +1,9 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/variables' as v;
-@use '#Sass/components/buttons' as btn;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/variables' as v;
+@use '@Sass/components/buttons' as btn;
 
 .container {
   margin-top: -#{v.$navbar-dim-vertical};
@@ -49,7 +49,7 @@
   }
 
   &__product {
-    @include mx.header-h1() using ($rem) {
+    @include mx.header-h1 using ($rem) {
       padding-bottom: f.px2em-parent(24, $rem);
     }
     color: c.$col-2b;
@@ -187,8 +187,8 @@
   margin-bottom: 80px;
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(desktop-mini, desktop-micro, tablet-large, tablet-regular, tablet-small, tablet-mini) {

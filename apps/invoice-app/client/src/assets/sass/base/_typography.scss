@@ -20,8 +20,8 @@
 
 /*   Imports                        */
 @use 'font-face' as *;
-@use '#Sass/abstracts/variables' as *;
-@use '#Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/variables' as *;
+@use '@Sass/abstracts/functions' as f;
 
 /// Sets the default font-family for the webpage.
 html,

@@ -1,9 +1,9 @@
-@use '#Sass/abstracts/colors' as c;
-@use '#Sass/abstracts/functions' as f;
-@use '#Sass/abstracts/mixins' as mx;
-@use '#Sass/abstracts/media-queries' as mq;
-@use '#Sass/abstracts/variables' as v;
-@use '#Sass/components/buttons' as btn;
+@use '@Sass/abstracts/colors' as c;
+@use '@Sass/abstracts/functions' as f;
+@use '@Sass/abstracts/mixins' as mx;
+@use '@Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/variables' as v;
+@use '@Sass/components/buttons' as btn;
 
 .bgLeafTop {
   position: absolute;
@@ -82,8 +82,8 @@
   z-index: 1;
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(desktop-xlarge) {

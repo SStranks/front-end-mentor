@@ -1,4 +1,4 @@
-@use '#Sass/abstracts/media-queries' as mq;
+@use '@Sass/abstracts/media-queries' as mq;
 
 .container {
   width: 40px;
@@ -9,8 +9,8 @@
   }
 }
 
-/* -------------------------------- 
- ----      Media Queries       ----          
+/* --------------------------------
+ ----      Media Queries       ----
  -------------------------------- */
 
 @include mq.media(tablet-all, mobile-all) {
