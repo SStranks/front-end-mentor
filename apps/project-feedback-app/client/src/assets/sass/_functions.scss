@@ -20,6 +20,7 @@
 
 /*   Imports                        */
 @use 'sass:math';
+@use 'sass:list';
 
 /*   Functions                      */
 /* -------------------------------- */
@@ -28,11 +29,15 @@
 /// @parameter {integer} $pixel - Unitless pixel integer
 @function px2rem($pixel) {
   @if math.is-unitless($pixel) {
-    $rem-value: math.div($pixel, 16) + rem;
-    $zero-safe-rem: if($pixel == 0, 0, $rem-value);
-    @return $zero-safe-rem;
+    /* stylelint-disable-next-line length-zero-no-unit */
+    $rem-value: math.div($pixel, 16) + 0rem;
+    @if $pixel == 0 {
+      @return 0;
+    } @else {
+      @return $rem-value;
+    }
   } @else {
-    @error 'Don\'t use units when using the rem() function';
+    @error 'Do not use units when using the rem() function';
   }
 }
 
@@ -40,11 +45,16 @@
 /// @parameter {integer} $pixel - Unitless pixel integer
 @function px2em($pixel) {
   @if math.is-unitless($pixel) {
-    $em-value: math.div($pixel, 16) + em;
-    $zero-safe-em: if($pixel == 0, 0, $em-value);
-    @return $zero-safe-em;
+    /* stylelint-disable-next-line length-zero-no-unit */
+    $em-value: math.div($pixel, 16) + 0em;
+
+    @if $pixel == 0 {
+      @return 0;
+    } @else {
+      @return $em-value;
+    }
   } @else {
-    @error 'Don\'t use units when using the em() function';
+    @error 'Do not use units when using the em() function';
   }
 }
 
@@ -59,8 +69,8 @@
 ///     z-index: z('Modal')
 ///   }
 @function z($name, $z-indexes-list: $z-indexes) {
-  @if index($z-indexes-list, $name) {
-    @return (length($z-indexes-list) - index($z-indexes-list, $name)) + 1;
+  @if list.index($z-indexes-list, $name) {
+    @return (list.length($z-indexes-list) - list.index($z-indexes-list, $name)) + 1;
   } @else {
     @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes-list}';
 
