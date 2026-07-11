@@ -1,12 +1,13 @@
 import { useState } from 'react';
+
 import styles from './_InputTextArea.module.scss';
 
 type TProps = {
-  placeholder: string;
-  inputName: string;
-  value: string;
   error: boolean;
+  inputName: string;
+  placeholder: string;
   updateRHF: (...event: unknown[]) => void;
+  value: string;
 };
 
 function TextArea(props: TProps): JSX.Element {
@@ -14,16 +15,16 @@ function TextArea(props: TProps): JSX.Element {
   const [text, setText] = useState(value || '');
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = e.currentTarget?.value;
+    const inputValue = e.currentTarget.value;
     setText(inputValue);
     updateRHF(inputValue);
   };
 
   return (
-    <div className={`${styles.container} ${error ? styles.error : ''}`}>
+    <div className={`${styles['container']} ${error ? styles['error'] : ''}`}>
       <textarea
         name={inputName}
-        className={styles.container__input}
+        className={styles['container__input']}
         placeholder={placeholder}
         value={text}
         onChange={onChangeHandler}

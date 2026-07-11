@@ -1,4 +1,9 @@
-import { PropsWithChildren, useReducer, createContext, useMemo } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import type { PropsWithChildren } from 'react';
+
+import { createContext, useMemo, useReducer } from 'react';
+
 import useComponentIdGenerator from '#Hooks/useComponentIdGenerator';
 
 interface IFormContext {
@@ -7,31 +12,31 @@ interface IFormContext {
 }
 export interface IFormState {
   [x: number]: {
-    value: string | number | boolean;
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
     setValue:
       | React.Dispatch<React.SetStateAction<string>>
       | React.Dispatch<React.SetStateAction<number>>
       | React.Dispatch<React.SetStateAction<boolean>>;
-    setError: React.Dispatch<React.SetStateAction<boolean>>;
     validationFn: (value: string | number | boolean) => boolean;
+    value: string | number | boolean;
   };
 }
 
 export interface IFormAction {
-  type: string;
   payload: IFormContextPayload;
+  type: string;
 }
 
 interface IFormContextPayload {
   identity: number;
-  value?: string | number | boolean;
+  setError?: React.Dispatch<React.SetStateAction<boolean>>;
   setValue?:
     | React.Dispatch<React.SetStateAction<string>>
     | React.Dispatch<React.SetStateAction<number>>
     | React.Dispatch<React.SetStateAction<boolean>>;
-  setError?: React.Dispatch<React.SetStateAction<boolean>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   validationFn?: (value: any) => boolean;
+  value?: string | number | boolean;
 }
 
 type TProps = {
@@ -40,36 +45,22 @@ type TProps = {
   submitHandler: (formData: HTMLFormElement) => void;
 };
 
-const registerInput = (
-  state: IFormState,
-  payload: IFormContextPayload
-): IFormState => {
+const registerInput = (state: IFormState, payload: IFormContextPayload): IFormState => {
   const newState = { ...state };
   const { identity, value, setValue, setError, validationFn } = payload;
-  if (
-    value === undefined ||
-    setValue === undefined ||
-    setError === undefined ||
-    validationFn === undefined
-  )
+  if (value === undefined || setValue === undefined || setError === undefined || validationFn === undefined)
     throw new Error('Error');
-  newState[identity] = { value, setValue, setError, validationFn };
+  newState[identity] = { setError, setValue, validationFn, value };
   return newState;
 };
 
-const unregisterInput = (
-  state: IFormState,
-  payload: IFormContextPayload
-): IFormState => {
+const unregisterInput = (state: IFormState, payload: IFormContextPayload): IFormState => {
   const newState = { ...state };
   delete newState[payload.identity];
   return newState;
 };
 
-const updateInputValue = (
-  state: IFormState,
-  payload: IFormContextPayload
-): IFormState => {
+const updateInputValue = (state: IFormState, payload: IFormContextPayload): IFormState => {
   const newValue = payload.value;
   if (newValue === undefined) throw new Error('Error');
   const newState = { ...state };
@@ -77,35 +68,31 @@ const updateInputValue = (
   return newState;
 };
 
-const validateInput = (
-  state: IFormState,
-  payload: IFormContextPayload
-): IFormState => {
+const validateInput = (state: IFormState, payload: IFormContextPayload): IFormState => {
   const { identity } = payload;
   const { value, validationFn } = state[identity];
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const error = validationFn(value);
-  state[identity].setError(error);
+  state[identity].setError(error as boolean);
   return state;
 };
 
 // TODO:  GenID is generating numbers. Switch to strings.
 const validateAllInputs = (state: IFormState): IFormState => {
   Object.keys(state).forEach((identity) => {
-    const isValid = state[Number(identity)].validationFn(
-      state[Number(identity)].value
-    );
+    const isValid = state[Number(identity)].validationFn(state[Number(identity)].value);
     state[Number(identity)].setError(!isValid);
   });
   return state;
 };
 
 const ACTIONS = {
+  ERROR: 'dispatchErrors',
   REGISTER: 'registerInput',
   UNREGISTER: 'unregisterInput',
   UPDATE: 'updateInputValue',
   VALIDATE: 'validateInput',
   VALIDATEALL: 'validateAll',
-  ERROR: 'dispatchErrors',
 };
 
 const reducer = (state: IFormState, action: IFormAction): IFormState => {
@@ -138,7 +125,7 @@ function Form(props: PropsWithChildren<TProps>): JSX.Element {
   const [formState, formDispatch] = useReducer(reducer, {});
   const genId = useComponentIdGenerator();
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // // Check if each formData input is empty. If true, add a new object to newFormData.
     // const newFormData = validateInputs(formData);
@@ -150,10 +137,10 @@ function Form(props: PropsWithChildren<TProps>): JSX.Element {
     // }
 
     formDispatch({
-      type: 'validateAll',
       payload: {
         identity: 0,
       },
+      type: 'validateAll',
     });
 
     console.log(formState);
@@ -162,13 +149,17 @@ function Form(props: PropsWithChildren<TProps>): JSX.Element {
     return submitHandler(e.target as HTMLFormElement);
   };
 
+  const onSubmitBtnClickHandler = (e: React.FormEvent) => {
+    void onSubmit(e);
+  };
+
   const providerValue = useMemo(() => {
     return { formDispatch, genId };
   }, [formDispatch, genId]);
 
   return (
     <FormContext.Provider value={providerValue}>
-      <form className={appendClass} name={name} onSubmit={onSubmit}>
+      <form className={appendClass} name={name} onSubmit={onSubmitBtnClickHandler}>
         {children}
       </form>
     </FormContext.Provider>

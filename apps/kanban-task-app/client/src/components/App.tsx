@@ -3,16 +3,16 @@ import { Route, Routes } from 'react-router-dom';
 
 import RootModal from '#Components/modal/RootModal';
 import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
-import { useLoadingUpdate } from '#Context/LoadingContext';
-import { useRootModalContext } from '#Context/RootModalContext';
+// import { useLoadingUpdate } from '#Context/LoadingContext';
+// import { useRootModalContext } from '#Context/RootModalContext';
 import Home from '#Pages/Home';
-import ApiService from '#Services/Services';
+// import ApiService from '#Services/Services';
 
 const INITIAL_ACTIVEBOARD = globalThis.localStorage.getItem('active-board');
 
 function App(): JSX.Element {
-  const setLoadingUpdate = useLoadingUpdate();
-  const rootModalDispatch = useRootModalContext();
+  // const setLoadingUpdate = useLoadingUpdate();
+  // const rootModalDispatch = useRootModalContext();
   const appState = useAppStateContext();
   const appDispatch = useAppDispatchContext();
   // const [state, appDispatch] = useAppReducer({
@@ -39,31 +39,31 @@ function App(): JSX.Element {
     return () => document.removeEventListener('visibilitychange', saveTaskOrderToLocalStorage);
   }, [appDispatch, appState.localStorageData, appState.localStoragePending]);
 
-  useEffect(() => {
-    // Fetch data from backend
-    void (async function fetchData() {
-      setLoadingUpdate(true);
-      try {
-        const responseData = await ApiService.getAllBoards();
-        if (!responseData) throw new Error('Unable to get boards!');
+  // useEffect(() => {
+  //   // Fetch data from backend
+  //   void (async function fetchData() {
+  //     setLoadingUpdate(true);
+  //     try {
+  //       const responseData = await ApiService.getAllBoards();
+  //       if (!responseData) throw new Error('Unable to get boards!');
 
-        // Set API Data into local state
-        return appDispatch({
-          payload: { data: responseData },
-          type: 'set-initial',
-        });
-      } catch (error) {
-        console.error(error);
-        return rootModalDispatch({
-          modalProps: { title: 'App' },
-          modalType: 'error',
-          type: 'open-modal',
-        });
-      } finally {
-        setLoadingUpdate(false);
-      }
-    })();
-  }, [appDispatch, rootModalDispatch, setLoadingUpdate]);
+  //       // Set API Data into local state
+  //       return appDispatch({
+  //         payload: { data: responseData },
+  //         type: 'set-initial',
+  //       });
+  //     } catch (error) {
+  //       console.error(error);
+  //       return rootModalDispatch({
+  //         modalProps: { title: 'App' },
+  //         modalType: 'error',
+  //         type: 'open-modal',
+  //       });
+  //     } finally {
+  //       setLoadingUpdate(false);
+  //     }
+  //   })();
+  // }, [appDispatch, rootModalDispatch, setLoadingUpdate]);
 
   useEffect(() => {
     // Always set current active board to local storage

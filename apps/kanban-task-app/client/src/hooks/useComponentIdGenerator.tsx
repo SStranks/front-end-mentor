@@ -6,12 +6,10 @@ function useComponentIdGenerator(): () => number {
   // NOTE:  If initializing state with elements that have key/uniqueId, then predefine them with negative numbers.
   const ref = useRef(-1);
 
-  function getId() {
+  return useCallback(() => {
     ref.current += 1;
     return ref.current;
-  }
-
-  return useCallback(getId, []);
+  }, []);
 }
 
 export default useComponentIdGenerator;

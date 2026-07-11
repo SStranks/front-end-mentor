@@ -1,6 +1,10 @@
 import type { ITask } from '#Shared/types';
 import type { TSelectTask, TStatusArr } from '#Types/types';
+
+import type { TFormTaskValues } from '../shared';
+
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
+
 import Dropdown from '#Components/custom/dropdown/Dropdown';
 import InputText from '#Components/custom/input-text/InputText';
 import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
@@ -9,13 +13,15 @@ import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
-import { placeholderText, TFormTaskValues } from '../shared';
+
+import { placeholderText } from '../shared';
+
 import styles from './_TaskEdit.module.scss';
 
 type TProps = {
-  task: ITask;
   selectedTask: TSelectTask;
   statusArr: TStatusArr[];
+  task: ITask;
 };
 
 function TaskEdit(props: TProps): JSX.Element {
@@ -30,33 +36,33 @@ function TaskEdit(props: TProps): JSX.Element {
     formState: { errors },
   } = useForm<TFormTaskValues>({
     defaultValues: {
-      title: task.title,
       description: task.description,
+      status: task.status,
       subTasks: task.subtasks.map((subtask) => ({
         _id: subtask._id,
-        title: subtask.title,
         isCompleted: subtask.isCompleted,
+        title: subtask.title,
       })),
-      status: task.status,
+      title: task.title,
     },
   });
   const { fields, append, remove } = useFieldArray({
-    name: 'subTasks',
     control,
+    name: 'subTasks',
     rules: { required: 'Input required' },
   });
 
   const onSubmit = handleSubmit(async (data) => {
     // Format data according to schema
     const newTask = {
-      title: data.title,
       description: data.description,
       status: data.status,
       subtasks: data.subTasks.map((subtask) => ({
         _id: subtask._id,
-        title: subtask.title,
         isCompleted: subtask.isCompleted,
+        title: subtask.title,
       })),
+      title: data.title,
     };
 
     const { boardId, columnId, taskId } = selectedTask;
@@ -70,9 +76,9 @@ function TaskEdit(props: TProps): JSX.Element {
         responseData = await ApiService.patchTask(boardId, columnId, taskId, newTask);
       } else {
         const data = {
-          taskId,
           newColumnId,
           newTask,
+          taskId,
         };
         responseData = await ApiService.patchTaskColumn(boardId, columnId, data);
       }
@@ -80,27 +86,31 @@ function TaskEdit(props: TProps): JSX.Element {
       if (!responseData) throw new Error('Could not patch task!');
 
       appDispatch({
-        type: 'update-task',
         payload: { id: { boardId }, data: responseData },
+        type: 'update-task',
       });
-      return modalDispatch({ type: 'close-all', modalType: undefined });
+      return modalDispatch({ modalType: undefined, type: 'close-all' });
     } catch (error) {
       console.error(error);
       return modalDispatch({
-        type: 'open-modal',
-        modalType: 'error',
         modalProps: { title: task.title },
+        modalType: 'error',
+        type: 'open-modal',
       });
     } finally {
       setLoadingUpdate(false);
     }
   });
 
+  const onSubmitClickHandler = () => {
+    void onSubmit();
+  };
+
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={onSubmit}>
-        <p className={styles.form__title}>Edit Task</p>
-        <div className={styles.form__group}>
+    <div className={styles['container']}>
+      <form className={styles['form']} onSubmit={onSubmitClickHandler}>
+        <p className={styles['form__title']}>Edit Task</p>
+        <div className={styles['form__group']}>
           <p>Title</p>
           <Controller
             control={control}
@@ -117,7 +127,7 @@ function TaskEdit(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <div className={styles.form__group}>
+        <div className={styles['form__group']}>
           <p>Description</p>
           <Controller
             control={control}
@@ -134,39 +144,39 @@ function TaskEdit(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <div className={styles.form__group}>
+        <div className={styles['form__group']}>
           <p>Sub-Tasks</p>
-          <div className={styles.form__listItems}>
+          <div className={styles['form__listItems']}>
             {fields.map((field, index) => (
-              <div className={styles.form__subTask} key={field.id}>
+              <div className={styles['form__subTask']} key={field.id}>
                 <Controller
                   control={control}
                   name={`subTasks.${index}.title` as const}
                   rules={{ required: true }}
                   render={({ field: { onChange, value } }) => (
                     <InputText
-                      placeholder={placeholderText[index]}
+                      placeholder={placeholderText[index] ?? placeholderText[0]}
                       inputName={`columns.${index}.name`}
                       value={value}
-                      error={!!errors?.subTasks?.[index]?.title}
+                      error={!!errors.subTasks?.[index]?.title}
                       updateRHF={onChange}
                     />
                   )}
                 />
                 <button type="button" onClick={() => remove(index)}>
-                  <img src={IconCross} alt="" className={styles.icon} />
+                  <img src={IconCross} alt="" className={styles['icon']} />
                 </button>
               </div>
             ))}
           </div>
           <button
             type="button"
-            className={styles.form__btnNewSubTask}
-            onClick={() => append({ title: '', isCompleted: false })}>
+            className={styles['form__btnNewSubTask']}
+            onClick={() => append({ isCompleted: false, title: '' })}>
             + Add New Sub-Task
           </button>
         </div>
-        <div className={styles.form__group}>
+        <div className={styles['form__group']}>
           <p>Status</p>
           <Controller
             control={control}
@@ -176,7 +186,7 @@ function TaskEdit(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <button type="submit" className={styles.form__btnSaveForm} disabled={isLoading}>
+        <button type="submit" className={styles['form__btnSaveForm']} disabled={isLoading}>
           Save Changes
         </button>
       </form>

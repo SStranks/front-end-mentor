@@ -1,39 +1,30 @@
-import type { ITask, ISubTask } from '#Shared/types';
+/* eslint-disable react-hooks/refs */
+import type { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd';
+
+import type { ISubTask, ITask } from '#Shared/types';
+
+import { Draggable } from 'react-beautiful-dnd';
+
 import Task from '#Components/task/Task';
-import {
-  Draggable,
-  DroppableProvided,
-  DroppableStateSnapshot,
-} from 'react-beautiful-dnd';
+
 import styles from './_Column.module.scss';
 
 type TProps = {
-  dndProvided: DroppableProvided;
-  dndSnapshot: DroppableStateSnapshot;
   boardId: string;
   columnId: string;
   columnNum: number;
   columnTitle: string;
+  dndProvided: DroppableProvided;
+  dndSnapshot: DroppableStateSnapshot;
   numOfTasks: number;
   tasks: ITask[];
 };
 
 function Column(props: TProps): JSX.Element {
-  const {
-    dndProvided,
-    dndSnapshot,
-    boardId,
-    columnId,
-    columnNum,
-    columnTitle,
-    numOfTasks,
-    tasks,
-  } = props;
+  const { dndProvided, dndSnapshot, boardId, columnId, columnNum, columnTitle, numOfTasks, tasks } = props;
 
   const tasksCards = tasks.map((el, i) => {
-    const completedSubTasks = el.subtasks.filter(
-      (obj: ISubTask) => obj.isCompleted === true
-    ).length;
+    const completedSubTasks = el.subtasks.filter((obj: ISubTask) => obj.isCompleted === true).length;
     return (
       <Draggable key={el._id} draggableId={el._id} index={i}>
         {(provided, snapshot) => (
@@ -55,18 +46,12 @@ function Column(props: TProps): JSX.Element {
 
   return (
     <div
-      className={`${styles.column} ${
-        dndSnapshot.isDraggingOver ? styles[`droppable--${columnNum}`] : ''
-      }`}
+      className={`${styles['column']} ${dndSnapshot.isDraggingOver ? styles[`droppable--${columnNum}`] : ''}`}
       data-column-id={columnId}
       ref={dndProvided.innerRef}>
-      <div className={styles.status}>
-        <div
-          className={`${styles.status__bullet} ${
-            styles[`status__bullet--${columnNum}`]
-          }`}
-        />
-        <p className={styles.status__title}>
+      <div className={styles['status']}>
+        <div className={`${styles['status__bullet']} ${styles[`status__bullet--${columnNum}`]}`} />
+        <p className={styles['status__title']}>
           {columnTitle} ({numOfTasks})
         </p>
       </div>

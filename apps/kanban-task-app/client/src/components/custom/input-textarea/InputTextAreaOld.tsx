@@ -1,38 +1,36 @@
-import { TReturnData } from '#Types/types';
-import { useEffect, useRef, useState } from 'react';
+import type { TReturnData } from '#Types/types';
+
+import { useRef, useState } from 'react';
+
 import styles from './_InputTextAreaOld.module.scss';
 
 type TProps = {
-  placeholder: string;
-  inputName: string;
-  value: string;
-  groupId: string | undefined;
   error: boolean;
+  groupId: string | undefined;
+  inputName: string;
+  placeholder: string;
   returnData: (arg: TReturnData) => void;
+  value: string;
 };
 
 function TextArea(props: TProps): JSX.Element {
-  const { placeholder, inputName, value = '', groupId, error, returnData } = props;
-  const [text, setText] = useState('');
+  const { placeholder, inputName, value, groupId, error, returnData } = props;
+  const [text, setText] = useState(value || '');
   const containerRef = useRef<HTMLDivElement>(null);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    return setText(e.currentTarget?.value);
+    return setText(e.currentTarget.value);
   };
 
   const onBlurHandler = () => {
-    returnData({ inputName, value: text, groupId });
+    returnData({ groupId, inputName, value: text });
   };
 
-  useEffect(() => {
-    setText(value);
-  }, [value]);
-
   return (
-    <div className={`${styles.container} ${error && !text ? styles.error : ''}`} ref={containerRef}>
+    <div className={`${styles['container']} ${error && !text ? styles['error'] : ''}`} ref={containerRef}>
       <textarea
         name={inputName}
-        className={styles.container__input}
+        className={styles['container__input']}
         placeholder={placeholder}
         value={text}
         onBlur={onBlurHandler}

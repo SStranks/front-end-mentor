@@ -1,7 +1,10 @@
 import type { IBoard } from '#Shared/types';
 import type { TAppStateContext } from '#Types/types';
-import { useCallback, useReducer } from 'react';
-import { IOrderedTasks, generateOrderedTasks, orderStateTasks } from '#Utils/taskSorting';
+import type { IOrderedTasks } from '#Utils/taskSorting';
+
+import { useReducer } from 'react';
+
+import { generateOrderedTasks, orderStateTasks } from '#Utils/taskSorting';
 
 const setLocalStoragePending = (state: TAppStateContext, localStoragePending: boolean) => {
   return { ...state, localStoragePending };
@@ -18,7 +21,7 @@ const setInitialState = (state: TAppStateContext, payload: TActionHelper<'set-in
   let newState = { ...state, boards: data };
 
   // Synchronise API data with localStorage ordering of tasks
-  const localStorageTaskOrderJSON = window.localStorage.getItem('boards-taskOrder');
+  const localStorageTaskOrderJSON = globalThis.localStorage.getItem('boards-taskOrder');
   // eslint-disable-next-line unicorn/no-negated-condition
   if (localStorageTaskOrderJSON !== null) {
     newState = orderStateTasks(newState, localStorageTaskOrderJSON);
@@ -52,15 +55,28 @@ const updateTask = (state: TAppStateContext, payload: TActionHelper<'update-task
 };
 
 const deleteTask = (state: TAppStateContext, payload: TActionHelper<'delete-task'>) => {
-  let newState = { ...state };
   const { boardId, columnId, taskId } = payload.id;
-  const boardIdx = newState.boards.findIndex((b) => b._id === boardId);
-  const columnIdx = newState.boards[boardIdx].columns.findIndex((c) => c._id === columnId);
-  const newTasks = newState.boards[boardIdx].columns[columnIdx].tasks.filter((t) => t._id !== taskId);
-  newState.boards[boardIdx].columns[columnIdx].tasks = newTasks;
-  newState = setLocalStoragePending(newState, true);
-  newState = setLocalStorageData(newState);
-  return newState;
+
+  const newState = {
+    ...state,
+    boards: state.boards.map((board) =>
+      board._id === boardId
+        ? {
+            ...board,
+            columns: board.columns.map((column) =>
+              column._id === columnId
+                ? {
+                    ...column,
+                    tasks: column.tasks.filter((task) => task._id !== taskId),
+                  }
+                : column
+            ),
+          }
+        : board
+    ),
+  };
+
+  return setLocalStorageData(setLocalStoragePending(newState, true));
 };
 
 const addBoard = (state: TAppStateContext, payload: TActionHelper<'add-board'>) => {
@@ -91,14 +107,14 @@ const deleteBoard = (state: TAppStateContext, payload: TActionHelper<'delete-boa
 };
 
 export type TAction =
-  | { type: 'add-task'; payload: { id: { boardId: string }; data: IBoard } }
-  | { type: 'update-task'; payload: { id: { boardId: string }; data: IBoard } }
-  | { type: 'delete-task'; payload: { id: { boardId: string; columnId: string; taskId: string } } }
-  | { type: 'add-board'; payload: { id: { boardId: string }; data: IBoard } }
-  | { type: 'edit-board'; payload: { id: { boardId: string }; data: IBoard } }
-  | { type: 'delete-board'; payload: { id: { boardId: string } } }
-  | { type: 'localStoragePending'; localStorage: { localStoragePending: boolean } }
-  | { type: 'set-initial'; payload: { data: IBoard[] } };
+  | { payload: { id: { boardId: string }; data: IBoard }; type: 'add-task' }
+  | { payload: { id: { boardId: string }; data: IBoard }; type: 'update-task' }
+  | { payload: { id: { boardId: string; columnId: string; taskId: string } }; type: 'delete-task' }
+  | { payload: { id: { boardId: string }; data: IBoard }; type: 'add-board' }
+  | { payload: { id: { boardId: string }; data: IBoard }; type: 'edit-board' }
+  | { payload: { id: { boardId: string } }; type: 'delete-board' }
+  | { localStorage: { localStoragePending: boolean }; type: 'localStoragePending' }
+  | { payload: { data: IBoard[] }; type: 'set-initial' };
 
 type TActionPayloads = Exclude<TAction, { type: 'localStoragePending' }>;
 
@@ -137,8 +153,7 @@ const reducer = (state: TAppStateContext, action: TAction): TAppStateContext => 
 };
 
 function useAppReducer(initialState: TAppStateContext): [TAppStateContext, React.Dispatch<TAction>] {
-  const [state, unstableDispatch] = useReducer(reducer, initialState);
-  const dispatch = useCallback(unstableDispatch, [unstableDispatch]);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return [state, dispatch];
 }
 

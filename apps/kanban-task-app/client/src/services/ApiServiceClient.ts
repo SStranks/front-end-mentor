@@ -1,30 +1,31 @@
 // NOTE:  ! This file is not complete. Basic working structure. Depends on backend API types
 import type { IBoard } from '#Shared/types';
+
+import type { IApiClient } from './ApiHttp';
 import type {
-  IPostBoardRequestDTO,
   IPatchBoardRequestDTO,
-  IPostTaskRequestDTO,
-  IPatchTaskRequestDTO,
   IPatchTaskColumnRequestDTO,
+  IPatchTaskRequestDTO,
+  IPostBoardRequestDTO,
+  IPostTaskRequestDTO,
 } from './ApiRequestDto';
-import type { IBoardResponseDTO, IAllBoardsResponseDTO } from './ApiResponseDto';
-import { IApiClient } from './ApiHttp';
+import type { IAllBoardsResponseDTO, IBoardResponseDTO } from './ApiResponseDto';
 
 interface IApiResponse<T> {
+  data: T;
   status: string;
   results?: number;
-  data: T;
 }
 
 export interface IApiServiceClient {
-  getAllBoards(): Promise<IBoard[] | undefined>;
-  postBoard(data: IPostBoardRequestDTO): Promise<IBoard | undefined>;
-  patchBoard(boardId: string, data: IPatchBoardRequestDTO): Promise<IBoard | undefined>;
   deleteBoard(boardId: string): Promise<number | boolean>;
-  postTask(boardId: string, columnId: string, data: IPostTaskRequestDTO): Promise<IBoard | undefined>;
+  deleteTask(boardId: string, columnId: string, taskId: string): Promise<number | boolean>;
+  getAllBoards(): Promise<IBoard[] | undefined>;
+  patchBoard(boardId: string, data: IPatchBoardRequestDTO): Promise<IBoard | undefined>;
   patchTask(boardId: string, columnId: string, taskId: string, data: IPatchTaskRequestDTO): Promise<IBoard | undefined>;
   patchTaskColumn(boardId: string, columnId: string, data: IPatchTaskColumnRequestDTO): Promise<IBoard | undefined>;
-  deleteTask(boardId: string, columnId: string, taskId: string): Promise<number | boolean>;
+  postBoard(data: IPostBoardRequestDTO): Promise<IBoard | undefined>;
+  postTask(boardId: string, columnId: string, data: IPostTaskRequestDTO): Promise<IBoard | undefined>;
 }
 
 export default class ApiServiceClient implements IApiServiceClient {

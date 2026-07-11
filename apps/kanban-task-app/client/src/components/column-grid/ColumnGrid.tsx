@@ -1,6 +1,10 @@
+import type { DropResult } from 'react-beautiful-dnd';
+
 import type { IBoard } from '#Shared/types';
+
 import React, { useState } from 'react';
-import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
 import Column from '#Components/column/Column';
 import ColumnEmpty from '#Components/column/ColumnEmpty';
 import DeleteTask from '#Components/task/DeleteTask';
@@ -8,6 +12,7 @@ import { useAppDispatchContext } from '#Context/AppContext';
 import { useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
+
 import styles from './_ColumnGrid.module.scss';
 
 type TProps = {
@@ -22,7 +27,7 @@ function ColumnGrid(props: TProps): JSX.Element {
   const [dragActive, setDragActive] = useState<boolean>(false);
 
   const columns = activeBoard?.columns.map((el, i) => (
-    <div className={styles.columnContainer} key={el._id}>
+    <div className={styles['columnContainer']} key={el._id}>
       <Droppable droppableId={`${i}`}>
         {(provided, snapshot) => (
           <Column
@@ -41,7 +46,6 @@ function ColumnGrid(props: TProps): JSX.Element {
       <Droppable droppableId={`deleteTask-${i}`}>
         {(provided, snapshot) => (
           <DeleteTask
-            {...provided.droppableProps}
             dndProvided={provided}
             dndSnapshot={snapshot}
             numOfTasks={el.tasks.length}
@@ -57,9 +61,9 @@ function ColumnGrid(props: TProps): JSX.Element {
     if (element !== null) {
       const { boardId, columnId, taskId } = (element as HTMLElement).dataset;
       modalDispatch({
-        type: 'open-modal',
-        modalType: 'task-view',
         modalProps: { selectedTask: { boardId, columnId, taskId } },
+        modalType: 'task-view',
+        type: 'open-modal',
       });
     }
   };
@@ -76,9 +80,11 @@ function ColumnGrid(props: TProps): JSX.Element {
       // Delete Task
       const board = { ...activeBoard };
       const boardId = board._id;
-      const columnId = board.columns[Number(result.source.droppableId)]._id;
-      const [task] = board.columns[Number(result.source.droppableId)].tasks.splice(result.source.index, 1);
-      const taskId = task._id;
+      const columnId = board.columns[Number(result.source.droppableId)]?._id;
+      const task = board.columns[Number(result.source.droppableId)]?.tasks.splice(result.source.index, 1);
+      const taskId = task?.at(0)?._id;
+
+      if (columnId === undefined || taskId === undefined) return;
 
       setLoadingUpdate(true);
       try {
@@ -86,10 +92,10 @@ function ColumnGrid(props: TProps): JSX.Element {
         if (!responseData) throw new Error('Could not delete task!');
 
         appDispatch({
-          type: 'delete-task',
           payload: {
             id: { boardId, columnId, taskId },
           },
+          type: 'delete-task',
         });
       } catch (error) {
         console.error(error);
@@ -101,13 +107,17 @@ function ColumnGrid(props: TProps): JSX.Element {
 
     const board = { ...activeBoard };
     const { _id: boardId } = board;
-    const fromColumnId = board.columns[Number(result.source.droppableId)]._id;
-    const toColumnId = board.columns[Number(result.destination.droppableId)]._id;
+    const fromColumnId = board.columns[Number(result.source.droppableId)]?._id;
+    const toColumnId = board.columns[Number(result.destination.droppableId)]?._id;
+
+    if (!fromColumnId || !toColumnId) return;
 
     // Adjust the task position within the board data structure
-    const [reorderedTask] = board.columns[Number(result.source.droppableId)].tasks.splice(result.source.index, 1);
+    const value = board.columns[Number(result.source.droppableId)]?.tasks.splice(result.source.index, 1);
+    const reorderedTask = value?.at(0);
     // Add task to destination column
-    board.columns[Number(result.destination.droppableId)].tasks.splice(result.destination.index, 0, reorderedTask);
+    if (!reorderedTask) return;
+    board.columns[Number(result.destination.droppableId)]?.tasks.splice(result.destination.index, 0, reorderedTask);
 
     // If task is being moved to another column, update API
     if (fromColumnId !== toColumnId) {
@@ -116,9 +126,9 @@ function ColumnGrid(props: TProps): JSX.Element {
         const { _id, ...rest } = reorderedTask;
         const newTask = { ...rest, _id };
         const data = {
-          taskId: _id,
           newColumnId: toColumnId,
           newTask,
+          taskId: _id,
         };
 
         const responseData = await ApiService.patchTaskColumn(boardId, fromColumnId, data);
@@ -126,25 +136,26 @@ function ColumnGrid(props: TProps): JSX.Element {
       } catch (error) {
         console.log(error);
         // Reverse the task column move
-        const [reverseTask] = board.columns[Number(result.destination.droppableId)].tasks.splice(
-          result.destination.index,
-          1
-        );
-        board.columns[Number(result.source.droppableId)].tasks.splice(result.source.index, 0, reverseTask);
+        const value = board.columns[Number(result.destination.droppableId)]?.tasks.splice(result.destination.index, 1);
+        const reverseTask = value?.at(0);
+
+        if (reverseTask) {
+          board.columns[Number(result.source.droppableId)]?.tasks.splice(result.source.index, 0, reverseTask);
+        }
       } finally {
         setLoadingUpdate(false);
       }
     }
 
     appDispatch({
-      type: 'update-task',
       payload: { id: { boardId }, data: board },
+      type: 'update-task',
     });
   };
 
   return (
-    <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEndHandler}>
-      <div className={styles.columnGrid} onClickCapture={onClickHandler}>
+    <DragDropContext onDragStart={onDragStart} onDragEnd={() => void onDragEndHandler}>
+      <div className={styles['columnGrid']} onClickCapture={onClickHandler}>
         {columns}
         {activeBoard && <ColumnEmpty activeBoard={activeBoard} />}
       </div>

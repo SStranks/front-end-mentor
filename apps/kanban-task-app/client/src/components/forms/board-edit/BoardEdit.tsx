@@ -1,12 +1,16 @@
-import type { TFormBoardValues } from '../shared';
 import type { IBoard } from '#Shared/types';
+
+import type { TFormBoardValues } from '../shared';
+
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
+
 import InputText from '#Components/custom/input-text/InputText';
 import { useAppDispatchContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
+
 import styles from './_BoardEdit.module.scss';
 
 type TProps = {
@@ -24,19 +28,19 @@ function BoardEdit(props: TProps): JSX.Element {
     control,
     formState: { errors },
   } = useForm<TFormBoardValues>({
-    defaultValues: { name: activeBoard.name, columns: [...activeBoard.columns] },
+    defaultValues: { columns: [...activeBoard.columns], name: activeBoard.name },
   });
   const { fields, append, remove } = useFieldArray({
-    name: 'columns',
     control,
+    name: 'columns',
     rules: { required: 'Input required' },
   });
 
   const onSubmit = handleSubmit(async (data) => {
     // Format data according to schema
     const newBoard = {
-      name: data.name,
       columns: data.columns,
+      name: data.name,
     };
 
     // NOTE:  Need to think about column names in relation to IDs: 1) We need the IDs because if the user renames a column, how will we know which column to amend in the DB? 2) We need a warning that if they remove a column here then all task data will be erased!
@@ -51,29 +55,33 @@ function BoardEdit(props: TProps): JSX.Element {
         type: 'close-modal',
       });
       appDispatch({
-        type: 'edit-board',
         payload: {
           id: { boardId: activeBoard._id },
           data: responseData,
         },
+        type: 'edit-board',
       });
     } catch (error) {
       console.error(error);
       return modalDispatch({
-        type: 'open-modal',
-        modalType: 'error',
         modalProps: { title: activeBoard.name },
+        modalType: 'error',
+        type: 'open-modal',
       });
     } finally {
       setLoadingUpdate(false);
     }
   });
 
+  const onSubmitClickHandler = () => {
+    void onSubmit();
+  };
+
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={onSubmit}>
-        <p className={styles.form__titleHeader}>Edit Board</p>
-        <div className={styles.form__group}>
+    <div className={styles['container']}>
+      <form className={styles['form']} onSubmit={onSubmitClickHandler}>
+        <p className={styles['form__titleHeader']}>Edit Board</p>
+        <div className={styles['form__group']}>
           <p>Name</p>
           <Controller
             control={control}
@@ -90,11 +98,11 @@ function BoardEdit(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <div className={styles.form__group}>
+        <div className={styles['form__group']}>
           <p>Columns</p>
-          <div className={styles.form__listItems}>
+          <div className={styles['form__listItems']}>
             {fields.map((field, index) => (
-              <div className={styles.form__subTask} key={field.id}>
+              <div className={styles['form__subTask']} key={field.id}>
                 <Controller
                   control={control}
                   name={`columns.${index}.name` as const}
@@ -104,22 +112,22 @@ function BoardEdit(props: TProps): JSX.Element {
                       placeholder="Insert Column Name"
                       inputName={`columns.${index}.name`}
                       value={value}
-                      error={!!errors?.columns?.[index]?.name}
+                      error={!!errors.columns?.[index]?.name}
                       updateRHF={onChange}
                     />
                   )}
                 />
                 <button type="button" onClick={() => remove(index)}>
-                  <img src={IconCross} alt="" className={styles.icon} />
+                  <img src={IconCross} alt="" className={styles['icon']} />
                 </button>
               </div>
             ))}
           </div>
-          <button type="button" className={styles.form__btnNewColumn} onClick={() => append({ name: '' })}>
+          <button type="button" className={styles['form__btnNewColumn']} onClick={() => append({ name: '' })}>
             + Add New Column
           </button>
         </div>
-        <button type="submit" className={styles.form__btnCreateBoard} disabled={isLoading}>
+        <button type="submit" className={styles['form__btnCreateBoard']} disabled={isLoading}>
           Save Changes
         </button>
       </form>

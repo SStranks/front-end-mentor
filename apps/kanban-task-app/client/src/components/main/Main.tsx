@@ -1,6 +1,8 @@
 import type { IBoard } from '#Shared/types';
+
 import ColumnGrid from '#Components/column-grid/ColumnGrid';
 import { useRootModalContext } from '#Context/RootModalContext';
+
 import styles from './_Main.module.scss';
 
 type TProps = {
@@ -14,14 +16,14 @@ function Main(props: TProps): JSX.Element {
 
   const addNewBtnClickHandler = () => {
     modalDispatch({
-      type: 'open-modal',
-      modalType: 'board-edit',
       modalProps: { activeBoard },
+      modalType: 'board-edit',
+      type: 'open-modal',
     });
   };
 
   const emptyBoard = (
-    <div className={styles.main__empty}>
+    <div className={styles['main__empty']}>
       <p>This board is empty. Create a new column to get started</p>
       <button type="button" onClick={addNewBtnClickHandler}>
         {' '}
@@ -30,7 +32,7 @@ function Main(props: TProps): JSX.Element {
     </div>
   );
 
-  return <main className={styles.main}>{isBoardEmpty ? emptyBoard : <ColumnGrid activeBoard={activeBoard} />}</main>;
+  return <main className={styles['main']}>{isBoardEmpty ? emptyBoard : <ColumnGrid activeBoard={activeBoard} />}</main>;
 }
 
 export default Main;

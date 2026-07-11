@@ -1,21 +1,20 @@
-import { TInputProp, TReturnData } from '#Types/types';
+import type { TInputProp, TReturnData } from '#Types/types';
+
 import useComponentIdGenerator from '#Hooks/useComponentIdGenerator';
-import {
-  addInputToGroup,
-  deleteInputFromGroup,
-  updateInputFromGroup,
-} from '#Utils/formFunctions';
+import { addInputToGroup, deleteInputFromGroup, updateInputFromGroup } from '#Utils/formFunctions';
+
 import InputTextSubtask from '../input-text/InputTextSubtask';
+
 import styles from './_DynamicInputList.module.scss';
 
 interface IFormData {
-  'input-title': {
-    value: string;
-    error: boolean;
-    inputName: string;
-  };
   'input-group-1': {
     [x: string]: TInputProp;
+  };
+  'input-title': {
+    error: boolean;
+    inputName: string;
+    value: string;
   };
 }
 
@@ -42,7 +41,7 @@ function DynamicInputList(props: TProps): JSX.Element {
   };
 
   const dynamicListItems = Object.keys(formData['input-group-1']).map((key) => {
-    const obj = formData['input-group-1'][key];
+    const obj = formData['input-group-1'][key]!;
     return (
       <InputTextSubtask
         key={obj.key}
@@ -58,11 +57,8 @@ function DynamicInputList(props: TProps): JSX.Element {
 
   return (
     <>
-      <div className={styles.listItems}>{dynamicListItems}</div>
-      <button
-        type="button"
-        className={styles.btnNewColumn}
-        onClick={btnNewColumnClickHandler}>
+      <div className={styles['listItems']}>{dynamicListItems}</div>
+      <button type="button" className={styles['btnNewColumn']} onClick={btnNewColumnClickHandler}>
         + Add New Column
       </button>
     </>

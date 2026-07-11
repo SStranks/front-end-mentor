@@ -1,12 +1,15 @@
-import IconDown from '#Svg/icon-chevron-down.svg';
-import { TReturnData } from '#Types/types';
+import type { TReturnData } from '#Types/types';
+
 import { useEffect, useRef } from 'react';
+
+import IconDown from '#Svg/icon-chevron-down.svg';
+
 import styles from './_DropdownOld.module.scss';
 
 type TProps = {
-  name: string;
   currentListItem: string;
   listItems: string[][];
+  name: string;
   returnData: (data: TReturnData) => void;
 };
 
@@ -27,10 +30,10 @@ function Dropdown(props: TProps): JSX.Element {
       }
     };
 
-    document?.addEventListener('click', clickHandler);
+    document.addEventListener('click', clickHandler);
     // document?.addEventListener('keyup', keyPressHandler);
     return () => {
-      document?.addEventListener('click', clickHandler);
+      document.addEventListener('click', clickHandler);
       // document.removeEventListener('keyup', keyPressHandler);
     };
   }, []);
@@ -44,19 +47,18 @@ function Dropdown(props: TProps): JSX.Element {
   const listItemClickHandler = (e: React.MouseEvent) => {
     dropdownClickHandler();
     returnData({
+      columnId: (e.target as HTMLButtonElement).dataset['columnId'],
       inputName: 'input-status',
       value: (e.target as HTMLButtonElement).value,
-      columnId: (e.target as HTMLButtonElement).dataset.columnId,
     });
   };
 
   const listElems = listItems.map(([item, id], i) => (
     <button
-      // eslint-disable-next-line react/no-array-index-key
       key={i}
       type="button"
       value={item}
-      className={styles.list__item}
+      className={styles['list__item']}
       onClick={listItemClickHandler}
       data-column-id={id}>
       {item}
@@ -64,13 +66,13 @@ function Dropdown(props: TProps): JSX.Element {
   ));
 
   return (
-    <div className={styles.dropdown} ref={dropdownContainer}>
-      <input type="text" value={currentListItem} name={name} className={styles.dropdown__input} readOnly />
-      <button type="button" className={styles.dropdown__button} onClick={dropdownClickHandler}>
+    <div className={styles['dropdown']} ref={dropdownContainer}>
+      <input type="text" value={currentListItem} name={name} className={styles['dropdown__input']} readOnly />
+      <button type="button" className={styles['dropdown__button']} onClick={dropdownClickHandler}>
         {currentListItem}
         <img src={IconDown} alt="" />
       </button>
-      <div className={`${styles.list} hidden`} ref={listRef}>
+      <div className={`${styles['list']} hidden`} ref={listRef}>
         {listElems}
       </div>
     </div>

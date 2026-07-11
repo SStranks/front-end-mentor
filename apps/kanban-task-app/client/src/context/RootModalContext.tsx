@@ -1,9 +1,11 @@
-import React, { PropsWithChildren, useContext, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+
+import React, { useContext, useState } from 'react';
 
 export type TRootModalContextAction = {
   type: string;
-  modalType?: string;
   modalProps?: { [key: string]: unknown };
+  modalType?: string;
 };
 
 export type TRootModalDispatchContext = React.Dispatch<TRootModalContextAction>;

@@ -1,12 +1,14 @@
-import { TFormAction, TFormState } from './Form';
+import type { IFormAction, IFormState } from './Form';
 
 type TProps = {
-  formState: TFormState;
-  formDispatch: React.Dispatch<TFormAction>;
+  formDispatch: React.Dispatch<IFormAction>;
+  formState: IFormState;
 };
 
 function FormController(props: TProps): JSX.Element {
   const { formState, formDispatch } = props;
+
+  console.log(formState, formDispatch);
 
   return <div className="">a</div>;
 }

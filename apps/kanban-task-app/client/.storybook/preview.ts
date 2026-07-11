@@ -1,4 +1,5 @@
-import type { Preview } from '@storybook/react-webpack5';
+/* eslint-disable storybook/story-exports */
+import type { Preview } from '@storybook/react-vite';
 
 const preview = {
   parameters: {

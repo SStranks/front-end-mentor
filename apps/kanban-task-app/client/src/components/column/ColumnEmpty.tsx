@@ -1,5 +1,7 @@
 import type { IBoard } from '#Shared/types';
+
 import { useRootModalContext } from '#Context/RootModalContext';
+
 import styles from './_Column.module.scss';
 
 type TProps = {
@@ -12,15 +14,15 @@ function ColumnEmpty(props: TProps): JSX.Element {
 
   const newColumnBtnClickHandler = () => {
     modalDispatch({
-      type: 'open-modal',
-      modalType: 'board-edit',
       modalProps: { activeBoard },
+      modalType: 'board-edit',
+      type: 'open-modal',
     });
   };
 
   return (
-    <div className={styles.columnEmpty}>
-      <button type="button" className={styles.columnEmpty__btn} onClick={newColumnBtnClickHandler}>
+    <div className={styles['columnEmpty']}>
+      <button type="button" className={styles['columnEmpty__btn']} onClick={newColumnBtnClickHandler}>
         <p>+ New Column</p>
       </button>
     </div>

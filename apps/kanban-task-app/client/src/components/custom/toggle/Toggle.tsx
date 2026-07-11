@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useId } from 'react';
+
 import styles from './_Toggle.module.scss';
 
 const themeToggle = () => {
@@ -11,7 +12,7 @@ function Toggle() {
   const toggleId = useId();
 
   return (
-    <div className={styles.toggleSlider}>
+    <div className={styles['toggleSlider']}>
       <label htmlFor={toggleId}>
         <input type="checkbox" id={toggleId} onClick={themeToggle} />
         <span />

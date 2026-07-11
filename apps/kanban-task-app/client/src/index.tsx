@@ -1,13 +1,15 @@
-import App from '#Components/App';
-// import { ErrorFallback } from '#Components/ui/RollbarErrorFallback';
-// import { RollbarErrorBoundary, RollbarProvider } from '#Lib/Rollbar';
-import '#Sass/global-imports.scss';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+
+import App from '#Components/App';
+import { AppProvider } from '#Context/AppContext';
 import { LoadingProvider } from '#Context/LoadingContext';
 import { RootModalProvider } from '#Context/RootModalContext';
-import { AppProvider } from '#Context/AppContext';
+
+// import { ErrorFallback } from '#Components/ui/RollbarErrorFallback';
+// import { RollbarErrorBoundary, RollbarProvider } from '#Lib/Rollbar';
+import '@Sass/global-imports.scss';
 
 const container = document.querySelector('#root');
 const root = createRoot(container as Element);

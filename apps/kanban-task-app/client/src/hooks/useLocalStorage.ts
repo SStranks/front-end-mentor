@@ -1,43 +1,35 @@
-/* eslint-disable unicorn/filename-case */
 import { useCallback, useEffect, useState } from 'react';
 
 interface PersistentStorage {
   getItem(key: string): string | null;
-  setItem(key: string, value: string): void;
   removeItem(key: string): void;
+  setItem(key: string, value: string): void;
 }
 
-function useStorage(
-  key: string,
-  defaultValue: unknown,
-  storageObject: PersistentStorage
-) {
-  const [value, setValue] = useState(() => {
+function useStorage<T>(key: string, defaultValue: T | (() => T), storageObject: PersistentStorage) {
+  const [value, setValue] = useState<T>(() => {
     const jsonValue = storageObject.getItem(key);
-    if (jsonValue !== null) return JSON.parse(jsonValue);
+    if (jsonValue !== null) return JSON.parse(jsonValue) as T;
 
-    return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+    return typeof defaultValue === 'function' ? (defaultValue as () => T)() : defaultValue;
   });
-  console.log('SETLOCAL2', key, value);
 
   useEffect(() => {
     if (value === undefined) return storageObject.removeItem(key);
-    console.log('SETLOCAL', key, value);
     return storageObject.setItem(key, JSON.stringify(value));
   }, [key, value, storageObject]);
 
   const removeValue = useCallback(() => {
-    // eslint-disable-next-line unicorn/no-useless-undefined
-    setValue(undefined);
+    setValue(undefined as T);
   }, []);
 
-  return [value, setValue, removeValue];
+  return [value, setValue, removeValue] as const;
 }
 
 export function useLocalStorage(key: string, defaultValue: string) {
-  return useStorage(key, defaultValue, window.localStorage);
+  return useStorage(key, defaultValue, globalThis.localStorage);
 }
 
 export function useSessionStorage(key: string, defaultValue: string) {
-  return useStorage(key, defaultValue, window.sessionStorage);
+  return useStorage(key, defaultValue, globalThis.sessionStorage);
 }

@@ -1,12 +1,15 @@
 import type { TStatusArr } from '#Types/types';
+
 import { useEffect, useRef, useState } from 'react';
+
 import IconDown from '#Svg/icon-chevron-down.svg';
+
 import styles from './_Dropdown.module.scss';
 
 type TProps = {
-  name: string;
   currentListItem: string;
   listItems: TStatusArr[];
+  name: string;
   updateRHF: (...event: unknown[]) => void;
 };
 
@@ -29,10 +32,10 @@ function Dropdown(props: TProps): JSX.Element {
       }
     };
 
-    document?.addEventListener('click', clickHandler);
+    document.addEventListener('click', clickHandler);
     // document?.addEventListener('keyup', keyPressHandler);
     return () => {
-      document?.addEventListener('click', clickHandler);
+      document.addEventListener('click', clickHandler);
       // document.removeEventListener('keyup', keyPressHandler);
     };
   }, []);
@@ -55,7 +58,7 @@ function Dropdown(props: TProps): JSX.Element {
       key={id}
       type="button"
       value={name}
-      className={styles.list__item}
+      className={styles['list__item']}
       onClick={listItemClickHandler}
       data-column-id={id}>
       {name}
@@ -63,13 +66,13 @@ function Dropdown(props: TProps): JSX.Element {
   ));
 
   return (
-    <div className={styles.dropdown} ref={dropdownContainer}>
-      <input type="text" value={status} name={name} className={styles.dropdown__input} readOnly />
-      <button type="button" className={styles.dropdown__button} onClick={dropdownClickHandler}>
+    <div className={styles['dropdown']} ref={dropdownContainer}>
+      <input type="text" value={status} name={name} className={styles['dropdown__input']} readOnly />
+      <button type="button" className={styles['dropdown__button']} onClick={dropdownClickHandler}>
         {currentListItem}
         <img src={IconDown} alt="" />
       </button>
-      <div className={`${styles.list} hidden`} ref={listRef}>
+      <div className={`${styles['list']} hidden`} ref={listRef}>
         {listElems}
       </div>
     </div>

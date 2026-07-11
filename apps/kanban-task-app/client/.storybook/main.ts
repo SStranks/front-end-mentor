@@ -1,3 +1,4 @@
+/* eslint-disable storybook/story-exports */
 /* eslint-disable perfectionist/sort-objects */
 import type { StorybookConfig } from '@storybook/react-vite';
 
@@ -11,7 +12,10 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, '../public');
 
 const config: StorybookConfig = {
-  framework: '@storybook/react-vite',
+  framework: {
+    name: '@storybook/react-vite',
+    options: {},
+  },
   stories: ['../src/stories/*.mdx', '../src/stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-a11y',
@@ -31,7 +35,7 @@ const config: StorybookConfig = {
         alias: {
           '#Shared': path.resolve(__dirname, '../../shared'),
           '#Img': path.resolve(__dirname, '../src/assets/img'),
-          '#Sass': path.resolve(__dirname, '../src/assets/sass'),
+          '@Sass': path.resolve(__dirname, '../src/assets/sass'),
           '#Svg': path.resolve(__dirname, '../src/assets/svg'),
           '#Components': path.resolve(__dirname, '../src/components'),
           '#Context': path.resolve(__dirname, '../src/context'),

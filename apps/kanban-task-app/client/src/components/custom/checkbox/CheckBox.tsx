@@ -1,11 +1,13 @@
 import { useState } from 'react';
+
 import IconCheck from '#Svg/icon-check.svg';
+
 import styles from './_CheckBox.module.scss';
 
 type TProps = {
   id: string;
-  title: string;
   checked: boolean;
+  title: string;
   updateRHF: (...event: unknown[]) => void;
 };
 
@@ -21,12 +23,12 @@ function CheckBox(props: TProps): JSX.Element {
   };
 
   return (
-    <label htmlFor={`checkbox-${id}`} className={styles.customCheckbox}>
+    <label htmlFor={`checkbox-${id}`} className={styles['customCheckbox']}>
       <input type="checkbox" id={`checkbox-${id}`} checked={isChecked} onChange={changeHandler} />
-      <div className={styles.customCheckbox__newCheckbox}>
-        {isChecked && <img src={IconCheck} className={styles.customCheckbox__iconCheck} alt="" />}
+      <div className={styles['customCheckbox__newCheckbox']}>
+        {isChecked && <img src={IconCheck} className={styles['customCheckbox__iconCheck']} alt="" />}
       </div>
-      <p className={styles.customCheckbox__title}>{title}</p>
+      <p className={styles['customCheckbox__title']}>{title}</p>
     </label>
   );
 }

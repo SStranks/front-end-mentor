@@ -1,5 +1,6 @@
+import type { PropsWithChildren } from 'react';
+
 import { QueryClient, QueryClientProvider as ReactQueryClientProvider } from '@tanstack/react-query';
-import { PropsWithChildren } from 'react';
 
 const config = {
   // queryCache: {},

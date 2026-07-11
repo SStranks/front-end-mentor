@@ -1,11 +1,14 @@
 import type { TFormBoardValues } from '../shared';
+
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
+
 import InputText from '#Components/custom/input-text/InputText';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useAppDispatchContext } from '#Context/AppContext';
+import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconCross from '#Svg/icon-cross.svg';
+
 import styles from './_BoardAdd.module.scss';
 
 type TProps = {
@@ -28,8 +31,8 @@ function BoardAdd(props: TProps): JSX.Element {
     },
   });
   const { fields, append, remove } = useFieldArray({
-    name: 'columns',
     control,
+    name: 'columns',
     rules: { required: 'Input required' },
   });
 
@@ -38,8 +41,8 @@ function BoardAdd(props: TProps): JSX.Element {
 
     // Format data according to schema
     const newBoard = {
-      name: data.name,
       columns: data.columns,
+      name: data.name,
     };
 
     // Send data to backend API
@@ -52,30 +55,34 @@ function BoardAdd(props: TProps): JSX.Element {
         type: 'close-modal',
       });
       appDispatch({
-        type: 'add-board',
         payload: {
           id: { boardId: responseData._id },
           data: responseData,
         },
+        type: 'add-board',
       });
       return setActiveBoardId(responseData._id);
     } catch (error) {
       console.error(error);
       return modalDispatch({
-        type: 'open-modal',
-        modalType: 'error',
         modalProps: { title: newBoard.name },
+        modalType: 'error',
+        type: 'open-modal',
       });
     } finally {
       setLoadingUpdate(false);
     }
   });
 
+  const onSubmitBtnClickHandler = () => {
+    void onSubmit();
+  };
+
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={onSubmit}>
-        <p className={styles.form__titleHeader}>Add New Board</p>
-        <div className={styles.form__group}>
+    <div className={styles['container']}>
+      <form className={styles['form']} onSubmit={onSubmitBtnClickHandler}>
+        <p className={styles['form__titleHeader']}>Add New Board</p>
+        <div className={styles['form__group']}>
           <p>Name</p>
           <Controller
             control={control}
@@ -92,11 +99,11 @@ function BoardAdd(props: TProps): JSX.Element {
             )}
           />
         </div>
-        <div className={styles.form__group}>
+        <div className={styles['form__group']}>
           <p>Columns</p>
-          <div className={styles.form__listItems}>
+          <div className={styles['form__listItems']}>
             {fields.map((field, index) => (
-              <div className={styles.form__subTask} key={field.id}>
+              <div className={styles['form__subTask']} key={field.id}>
                 <Controller
                   control={control}
                   name={`columns.${index}.name` as const}
@@ -106,22 +113,22 @@ function BoardAdd(props: TProps): JSX.Element {
                       placeholder="Insert Column Name"
                       inputName={`columns.${index}.name`}
                       value={value}
-                      error={!!errors?.columns?.[index]?.name}
+                      error={!!errors.columns?.[index]?.name}
                       updateRHF={onChange}
                     />
                   )}
                 />
                 <button type="button" onClick={() => remove(index)}>
-                  <img src={IconCross} alt="" className={styles.icon} />
+                  <img src={IconCross} alt="" className={styles['icon']} />
                 </button>
               </div>
             ))}
           </div>
-          <button type="button" className={styles.form__btnNewColumn} onClick={() => append({ name: '' })}>
+          <button type="button" className={styles['form__btnNewColumn']} onClick={() => append({ name: '' })}>
             + Add New Column
           </button>
         </div>
-        <button type="submit" className={styles.form__btnCreateBoard} disabled={isLoading}>
+        <button type="submit" className={styles['form__btnCreateBoard']} disabled={isLoading}>
           Create New Board
         </button>
       </form>

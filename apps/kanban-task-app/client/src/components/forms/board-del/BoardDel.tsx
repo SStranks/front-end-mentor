@@ -2,6 +2,7 @@ import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
 import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
+
 import styles from './_BoardDel.module.scss';
 
 type TProps = {
@@ -17,30 +18,32 @@ function BoardDelete(props: TProps): JSX.Element {
   const isLoading = useLoading();
   const setLoadingUpdate = useLoadingUpdate();
 
-  const deleteBtnClickHandler = () => {
-    (async () => {
-      setLoadingUpdate(true);
-      try {
-        const responseData = await ApiService.deleteBoard(`${activeBoardId}`);
-        if (!responseData) throw new Error('Could not delete board!');
+  const deleteBoard = async () => {
+    setLoadingUpdate(true);
+    try {
+      const responseData = await ApiService.deleteBoard(`${activeBoardId}`);
+      if (!responseData) throw new Error('Could not delete board!');
 
-        appDispatch({
-          type: 'delete-board',
-          payload: { id: { boardId: activeBoardId } },
-        });
-        setActiveBoardId(appState.boards[0]._id || '');
-        return modalDispatch({ type: 'close-modal' });
-      } catch (error) {
-        console.error(error);
-        return modalDispatch({
-          type: 'open-modal',
-          modalType: 'error',
-          modalProps: { title: 'board deletion' },
-        });
-      } finally {
-        setLoadingUpdate(false);
-      }
-    })();
+      appDispatch({
+        payload: { id: { boardId: activeBoardId } },
+        type: 'delete-board',
+      });
+      setActiveBoardId(appState.boards[0]?._id || '');
+      return modalDispatch({ type: 'close-modal' });
+    } catch (error) {
+      console.error(error);
+      return modalDispatch({
+        modalProps: { title: 'board deletion' },
+        modalType: 'error',
+        type: 'open-modal',
+      });
+    } finally {
+      setLoadingUpdate(false);
+    }
+  };
+
+  const deleteBtnClickHandler = () => {
+    void deleteBoard();
   };
 
   const cancelBtnClickHandler = () => {
@@ -48,18 +51,22 @@ function BoardDelete(props: TProps): JSX.Element {
   };
 
   return (
-    <div className={styles.container}>
-      <form className={styles.form}>
-        <p className={styles.form__title}>Delete this board?</p>
-        <p className={styles.form__description}>
+    <div className={styles['container']}>
+      <form className={styles['form']}>
+        <p className={styles['form__title']}>Delete this board?</p>
+        <p className={styles['form__description']}>
           Are you sure you want to delete the &apos;Platform Launch&apos; board? This action will remove all columns and
           tasks and cannot be reversed.
         </p>
-        <div className={styles.form__btnGroup}>
-          <button type="button" onClick={deleteBtnClickHandler} className={styles.form__btnDelete} disabled={isLoading}>
+        <div className={styles['form__btnGroup']}>
+          <button
+            type="button"
+            onClick={deleteBtnClickHandler}
+            className={styles['form__btnDelete']}
+            disabled={isLoading}>
             Delete
           </button>
-          <button type="button" onClick={cancelBtnClickHandler} className={styles.form__btnCancel}>
+          <button type="button" onClick={cancelBtnClickHandler} className={styles['form__btnCancel']}>
             Cancel
           </button>
         </div>

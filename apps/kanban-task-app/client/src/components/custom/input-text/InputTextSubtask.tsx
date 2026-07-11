@@ -1,6 +1,9 @@
+import type { TReturnData } from '#Types/types';
+
+import { useRef, useState } from 'react';
+
 import IconCross from '#Svg/icon-cross.svg';
-import { TReturnData } from '#Types/types';
-import { useEffect, useRef, useState } from 'react';
+
 import styles from './_InputTextSubtask.module.scss';
 
 const placeholderText = [
@@ -13,44 +16,38 @@ const placeholderText = [
 ];
 
 type TProps = {
-  inputName: string;
-  value: string;
-  groupId: string;
-  error: boolean;
   deleteInput: (arg: TReturnData) => void;
+  error: boolean;
+  groupId: string;
+  inputName: string;
   returnData: (arg: TReturnData) => void;
+  value: string;
 };
 
 function InputTextSubtask(props: TProps): JSX.Element {
   const { inputName, value, groupId, error, deleteInput, returnData } = props;
-  const [text, setText] = useState('');
+  const [text, setText] = useState(value || '');
   // DEBUG:  Is this ref being utilized?
   const subtaskRef = useRef<HTMLDivElement>(null);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setText(e.currentTarget?.value);
+    return setText(e.currentTarget.value);
   };
 
   const onBlurHandler = () => {
-    returnData({ inputName, value: text, groupId });
+    returnData({ groupId, inputName, value: text });
   };
 
-  useEffect(() => {
-    setText(value);
-  }, [value]);
-
   const deleteClickHandler = () => {
-    deleteInput({ inputName, value: text, groupId });
+    deleteInput({ groupId, inputName, value: text });
   };
 
   return (
-    <div
-      className={`${styles.subTask} ${error && !text ? styles.error : ''}`}
-      ref={subtaskRef}>
-      <div className={styles.subTask__container}>
+    <div className={`${styles['subTask']} ${error && !text ? styles['error'] : ''}`} ref={subtaskRef}>
+      <div className={styles['subTask__container']}>
         <input
           type="text"
-          className={styles.subTask__input}
+          className={styles['subTask__input']}
           name={inputName}
           placeholder={placeholderText[0]}
           // placeholder={placeholderText[listId % placeholderText.length]}
@@ -60,7 +57,7 @@ function InputTextSubtask(props: TProps): JSX.Element {
         />
       </div>
       <button type="button" onClick={deleteClickHandler}>
-        <img src={IconCross} alt="" className={styles.icon} />
+        <img src={IconCross} alt="" className={styles['icon']} />
       </button>
     </div>
   );

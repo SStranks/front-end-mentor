@@ -1,6 +1,9 @@
+import type { TRootModalContextAction } from '#Context/RootModalContext';
 import type { TRootModalState } from '#Types/types';
+
 import { useEffect, useReducer } from 'react';
 import ReactDOM from 'react-dom';
+
 import Aside from '#Components/aside/Aside';
 import BoardAdd from '#Components/forms/board-add/BoardAdd';
 import BoardDelete from '#Components/forms/board-del/BoardDel';
@@ -10,58 +13,55 @@ import TaskAdd from '#Components/forms/task-add/TaskAdd';
 import TaskDelete from '#Components/forms/task-del/TaskDel';
 import TaskEdit from '#Components/forms/task-edit/TaskEdit';
 import TaskView from '#Components/forms/task-view/TaskView';
-import { TRootModalContextAction, useRootModalUpdateContext } from '#Context/RootModalContext';
+import { useRootModalUpdateContext } from '#Context/RootModalContext';
+
 import styles from './_RootModal.module.scss';
 
 const domNode = document.querySelector('#modal') as HTMLElement;
 
 const MODAL_COMPONENTS = {
-  error: Error,
-  'task-add': TaskAdd,
-  'task-view': TaskView,
-  'task-edit': TaskEdit,
-  'task-delete': TaskDelete,
   'board-add': BoardAdd,
-  'board-edit': BoardEdit,
   'board-delete': BoardDelete,
+  'board-edit': BoardEdit,
+  error: Error,
   'mobile-aside': Aside,
+  'task-add': TaskAdd,
+  'task-delete': TaskDelete,
+  'task-edit': TaskEdit,
+  'task-view': TaskView,
 };
 
 const ACTIONS = {
-  OPENMODAL: 'open-modal',
-  CLOSEMODAL: 'close-modal',
   CLOSEALL: 'close-all',
+  CLOSEMODAL: 'close-modal',
+  OPENMODAL: 'open-modal',
 };
 
 const initialState = {
-  modalType: [],
   modalProps: [],
+  modalType: [],
 };
 
 const openModal = (state: TRootModalState, action: TRootModalContextAction) => {
   console.log('ROOTMODAL REDUCER: HELLO!', action);
   const newState = { ...state };
-  newState.modalType?.push(action.modalType as string);
+  newState.modalType.push(action.modalType as string);
   if (action.modalProps) {
-    newState.modalProps?.push(action.modalProps);
+    newState.modalProps.push(action.modalProps);
   } else {
-    newState.modalProps?.push({});
+    newState.modalProps.push({});
   }
   return newState;
 };
 
 const closeModal = (state: TRootModalState) => {
   const newState = { ...state };
-  newState.modalType?.pop();
-  newState.modalProps?.pop();
+  newState.modalType.pop();
+  newState.modalProps.pop();
   return newState;
 };
 
-const reducer = (
-  // eslint-disable-next-line default-param-last
-  state: TRootModalState,
-  action: TRootModalContextAction
-): TRootModalState => {
+const reducer = (state: TRootModalState, action: TRootModalContextAction): TRootModalState => {
   // console.log('SWITCH', state, initialState);
   switch (action.type) {
     case ACTIONS.OPENMODAL: {
@@ -74,8 +74,8 @@ const reducer = (
     case ACTIONS.CLOSEALL: {
       if (state.modalType.includes('mobile-aside')) dispatchEvent(new Event('modal-mobile-aside-close'));
       return {
-        modalType: [],
         modalProps: [],
+        modalType: [],
       };
     }
     default: {
@@ -109,16 +109,15 @@ function RootModal(props: TProps): JSX.Element | null {
       }
     };
 
-    document?.addEventListener('keyup', keyHandler);
+    document.addEventListener('keyup', keyHandler);
 
     return () => {
-      document?.removeEventListener('keyup', keyHandler);
+      document.removeEventListener('keyup', keyHandler);
       // TODO:  Accessibility to implement here.
       // document.querySelector('#root')?.removeAttribute('inert');
     };
   }, []);
 
-  // eslint-disable-next-line unicorn/no-null
   if (state.modalType.length <= 0) return null;
 
   // NOTE:  activeBoardId is required for the Aside mobile modal.
@@ -126,9 +125,9 @@ function RootModal(props: TProps): JSX.Element | null {
     const ModalComponent = MODAL_COMPONENTS[el as keyof typeof MODAL_COMPONENTS];
     const modalProps = { ...state.modalProps[i], activeBoardId };
     return (
-      <div className={`${styles.animationFadeIn} ${styles.noPointerEvents}`} key={i}>
-        <div className={`${styles.subContainer}`}>
-          <div className={styles.pointerEvents}>
+      <div className={`${styles['animationFadeIn']} ${styles['noPointerEvents']}`} key={i}>
+        <div className={`${styles['subContainer']}`}>
+          <div className={styles['pointerEvents']}>
             <ModalComponent
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               {...(modalProps as any)}
@@ -151,7 +150,7 @@ function RootModal(props: TProps): JSX.Element | null {
   return ReactDOM.createPortal(
     <div
       id="root-modal"
-      className={`${styles.container} ${styles.animationFadeIn}`}
+      className={`${styles['container']} ${styles['animationFadeIn']}`}
       onClickCapture={modalClickHandler}
       data-modal-type={state.modalType[0]}>
       {activeComponents.at(-1)}

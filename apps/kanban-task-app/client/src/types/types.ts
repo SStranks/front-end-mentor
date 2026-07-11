@@ -1,11 +1,11 @@
 import type { IBoard, IColumn } from '#Shared/types';
 
-export type TBoardInfo = { name: string; id: string }[];
+export type TBoardInfo = { id: string; name: string }[];
 
 export type TAppStateContext = {
   boards: IBoard[];
-  localStoragePending: boolean;
   localStorageData: string | undefined;
+  localStoragePending: boolean;
 };
 
 export type TStatusArr = Omit<IColumn, 'tasks'>;
@@ -18,20 +18,20 @@ export type TSelectTask = {
 
 export type TReturnData = {
   inputName: string;
-  value?: string | boolean;
-  isCompleted?: boolean;
-  groupId?: string;
   columnId?: string;
+  groupId?: string;
+  isCompleted?: boolean;
+  value?: string | boolean;
 };
 
 export type TInputProp = {
-  title?: string;
+  error: boolean;
   inputName: string;
   value: string;
-  error: boolean;
+  isCompleted?: boolean;
   key?: string;
   statusArr?: string[][];
-  isCompleted?: boolean;
+  title?: string;
 };
 
 export type TNestedInputProp = {
@@ -44,6 +44,6 @@ export type TNewFormData = {
 
 // Root Modal
 export type TRootModalState = {
-  modalType: string[];
   modalProps: Record<string, unknown>[];
+  modalType: string[];
 };

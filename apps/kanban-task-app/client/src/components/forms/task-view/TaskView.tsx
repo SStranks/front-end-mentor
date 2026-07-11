@@ -1,7 +1,9 @@
-import type { TSelectTask } from '#Types/types';
 import type { ISubTask } from '#Shared/types';
+import type { TSelectTask } from '#Types/types';
+
 import { useEffect, useMemo, useRef } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
+
 import CheckBox from '#Components/custom/checkbox/CheckBox';
 import Dropdown from '#Components/custom/dropdown/Dropdown';
 import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
@@ -9,11 +11,12 @@ import { useLoadingUpdate } from '#Context/LoadingContext';
 import { useRootModalContext } from '#Context/RootModalContext';
 import ApiService from '#Services/Services';
 import IconVerticalEllipsis from '#Svg/icon-vertical-ellipsis.svg';
+
 import styles from './_TaskView.module.scss';
 
 type TFormValues = {
-  subtasks: ISubTask[];
   status: string;
+  subtasks: ISubTask[];
 };
 
 type TProps = {
@@ -29,11 +32,11 @@ function TaskView(props: TProps): JSX.Element {
   const menuRef = useRef<HTMLDivElement>(null);
   const { task, statusArr } = useMemo(() => {
     const board = appState.boards.find((el) => el._id === selectedTask.boardId);
-    const columnList = board?.columns.map((el) => ({ name: el.name, _id: el._id }));
+    const columnList = board?.columns.map((el) => ({ _id: el._id, name: el.name }));
     const column = board?.columns.find((el) => el._id === selectedTask.columnId);
     const task = column?.tasks.find((el) => el._id === selectedTask.taskId);
     if (!task || !columnList) throw new Error('Incongruence in data!');
-    return { task, statusArr: columnList };
+    return { statusArr: columnList, task };
   }, [appState, selectedTask]);
   const {
     formState: { isDirty },
@@ -42,31 +45,31 @@ function TaskView(props: TProps): JSX.Element {
     getValues,
   } = useForm<TFormValues>({
     defaultValues: {
+      status: task.status,
       subtasks: task.subtasks.map((subtask) => ({
         _id: subtask._id,
-        title: subtask.title,
         isCompleted: subtask.isCompleted,
+        title: subtask.title,
       })),
-      status: task.status,
     },
   });
   const { fields } = useFieldArray({
-    name: 'subtasks',
     control,
+    name: 'subtasks',
   });
 
   const isFormUpdating = useRef<boolean>(false);
   const onSubmit = handleSubmit(async (data) => {
     const { boardId, columnId, taskId } = selectedTask;
     const newTask = {
-      title: task.title,
       description: task.description,
       status: data.status,
       subtasks: data.subtasks.map((subtask) => ({
         _id: subtask._id,
-        title: subtask.title,
         isCompleted: subtask.isCompleted,
+        title: subtask.title,
       })),
+      title: task.title,
     };
 
     const updateTask = async () => {
@@ -76,18 +79,18 @@ function TaskView(props: TProps): JSX.Element {
         if (!responseData) throw new Error('Could not patch task!');
 
         return appDispatch({
-          type: 'update-task',
           payload: {
             id: { boardId },
             data: responseData,
           },
+          type: 'update-task',
         });
       } catch (error) {
         console.error(error);
         return modalDispatch({
-          type: 'open-modal',
-          modalType: 'error',
           modalProps: { title: task.title },
+          modalType: 'error',
+          type: 'open-modal',
         });
       } finally {
         setLoadingUpdate(false);
@@ -98,24 +101,24 @@ function TaskView(props: TProps): JSX.Element {
       setLoadingUpdate(true);
       try {
         const data = {
-          taskId,
           newColumnId,
           newTask: { ...newTask, _id: taskId },
+          taskId,
         };
 
         const responseData = await ApiService.patchTaskColumn(boardId, columnId, data);
         if (!responseData) throw new Error('Could not patch task column!');
 
         return appDispatch({
-          type: 'update-task',
           payload: { id: { boardId }, data: responseData },
+          type: 'update-task',
         });
       } catch (error) {
         console.error(error);
         return modalDispatch({
-          type: 'open-modal',
-          modalType: 'error',
           modalProps: { title: task.title },
+          modalType: 'error',
+          type: 'open-modal',
         });
       } finally {
         setLoadingUpdate(false);
@@ -123,19 +126,14 @@ function TaskView(props: TProps): JSX.Element {
     };
 
     const newColumnId = statusArr.find((c) => c.name === data.status)?._id as string;
-    if (columnId === newColumnId) {
-      updateTask();
-    } else {
-      updateTaskColumn(newColumnId);
-    }
+    await (columnId === newColumnId ? updateTask() : updateTaskColumn(newColumnId));
   });
 
   useEffect(() => {
     isFormUpdating.current = false;
     return () => {
       if (isDirty && !isFormUpdating.current) {
-        console.log('SUBMITTING', isFormUpdating.current, onSubmit);
-        onSubmit();
+        void onSubmit();
       }
     };
   });
@@ -150,18 +148,18 @@ function TaskView(props: TProps): JSX.Element {
       menuRef.current?.classList.add('hidden');
       isFormUpdating.current = true;
       modalDispatch({
-        type: 'open-modal',
+        modalProps: { selectedTask, statusArr, task },
         modalType: 'task-edit',
-        modalProps: { task, selectedTask, statusArr },
+        type: 'open-modal',
       });
     }
     if (element.innerHTML === 'Delete Task') {
       menuRef.current?.classList.add('hidden');
       isFormUpdating.current = true;
       modalDispatch({
-        type: 'open-modal',
-        modalType: 'task-delete',
         modalProps: { id: selectedTask },
+        modalType: 'task-delete',
+        type: 'open-modal',
       });
     }
   };
@@ -169,16 +167,16 @@ function TaskView(props: TProps): JSX.Element {
   const tasksComplete = getValues().subtasks.filter((subtask) => subtask.isCompleted).length;
 
   return (
-    <form className={styles.container} id="form-1">
-      <div className={styles.taskView}>
-        <div className={styles.taskView__header}>
+    <form className={styles['container']} id="form-1">
+      <div className={styles['taskView']}>
+        <div className={styles['taskView__header']}>
           <p>{task.title}</p>
-          <div className={styles.taskView__menu}>
-            <button type="button" className={styles.taskView__menu__btn} onClick={menuBtnClickHandler}>
+          <div className={styles['taskView__menu']}>
+            <button type="button" className={styles['taskView__menu__btn']} onClick={menuBtnClickHandler}>
               <img src={IconVerticalEllipsis} alt="" />
             </button>
             <div
-              className={`${styles.taskView__dropdown} hidden`}
+              className={`${styles['taskView__dropdown']} hidden`}
               ref={menuRef}
               onClickCapture={menuClickCaptureHandler}>
               <p>Edit Task</p>
@@ -186,12 +184,12 @@ function TaskView(props: TProps): JSX.Element {
             </div>
           </div>
         </div>
-        <p className={styles.taskView__description}>{task.description}</p>
+        <p className={styles['taskView__description']}>{task.description}</p>
         <div>
-          <p className={styles.taskView__subTasksTitle}>
+          <p className={styles['taskView__subTasksTitle']}>
             Subtasks ({tasksComplete} of {task.subtasks.length})
           </p>
-          <div className={styles.taskView__subTasks}>
+          <div className={styles['taskView__subTasks']}>
             {fields.map((item, i) => (
               <Controller
                 key={item.id}
@@ -204,7 +202,7 @@ function TaskView(props: TProps): JSX.Element {
             ))}
           </div>
         </div>
-        <div className={styles.taskView__status}>
+        <div className={styles['taskView__status']}>
           <p>Current Status</p>
           <Controller
             control={control}
