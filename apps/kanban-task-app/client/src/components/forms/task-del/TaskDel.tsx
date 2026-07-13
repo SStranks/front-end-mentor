@@ -1,7 +1,7 @@
-import { useAppDispatchContext } from '#Context/AppContext';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
-import { useRootModalContext } from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
+import { useAppDispatchContext } from '@Context/AppContext';
+import { useLoading, useLoadingUpdate } from '@Context/LoadingContext';
+import { useRootModalContext } from '@Context/RootModalContext';
+import ApiService from '@Services/Services';
 
 import styles from './_TaskDel.module.scss';
 

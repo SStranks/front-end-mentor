@@ -1,8 +1,8 @@
-import type { TReturnData } from '#Types/types';
+import type { TReturnData } from '@Types/types';
 
 import { useRef, useState } from 'react';
 
-import IconCross from '#Svg/icon-cross.svg';
+import IconCross from '@Svg/icon-cross.svg';
 
 import styles from './_InputTextSubtask.module.scss';
 

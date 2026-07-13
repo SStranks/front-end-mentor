@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { useLoading } from '#Context/LoadingContext';
+import { useLoading } from '@Context/LoadingContext';
 
 import styles from './_Logo.module.scss';
 

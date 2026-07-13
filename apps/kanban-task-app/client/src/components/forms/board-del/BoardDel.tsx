@@ -1,7 +1,7 @@
-import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
-import { useRootModalContext } from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
+import { useAppDispatchContext, useAppStateContext } from '@Context/AppContext';
+import { useLoading, useLoadingUpdate } from '@Context/LoadingContext';
+import { useRootModalContext } from '@Context/RootModalContext';
+import ApiService from '@Services/Services';
 
 import styles from './_BoardDel.module.scss';
 

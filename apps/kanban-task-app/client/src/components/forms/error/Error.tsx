@@ -1,4 +1,4 @@
-import { useRootModalContext } from '#Context/RootModalContext';
+import { useRootModalContext } from '@Context/RootModalContext';
 
 import styles from './_Error.module.scss';
 

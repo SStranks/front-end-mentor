@@ -1,4 +1,4 @@
-import type { IBoard, IColumn } from '#Shared/types';
+import type { IBoard, IColumn } from '@Shared/types';
 
 export type TBoardInfo = { id: string; name: string }[];
 

@@ -1,8 +1,8 @@
 /* eslint-disable perfectionist/sort-object-types */
-import type { IBoard } from '#Shared/types';
-import type { TBoardInfo } from '#Types/types';
+import type { IBoard } from '@Shared/types';
+import type { TBoardInfo } from '@Types/types';
 
-import DefaultLayout from '#Layouts/DefaultLayout';
+import DefaultLayout from '@Layouts/DefaultLayout';
 
 type TProps = {
   boardData: { boardsList: TBoardInfo; activeBoard: IBoard | undefined };

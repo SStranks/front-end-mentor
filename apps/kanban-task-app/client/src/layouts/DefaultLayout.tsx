@@ -1,9 +1,9 @@
-import type { IBoard } from '#Shared/types';
-import type { TBoardInfo } from '#Types/types';
+import type { IBoard } from '@Shared/types';
+import type { TBoardInfo } from '@Types/types';
 
-import Aside from '#Components/aside/Aside';
-import Main from '#Components/main/Main';
-import Nav from '#Components/nav/Nav';
+import Aside from '@Components/aside/Aside';
+import Main from '@Components/main/Main';
+import Nav from '@Components/nav/Nav';
 
 import styles from './_DefaultLayout.module.scss';
 

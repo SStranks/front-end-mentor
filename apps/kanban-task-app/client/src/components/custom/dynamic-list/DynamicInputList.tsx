@@ -1,7 +1,7 @@
-import type { TInputProp, TReturnData } from '#Types/types';
+import type { TInputProp, TReturnData } from '@Types/types';
 
-import useComponentIdGenerator from '#Hooks/useComponentIdGenerator';
-import { addInputToGroup, deleteInputFromGroup, updateInputFromGroup } from '#Utils/formFunctions';
+import useComponentIdGenerator from '@Hooks/useComponentIdGenerator';
+import { addInputToGroup, deleteInputFromGroup, updateInputFromGroup } from '@Utils/formFunctions';
 
 import InputTextSubtask from '../input-text/InputTextSubtask';
 

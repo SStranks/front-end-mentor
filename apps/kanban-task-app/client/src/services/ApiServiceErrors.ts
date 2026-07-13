@@ -2,7 +2,7 @@ import type { AxiosResponse } from 'axios';
 
 import axios from 'axios';
 
-import AppError from '#Utils/AppError';
+import AppError from '@Utils/AppError';
 
 interface IApiError extends AxiosResponse {
   data: {

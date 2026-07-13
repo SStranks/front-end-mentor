@@ -1,8 +1,8 @@
-import type { TStatusArr } from '#Types/types';
+import type { TStatusArr } from '@Types/types';
 
 import { useEffect, useRef, useState } from 'react';
 
-import IconDown from '#Svg/icon-chevron-down.svg';
+import IconDown from '@Svg/icon-chevron-down.svg';
 
 import styles from './_Dropdown.module.scss';
 

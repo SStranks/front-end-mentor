@@ -1,12 +1,12 @@
 import type { PropsWithChildren } from 'react';
 
-import type { TAction } from '#Hooks/useAppReducer';
-import type { IBoard, IColumn, ITask } from '#Shared/types';
-import type { TAppStateContext } from '#Types/types';
+import type { TAction } from '@Hooks/useAppReducer';
+import type { IBoard, IColumn, ITask } from '@Shared/types';
+import type { TAppStateContext } from '@Types/types';
 
 import React, { useContext } from 'react';
 
-import useAppReducer from '#Hooks/useAppReducer';
+import useAppReducer from '@Hooks/useAppReducer';
 
 export interface IAppContextPayload {
   id: { boardId: string; columnId?: string; taskId?: string };

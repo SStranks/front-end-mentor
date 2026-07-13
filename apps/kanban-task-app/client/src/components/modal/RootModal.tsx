@@ -1,19 +1,19 @@
-import type { TRootModalContextAction } from '#Context/RootModalContext';
-import type { TRootModalState } from '#Types/types';
+import type { TRootModalContextAction } from '@Context/RootModalContext';
+import type { TRootModalState } from '@Types/types';
 
 import { useEffect, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 
-import Aside from '#Components/aside/Aside';
-import BoardAdd from '#Components/forms/board-add/BoardAdd';
-import BoardDelete from '#Components/forms/board-del/BoardDel';
-import BoardEdit from '#Components/forms/board-edit/BoardEdit';
-import Error from '#Components/forms/error/Error';
-import TaskAdd from '#Components/forms/task-add/TaskAdd';
-import TaskDelete from '#Components/forms/task-del/TaskDel';
-import TaskEdit from '#Components/forms/task-edit/TaskEdit';
-import TaskView from '#Components/forms/task-view/TaskView';
-import { useRootModalUpdateContext } from '#Context/RootModalContext';
+import Aside from '@Components/aside/Aside';
+import BoardAdd from '@Components/forms/board-add/BoardAdd';
+import BoardDelete from '@Components/forms/board-del/BoardDel';
+import BoardEdit from '@Components/forms/board-edit/BoardEdit';
+import Error from '@Components/forms/error/Error';
+import TaskAdd from '@Components/forms/task-add/TaskAdd';
+import TaskDelete from '@Components/forms/task-del/TaskDel';
+import TaskEdit from '@Components/forms/task-edit/TaskEdit';
+import TaskView from '@Components/forms/task-view/TaskView';
+import { useRootModalUpdateContext } from '@Context/RootModalContext';
 
 import styles from './_RootModal.module.scss';
 

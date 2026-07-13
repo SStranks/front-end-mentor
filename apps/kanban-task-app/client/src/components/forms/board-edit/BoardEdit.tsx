@@ -1,15 +1,15 @@
-import type { IBoard } from '#Shared/types';
+import type { IBoard } from '@Shared/types';
 
 import type { TFormBoardValues } from '../shared';
 
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
-import InputText from '#Components/custom/input-text/InputText';
-import { useAppDispatchContext } from '#Context/AppContext';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
-import { useRootModalContext } from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
-import IconCross from '#Svg/icon-cross.svg';
+import InputText from '@Components/custom/input-text/InputText';
+import { useAppDispatchContext } from '@Context/AppContext';
+import { useLoading, useLoadingUpdate } from '@Context/LoadingContext';
+import { useRootModalContext } from '@Context/RootModalContext';
+import ApiService from '@Services/Services';
+import IconCross from '@Svg/icon-cross.svg';
 
 import styles from './_BoardEdit.module.scss';
 

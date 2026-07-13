@@ -1,5 +1,5 @@
-import type { ITask } from '#Shared/types';
-import type { TAppStateContext } from '#Types/types';
+import type { ITask } from '@Shared/types';
+import type { TAppStateContext } from '@Types/types';
 
 export interface IOrderedTasks {
   _id: string;

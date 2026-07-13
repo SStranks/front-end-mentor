@@ -1,18 +1,18 @@
-import type { ITask } from '#Shared/types';
-import type { TSelectTask, TStatusArr } from '#Types/types';
+import type { ITask } from '@Shared/types';
+import type { TSelectTask, TStatusArr } from '@Types/types';
 
 import type { TFormTaskValues } from '../shared';
 
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
-import Dropdown from '#Components/custom/dropdown/Dropdown';
-import InputText from '#Components/custom/input-text/InputText';
-import InputTextArea from '#Components/custom/input-textarea/InputTextArea';
-import { useAppDispatchContext } from '#Context/AppContext';
-import { useLoading, useLoadingUpdate } from '#Context/LoadingContext';
-import { useRootModalContext } from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
-import IconCross from '#Svg/icon-cross.svg';
+import Dropdown from '@Components/custom/dropdown/Dropdown';
+import InputText from '@Components/custom/input-text/InputText';
+import InputTextArea from '@Components/custom/input-textarea/InputTextArea';
+import { useAppDispatchContext } from '@Context/AppContext';
+import { useLoading, useLoadingUpdate } from '@Context/LoadingContext';
+import { useRootModalContext } from '@Context/RootModalContext';
+import ApiService from '@Services/Services';
+import IconCross from '@Svg/icon-cross.svg';
 
 import { placeholderText } from '../shared';
 

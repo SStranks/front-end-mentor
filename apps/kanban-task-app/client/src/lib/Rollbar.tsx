@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import type Rollbar from 'rollbar';
 
-import type { IErrorFallbackProps } from '#Components/ui/RollbarErrorFallback';
+import type { IErrorFallbackProps } from '@Components/ui/RollbarErrorFallback';
 
 import { ErrorBoundary, Provider } from '@rollbar/react';
 

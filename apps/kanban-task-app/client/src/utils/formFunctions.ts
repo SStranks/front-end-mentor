@@ -1,4 +1,4 @@
-import type { TInputProp, TNestedInputProp, TNewFormData, TReturnData } from '#Types/types';
+import type { TInputProp, TNestedInputProp, TNewFormData, TReturnData } from '@Types/types';
 
 export function isInput(input: unknown): input is TInputProp {
   return (input as Record<string, TInputProp>)['inputName'] !== undefined;

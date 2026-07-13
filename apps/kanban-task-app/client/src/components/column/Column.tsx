@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/refs */
 import type { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd';
 
-import type { ISubTask, ITask } from '#Shared/types';
+import type { ISubTask, ITask } from '@Shared/types';
 
 import { Draggable } from 'react-beautiful-dnd';
 
-import Task from '#Components/task/Task';
+import Task from '@Components/task/Task';
 
 import styles from './_Column.module.scss';
 

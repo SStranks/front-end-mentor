@@ -1,5 +1,5 @@
 // NOTE:  ! This file is not complete. Basic working structure. Depends on backend API types
-import type { IBoard } from '#Shared/types';
+import type { IBoard } from '@Shared/types';
 
 import type { IApiClient } from './ApiHttp';
 import type {

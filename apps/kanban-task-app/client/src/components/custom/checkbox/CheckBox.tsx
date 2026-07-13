@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import IconCheck from '#Svg/icon-check.svg';
+import IconCheck from '@Svg/icon-check.svg';
 
 import styles from './_CheckBox.module.scss';
 

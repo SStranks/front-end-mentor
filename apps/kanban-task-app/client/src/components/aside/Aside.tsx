@@ -1,13 +1,13 @@
 /* eslint-disable perfectionist/sort-objects */
-import type { TBoardInfo } from '#Types/types';
+import type { TBoardInfo } from '@Types/types';
 
-import Toggle from '#Components/custom/toggle/Toggle';
-import { useRootModalContext } from '#Context/RootModalContext';
-import IconBoard from '#Svg/icon-board.svg';
-import IconDarkTheme from '#Svg/icon-dark-theme.svg';
-import IconHideSidebar from '#Svg/icon-hide-sidebar.svg';
-import IconLightTheme from '#Svg/icon-light-theme.svg';
-import IconShowSidebar from '#Svg/icon-show-sidebar.svg';
+import Toggle from '@Components/custom/toggle/Toggle';
+import { useRootModalContext } from '@Context/RootModalContext';
+import IconBoard from '@Svg/icon-board.svg';
+import IconDarkTheme from '@Svg/icon-dark-theme.svg';
+import IconHideSidebar from '@Svg/icon-hide-sidebar.svg';
+import IconLightTheme from '@Svg/icon-light-theme.svg';
+import IconShowSidebar from '@Svg/icon-show-sidebar.svg';
 
 import styles from './_Aside.module.scss';
 

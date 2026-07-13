@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { LoadingProvider } from '#Context/LoadingContext';
+import { LoadingProvider } from '@Context/LoadingContext';
 
 import DefaultLayout from './DefaultLayout';
 

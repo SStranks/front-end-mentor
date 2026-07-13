@@ -1,7 +1,7 @@
-import type { IBoard } from '#Shared/types';
+import type { IBoard } from '@Shared/types';
 
-import ColumnGrid from '#Components/column-grid/ColumnGrid';
-import { useRootModalContext } from '#Context/RootModalContext';
+import ColumnGrid from '@Components/column-grid/ColumnGrid';
+import { useRootModalContext } from '@Context/RootModalContext';
 
 import styles from './_Main.module.scss';
 

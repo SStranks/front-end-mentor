@@ -1,6 +1,6 @@
-import type { IBoard } from '#Shared/types';
+import type { IBoard } from '@Shared/types';
 
-import { useRootModalContext } from '#Context/RootModalContext';
+import { useRootModalContext } from '@Context/RootModalContext';
 
 import styles from './_Column.module.scss';
 

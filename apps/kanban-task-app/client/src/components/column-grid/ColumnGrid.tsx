@@ -1,17 +1,17 @@
 import type { DropResult } from 'react-beautiful-dnd';
 
-import type { IBoard } from '#Shared/types';
+import type { IBoard } from '@Shared/types';
 
 import React, { useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-import Column from '#Components/column/Column';
-import ColumnEmpty from '#Components/column/ColumnEmpty';
-import DeleteTask from '#Components/task/DeleteTask';
-import { useAppDispatchContext } from '#Context/AppContext';
-import { useLoadingUpdate } from '#Context/LoadingContext';
-import { useRootModalContext } from '#Context/RootModalContext';
-import ApiService from '#Services/Services';
+import Column from '@Components/column/Column';
+import ColumnEmpty from '@Components/column/ColumnEmpty';
+import DeleteTask from '@Components/task/DeleteTask';
+import { useAppDispatchContext } from '@Context/AppContext';
+import { useLoadingUpdate } from '@Context/LoadingContext';
+import { useRootModalContext } from '@Context/RootModalContext';
+import ApiService from '@Services/Services';
 
 import styles from './_ColumnGrid.module.scss';
 

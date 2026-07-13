@@ -1,14 +1,14 @@
 /* eslint-disable perfectionist/sort-objects */
-import type { IBoard } from '#Shared/types';
-import type { TBoardInfo } from '#Types/types';
+import type { IBoard } from '@Shared/types';
+import type { TBoardInfo } from '@Types/types';
 
 import { useEffect, useRef } from 'react';
 
-import Logo from '#Components/logo/Logo';
-import { useRootModalContext } from '#Context/RootModalContext';
-import IconAddTaskMobile from '#Svg/icon-add-task-mobile.svg';
-import IconChevronDown from '#Svg/icon-chevron-down.svg';
-import IconEllipsis from '#Svg/icon-vertical-ellipsis.svg';
+import Logo from '@Components/logo/Logo';
+import { useRootModalContext } from '@Context/RootModalContext';
+import IconAddTaskMobile from '@Svg/icon-add-task-mobile.svg';
+import IconChevronDown from '@Svg/icon-chevron-down.svg';
+import IconEllipsis from '@Svg/icon-vertical-ellipsis.svg';
 
 import styles from './_Nav.module.scss';
 

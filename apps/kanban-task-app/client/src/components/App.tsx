@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import RootModal from '#Components/modal/RootModal';
-import { useAppDispatchContext, useAppStateContext } from '#Context/AppContext';
-// import { useLoadingUpdate } from '#Context/LoadingContext';
-// import { useRootModalContext } from '#Context/RootModalContext';
-import Home from '#Pages/Home';
-// import ApiService from '#Services/Services';
+import RootModal from '@Components/modal/RootModal';
+import { useAppDispatchContext, useAppStateContext } from '@Context/AppContext';
+// import { useLoadingUpdate } from '@Context/LoadingContext';
+// import { useRootModalContext } from '@Context/RootModalContext';
+import Home from '@Pages/Home';
+// import ApiService from '@Services/Services';
 
 const INITIAL_ACTIVEBOARD = globalThis.localStorage.getItem('active-board');
 

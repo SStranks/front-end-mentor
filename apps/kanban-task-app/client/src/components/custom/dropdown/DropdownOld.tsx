@@ -1,8 +1,8 @@
-import type { TReturnData } from '#Types/types';
+import type { TReturnData } from '@Types/types';
 
 import { useEffect, useRef } from 'react';
 
-import IconDown from '#Svg/icon-chevron-down.svg';
+import IconDown from '@Svg/icon-chevron-down.svg';
 
 import styles from './_DropdownOld.module.scss';
 
