@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ENV } from '#Config/env';
+import { ENV } from '@Config/env';
 
 import handleServiceError from './ApiServiceErrors';
 

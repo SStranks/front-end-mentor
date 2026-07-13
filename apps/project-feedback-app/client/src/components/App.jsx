@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { UserProvider } from '../context/UserContext';
-import useRequests from '../hooks/useGetAllRequests';
-import Toaster from '../lib/ReactHotToast';
-import { Feedback, Home, Roadmap } from '../pages';
+import { UserProvider } from '@Context/UserContext';
+import useRequests from '@Hooks/useGetAllRequests';
+import Toaster from '@Lib/ReactHotToast';
+import { Feedback, Home, Roadmap } from '@Pages/';
 
 function App() {
   const [requests, isLoading] = useRequests();

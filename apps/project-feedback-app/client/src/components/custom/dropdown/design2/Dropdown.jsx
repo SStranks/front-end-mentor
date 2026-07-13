@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import IconArrowDown from '../../../../assets/svg/shared/icon-arrow-down.svg';
+import IconArrowDown from '@Svg/shared/icon-arrow-down.svg';
+
 import DropdownList from './DropdownList';
 
 import styles from './_Dropdown.module.scss';

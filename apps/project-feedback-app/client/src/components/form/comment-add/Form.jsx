@@ -2,10 +2,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-import { useUser } from '../../../context/UserContext';
-import ApiService from '../../../services/Services';
-import ButtonSubmit from '../../custom/button/ButtonSubmit';
-import InputTextArea from '../../custom/textarea/InputTextArea';
+import ButtonSubmit from '@Components/custom/button/ButtonSubmit';
+import InputTextArea from '@Components/custom/textarea/InputTextArea';
+import { useUser } from '@Context/UserContext';
+import ApiService from '@Services/Services';
 
 import styles from './_Form.module.scss';
 

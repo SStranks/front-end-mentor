@@ -1,4 +1,4 @@
-import IconCheck from '../../../../assets/svg/shared/icon-check.svg';
+import IconCheck from '@Svg/shared/icon-check.svg';
 
 import styles from './_DropdownList.module.scss';
 

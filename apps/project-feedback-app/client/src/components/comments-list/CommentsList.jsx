@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
-import useComments from '../../hooks/useGetAllComments.js';
-import Comment from '../comment/Comment.jsx';
+import Comment from '@Components/comment/Comment.jsx';
+import useComments from '@Hooks/useGetAllComments.js';
 
 import styles from './_CommentsList.module.scss';
 

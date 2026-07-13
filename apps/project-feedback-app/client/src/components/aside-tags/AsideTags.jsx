@@ -1,4 +1,4 @@
-import Tag from '../custom/tag/Tag';
+import Tag from '@Components/custom/tag/Tag';
 
 import styles from './_AsideTags.module.scss';
 

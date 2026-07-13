@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import useMediaQuery from '../../hooks/useMediaQuery';
-import Roadmap from '../roadmap/Roadmap';
+import Roadmap from '@Components/roadmap/Roadmap';
+import useMediaQuery from '@Hooks/useMediaQuery';
 
 import styles from './_RoadmapList.module.scss';
 

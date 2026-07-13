@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import IconMessage from '../../assets/svg/shared/icon-comments.svg';
-import Tag from '../custom/tag/Tag';
-import Upvote from '../custom/upvote/Upvote';
+import Tag from '@Components/custom/tag/Tag';
+import Upvote from '@Components/custom/upvote/Upvote';
+import IconMessage from '@Svg/shared/icon-comments.svg';
 
 import styles from './_Suggestion.module.scss';
 

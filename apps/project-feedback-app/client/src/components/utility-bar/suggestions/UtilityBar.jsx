@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import IconSuggestion from '../../../assets/svg/shared/icon-suggestions.svg';
-import Button from '../../custom/button/Button';
-import Dropdown from '../../custom/dropdown/design1/Dropdown';
-import FormFeedbackNew from '../../form/feedback-new/Form';
-import Modal from '../../modal/Modal';
+import Button from '@Components/custom/button/Button';
+import Dropdown from '@Components/custom/dropdown/design1/Dropdown';
+import FormFeedbackNew from '@Components/form/feedback-new/Form';
+import Modal from '@Components/modal/Modal';
+import IconSuggestion from '@Svg/shared/icon-suggestions.svg';
 
 import styles from './_UtilityBar.module.scss';
 

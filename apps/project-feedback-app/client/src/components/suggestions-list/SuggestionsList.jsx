@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import NoFeedbackImg from '../../assets/svg/shared/illustration-empty.svg';
-import Button from '../custom/button/Button';
-import FormFeedbackNew from '../form/feedback-new/Form';
-import Modal from '../modal/Modal';
-import Suggestion from '../suggestion/Suggestion';
+import Button from '@Components/custom/button/Button';
+import FormFeedbackNew from '@Components/form/feedback-new/Form';
+import Modal from '@Components/modal/Modal';
+import Suggestion from '@Components/suggestion/Suggestion';
+import NoFeedbackImg from '@Svg/shared/illustration-empty.svg';
 
 import styles from './_SuggestionsList.module.scss';
 

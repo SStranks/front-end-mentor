@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { toast } from 'react-hot-toast';
 
-import IconNewFeedback from '../../../assets/svg/shared/icon-new-feedback.svg';
-import ApiService from '../../../services/Services';
-import Button from '../../custom/button/Button';
-import ButtonSubmit from '../../custom/button/ButtonSubmit';
-import Dropdown from '../../custom/dropdown/design2/Dropdown';
-import InputText from '../../custom/input-text/InputText';
-import InputTextArea from '../../custom/textarea/InputTextArea';
+import Button from '@Components/custom/button/Button';
+import ButtonSubmit from '@Components/custom/button/ButtonSubmit';
+import Dropdown from '@Components/custom/dropdown/design2/Dropdown';
+import InputText from '@Components/custom/input-text/InputText';
+import InputTextArea from '@Components/custom/textarea/InputTextArea';
+import ApiService from '@Services/Services';
+import IconNewFeedback from '@Svg/shared/icon-new-feedback.svg';
 
 import styles from './_Form.module.scss';
 

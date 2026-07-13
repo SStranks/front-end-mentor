@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-import IconArrowUp from '../../../assets/svg/shared/icon-arrow-up.svg';
-import { useUser } from '../../../context/UserContext';
-import ApiService from '../../../services/Services.js';
+import { useUser } from '@Context/UserContext';
+import ApiService from '@Services/Services.js';
+import IconArrowUp from '@Svg/shared/icon-arrow-up.svg';
 
 import styles from './_Upvote.module.scss';
 

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import IconModalClose from '../../assets/svg/shared/icon-close.svg';
-import IconModalHamburger from '../../assets/svg/shared/icon-hamburger.svg';
-import AsideRoadmap from '../aside-roadmap/AsideRoadmap';
-import AsideTags from '../aside-tags/AsideTags';
+import AsideRoadmap from '@Components/aside-roadmap/AsideRoadmap';
+import AsideTags from '@Components/aside-tags/AsideTags';
+import IconModalClose from '@Svg/shared/icon-close.svg';
+import IconModalHamburger from '@Svg/shared/icon-hamburger.svg';
 
 import styles from './_Header.module.scss';
 

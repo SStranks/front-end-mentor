@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import IconArrowLeft from '../../../assets/svg/shared/icon-arrow-left.svg';
-import Button from '../../custom/button/Button';
-import FormFeedbackNew from '../../form/feedback-new/Form';
-import Modal from '../../modal/Modal';
+import Button from '@Components/custom/button/Button';
+import FormFeedbackNew from '@Components/form/feedback-new/Form';
+import Modal from '@Components/modal/Modal';
+import IconArrowLeft from '@Svg/shared/icon-arrow-left.svg';
 
 import styles from './_UtilityBar.module.scss';
 

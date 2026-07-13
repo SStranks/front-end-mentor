@@ -1,6 +1,6 @@
 import { ErrorBoundary, Provider } from '@rollbar/react';
 
-import { ENV } from '#Config/env';
+import { ENV } from '@Config/env';
 
 const rollbarConfig = {
   enabled: ENV.rollbarEnabled,

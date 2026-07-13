@@ -2,11 +2,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-import ProfileIcon from '../../assets/img/image-elijah.jpg';
-import { useUser } from '../../context/UserContext';
-import ApiService from '../../services/Services';
-import ButtonSubmit from '../custom/button/ButtonSubmit';
-import InputTextarea from '../custom/textarea/InputTextArea';
+import InputTextarea from '@Components//custom/textarea/InputTextArea';
+import ButtonSubmit from '@Components/custom/button/ButtonSubmit';
+import { useUser } from '@Context/UserContext';
+import ProfileIcon from '@Img/image-elijah.jpg';
+import ApiService from '@Services/Services';
 
 import styles from './_Comment.module.scss';
 
