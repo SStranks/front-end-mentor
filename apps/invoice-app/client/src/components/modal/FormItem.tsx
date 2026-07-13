@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 
-import InputPrice from '#Components/custom/input/InputPrice';
-import IconDelete from '#Svg/icon-delete.svg';
-import currencyFormatter from '#Utils/currencyFormatter';
-import numberFormatter from '#Utils/numberFormatter';
+import InputPrice from '@Components/custom/input/InputPrice';
+import IconDelete from '@Svg/icon-delete.svg';
+import currencyFormatter from '@Utils/currencyFormatter';
+import numberFormatter from '@Utils/numberFormatter';
 
 import styles from './FormItem.module.scss';
 

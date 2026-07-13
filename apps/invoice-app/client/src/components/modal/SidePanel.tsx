@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import type { IInvoice } from '#Services/ApiServiceClient';
+import type { IInvoice } from '@Services/ApiServiceClient';
 
 import FormInvoice from './FormInvoice';
 

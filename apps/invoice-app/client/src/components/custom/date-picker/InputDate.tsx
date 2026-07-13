@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import IconCalender from '#Svg/icon-calendar.svg';
+import IconCalender from '@Svg/icon-calendar.svg';
 
 import { formatDate, isValidDate } from './dateUtil';
 import InputDateCalendar from './InputDateCalendar';

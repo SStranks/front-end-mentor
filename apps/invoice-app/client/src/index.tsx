@@ -3,7 +3,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import QueryClientProvider from '#Lib/ReactQuery';
+import QueryClientProvider from '@Lib/ReactQuery';
 
 import App from './components/App';
 

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import Status from '#Components/custom/buttons/status/Status';
-import ArrowRight from '#Svg/icon-arrow-right.svg';
-import currencyFormatter from '#Utils/currencyFormatter';
+import Status from '@Components/custom/buttons/status/Status';
+import ArrowRight from '@Svg/icon-arrow-right.svg';
+import currencyFormatter from '@Utils/currencyFormatter';
 
 import styles from './Invoice.module.scss';
 

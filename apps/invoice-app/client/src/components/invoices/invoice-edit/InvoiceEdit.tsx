@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
 
-import Status from '#Components/custom/buttons/status/Status';
-import Modal from '#Components/modal/Modal';
-import ModalDeleteInvoice from '#Components/modal/ModalDeleteInvoice';
-import ModalEditInvoice from '#Components/modal/ModalEditInvoice';
-import ReactPortal from '#Components/modal/ReactPortal';
-import ContentLayout from '#Layouts/ContentLayout';
-import ApiService from '#Services/Services';
-import IconArrowLeft from '#Svg/icon-arrow-left.svg';
-import currencyFormatter from '#Utils/currencyFormatter';
+import Status from '@Components/custom/buttons/status/Status';
+import Modal from '@Components/modal/Modal';
+import ModalDeleteInvoice from '@Components/modal/ModalDeleteInvoice';
+import ModalEditInvoice from '@Components/modal/ModalEditInvoice';
+import ReactPortal from '@Components/modal/ReactPortal';
+import ContentLayout from '@Layouts/ContentLayout';
+import ApiService from '@Services/Services';
+import IconArrowLeft from '@Svg/icon-arrow-left.svg';
+import currencyFormatter from '@Utils/currencyFormatter';
 
 import styles from './InvoiceEdit.module.scss';
 

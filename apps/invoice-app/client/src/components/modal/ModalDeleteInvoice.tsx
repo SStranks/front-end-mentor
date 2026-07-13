@@ -1,11 +1,11 @@
-import type { IInvoice } from '#Services/ApiServiceClient';
+import type { IInvoice } from '@Services/ApiServiceClient';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import ApiService from '#Services/Services';
+import ApiService from '@Services/Services';
 
 import { ModalContext } from './Modal';
 

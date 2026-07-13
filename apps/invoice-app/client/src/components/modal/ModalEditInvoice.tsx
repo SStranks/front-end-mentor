@@ -1,4 +1,4 @@
-import type { IInvoice } from '#Services/ApiServiceClient';
+import type { IInvoice } from '@Services/ApiServiceClient';
 
 import FormButtons from './FormButtons';
 import SidePanel from './SidePanel';

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import IconArrow from '#Svg/icon-arrow-down.svg';
+import IconArrow from '@Svg/icon-arrow-down.svg';
 
 import styles from './DropdownPaymentTerms.module.scss';
 

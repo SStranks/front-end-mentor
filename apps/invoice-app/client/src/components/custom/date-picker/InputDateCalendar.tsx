@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/prefer-spread */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import IconArrowLeft from '#Svg/icon-arrow-left.svg';
-import IconArrowRight from '#Svg/icon-arrow-right.svg';
+import IconArrowLeft from '@Svg/icon-arrow-left.svg';
+import IconArrowRight from '@Svg/icon-arrow-right.svg';
 
 import { DAYS_LETTER_MONDAY, DAYS_LETTER_SUNDAY, formatDate, getNumberOfDaysInMonth } from './dateUtil';
 

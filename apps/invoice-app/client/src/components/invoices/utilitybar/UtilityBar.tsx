@@ -1,12 +1,12 @@
-import type { IFilterStatus } from '#Components/main/Main';
+import type { IFilterStatus } from '@Components/main/Main';
 
 import { useState } from 'react';
 
-import BtnNewInvoice from '#Components/custom/buttons/new-invoice/BtnNewInvoice';
-import DropdownFilterStatus from '#Components/custom/dropdown/filter-status/DropdownFilterStatus';
-import Modal from '#Components/modal/Modal';
-import ModalNewInvoice from '#Components/modal/ModalNewInvoice';
-import ReactPortal from '#Components/modal/ReactPortal';
+import BtnNewInvoice from '@Components/custom/buttons/new-invoice/BtnNewInvoice';
+import DropdownFilterStatus from '@Components/custom/dropdown/filter-status/DropdownFilterStatus';
+import Modal from '@Components/modal/Modal';
+import ModalNewInvoice from '@Components/modal/ModalNewInvoice';
+import ReactPortal from '@Components/modal/ReactPortal';
 
 import styles from './UtilityBar.module.scss';
 

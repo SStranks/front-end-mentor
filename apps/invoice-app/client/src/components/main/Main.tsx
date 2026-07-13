@@ -1,10 +1,10 @@
-import type { IInvoice } from '#Services/ApiServiceClient';
+import type { IInvoice } from '@Services/ApiServiceClient';
 
 import { useState } from 'react';
 
-import InvoiceList from '#Components/invoices/invoice-list/InvoiceList';
-import UtilityBar from '#Components/invoices/utilitybar/UtilityBar';
-import ContentLayout from '#Layouts/ContentLayout';
+import InvoiceList from '@Components/invoices/invoice-list/InvoiceList';
+import UtilityBar from '@Components/invoices/utilitybar/UtilityBar';
+import ContentLayout from '@Layouts/ContentLayout';
 
 export interface IFilterStatus {
   draft: boolean;

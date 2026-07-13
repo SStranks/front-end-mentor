@@ -1,13 +1,13 @@
-import type { IInvoice, TBody } from '#Services/ApiServiceClient';
+import type { IInvoice, TBody } from '@Services/ApiServiceClient';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import InputDate from '#Components/custom/date-picker/InputDate';
-import DropdownPaymentTerms from '#Components/custom/dropdown/payment-terms/DropdownPaymentTerms';
-import useComponentIdGenerator from '#Hooks/useComponentIdGenerator';
-import ApiService from '#Services/Services';
+import InputDate from '@Components/custom/date-picker/InputDate';
+import DropdownPaymentTerms from '@Components/custom/dropdown/payment-terms/DropdownPaymentTerms';
+import useComponentIdGenerator from '@Hooks/useComponentIdGenerator';
+import ApiService from '@Services/Services';
 
 import FormItem from './FormItem';
 import { ModalContext } from './Modal';

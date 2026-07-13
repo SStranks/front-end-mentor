@@ -1,9 +1,9 @@
-import type { IFilterStatus } from '#Components/main/Main';
+import type { IFilterStatus } from '@Components/main/Main';
 
 import { useEffect, useRef } from 'react';
 
-import CheckBox from '#Components/custom/checkbox/CheckBox';
-import ArrowDown from '#Svg/icon-arrow-down.svg';
+import CheckBox from '@Components/custom/checkbox/CheckBox';
+import ArrowDown from '@Svg/icon-arrow-down.svg';
 
 import styles from './DropdownFilterStatus.module.scss';
 

@@ -1,7 +1,7 @@
-import type { IInvoice } from '#Services/ApiServiceClient';
+import type { IInvoice } from '@Services/ApiServiceClient';
 
-import Invoice from '#Components/invoices/invoice/Invoice';
-import IllustrationEmpty from '#Svg/illustration-empty.svg';
+import Invoice from '@Components/invoices/invoice/Invoice';
+import IllustrationEmpty from '@Svg/illustration-empty.svg';
 
 import styles from './InvoiceList.module.scss';
 

@@ -2,6 +2,8 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import axios from 'axios';
 
+import { ENV } from '@Config/env';
+
 import handleServiceError from './ApiServiceErrors';
 
 export interface IApiClient {
@@ -16,7 +18,7 @@ export default class ApiClient implements IApiClient {
 
   protected createAxiosClient(): AxiosInstance {
     return axios.create({
-      baseURL: `${process.env['API_HOST']}/api/v1`,
+      baseURL: `${ENV.apiHost}/api/v1`,
       headers: { 'Content-Type': 'application/json' },
       timeout: 5000,
     });

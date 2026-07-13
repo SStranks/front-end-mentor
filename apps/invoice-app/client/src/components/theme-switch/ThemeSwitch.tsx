@@ -1,6 +1,6 @@
-import IconMoon from '#Svg/icon-moon.svg';
+import IconMoon from '@Svg/icon-moon.svg';
 
-// import IconSun from '#Svg/icon-sun.svg';
+// import IconSun from '@Svg/icon-sun.svg';
 import styles from './ThemeSwitch.module.scss';
 
 const themeToggle = () => {

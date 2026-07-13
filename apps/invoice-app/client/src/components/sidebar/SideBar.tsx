@@ -1,6 +1,6 @@
-import ThemeSwitcher from '#Components/theme-switch/ThemeSwitch';
-import User from '#Components/user/User';
-import SiteLogo from '#Svg/logo.svg';
+import ThemeSwitcher from '@Components/theme-switch/ThemeSwitch';
+import User from '@Components/user/User';
+import SiteLogo from '@Svg/logo.svg';
 
 import styles from './SideBar.module.scss';
 
