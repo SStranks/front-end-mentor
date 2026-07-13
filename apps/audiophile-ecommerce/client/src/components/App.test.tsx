@@ -16,11 +16,11 @@ const ROUTES = {
   speakers: '/speakers',
 };
 
-vi.mock('#Pages/home/HomePage', () => ({
+vi.mock('@Pages/home/HomePage', () => ({
   default: () => <div data-testid="page-home" />,
 }));
 
-vi.mock('#Pages/headphones/HeadphonesPage', () => {
+vi.mock('@Pages/headphones/HeadphonesPage', () => {
   return {
     default: () => {
       return <div data-testid="page-headphones" />;
@@ -28,7 +28,7 @@ vi.mock('#Pages/headphones/HeadphonesPage', () => {
   };
 });
 
-vi.mock('#Pages/speakers/SpeakersPage', () => {
+vi.mock('@Pages/speakers/SpeakersPage', () => {
   return {
     default: () => {
       return <div data-testid="page-speakers" />;
@@ -36,7 +36,7 @@ vi.mock('#Pages/speakers/SpeakersPage', () => {
   };
 });
 
-vi.mock('#Pages/earphones/EarphonesPage', () => {
+vi.mock('@Pages/earphones/EarphonesPage', () => {
   return {
     default: () => {
       return <div data-testid="page-earphones" />;
@@ -44,7 +44,7 @@ vi.mock('#Pages/earphones/EarphonesPage', () => {
   };
 });
 
-vi.mock('#Pages/checkout/CheckoutPage', () => {
+vi.mock('@Pages/checkout/CheckoutPage', () => {
   return {
     default: () => {
       return <div data-testid="page-checkout" />;
@@ -52,7 +52,7 @@ vi.mock('#Pages/checkout/CheckoutPage', () => {
   };
 });
 
-vi.mock('#Pages/product-details/ProductDetailsPage', () => {
+vi.mock('@Pages/product-details/ProductDetailsPage', () => {
   return {
     default: () => {
       return <div data-testid="page-product-details" />;

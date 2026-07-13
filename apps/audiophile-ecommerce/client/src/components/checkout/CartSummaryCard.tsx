@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useShoppingCartContext } from '#Context/ShoppingCartContext';
-import ProductData from '#Data/Data.json';
-import formatCurrency from '#Utils/formatCurrency';
+import { useShoppingCartContext } from '@Context/ShoppingCartContext';
+import ProductData from '@Data/Data.json';
+import formatCurrency from '@Utils/formatCurrency';
 
 import CartProductCard from './CartProductCard';
 

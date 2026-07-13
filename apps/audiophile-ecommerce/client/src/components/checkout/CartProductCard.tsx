@@ -1,6 +1,6 @@
-import QuantityToggleButton from '#Components/custom/buttons/QuantityToggleButton';
-import { useShoppingCartContext } from '#Context/ShoppingCartContext';
-import formatCurrency from '#Utils/formatCurrency';
+import QuantityToggleButton from '@Components/custom/buttons/QuantityToggleButton';
+import { useShoppingCartContext } from '@Context/ShoppingCartContext';
+import formatCurrency from '@Utils/formatCurrency';
 
 import styles from './_CartProductCard.module.scss';
 

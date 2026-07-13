@@ -4,7 +4,7 @@ import CartProductCard from './CartProductCard';
 
 const mockQuantityToggleButton = vi.fn();
 
-vi.mock('#Components/custom/buttons/QuantityToggleButton', () => ({
+vi.mock('@Components/custom/buttons/QuantityToggleButton', () => ({
   default: (props: unknown) => {
     mockQuantityToggleButton(props);
     return <div data-testid="quantity-toggle-button" />;

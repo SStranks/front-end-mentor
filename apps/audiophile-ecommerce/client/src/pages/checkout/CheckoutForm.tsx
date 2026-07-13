@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import InputEmail from '#Components/custom/input/InputEmail';
-import InputRadio from '#Components/custom/input/InputRadio';
-import InputTel from '#Components/custom/input/InputTel';
-import InputText from '#Components/custom/input/InputText';
-import IconCash from '#Svg/desktop/icon-cash.svg';
-import formatCurrency from '#Utils/formatCurrency';
+import InputEmail from '@Components/custom/input/InputEmail';
+import InputRadio from '@Components/custom/input/InputRadio';
+import InputTel from '@Components/custom/input/InputTel';
+import InputText from '@Components/custom/input/InputText';
+import IconCash from '@Svg/desktop/icon-cash.svg';
+import formatCurrency from '@Utils/formatCurrency';
 
 import styles from './_CheckoutForm.module.scss';
 

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { ShoppingCartProvider, useShoppingCartContext } from '#Context/ShoppingCartContext';
+import { ShoppingCartProvider, useShoppingCartContext } from '@Context/ShoppingCartContext';
 
 beforeEach(() => {
   localStorage.setItem(

@@ -1,5 +1,5 @@
-import ProductData from '#Data/Data.json';
-import CategoryLayout from '#Layouts/CategoryLayout';
+import ProductData from '@Data/Data.json';
+import CategoryLayout from '@Layouts/CategoryLayout';
 
 const productList = ProductData.filter((el) => el.category === 'headphones');
 

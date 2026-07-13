@@ -4,7 +4,7 @@ import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
 import { vi } from 'vitest';
 
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+import { ShoppingCartProvider } from '@Context/ShoppingCartContext';
 
 import CartSummaryCard from './CartSummaryCard';
 

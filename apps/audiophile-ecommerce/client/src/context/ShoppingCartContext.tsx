@@ -2,8 +2,8 @@ import type { PropsWithChildren } from 'react';
 
 import { createContext, useContext } from 'react';
 
-import ProductData from '#Data/Data.json';
-import useLocalStorage from '#Hooks/useLocalStorage';
+import ProductData from '@Data/Data.json';
+import useLocalStorage from '@Hooks/useLocalStorage';
 
 type CartItem = {
   id: number;

@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+import { ShoppingCartProvider } from '@Context/ShoppingCartContext';
 
 import MenuCategoryModal from './MenuCategoryModal';
 

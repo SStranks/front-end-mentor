@@ -1,4 +1,4 @@
-import ProductData from '#Data/Data.json';
+import ProductData from '@Data/Data.json';
 
 import ProductExampleSeeCard from './ProductExampleSeeCard';
 

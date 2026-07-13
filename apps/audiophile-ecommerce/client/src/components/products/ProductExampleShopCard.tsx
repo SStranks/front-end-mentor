@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import IconArrowRight from '#Svg/desktop/icon-arrow-right.svg';
+import IconArrowRight from '@Svg/desktop/icon-arrow-right.svg';
 
 import styles from './_ProductExampleShopCard.module.scss';
 

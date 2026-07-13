@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+import { ShoppingCartProvider } from '@Context/ShoppingCartContext';
 
 import OrderCompleteCard from './OrderCompleteCard';
 

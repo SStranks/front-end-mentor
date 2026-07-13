@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useShoppingCartContext } from '#Context/ShoppingCartContext';
+import { useShoppingCartContext } from '@Context/ShoppingCartContext';
 
 import QuantityToggleButton from './QuantityToggleButton';
 

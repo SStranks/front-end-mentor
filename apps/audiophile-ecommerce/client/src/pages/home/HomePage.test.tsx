@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
 
-import HomePage from '#Pages/home/HomePage';
+import HomePage from '@Pages/home/HomePage';
 
 describe('Appearance', () => {
   test('Component render matches snapshot', () => {

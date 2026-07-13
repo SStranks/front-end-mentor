@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import CheckoutSummaryProductCard from '#Components/checkout/CheckoutSummaryProductCard';
-import OrderCompleteModal from '#Components/modal/OrderCompleteModal';
-import { useShoppingCartContext } from '#Context/ShoppingCartContext';
-import ProductData from '#Data/Data.json';
-import MainTagLayout from '#Layouts/MainTagLayout';
+import CheckoutSummaryProductCard from '@Components/checkout/CheckoutSummaryProductCard';
+import OrderCompleteModal from '@Components/modal/OrderCompleteModal';
+import { useShoppingCartContext } from '@Context/ShoppingCartContext';
+import ProductData from '@Data/Data.json';
+import MainTagLayout from '@Layouts/MainTagLayout';
 
 import CheckoutForm from './CheckoutForm';
 

@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import ProductExampleShopList from '#Components/products/ProductExampleShopList';
-import useModalClose from '#Hooks/useModalClose';
+import ProductExampleShopList from '@Components/products/ProductExampleShopList';
+import useModalClose from '@Hooks/useModalClose';
 
 import ReactPortal from './ReactPortal';
 

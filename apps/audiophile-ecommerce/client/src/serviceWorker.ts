@@ -1,14 +1,11 @@
 /* eslint-disable perfectionist/sort-objects */
+
+import { ENV } from '@Config/env';
+
 // eslint-disable-next-line unicorn/require-module-specifiers
 export {};
 
-declare const process: {
-  env: {
-    PUBLIC_URL?: string;
-  };
-};
-
-const domain = process.env.PUBLIC_URL ?? '';
+const domain = ENV.publicUrl;
 // const assets = fetch(`${domain}/assets-manifest.json`)
 //   .then((res) => res.json())
 //   .then((data) => console.log(data))

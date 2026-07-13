@@ -1,4 +1,4 @@
-import formatCurrency from '#Utils/formatCurrency';
+import formatCurrency from '@Utils/formatCurrency';
 
 import styles from './_CheckoutSummaryProductCard.module.scss';
 

@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import CheckoutSummaryProductCard from '#Components/checkout/CheckoutSummaryProductCard';
+import CheckoutSummaryProductCard from '@Components/checkout/CheckoutSummaryProductCard';
 
 import CheckoutForm from './CheckoutForm';
 

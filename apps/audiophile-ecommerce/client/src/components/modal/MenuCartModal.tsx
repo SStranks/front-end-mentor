@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import CartSummaryCard from '#Components/checkout/CartSummaryCard';
-import useModalClose from '#Hooks/useModalClose';
+import CartSummaryCard from '@Components/checkout/CartSummaryCard';
+import useModalClose from '@Hooks/useModalClose';
 
 import ReactPortal from './ReactPortal';
 

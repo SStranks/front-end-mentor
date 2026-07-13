@@ -1,6 +1,6 @@
-import CompanyStatement from '#Components/products/CompanyStatement';
-import ProductExampleShopList from '#Components/products/ProductExampleShopList';
-import ProductInfoCard from '#Components/products/ProductInfoCard';
+import CompanyStatement from '@Components/products/CompanyStatement';
+import ProductExampleShopList from '@Components/products/ProductExampleShopList';
+import ProductInfoCard from '@Components/products/ProductInfoCard';
 
 import MainTagLayout from './MainTagLayout';
 

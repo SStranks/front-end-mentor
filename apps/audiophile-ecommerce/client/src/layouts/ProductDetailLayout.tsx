@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import CompanyStatement from '#Components/products/CompanyStatement';
-import ProductDetailCard from '#Components/products/ProductDetailCard';
-import ProductExampleSeeCardList from '#Components/products/ProductExampleSeeCardList';
-import ProductExampleShopList from '#Components/products/ProductExampleShopList';
-import ProductImageGrid from '#Components/products/ProductImageGrid';
-import ProductData from '#Data/Data.json';
+import CompanyStatement from '@Components/products/CompanyStatement';
+import ProductDetailCard from '@Components/products/ProductDetailCard';
+import ProductExampleSeeCardList from '@Components/products/ProductExampleSeeCardList';
+import ProductExampleShopList from '@Components/products/ProductExampleShopList';
+import ProductImageGrid from '@Components/products/ProductImageGrid';
+import ProductData from '@Data/Data.json';
 
 import MainTagLayout from './MainTagLayout';
 

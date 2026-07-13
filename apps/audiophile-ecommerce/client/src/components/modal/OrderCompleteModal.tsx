@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
-import OrderCompleteCard from '#Components/checkout/OrderCompleteCard';
+import OrderCompleteCard from '@Components/checkout/OrderCompleteCard';
 
 import ReactPortal from './ReactPortal';
 

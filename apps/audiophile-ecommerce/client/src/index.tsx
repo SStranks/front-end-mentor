@@ -2,10 +2,10 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ErrorFallback } from '#Components/ui/RollbarErrorFallback';
-import ScrollToTop from '#Hooks/ScrollToTop';
-import BodyScrollToggle from '#Hooks/useBodyScrollToggle';
-import { RollbarErrorBoundary, RollbarProvider } from '#Lib/Rollbar';
+import { ErrorFallback } from '@Components/ui/RollbarErrorFallback';
+import ScrollToTop from '@Hooks/ScrollToTop';
+import BodyScrollToggle from '@Hooks/useBodyScrollToggle';
+import { RollbarErrorBoundary, RollbarProvider } from '@Lib/Rollbar';
 
 import App from './components/App';
 

@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 
-import ViewMoreCartItemsButton from '#Components/custom/buttons/ViewMoreCartItemsButton';
-import { useShoppingCartContext } from '#Context/ShoppingCartContext';
-import ProductData from '#Data/Data.json';
-import IconCheck from '#Svg/desktop/icon-check.svg';
-import formatCurrency from '#Utils/formatCurrency';
+import ViewMoreCartItemsButton from '@Components/custom/buttons/ViewMoreCartItemsButton';
+import { useShoppingCartContext } from '@Context/ShoppingCartContext';
+import ProductData from '@Data/Data.json';
+import IconCheck from '@Svg/desktop/icon-check.svg';
+import formatCurrency from '@Utils/formatCurrency';
 
 import CheckoutSummaryProductCard from './CheckoutSummaryProductCard';
 

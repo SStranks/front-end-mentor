@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import IconFacebook from '#Svg/desktop/icon-facebook.svg';
-import IconInstagram from '#Svg/desktop/icon-instagram.svg';
-import IconTwitter from '#Svg/desktop/icon-twitter.svg';
-import Logo from '#Svg/desktop/logo.svg';
+import IconFacebook from '@Svg/desktop/icon-facebook.svg';
+import IconInstagram from '@Svg/desktop/icon-instagram.svg';
+import IconTwitter from '@Svg/desktop/icon-twitter.svg';
+import Logo from '@Svg/desktop/logo.svg';
 
 import styles from './_Footer.module.scss';
 

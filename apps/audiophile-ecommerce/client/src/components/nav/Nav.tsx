@@ -1,11 +1,11 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import MenuCartModal from '#Components/modal/MenuCartModal';
-import MenuCategoryModal from '#Components/modal/MenuCategoryModal';
-import IconCart from '#Svg/desktop/icon-cart.svg';
-import Logo from '#Svg/desktop/logo.svg';
-import IconMenu from '#Svg/tablet/icon-hamburger.svg';
+import MenuCartModal from '@Components/modal/MenuCartModal';
+import MenuCategoryModal from '@Components/modal/MenuCategoryModal';
+import IconCart from '@Svg/desktop/icon-cart.svg';
+import Logo from '@Svg/desktop/logo.svg';
+import IconMenu from '@Svg/tablet/icon-hamburger.svg';
 
 import styles from './_Nav.module.scss';
 

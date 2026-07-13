@@ -1,23 +1,23 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
-import DefaultLayout from '#Layouts/DefaultLayout';
-import HomePage from '#Pages/home/HomePage';
+import { ShoppingCartProvider } from '@Context/ShoppingCartContext';
+import DefaultLayout from '@Layouts/DefaultLayout';
+import HomePage from '@Pages/home/HomePage';
 
 import Fallback from './custom/accessibility/Fallback';
 
 // NOTE:  Artifical demonstration of transition animation for lazy-loading.
 const HeadphonesPage = lazy(() =>
   Promise.all([
-    import('#Pages/headphones/HeadphonesPage'),
+    import('@Pages/headphones/HeadphonesPage'),
     new Promise((resolve) => setTimeout(resolve, 3000)), // ensures minimal delay
   ]).then(([module]) => module)
 );
-const EarphonesPage = lazy(() => import('#Pages/earphones/EarphonesPage'));
-const SpeakersPage = lazy(() => import('#Pages/speakers/SpeakersPage'));
-const ProductDetailsPage = lazy(() => import('#Pages/product-details/ProductDetailsPage'));
-const CheckoutPage = lazy(() => import('#Pages/checkout/CheckoutPage'));
+const EarphonesPage = lazy(() => import('@Pages/earphones/EarphonesPage'));
+const SpeakersPage = lazy(() => import('@Pages/speakers/SpeakersPage'));
+const ProductDetailsPage = lazy(() => import('@Pages/product-details/ProductDetailsPage'));
+const CheckoutPage = lazy(() => import('@Pages/checkout/CheckoutPage'));
 
 function App(): JSX.Element {
   // const { DeferredComponent, hasImportFinished, enableComponent } =

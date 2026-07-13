@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter, Router } from 'react-router-dom';
 
-import { ShoppingCartProvider } from '#Context/ShoppingCartContext';
+import { ShoppingCartProvider } from '@Context/ShoppingCartContext';
 
 import Nav from './Nav';
 

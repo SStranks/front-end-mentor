@@ -1,5 +1,5 @@
-import AddToCartButton from '#Components/custom/buttons/AddToCartButton';
-import formatCurrency from '#Utils/formatCurrency';
+import AddToCartButton from '@Components/custom/buttons/AddToCartButton';
+import formatCurrency from '@Utils/formatCurrency';
 
 import styles from './_ProductDetailCard.module.scss';
 
