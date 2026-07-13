@@ -1,12 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import About from '#Pages/about/About';
-import AppDesign from '#Pages/app-design/AppDesign';
-import Contact from '#Pages/contact/Contact';
-import GraphicDesign from '#Pages/graphic-design/GraphicDesign';
-import Home from '#Pages/home/Home';
-import Locations from '#Pages/locations/Locations';
-import WebDesign from '#Pages/web-design/WebDesign';
+import About from '@Pages/about/About';
+import AppDesign from '@Pages/app-design/AppDesign';
+import Contact from '@Pages/contact/Contact';
+import GraphicDesign from '@Pages/graphic-design/GraphicDesign';
+import Home from '@Pages/home/Home';
+import Locations from '@Pages/locations/Locations';
+import WebDesign from '@Pages/web-design/WebDesign';
 
 function App(): JSX.Element {
   return (

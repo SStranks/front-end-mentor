@@ -1,12 +1,12 @@
-import Card1 from '#Components/card/Card1';
-import Card2 from '#Components/card/Card2';
-import Nav from '#Components/nav/Nav';
-import ImgAppDesign from '#Img/desktop/image-app-design.jpg';
-import ImgBoxedWater from '#Img/desktop/image-boxed-water.jpg';
-import ImgChange from '#Img/desktop/image-change.jpg';
-import ImgGraphicDesign from '#Img/desktop/image-graphic-design.jpg';
-import ImgScience from '#Img/desktop/image-science.jpg';
-import DefaultLayout from '#Layouts/DefaultLayout';
+import Card1 from '@Components/card/Card1';
+import Card2 from '@Components/card/Card2';
+import Nav from '@Components/nav/Nav';
+import ImgAppDesign from '@Img/desktop/image-app-design.jpg';
+import ImgBoxedWater from '@Img/desktop/image-boxed-water.jpg';
+import ImgChange from '@Img/desktop/image-change.jpg';
+import ImgGraphicDesign from '@Img/desktop/image-graphic-design.jpg';
+import ImgScience from '@Img/desktop/image-science.jpg';
+import DefaultLayout from '@Layouts/DefaultLayout';
 
 import styles from './_GraphicDesign.module.scss';
 

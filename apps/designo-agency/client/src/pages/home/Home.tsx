@@ -1,15 +1,15 @@
-import Card1 from '#Components/card/Card1';
-import Nav from '#Components/nav/Nav';
-import Quality from '#Components/quality/Quality';
-import ImgAppDesign from '#Img/desktop/image-app-design.jpg';
-import ImgGraphicDesign from '#Img/desktop/image-graphic-design.jpg';
-import ImgHero from '#Img/desktop/image-hero-phone.png';
-import ImgWebDesign from '#Img/desktop/image-web-design-large.jpg';
-import DefaultLayout from '#Layouts/DefaultLayout';
-import SvgBgLeaf from '#Svg/desktop/bg-pattern-leaf.svg';
-import SvgFriendly from '#Svg/desktop/illustration-friendly.svg';
-import SvgPassionate from '#Svg/desktop/illustration-passionate.svg';
-import SvgResourceful from '#Svg/desktop/illustration-resourceful.svg';
+import Card1 from '@Components/card/Card1';
+import Nav from '@Components/nav/Nav';
+import Quality from '@Components/quality/Quality';
+import ImgAppDesign from '@Img/desktop/image-app-design.jpg';
+import ImgGraphicDesign from '@Img/desktop/image-graphic-design.jpg';
+import ImgHero from '@Img/desktop/image-hero-phone.png';
+import ImgWebDesign from '@Img/desktop/image-web-design-large.jpg';
+import DefaultLayout from '@Layouts/DefaultLayout';
+import SvgBgLeaf from '@Svg/desktop/bg-pattern-leaf.svg';
+import SvgFriendly from '@Svg/desktop/illustration-friendly.svg';
+import SvgPassionate from '@Svg/desktop/illustration-passionate.svg';
+import SvgResourceful from '@Svg/desktop/illustration-resourceful.svg';
 
 import styles from './_Home.module.scss';
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import App from '#Components/App';
-import ScrollToTop from '#Hooks/ScrollToTop';
+import App from '@Components/App';
+import ScrollToTop from '@Hooks/ScrollToTop';
 
-import '#Sass/global-imports.scss';
+import '@Sass/global-imports.scss';
 
 const container = document.querySelector('#root');
 const root = createRoot(container!);

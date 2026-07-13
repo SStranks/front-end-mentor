@@ -1,10 +1,10 @@
-import Location from '#Components/location/Location';
-import Nav from '#Components/nav/Nav';
-import DefaultLayout from '#Layouts/DefaultLayout';
-import IconError from '#Svg/desktop/icon-error.svg';
-import SvgAustralia from '#Svg/desktop/illustration-australia.svg';
-import SvgCanada from '#Svg/desktop/illustration-canada.svg';
-import SvgUnitedKingdom from '#Svg/desktop/illustration-united-kingdom.svg';
+import Location from '@Components/location/Location';
+import Nav from '@Components/nav/Nav';
+import DefaultLayout from '@Layouts/DefaultLayout';
+import IconError from '@Svg/desktop/icon-error.svg';
+import SvgAustralia from '@Svg/desktop/illustration-australia.svg';
+import SvgCanada from '@Svg/desktop/illustration-canada.svg';
+import SvgUnitedKingdom from '@Svg/desktop/illustration-united-kingdom.svg';
 
 import styles from './_Contact.module.scss';
 

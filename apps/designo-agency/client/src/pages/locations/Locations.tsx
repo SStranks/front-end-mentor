@@ -1,8 +1,8 @@
-import Nav from '#Components/nav/Nav';
-import ImgAustralia from '#Img/desktop/image-map-australia.png';
-import ImgCanada from '#Img/desktop/image-map-canada.png';
-import ImgUnitedKingdom from '#Img/desktop/image-map-united-kingdom.png';
-import DefaultLayout from '#Layouts/DefaultLayout';
+import Nav from '@Components/nav/Nav';
+import ImgAustralia from '@Img/desktop/image-map-australia.png';
+import ImgCanada from '@Img/desktop/image-map-canada.png';
+import ImgUnitedKingdom from '@Img/desktop/image-map-united-kingdom.png';
+import DefaultLayout from '@Layouts/DefaultLayout';
 
 import styles from './_Locations.module.scss';
 

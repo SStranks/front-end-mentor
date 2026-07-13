@@ -15,39 +15,39 @@ const ROUTES = {
   webdesign: '/webdesign',
 };
 
-vi.mock('#Pages/home/Home', () => ({
+vi.mock('@Pages/home/Home', () => ({
   default: () => <div data-testid="page-home" />,
 }));
 
-vi.mock('#Pages/web-design/WebDesign', () => ({
+vi.mock('@Pages/web-design/WebDesign', () => ({
   default: () => <div data-testid="page-webdesign" />,
 }));
 
-vi.mock('#Pages/app-design/AppDesign', () => ({
+vi.mock('@Pages/app-design/AppDesign', () => ({
   default: () => {
     return <div data-testid="page-appdesign" />;
   },
 }));
 
-vi.mock('#Pages/graphic-design/GraphicDesign', () => ({
+vi.mock('@Pages/graphic-design/GraphicDesign', () => ({
   default: () => {
     return <div data-testid="page-graphicdesign" />;
   },
 }));
 
-vi.mock('#Pages/locations/Locations', () => ({
+vi.mock('@Pages/locations/Locations', () => ({
   default: () => {
     return <div data-testid="page-locations" />;
   },
 }));
 
-vi.mock('#Pages/about/About', () => ({
+vi.mock('@Pages/about/About', () => ({
   default: () => {
     return <div data-testid="page-about" />;
   },
 }));
 
-vi.mock('#Pages/contact/Contact', () => ({
+vi.mock('@Pages/contact/Contact', () => ({
   default: () => {
     return <div data-testid="page-contact" />;
   },

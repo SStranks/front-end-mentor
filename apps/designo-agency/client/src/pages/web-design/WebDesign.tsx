@@ -1,15 +1,15 @@
-import Card1 from '#Components/card/Card1';
-import Card2 from '#Components/card/Card2';
-import Nav from '#Components/nav/Nav';
-import ImgAppDesign from '#Img/desktop/image-app-design.jpg';
-import ImgBlogr from '#Img/desktop/image-blogr.jpg';
-import ImgBuilder from '#Img/desktop/image-builder.jpg';
-import ImgCamp from '#Img/desktop/image-camp.jpg';
-import ImgExpress from '#Img/desktop/image-express.jpg';
-import ImgGraphicDesign from '#Img/desktop/image-graphic-design.jpg';
-import ImgPhoton from '#Img/desktop/image-photon.jpg';
-import ImgTransfer from '#Img/desktop/image-transfer.jpg';
-import DefaultLayout from '#Layouts/DefaultLayout';
+import Card1 from '@Components/card/Card1';
+import Card2 from '@Components/card/Card2';
+import Nav from '@Components/nav/Nav';
+import ImgAppDesign from '@Img/desktop/image-app-design.jpg';
+import ImgBlogr from '@Img/desktop/image-blogr.jpg';
+import ImgBuilder from '@Img/desktop/image-builder.jpg';
+import ImgCamp from '@Img/desktop/image-camp.jpg';
+import ImgExpress from '@Img/desktop/image-express.jpg';
+import ImgGraphicDesign from '@Img/desktop/image-graphic-design.jpg';
+import ImgPhoton from '@Img/desktop/image-photon.jpg';
+import ImgTransfer from '@Img/desktop/image-transfer.jpg';
+import DefaultLayout from '@Layouts/DefaultLayout';
 
 import styles from './_WebDesign.module.scss';
 

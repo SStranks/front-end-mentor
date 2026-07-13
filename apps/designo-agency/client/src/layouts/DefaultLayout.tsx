@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import Footer from '#Components/footer/Footer';
+import Footer from '@Components/footer/Footer';
 
 import styles from './_DefaultLayout.module.scss';
 

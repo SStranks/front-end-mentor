@@ -1,14 +1,14 @@
-import Card1 from '#Components/card/Card1';
-import Card2 from '#Components/card/Card2';
-import Nav from '#Components/nav/Nav';
-import ImgAirfilter from '#Img/desktop/image-airfilter.jpg';
-import ImgEyecam from '#Img/desktop/image-eyecam.jpg';
-import ImgFaceit from '#Img/desktop/image-faceit.jpg';
-import ImgGraphicDesign from '#Img/desktop/image-graphic-design.jpg';
-import ImgLoopstudios from '#Img/desktop/image-loopstudios.jpg';
-import ImgTodo from '#Img/desktop/image-todo.jpg';
-import ImgWebDesign from '#Img/desktop/image-web-design-large.jpg';
-import DefaultLayout from '#Layouts/DefaultLayout';
+import Card1 from '@Components/card/Card1';
+import Card2 from '@Components/card/Card2';
+import Nav from '@Components/nav/Nav';
+import ImgAirfilter from '@Img/desktop/image-airfilter.jpg';
+import ImgEyecam from '@Img/desktop/image-eyecam.jpg';
+import ImgFaceit from '@Img/desktop/image-faceit.jpg';
+import ImgGraphicDesign from '@Img/desktop/image-graphic-design.jpg';
+import ImgLoopstudios from '@Img/desktop/image-loopstudios.jpg';
+import ImgTodo from '@Img/desktop/image-todo.jpg';
+import ImgWebDesign from '@Img/desktop/image-web-design-large.jpg';
+import DefaultLayout from '@Layouts/DefaultLayout';
 
 import styles from './_AppDesign.module.scss';
 

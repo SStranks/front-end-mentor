@@ -1,12 +1,12 @@
-import Location from '#Components/location/Location';
-import Nav from '#Components/nav/Nav';
-import ImgHero from '#Img/desktop/image-about-hero.jpg';
-import ImgRealDeal from '#Img/desktop/image-real-deal.jpg';
-import ImgTalent from '#Img/desktop/image-world-class-talent.jpg';
-import DefaultLayout from '#Layouts/DefaultLayout';
-import SvgAustralia from '#Svg/desktop/illustration-australia.svg';
-import SvgCanada from '#Svg/desktop/illustration-canada.svg';
-import SvgUnitedKingdom from '#Svg/desktop/illustration-united-kingdom.svg';
+import Location from '@Components/location/Location';
+import Nav from '@Components/nav/Nav';
+import ImgHero from '@Img/desktop/image-about-hero.jpg';
+import ImgRealDeal from '@Img/desktop/image-real-deal.jpg';
+import ImgTalent from '@Img/desktop/image-world-class-talent.jpg';
+import DefaultLayout from '@Layouts/DefaultLayout';
+import SvgAustralia from '@Svg/desktop/illustration-australia.svg';
+import SvgCanada from '@Svg/desktop/illustration-canada.svg';
+import SvgUnitedKingdom from '@Svg/desktop/illustration-united-kingdom.svg';
 
 import styles from './_About.module.scss';
 

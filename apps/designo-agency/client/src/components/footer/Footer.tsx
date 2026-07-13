@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import LogoLight from '#Img/desktop/logo-light.png';
-import IconFacebook from '#Svg/desktop/icon-facebook.svg';
-import IconInstagram from '#Svg/desktop/icon-instagram.svg';
-import IconPinterest from '#Svg/desktop/icon-pinterest.svg';
-import IconTwitter from '#Svg/desktop/icon-twitter.svg';
-import IconYoutube from '#Svg/desktop/icon-youtube.svg';
+import LogoLight from '@Img/desktop/logo-light.png';
+import IconFacebook from '@Svg/desktop/icon-facebook.svg';
+import IconInstagram from '@Svg/desktop/icon-instagram.svg';
+import IconPinterest from '@Svg/desktop/icon-pinterest.svg';
+import IconTwitter from '@Svg/desktop/icon-twitter.svg';
+import IconYoutube from '@Svg/desktop/icon-youtube.svg';
 
 import styles from './_Footer.module.scss';
 
