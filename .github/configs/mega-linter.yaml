@@ -26,7 +26,7 @@ DISABLE_LINTERS:
   - REPOSITORY_TRIVY
   - REPOSITORY_TRIVY_SBOM
 
-EXCLUDED_DIRECTORIES: [.git, node_modules, megalinter-reports, dist, build, public, private, generated, meta]
+EXCLUDED_DIRECTORIES: [.git, node_modules, megalinter-reports, dist, build, public, private, generated, meta, .sassdoc]
 FILTER_REGEX_EXCLUDE: '(pnpm-lock.yaml|pnpm-workspace.yaml)'
 HTML_FILTER_REGEX_EXCLUDE: '(cypress/|nodemailer/templates/|bundle-stats.html)'
 JSON_FILTER_REGEX_EXCLUDE: /migrations/meta/

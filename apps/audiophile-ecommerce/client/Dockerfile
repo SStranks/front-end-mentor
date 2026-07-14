@@ -1,5 +1,5 @@
 # Primary Stage: Build React Image
-FROM node:18-alpine3.17 as primary
+FROM node:18-alpine3.17 AS primary
 
 LABEL version="1.0"
 LABEL description="Prod Image: #37 Audiophile: React"
