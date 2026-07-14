@@ -37,7 +37,7 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --supported-architectures.cpu=current,wasm32
 
       - name: MegaLinter
         uses: oxsecurity/megalinter/flavors/javascript@v9.1.0
