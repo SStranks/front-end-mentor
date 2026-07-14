@@ -1,56 +1,54 @@
-/* eslint-disable func-names */
-/* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose';
 
 interface IRequest {
-  title: string;
   category: string;
-  upvotes: number;
-  status: string;
-  description: string;
   comments: mongoose.Types.ObjectId[];
+  description: string;
+  status: string;
+  title: string;
   totalComments: number;
+  upvotes: number;
 }
 
 const requestSchema = new mongoose.Schema<IRequest>(
   {
-    title: {
-      type: String,
-      required: true,
-      trim: true,
-      maxlength: [75, 'Title can be no longer than 75 characters'],
-    },
     category: {
-      type: String,
-      lowercase: true,
       enum: ['ui', 'ux', 'enhancement', 'bug', 'feature'],
-      required: true,
-    },
-    upvotes: {
-      type: Number,
-      default: 0,
-    },
-    status: {
-      type: String,
       lowercase: true,
-      enum: ['suggestion', 'planned', 'in-progress', 'live'],
-      default: 'suggestion',
-    },
-    description: {
-      type: String,
       required: true,
-      trim: true,
-      maxlength: [250, 'Description can be no longer than 250 characters'],
+      type: String,
     },
     comments: [
       {
-        type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',
+        type: mongoose.Schema.Types.ObjectId,
       },
     ],
+    description: {
+      maxlength: [250, 'Description can be no longer than 250 characters'],
+      required: true,
+      trim: true,
+      type: String,
+    },
+    status: {
+      default: 'suggestion',
+      enum: ['suggestion', 'planned', 'in-progress', 'live'],
+      lowercase: true,
+      type: String,
+    },
+    title: {
+      maxlength: [75, 'Title can be no longer than 75 characters'],
+      required: true,
+      trim: true,
+      type: String,
+    },
     totalComments: {
-      type: Number,
       default: 0,
+      type: Number,
+    },
+    upvotes: {
+      default: 0,
+      type: Number,
     },
   },
   {

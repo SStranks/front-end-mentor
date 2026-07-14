@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
-const { DB_PROTOCOL, DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_ARGS } =
-  process.env;
+const { DB_PROTOCOL, DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_ARGS } = process.env;
 
 const MONGO_URI = `${DB_PROTOCOL}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_DATABASE}${DB_ARGS}`;
 console.log(`*** ${MONGO_URI}`);
@@ -23,11 +22,8 @@ const connectDB = async () => {
   try {
     await mongoose.connect(MONGO_URI);
   } catch (error) {
-    console.log(
-      `*** ERROR: Cannot connect to database: ${DB_DATABASE} @ ${DB_HOST}`,
-      error
-    );
-    // eslint-disable-next-line unicorn/no-process-exit
+    console.log(`*** ERROR: Cannot connect to database: ${DB_DATABASE} @ ${DB_HOST}`, error);
+    // eslint-disable-next-line unicorn/no-process-exit, n/no-process-exit
     process.exit();
   }
 };
@@ -36,8 +32,6 @@ const mongooseConnection = mongoose.connection;
 
 mongooseConnection.on('error', () => console.log('Mongoose Connection: Error'));
 
-mongooseConnection.once('open', () =>
-  console.log('Mongoose Connection: Successful')
-);
+mongooseConnection.once('open', () => console.log('Mongoose Connection: Successful'));
 
 export { connectDB, mongooseConnection };

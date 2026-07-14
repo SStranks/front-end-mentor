@@ -1,3 +1,5 @@
+import express from 'express';
+
 import {
   createRequest,
   deleteRequest,
@@ -6,8 +8,7 @@ import {
   getRequest,
   updateRequest,
   updateRequestUpvote,
-} from '#Controllers/requestController';
-import express from 'express';
+} from '#Controllers/requestController.js';
 
 const router = express.Router();
 

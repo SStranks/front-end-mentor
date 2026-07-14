@@ -1,10 +1,11 @@
-/* eslint-disable import/first */
+/* eslint-disable n/no-process-exit */
 // NOTE:  Uncomment during production build - substitutes all alias names for actual paths.
 // import { replaceTscAliasPaths } from 'tsc-alias';
 // replaceTscAliasPaths({ configFile: '../tsconfig.json' });
 
-import { rollbarServer } from '#Controllers/rollbarController';
 import dotenv from 'dotenv';
+
+import { rollbarServer } from '#Controllers/rollbarController.js';
 
 dotenv.config();
 
@@ -16,15 +17,16 @@ process.on('uncaughtException', (error: Error) => {
   process.exit(1);
 });
 
-import { connectDB } from '#Config/db';
-import app from './app';
+import { connectDB } from '#Config/db.js';
 
-connectDB();
+import app from './app.js';
 
-const PORT = process.env.NODE_DOCKER_PORT || 3000;
+await connectDB();
+
+const PORT = process.env['NODE_DOCKER_PORT'] || 3000;
 
 const server = app.listen(PORT, () => {
-  console.log(`Server running successfuly in ${process.env.NODE_ENV} mode on Port ${PORT}`);
+  console.log(`Server running successfuly in ${process.env['NODE_ENV']} mode on Port ${PORT}`);
 });
 
 // Unhandled Rejection Errors

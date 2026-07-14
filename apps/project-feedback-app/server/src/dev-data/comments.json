@@ -35,11 +35,7 @@
     "_id": "6494d7dd4c3f27a0e4d60cbb",
     "user": "6494666f44696915c33d76dc",
     "content": "Good point! Using any kind of style extension is great and can be highly customizable, like the ability to change contrast and brightness. I'd prefer not to use one of such extensions, however, for security and privacy reasons.",
-    "parents": [
-      "6494d7dd4c3f27a0e4d60cb8",
-      "6494d7dd4c3f27a0e4d60cb9",
-      "6494d7dd4c3f27a0e4d60cbb"
-    ],
+    "parents": ["6494d7dd4c3f27a0e4d60cb8", "6494d7dd4c3f27a0e4d60cb9", "6494d7dd4c3f27a0e4d60cbb"],
     "created": "2023-06-22T23:23:09.808Z",
     "__v": 0
   },

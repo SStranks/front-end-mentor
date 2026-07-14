@@ -1,7 +1,10 @@
-import { createComment, updateComment } from '#Controllers/commentController';
+import type { Router } from 'express';
+
 import express from 'express';
 
-const commentRouter = express.Router();
+import { createComment, updateComment } from '#Controllers/commentController.js';
+
+const commentRouter: Router = express.Router();
 
 commentRouter.route('/').post(createComment);
 

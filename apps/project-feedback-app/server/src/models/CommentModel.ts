@@ -1,62 +1,62 @@
-import { Document, Schema, Types, model } from 'mongoose';
+import type { Document, Types } from 'mongoose';
+
+import { model, Schema } from 'mongoose';
 
 export interface ICommentPopulateUser {
-  user: { username: string; user: string; photo: string };
+  user: { photo: string; user: string; username: string };
 }
 
 export interface IComment extends Document {
-  user: Types.ObjectId;
   content: string;
-  requestId: string;
-  parents: Types.ObjectId[];
   created: Date;
+  parents: Types.ObjectId[];
+  requestId: string;
+  user: Types.ObjectId;
 }
 
-export interface ICommentHydrated
-  extends Omit<IComment, 'user'>,
-    ICommentPopulateUser {
+export interface ICommentHydrated extends Omit<IComment, 'user'>, ICommentPopulateUser {
   _id: Types.ObjectId;
-  replyingTo?: string;
   replies?: unknown[];
+  replyingTo?: string;
 }
 
 const commentSchema = new Schema<IComment>(
   {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
     content: {
-      type: String,
-      trim: true,
-      minlength: [2, 'Comment must be longer than 2 characters'],
       maxlength: [500, 'Comment can be no longer than 500 characters'],
-    },
-    requestId: {
+      minlength: [2, 'Comment must be longer than 2 characters'],
+      trim: true,
       type: String,
-      required: true,
+    },
+    created: {
+      default: Date.now(),
+      type: Date,
     },
     parents: [
       {
-        type: Schema.Types.ObjectId,
         ref: 'Comment',
+        type: Schema.Types.ObjectId,
       },
     ],
-    created: {
-      type: Date,
-      default: Date.now(),
+    requestId: {
+      required: true,
+      type: String,
+    },
+    user: {
+      ref: 'User',
+      required: true,
+      type: Schema.Types.ObjectId,
     },
   },
   {
-    toObject: { virtuals: true },
     toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 
 // If Root comment; top parent id should be this._id
 commentSchema.pre('save', function (next) {
-  if (this.parents.length === 0) this.parents.push(this._id);
+  if (this.parents.length === 0) this.parents.push(this._id as Types.ObjectId);
   next();
 });
 

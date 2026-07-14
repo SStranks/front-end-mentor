@@ -1,10 +1,20 @@
-import { NextFunction, Request, Response } from 'express';
+import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-const catchAsync = <T>(
-  fn: (req: Request, res: Response, next: NextFunction) => Promise<T>
-) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    fn(req, res, next).catch(next);
+const catchAsync = <
+  P = unknown,
+  ResBody = unknown,
+  ReqBody = unknown,
+  ReqQuery = unknown,
+  Locals extends Record<string, unknown> = Record<string, unknown>,
+>(
+  fn: (
+    req: Request<P, ResBody, ReqBody, ReqQuery, Locals>,
+    res: Response<ResBody, Locals>,
+    next: NextFunction
+  ) => Promise<unknown>
+): RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals> => {
+  return (req, res, next) => {
+    void fn(req, res, next).catch(next);
   };
 };
 

@@ -1,15 +1,10 @@
-/* eslint-disable func-names */
-import { mongooseConnection } from '#Config/db';
-import { NextFunction, Request, Response } from 'express';
-import { ClientSession } from 'mongoose';
+import type { NextFunction, Request, Response } from 'express';
+import type { ClientSession } from 'mongoose';
+
+import { mongooseConnection } from '#Config/db.js';
 
 const catchAsyncTransaction = <T>(
-  fn: (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-    session: ClientSession
-  ) => Promise<T>
+  fn: (req: Request, res: Response, next: NextFunction, session: ClientSession) => Promise<T>
 ) => {
   return async function (req: Request, res: Response, next: NextFunction) {
     const session = await mongooseConnection.startSession();
@@ -25,7 +20,7 @@ const catchAsyncTransaction = <T>(
       await session.abortTransaction();
       next(error);
     } finally {
-      session.endSession();
+      await session.endSession();
     }
 
     return true;

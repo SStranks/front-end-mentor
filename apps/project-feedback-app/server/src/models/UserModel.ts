@@ -2,46 +2,46 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 
 interface IUser {
-  username: string;
-  name: string;
   email: string;
+  name: string;
   photo: string;
   role: string;
   upvotes: mongoose.Types.ObjectId[];
+  username: string;
 }
 
 const userSchema = new mongoose.Schema<IUser>({
-  username: {
+  email: {
+    lowercase: true,
+    require: [true, 'An email address is required'],
     type: String,
     unique: true,
-    required: true,
-    trim: true,
+    validate: [validator.default.isEmail, 'A valid email address is required'],
   },
   name: {
-    type: String,
     required: [true, 'A name is required'],
-  },
-  email: {
     type: String,
-    require: [true, 'An email address is required'],
-    unique: true,
-    lowercase: true,
-    validate: [validator.isEmail, 'A valid email address is required'],
   },
   photo: {
     type: String,
   },
   role: {
-    type: String,
-    enum: ['user', 'admin'],
     default: 'user',
+    enum: ['user', 'admin'],
+    type: String,
   },
   upvotes: [
     {
-      type: mongoose.Schema.Types.ObjectId,
       ref: 'Request',
+      type: mongoose.Schema.Types.ObjectId,
     },
   ],
+  username: {
+    required: true,
+    trim: true,
+    type: String,
+    unique: true,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
