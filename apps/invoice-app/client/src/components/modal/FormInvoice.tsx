@@ -139,7 +139,8 @@ function FormInvoice({ invoice = undefined }: IProps): JSX.Element {
         street: clientAddressStreet,
       };
 
-      // TODO:  SenderAddress; backend; senderAddress is referencing User document - can't update without ID. Fix this issue when new functionality for user login system is implemented.
+      // TODO:  SenderAddress; backend; senderAddress is referencing User document - ;
+      // can't update without ID. Fix this issue when new functionality for user login system is implemented.
       console.log(senderAddress);
       const requestBody: { [x: string]: unknown } = {
         // senderAddress,

@@ -41,7 +41,8 @@ export const orderStateTasks = (state: TAppStateContext, localStorageJSON: strin
       const sortedTasks: ITask[] = [];
       const sortedTaskIds = new Set();
 
-      // NOTE:  Could optimize this portion by converting state tasks into hashmap first, deleting sorted tasks from it, then merging the remainder at the end.
+      // NOTE:  Could optimize this portion by converting state tasks into hashmap first;
+      // deleting sorted tasks from it, then merging the remainder at the end.
       localColumn.tasks.forEach((localStorageTaskId) => {
         const localTask = stateColumn.tasks.find((stateTask) => stateTask._id === localStorageTaskId);
         if (localTask) {

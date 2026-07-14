@@ -1,11 +1,11 @@
 export default {
+  arrowParens: 'always',
+  bracketSameLine: true,
+  bracketSpacing: true,
+  jsxSingleQuote: false,
   printWidth: 120,
-  tabWidth: 2,
   semi: true,
   singleQuote: true,
-  jsxSingleQuote: false,
-  bracketSpacing: true,
-  bracketSameLine: true,
-  arrowParens: 'always',
+  tabWidth: 2,
   trailingComma: 'es5',
 };

@@ -71,7 +71,8 @@ function ShoppingCartProvider(props: PropsWithChildren) {
   }
 
   return (
-    // NOTE:  If context has parent/s that cause re-render, then wrap provider value with useMemo to prevent unecessary re-renders of this context child consumers.
+    // NOTE:  If context has parent/s that cause re-render;
+    // wrap provider value with useMemo to prevent unecessary re-renders of this context child consumers.
     <ShoppingCartContext.Provider
       value={{
         cartItems,

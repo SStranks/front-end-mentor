@@ -42,7 +42,8 @@ interface IProps {
   required?: boolean;
 }
 
-// NOTE:  Improved keyboard accessibility; if the user increments the month/year, and the day is invalid (too high) then it automatically reduces the day to the largest valid value for that month.
+// NOTE:  Improved keyboard accessibility; if the user increments the month/year, and the day is invalid (too high);
+//  then it automatically reduces the day to the largest valid value for that month.
 function DatePicker({
   initialDate = undefined,
   min = undefined,
