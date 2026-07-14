@@ -1,26 +1,40 @@
+/* eslint-disable n/no-process-exit */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-use-before-define */
 /* eslint-disable security/detect-non-literal-fs-filename */
-/* eslint-disable security/detect-object-injection */
 /* eslint-disable unicorn/text-encoding-identifier-case */
 /* eslint-disable unicorn/no-process-exit */
 
-import connectDB from '#Config/db';
-import inquirer from 'inquirer';
-import mongoose, { Model } from 'mongoose';
-import * as fs from 'node:fs';
-import * as path from 'node:path';
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import _ from './dbImporterConfig';
+import type { Model } from 'mongoose';
 
-type TAnswer = {
-  [index: string]: string;
-};
+import inquirer from 'inquirer';
+import mongoose from 'mongoose';
+
+import connectDB from '#Config/db.js';
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 type TJson = {
   [key: string]: any;
 };
+
+interface MongooseModelModule {
+  default: Model<any>;
+}
+
+interface InquirerPrompt1 {
+  operation: string;
+}
+
+interface InquirerPrompt2 {
+  json: string;
+  model: string;
+}
+
+interface InquirerPrompt3 {
+  model: string;
+}
 
 // ----------------------------- //
 // ------- DBIMPORTER v1 ------- //
@@ -32,100 +46,9 @@ type TJson = {
 
 // Set directory for the JSON data files
 const filenamePath = fileURLToPath(import.meta.url);
-const dirnamePath = dirname(filenamePath);
+const dirnamePath = path.dirname(filenamePath);
 const jsonDirectoryPath = path.join(dirnamePath, '..', 'dev-data');
 const modelsDirectoryPath = path.join(dirnamePath, '..', 'models');
-
-// Connect to DB
-connectDB();
-
-// Once DB established successfully run Inquirer
-mongoose.connection.on('connected', () => {
-  inquirerProcess();
-});
-
-// Inquirer CLI Entry Point
-const inquirerProcess = async () => {
-  return inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'operation',
-        message: 'Do you wish to import or delete data?',
-        choices: ['Import', 'Delete'],
-      },
-    ])
-    .then((answer) => {
-      if (answer.operation === 'Import') importProcess();
-      if (answer.operation === 'Delete') deleteProcess();
-    })
-    .catch((error) => {
-      if (error.isTtyError) {
-        console.log(error);
-      } else {
-        console.log(error);
-      }
-    });
-
-  // Get JSON and Model file names - users selects one of each (linked).
-  async function importProcess() {
-    const jsonFileNames = fs.readdirSync(jsonDirectoryPath);
-    const modelFileNames = fs.readdirSync(modelsDirectoryPath);
-
-    return inquirer
-      .prompt([
-        {
-          type: 'list',
-          name: 'json',
-          message: 'Please select the JSON data file',
-          choices: jsonFileNames,
-        },
-        {
-          type: 'list',
-          name: 'model',
-          message: 'Please select the associated Model file',
-          choices: modelFileNames,
-        },
-      ])
-      .then(async (answer: TAnswer) => {
-        // Parse JSON. Import Model File. Import data.
-        const jsonData = JSON.parse(
-          fs.readFileSync(path.join(jsonDirectoryPath, answer.json), 'utf-8')
-        );
-        const { default: model } = await import(
-          path.join(modelsDirectoryPath, answer.model)
-        );
-        importData(model, jsonData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-};
-
-// Get Model filenames - user selects one. Import that Model and delete data based on that Model.
-async function deleteProcess() {
-  const modelFileNames = fs.readdirSync(modelsDirectoryPath);
-
-  return inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'model',
-        message: 'Please select the model file',
-        choices: modelFileNames,
-      },
-    ])
-    .then(async (answer) => {
-      const { default: model } = await import(
-        path.join(modelsDirectoryPath, answer.model)
-      );
-      deleteData(model);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 
 // Import data to MongoDB: Accepts Mongoose Model and JSON (expects array of obj)
 const importData = async (model: Model<any>, data: TJson) => {
@@ -139,6 +62,39 @@ const importData = async (model: Model<any>, data: TJson) => {
   process.exit();
 };
 
+async function importProcess() {
+  const jsonFileNames = fs.readdirSync(jsonDirectoryPath);
+  const modelFileNames = fs.readdirSync(modelsDirectoryPath);
+
+  return inquirer
+    .prompt<InquirerPrompt2>([
+      {
+        choices: jsonFileNames,
+        message: 'Please select the JSON data file',
+        name: 'json',
+        type: 'list',
+      },
+      {
+        choices: modelFileNames,
+        message: 'Please select the associated Model file',
+        name: 'model',
+        type: 'list',
+      },
+    ])
+    .then(async (answer) => {
+      // Parse JSON. Import Model File. Import data.
+      const jsonData = JSON.parse(fs.readFileSync(path.join(jsonDirectoryPath, answer.json), 'utf-8')) as Record<
+        string,
+        unknown
+      >;
+      const { default: model } = (await import(path.join(modelsDirectoryPath, answer.model))) as MongooseModelModule;
+      void importData(model, jsonData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 // Delete data from MongoDB: Accepts Mongoose Model
 const deleteData = async (model: Model<any>) => {
   try {
@@ -149,3 +105,57 @@ const deleteData = async (model: Model<any>) => {
   }
   process.exit();
 };
+
+// Get Model filenames - user selects one. Import that Model and delete data based on that Model.
+async function deleteProcess() {
+  const modelFileNames = fs.readdirSync(modelsDirectoryPath);
+
+  return inquirer
+    .prompt<InquirerPrompt3>([
+      {
+        choices: modelFileNames,
+        message: 'Please select the model file',
+        name: 'model',
+        type: 'list',
+      },
+    ])
+    .then(async (answer) => {
+      const { default: model } = (await import(path.join(modelsDirectoryPath, answer.model))) as MongooseModelModule;
+      await deleteData(model);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+// Inquirer CLI Entry Point
+const inquirerProcess = async () => {
+  return inquirer
+    .prompt<InquirerPrompt1>([
+      {
+        choices: ['Import', 'Delete'],
+        message: 'Do you wish to import or delete data?',
+        name: 'operation',
+        type: 'list',
+      },
+    ])
+    .then(async (answer) => {
+      if (answer.operation === 'Import') await importProcess();
+      if (answer.operation === 'Delete') await deleteProcess();
+    })
+    .catch((error: Error) => {
+      if ('isTtyError' in error) {
+        console.log(error);
+      } else {
+        console.log(error);
+      }
+    });
+};
+
+// Connect to DB
+await connectDB();
+
+// Once DB established successfully run Inquirer
+mongoose.connection.on('connected', () => {
+  void inquirerProcess();
+});

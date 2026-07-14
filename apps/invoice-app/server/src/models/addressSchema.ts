@@ -1,29 +1,29 @@
 import mongoose from 'mongoose';
 
 interface IAddress {
-  street: string;
   city: string;
-  postCode: string;
   country: string;
+  postCode: string;
+  street: string;
 }
 
 const addressSchema = new mongoose.Schema<IAddress>(
   {
-    street: {
-      type: String,
-      required: true,
-    },
     city: {
-      type: String,
       required: true,
-    },
-    postCode: {
       type: String,
-      required: true,
     },
     country: {
-      type: String,
       required: true,
+      type: String,
+    },
+    postCode: {
+      required: true,
+      type: String,
+    },
+    street: {
+      required: true,
+      type: String,
     },
   },
   {
@@ -31,4 +31,5 @@ const addressSchema = new mongoose.Schema<IAddress>(
   }
 );
 
-export { IAddress, addressSchema };
+export type { IAddress };
+export { addressSchema };

@@ -1,3 +1,7 @@
+import type { Router } from 'express';
+
+import express from 'express';
+
 import {
   createInvoice,
   deleteInvoice,
@@ -5,18 +9,13 @@ import {
   getInvoice,
   updateInvoice,
   updateInvoiceStatus,
-} from '#Controllers/invoiceController';
-import express from 'express';
+} from '#Controllers/invoiceController.js';
 
-const invoiceRouter = express.Router();
+const invoiceRouter: Router = express.Router();
 
 invoiceRouter.route('/').get(getAllInvoices).post(createInvoice);
 
-invoiceRouter
-  .route('/:id')
-  .get(getInvoice)
-  .patch(updateInvoice)
-  .delete(deleteInvoice);
+invoiceRouter.route('/:id').get(getInvoice).patch(updateInvoice).delete(deleteInvoice);
 
 invoiceRouter.route('/:id/status').patch(updateInvoiceStatus);
 

@@ -1,61 +1,62 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable func-names */
-/* eslint-disable unicorn/no-array-reduce */
-import formatDate from '#Utils/formatDate';
+import type { IAddress } from './addressSchema.js';
+
 import mongoose from 'mongoose';
 import { customAlphabet } from 'nanoid';
 import validator from 'validator';
-import { IAddress, addressSchema } from './addressSchema';
+
+import formatDate from '#Utils/formatDate.js';
+
+import { addressSchema } from './addressSchema.js';
 
 interface IItem {
   name: string;
-  quantity: number;
   price: number;
+  quantity: number;
   total: number;
 }
 
-interface IInvoice {
-  slug: string;
-  createdAt: Date;
-  paymentDue: string;
-  description: string;
-  paymentTerms: number;
-  clientName: string;
-  clientEmail: string;
-  status: string;
-  senderAddress: IAddress;
+export interface IInvoice {
   clientAddress: IAddress;
+  clientEmail: string;
+  clientName: string;
+  createdAt: Date;
+  description: string;
   items: IItem[];
+  paymentDue: string;
+  paymentTerms: number;
+  senderAddress: IAddress;
+  slug: string;
+  status: 'paid' | 'pending' | 'draft';
   total: number;
 }
 
 const itemSchema = new mongoose.Schema<IItem>(
   {
     name: {
-      type: String,
-      required: true,
       maxlength: [100, 'Item name can be no longer than 100 characters'],
-    },
-    quantity: {
-      type: Number,
-      requried: true,
+      required: true,
+      type: String,
     },
     price: {
-      type: Number,
-      required: true,
       min: [0, 'Price must be a positive number'],
+      required: true,
+      type: Number,
+    },
+    quantity: {
+      required: true,
+      type: Number,
     },
   },
   {
     id: false,
     toJSON: {
       virtuals: true,
-      transform: (doc, ret) => {
-        const { _id, ...rest } = ret;
-        return rest;
+      transform: (_doc, ret: IInvoice & { __v?: number; _id?: mongoose.Types.ObjectId }) => {
+        delete ret._id;
+        delete ret.__v;
+        return ret;
       },
     },
-    toObject: { virtuals: true },
   }
 );
 
@@ -80,14 +81,27 @@ const nanoid = customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6);
 
 const invoiceSchema = new mongoose.Schema<IInvoice>(
   {
-    slug: {
+    // TODO:  After creating sign-up functionality; have option when creating/updating invoice to use the default user address or add a new one.
+    // senderAddress: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'User',
+    // },
+    clientAddress: {
+      required: true,
+      type: addressSchema,
+    },
+    clientEmail: {
+      required: true,
       type: String,
-      default: nanoid(),
-      immutable: true,
+      validate: [validator.default.isEmail, 'Email must be a valid email address'],
+    },
+    clientName: {
+      required: true,
+      type: String,
     },
     createdAt: {
-      type: Date,
       default: Date.now(),
+      type: Date,
       set: (str: string) => {
         const dateParts = str.split('/');
         const newDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
@@ -95,57 +109,44 @@ const invoiceSchema = new mongoose.Schema<IInvoice>(
       },
     },
     description: {
-      type: String,
-      trim: true,
-      required: true,
       maxlength: [100, 'Description can be no longer than 100 characters'],
-    },
-    paymentTerms: {
-      type: Number,
       required: true,
-      enum: [1, 7, 14, 30],
-      default: 30,
-    },
-    clientName: {
+      trim: true,
       type: String,
-      required: true,
-    },
-    clientEmail: {
-      type: String,
-      required: true,
-      validate: [validator.isEmail, 'Email must be a valid email address'],
-    },
-    status: {
-      type: String,
-      required: true,
-      enum: ['paid', 'pending', 'draft'],
-      default: 'draft',
-    },
-    senderAddress: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    // TODO:  After creating sign-up functionality; have option when creating/updating invoice to use the default user address or add a new one.
-    // senderAddress: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'User',
-    // },
-    clientAddress: {
-      type: addressSchema,
-      required: true,
     },
     items: [
       {
         type: itemSchema,
       },
     ],
+    paymentTerms: {
+      default: 30,
+      enum: [1, 7, 14, 30],
+      required: true,
+      type: Number,
+    },
+    senderAddress: {
+      ref: 'User',
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    slug: {
+      default: nanoid(),
+      immutable: true,
+      type: String,
+    },
+    status: {
+      default: 'draft',
+      enum: ['paid', 'pending', 'draft'],
+      required: true,
+      type: String,
+    },
   },
   {
     id: false,
     toJSON: {
-      virtuals: true,
       getters: true,
-      transform: (doc, ret) => {
+      virtuals: true,
+      transform: (_doc, ret: IInvoice) => {
         const { createdAt: createdAtOld, ...rest } = ret;
         const createdAt = convertDate(createdAtOld);
         return { createdAt, ...rest };
@@ -157,9 +158,7 @@ const invoiceSchema = new mongoose.Schema<IInvoice>(
 
 invoiceSchema.virtual('paymentDue').get(function () {
   const { createdAt, paymentTerms } = this;
-  const newDate = convertDate(
-    new Date(createdAt.setDate(createdAt.getDate() + paymentTerms))
-  );
+  const newDate = convertDate(new Date(createdAt.setDate(createdAt.getDate() + paymentTerms)));
   return newDate;
 });
 

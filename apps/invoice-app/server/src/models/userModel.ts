@@ -1,53 +1,56 @@
-import { IAddress, addressSchema } from '#Models/addressSchema';
+import type { IAddress } from '#Models/addressSchema.js';
+
 import mongoose from 'mongoose';
 import validator from 'validator';
 
-interface IUser {
-  username: string;
-  name: string;
+import { addressSchema } from '#Models/addressSchema.js';
+
+export interface IUser {
+  address: IAddress;
   email: string;
+  invoices: mongoose.Types.ObjectId[];
+  name: string;
   photo: string;
   role: string;
-  address: IAddress;
-  invoices: mongoose.Types.ObjectId[];
+  username: string;
 }
 
 const userSchema = new mongoose.Schema<IUser>({
-  username: {
-    type: String,
-    unique: true,
+  address: {
     required: true,
-    trim: true,
-  },
-  name: {
-    type: String,
-    required: [true, 'A name is required'],
+    type: addressSchema,
   },
   email: {
-    type: String,
-    require: [true, 'An email address is required'],
-    unique: true,
     lowercase: true,
-    validate: [validator.isEmail, 'A valid email address is required'],
+    require: [true, 'An email address is required'],
+    type: String,
+    unique: true,
+    validate: [validator.default.isEmail, 'A valid email address is required'],
+  },
+  invoices: [
+    {
+      ref: 'Invoice',
+      type: mongoose.Schema.Types.ObjectId,
+    },
+  ],
+  name: {
+    required: [true, 'A name is required'],
+    type: String,
   },
   photo: {
     type: String,
   },
   role: {
-    type: String,
-    enum: ['user', 'admin'],
     default: 'user',
+    enum: ['user', 'admin'],
+    type: String,
   },
-  address: {
-    type: addressSchema,
+  username: {
     required: true,
+    trim: true,
+    type: String,
+    unique: true,
   },
-  invoices: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Invoice',
-    },
-  ],
 });
 
 const User = mongoose.model('User', userSchema);
