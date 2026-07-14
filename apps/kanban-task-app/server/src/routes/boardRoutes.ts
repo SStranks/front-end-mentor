@@ -1,9 +1,12 @@
+import type { Router } from 'express';
+
+import express from 'express';
+
 import { createBoard, deleteBoard, getAllBoards, getBoard, updateBoard } from '#Controllers/boardController.js';
 import { createColumn, deleteColumn, updateColumn } from '#Controllers/columnController.js';
 import { createTask, deleteTask, updateTask } from '#Controllers/taskController.js';
-import express from 'express';
 
-const boardRouter = express.Router();
+const boardRouter: Router = express.Router();
 
 boardRouter.route('/').get(getAllBoards).post(createBoard);
 

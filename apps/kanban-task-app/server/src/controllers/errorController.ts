@@ -1,39 +1,42 @@
-import AppError from '#Utils/appError.js';
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+/* eslint-disable unicorn/numeric-separators-style */
+import type { ErrorRequestHandler, Request, Response } from 'express';
+import type mongoose from 'mongoose';
 
-const handleCastErrorDB = (err: any) => {
+import { MongoError } from 'mongodb';
+import { MongooseError } from 'mongoose';
+
+import AppError from '#Utils/appError.js';
+
+type ValidationError = mongoose.Error.ValidationError;
+type CastError = mongoose.Error.CastError;
+
+const handleCastErrorDB = (err: CastError) => {
   const message = `Invalid ${err.path}: ${err.value}`;
   return new AppError(message, 400);
 };
 
-const handleDuplicateFieldsDB = (err: any) => {
+const handleDuplicateFieldsDB = (err: MongoError) => {
   if (err.errmsg) {
-    const value = (
-      (err.errmsg as string).match(/(["'])(\\?.)*?\1/) as Array<string>
-    )[0];
+    const value = // eslint-disable-next-line security/detect-unsafe-regex
+      (err.errmsg.match(/(["'])(?:\\?.)*?\1/) as Array<string>)[0];
     const message = `Duplicate field value: ${value}. Please use another value!`;
     return new AppError(message, 400);
   }
-  return new AppError(
-    'Error: Duplicate field value; Error handler misconfiguration.',
-    400
-  );
+  return new AppError('Error: Duplicate field value; Error handler misconfiguration.', 400);
 };
 
-const handleValidationErrorDB = (err: any) => {
-  const errors = (Object.values(err.errors) as Record<string, unknown>[]).map(
-    (el) => el.message
-  );
+const handleValidationErrorDB = (err: ValidationError) => {
+  const errors = Object.values(err.errors).map((el) => el['message']);
   const message = `Invalid input data. ${errors.join('. ')}`;
   return new AppError(message, 400);
 };
 
 const sendErrorDev = (err: AppError, res: Response) => {
   res.status(err.statusCode).json({
-    status: err.status,
     error: err,
     message: err.message,
     stack: err.stack,
+    status: err.status,
   });
 };
 
@@ -55,28 +58,28 @@ const sendErrorProd = (err: AppError, res: Response) => {
   }
 };
 
-const globalErrorHandler: ErrorRequestHandler = (
-  err: AppError | any,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-): void => {
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || 'error';
+const normalizeError = (error: unknown): AppError => {
+  if (error instanceof MongoError && 'code' in error) {
+    // eslint-disable-next-line unicorn/no-lonely-if
+    if (error.code === 11000) return handleDuplicateFieldsDB(error);
+  }
+  if (error instanceof MongooseError) {
+    if (error.name === 'CastError') return handleCastErrorDB(error as CastError);
+    if (error.name === 'ValidationError') return handleValidationErrorDB(error as ValidationError);
+  }
 
-  if (process.env.NODE_ENV === 'development') {
-    sendErrorDev(err, res);
-  } else if (process.env.NODE_ENV === 'production') {
-    let error = { ...err };
-    // MongoDB Casting Error
-    if (error.name === 'CastError') error = handleCastErrorDB(error);
-    // MongoDB Duplicate Fields Error.
-    if (error.code === 11000) error = handleDuplicateFieldsDB(error);
-    // MongoDB Validation Error
-    if (error.name === 'ValidationError')
-      error = handleValidationErrorDB(error);
+  if (error instanceof AppError) return error;
 
-    sendErrorProd(error, res);
+  return new AppError('Unknown error', 500);
+};
+
+const globalErrorHandler: ErrorRequestHandler = (error: unknown, _req: Request, res: Response, _next): void => {
+  const normalizedError = normalizeError(error);
+
+  if (process.env['NODE_ENV'] === 'development') {
+    sendErrorDev(normalizedError, res);
+  } else if (process.env['NODE_ENV'] === 'production') {
+    sendErrorProd(normalizedError, res);
   }
 };
 

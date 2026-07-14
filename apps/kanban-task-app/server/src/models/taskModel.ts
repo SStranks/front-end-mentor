@@ -1,34 +1,38 @@
-import type { ITask, ISubTask } from '#Shared/types.d.ts';
-import mongoose, { Model } from 'mongoose';
+import type { Model } from 'mongoose';
+
+import type { ISubTask, ITask } from '#Shared/types.d.ts';
+
+import mongoose from 'mongoose';
 
 interface ITaskDocumentOverrides {
   subtasks: ISubTask[];
 }
 
-type TTaskModel = Model<ITask, {}, ITaskDocumentOverrides>;
+type TTaskModel = Model<ITask, object, ITaskDocumentOverrides>;
 
 const subtaskSchema = new mongoose.Schema<ISubTask>({
+  isCompleted: { default: false, required: true, type: 'Boolean' },
   title: {
-    type: 'String',
     maxLength: 100,
     required: true,
     trim: true,
+    type: 'String',
   },
-  isCompleted: { type: 'Boolean', required: true, default: false },
 });
 
 const taskSchema = new mongoose.Schema<ITask, TTaskModel>({
+  description: { maxLength: 280, trim: true, type: 'String' },
+  status: { required: true, type: 'String' },
+  subtasks: [{ required: false, type: subtaskSchema }],
   title: {
-    type: 'String',
     maxLength: 100,
     required: true,
     trim: true,
+    type: 'String',
   },
-  description: { type: 'String', maxLength: 280, trim: true },
-  status: { type: 'String', required: true },
-  subtasks: [{ type: subtaskSchema, required: false }],
 });
 
 const Task = mongoose.model<ITask>('Task', taskSchema);
 
-export { Task, TTaskModel, taskSchema };
+export type { TTaskModel };
+export { Task, taskSchema };
