@@ -39,6 +39,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Test unrs directly
+        run: |
+          node - <<'EOF'
+          const r = require('./node_modules/.pnpm/unrs-resolver@1.12.2/node_modules/unrs-resolver');
+          console.log("Loaded OK");
+          EOF
+
       - name: MegaLinter
         uses: oxsecurity/megalinter/flavors/javascript@v9.1.0
         env:
