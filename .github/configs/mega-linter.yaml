@@ -3,9 +3,6 @@
 # See all available variables at https://megalinter.io/configuration/ and in linters documentation
 ---
 # APPLY_FIXES: all
-PRE_COMMANDS:
-  - command: ldd --version || true
-  - command: cat /etc/os-release
 ENABLE:
   - ACTION
   - BASH

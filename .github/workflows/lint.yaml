@@ -39,18 +39,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: |
-          find node_modules/.pnpm -maxdepth 1 | grep resolver-binding
-
-      - name: Check musl binding
-        run: |
-          echo "GNU:"
-          ls -la node_modules/.pnpm/@unrs+resolver-binding-linux-x64-gnu@*/node_modules/@unrs || true
-
-          echo
-          echo "MUSL:"
-          ls -la node_modules/.pnpm/@unrs+resolver-binding-linux-x64-musl@*/node_modules/@unrs || true
-
       - name: MegaLinter
         uses: oxsecurity/megalinter/flavors/javascript@v9.1.0
         env:
