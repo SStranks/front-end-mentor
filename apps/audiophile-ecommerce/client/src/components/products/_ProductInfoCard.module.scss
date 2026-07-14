@@ -50,9 +50,9 @@
   }
 }
 
-/* --------------------------------
- ----      Media Queries       ----
- -------------------------------- */
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
 
 @include mq.media(desktop-mini, desktop-micro, tablet-all, mobile-all) {
   .card {

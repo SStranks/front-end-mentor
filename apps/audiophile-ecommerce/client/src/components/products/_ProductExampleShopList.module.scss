@@ -11,9 +11,9 @@
   align-items: end;
 }
 
-/* --------------------------------
- ----      Media Queries       ----
- -------------------------------- */
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
 
 @include mq.media(tablet-regular, tablet-small, tablet-mini, tablet-micro) {
   .list {

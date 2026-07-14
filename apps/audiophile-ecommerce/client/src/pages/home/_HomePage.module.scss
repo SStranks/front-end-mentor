@@ -187,9 +187,9 @@
   margin-bottom: 80px;
 }
 
-/* --------------------------------
- ----      Media Queries       ----
- -------------------------------- */
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
 
 @include mq.media(desktop-mini, desktop-micro, tablet-large, tablet-regular, tablet-small, tablet-mini) {
   .hero {

@@ -35,9 +35,9 @@
   }
 }
 
-/* --------------------------------
- ----      Media Queries       ----
- -------------------------------- */
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
 
 @include media(tablet-regular, tablet-small, mobile-large, mobile-medium, mobile-small) {
   .modal {

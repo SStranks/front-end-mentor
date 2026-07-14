@@ -101,9 +101,9 @@
   border-radius: v.$border-radius-forms-subtask;
 }
 
-/* --------------------------------
- ----      Media Queries       ----
- -------------------------------- */
+/* -------------------------------- */
+/*   Media Queries                  */
+/* -------------------------------- */
 
 @include mq.media(mobile-all) {
   .form {

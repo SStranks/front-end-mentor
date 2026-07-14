@@ -18,7 +18,8 @@ RUN npm run build && npm prune --production
 
 
 # Secondary Stage: Build Nginx Image
-FROM nginx-1.24-alpine-brotli
+# Nginx-Brotli is custom image - NOTE: To update; see Tech-Expo implementation
+FROM nginx-brotli:1.29-alpine
 
 LABEL version="1.0"
 LABEL description="Prod Image: #37 Audiophile: NGINX"
