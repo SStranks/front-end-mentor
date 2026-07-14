@@ -39,6 +39,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: debug eslint
+        run: |
+          echo "eslint binary:"
+          ls -la node_modules/.bin/eslint
+
+          echo "eslint version:"
+          node_modules/.bin/eslint --version
+
+          echo "unrs binding:"
+          ls -la node_modules/.pnpm/@unrs+resolver-binding-linux-x64-gnu@1.12.2
+
       - name: MegaLinter
         uses: oxsecurity/megalinter/flavors/javascript@v9.1.0
         env:
