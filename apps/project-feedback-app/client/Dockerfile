@@ -20,5 +20,6 @@ LABEL description="Image: FEM#33: Frontend: Nginx-React"
 COPY --from=primary /client/dist /usr/share/nginx/html
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
+USER nginx
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]

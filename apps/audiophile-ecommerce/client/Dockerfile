@@ -29,5 +29,6 @@ COPY ./nginx/default.conf ./nginx/headers.conf /etc/nginx/conf.d/
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./nginx/redirects.map /etc/nginx/redirects.map
 
+USER nginx
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]

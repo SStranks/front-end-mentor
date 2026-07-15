@@ -26,6 +26,6 @@ LABEL description="Image: #35 Kanban: Frontend: Nginx-React"
 COPY --from=primary /client/dist /usr/share/nginx/html
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# USER appUser
+USER nginx
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
