@@ -1,15 +1,15 @@
 export interface ISubTask {
   _id: string;
-  title: string;
   isCompleted: boolean;
+  title: string;
 }
 
 export interface ITask {
   _id: string;
-  title: string;
   description: string;
   status: string;
   subtasks: ISubTask[];
+  title: string;
 }
 
 export interface IColumn {
@@ -20,6 +20,6 @@ export interface IColumn {
 
 export interface IBoard {
   _id: string;
-  name: string;
   columns: IColumn[];
+  name: string;
 }

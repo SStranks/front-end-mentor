@@ -1673,23 +1673,25 @@ importers:
   packages/jest-config-node: {}
 
   packages/jest-config-react:
-    dependencies:
+    devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.1.4
         version: 6.9.1
-      identity-obj-proxy:
-        specifier: ^3.0.0
-        version: 3.0.0
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.19.43)(ts-node@10.9.2(@swc/core@1.15.43)(@types/node@20.19.43)(typescript@6.0.3))
-      jest-environment-jsdom:
-        specifier: ^30.4.1
-        version: 30.4.1
-    devDependencies:
+      '@types/jest':
+        specifier: ^29.5.14
+        version: 29.5.14
       '@types/node':
         specifier: ^20.9.2
         version: 20.19.43
+      identity-obj-proxy:
+        specifier: ^3.0.0
+        version: 3.0.0
+      jest-environment-jsdom:
+        specifier: ^30.4.1
+        version: 30.4.1
+      jest-mock:
+        specifier: ^30.4.1
+        version: 30.4.1
 
   packages/megalinter-config: {}
 

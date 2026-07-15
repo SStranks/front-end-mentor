@@ -54,13 +54,15 @@
 //   })),
 // });
 
-const mockIntersectionObserver = jest.fn();
-mockIntersectionObserver.mockReturnValue({
+import { fn } from 'jest-mock';
+
+const mockIntersectionObserver = fn().mockImplementation(() => ({
+  disconnect: () => null,
   observe: () => null,
   unobserve: () => null,
-  disconnect: () => null,
-});
-window.IntersectionObserver = mockIntersectionObserver;
+})) as unknown as typeof globalThis.IntersectionObserver;
+
+globalThis.IntersectionObserver = mockIntersectionObserver;
 
 // Implicit ARIA Roles for getByRole:
 // https://www.w3.org/TR/html-aria/#docconformance
