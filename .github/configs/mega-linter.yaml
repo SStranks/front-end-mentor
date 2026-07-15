@@ -2,13 +2,6 @@
 # Configuration file for MegaLinter
 # See all available variables at https://megalinter.io/configuration/ and in linters documentation
 ---
-PRE_COMMANDS:
-  - command: |
-      set -x
-      node node_modules/.pnpm/unrs-resolver@*/node_modules/unrs-resolver/postinstall.js
-      echo "exit=$?"
-      find node_modules/.pnpm -maxdepth 1 | grep resolver-binding || true
-
 ENABLE:
   - ACTION
   - BASH
