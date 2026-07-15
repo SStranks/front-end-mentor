@@ -45,7 +45,7 @@
 
 /// H1 header styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-h1 {
   $rem: f.px2rem(56);
   font-size: $rem;
@@ -58,7 +58,7 @@
 
 /// H2 header styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-h2 {
   $rem: f.px2rem(40);
   font-size: $rem;
@@ -71,7 +71,7 @@
 
 /// H3 header styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-h3 {
   $rem: f.px2rem(32);
   font-size: $rem;
@@ -84,7 +84,7 @@
 
 /// H4 header styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-h4 {
   $rem: f.px2rem(28);
   font-size: $rem;
@@ -97,7 +97,7 @@
 
 /// H5 header styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-h5 {
   $rem: f.px2rem(24);
   font-size: $rem;
@@ -110,7 +110,7 @@
 
 /// H6 header styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-h6 {
   $rem: f.px2rem(18);
   font-size: $rem;
@@ -123,7 +123,7 @@
 
 /// Header 'overline' styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-overline {
   $rem: f.px2rem(14);
   font-size: $rem;
@@ -136,7 +136,7 @@
 
 /// Header 'subtitle' styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin header-subtitle {
   $rem: f.px2rem(14);
   font-size: f.px2rem(13);
@@ -153,7 +153,7 @@
 
 /// Body Regular styling
 /// @require px2rem Pixel to REM converter <>
-/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks Sass: Mixins; Passing arguments to content blocks
+/// @link https://sass-lang.com/documentation/at-rules/mixin/#passing-arguments-to-content-blocks
 @mixin body-regular {
   $rem: f.px2rem(15);
   font-size: $rem;

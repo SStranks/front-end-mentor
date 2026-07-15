@@ -23,5 +23,6 @@ RUN npm install --omit=dev && npm cache clean --force
 
 COPY --from=primary /server/dist/ /server/dist/
 
+USER node
 EXPOSE 4000
 CMD ["npm", "run", "prod"]
