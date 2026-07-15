@@ -21,6 +21,3 @@ minimumReleaseAgeExclude:
   - '@types/*'
   - '@secretlint/*'
   - 'secretlint'
-
-overrides:
-  unrs-resolver: '1.11.1'
