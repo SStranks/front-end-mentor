@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/refs */
+import type { ISubTask, ITask } from '@apps/kanban-task-app-shared';
 import type { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd';
-
-import type { ISubTask, ITask } from '@Shared/types';
 
 import { Draggable } from 'react-beautiful-dnd';
 

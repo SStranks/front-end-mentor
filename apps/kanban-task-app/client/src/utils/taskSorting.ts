@@ -1,4 +1,5 @@
-import type { ITask } from '@Shared/types';
+import type { ITask } from '@apps/kanban-task-app-shared';
+
 import type { TAppStateContext } from '@Types/types';
 
 export interface IOrderedTasks {

@@ -33,7 +33,6 @@ const config: StorybookConfig = {
       resolve: {
         // BUG: 'vite-tsconfig-paths' does not work here; upstream bug in Vite Sass preprocessor
         alias: {
-          '@Shared': path.resolve(__dirname, '../../shared'),
           '@Img': path.resolve(__dirname, '../src/assets/img'),
           '@Sass': path.resolve(__dirname, '../src/assets/sass'),
           '@Svg': path.resolve(__dirname, '../src/assets/svg'),

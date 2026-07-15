@@ -1,4 +1,5 @@
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
+
 import type { TBoardInfo } from '@Types/types';
 
 import Aside from '@Components/aside/Aside';

@@ -1,4 +1,5 @@
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
+
 import type { TAppStateContext } from '@Types/types';
 import type { IOrderedTasks } from '@Utils/taskSorting';
 

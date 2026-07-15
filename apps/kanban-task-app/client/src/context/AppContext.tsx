@@ -1,7 +1,7 @@
+import type { IBoard, IColumn, ITask } from '@apps/kanban-task-app-shared';
 import type { PropsWithChildren } from 'react';
 
 import type { TAction } from '@Hooks/useAppReducer';
-import type { IBoard, IColumn, ITask } from '@Shared/types';
 import type { TAppStateContext } from '@Types/types';
 
 import React, { useContext } from 'react';

@@ -1,4 +1,4 @@
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
 
 export interface IAllBoardsResponseDTO {
   data: IBoard[] | [];

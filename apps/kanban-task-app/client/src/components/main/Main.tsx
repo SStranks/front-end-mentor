@@ -1,4 +1,4 @@
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
 
 import ColumnGrid from '@Components/column-grid/ColumnGrid';
 import { useRootModalContext } from '@Context/RootModalContext';

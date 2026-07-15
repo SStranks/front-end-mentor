@@ -1,4 +1,4 @@
-import type { IBoard, IColumn } from '@Shared/types';
+import type { IBoard, IColumn } from '@apps/kanban-task-app-shared';
 
 export type TBoardInfo = { id: string; name: string }[];
 

@@ -1,5 +1,6 @@
+import type { ISubTask } from '@apps/kanban-task-app-shared';
+
 import type { Optional } from '@Services/ApiRequestDto';
-import type { ISubTask } from '@Shared/types';
 
 export const placeholderText = [
   'e.g. Make coffee',

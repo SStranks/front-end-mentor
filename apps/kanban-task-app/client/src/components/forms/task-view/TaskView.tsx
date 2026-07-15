@@ -1,4 +1,5 @@
-import type { ISubTask } from '@Shared/types';
+import type { ISubTask } from '@apps/kanban-task-app-shared';
+
 import type { TSelectTask } from '@Types/types';
 
 import { useEffect, useMemo, useRef } from 'react';

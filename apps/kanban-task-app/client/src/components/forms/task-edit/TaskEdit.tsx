@@ -1,4 +1,5 @@
-import type { ITask } from '@Shared/types';
+import type { ITask } from '@apps/kanban-task-app-shared';
+
 import type { TSelectTask, TStatusArr } from '@Types/types';
 
 import type { TFormTaskValues } from '../shared';

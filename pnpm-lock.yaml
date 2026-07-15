@@ -917,6 +917,9 @@ importers:
         specifier: ^2.26.2
         version: 2.26.5
     devDependencies:
+      '@apps/kanban-task-app-shared':
+        specifier: workspace:*
+        version: link:../shared
       '@babel/core':
         specifier: ^8.0.1
         version: 8.0.1
@@ -1179,6 +1182,8 @@ importers:
       vitest:
         specifier: ^4.1.9
         version: 4.1.10(@types/node@20.19.43)(@vitest/browser-playwright@4.1.5)(jsdom@26.1.0)(vite@8.1.4(@types/node@20.19.43)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(terser@5.49.0)(tsx@4.23.0)(yaml@2.9.0))
+
+  apps/kanban-task-app/shared: {}
 
   apps/project-feedback-app/client:
     dependencies:

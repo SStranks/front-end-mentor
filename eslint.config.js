@@ -59,6 +59,7 @@ export default defineConfig([
             'apps/invoice-app/server/tsconfig.json',
             'apps/kanban-task-app/client/tsconfig.json',
             'apps/kanban-task-app/server/tsconfig.json',
+            'apps/kanban-task-app/shared/tsconfig.json',
             'apps/project-feedback-app/client/tsconfig.json',
             'apps/project-feedback-app/server/tsconfig.json',
           ],
@@ -332,6 +333,16 @@ export default defineConfig([
     rules: { ...EslintConfigNode.rules, ...EslintConfigExpress.rules },
     settings: {
       ...EslintConfigExpress.settings,
+    },
+  },
+  {
+    name: '@apps/kanban-task-app/shared',
+    files: ['apps/kanban-task-app/shared/**/*'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: path.join(import.meta.dirname, 'apps/kanban-task-app/shared'),
+      },
     },
   },
   // ------------------------------------

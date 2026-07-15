@@ -2,7 +2,6 @@
   "extends": "@packages/typescript-config/react",
   "compilerOptions": {
     "paths": {
-      "@Shared/*": ["../shared/*"],
       "@Img/*": ["./src/assets/img/*"],
       "@Sass/*": ["./src/assets/sass/*"],
       "@Svg/*": ["./src/assets/svg/*"],

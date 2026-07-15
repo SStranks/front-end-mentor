@@ -1,6 +1,5 @@
+import type { IBoard } from '@apps/kanban-task-app-shared';
 import type { DropResult } from 'react-beautiful-dnd';
-
-import type { IBoard } from '@Shared/types';
 
 import React, { useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';

@@ -1,5 +1,6 @@
 /* eslint-disable perfectionist/sort-objects */
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
+
 import type { TBoardInfo } from '@Types/types';
 
 import { useEffect, useRef } from 'react';

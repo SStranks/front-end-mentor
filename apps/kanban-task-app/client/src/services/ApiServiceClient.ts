@@ -1,5 +1,5 @@
 // NOTE:  ! This file is not complete. Basic working structure. Depends on backend API types
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
 
 import type { IApiClient } from './ApiHttp';
 import type {

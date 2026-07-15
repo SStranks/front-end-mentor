@@ -26,7 +26,6 @@ const CommonConfig = {
     // Prefix with ~ to initiate module resolver
     modules: ['node_modules', path.resolve(__dirname, '../src/assets')],
     alias: {
-      '@Shared': path.resolve(__dirname, '../../shared'),
       '@Img': path.resolve(__dirname, '../src/assets/img'),
       '@Sass': path.resolve(__dirname, '../src/assets/sass'),
       '@Svg': path.resolve(__dirname, '../src/assets/svg'),

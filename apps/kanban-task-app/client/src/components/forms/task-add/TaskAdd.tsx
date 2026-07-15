@@ -1,4 +1,5 @@
-import type { IBoard, IColumn } from '@Shared/types';
+import type { IBoard, IColumn } from '@apps/kanban-task-app-shared';
+
 import type { TStatusArr } from '@Types/types';
 
 import type { TFormTaskValues } from '../shared';

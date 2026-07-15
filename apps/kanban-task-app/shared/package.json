@@ -1,0 +1,13 @@
+{
+  "name": "@apps/kanban-task-app-shared",
+  "version": "1.0.0",
+  "description": "FEM#35 Shared",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
+  "license": "ISC",
+  "type": "module",
+  "types": "types.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "compile": "npm run clean && tsc -p tsconfig.json"
+  }
+}

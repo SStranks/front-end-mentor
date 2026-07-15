@@ -1,4 +1,4 @@
-import type { IBoard } from '@Shared/types';
+import type { IBoard } from '@apps/kanban-task-app-shared';
 
 import type { TFormBoardValues } from '../shared';
 

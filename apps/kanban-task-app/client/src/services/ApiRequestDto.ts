@@ -1,4 +1,4 @@
-import type { IColumn, ISubTask } from '@Shared/types';
+import type { IColumn, ISubTask } from '@apps/kanban-task-app-shared';
 
 // Converts properties of a type to optional.
 export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
