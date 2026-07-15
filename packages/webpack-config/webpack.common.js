@@ -1,7 +1,9 @@
+/* eslint-disable perfectionist/sort-objects */
 import ESLintPlugin from 'eslint-webpack-plugin';
+
+import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
-import fs from 'node:fs';
 
 const CWD = process.env.INIT_CWD;
 const CUR = path.dirname(url.fileURLToPath(import.meta.url));
@@ -9,7 +11,7 @@ const CUR = path.dirname(url.fileURLToPath(import.meta.url));
 // Find entry file for both JS and TS based projects.
 const entryFile = fs
   .readdirSync(path.resolve(process.env.INIT_CWD, './src'))
-  .filter((file) => file.match(/index\.(js|jsx|tsx)/));
+  .filter((file) => file.match(/index\.(jsx?|tsx?)/));
 
 const CommonConfig = {
   // context: CUR,

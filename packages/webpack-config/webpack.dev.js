@@ -1,10 +1,12 @@
+/* eslint-disable perfectionist/sort-objects */
 import CopyPlugin from 'copy-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
+import { merge } from 'webpack-merge';
 
 import path from 'node:path';
-import { merge } from 'webpack-merge';
+
 import CommonConfig from './webpack.common.js';
 
 const CWD = process.env.INIT_CWD;

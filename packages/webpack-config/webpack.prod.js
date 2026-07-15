@@ -1,3 +1,4 @@
+/* eslint-disable perfectionist/sort-objects */
 import BrotliPlugin from 'brotli-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
@@ -6,10 +7,10 @@ import Dotenv from 'dotenv-webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { merge } from 'webpack-merge';
 
 import path from 'node:path';
 
-import { merge } from 'webpack-merge';
 import CommonConfig from './webpack.common.js';
 
 const CWD = process.env.INIT_CWD;
@@ -112,13 +113,13 @@ const ProdConfig = {
       filename: '[path][base].gz',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
+      threshold: 10_240,
       minRatio: 0.7,
     }),
     new BrotliPlugin({
       asset: '[path].br[query]',
       test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
+      threshold: 10_240,
       minRatio: 0.7,
     }),
     new CopyPlugin({
