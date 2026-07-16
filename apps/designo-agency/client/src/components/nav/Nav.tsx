@@ -12,7 +12,7 @@ function Nav(): JSX.Element {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const mobileMenuBtn = () => {
-    const links = document.querySelector('@nav-links');
+    const links = document.querySelector('#nav-links');
     links?.classList.toggle('hidden');
     setMobileMenuOpen((prev) => !prev);
   };
@@ -21,7 +21,7 @@ function Nav(): JSX.Element {
     // DEBUG:  If hamburger icon is 'X' when resizing out of mobile and back, it persists.
     // Watch for window resize event
     const mq = globalThis.matchMedia('(max-width: 480px)');
-    const links = document.querySelector('@nav-links');
+    const links = document.querySelector('#nav-links');
     const addHidden = () => {
       return links?.classList.toggle('hidden', mq.matches);
     };

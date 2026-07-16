@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
         scss: {},
       },
     },
-    plugins: [viteTsconfigPathsPlugin(), viteReactPlugin()],
+    plugins: [viteTsconfigPathsPlugin({ root: path.resolve(__dirname) }), viteReactPlugin()],
     test: {
       coverage: {
         include: ['src/**.{js,jsx,ts,tsx}'],
@@ -67,8 +67,8 @@ export default defineConfig(({ mode }) => {
         },
       ],
       setupFiles: ['./vitest.setup.ts'],
-      resolveSnapshotPath: (testPath, _snapshotExtension) => {
-        return testPath.replace(/src/, '__snapshots__');
+      resolveSnapshotPath: (testPath, snapshotExtension) => {
+        return testPath.replace(/src/, '__snapshots__') + snapshotExtension;
       },
     },
   };
