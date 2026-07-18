@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile.prod
     image: fem35-nodejs-express-api
     env_file:
-      - ./server/.env.prod
+      - ${ENV_DIR}/kanban-task-app/.env.prod.server
     networks:
       - FEM35-Kanban
     security_opt:
@@ -19,7 +19,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem35-react-app
     env_file:
-      - ./client/.env.prod
+      - ${ENV_DIR}/kanban-task-app/.env.prod.client
     depends_on:
       - node-api
     networks:
@@ -47,3 +47,4 @@ services:
 
 networks:
   FEM35-Kanban:
+    driver: bridge

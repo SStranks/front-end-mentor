@@ -12,7 +12,7 @@ services:
       - ./server:/app/server:ro
       - ../../node_modules:/node_modules:ro
     env_file:
-      - ./server/.env.dev
+      - ${ENV_DIR}/invoice-app/.env.dev.server
     depends_on:
       - mongo-db
     security_opt:

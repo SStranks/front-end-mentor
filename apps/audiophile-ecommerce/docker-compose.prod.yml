@@ -1,5 +1,4 @@
 services:
-
   # Frontend: Nginx-React
   nginx:
     container_name: fem37-nginx-prod

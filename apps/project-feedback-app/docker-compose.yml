@@ -1,4 +1,4 @@
-name: 'fem33-project-feedback-app'
+name: fem33-project-feedback-app
 version: '3.7'
 services:
   # Backend: NodeJS Express
@@ -10,4 +10,4 @@ services:
   react-app:
     build:
       context: ./client
-    profiles: ['prod']
+    profiles: [prod]

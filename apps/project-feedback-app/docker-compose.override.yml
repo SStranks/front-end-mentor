@@ -12,7 +12,7 @@ services:
       - ./server:/app/server:ro
       - ../../node_modules:/node_modules:ro
     env_file:
-      - ./server/.env.dev
+      - ${ENV_DIR}/project-feedback-app/.env.dev.server
     depends_on:
       - mongodb-1
     security_opt:
@@ -45,7 +45,7 @@ services:
       - mongodb-1
     profiles:
       - enable-replicaset
-    restart: 'no'
+    restart: no
     environment:
       - MONGODB_USER
       - MONGODB_PASSWORD

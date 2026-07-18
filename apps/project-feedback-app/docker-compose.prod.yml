@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem33-nodejs-express-api
     env_file:
-      - ./server/.env.prod
+      - ${ENV_DIR}/project-feedback-app/.env.prod.server
     networks:
       - FEM33
     security_opt:
@@ -19,7 +19,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem33-react-app
     env_file:
-      - ./client/.env.prod
+      - ${ENV_DIR}/project-feedback-app/.env.prod.client
     depends_on:
       - node-api
     networks:
@@ -46,3 +46,4 @@ services:
 
 networks:
   FEM33:
+    driver: bridge

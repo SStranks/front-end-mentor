@@ -46,3 +46,4 @@ services:
 
 networks:
   FEM36:
+    driver: bridge

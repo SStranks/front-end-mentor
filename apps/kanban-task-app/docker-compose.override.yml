@@ -18,7 +18,7 @@ services:
     #     - path: ./server/package.json
     #       action: rebuild
     env_file:
-      - ./server/.env.dev
+      - ${ENV_DIR}/kanban-task-app/.env.dev.server
     depends_on:
       - mongo-db
     security_opt:
