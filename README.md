@@ -42,7 +42,8 @@ Showcasing my approach to building responsive, accessible, and maintainable appl
 
 The frontend aspect of all designs centres around fully responsive layouts with breakpoints for key device sizes, including hover states and interactive changes, side-menus, and other requirements that match the Figma design file specifications.
 
-###### Note: See repsective challenge `README.md` for the unique feature requirements of that challenge
+> [!TIP]
+> See repsective challenge `README.md` for the unique feature requirements of that challenge
 
 Each challenge contains a docker setup for both development and production; Nginx and MongoDB database implemented in the full-stack challenges.
 
@@ -120,7 +121,8 @@ Each challenge contains a docker setup for both development and production; Ngin
 
 Each solution contains Docker Compose files, used during the development process, which offers a chance to explore the designs locally - solutions are also hosted online at Netlify (see [Live Demos](#live-demos)).
 
-Please refer to the corresponding `README.md` for each challenge for instructions on how to setup the local Dockerized environment.
+> [!TIP]
+> Please refer to the corresponding `README.md` for each challenge for instructions on how to setup the local Dockerized environment.
 
 [`Audiophile Ecommerce - README.md`](./apps/audiophile-ecommerce/README.md)
 
