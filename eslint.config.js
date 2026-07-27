@@ -39,7 +39,6 @@ export default defineConfig([
       'pnpm-lock.*.yaml',
       'pnpm-workspace.yaml',
       'package-lock.json',
-      'apps/z_archive/', // TEMP:,
     ],
   },
   {
