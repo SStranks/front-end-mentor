@@ -7,13 +7,7 @@ function Checkbox(props) {
 
   return (
     <div className={styles.checkboxControl} id={id}>
-      <input
-        type="checkbox"
-        id={id}
-        name={name}
-        checked={checked}
-        onChange={onChange}
-      />
+      <input type="checkbox" id={id} name={name} checked={checked} onChange={onChange} />
       <label htmlFor={id}>{text}</label>
     </div>
   );

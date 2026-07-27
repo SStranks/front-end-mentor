@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive pricing component solution
 
-This is a solution to the [Interactive pricing component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-pricing-component-t0m8PIyY8). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive pricing component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-pricing-component-t0m8PIyY8). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -44,7 +44,7 @@ Users should be able to:
 
 ### What I learned
 
-- The 'Range' slider had to be hacked together using both the HTML5 object and a separate DIV for the customized colour track to the left of the button on the slider. 
+- The 'Range' slider had to be hacked together using both the HTML5 object and a separate DIV for the customized colour track to the left of the button on the slider.
 
 ### Useful resources
 

@@ -5,17 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import styles from './_Card.module.scss';
 
 function Card(props) {
-  const {
-    id,
-    logo,
-    logoBackground,
-    postedAt,
-    contract,
-    position,
-    company,
-    location,
-    timeStamp,
-  } = props;
+  const { id, logo, logoBackground, postedAt, contract, position, company, location, timeStamp } = props;
 
   const nodeRef = useRef();
 
@@ -28,14 +18,10 @@ function Card(props) {
       classNames={styles}
       timeout={1000}
       nodeRef={nodeRef}
-      unmountOnExit
-    >
+      unmountOnExit>
       <Link to="/job" state={props}>
         <div className={`${styles.card} ${styles.noHover}`} ref={nodeRef}>
-          <div
-            className={styles.card__logo}
-            style={{ backgroundColor: logoBackground }}
-          >
+          <div className={styles.card__logo} style={{ backgroundColor: logoBackground }}>
             <img src={logo} alt="company logo" />
           </div>
           <div className={styles.card__info}>

@@ -7,14 +7,7 @@ import Checkbox from '../custom/Checkbox';
 import styles from './_modal.module.scss';
 
 function Modal(props) {
-  const {
-    onChangeHandler,
-    searchFields,
-    setSearchFields,
-    modalActive,
-    setModalActive,
-    isSearching,
-  } = props;
+  const { onChangeHandler, searchFields, setSearchFields, modalActive, setModalActive, isSearching } = props;
 
   const modalClickHandler = (e) => {
     if (!e.target.className.includes('modal')) return;
@@ -24,13 +17,7 @@ function Modal(props) {
   };
 
   return (
-    <CSSTransition
-      mountOnEnter
-      in={modalActive}
-      classNames={styles}
-      timeout={{ enter: 550, exit: 450 }}
-      unmountOnExit
-    >
+    <CSSTransition mountOnEnter in={modalActive} classNames={styles} timeout={{ enter: 550, exit: 450 }} unmountOnExit>
       <div className={styles.modal} onClick={modalClickHandler} aria-hidden>
         <div className={styles.card}>
           <div className={styles.compartment}>
@@ -49,16 +36,9 @@ function Modal(props) {
               id={styles.checkboxControlMob}
               name="time"
               checked={searchFields.time}
-              onChange={() =>
-                setSearchFields((prev) => ({ ...prev, time: !prev.time }))
-              }
+              onChange={() => setSearchFields((prev) => ({ ...prev, time: !prev.time }))}
             />
-            <ButtonSubmit
-              value="Submit"
-              text={isSearching ? 'Searching' : 'Search'}
-              disabled={isSearching}
-              modal
-            />
+            <ButtonSubmit value="Submit" text={isSearching ? 'Searching' : 'Search'} disabled={isSearching} modal />
           </div>
         </div>
       </div>

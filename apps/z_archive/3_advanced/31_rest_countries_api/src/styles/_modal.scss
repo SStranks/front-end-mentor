@@ -133,7 +133,9 @@
     box-shadow: 0 -1px 5px 1px hsla(0, 0%, 0%, 0.1);
     border-radius: 3px;
     padding: 0.5rem 0.75rem;
-    transition: transform 1s, variables.$Theme-transition;
+    transition:
+      transform 1s,
+      variables.$Theme-transition;
     & span {
       font-size: 1rem;
       font-weight: 400;

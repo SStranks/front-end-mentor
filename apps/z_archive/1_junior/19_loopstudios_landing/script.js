@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Selectors
 const btnMobMenu = document.getElementById('btn-menu');
@@ -7,7 +7,6 @@ const body = document.querySelector('body');
 const title = document.querySelector('.title');
 const nav = document.querySelector('nav');
 const links = document.querySelectorAll('a.hv-1');
-
 
 // Main
 function mobileMenu() {
@@ -21,7 +20,6 @@ function mobileMenu() {
     link.classList.toggle('hv-1');
   }
 }
-
 
 // Event Handlers
 btnMobMenu.addEventListener('click', mobileMenu);

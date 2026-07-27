@@ -8,10 +8,8 @@
 /*   6. || Media Queries            */
 /* -------------------------------- */
 
-
 /*   1. || Imports                  */
 @import url(https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap);
-
 
 /*   2. || Variables                */
 :root {
@@ -26,7 +24,6 @@
   --Very-Dark-Blue: 209, 33%, 12%;
 }
 
-
 /*   3. || Globals                  */
 * {
   box-sizing: border-box;
@@ -34,7 +31,8 @@
   margin: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 20px;
@@ -44,7 +42,6 @@ html, body {
   background: #fff;
   color: #000;
 }
-
 
 /*   4. || Main                     */
 .container {
@@ -165,9 +162,9 @@ h1 span {
 
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   text-align: center;
-  color:inherit;
+  color: inherit;
   display: block;
   margin: 0 auto;
   position: absolute;
@@ -177,14 +174,13 @@ h1 span {
   width: 100%;
 }
 
-.attribution a { 
+.attribution a {
   color: hsl(var(--Blue));
 }
 
 .attribution a:hover {
   color: hsl(var(--Light-Red));
 }
-
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
@@ -234,7 +230,7 @@ h1 span {
   }
 
   .card #dashboard {
-  width: 100%;
+    width: 100%;
   }
 
   .icons {
@@ -242,7 +238,7 @@ h1 span {
   }
 
   .attribution {
-    font-size: 0.5rem; 
+    font-size: 0.5rem;
     padding: 0 5.5rem;
   }
 }

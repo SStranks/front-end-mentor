@@ -21,11 +21,7 @@ const Filter = (props) => {
 
   return (
     <div className="dropdown">
-      <button
-        type="button"
-        aria-label="filter by region"
-        onClick={btnMenuClickHandler}
-      >
+      <button type="button" aria-label="filter by region" onClick={btnMenuClickHandler}>
         <span>Filter by Region</span>
         <FontAwesomeIcon icon={faAngleDown} className="faDownArrow" />
       </button>
@@ -35,13 +31,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter show all"
-              className={
-                stateFilter.activeRegion === 'all' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'all' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('all');
-              }}
-            >
+              }}>
               All
             </button>
           </li>
@@ -49,13 +42,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter by Africa"
-              className={
-                stateFilter.activeRegion === 'Africa' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'Africa' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('Africa');
-              }}
-            >
+              }}>
               Africa
             </button>
           </li>
@@ -63,13 +53,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter by Americas"
-              className={
-                stateFilter.activeRegion === 'Americas' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'Americas' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('Americas');
-              }}
-            >
+              }}>
               Americas
             </button>
           </li>
@@ -77,13 +64,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter by Asia"
-              className={
-                stateFilter.activeRegion === 'Asia' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'Asia' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('Asia');
-              }}
-            >
+              }}>
               Asia
             </button>
           </li>
@@ -91,13 +75,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter by Europe"
-              className={
-                stateFilter.activeRegion === 'Europe' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'Europe' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('Europe');
-              }}
-            >
+              }}>
               Europe
             </button>
           </li>
@@ -105,13 +86,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter by Oceania"
-              className={
-                stateFilter.activeRegion === 'Oceania' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'Oceania' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('Oceania');
-              }}
-            >
+              }}>
               Oceania
             </button>
           </li>
@@ -119,13 +97,10 @@ const Filter = (props) => {
             <button
               type="button"
               aria-label="filter by Polar"
-              className={
-                stateFilter.activeRegion === 'Polar' ? 'filter-active' : ''
-              }
+              className={stateFilter.activeRegion === 'Polar' ? 'filter-active' : ''}
               onClick={() => {
                 btnFilterClickHandler('Polar');
-              }}
-            >
+              }}>
               Polar
             </button>
           </li>

@@ -13,11 +13,8 @@
 /*   author:    Simon Stranks       */
 /*   website:   github.com/SStranks */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
 
 /*   2. || Variables                */
 :root {
@@ -32,7 +29,6 @@
   --White: 100, 100%, 100%;
 }
 
-
 /*   3. || Globals                  */
 * {
   box-sizing: border-box;
@@ -40,24 +36,61 @@
   margin: 0;
 }
 
-img {display: block; height: 100%}
-a {text-decoration: none}
-a:visited {color: inherit}
-a:active {color: inherit}
-li {list-style: none}
-h1 {font-size: 1.7rem; color: #000}
-h2 {font-size: 3.25rem; font-family: 'Josefin Sans'; font-weight: 400; line-height: 1; color: #000; text-transform: uppercase}
-h3 {font-size: 2.2rem; font-family: 'Josefin Sans'; font-weight: 400; line-height: 1; color: #fff}
-h4 {font-size: 1.0rem; color: #000}
-p {font-size: 0.9rem; line-height: 1.8;}
-span {font-size: 1rem; font-weight: 700; line-height: 1}
+img {
+  display: block;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+a:active {
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 1.7rem;
+  color: #000;
+}
+h2 {
+  font-size: 3.25rem;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: 2.2rem;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+}
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+span {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
 button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none; 
+  border: none;
   font-family: inherit;
-  cursor: pointer
+  cursor: pointer;
 }
 input {
   font-size: inherit;
@@ -70,17 +103,37 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
 
-.flex-row {display: flex; justify-content: space-between; align-items: center}
-.flex-column {display: flex; flex-direction: column; justify-content: space-between; align-items: center}
-.hidden {display: none !important}
-.show {display:inherit !important}
-.modal-open {overflow: hidden}
-
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.hidden {
+  display: none !important;
+}
+.show {
+  display: inherit !important;
+}
+.modal-open {
+  overflow: hidden;
+}
 
 /*   4. || Main                     */
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 14px;
@@ -193,7 +246,7 @@ html, body {
   top: 50%;
   left: 4px;
   transform: translate(0, -50%);
-  width: 438px; 
+  width: 438px;
   height: 10px;
   background: transparent;
 }
@@ -208,7 +261,7 @@ html, body {
   border-radius: 10px;
   pointer-events: none;
 }
-  
+
 .slidercontainer .track .track-inner {
   position: absolute;
   top: 50%;
@@ -224,17 +277,16 @@ html, body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 10px; 
-  height: 10px; 
+  width: 10px;
+  height: 10px;
   background: hsl(var(--White));
   border-radius: 50%;
   cursor: pointer;
 }
 
-
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
   color: hsl(var(--Very-dark-blackish-blue));
   display: block;
@@ -258,7 +310,6 @@ html, body {
   color: transparent;
 }
 
-
 /*   6. || Media Queries            */
 /*      Mobile                      */
 @media (max-width: 375px) {
@@ -279,7 +330,7 @@ html, body {
     padding: 1.75rem;
     margin: 0 auto;
   }
-  
+
   .container > .flex-row {
     flex-direction: column;
     width: 100%;
@@ -292,7 +343,7 @@ html, body {
     padding: 3rem;
     margin: 0 0 1.5rem 0;
   }
-  
+
   .c-1 .flex-row {
     justify-content: flex-start;
     margin: 0;
@@ -351,7 +402,7 @@ html, body {
   .c-2 .GBleft span:first-of-type {
     margin-right: 1rem;
   }
-  
+
   .c-2 .GBleft::after {
     display: none;
   }

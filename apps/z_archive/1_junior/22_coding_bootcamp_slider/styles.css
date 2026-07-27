@@ -13,11 +13,8 @@
 /*   author:    Simon Stranks       */
 /*   website:   github.com/SStranks */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
-
 
 /*   2. || Variables                */
 :root {
@@ -30,7 +27,6 @@
   --White: 100, 100%, 100%;
 }
 
-
 /*   3. || Globals                  */
 * {
   box-sizing: border-box;
@@ -38,24 +34,63 @@
   margin: 0;
 }
 
-img {display: block; height: 100%}
-a {text-decoration: none}
-a:visited {color: inherit}
-a:active {color: inherit}
-li {list-style: none}
-h1 {font-size: 1.7rem; color: #000}
-h2 {font-size: 3.25rem; font-family: 'Josefin Sans'; font-weight: 400; line-height: 1; color: #000; text-transform: uppercase}
-h3 {font-size: 2.2rem; font-family: 'Josefin Sans'; font-weight: 400; line-height: 1; color: #fff}
-h4 {font-size: 1.0rem; color: #000}
-p {font-size: 1rem; font-weight: 300; color: hsl(var(--Dark-Blue));line-height: 1.4}
-span {font-size: 1rem; font-weight: 700; line-height: 1}
+img {
+  display: block;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+a:active {
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 1.7rem;
+  color: #000;
+}
+h2 {
+  font-size: 3.25rem;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: 2.2rem;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+}
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: hsl(var(--Dark-Blue));
+  line-height: 1.4;
+}
+span {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
 button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none; 
+  border: none;
   font-family: inherit;
-  cursor: pointer
+  cursor: pointer;
 }
 input {
   font-size: inherit;
@@ -68,17 +103,37 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
 
-.flex-row {display: flex; justify-content: space-between; align-items: center}
-.flex-column {display: flex; flex-direction: column; justify-content: space-between; align-items: center}
-.hidden {display: none !important}
-.show {display:inherit !important}
-.modal-open {overflow: hidden}
-
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.hidden {
+  display: none !important;
+}
+.show {
+  display: inherit !important;
+}
+.modal-open {
+  overflow: hidden;
+}
 
 /*   4. || Main                     */
-html, body {
+html,
+body {
   font-size: 32px;
   font-family: 'Inter', sans-serif;
   font-weight: 300, 500, 700;
@@ -170,10 +225,9 @@ html, body {
   opacity: 50%;
 }
 
-
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 0.5rem; 
+  font-size: 0.5rem;
   text-align: center;
   color: hsl(var(--Grayish-Blue));
   display: block;
@@ -196,7 +250,6 @@ html, body {
   background-clip: text;
   color: transparent; */
 }
-
 
 /*   6. || Media Queries            */
 @media (max-width: 375px) {
@@ -242,7 +295,7 @@ html, body {
     height: 15px;
     width: 10px;
   }
-  
+
   .info {
     width: 100%;
     max-width: 375px;
@@ -254,7 +307,7 @@ html, body {
     font-size: 0.55rem;
     margin: 0 0 0.75rem 0;
   }
-  
+
   .info::before {
     content: '';
     position: absolute;
@@ -273,7 +326,7 @@ html, body {
     font-size: 0.5rem;
     line-height: 1.4;
   }
-  
+
   .job {
     display: block;
     font-size: 0.5rem;
@@ -281,6 +334,6 @@ html, body {
   }
 
   .attribution {
-    font-size: 0.35rem; 
+    font-size: 0.35rem;
   }
 }

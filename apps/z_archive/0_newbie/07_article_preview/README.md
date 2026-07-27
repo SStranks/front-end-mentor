@@ -1,6 +1,6 @@
 # Frontend Mentor - Article preview component solution
 
-This is a solution to the [Article preview component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/article-preview-component-dYBN_pYFT). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Article preview component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/article-preview-component-dYBN_pYFT). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -43,7 +43,7 @@ Users should be able to:
 
 ### What I learned
 
-In this challenge I implemented my first real bit of JavaScript, utilizing the 'toggle' method to add/remove classes to elements to affect visual changes to the 'share navbar'. 
+In this challenge I implemented my first real bit of JavaScript, utilizing the 'toggle' method to add/remove classes to elements to affect visual changes to the 'share navbar'.
 
 Used the psuedo-element '::after' to create a triangle for the share navbar.
 

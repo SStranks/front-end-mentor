@@ -1,7 +1,7 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Main                     */
 /*   5. || JS Toggle Class          */
@@ -9,11 +9,10 @@
 /*   7. || Media Queries            */
 /* -------------------------------- */
 
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
 
-/*   2. || Variables                */ 
+/*   2. || Variables                */
 :root {
   /* HSL Values  */
   --Dark-Gray-Blue: 217, 19%, 35%;
@@ -29,7 +28,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-size: 13px;
   font-family: 'Manrope', sans-serif;
   line-height: 1.6;
@@ -58,7 +58,7 @@ html, body {
   grid-template-rows: 1fr;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
   margin: 2em;
 }
 
@@ -135,14 +135,12 @@ html, body {
   z-index: 2;
 }
 
-
-
 .share-icon img {
   width: 35%;
 }
 
 .img-color {
-  filter: brightness(100)
+  filter: brightness(100);
 }
 
 .share-nav {
@@ -156,7 +154,7 @@ html, body {
   align-items: center;
   position: absolute;
   right: -105px;
-  bottom: 80px
+  bottom: 80px;
 }
 
 .share-nav::after {
@@ -194,13 +192,13 @@ html, body {
 
 /*   6. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
-  color:#000;
+  color: #000;
 }
 
-.attribution a { 
-  color: rgb(211, 47, 226); 
+.attribution a {
+  color: rgb(211, 47, 226);
 }
 
 /*   7. || Media Queries            */
@@ -214,7 +212,7 @@ html, body {
     justify-content: center;
     align-items: center;
   }
-  
+
   .card {
     max-width: 100%;
     min-height: max-content;
@@ -223,7 +221,7 @@ html, body {
     grid-template-rows: auto auto;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 2em;
   }
@@ -247,7 +245,7 @@ html, body {
     margin: 0;
     padding: 2em 1.5em;
   }
-  
+
   .info-panel > p {
     font-size: 1.1rem;
     margin-bottom: 1em;

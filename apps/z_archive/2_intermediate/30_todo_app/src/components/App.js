@@ -44,11 +44,7 @@ function App() {
   // };
 
   const completeTask = ({ id, complete }) => {
-    setTaskList((tasks) =>
-      tasks.map((task) =>
-        task.id === id ? { ...task, complete: !complete } : task
-      )
-    );
+    setTaskList((tasks) => tasks.map((task) => (task.id === id ? { ...task, complete: !complete } : task)));
   };
 
   // const completeTask = (task) => {
@@ -75,9 +71,7 @@ function App() {
   // };
 
   const clearCompleted = () => {
-    let completedTasks = [
-      ...document.querySelectorAll('[data-complete]:not([data-complete=""])'),
-    ];
+    let completedTasks = [...document.querySelectorAll('[data-complete]:not([data-complete=""])')];
     completedTasks = completedTasks.map((el) => Number(el.attributes[1].value));
     setTaskList((prevState) => {
       return prevState.filter((task) => !completedTasks.includes(task.id));

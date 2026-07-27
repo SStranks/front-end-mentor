@@ -35,7 +35,7 @@ Captured at the following breakpoints from the live solution: Desktop - 1440px, 
 
 ### Links
 
-- Live Site - [@Netlify]()
+- Live Site - [@Netlify](<>)
 - GitHub - [@GitHub](https://github.com/SStranks/MyFirstRepository/tree/master/FrontEndMentor/32_dev_jobs_webapp)
 - FrontEndMentor Challenge - [@FrontEndMentor](https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l)
 - FrontEndMentor Profile - [@SStranks](https://www.frontendmentor.io/profile/SStranks)

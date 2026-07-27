@@ -9,19 +9,10 @@ const Modal = (props) => {
   const [countrySelect, setCountrySelect] = useState(country);
 
   const newCountry = countriesList.find((el) => el.name === countrySelect.name);
-  const { loading } = useFlagRender(
-    [newCountry],
-    'all',
-    newCountry.name,
-    undefined,
-    undefined,
-    setCountrySelect
-  );
+  const { loading } = useFlagRender([newCountry], 'all', newCountry.name, undefined, undefined, setCountrySelect);
 
   const modalBorderCountryBtn = (borderCountry) => {
-    const getBorderCountryObject = countriesList.find(
-      (nation) => nation.name === borderCountry
-    );
+    const getBorderCountryObject = countriesList.find((nation) => nation.name === borderCountry);
     setCountrySelect(getBorderCountryObject);
   };
 
@@ -32,8 +23,7 @@ const Modal = (props) => {
         type="button"
         aria-label={`border country ${i + 1}`}
         key={`modal_${borderName}`}
-        onClick={() => modalBorderCountryBtn(borderName)}
-      >
+        onClick={() => modalBorderCountryBtn(borderName)}>
         {/* <span className="hover-border-btn">{borderName}</span> */}
         <span>{borderName}</span>
       </button>
@@ -47,24 +37,13 @@ const Modal = (props) => {
 
   return (
     <div className="modal">
-      <button
-        type="button"
-        aria-label="go back to main"
-        onClick={backBtnHandler}
-      >
+      <button type="button" aria-label="go back to main" onClick={backBtnHandler}>
         <FontAwesomeIcon icon={faArrowLeftLong} className="faArrowLeft" />
         <span>Back</span>
       </button>
       <div className="content">
         {loading && <div />}
-        {!loading && (
-          <img
-            src={`data:image/svg+xml;utf8,${encodeURIComponent(
-              countrySelect.flag
-            )}`}
-            alt=""
-          />
-        )}
+        {!loading && <img src={`data:image/svg+xml;utf8,${encodeURIComponent(countrySelect.flag)}`} alt="" />}
         <div className="country-info">
           <h2>{countrySelect.name}</h2>
           <div className="grid-info">
@@ -72,8 +51,7 @@ const Modal = (props) => {
               Native Name: <span>{countrySelect.nativeName}</span>
             </p>
             <p>
-              Population:{' '}
-              <span>{countrySelect.population?.toLocaleString()}</span>
+              Population: <span>{countrySelect.population?.toLocaleString()}</span>
             </p>
             <p>
               Region: <span>{countrySelect.region}</span>
@@ -88,18 +66,10 @@ const Modal = (props) => {
               Top Level Domain: <span>{countrySelect?.topLevelDomain[0]}</span>
             </p>
             <p>
-              Currencies:{' '}
-              <span>
-                {countrySelect.currencies
-                  ?.map((currency) => currency.name)
-                  .join(', ')}
-              </span>
+              Currencies: <span>{countrySelect.currencies?.map((currency) => currency.name).join(', ')}</span>
             </p>
             <p>
-              Languages:{' '}
-              <span>
-                {countrySelect.languages?.map((lang) => lang.name).join(', ')}
-              </span>
+              Languages: <span>{countrySelect.languages?.map((lang) => lang.name).join(', ')}</span>
             </p>
           </div>
           <div className="border-countries">

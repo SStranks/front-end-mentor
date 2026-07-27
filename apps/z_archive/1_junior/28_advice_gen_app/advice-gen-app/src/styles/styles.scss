@@ -68,7 +68,9 @@ footer {
       //  -webkit-background-clip: text;
       //  background-clip: text;
       color: variables.$neon;
-      text-shadow: 0 0 5px variables.$neon-light, 0 0 5px variables.$neon-light,
+      text-shadow:
+        0 0 5px variables.$neon-light,
+        0 0 5px variables.$neon-light,
         0 0 5px variables.$neon-light;
       transition: all 0.25s ease;
       text-decoration: none;

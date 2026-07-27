@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function useFlagRender(
-  countries,
-  region,
-  query,
-  countryIndex,
-  modal,
-  setCountrySelect
-) {
+function useFlagRender(countries, region, query, countryIndex, modal, setCountrySelect) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [output, setOutput] = useState([]);
@@ -39,9 +32,7 @@ function useFlagRender(
       };
 
       const flagOutput = flagData.map((promise) => {
-        return promise.status === 'fulfilled'
-          ? amendSVG(promise.value.data)
-          : '/assets/Pirate_Flag.png';
+        return promise.status === 'fulfilled' ? amendSVG(promise.value.data) : '/assets/Pirate_Flag.png';
       });
 
       const mergeFlagToSlice = countries.map((country, i) => {

@@ -8,7 +8,10 @@
   padding-bottom: 36px;
   background-color: var(--color-elements);
   border-radius: 6px;
-  transition: $Theme-transition, transform 500ms ease-in-out, box-shadow 500ms;
+  transition:
+    $Theme-transition,
+    transform 500ms ease-in-out,
+    box-shadow 500ms;
 
   @include media(mobile-large, mobile-medium, mobile-small) {
     min-width: unset;

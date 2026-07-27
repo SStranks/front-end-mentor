@@ -1,13 +1,12 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Main                     */
 /*   5. || FrontEnd Mentor Footer   */
 /*   6. || Media Queries            */
 /* -------------------------------- */
-
 
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
@@ -31,7 +30,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-size: 16px;
   font-family: 'Red Hat Display', sans-serif;
   line-height: 1.6;
@@ -66,7 +66,7 @@ html, body {
   width: 475px;
   position: relative;
   border-radius: 20px;
-  box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.2);
 }
 
 .img-panel {
@@ -140,7 +140,6 @@ html, body {
 
 .info-pricing-plan {
   display: flex;
-
 }
 
 #btn {
@@ -153,7 +152,7 @@ html, body {
   font-weight: 700;
   margin: 2rem 0rem;
   border-radius: 10px;
-  box-shadow: 0 10px 15px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 15px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
@@ -174,13 +173,13 @@ html, body {
 
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
-  color:#000;
+  color: #000;
 }
 
-.attribution a { 
-  color: #fff; 
+.attribution a {
+  color: #fff;
 }
 
 /*   6. || Media Queries            */

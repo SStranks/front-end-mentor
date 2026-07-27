@@ -1,7 +1,7 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Section Top              */
 /*   5. || Section Bottom           */
@@ -9,13 +9,12 @@
 /*   7. || Media Queries            */
 /* -------------------------------- */
 
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
-/*   2. || Variables                */ 
+/*   2. || Variables                */
 :root {
-   /* HSL Values  */
+  /* HSL Values  */
   --cyan: 179, 62%, 43%;
   --yellow: 71, 73%, 54%;
   --gray: 204, 43%, 93%;
@@ -29,7 +28,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-size: 16px;
   font-family: 'Karla', sans-serif;
   line-height: 1.6;
@@ -53,7 +53,7 @@ html, body {
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr minmax(1fr, auto);
   max-width: 1000px;
-  box-shadow: 0 0 20px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
   margin: 2em 3em;
   background-color: white;
   border-radius: 10px;
@@ -95,15 +95,15 @@ html, body {
   margin-bottom: 0.25em;
 }
 
-.panel-subscribe span.price{
+.panel-subscribe span.price {
   font-size: 2.5rem;
   font-weight: bold;
   margin-right: 0.5em;
 }
 
 .panel-subscribe > p {
- font-size: 1.5rem;
- margin-bottom: 1.5em;
+  font-size: 1.5rem;
+  margin-bottom: 1.5em;
 }
 
 .panel-why {
@@ -128,7 +128,7 @@ html, body {
   height: 65px;
   border-radius: 7px;
   border: none;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
   transition: transform 0.25s ease-in-out;
 }
 
@@ -143,13 +143,13 @@ html, body {
 
 /*   6. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
-  color:#000;
+  color: #000;
 }
 
-.attribution a { 
-  color: hsl(228, 45%, 44%); 
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
 
 /*   7. || Media Queries            */
@@ -160,7 +160,7 @@ html, body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     max-width: 100%;
-    box-shadow: 0 0 20px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
     margin: 5em 2em;
     background-color: white;
     border-radius: 10px;
@@ -177,18 +177,25 @@ html, body {
     font-size: 2rem;
   }
 
-  .panel-join h4, .panel-subscribe h4, .panel-why h4 {
+  .panel-join h4,
+  .panel-subscribe h4,
+  .panel-why h4 {
     font-size: 1.25rem;
   }
 
-  .panel-join p, .panel-subscribe p, .panel-why p, ul li {
+  .panel-join p,
+  .panel-subscribe p,
+  .panel-why p,
+  ul li {
     font-size: 1rem;
   }
 }
 
 /*      Mobile                      */
 @media (max-width: 500px) {
-  .panel-join, .panel-subscribe, .panel-why {
+  .panel-join,
+  .panel-subscribe,
+  .panel-why {
     grid-column: 1;
     padding: 2em 2em;
   }
@@ -197,11 +204,16 @@ html, body {
     font-size: 1.5rem;
   }
 
-  .panel-join h4, .panel-subscribe h4, .panel-why h4 {
+  .panel-join h4,
+  .panel-subscribe h4,
+  .panel-why h4 {
     font-size: 1.2rem;
   }
 
-  .panel-join p, .panel-subscribe p, .panel-why p, ul li {
+  .panel-join p,
+  .panel-subscribe p,
+  .panel-why p,
+  ul li {
     font-size: 1rem;
   }
 }

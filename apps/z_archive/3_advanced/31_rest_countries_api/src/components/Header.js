@@ -12,11 +12,7 @@ const Header = () => {
         <a href="./">Where in the world?</a>
       </h1>
       <div className="theme-toggle">
-        <button
-          type="button"
-          aria-label="dark theme button"
-          onClick={btnThemeClickHandler}
-        >
+        <button type="button" aria-label="dark theme button" onClick={btnThemeClickHandler}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
             <path
               fill="#FFF"

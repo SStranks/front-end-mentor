@@ -85,13 +85,7 @@ function Search(props) {
       <div className={styles.searchBar__compartment}>
         <div className={styles.searchBar__compartment__sub}>
           <img src={IconFilter} id={styles.imgFilterDesktop} alt="" />
-          <img
-            src={IconFilterMobile}
-            id={styles.imgFilterMobile}
-            alt=""
-            onClick={modalHandler}
-            aria-hidden
-          />
+          <img src={IconFilterMobile} id={styles.imgFilterMobile} alt="" onClick={modalHandler} aria-hidden />
           <input
             type="text"
             name="filter"
@@ -108,16 +102,9 @@ function Search(props) {
           id={styles.checkboxControl}
           name="time"
           checked={searchFields.time}
-          onChange={() =>
-            setSearchFields((prev) => ({ ...prev, time: !prev.time }))
-          }
+          onChange={() => setSearchFields((prev) => ({ ...prev, time: !prev.time }))}
         />
-        <ButtonSubmit
-          value="Submit"
-          text={isSearching ? 'Searching' : 'Search'}
-          disabled={isSearching}
-          modal={false}
-        />
+        <ButtonSubmit value="Submit" text={isSearching ? 'Searching' : 'Search'} disabled={isSearching} modal={false} />
       </div>
     </form>
   );

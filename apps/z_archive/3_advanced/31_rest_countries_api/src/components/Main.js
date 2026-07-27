@@ -22,9 +22,7 @@ const Main = (props) => {
         if (stateFilter.activeRegion === 'all') return country;
         if (
           stateFilter.activeRegion === 'Polar' &&
-          (country.region === 'Polar' ||
-            country.region === 'Antarctic' ||
-            country.region === 'Antarctic Ocean')
+          (country.region === 'Polar' || country.region === 'Antarctic' || country.region === 'Antarctic Ocean')
         )
           return country;
         return stateFilter.activeRegion === country.region ? country : false;
@@ -35,22 +33,12 @@ const Main = (props) => {
   const searchFilter = (() => {
     if (stateFilter.searchQuery === '') return regionFilter;
     const regex = new RegExp(`^${stateFilter.searchQuery}`, 'i');
-    return regionFilter.filter((country) =>
-      regex.test(country.name) ? country : false
-    );
+    return regionFilter.filter((country) => (regex.test(country.name) ? country : false));
   })();
 
   const currentSlice = useMemo(() => {
-    return searchFilter.slice(
-      stateFilter.countryIndex[0],
-      stateFilter.countryIndex[1]
-    );
-  }, [
-    stateFilter.countryIndex,
-    regionFilter,
-    stateFilter.searchQuery,
-    countrySelect,
-  ]);
+    return searchFilter.slice(stateFilter.countryIndex[0], stateFilter.countryIndex[1]);
+  }, [stateFilter.countryIndex, regionFilter, stateFilter.searchQuery, countrySelect]);
 
   const { output, loading } = useFlagRender(
     currentSlice,

@@ -11,17 +11,11 @@
   transition: $Theme-transition;
 
   @include media(tablet-regular, tablet-small) {
-    grid-template-columns: minmax(auto, 35%) minmax(auto, 30%) minmax(
-        270px,
-        35%
-      );
+    grid-template-columns: minmax(auto, 35%) minmax(auto, 30%) minmax(270px, 35%);
   }
 
   @include media(mobile-large, mobile-medium, mobile-small) {
-    grid-template-columns: auto minmax(auto, min-content) minmax(
-        auto,
-        min-content
-      );
+    grid-template-columns: auto minmax(auto, min-content) minmax(auto, min-content);
   }
 
   &__compartment {
@@ -118,13 +112,7 @@
 }
 
 #imgFilterMobile {
-  @include media(
-    tablet-regular,
-    tablet-small,
-    desktop-large,
-    desktop-medium,
-    desktop-small
-  ) {
+  @include media(tablet-regular, tablet-small, desktop-large, desktop-medium, desktop-small) {
     display: none;
   }
   margin-right: 0;

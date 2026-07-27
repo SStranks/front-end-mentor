@@ -6,13 +6,7 @@ const UserCard = (props) => {
   const { img, name, activePeriod, timePeriods, click } = props;
 
   const periodSelector = timePeriods.map((item) => (
-    <StatSelector
-      key={item.title}
-      txt={item.txt}
-      id={item.title}
-      click={click}
-      active={item.title === activePeriod}
-    />
+    <StatSelector key={item.title} txt={item.txt} id={item.title} click={click} active={item.title === activePeriod} />
   ));
 
   return (

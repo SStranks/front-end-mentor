@@ -48,12 +48,7 @@ function App() {
 
   return (
     <>
-      <UserCard
-        img={userData.img}
-        click={statsSelectHandler}
-        timePeriods={timePeriods}
-        activePeriod={activePeriod}
-      />
+      <UserCard img={userData.img} click={statsSelectHandler} timePeriods={timePeriods} activePeriod={activePeriod} />
       {stats}
     </>
   );

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Selectors
 const btn_selectReward = document.querySelector('.card-3');
@@ -13,34 +13,32 @@ const modalPledges = document.querySelectorAll('.modalPledge');
 const modalWindow = document.querySelector('.modal');
 const successWindow = document.querySelector('.modalSuccess');
 const navBar = document.querySelector('nav');
-const windowResize = window.matchMedia("(max-width: 375px)");
+const windowResize = window.matchMedia('(max-width: 375px)');
 let btl_bookmark_icon;
 let circle;
 let path;
 
-
-
 // Main: Toggle Bookmark
 function bookmark() {
-  let textButton = document.querySelector('.bookmark')
+  let textButton = document.querySelector('.bookmark');
   textButton.classList.toggle('bookmarked');
   if (textButton.classList.contains('bookmarked')) {
-    circle[0].setAttribute("fill", "hsl(176, 72%, 28%)"); 
-    path[0].setAttribute("fill", "#FFFFFF");
+    circle[0].setAttribute('fill', 'hsl(176, 72%, 28%)');
+    path[0].setAttribute('fill', '#FFFFFF');
     textButton.textContent = 'Bookmarked';
   } else {
-    circle[0].setAttribute("fill", "#2F2F2F"); 
-    path[0].setAttribute("fill", "#B1B1B1"); 
+    circle[0].setAttribute('fill', '#2F2F2F');
+    path[0].setAttribute('fill', '#B1B1B1');
     textButton.textContent = 'Bookmark';
   }
 }
 
 // Select Reward Buttons
 function selectReward(e) {
-  if (e.target.textContent == "Select Reward") {
+  if (e.target.textContent == 'Select Reward') {
     showModal();
   }
-};
+}
 
 // Modal: Show
 function showModal() {
@@ -49,16 +47,16 @@ function showModal() {
 }
 
 // Modal: Toggle Pledge Boxs - Radio Button
-let currentPledge
-let targetPledge
-let elementChildren
-function radioSelect (e) {
+let currentPledge;
+let targetPledge;
+let elementChildren;
+function radioSelect(e) {
   // Selecting already selected pledge radio button
   if (e.target.value == currentPledge) return;
 
   // Reset any existing moralPledge border styles
   if (currentPledge) {
-    currentPledge.style.border = "1px solid hsla(var(--Dark-gray), 0.2)";
+    currentPledge.style.border = '1px solid hsla(var(--Dark-gray), 0.2)';
     // Hide the pledge section of the modalPledge
     elementChildren = currentPledge.children;
     for (let element of elementChildren) {
@@ -67,10 +65,10 @@ function radioSelect (e) {
       }
     }
   }
-  
+
   // Find radio button value, extract number; Loop moralPledge array and apply style
-  targetPledge = (e.target.value).slice(-1);
-  modalPledges[targetPledge - 1].style.border = "1px solid hsla(var(--Moderate-cyan))";
+  targetPledge = e.target.value.slice(-1);
+  modalPledges[targetPledge - 1].style.border = '1px solid hsla(var(--Moderate-cyan))';
   currentPledge = modalPledges[targetPledge - 1];
   // Show the pledge section of the modalPledge
   elementChildren = currentPledge.children;
@@ -79,7 +77,7 @@ function radioSelect (e) {
       element.classList.remove('hidden');
     }
   }
-};
+}
 
 function donateAmount(e) {
   e.preventDefault;
@@ -88,7 +86,7 @@ function donateAmount(e) {
     let previousElement = e.target.previousElementSibling;
     let donateValue = previousElement.children[0].value;
     if (donateValue == '') {
-      donateValue = previousElement.children[0].placeholder
+      donateValue = previousElement.children[0].placeholder;
     }
     // Show Success Modal, Process Donation, Adjust Values
     showSuccess();
@@ -99,19 +97,19 @@ function donateAmount(e) {
 
 function processDonation(donation, element) {
   // Add Donation to Total Donations
-  let totalDonation = parseInt(document.querySelector('.totalDonation').textContent.replace('$', '').replace(',',''));
+  let totalDonation = parseInt(document.querySelector('.totalDonation').textContent.replace('$', '').replace(',', ''));
   totalDonation += parseInt(donation);
-  totalDonation = "$" + totalDonation.toLocaleString('en-US')
+  totalDonation = '$' + totalDonation.toLocaleString('en-US');
   document.querySelector('.totalDonation').textContent = totalDonation;
   // Add +1 Backer
   let totalBackers = document.querySelector('.totalBackers');
-  let total = parseInt(totalBackers.textContent.replace(',',''));
+  let total = parseInt(totalBackers.textContent.replace(',', ''));
   total += 1;
   totalBackers.textContent = total.toLocaleString('en-US');
   // Adjust Progress Bar
-  let progressVal = (((totalDonation.replace('$', '').replace(',','')) / 100000) * 100).toFixed(2);
+  let progressVal = ((totalDonation.replace('$', '').replace(',', '') / 100000) * 100).toFixed(2);
   if (progressVal > 100) progressVal = 100;
-  document.querySelector('.prog-bar-val').style.width = `${progressVal}%`
+  document.querySelector('.prog-bar-val').style.width = `${progressVal}%`;
 
   // Adjust Rewards Remaining Totals; Search Up Tree then back down to the value of the selected modalPledge
   let pledgeType = element.closest('.modalPledge');
@@ -120,7 +118,7 @@ function processDonation(donation, element) {
   rewardTotal = parseInt(pledgeType.querySelector('.total').textContent);
   pledgeType.querySelector('.total').textContent = `${rewardTotal - 1}`;
   // Search for reward on main-page by using the "Item-n" class of the modal reward selection
-  let rewardItem = document.querySelector(`.${pledgeType.classList[1]}`)
+  let rewardItem = document.querySelector(`.${pledgeType.classList[1]}`);
   let rewardTotal2 = rewardItem.querySelector('.total');
   rewardTotal2.textContent = `${rewardTotal - 1}`;
 
@@ -128,7 +126,7 @@ function processDonation(donation, element) {
   if (rewardTotal - 1 == 0) {
     pledgeType.classList.add('out-of-stock');
     rewardItem.classList.add('out-of-stock');
-    rewardItem.querySelector('button').textContent = "Out of Stock";
+    rewardItem.querySelector('button').textContent = 'Out of Stock';
     // Uncheck Radio Buttons; Check first one as default
     for (let btn of btn_radio) {
       btn.checked = false;
@@ -169,24 +167,24 @@ function mobileLayout(x) {
   } else {
     navBar.classList.remove('hidden');
   }
-};
+}
 
 // Event Handlers
 btn_bookmark.addEventListener('click', bookmark);
-window.addEventListener("load", function() {
+window.addEventListener('load', function () {
   btl_bookmark_icon = document.querySelector('.svgClass').contentDocument;
-  circle = btl_bookmark_icon.getElementsByTagName('circle')
+  circle = btl_bookmark_icon.getElementsByTagName('circle');
   path = btl_bookmark_icon.getElementsByTagName('path');
   // Alternative: Using ID (but requires editing of the SVG file to include IDs on elements)
   // circle = btl_bookmark_icon.getElementById('circle');
   // path = btl_bookmark_icon.getElementById('path');
 });
-btn_radio.forEach(radio => radio.addEventListener('change', radioSelect));
+btn_radio.forEach((radio) => radio.addEventListener('change', radioSelect));
 btn_backProject.addEventListener('click', showModal);
 btn_closeSuccess.addEventListener('click', closeSuccess);
 btn_closeBackProject.addEventListener('click', closeBackProject);
 btn_selectReward.addEventListener('click', selectReward);
-btn_hamburger.addEventListener('click', mobMenu)
+btn_hamburger.addEventListener('click', mobMenu);
 backProj.addEventListener('click', donateAmount);
 
 // Mobile Resize Event

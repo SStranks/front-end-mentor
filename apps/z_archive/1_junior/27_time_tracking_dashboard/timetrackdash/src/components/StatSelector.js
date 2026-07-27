@@ -11,8 +11,7 @@ const StatSelector = (props) => {
       onClick={click}
       onKeyDown={click}
       role="button"
-      tabIndex="0"
-    >
+      tabIndex="0">
       {txt}
     </span>
   );

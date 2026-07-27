@@ -1,7 +1,7 @@
 {
   "name": "@apps/z_archive/dev_jobs_webapp/client",
   "version": "1.0.0",
- "description": "frontend-mentor challenge; https://www.frontendmentor.io/",
+  "description": "frontend-mentor challenge; https://www.frontendmentor.io/",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "main": "./src/index.js",
   "scripts": {

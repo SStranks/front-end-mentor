@@ -2,22 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ListItem = (props) => {
-  const {
-    theme,
-    listItem,
-    completeTask,
-    deleteTask,
-    dragTask,
-    dragEnter,
-    itemNum,
-    dragging,
-  } = props;
+  const { theme, listItem, completeTask, deleteTask, dragTask, dragEnter, itemNum, dragging } = props;
 
   return (
     <li
-      className={`card list__item ${!theme ? 'dark-card' : ''} ${
-        dragging ? 'task-drag' : ''
-      }`}
+      className={`card list__item ${!theme ? 'dark-card' : ''} ${dragging ? 'task-drag' : ''}`}
       key={listItem.id}
       data-complete={listItem.complete ? listItem.id : ''}
       draggable
@@ -26,26 +15,17 @@ const ListItem = (props) => {
       }}
       onDragEnter={(e) => {
         dragEnter(e, itemNum);
-      }}
-    >
+      }}>
       <input
         type="checkbox"
         onChange={() => completeTask(listItem)}
         defaultChecked={listItem.complete}
         id={listItem.id}
       />
-      <label
-        className={listItem.complete ? 'task-complete' : ''}
-        htmlFor={listItem.id}
-      >
+      <label className={listItem.complete ? 'task-complete' : ''} htmlFor={listItem.id}>
         {listItem.task}
       </label>
-      <button
-        className="btn-delete"
-        type="button"
-        aria-label="delete task"
-        onClick={() => deleteTask(listItem)}
-      />
+      <button className="btn-delete" type="button" aria-label="delete task" onClick={() => deleteTask(listItem)} />
     </li>
   );
 };

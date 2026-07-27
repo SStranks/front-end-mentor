@@ -33,13 +33,7 @@ button {
 }
 
 .btnIcon {
-  @include media(
-    desktop-large,
-    desktop-medium,
-    desktop-small,
-    tablet-regular,
-    tablet-small
-  ) {
+  @include media(desktop-large, desktop-medium, desktop-small, tablet-regular, tablet-small) {
     display: none;
   }
 }

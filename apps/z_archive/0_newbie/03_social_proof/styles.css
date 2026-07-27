@@ -1,18 +1,17 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Section Top              */
 /*   5. || Section Bottom           */
 /*   6. || FrontEnd Mentor Footer   */
 /* -------------------------------- */
 
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
 
-/*   2. || Variables                */ 
+/*   2. || Variables                */
 :root {
   /* HSL Values  */
   --dark-magenta: 300, 43%, 22%;
@@ -29,7 +28,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-size: 15px;
   font-family: 'Spartan', sans-serif;
   line-height: 1.6;
@@ -45,7 +45,9 @@ body::before {
   position: absolute;
   background-image: url(./images/bg-pattern-top-desktop.svg), url(./images/bg-pattern-bottom-desktop.svg);
   background-repeat: no-repeat;
-  background-position: left top, right bottom;
+  background-position:
+    left top,
+    right bottom;
   opacity: 1;
 }
 
@@ -56,7 +58,7 @@ body::before {
   margin: 0 auto;
   padding: 0 4em;
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -173,12 +175,12 @@ p {
 
 /*   6. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 11px; 
+  font-size: 11px;
   text-align: center;
 }
 
-.attribution a { 
-  color: hsl(228, 45%, 44%); 
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
 
 @media (max-width: 1040px) {
@@ -190,10 +192,12 @@ p {
     position: absolute;
     background-image: url(./images/bg-pattern-top-mobile.svg), url(./images/bg-pattern-bottom-mobile.svg);
     background-repeat: no-repeat;
-    background-position: left top, right bottom;
+    background-position:
+      left top,
+      right bottom;
     opacity: 1;
   }
-  
+
   .container {
     height: max-content;
     width: 100%;
@@ -220,7 +224,9 @@ p {
     text-align: center;
   }
 
-  .align-start, .align-center, .align-end {
+  .align-start,
+  .align-center,
+  .align-end {
     align-self: center;
   }
 

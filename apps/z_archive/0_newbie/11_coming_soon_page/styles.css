@@ -31,7 +31,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 16px;
@@ -151,7 +152,7 @@ button {
 
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
   /* color:#000; */
   display: block;
@@ -163,7 +164,7 @@ button {
   width: 100%;
 }
 
-.attribution a { 
+.attribution a {
   color: hsl(var(--Dark-Grayish-Red));
 }
 
@@ -234,6 +235,6 @@ button {
   }
 
   .content .attribution {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
   }
 }

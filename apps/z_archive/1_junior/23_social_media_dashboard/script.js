@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Selectors
 const toggleSwitch = document.querySelector('input[type="checkbox"]');
@@ -11,7 +11,7 @@ const text = document.querySelectorAll('h1, h2, .mode, .num-follow, .num-overvie
 function changeTheme() {
   if (toggleSwitch.checked == true) {
     // Change theme mode text
-    textSwitch("Light");
+    textSwitch('Light');
     // Change Background
     document.querySelector('.bk-1').classList.toggle('opacity');
     for (let card of cards) {
@@ -20,7 +20,7 @@ function changeTheme() {
     }
     for (let words of text) words.classList.toggle('number-color');
   } else {
-    textSwitch("Dark");
+    textSwitch('Dark');
     // Change Background
     document.querySelector('.bk-1').classList.toggle('opacity');
     for (let card of cards) {
@@ -29,19 +29,19 @@ function changeTheme() {
     }
     for (let words of text) words.classList.toggle('number-color');
   }
-};
+}
 
 // Main: Switch Mode Text
 function textSwitch(theme) {
   for (let element of themeText) {
-    if (element.textContent.includes("Mode")) {
+    if (element.textContent.includes('Mode')) {
       element.textContent = `${theme} Mode`;
       break;
     }
   }
-};
+}
 
 // Event Handlers
-toggleSwitch.addEventListener('click', changeTheme)
+toggleSwitch.addEventListener('click', changeTheme);
 // Page Load Events
-window.addEventListener('load', () => (docBody.classList.remove('transition')));
+window.addEventListener('load', () => docBody.classList.remove('transition'));

@@ -8,11 +8,8 @@
 /*   6. || Media Queries            */
 /* -------------------------------- */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap');
-
 
 /*   2. || Variables                */
 :root {
@@ -24,13 +21,12 @@
   --Dark-blue: 198, 62%, 26%;
   --Dark-moderate-cyan: 168, 34%, 41%;
   /* Neutral */
-  --Very-dark-desaturated-blue: 212, 27%, 19%; 
+  --Very-dark-desaturated-blue: 212, 27%, 19%;
   --Very-dark-grayish-blue: 213, 9%, 39%;
   --Dark-grayish-blue: 232, 10%, 55%;
   --Grayish-blue: 210, 4%, 67%;
   --White: 0, 0%, 100%;
 }
-
 
 /*   3. || Globals                  */
 * {
@@ -39,7 +35,8 @@
   margin: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 18px;
@@ -53,7 +50,6 @@ html, body {
 .hidden {
   display: none !important;
 }
-
 
 /*   4. || Main                     */
 .container {
@@ -353,7 +349,6 @@ footer > img {
   color: hsl(var(--Strong-cyan));
 } */
 
-
 /*   6. || Media Queries            */
 /*      Mobile                      */
 @media (max-width: 375px) {
@@ -367,7 +362,7 @@ footer > img {
     justify-content: center;
     align-items: center;
   }
-  
+
   .main-header #header-image {
     content: url('./images/mobile/image-header.jpg');
     width: 100%;
@@ -382,7 +377,8 @@ footer > img {
   .main-header nav ul {
     position: absolute;
     top: 120%;
-    left: 50%;  display: flex;
+    left: 50%;
+    display: flex;
     flex-direction: column;
     background: #fff;
     transform: translate(-50%, 0);
@@ -418,7 +414,6 @@ footer > img {
     background: hsl(var(--Yellow));
     color: hsl(var(--Very-dark-desaturated-blue));
   }
-  
 
   .main-header h1 {
     font: 900 2rem 'Fraunces';
@@ -427,7 +422,7 @@ footer > img {
   .main-header #header-arrow {
     transform: translate(-50%, 45%);
   }
-  
+
   .services {
     display: grid;
     grid-template-columns: 1fr;
@@ -444,7 +439,7 @@ footer > img {
     color: hsl(var(--Dark-grayish-blue));
     padding: 3rem 1.5rem;
   }
-  
+
   .service-text h3 {
     font: 900 1.75rem 'Fraunces';
     color: hsl(var(--Very-dark-desaturated-blue));

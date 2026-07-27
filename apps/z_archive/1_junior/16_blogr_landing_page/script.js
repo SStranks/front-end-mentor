@@ -1,10 +1,9 @@
-'use strict'
+'use strict';
 
 // Selectors
 const mob_menu = document.getElementById('mob-menu');
 const menu = document.querySelector('.menu-nav');
-const windowResize = window.matchMedia("(max-width: 375px)");
-
+const windowResize = window.matchMedia('(max-width: 375px)');
 
 // Mobile Menu Toggle
 function menuActivate() {
@@ -19,12 +18,9 @@ function mobileLayout(x) {
   } else {
     menu.classList.remove('hidden');
   }
-};
+}
 
 // Event Handler
 mob_menu.addEventListener('click', menuActivate);
 windowResize.addEventListener('change', mobileLayout);
 mobileLayout(windowResize);
-
-
-

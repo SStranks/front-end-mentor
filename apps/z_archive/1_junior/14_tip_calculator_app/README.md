@@ -50,7 +50,7 @@ Users should be able to:
   when in focus will betray the size of the div; alternative is to use 'position: abs' on the icon instead of 'grid'
   on div.
 - DON'T alter the styles of buttons directly or you break the 'hover', as JS.style supercedes CSS rules;
-    Instead: Add/Remove Classes.
+  Instead: Add/Remove Classes.
 - Bug: 10/3 gives long fraction which distorts the visual elements! Ensure decimal fixed to 2 places.
 
 ## Author

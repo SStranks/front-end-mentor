@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 
 const Grid = (props) => {
-  const {
-    filteredCountries,
-    stateFilter,
-    setStateFilter,
-    setCountrySelect,
-    setModal,
-    loading,
-    modal,
-  } = props;
+  const { filteredCountries, stateFilter, setStateFilter, setCountrySelect, setModal, loading, modal } = props;
   const observer = useRef();
 
   const lastCardRef = useCallback(
@@ -19,10 +11,7 @@ const Grid = (props) => {
       if (loading || modal) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (
-          entries[0].isIntersecting &&
-          filteredCountries.length >= stateFilter.countryIndex[1]
-        ) {
+        if (entries[0].isIntersecting && filteredCountries.length >= stateFilter.countryIndex[1]) {
           setStateFilter((prev) => ({
             ...prev,
             countryIndex: [0, prev.countryIndex[1] + 4],

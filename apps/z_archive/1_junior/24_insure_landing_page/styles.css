@@ -13,11 +13,8 @@
 /*   author:    Simon Stranks       */
 /*   website:   github.com/SStranks */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;700&display=swap');
-
 
 /*   2. || Variables                */
 :root {
@@ -32,7 +29,6 @@
   --White: 100, 100%, 100%;
 }
 
-
 /*   3. || Globals                  */
 * {
   box-sizing: border-box;
@@ -40,30 +36,76 @@
   margin: 0;
 }
 
-img {display: block; height: 100%}
-a {color: hsl(var(--Dark-Grayish-Violet)); letter-spacing: 0.1rem; text-decoration: none}
-a:visited {color: hsl(var(--Dark-Grayish-Violet))}
-a:active {color: hsl(var(--Dark-Grayish-Violet))}
-a:hover {color: hsl(var(--Very-Dark-Violet))}
-li {list-style: none}
-h1 {font-size: 4.25rem; font-weight: 400; line-height: 0.9; color: hsl(var(--White))}
-h2 {font-size: 4.25rem; font-family: 'Inter'; font-weight: 700; line-height: 1; color: hsl(var(--Very-Dark-Violet))}
-h3 {font-size: 1.75rem; font-family: 'Inter'; font-weight: 700; line-height: 1; color: hsl(var(--Very-Dark-Violet))}
-h4 {font-size: 1.0rem; color: #000}
-p {font-size: 1rem; font-family: 'Karla'; font-weight: 400; color: hsl(var(--White)); line-height: 1.6}
-span {font-size: 1rem; font-weight: 700; letter-spacing: 0.1rem; line-height: 1}
+img {
+  display: block;
+  height: 100%;
+}
+a {
+  color: hsl(var(--Dark-Grayish-Violet));
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+}
+a:visited {
+  color: hsl(var(--Dark-Grayish-Violet));
+}
+a:active {
+  color: hsl(var(--Dark-Grayish-Violet));
+}
+a:hover {
+  color: hsl(var(--Very-Dark-Violet));
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 4.25rem;
+  font-weight: 400;
+  line-height: 0.9;
+  color: hsl(var(--White));
+}
+h2 {
+  font-size: 4.25rem;
+  font-family: 'Inter';
+  font-weight: 700;
+  line-height: 1;
+  color: hsl(var(--Very-Dark-Violet));
+}
+h3 {
+  font-size: 1.75rem;
+  font-family: 'Inter';
+  font-weight: 700;
+  line-height: 1;
+  color: hsl(var(--Very-Dark-Violet));
+}
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+p {
+  font-size: 1rem;
+  font-family: 'Karla';
+  font-weight: 400;
+  color: hsl(var(--White));
+  line-height: 1.6;
+}
+span {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+}
 button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none; 
+  border: none;
   font-size: 0.85rem;
   font-family: 'Karla';
   font-weight: 700;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   padding: 0.75rem 1.75rem;
-  cursor: pointer
+  cursor: pointer;
 }
 input {
   font-size: inherit;
@@ -76,20 +118,44 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
 
-.flex-row {display: flex; justify-content: space-between; align-items: center}
-.flex-col {display: flex; flex-direction: column; justify-content: start; align-items: left}
-.hidden {display: none !important}
-.show {display:inherit !important}
-.modal-open {overflow: hidden}
-.transition * {transition: none !important}
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: left;
+}
+.hidden {
+  display: none !important;
+}
+.show {
+  display: inherit !important;
+}
+.modal-open {
+  overflow: hidden;
+}
+.transition * {
+  transition: none !important;
+}
 
-.p-10 {padding: 0 10rem}
-
+.p-10 {
+  padding: 0 10rem;
+}
 
 /*   4. || Main                     */
-html, body {
+html,
+body {
   position: relative;
   font-size: 16px;
   font-family: 'DM Serif Display', 'Karla', sans-serif;
@@ -227,7 +293,7 @@ article h2 {
   font-weight: 500;
   color: hsl(var(--White));
 }
-  
+
 .s-2 button {
   color: hsl(var(--White));
   background: transparent;
@@ -281,10 +347,9 @@ footer a:hover {
   cursor: pointer;
 }
 
-
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
   color: hsl(var(--Dark-Grayish-Violet));
   display: block;
@@ -305,7 +370,6 @@ footer a:hover {
   color: hsl(var(--Dark-Violet));
   text-decoration: none;
 }
-
 
 /*   6. || Media Queries            */
 @media (max-width: 375px) {
@@ -400,13 +464,13 @@ footer a:hover {
   .s-1 hr {
     display: none;
   }
-  
+
   .s-1 .content {
     width: 100%;
     text-align: center;
     padding: 0;
   }
-  
+
   .s-1 h1 {
     font-size: 2.75rem;
     padding: 0 2rem;
@@ -460,11 +524,11 @@ footer a:hover {
   .s-2 .services img {
     margin: 0 auto;
   }
-  
+
   .s-2 .services p {
     margin: 0 0 2rem 0;
   }
-  
+
   article {
     flex-direction: column;
     background: hsl(var(--Dark-Violet)) url('./images/bg-pattern-how-we-work-desktop.svg');
@@ -473,7 +537,7 @@ footer a:hover {
     padding: 1.5rem;
     margin: 7rem 0 8rem;
   }
-  
+
   article h2 {
     width: 100%;
     font-size: 2.5rem;
@@ -481,7 +545,7 @@ footer a:hover {
     color: hsl(var(--White));
     margin: 2.5rem 0;
   }
-    
+
   .s-2 button {
     margin: 0 0 3rem 0;
   }
@@ -509,12 +573,12 @@ footer a:hover {
     text-align: center;
     margin: 2rem 0;
   }
-  
+
   footer .grid2 span {
     font-size: 0.85rem;
     margin: 2rem 0;
   }
-  
+
   footer .grid2 li {
     margin: 0.5rem 0;
   }

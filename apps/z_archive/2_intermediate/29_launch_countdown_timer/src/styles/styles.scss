@@ -122,8 +122,7 @@ h2 {
     margin: 0 1rem;
     cursor: pointer;
     &:hover {
-      filter: invert(60%) sepia(26%) saturate(6153%) hue-rotate(310deg)
-        brightness(100%) contrast(98%);
+      filter: invert(60%) sepia(26%) saturate(6153%) hue-rotate(310deg) brightness(100%) contrast(98%);
     }
   }
 }

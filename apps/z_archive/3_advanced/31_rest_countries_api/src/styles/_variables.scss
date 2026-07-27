@@ -33,4 +33,7 @@ $desktop-l: 2560px;
   --color-text: #{$White};
 }
 
-$Theme-transition: background 1s, color 1s, fill 1s;
+$Theme-transition:
+  background 1s,
+  color 1s,
+  fill 1s;

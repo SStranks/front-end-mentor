@@ -9,11 +9,7 @@ function ButtonSubmit(props) {
   return (
     <button type="submit" className={styles} value={value} disabled={disabled}>
       <span className={modal ? null : styles.btnText}>{text}</span>
-      <img
-        className={modal ? styles.btnIconNone : styles.btnIcon}
-        src={IconSearch}
-        alt=""
-      />
+      <img className={modal ? styles.btnIconNone : styles.btnIcon} src={IconSearch} alt="" />
     </button>
   );
 }

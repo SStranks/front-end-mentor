@@ -1,7 +1,7 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Main                     */
 /*   5. || FrontEnd Mentor Footer   */
@@ -12,7 +12,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-/*   2. || Variables                */    
+/*   2. || Variables                */
 :root {
   /* HSL Values  */
   --violet: 257, 40%, 49%;
@@ -26,7 +26,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-size: 16px;
   font-family: 'Poppins', 'Open-Sans', sans-serif;
   line-height: 1.6;
@@ -90,7 +91,7 @@ html, body {
   padding: 1em 5em;
   border-radius: 2em;
   border-style: none;
-  box-shadow: 0 0 8px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -119,13 +120,13 @@ html, body {
 
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
-  color:#000;
+  color: #000;
 }
 
-.attribution a { 
-  color: #fff; 
+.attribution a {
+  color: #fff;
 }
 
 /*   6. || Media Queries            */
@@ -145,7 +146,7 @@ html, body {
     justify-content: center;
     max-width: 100%;
   }
-  
+
   #info {
     grid-column: 1;
     grid-row: 2 / span 1;

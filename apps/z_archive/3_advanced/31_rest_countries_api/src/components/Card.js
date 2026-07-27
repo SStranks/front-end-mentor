@@ -11,18 +11,9 @@ const Card = React.forwardRef((props, ref) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
-      className="card-country"
-      ref={ref}
-      data-country={country.name}
-      onClick={clickHandler}
-      onKeyDown={clickHandler}
-    >
+    <div className="card-country" ref={ref} data-country={country.name} onClick={clickHandler} onKeyDown={clickHandler}>
       <div className="card-flag">
-        <img
-          src={`data:image/svg+xml;utf8,${encodeURIComponent(country.flag)}`}
-          alt=""
-        />
+        <img src={`data:image/svg+xml;utf8,${encodeURIComponent(country.flag)}`} alt="" />
       </div>
       <div className="card-info">
         <h2>{country.name}</h2>

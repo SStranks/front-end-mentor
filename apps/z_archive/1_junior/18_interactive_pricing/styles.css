@@ -15,30 +15,26 @@
 /*   author:    Simon Stranks       */
 /*   website:   github.com/SStranks */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
-
 
 /*   2. || Variables                */
 :root {
   /* HSL Values                     */
   /* Primary                        */
-  --Soft-Cyan: 174, 77%, 80%;               /*(Full Slider Bar)*/
-  --Strong-Cyan: 174, 86%, 45%;             /*(Slider Backround)*/
-  --Light-Grayish-Red: 14, 92%, 95%;        /*(Discount Background)*/
-  --Light-Red: 15, 100%, 70%;               /*(Discount Text)*/
-  --Pale-Blue: 226, 100%, 87%;              /*(CTA Text)*/
+  --Soft-Cyan: 174, 77%, 80%; /*(Full Slider Bar)*/
+  --Strong-Cyan: 174, 86%, 45%; /*(Slider Backround)*/
+  --Light-Grayish-Red: 14, 92%, 95%; /*(Discount Background)*/
+  --Light-Red: 15, 100%, 70%; /*(Discount Text)*/
+  --Pale-Blue: 226, 100%, 87%; /*(CTA Text)*/
   /* Neutral                        */
-  --White: 0, 0%, 100%;                     /*(Pricing Component Background)*/
-  --Very-Pale-Blue: 230, 100%, 99%;         /*(Main Background)*/
-  --Light-Grayish-Blue: 224, 65%, 95%;      /*(Empty Slider Bar)*/
-  --Light-Grayish-Blue: 223, 50%, 87%;      /*(Toggle Background)*/
-  --Grayish-Blue: 225, 20%, 60%;            /*(Text)*/
-  --Dark-Desaturated-Blue: 227, 35%, 25%;   /*(Text & CTA Background)*/
+  --White: 0, 0%, 100%; /*(Pricing Component Background)*/
+  --Very-Pale-Blue: 230, 100%, 99%; /*(Main Background)*/
+  --Light-Grayish-Blue: 224, 65%, 95%; /*(Empty Slider Bar)*/
+  --Light-Grayish-Blue: 223, 50%, 87%; /*(Toggle Background)*/
+  --Grayish-Blue: 225, 20%, 60%; /*(Text)*/
+  --Dark-Desaturated-Blue: 227, 35%, 25%; /*(Text & CTA Background)*/
 }
-
 
 /*   3. || Globals                  */
 * {
@@ -47,23 +43,49 @@
   margin: 0;
 }
 
-img {display: block; height: 100%}
-a {text-decoration: none}
-a:visited {color: inherit}
-a:active {color: inherit}
-li {list-style: none}
-h1 {font-size: 1.7rem; color: #000}
-h2 {font-size: 1.3rem; color: #000}
-h3 {font-size: 1.2rem; color: #000}
-h4 {font-size: 1.0rem; color: #000}
-p {font-size: 0.9rem; line-height: 1.8;}
+img {
+  display: block;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+a:active {
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 1.7rem;
+  color: #000;
+}
+h2 {
+  font-size: 1.3rem;
+  color: #000;
+}
+h3 {
+  font-size: 1.2rem;
+  color: #000;
+}
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
 button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none; 
+  border: none;
   font-family: inherit;
-  cursor: pointer
+  cursor: pointer;
 }
 input {
   font-size: inherit;
@@ -76,14 +98,25 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
 
-.flex-row {display: flex; justify-content: space-between; align-items: center}
-.hidden {display: none !important;}
-
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hidden {
+  display: none !important;
+}
 
 /*   4. || Main                     */
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 15px;
@@ -237,7 +270,6 @@ button:hover {
   color: hsl(var(--White));
 }
 
-
 /*   5. || Main: Toggle Switch      */
 /* The switch - the box around the slider */
 .switch {
@@ -264,12 +296,12 @@ button:hover {
   right: 0;
   bottom: 0;
   background-color: hsl(var(--Light-Grayish-Blue));
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .toggle:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 15px;
   width: 15px;
   left: 4px;
@@ -278,7 +310,7 @@ button:hover {
   /* left: 4px;
   bottom: 4px; */
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .toggle {
@@ -302,7 +334,6 @@ input:checked + .toggle:before {
   border-radius: 50%;
 }
 
-
 /*   6. || Main: Slider             */
 .slidercontainer {
   position: relative;
@@ -316,7 +347,7 @@ input:checked + .toggle:before {
   -webkit-appearance: none;
   position: relative;
   appearance: none;
-  width: 100%; 
+  width: 100%;
   height: 9px;
   background: transparent;
   /* background: hsl(var(--Light-Grayish-Blue)); */
@@ -327,15 +358,15 @@ input:checked + .toggle:before {
 
 /* Mouse-over effects */
 .slider:hover {
-  opacity: 1; 
+  opacity: 1;
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px; 
-  height: 40px; 
+  width: 40px;
+  height: 40px;
   background: url('./images/icon-slider.svg') hsl(var(--Soft-Cyan));
   background-repeat: no-repeat;
   background-size: 55% 35%;
@@ -379,12 +410,11 @@ input:checked + .toggle:before {
   background: hsl(var(--Soft-Cyan));
 }
 
-
 /*   7. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   text-align: center;
-  color:inherit;
+  color: inherit;
   display: block;
   margin: 0 auto;
   position: absolute;
@@ -394,7 +424,7 @@ input:checked + .toggle:before {
   width: 100%;
 }
 
-.attribution a { 
+.attribution a {
   color: hsl(var(--Dark-Desaturated-Blue));
 }
 
@@ -402,7 +432,6 @@ input:checked + .toggle:before {
   /* background: hsl(var(--Very-dark-cyan)); */
   color: hsl(var(--Light-Red));
 }
-
 
 /*   8. || Media Queries            */
 /*      Mobile                      */
@@ -420,17 +449,17 @@ input:checked + .toggle:before {
     min-width: unset;
     border-radius: 8px;
   }
-  
+
   header img {
     height: 170px;
     width: 170px;
   }
-  
+
   header h1 {
     font-size: 1.4rem;
     margin-top: 6rem;
   }
-  
+
   header p {
     padding: 0 5rem;
     margin: 0.5rem 0 5rem 0;
@@ -442,32 +471,32 @@ input:checked + .toggle:before {
     grid-template-rows: repeat(4, auto);
     padding: 1.5rem;
   }
-  
+
   .grid .slidercontainer {
     grid-column: 1;
     grid-row: 2;
   }
-  
+
   .grid .flex-row {
     grid-column: 1;
     grid-row: 4;
     justify-content: flex-end;
   }
-  
+
   .page-views {
     margin: 1rem 0 2rem 0;
   }
-  
+
   .pricing {
     grid-column: 1;
     grid-row: 3;
     margin: 2rem 0 0.75rem 0;
   }
-  
+
   .amount {
     grid-row: 3;
   }
-  
+
   .discount {
     font-size: 0.75rem;
     border-radius: 15px;
@@ -482,14 +511,13 @@ input:checked + .toggle:before {
   .discount .mobile {
     display: block;
   }
-  
-  
+
   .flex-row {
     display: flex;
     align-items: center;
     padding: 1rem;
   }
-  
+
   .fl-1 {
     grid-row: 4;
     justify-content: flex-end;
@@ -499,17 +527,17 @@ input:checked + .toggle:before {
   .fl-1 p {
     font-size: 0.75rem;
   }
-  
+
   .fl-2 {
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   .flex-row .product-features {
     text-align: center;
     margin: 0.5rem 0 0 0;
   }
-  
+
   .fl-2 .product-features div {
     position: relative;
   }
@@ -517,7 +545,7 @@ input:checked + .toggle:before {
   .fl-2 p {
     margin: 0.25rem 0;
   }
-  
+
   .fl-2 .product-features p::before {
     content: url('./images/icon-check.svg');
     position: absolute;
@@ -527,21 +555,21 @@ input:checked + .toggle:before {
     top: 0;
     transform: translate(-200%, 0);
   }
-  
+
   .fl-2:last-of-type p:not(:first-of-type) {
     margin-top: 0.25rem;
   }
-  
+
   button {
     height: 40px;
     width: 175px;
     margin: 1.25rem;
   }
-  
+
   button:hover {
     color: hsl(var(--White));
   }
-  
+
   .slider::-webkit-slider-thumb:hover,
   .slider::-webkit-slider-thumb:active {
     background: url('./images/icon-slider.svg') hsl(var(--Strong-Cyan));
@@ -572,5 +600,4 @@ input:checked + .toggle:before {
   .fl-2 {
     padding: 1.5rem;
   }
-  
 }

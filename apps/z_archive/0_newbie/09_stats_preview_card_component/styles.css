@@ -1,7 +1,7 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Main                     */
 /*   5. || FrontEnd Mentor Footer   */
@@ -11,7 +11,7 @@
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap');
 
-/*   2. || Variables                */ 
+/*   2. || Variables                */
 :root {
   /* ### Primary
 - Very dark blue (main background): hsl(233, 47%, 7%)
@@ -38,7 +38,8 @@
 }
 
 /*   3. || Globals                  */
-html, body {
+html,
+body {
   font-size: 15px;
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
@@ -114,7 +115,9 @@ html, body {
   width: 100%;
   max-height: 100%;
   max-width: 100%;
-  background-image: linear-gradient(hsla(var(--Soft-violet), 0.65), hsla(var(--Soft-violet), 0.65)), url('./images/image-header-mobile.jpg');
+  background-image:
+    linear-gradient(hsla(var(--Soft-violet), 0.65), hsla(var(--Soft-violet), 0.65)),
+    url('./images/image-header-mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   mix-blend-mode: normal;
@@ -123,14 +126,14 @@ html, body {
 
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
-  color:#000;
+  color: #000;
 }
 
-footer a { 
+footer a {
   color: blue;
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 footer a:hover {
@@ -141,14 +144,14 @@ footer a:hover {
 /*      Mobile                      */
 @media (max-width: 375px) {
   .card {
-  max-width: 100%;
-  width: 90%;
-  height: 90%;
-  background: hsl(var(--Dark-desaturated-blue));
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 30% 70%;
+    max-width: 100%;
+    width: 90%;
+    height: 90%;
+    background: hsl(var(--Dark-desaturated-blue));
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30% 70%;
   }
 
   .info-panel {
@@ -175,7 +178,9 @@ footer a:hover {
     width: 100%;
     max-height: 100%;
     max-width: 100%;
-    background-image: linear-gradient(hsla(var(--Soft-violet), 0.65), hsla(var(--Soft-violet), 0.65)), url('./images/image-header-mobile.jpg');
+    background-image:
+      linear-gradient(hsla(var(--Soft-violet), 0.65), hsla(var(--Soft-violet), 0.65)),
+      url('./images/image-header-mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     mix-blend-mode: normal;

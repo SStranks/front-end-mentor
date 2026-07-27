@@ -45,12 +45,7 @@ function App() {
   }, []);
 
   const time = countdown.map((item, i) => (
-    <Card
-      key={item.period}
-      period={item.period}
-      time={item.time}
-      prevTime={previousCountdown.current[i].time}
-    />
+    <Card key={item.period} period={item.period} time={item.time} prevTime={previousCountdown.current[i].time} />
   ));
 
   return (
@@ -60,35 +55,13 @@ function App() {
         <div className="counter">{time}</div>
       </div>
       <div className="social-media">
-        <img
-          className="facebook"
-          src="/assets/icon-facebook.svg"
-          alt="facebook icon"
-        />
-        <img
-          className="pinterest"
-          src="/assets/icon-pinterest.svg"
-          alt="pinterest icon"
-        />
-        <img
-          className="instagram"
-          src="/assets/icon-instagram.svg"
-          alt="instagram icon"
-        />
+        <img className="facebook" src="/assets/icon-facebook.svg" alt="facebook icon" />
+        <img className="pinterest" src="/assets/icon-pinterest.svg" alt="pinterest icon" />
+        <img className="instagram" src="/assets/icon-instagram.svg" alt="instagram icon" />
       </div>
       <div className="bg-mountains">
-        <img
-          className="mountains-1"
-          src="/assets/pattern-hills-seamless.svg"
-          alt=""
-          data-ground
-        />
-        <img
-          className="mountains-1"
-          src="/assets/pattern-hills-seamless.svg"
-          alt=""
-          data-ground
-        />
+        <img className="mountains-1" src="/assets/pattern-hills-seamless.svg" alt="" data-ground />
+        <img className="mountains-1" src="/assets/pattern-hills-seamless.svg" alt="" data-ground />
       </div>
       <div className="bg-sky">
         <img className="stars-1" src="/assets/bg-stars.svg" alt="" data-sky />

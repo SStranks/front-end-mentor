@@ -7,6 +7,6 @@ const share = () => {
   element.classList.toggle('display');
   iconbackground.classList.toggle('share-icon-color');
   icon.classList.toggle('img-color');
-}
+};
 
-btn.addEventListener('click', share)
+btn.addEventListener('click', share);

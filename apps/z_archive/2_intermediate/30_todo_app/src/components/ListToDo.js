@@ -82,40 +82,26 @@ const ListToDo = (props) => {
           <button
             type="button"
             aria-label="show all tasks"
-            className={`filter-btn ${
-              filterTasks === 'all' ? 'filter-active' : ''
-            }`}
-            onClick={() => filterHandler('all')}
-          >
+            className={`filter-btn ${filterTasks === 'all' ? 'filter-active' : ''}`}
+            onClick={() => filterHandler('all')}>
             All
           </button>
           <button
             type="button"
             aria-label="show active tasks"
-            className={`filter-btn ${
-              filterTasks === 'active' ? 'filter-active' : ''
-            }`}
-            onClick={() => filterHandler('active')}
-          >
+            className={`filter-btn ${filterTasks === 'active' ? 'filter-active' : ''}`}
+            onClick={() => filterHandler('active')}>
             Active
           </button>
           <button
             type="button"
             aria-label="show completed tasks"
-            className={`filter-btn ${
-              filterTasks === 'completed' ? 'filter-active' : ''
-            }`}
-            onClick={() => filterHandler('completed')}
-          >
+            className={`filter-btn ${filterTasks === 'completed' ? 'filter-active' : ''}`}
+            onClick={() => filterHandler('completed')}>
             Completed
           </button>
         </div>
-        <button
-          type="button"
-          aria-label="clear completed tasks"
-          className="filter-btn"
-          onClick={clearTasks}
-        >
+        <button type="button" aria-label="clear completed tasks" className="filter-btn" onClick={clearTasks}>
           Clear Completed
         </button>
       </div>

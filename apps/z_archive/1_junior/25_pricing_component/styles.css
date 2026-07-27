@@ -13,11 +13,8 @@
 /*   author:    Simon Stranks       */
 /*   website:   github.com/SStranks */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
 
 /*   2. || Variables                */
 :root {
@@ -32,7 +29,6 @@
   --White: 100, 100%, 100%;
 }
 
-
 /*   3. || Globals                  */
 * {
   box-sizing: border-box;
@@ -40,30 +36,76 @@
   margin: 0;
 }
 
-img {display: block; height: 100%}
-a {color: hsl(var(--Dark-Grayish-Violet)); letter-spacing: 0.1rem; text-decoration: none}
-a:visited {color: hsl(var(--Dark-Grayish-Violet))}
-a:active {color: hsl(var(--Dark-Grayish-Violet))}
-a:hover {color: hsl(var(--Very-Dark-Violet))}
-li {list-style: none}
-h1 {font-size: 2rem; font-weight: 400; line-height: 0.9; color: hsl(var(--Grayish-Blue))}
-h2 {font-size: 4.25rem; font-family: 'Inter'; font-weight: 700; line-height: 1; color: hsl(var(--Very-Dark-Violet))}
-h3 {font-size: 1.75rem; font-family: 'Inter'; font-weight: 700; line-height: 1; color: hsl(var(--Very-Dark-Violet))}
-h4 {font-size: 1.0rem; color: #000}
-p {font-size: 1rem; font-family: 'Montserrat'; font-weight: 700; color: hsl(var(--Grayish-Blue)); line-height: 1.6}
-span {font-size: 4.5rem; font-weight: 700; letter-spacing: 0.1rem; line-height: 1}
+img {
+  display: block;
+  height: 100%;
+}
+a {
+  color: hsl(var(--Dark-Grayish-Violet));
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+}
+a:visited {
+  color: hsl(var(--Dark-Grayish-Violet));
+}
+a:active {
+  color: hsl(var(--Dark-Grayish-Violet));
+}
+a:hover {
+  color: hsl(var(--Very-Dark-Violet));
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.9;
+  color: hsl(var(--Grayish-Blue));
+}
+h2 {
+  font-size: 4.25rem;
+  font-family: 'Inter';
+  font-weight: 700;
+  line-height: 1;
+  color: hsl(var(--Very-Dark-Violet));
+}
+h3 {
+  font-size: 1.75rem;
+  font-family: 'Inter';
+  font-weight: 700;
+  line-height: 1;
+  color: hsl(var(--Very-Dark-Violet));
+}
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+p {
+  font-size: 1rem;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  color: hsl(var(--Grayish-Blue));
+  line-height: 1.6;
+}
+span {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+}
 button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none; 
+  border: none;
   font-size: 0.85rem;
   font-family: 'Montserrat';
   font-weight: 700;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   padding: 0.75rem 1.75rem;
-  cursor: pointer
+  cursor: pointer;
 }
 input {
   font-size: inherit;
@@ -76,19 +118,40 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
 
-.flex-row {display: flex; justify-content: space-between; align-items: center}
-.flex-col {display: flex; flex-direction: column; justify-content: start; align-items: left}
-.hidden {display: none !important}
-.show {display:inherit !important}
-.modal-open {overflow: hidden}
-.transition * {transition: none !important}
-
-
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: left;
+}
+.hidden {
+  display: none !important;
+}
+.show {
+  display: inherit !important;
+}
+.modal-open {
+  overflow: hidden;
+}
+.transition * {
+  transition: none !important;
+}
 
 /*   4. || Main                     */
-html, body {
+html,
+body {
   position: relative;
   height: 100%;
   width: 100%;
@@ -97,9 +160,11 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
   background: hsl(var(--Very-Light-Grayish-Blue));
-  background-image:  url('./images/bg-bottom.svg'), url('./images/bg-top.svg');
+  background-image: url('./images/bg-bottom.svg'), url('./images/bg-top.svg');
   background-repeat: no-repeat;
-  background-position: bottom left, top right;
+  background-position:
+    bottom left,
+    top right;
   background-size: auto;
   color: hsl(var(--Grayish-Blue));
 }
@@ -207,7 +272,6 @@ main {
   border: 1px solid hsl(var(--Dark-Grayish-Blue));
 }
 
-
 /* Toggle Switch */
 /* The switch - the box around the slider */
 .switch {
@@ -233,19 +297,19 @@ main {
   right: 0;
   bottom: 0;
   background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .toggle::before {
   position: absolute;
-  content: "";
+  content: '';
   height: 18px;
   width: 18px;
   left: 4px;
   bottom: 50%;
   transform: translate(0, 50%);
   background-color: hsl(var(--White));
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .toggle {
@@ -270,11 +334,10 @@ input:checked + .toggle::before {
   border-radius: 50%;
 }
 
-
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
   position: absolute;
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
   color: hsl(var(--Dark-Grayish-Violet));
   display: block;
@@ -298,15 +361,14 @@ input:checked + .toggle::before {
   text-decoration: none;
 }
 
-
 /*   6. || Media Queries            */
 @media (max-width: 375px) {
   body {
-    background-image:  url('./images/bg-top.svg');
+    background-image: url('./images/bg-top.svg');
     background-repeat: no-repeat;
     background-position: 12rem -2rem;
   }
-  
+
   .container {
     height: fit-content;
     padding: 1.75rem;
@@ -329,13 +391,13 @@ input:checked + .toggle::before {
     width: 100%;
     margin: 1.25rem 0;
   }
-  
+
   .card:nth-of-type(1),
   .card:nth-of-type(2),
   .card:nth-of-type(3) {
     border-radius: 10px;
   }
-  
+
   .attribution {
     font-size: 0.75rem;
     padding: 0 5rem;

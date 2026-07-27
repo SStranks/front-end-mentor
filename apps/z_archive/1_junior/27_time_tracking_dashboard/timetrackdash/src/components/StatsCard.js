@@ -35,17 +35,11 @@ const StatsCard = (props) => {
       <div className="stats__data">
         <div className="data__header">
           <h3 className="data__title">{title}</h3>
-          <img
-            className="data__ellipsis"
-            src="data/images/icon-ellipsis.svg"
-            alt="stats menu"
-          />
+          <img className="data__ellipsis" src="data/images/icon-ellipsis.svg" alt="stats menu" />
         </div>
         <div className="data__values">
           <span className="data__number">{currentPeriod}hrs</span>
-          <span className="data__last-period">
-            Last Week - {previousPeriod}hrs
-          </span>
+          <span className="data__last-period">Last Week - {previousPeriod}hrs</span>
         </div>
       </div>
     </div>

@@ -1,13 +1,12 @@
 /* -----|| Contents ||-----         */
 /* ------------------------         */
 /*   1. || Imports                  */
-/*   2. || Variables                */    
+/*   2. || Variables                */
 /*   3. || Globals                  */
 /*   4. || Header                   */
-/*   5. || Card                     */ 
+/*   5. || Card                     */
 /*   6. || FrontEnd Mentor Footer   */
 /* -------------------------------- */
-
 
 /*   1. || Imports          */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
@@ -31,7 +30,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
@@ -88,7 +88,7 @@ header p {
   text-align: left;
   padding: 25px;
   border-radius: 5px;
-  box-shadow: 0 10px 10px 1px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
@@ -117,12 +117,12 @@ header p {
 
 /* FrontEnd Mentor Footer  */
 .attribution {
-  font-size: 11px; 
+  font-size: 11px;
   text-align: center;
 }
 
-.attribution a { 
-  color: hsl(228, 45%, 44%); 
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
 
 @media (max-width: 500px) {
@@ -132,21 +132,23 @@ header p {
     display: inline-block;
     margin: 50px auto 15px;
   }
-  
+
   header p {
     max-width: 32ch;
     margin: 0 auto 75px;
   }
-  
+
   .grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4;
   }
-  
-  .blue, .cyan, .orange, .red {
+
+  .blue,
+  .cyan,
+  .orange,
+  .red {
     grid-column: 1;
     grid-row: auto;
   }
-
 }

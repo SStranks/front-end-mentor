@@ -13,23 +13,19 @@
 /*   author:    Simon Stranks       */
 /*   website:   github.com/SStranks */
 
-
-
 /*   1. || Imports                  */
 @import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap');
-
 
 /*   2. || Variables                */
 :root {
   /* HSL Values                     */
   /* Primary                        */
---White: 0, 0%, 100%;
---Black: 0, 0%, 0%;
---Dark-Gray: 0, 0%, 55%;
---Very-Dark-Gray: 0, 0%, 41%;
+  --White: 0, 0%, 100%;
+  --Black: 0, 0%, 0%;
+  --Dark-Gray: 0, 0%, 55%;
+  --Very-Dark-Gray: 0, 0%, 41%;
   /* Neutral                        */
 }
-
 
 /*   3. || Globals                  */
 * {
@@ -38,23 +34,56 @@
   margin: 0;
 }
 
-img {display: block; height: 100%}
-a {text-decoration: none}
-a:visited {color: inherit}
-a:active {color: inherit}
-li {list-style: none}
-h1 {font-size: 1.7rem; color: #000}
-h2 {font-size: 3.25rem; font-family: 'Josefin Sans'; font-weight: 400; line-height: 1; color: #000; text-transform: uppercase}
-h3 {font-size: 2.2rem; font-family: 'Josefin Sans'; font-weight: 400; line-height: 1; color: #fff}
-h4 {font-size: 1.0rem; color: #000}
-p {font-size: 0.9rem; line-height: 1.8;}
+img {
+  display: block;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+a:active {
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 1.7rem;
+  color: #000;
+}
+h2 {
+  font-size: 3.25rem;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: 2.2rem;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+}
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
 button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none; 
+  border: none;
   font-family: inherit;
-  cursor: pointer
+  cursor: pointer;
 }
 input {
   font-size: inherit;
@@ -67,17 +96,37 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
 
-.flex-row {display: flex; justify-content: space-between; align-items: center}
-.flex-column {display: flex; flex-direction: column; justify-content: space-between; align-items: center}
-.hidden {display: none !important}
-.show {display:inherit !important}
-.modal-open {overflow: hidden}
-
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.hidden {
+  display: none !important;
+}
+.show {
+  display: inherit !important;
+}
+.modal-open {
+  overflow: hidden;
+}
 
 /*   4. || Main                     */
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 15px;
@@ -210,7 +259,7 @@ header h1 {
 .creations:hover img {
   opacity: 30%;
 }
- 
+
 .creations h3 {
   position: absolute;
   left: 0;
@@ -236,14 +285,14 @@ footer {
 
 footer img {
   grid-column: 1;
-  grid-row: 1; 
+  grid-row: 1;
 }
 
 footer .flex-row {
   grid-column: 1;
   grid-row: 2;
   align-self: center;
-  justify-content: unset;  
+  justify-content: unset;
   margin: 2rem 0;
 }
 
@@ -290,7 +339,9 @@ footer span {
   transform: translate(-50%, 0);
   background: hsl(var(--White));
   opacity: 0;
-  transition: width 0.4s, opacity 0.4s;
+  transition:
+    width 0.4s,
+    opacity 0.4s;
 }
 
 .hv-1:hover::after {
@@ -298,12 +349,11 @@ footer span {
   width: 25px;
 }
 
-
 /*   5. || FrontEnd Mentor Footer   */
 .attribution {
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   text-align: center;
-  color:inherit;
+  color: inherit;
   display: block;
   margin: 0 auto;
   /* position: absolute;
@@ -322,7 +372,6 @@ footer span {
   background: hsl(var(--White));
   color: hsl(var(--Black));
 }
-
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
@@ -421,7 +470,7 @@ footer span {
     height: 100%;
     width: 100%;
   }
-  
+
   .intro-text {
     position: relative;
     width: 100%;
@@ -429,12 +478,12 @@ footer span {
     padding: 1.5rem;
     margin: 2rem 0 0 0;
   }
-  
+
   .intro h2 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
   }
-  
+
   .intro p {
     font-size: 1rem;
     color: hsl(var(--Dark-Gray));
@@ -515,28 +564,28 @@ footer span {
     background: hsl(var(--Black));
     padding: 1rem;
   }
-  
+
   footer > img {
     grid-column: 1;
-    grid-row: 1; 
+    grid-row: 1;
     justify-self: center;
     height: 25px;
     margin: 3rem 0 0 0;
   }
-  
+
   footer .flex-row {
     flex-direction: column;
     grid-column: 1;
     grid-row: 2;
     /* align-self: center; */
-    justify-content: unset;  
+    justify-content: unset;
     margin: 2rem 0;
   }
-  
+
   footer .flex-row a {
     margin: 0.5rem 0;
   }
-  
+
   footer .social-media {
     grid-column: 1;
     grid-row: 3;
@@ -546,7 +595,7 @@ footer span {
     justify-content: unset;
     margin: 1rem 0;
   }
-  
+
   footer .social-media div {
     position: relative;
     height: 25px;
@@ -554,11 +603,11 @@ footer span {
     margin: 0 0.75rem;
     cursor: pointer;
   }
-  
+
   footer span {
     grid-column: 1;
     grid-row: 4;
-    justify-self:center;
+    justify-self: center;
     align-self: center;
   }
 }
