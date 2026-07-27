@@ -1,14 +1,14 @@
 {
-  "name": "rest-api-docker",
+  "name": "@apps/z_archive/dev_jobs_webapp/server",
   "version": "1.0.0",
-  "description": "",
+  "description": "frontend-mentor challenge; https://www.frontendmentor.io/",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "main": "./server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon .",
     "prod": "node ."
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

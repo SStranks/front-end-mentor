@@ -1,14 +1,8 @@
 {
-  "name": "29_launch_countdown_timer",
+  "name": "@apps/z_archive/29_launch_countdown_timer",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "prop-types": "^15.8.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "sass": "^1.49.9"
-  },
+  "description": "frontend-mentor challenge; https://www.frontendmentor.io/",
+  "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "scripts": {
     "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
@@ -31,5 +25,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "sass": "^1.49.9"
   }
 }
