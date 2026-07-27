@@ -1,0 +1,226 @@
+@use 'variables' as *;
+
+.card-container {
+  min-width: auto;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 140px;
+  width: 155px;
+  border-radius: 7px;
+  text-align: center;
+  background-color: $Dark-desaturated-blue;
+  box-shadow: 0 10px 0 0 $Extremely-dark-blue;
+  margin: 0 1.25rem;
+  margin-bottom: 2rem;
+  perspective: 350px;
+  @media (max-width: $tablet) {
+    transform: scale(80%);
+    margin: 0 -0.25rem;
+  }
+  @media (max-width: 600px) {
+    transform: scale(60%);
+    margin: 0 -1.25rem;
+  }
+  @media (max-width: $mobile-l) {
+    transform: scale(50%);
+    margin: -1.5rem -2rem;
+  }
+  @media (max-width: $mobile-m) {
+    transform: scale(50%);
+    margin: -1.5rem -2.25rem;
+  }
+  @media (max-width: $mobile-s) {
+    transform: scale(45%);
+    margin: -1.5rem -2.75rem;
+  }
+}
+
+span {
+  font-size: 5.5rem;
+  color: $Soft-red;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5ch;
+  text-transform: uppercase;
+  text-align: center;
+  color: $Grayish-blue;
+  @media (max-width: $tablet) {
+    font-size: 0.85rem;
+  }
+  @media (max-width: $mobile-l) {
+    font-size: 0.65rem;
+  }
+  @media (max-width: $mobile-m) {
+    font-size: 0.55rem;
+  }
+}
+
+.card--top,
+.card--bottom,
+.card--flap {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: $Extremely-dark-blue;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: $Extremely-dark-blue;
+  }
+}
+
+.card--top {
+  top: 0;
+  border-radius: 15px 15px 0 0;
+  background-color: darken($Dark-desaturated-blue, 5%);
+  box-shadow: inset 0 -2px 3px -2px $Extremely-dark-blue;
+  overflow: hidden;
+  &::before {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 8px 0 0;
+  }
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-radius: 8px 0 0 0;
+  }
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+  & span {
+    display: inline;
+    width: fit-content;
+    font-size: 5.5rem;
+    line-height: 0.73;
+    transform: translate(2%, 50%);
+  }
+}
+
+.card--bottom {
+  bottom: 0;
+  border-radius: 0 0 15px 15px;
+  background-color: $Dark-desaturated-blue;
+  box-shadow: inset 0 2px 3px -2px rgba(221, 221, 221, 0.315);
+  overflow: hidden;
+  &::before {
+    top: 0;
+    left: 0;
+    border-radius: 0 0 8px 0;
+  }
+  &::after {
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 8px;
+  }
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+  }
+  & span {
+    display: inline;
+    width: fit-content;
+    font-size: 5.5rem;
+    line-height: 0.73;
+    transform: translate(2%, -50%);
+  }
+}
+
+.card--flap {
+  top: 0;
+  border-radius: 15px 15px 0 0;
+  background-color: darken($Dark-desaturated-blue, 5%);
+  box-shadow: inset 0 -2px 3px -2px $Extremely-dark-blue;
+  transform-origin: bottom left;
+  transform-style: preserve-3d;
+  &::before {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 8px 0 0;
+    z-index: 4;
+  }
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-radius: 8px 0 0 0;
+  }
+  & div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+    align-items: center;
+    backface-visibility: hidden;
+    overflow: hidden;
+    & span {
+      display: inline;
+      width: fit-content;
+      font-size: 5.5rem;
+      line-height: 0.73;
+      transform: translate(2%, 50%);
+    }
+  }
+  & .flap-front {
+    background-color: inherit;
+  }
+  & .flap-back {
+    background-color: $Dark-desaturated-blue;
+    box-shadow: inset 0 -2px 3px -2px rgba(221, 221, 221, 0.315);
+    transform: rotateY(180deg);
+    & span {
+      transform: rotateY(180deg) rotateX(180deg) translate(1.65%, -49%);
+    }
+  }
+}
+
+.rotate-active {
+  animation: rotate1 0.35s ease-in forwards;
+}
+
+.rotate-active-copy {
+  animation: rotate2 0.35s ease-in forwards;
+}
+
+@keyframes rotate1 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes rotate2 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}

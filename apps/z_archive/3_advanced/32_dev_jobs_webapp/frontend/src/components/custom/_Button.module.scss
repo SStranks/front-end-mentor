@@ -1,0 +1,49 @@
+@use '../../assets/styles/variables' as *;
+@use '../../assets/styles/mixins' as *;
+
+button {
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  padding: 1rem 0;
+  background-color: $Violet;
+
+  & span {
+    color: $White;
+  }
+
+  & img {
+    filter: brightness(100);
+  }
+
+  &:hover {
+    background-color: hsl(235, 82%, 77%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $Grey;
+  }
+}
+
+.btnText {
+  @include media(mobile-large, mobile-medium, mobile-small) {
+    display: none;
+  }
+}
+
+.btnIcon {
+  @include media(
+    desktop-large,
+    desktop-medium,
+    desktop-small,
+    tablet-regular,
+    tablet-small
+  ) {
+    display: none;
+  }
+}
+
+.btnIconNone {
+  display: none;
+}

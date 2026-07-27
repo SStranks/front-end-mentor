@@ -1,0 +1,340 @@
+/* -----|| Contents ||-----         */
+/* ------------------------         */
+/*   1. || Imports                  */
+/*   2. || Variables                */
+/*   3. || Globals                  */
+/*   4. || Main                     */
+/*   5. || FrontEnd Mentor Footer   */
+/*   6. || Media Queries            */
+/* -------------------------------- */
+
+
+/*   1. || Imports                  */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+
+/*   2. || Variables                */
+:root {
+  /* HSL Values */
+  /* Primary */
+  --Strong-cyan: 172, 67%, 45%;
+  /* Neutral */
+  --Very-dark-cyan: 183, 100%, 15%;
+  --Dark-grayish-cyan: 186, 14%, 43%;
+  --Dark-grayish-cyan2: 184, 14%, 56%;
+  --Light-grayish-cyan: 185, 41%, 84%;
+  --Light-grayish-cyan2: 189, 41%, 97%;
+  --White: 0, 0%, 100%;
+  --Red: 0, 100%, 50%;
+}
+
+
+/*   3. || Globals                  */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 24px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400, 500, 700;
+  line-height: 1.6;
+  background: hsl(var(--Light-grayish-cyan));
+  color: hsl(var(--Dark-grayish-cyan));
+}
+
+
+/*   4. || Main                     */
+.container {
+  height: 100%;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.card {
+  height: 50%;
+  width: 70%;
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 2px 5px 30px 10px hsla(var(--Dark-grayish-cyan2), 0.5);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#main-logo {
+  margin-bottom: 4rem;
+}
+
+button, input {
+  font-family: inherit;
+  font-weight: 700;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input {
+  grid-column: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  margin: 1.4rem 1.4rem 1.4rem 1.4rem;
+}
+
+.input-field {
+  background: hsl(var(--Light-grayish-cyan2));
+  margin-top: 0.25rem;
+}
+
+.input-field img {
+  position: absolute;
+  padding: 0.75rem;
+}
+
+.input input {
+  width: 100%;
+  height: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: right;
+  border: none;
+  background: transparent;
+  color: hsl(var(--Very-dark-cyan));
+  padding-right: 0.75rem;
+  cursor: pointer;
+}
+
+.input input::placeholder {
+  color: hsla(var(--Dark-grayish-cyan2), 0.7);
+}
+
+.input input:focus {
+  outline-color: hsl(var(--Strong-cyan));
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.button-tip {
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  background: hsl(var(--Very-dark-cyan));
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+
+.button-tip:hover {
+  background: hsl(var(--Light-grayish-cyan));
+  color: hsl(var(--Very-dark-cyan));
+}
+
+.button-custom {
+  background: hsl(var(--Light-grayish-cyan2));
+  border-radius: 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+#input-custom {
+  height: 100%;
+  background: hsl(var(--Light-grayish-cyan2));
+  text-align: center;
+  padding: initial;
+}
+
+#input-custom:focus {
+  text-align: right;
+  padding-right: 0.75rem;
+}
+
+#input-custom:focus::placeholder {
+  color: transparent;
+}
+
+#number-people {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#error-msg {
+  color: hsla(var(--Red), 0.65);
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  background: hsl(var(--Strong-cyan));
+}
+
+.output {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: hsl(var(--Very-dark-cyan));
+  color: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  margin: 1.4rem 1.4rem 1.4rem 0;
+}
+
+.amounts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.amounts p {
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.amounts span {
+  font-size: 0.5rem;
+  color: hsl(var(--Dark-grayish-cyan2));
+}
+
+.amounts .totals {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 0.8;
+  color: hsl(var(--Strong-cyan));
+  margin-bottom: 2.5rem;
+}
+
+.output .reset {
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: hsla(var(--Strong-cyan), 0.2);
+  color: hsl(var(--Very-dark-cyan));
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 0;
+  cursor: pointer;
+}
+
+.output .reset:hover {
+  background: hsl(var(--Light-grayish-cyan));
+  color: hsl(var(--Very-dark-cyan));
+}
+
+.reset-active {
+  background: hsl(var(--Strong-cyan)) !important;
+  color: hsl(var(--Very-dark-cyan)) !important;
+}
+
+/*   5. || FrontEnd Mentor Footer   */
+
+
+.attribution {
+  font-size: 0.75rem; 
+  text-align: center;
+  color:inherit;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%;
+}
+
+.attribution a { 
+  color: hsl(var(--Blue));
+}
+
+.attribution a:hover {
+  background: hsl(var(--Very-dark-cyan));
+  color: hsl(var(--Strong-cyan));
+}
+
+
+/*   6. || Media Queries            */
+/*      Mobile                      */
+@media (max-width: 375px) {
+  .container {
+    max-width: 375px;
+  }
+  
+  .card {
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+    border-radius: 25px 25px 0 0;
+  }
+
+  #main-logo {
+    margin: 2rem;
+  }
+
+  .input {
+    grid-column: 1;
+    padding: 0rem;
+    margin: 1.5rem 1rem 0rem 1rem;
+  }
+
+  .input-segments {
+    margin-bottom: 1.25rem;
+  }
+
+  .buttons {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .output {
+    grid-column: 1;
+    padding: 2rem 1rem 1rem 1rem;
+    margin: 0 1rem 1rem 1rem;
+  }
+
+  .output .reset {
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+  }
+
+  .amounts .totals {
+    font-size: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .attribution {
+    font-size: 0.5rem; 
+    color:inherit;
+    position: unset;
+    transform: unset;
+    padding: 0 2.5rem;
+  }
+}

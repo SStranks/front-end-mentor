@@ -1,0 +1,576 @@
+/* -----|| Contents ||-----         */
+/* ------------------------         */
+/*   1. || Imports                  */
+/*   2. || Variables                */
+/*   3. || Globals                  */
+/*   4. || Main                     */
+/*   5. || Main: Toggle Switch      */
+/*   6. || Main: Slider             */
+/*   7. || FrontEnd Mentor Footer   */
+/*   8. || Media Queries            */
+/* -------------------------------- */
+
+/*   version:   1.0                 */
+/*   date:      02/09/2021          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+
+
+
+/*   1. || Imports                  */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
+
+
+/*   2. || Variables                */
+:root {
+  /* HSL Values                     */
+  /* Primary                        */
+  --Soft-Cyan: 174, 77%, 80%;               /*(Full Slider Bar)*/
+  --Strong-Cyan: 174, 86%, 45%;             /*(Slider Backround)*/
+  --Light-Grayish-Red: 14, 92%, 95%;        /*(Discount Background)*/
+  --Light-Red: 15, 100%, 70%;               /*(Discount Text)*/
+  --Pale-Blue: 226, 100%, 87%;              /*(CTA Text)*/
+  /* Neutral                        */
+  --White: 0, 0%, 100%;                     /*(Pricing Component Background)*/
+  --Very-Pale-Blue: 230, 100%, 99%;         /*(Main Background)*/
+  --Light-Grayish-Blue: 224, 65%, 95%;      /*(Empty Slider Bar)*/
+  --Light-Grayish-Blue: 223, 50%, 87%;      /*(Toggle Background)*/
+  --Grayish-Blue: 225, 20%, 60%;            /*(Text)*/
+  --Dark-Desaturated-Blue: 227, 35%, 25%;   /*(Text & CTA Background)*/
+}
+
+
+/*   3. || Globals                  */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img {display: block; height: 100%}
+a {text-decoration: none}
+a:visited {color: inherit}
+a:active {color: inherit}
+li {list-style: none}
+h1 {font-size: 1.7rem; color: #000}
+h2 {font-size: 1.3rem; color: #000}
+h3 {font-size: 1.2rem; color: #000}
+h4 {font-size: 1.0rem; color: #000}
+p {font-size: 0.9rem; line-height: 1.8;}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none; 
+  font-family: inherit;
+  cursor: pointer
+}
+input {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  color: #000;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+label {font-size: 1.0rem; font-weight:bold; color: #000; cursor: pointer}
+
+.flex-row {display: flex; justify-content: space-between; align-items: center}
+.hidden {display: none !important;}
+
+
+/*   4. || Main                     */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600, 800;
+  line-height: 1.6;
+  background: hsl(var(--Very-Pale-Blue));
+  color: hsl(var(--Grayish-Blue));
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('./images/bg-pattern.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+}
+
+.card {
+  height: fit-content;
+  width: 35%;
+  min-width: 510px;
+  background: hsl(var(--White));
+  border-radius: 5px;
+  box-shadow: 3px 5px 25px 1px hsla(0, 0%, 0%, 0.1);
+}
+
+header img {
+  position: absolute;
+  height: 140px;
+  width: 140px;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+header h1 {
+  position: relative;
+  margin-top: 6rem;
+  z-index: 3;
+}
+
+header p {
+  position: relative;
+  margin: 0.5rem 0 5rem 0;
+  z-index: 3;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  padding: 2rem 2.5rem;
+}
+
+.grid .slider {
+  grid-column: 1 / span 2;
+}
+
+.grid .flex-row {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  justify-content: flex-end;
+}
+
+.page-views {
+  font-size: 0.85em;
+  font-weight: 800;
+  color: hsl(var(--Grayish-Blue));
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin: auto auto auto 0;
+}
+
+.pricing {
+  margin: auto 0 auto auto;
+}
+
+.amount {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: hsl(var(--Dark-Desaturated-Blue));
+}
+
+.discount {
+  font-size: 0.75rem;
+  background: hsl(var(--Light-Grayish-Red));
+  color: hsl(var(--Light-Red));
+  border-radius: 15px;
+  padding: 0 0.5rem;
+  margin: 0 0 0 1rem;
+}
+
+.discount .mobile {
+  display: none;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.fl-1 {
+  justify-content: flex-end;
+}
+
+.fl-2 {
+  justify-content: space-between;
+  border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+}
+
+.flex-row .product-features {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.fl-2 .product-features div {
+  position: relative;
+}
+
+.fl-2 .product-features p::before {
+  content: url('./images/icon-check.svg');
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  left: 0;
+  top: 0;
+  transform: translate(-200%, 0);
+}
+
+.fl-2:last-of-type p:not(:first-of-type) {
+  margin-top: 0.25rem;
+}
+
+button {
+  height: 35px;
+  width: 150px;
+  background: hsl(var(--Dark-Desaturated-Blue));
+  color: hsl(var(--Pale-Blue));
+  border-radius: 20px;
+}
+
+button:hover {
+  color: hsl(var(--White));
+}
+
+
+/*   5. || Main: Toggle Switch      */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+  margin: 0 0.75rem;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(var(--Light-Grayish-Blue));
+  transition: .4s;
+}
+
+.toggle:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 50%;
+  transform: translate(0, 50%);
+  /* left: 4px;
+  bottom: 4px; */
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .toggle {
+  background-color: hsl(var(--Soft-Cyan));
+}
+
+input:focus + .toggle {
+  box-shadow: 0 0 1px hsl(var(--Soft-Cyan));
+}
+
+input:checked + .toggle:before {
+  transform: translate(22px, 50%);
+}
+
+/* Rounded toggles */
+.toggle.round {
+  border-radius: 34px;
+}
+
+.toggle.round:before {
+  border-radius: 50%;
+}
+
+
+/*   6. || Main: Slider             */
+.slidercontainer {
+  position: relative;
+  width: 100%;
+  grid-column: 1 / span 2;
+  margin: auto;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;
+  position: relative;
+  appearance: none;
+  width: 100%; 
+  height: 9px;
+  background: transparent;
+  /* background: hsl(var(--Light-Grayish-Blue)); */
+  border-radius: 5px;
+  outline: none;
+  z-index: 3;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; 
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px; 
+  height: 40px; 
+  background: url('./images/icon-slider.svg') hsl(var(--Soft-Cyan));
+  background-repeat: no-repeat;
+  background-size: 55% 35%;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 10px 10px 5px hsla(var(--Soft-Cyan), 0.5);
+  cursor: pointer;
+  transition: background 0.2s;
+  transition: box-shadow 0.2s;
+}
+
+.slider::-webkit-slider-thumb:active {
+  background: url('./images/icon-slider.svg') hsl(var(--Strong-Cyan));
+  background-repeat: no-repeat;
+  background-size: 55% 35%;
+  background-position: center;
+  box-shadow: 0 10px 10px 5px hsla(var(--Soft-Cyan), 0.7);
+  cursor: grab;
+}
+
+/* .slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+} */
+
+.track {
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: hsl(var(--Light-Grayish-Blue));
+  pointer-events: none;
+}
+
+.track-inner {
+  height: 100%;
+  width: 50%;
+  background: hsl(var(--Soft-Cyan));
+}
+
+
+/*   7. || FrontEnd Mentor Footer   */
+.attribution {
+  font-size: 0.75rem; 
+  text-align: center;
+  color:inherit;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%;
+}
+
+.attribution a { 
+  color: hsl(var(--Dark-Desaturated-Blue));
+}
+
+.attribution a:hover {
+  /* background: hsl(var(--Very-dark-cyan)); */
+  color: hsl(var(--Light-Red));
+}
+
+
+/*   8. || Media Queries            */
+/*      Mobile                      */
+@media (max-width: 375px) {
+  .container {
+    /* height: fit-content; */
+    background: url('./images/bg-pattern.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+  }
+
+  .card {
+    height: fit-content;
+    width: 85%;
+    min-width: unset;
+    border-radius: 8px;
+  }
+  
+  header img {
+    height: 170px;
+    width: 170px;
+  }
+  
+  header h1 {
+    font-size: 1.4rem;
+    margin-top: 6rem;
+  }
+  
+  header p {
+    padding: 0 5rem;
+    margin: 0.5rem 0 5rem 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    padding: 1.5rem;
+  }
+  
+  .grid .slidercontainer {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .grid .flex-row {
+    grid-column: 1;
+    grid-row: 4;
+    justify-content: flex-end;
+  }
+  
+  .page-views {
+    margin: 1rem 0 2rem 0;
+  }
+  
+  .pricing {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 2rem 0 0.75rem 0;
+  }
+  
+  .amount {
+    grid-row: 3;
+  }
+  
+  .discount {
+    font-size: 0.75rem;
+    border-radius: 15px;
+    padding: 0 0.5rem;
+    margin: 0 0 0 0.5rem;
+  }
+
+  .discount .desktop {
+    display: none;
+  }
+
+  .discount .mobile {
+    display: block;
+  }
+  
+  
+  .flex-row {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .fl-1 {
+    grid-row: 4;
+    justify-content: flex-end;
+    padding: 0;
+  }
+
+  .fl-1 p {
+    font-size: 0.75rem;
+  }
+  
+  .fl-2 {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .flex-row .product-features {
+    text-align: center;
+    margin: 0.5rem 0 0 0;
+  }
+  
+  .fl-2 .product-features div {
+    position: relative;
+  }
+
+  .fl-2 p {
+    margin: 0.25rem 0;
+  }
+  
+  .fl-2 .product-features p::before {
+    content: url('./images/icon-check.svg');
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    left: 0;
+    top: 0;
+    transform: translate(-200%, 0);
+  }
+  
+  .fl-2:last-of-type p:not(:first-of-type) {
+    margin-top: 0.25rem;
+  }
+  
+  button {
+    height: 40px;
+    width: 175px;
+    margin: 1.25rem;
+  }
+  
+  button:hover {
+    color: hsl(var(--White));
+  }
+  
+  .slider::-webkit-slider-thumb:hover,
+  .slider::-webkit-slider-thumb:active {
+    background: url('./images/icon-slider.svg') hsl(var(--Strong-Cyan));
+    background-repeat: no-repeat;
+    background-size: 55% 35%;
+    background-position: center;
+  }
+}
+
+/*      Tablet                      */
+@media (max-width: 768px) {
+  .card {
+    height: fit-content;
+    width: 80%;
+    min-width: unset;
+    max-width: 510px;
+  }
+
+  .grid {
+    padding: 1.5rem;
+  }
+
+  .fl-1 {
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .fl-2 {
+    padding: 1.5rem;
+  }
+  
+}

@@ -1,0 +1,303 @@
+/* -----|| Contents ||-----         */
+/* ------------------------         */
+/*   1. || Imports                  */
+/*   2. || Variables                */
+/*   3. || Globals                  */
+/*   4. || Main                     */
+/*   5. || FrontEnd Mentor Footer   */
+/*   6. || Media Queries            */
+/* -------------------------------- */
+
+/*   1. || Imports                  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/*   2. || Variables                */
+:root {
+  /* HSL Values */
+  /* Primary */
+  --Red: 0, 100%, 74%;
+  --Green: 154, 59%, 51%;
+  /* Accent */
+  --Blue: 248, 32%, 49%;
+  /* Neutral */
+  --Dark-Blue: 249, 10%, 26%;
+  --Grayish-Blue: 246, 25%, 77%;
+}
+
+/*   3. || Globals                  */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: hsl(var(--Red));
+}
+
+/*   4. || Main                     */
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('./images/bg-intro-desktop.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.card {
+  width: 80%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1;
+  margin: 2rem 4rem;
+}
+
+
+
+.info-panel {
+  grid-column: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-panel h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.info-panel p {
+  margin-top: 2rem;
+}
+
+.form-panel {
+  grid-column: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-panel button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: hsl(var(--Blue));
+  box-shadow: 0 7px 2px 1px hsla(var(--Dark-Blue), 0.2);
+  color: hsla(100, 100%, 100%, 0.9);
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.form-panel button span {
+  font-weight: 700;
+}
+
+.form-panel .form {
+  width: 100%;
+  height: min-content;
+  border-radius: 10px;
+  box-shadow: 0 7px 2px 1px hsla(var(--Dark-Blue), 0.2);
+  background: #fff;
+  color: black;
+  margin-top: 1.5rem;
+  padding: 2.5rem;
+}
+
+.form div {
+  margin-top: 1.5rem;
+}
+
+.form div:first-child {
+  margin-top: 0rem;
+}
+
+.form input {
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid hsla(0, 0%, 0%, 0.4);
+  font-family: inherit;
+  font-weight: 600;
+  padding: 1rem 2rem;
+}
+
+.form button {
+  background: hsl(var(--Green));
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 1px hsla(var(--Dark-Blue), 0.2);
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.form button:hover {
+  opacity: 75%;
+}
+
+.form p {
+  text-align: center;
+  font-size: 0.65rem;
+  color: hsla(0, 0%, 0%, 0.4);
+  margin-top: 1rem;
+}
+
+.form span {
+  color: hsl(var(--Red));
+  font-weight: 500;
+}
+
+.form .error-icon {
+  position: absolute;
+  transform: translate(-200%, 60%);
+}
+
+.form .error-msg {
+  color: hsl(var(--Red));
+  text-align: right;
+  margin-top: 0.2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/*   5. || FrontEnd Mentor Footer   */
+.attribution {
+  font-size: 1rem; 
+  text-align: center;
+  color:#fff;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%;
+}
+
+.attribution a { 
+  color: hsl(var(--Blue));
+}
+
+.attribution a:hover {
+  color: hsl(var(--Green));
+}
+
+
+
+/*   6. || Media Queries            */
+/*      Mobile                      */
+@media (max-width: 375px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    max-width: 375px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('./images/bg-intro-desktop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .card {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    margin: 5rem 0rem;
+    padding: 0 1.5rem;
+  }
+
+  .info-panel {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .form-panel {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-panel h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .info-panel p {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .form-panel button {
+    height: 85px;
+    margin-top: 3.5rem;
+    padding: 1rem 4rem;
+  }
+
+  .form-panel button span {
+    font-weight: 600;
+  }
+
+  .form-panel .form {
+    height: min-content;
+    padding: 1.5rem;
+  }
+
+  .form div {
+    margin-top: 1rem;
+  }
+
+  .form input {
+    border: 1px solid hsla(0, 0%, 0%, 0.2);
+    padding: 1rem 1rem;
+  }
+
+  .form button {
+    height: 55px;
+    margin-top: 1rem;
+    padding: 0rem;
+  }
+
+  .form p {
+    line-height: 2;
+    padding: 0 1rem;
+  }
+
+  .attribution {
+    font-size: 0.75rem; 
+    padding: 0 5rem;
+  }
+}

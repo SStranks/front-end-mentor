@@ -1,0 +1,87 @@
+@use '../../assets/styles/variables' as *;
+@use '../../assets/styles/mixins' as *;
+
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 5% 0 5%;
+  background-color: hsla(0deg, 0%, 0%, 0.55);
+  z-index: 10;
+}
+
+.card {
+  width: 100%;
+  height: fit-content;
+  background-color: $White;
+  border-radius: 5px;
+}
+
+.compartment {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 32px;
+  & input[type='text'] {
+    flex-grow: 1;
+    width: 100%;
+    margin-left: 16px;
+    border: none;
+    color: var(--color-input-text);
+
+    &::placeholder {
+      color: var(--color-placeholder);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+  & button {
+    width: 100%;
+    margin-top: 32px;
+  }
+  &:not(:first-child) {
+    flex-direction: column;
+    align-content: space-around;
+    border-top: 2px solid var(--color-background);
+  }
+}
+
+#checkboxControlMob {
+  display: flex;
+}
+
+// Animation: CSS Transition Group
+.appear,
+.enter {
+  opacity: 0%;
+}
+
+.appearActive,
+.enterActive {
+  opacity: 100%;
+  transition: opacity 550ms ease-in;
+}
+
+.enterDone {
+  pointer-events: all;
+}
+
+.exit {
+  opacity: 100%;
+}
+
+.exitActive {
+  opacity: 0%;
+  transition: opacity 450ms ease-out;
+}
+
+.exitDone {
+  opacity: 0%;
+}

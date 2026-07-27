@@ -1,0 +1,171 @@
+/* -----|| Contents ||-----         */
+/* ------------------------         */
+/*   1. || Imports                  */
+/*   2. || App                      */
+/*   3. || FrontEnd Mentor Footer   */
+/* -------------------------------- */
+
+/*   FrontEndMentor Challenge       */
+/*   #Launch Countdown Timer        */
+/*   version:   1.0                 */
+/*   date:      26/02/2022          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+
+/*   1. || Imports                  */
+@use 'globals';
+@use 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@600;700&display=swap');
+
+/*   2. || App                      */
+.hidden-h1 {
+  font-size: 0;
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+main {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5ch;
+  margin-bottom: 8rem;
+  text-align: center;
+  z-index: 3;
+  @media (max-width: variables.$tablet) {
+    font-size: 1.25rem;
+  }
+  @media (max-width: variables.$mobile-l) {
+    font-size: 1.25rem;
+    padding: 0 6rem;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: variables.$mobile-m) {
+    padding: 0 3rem;
+  }
+  @media (max-width: variables.$mobile-s) {
+    padding: 0 2rem;
+  }
+}
+
+.counter {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rem;
+  z-index: 2;
+}
+
+.bg-mountains {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  & .mountains-1 {
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    --left: 0;
+    left: calc(var(--left) * 1%);
+    z-index: 3;
+    @media (max-width: variables.$tablet) {
+      height: auto;
+      width: 200%;
+      left: calc(var(--left) * 2%);
+    }
+  }
+}
+
+.bg-sky {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  & .stars-1 {
+    position: absolute;
+    top: 0;
+    height: auto;
+    width: auto;
+    --left: 0;
+    left: calc(var(--left) * 1%);
+    z-index: 1;
+  }
+}
+
+.social-media {
+  position: absolute;
+  bottom: 9%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  & img {
+    margin: 0 1rem;
+    cursor: pointer;
+    &:hover {
+      filter: invert(60%) sepia(26%) saturate(6153%) hue-rotate(310deg)
+        brightness(100%) contrast(98%);
+    }
+  }
+}
+
+/*   3. || FrontEnd Mentor Footer   */
+footer {
+  position: relative;
+  height: fit-content;
+}
+
+.attribution {
+  position: absolute;
+  display: block;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+  color: variables.$Soft-red;
+  margin: 0 auto;
+  transform: translate(-50%, -45%);
+  z-index: 3;
+  & a {
+    color: variables.$White;
+    transition: all 1s ease;
+    &:hover {
+      color: variables.$White;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+  }
+  @media (max-width: variables.$mobile-l) {
+    font-size: 0.4rem;
+    padding: 0 3.5rem;
+  }
+  @media (max-width: variables.$mobile-m) {
+    font-size: 0.4rem;
+    padding: 0 3rem;
+  }
+  @media (max-width: variables.$mobile-s) {
+    font-size: 0.35rem;
+    padding: 0 2rem;
+  }
+}
