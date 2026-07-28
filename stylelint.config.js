@@ -6,7 +6,7 @@ export default {
   overrides: [
     {
       // NOTE: Preserves early learning progress without refactoring
-      files: 'apps/z_archive/**/*.{css,scss}',
+      files: ['apps/z_archive/**/*.css', 'apps/z_archive/**/*.scss'],
       rules: {
         'custom-property-pattern': null,
         'keyframes-name-pattern': null,
