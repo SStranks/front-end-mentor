@@ -35,7 +35,7 @@ JSON_FILTER_REGEX_EXCLUDE: /migrations/meta/
 BASH_SHELLCHECK_ARGUMENTS: -S warning
 BASH_SHFMT_ARGUMENTS: --case-indent --indent 2 --space-redirects --language-dialect bash
 
-CSS_STYLELINT_ARGUMENTS: --config-basedir=./node_modules
+# CSS_STYLELINT_ARGUMENTS: --config-basedir=./node_modules
 CSS_STYLELINT_CLI_EXECUTABLE: node_modules/.bin/stylelint
 CSS_STYLELINT_CONFIG_FILE: stylelint.config.js
 

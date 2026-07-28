@@ -42,6 +42,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Test Stylelint directly
+        run: |
+          node_modules/.bin/stylelint \
+            --config stylelint.config.js \
+            apps/z_archive/0_newbie/01_card_component/styles.css
+
+      - name: Print effective Stylelint config
+        run: |
+          node_modules/.bin/stylelint \
+            --print-config apps/z_archive/0_newbie/01_card_component/styles.css \
+            | grep -A5 "selector-id-pattern"
+
       - name: MegaLinter v9.6
         uses: oxsecurity/megalinter/flavors/javascript@ef3e84b8b836d76db562d0f3ed7da61e8fd538bc # v9.6.0
         env:
