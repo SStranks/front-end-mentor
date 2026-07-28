@@ -28,12 +28,15 @@ a {
   color: hsl(var(--Dark-Grayish-Violet));
   letter-spacing: 0.1rem;
   text-decoration: none;
+
   &:visited {
     color: hsl(var(--Dark-Grayish-Violet));
   }
+
   &:active {
     color: hsl(var(--Dark-Grayish-Violet));
   }
+
   a:hover {
     color: hsl(var(--Very-Dark-Violet));
   }
@@ -113,11 +116,13 @@ input {
   color: var(--color-text);
   transition: $Theme-transition;
   background-color: transparent;
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
   }
+
   &::placeholder {
     color: var(--color-text);
     transition: $Theme-transition;

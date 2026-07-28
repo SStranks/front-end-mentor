@@ -14,7 +14,7 @@
 /*   website:   github.com/SStranks */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -24,6 +24,7 @@
   --Black: 0, 0%, 0%;
   --Dark-Gray: 0, 0%, 55%;
   --Very-Dark-Gray: 0, 0%, 41%;
+
   /* Neutral                        */
 }
 
@@ -38,45 +39,55 @@ img {
   display: block;
   height: 100%;
 }
+
 a {
   text-decoration: none;
 }
+
 a:visited {
   color: inherit;
 }
+
 a:active {
   color: inherit;
 }
+
 li {
   list-style: none;
 }
+
 h1 {
   font-size: 1.7rem;
   color: #000;
 }
+
 h2 {
   font-size: 3.25rem;
-  font-family: 'Josefin Sans';
+  font-family: 'Josefin Sans', serif;
   font-weight: 400;
   line-height: 1;
   color: #000;
   text-transform: uppercase;
 }
+
 h3 {
   font-size: 2.2rem;
-  font-family: 'Josefin Sans';
+  font-family: 'Josefin Sans', serif;
   font-weight: 400;
   line-height: 1;
   color: #fff;
 }
+
 h4 {
   font-size: 1rem;
   color: #000;
 }
+
 p {
   font-size: 0.9rem;
   line-height: 1.8;
 }
+
 button {
   display: flex;
   justify-content: center;
@@ -85,17 +96,20 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+
 input {
   font-size: inherit;
   font-family: inherit;
   font-weight: 700;
   color: #000;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
+
 label {
   font-size: 1rem;
   font-weight: bold;
@@ -108,18 +122,22 @@ label {
   justify-content: space-between;
   align-items: center;
 }
+
 .flex-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
+
 .hidden {
   display: none !important;
 }
+
 .show {
   display: inherit !important;
 }
+
 .modal-open {
   overflow: hidden;
 }
@@ -131,7 +149,7 @@ body {
   width: 100%;
   font-size: 15px;
   font-weight: 400, 300;
-  font-family: 'Alata', 'Josefin Sans', sans-serif;
+  font-family: Alata, 'Josefin Sans', sans-serif;
   line-height: 1.6;
   color: #000;
   background: #fff;
@@ -146,7 +164,7 @@ header {
   background-size: cover;
   min-height: 650px;
   width: 100%;
-  padding: 4rem 10rem 4rem 10rem;
+  padding: 4rem 10rem;
 }
 
 header .flex-row img:last-of-type {
@@ -175,7 +193,7 @@ header .title {
 header h1 {
   font-size: 4.75rem;
   font-weight: 400;
-  font-family: 'Josefin Sans';
+  font-family: 'Josefin Sans', serif;
   line-height: 1;
   color: hsl(var(--White));
   text-transform: uppercase;
@@ -184,7 +202,7 @@ header h1 {
 
 .intro {
   position: relative;
-  padding: 10rem 10rem 0 10rem;
+  padding: 10rem 10rem 0;
 }
 
 .intro img {
@@ -228,8 +246,7 @@ header h1 {
   width: fit-content;
   grid-column: 4;
   grid-row: 1;
-  align-self: center;
-  justify-self: end;
+  place-self: center end;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -257,7 +274,7 @@ header h1 {
 }
 
 .creations:hover img {
-  opacity: 30%;
+  opacity: 0.3;
 }
 
 .creations h3 {
@@ -265,7 +282,7 @@ header h1 {
   left: 0;
   bottom: 0;
   text-transform: uppercase;
-  margin: 2rem 2rem;
+  margin: 2rem;
   transition: filter 0.4s;
 }
 
@@ -303,8 +320,7 @@ footer .flex-row a {
 footer .social-media {
   grid-column: 2;
   grid-row: 1;
-  justify-self: end;
-  align-self: center;
+  place-self: center end;
   display: flex;
   justify-content: space-between;
 }
@@ -320,8 +336,7 @@ footer .social-media div {
 footer span {
   grid-column: 2;
   grid-row: 2;
-  justify-self: end;
-  align-self: center;
+  place-self: center end;
   color: hsl(var(--Dark-Gray));
 }
 
@@ -333,7 +348,7 @@ footer span {
   content: '';
   position: absolute;
   height: 2px;
-  width: 0px;
+  width: 0;
   left: 50%;
   bottom: -5px;
   transform: translate(-50%, 0);
@@ -356,6 +371,7 @@ footer span {
   color: inherit;
   display: block;
   margin: 0 auto;
+
   /* position: absolute;
   bottom: 10px;
   left: 50%;
@@ -364,7 +380,7 @@ footer span {
   grid-column: 1 / span 2;
 }
 
-/* .attribution a { 
+/* .attribution a {
   color: hsl(var(--Dark-Desaturated-Blue));
 } */
 
@@ -375,7 +391,7 @@ footer span {
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   /* Modal Mobile Menu              */
   .modal {
     position: fixed;
@@ -398,11 +414,11 @@ footer span {
     min-height: 650px;
     width: 100%;
     padding: 1.5rem;
-    margin: 0 0 4.5rem 0;
+    margin: 0 0 4.5rem;
   }
 
   header .flex-row {
-    margin: 1rem 0 0 0;
+    margin: 1rem 0 0;
   }
 
   header .title {
@@ -443,7 +459,7 @@ footer span {
 
   header .flex-row nav a {
     font-size: 2rem;
-    font-family: 'Josefin Sans';
+    font-family: 'Josefin Sans', serif;
     font-weight: 300;
     text-transform: uppercase;
     margin: 0.25rem 1.5rem;
@@ -452,7 +468,7 @@ footer span {
   header h1 {
     font-size: 2.75rem;
     font-weight: 400;
-    font-family: 'Josefin Sans';
+    font-family: 'Josefin Sans', serif;
     line-height: 1;
     color: hsl(var(--White));
     text-transform: uppercase;
@@ -462,7 +478,7 @@ footer span {
   .intro {
     position: relative;
     padding: 1.5rem;
-    margin: 0 0 4rem 0;
+    margin: 0 0 4rem;
   }
 
   .intro img {
@@ -476,7 +492,7 @@ footer span {
     width: 100%;
     text-align: center;
     padding: 1.5rem;
-    margin: 2rem 0 0 0;
+    margin: 2rem 0 0;
   }
 
   .intro h2 {
@@ -505,7 +521,7 @@ footer span {
     font-size: 2.2rem;
     text-align: center;
     padding: 0;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem;
   }
 
   .grid div img {
@@ -515,24 +531,31 @@ footer span {
   .grid div:nth-of-type(1) img {
     content: url('./images/mobile/image-deep-earth.jpg');
   }
+
   .grid div:nth-of-type(2) img {
     content: url('./images/mobile/image-night-arcade.jpg');
   }
+
   .grid div:nth-of-type(3) img {
     content: url('./images/mobile/image-soccer-team.jpg');
   }
+
   .grid div:nth-of-type(4) img {
     content: url('./images/mobile/image-grid.jpg');
   }
+
   .grid div:nth-of-type(5) img {
     content: url('./images/mobile/image-from-above.jpg');
   }
+
   .grid div:nth-of-type(6) img {
     content: url('./images/mobile/image-pocket-borealis.jpg');
   }
+
   .grid div:nth-of-type(7) img {
     content: url('./images/mobile/image-curiosity.jpg');
   }
+
   .grid div:nth-of-type(8) img {
     content: url('./images/mobile/image-fisheye.jpg');
   }
@@ -546,12 +569,11 @@ footer span {
     width: fit-content;
     grid-column: 1;
     grid-row: 10;
-    align-self: center;
-    justify-self: center;
+    place-self: center center;
     font-size: 1rem;
     border: 1px solid hsl(var(--Black));
     padding: 0.5rem 2.75rem;
-    margin: 1rem 0 6rem 0;
+    margin: 1rem 0 6rem;
   }
 
   footer {
@@ -570,13 +592,14 @@ footer span {
     grid-row: 1;
     justify-self: center;
     height: 25px;
-    margin: 3rem 0 0 0;
+    margin: 3rem 0 0;
   }
 
   footer .flex-row {
     flex-direction: column;
     grid-column: 1;
     grid-row: 2;
+
     /* align-self: center; */
     justify-content: unset;
     margin: 2rem 0;
@@ -589,8 +612,7 @@ footer span {
   footer .social-media {
     grid-column: 1;
     grid-row: 3;
-    justify-self: center;
-    align-self: center;
+    place-self: center center;
     display: flex;
     justify-content: unset;
     margin: 1rem 0;
@@ -607,7 +629,6 @@ footer span {
   footer span {
     grid-column: 1;
     grid-row: 4;
-    justify-self: center;
-    align-self: center;
+    place-self: center center;
   }
 }

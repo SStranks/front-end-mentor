@@ -16,17 +16,17 @@ $padding-transition: padding 2500ms ease-out;
 $grid-gap-transition: gap 1500ms ease-out;
 
 /*   Colours: Primary               */
-$Violet: hsl(235deg, 69%, 61%);
-$Light_Violet: hsl(235deg, 82%, 77%);
-$Fine_Violet: hsl(253deg, 74%, 91%);
-$Very_Dark_Blue: hsl(219deg, 29%, 14%);
-$Midnight: hsl(220deg, 29%, 10%);
+$Violet: hsl(235deg 69% 61%);
+$Light_Violet: hsl(235deg 82% 77%);
+$Fine_Violet: hsl(253deg 74% 91%);
+$Very_Dark_Blue: hsl(219deg 29% 14%);
+$Midnight: hsl(220deg 29% 10%);
 
 /*   Colours: Secondary             */
-$White: hsl(0deg, 0%, 100%);
-$Light_Grey: hsl(210deg, 22%, 96%);
-$Grey: hsl(212deg, 23%, 69%);
-$Dark_Grey: hsl(214deg, 17%, 51%);
+$White: hsl(0deg 0% 100%);
+$Light_Grey: hsl(210deg 22% 96%);
+$Grey: hsl(212deg 23% 69%);
+$Dark_Grey: hsl(214deg 17% 51%);
 
 /*   Breakpoints                    */
 $mobile-s: 320px;

@@ -10,7 +10,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -19,9 +19,11 @@
   --soft-red: 14, 88%, 65%;
   --violet: 273, 75%, 66%;
   --blue: 240, 73%, 65%;
+
   /* Text  */
   --text-dark-gray-blue: 237, 12%, 33%;
   --text-gray-blue: 240, 6%, 50%;
+
   /* Dividers */
   --divider-gray-blue: 240, 5%, 91%;
 }
@@ -69,7 +71,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  position: relative;
   padding: 6em 0;
   margin: 2em 7em;
   position: relative;
@@ -145,8 +146,7 @@ body {
 }
 
 .info li a.arrow {
-  justify-self: flex-end;
-  align-self: flex-start;
+  place-self: flex-start flex-end;
 }
 
 .info li ~ li {
@@ -191,7 +191,7 @@ body {
 }
 
 /*   6. || Media Queries            */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .container {
     min-height: 100%;
     max-width: 1440px;
@@ -235,14 +235,16 @@ body {
     left: 200px;
     right: 200px;
     top: -22%;
+
     /* transform: translate(-50%, -45%); */
     transform: scale(0.5);
     z-index: 2;
   }
 
   .info {
-    margin: 5em auto 1em auto;
+    margin: 5em auto 1em;
     max-width: 100%;
+
     /* width: 100%; */
   }
 

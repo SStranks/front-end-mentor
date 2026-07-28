@@ -10,9 +10,10 @@
   position: relative;
   width: 100%;
   max-width: 730px;
-  margin: -40px auto 0 auto;
+  margin: -40px auto 0;
   padding-bottom: 176px;
   z-index: 1;
+
   & > * {
     background-color: var(--color-elements);
     transition: $Theme-transition;
@@ -40,6 +41,7 @@
     height: 140px;
     padding: 30px;
     border-radius: 7px 0 0 7px;
+
     & img {
       width: 100%;
       height: fit-content;
@@ -50,12 +52,14 @@
       padding: 0;
       border-radius: 15px;
       transform: translate(0, -50%);
+
       & img {
         height: fit-content;
         width: fit-content;
       }
     }
   }
+
   & > div:last-child {
     flex: 1;
     display: flex;
@@ -68,6 +72,7 @@
     @include media(tablet-small, mobile-large, mobile-medium, mobile-small) {
       flex-direction: column;
       align-items: center;
+
       & > div {
         display: flex;
         flex-direction: column;
@@ -75,16 +80,19 @@
       }
     }
   }
+
   & button {
     grid-column: 2;
     padding: 0;
     background-color: var(--color-advert-banner-btn);
     transition: $Theme-transition;
+
     & span {
       color: var(--color-advert-banner-btn-text);
       font-weight: 700;
       transition: $Theme-transition;
     }
+
     &:hover {
       background-color: var(--color-advert-banner-btn-hover);
     }
@@ -99,46 +107,56 @@
   margin-top: 32px;
   padding: 48px;
   border-radius: 7px;
+
   & > div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     & p > span {
       margin: 0 10px;
       font-size: 32px;
       color: $Dark_Grey;
     }
+
     & h1 {
       margin: 6px 0;
     }
 
     @include media(tablet-small, mobile-large, mobile-medium, mobile-small) {
       flex-direction: column;
+
       & button {
         width: 100%;
         margin-top: 32px;
       }
     }
   }
+
   & > div:last-child {
     & p:first-child {
       margin: 40px 0;
     }
+
     & p:not(:first-child) {
       margin-bottom: 24px;
     }
+
     & h3 {
       margin-bottom: 28px;
     }
+
     & ul {
       margin-bottom: 48px;
     }
+
     ol {
       & li::marker {
         font-weight: 700;
         color: $Violet;
       }
     }
+
     li {
       line-height: 1.6rem;
       margin: 8px 0;
@@ -149,13 +167,13 @@
 .footer {
   position: fixed;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  place-content: center center;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 96px;
   padding: 0 10%;
+
   & > div {
     display: flex;
     justify-content: space-between;
@@ -164,6 +182,7 @@
     max-width: 730px;
     margin: auto 0;
   }
+
   & h3 {
     margin-bottom: 5px;
   }
@@ -172,6 +191,7 @@
     & div > div {
       display: none;
     }
+
     & button {
       width: 100%;
     }

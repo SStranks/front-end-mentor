@@ -9,7 +9,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -26,6 +26,7 @@
   --Very-dark-blue: 233, 47%, 7%;
   --Dark-desaturated-blue: 244, 38%, 16%;
   --Soft-violet: 277, 64%, 61%;
+
   /* Neutral */
   --Trans-white-p: 0, 0%, 100%, 0.75;
   --Trans-white-h: 0, 0%, 100%, 0.6;
@@ -41,7 +42,7 @@
 html,
 body {
   font-size: 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   line-height: 1.6;
   height: 100%;
   width: 100%;
@@ -116,7 +117,7 @@ body {
   max-height: 100%;
   max-width: 100%;
   background-image:
-    linear-gradient(hsla(var(--Soft-violet), 0.65), hsla(var(--Soft-violet), 0.65)),
+    linear-gradient(hsl(var(--Soft-violet), 0.65), hsl(var(--Soft-violet), 0.65)),
     url('./images/image-header-mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -142,7 +143,7 @@ footer a:hover {
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   .card {
     max-width: 100%;
     width: 90%;
@@ -179,7 +180,7 @@ footer a:hover {
     max-height: 100%;
     max-width: 100%;
     background-image:
-      linear-gradient(hsla(var(--Soft-violet), 0.65), hsla(var(--Soft-violet), 0.65)),
+      linear-gradient(hsl(var(--Soft-violet), 0.65), hsl(var(--Soft-violet), 0.65)),
       url('./images/image-header-mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -189,7 +190,7 @@ footer a:hover {
 
   .stats {
     flex-direction: column;
-    margin: 1rem 0 0 0;
+    margin: 1rem 0 0;
     padding: 0;
   }
 

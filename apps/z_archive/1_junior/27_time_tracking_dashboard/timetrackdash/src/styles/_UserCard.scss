@@ -18,7 +18,7 @@
   @media (max-width: $mobile-md) {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto auto auto;
-    row-gap: 0px;
+    row-gap: 0;
     justify-content: none;
     align-items: center;
   }
@@ -94,10 +94,12 @@
     color: $pale-blue;
     cursor: pointer;
     transition: 0.5s;
+
     &:hover {
       color: white;
     }
   }
+
   .active {
     color: white;
   }

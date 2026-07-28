@@ -19,7 +19,7 @@
 
   &:hover {
     transform: scale(102%);
-    box-shadow: 0 0 15px 5px hsla(0deg, 0%, 0%, 0.05);
+    box-shadow: 0 0 15px 5px hsl(0deg 0% 0% / 5%);
   }
 
   &__logo {
@@ -65,12 +65,12 @@
 // Animation: CSS Transition Group
 .appear,
 .enter {
-  opacity: 0%;
+  opacity: 0;
 }
 
 .appearActive,
 .enterActive {
-  opacity: 100%;
+  opacity: 1;
   transition: opacity 1000ms ease-in-out;
 }
 
@@ -79,14 +79,14 @@
 }
 
 .exit {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .exitActive {
-  opacity: 0%;
+  opacity: 0;
   transition: opacity 1000ms ease-in;
 }
 
 .exitDone {
-  opacity: 0%;
+  opacity: 0;
 }

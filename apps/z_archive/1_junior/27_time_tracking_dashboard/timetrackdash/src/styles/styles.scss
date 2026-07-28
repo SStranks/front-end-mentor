@@ -17,7 +17,7 @@
 @use 'variables';
 @use 'StatsCard';
 @use 'UserCard';
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Rubik:wght@300;400;500&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=PT+Sans&family=Rubik:wght@300;400;500&display=swap';
 
 /*   2. || App                      */
 main {
@@ -25,8 +25,7 @@ main {
   height: 100%;
   grid-template-columns: 1fr repeat(3, minmax(0, 1fr));
   grid-template-rows: 1fr 1fr;
-  row-gap: 30px;
-  column-gap: 30px;
+  gap: 30px;
   padding: 12% 10%;
 
   @media (max-width: variables.$desktop-sm) {
@@ -65,8 +64,10 @@ footer {
   bottom: 0;
   transform: translate(-50%, 0);
   width: 100%;
+
   & a {
     color: variables.$pale-blue;
+
     &:hover {
       //  background: var(--Instagram);
       //  color: hsl(var(--Dark-Blue));

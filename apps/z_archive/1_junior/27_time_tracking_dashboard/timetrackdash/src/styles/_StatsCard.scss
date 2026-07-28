@@ -1,11 +1,14 @@
+@use 'sass:color';
 @use 'variables' as *;
 
 .stats {
   position: relative;
   transition: 0.5s;
+
   &:hover {
     cursor: pointer;
-    background-color: darken($desaturated-blue, 20%);
+    background-color: color.adjust($desaturated-blue, $lightness: -20%);
+
     & .work-icon {
       transform: scale(125%);
     }
@@ -62,27 +65,32 @@
       align-items: center;
     }
   }
+
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5rem;
   }
+
   &__title {
     font-size: 1.2rem;
     font-weight: 400;
   }
+
   &__ellipsis {
     &:hover {
       filter: brightness(100);
     }
   }
+
   &__number {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 3rem;
     font-weight: 300;
   }
+
   &__last-period {
     color: $pale-blue;
     font-size: 0.9rem;

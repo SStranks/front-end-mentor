@@ -12,7 +12,7 @@
 
 /*   Imports                        */
 @use 'variables' as *;
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap';
 
 /*   Font                           */
 html,
@@ -23,12 +23,14 @@ body {
 p {
   color: var(--color-text-p);
 }
+
 h1,
 h2,
 h3 {
   color: var(--color-text-h);
   transition: $Theme-transition;
 }
+
 h4 {
   color: $Violet;
 }

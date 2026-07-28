@@ -9,7 +9,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -17,6 +17,7 @@
   /* Primary */
   --Pale-blue: 225, 100%, 94%;
   --Bright-blue: 245, 75%, 52%;
+
   /* Neutral */
   --Very-pale-blue: 225, 100%, 98%;
   --Desaturated-blue: 224, 23%, 55%;
@@ -66,14 +67,14 @@ body {
   width: 475px;
   position: relative;
   border-radius: 20px;
-  box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 50px 10px rgb(0 0 0 / 20%);
 }
 
 .img-panel {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px 20px 0 0;
 }
 
 .img-panel img {
@@ -150,9 +151,9 @@ body {
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
-  margin: 2rem 0rem;
+  margin: 2rem 0;
   border-radius: 10px;
-  box-shadow: 0 10px 15px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px 5px rgb(0 0 0 / 10%);
   cursor: pointer;
 }
 
@@ -184,7 +185,7 @@ body {
 
 /*   6. || Media Queries            */
 /*      Tablets and Under           */
-@media (max-width: 500px) {
+@media (width <= 500px) {
   .container {
     width: 100%;
     height: 100%;
@@ -205,7 +206,7 @@ body {
 }
 
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   .container {
     width: 100%;
     height: 100%;

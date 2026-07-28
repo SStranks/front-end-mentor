@@ -16,24 +16,25 @@
 /*   website:   github.com/SStranks */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap';
 
 /*   2. || Variables                */
 :root {
   /* HSL Values                     */
   /* Primary                        */
-  --Soft-Cyan: 174, 77%, 80%; /*(Full Slider Bar)*/
-  --Strong-Cyan: 174, 86%, 45%; /*(Slider Backround)*/
-  --Light-Grayish-Red: 14, 92%, 95%; /*(Discount Background)*/
-  --Light-Red: 15, 100%, 70%; /*(Discount Text)*/
-  --Pale-Blue: 226, 100%, 87%; /*(CTA Text)*/
+  --Soft-Cyan: 174, 77%, 80%; /* (Full Slider Bar) */
+  --Strong-Cyan: 174, 86%, 45%; /* (Slider Backround) */
+  --Light-Grayish-Red: 14, 92%, 95%; /* (Discount Background) */
+  --Light-Red: 15, 100%, 70%; /* (Discount Text) */
+  --Pale-Blue: 226, 100%, 87%; /* (CTA Text) */
+
   /* Neutral                        */
-  --White: 0, 0%, 100%; /*(Pricing Component Background)*/
-  --Very-Pale-Blue: 230, 100%, 99%; /*(Main Background)*/
-  --Light-Grayish-Blue: 224, 65%, 95%; /*(Empty Slider Bar)*/
-  --Light-Grayish-Blue: 223, 50%, 87%; /*(Toggle Background)*/
-  --Grayish-Blue: 225, 20%, 60%; /*(Text)*/
-  --Dark-Desaturated-Blue: 227, 35%, 25%; /*(Text & CTA Background)*/
+  --White: 0, 0%, 100%; /* (Pricing Component Background) */
+  --Very-Pale-Blue: 230, 100%, 99%; /* (Main Background) */
+  --Light-Grayish-Blue: 224, 65%, 95%; /* (Empty Slider Bar) */
+  --Light-Gray: 223, 50%, 87%; /* (Toggle Background) */
+  --Grayish-Blue: 225, 20%, 60%; /* (Text) */
+  --Dark-Desaturated-Blue: 227, 35%, 25%; /* (Text & CTA Background) */
 }
 
 /*   3. || Globals                  */
@@ -47,38 +48,48 @@ img {
   display: block;
   height: 100%;
 }
+
 a {
   text-decoration: none;
 }
+
 a:visited {
   color: inherit;
 }
+
 a:active {
   color: inherit;
 }
+
 li {
   list-style: none;
 }
+
 h1 {
   font-size: 1.7rem;
   color: #000;
 }
+
 h2 {
   font-size: 1.3rem;
   color: #000;
 }
+
 h3 {
   font-size: 1.2rem;
   color: #000;
 }
+
 h4 {
   font-size: 1rem;
   color: #000;
 }
+
 p {
   font-size: 0.9rem;
   line-height: 1.8;
 }
+
 button {
   display: flex;
   justify-content: center;
@@ -87,17 +98,20 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+
 input {
   font-size: inherit;
   font-family: inherit;
   font-weight: 700;
   color: #000;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
+
 label {
   font-size: 1rem;
   font-weight: bold;
@@ -110,6 +124,7 @@ label {
   justify-content: space-between;
   align-items: center;
 }
+
 .hidden {
   display: none !important;
 }
@@ -120,7 +135,7 @@ body {
   height: 100%;
   width: 100%;
   font-size: 15px;
-  font-family: 'Manrope', sans-serif;
+  font-family: Manrope, sans-serif;
   font-weight: 600, 800;
   line-height: 1.6;
   background: hsl(var(--Very-Pale-Blue));
@@ -147,7 +162,7 @@ body {
   min-width: 510px;
   background: hsl(var(--White));
   border-radius: 5px;
-  box-shadow: 3px 5px 25px 1px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 3px 5px 25px 1px hsl(0deg 0% 0% / 10%);
 }
 
 header img {
@@ -167,7 +182,7 @@ header h1 {
 
 header p {
   position: relative;
-  margin: 0.5rem 0 5rem 0;
+  margin: 0.5rem 0 5rem;
   z-index: 3;
 }
 
@@ -232,7 +247,7 @@ header p {
 
 .fl-2 {
   justify-content: space-between;
-  border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+  border-top: 1px solid hsl(0deg 0% 0% / 10%);
 }
 
 .flex-row .product-features {
@@ -291,15 +306,12 @@ button:hover {
 .toggle {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: hsl(var(--Light-Grayish-Blue));
+  inset: 0;
+  background-color: hsl(var(--Light-Gray));
   transition: 0.4s;
 }
 
-.toggle:before {
+.toggle::before {
   position: absolute;
   content: '';
   height: 15px;
@@ -307,6 +319,7 @@ button:hover {
   left: 4px;
   bottom: 50%;
   transform: translate(0, 50%);
+
   /* left: 4px;
   bottom: 4px; */
   background-color: white;
@@ -321,7 +334,7 @@ input:focus + .toggle {
   box-shadow: 0 0 1px hsl(var(--Soft-Cyan));
 }
 
-input:checked + .toggle:before {
+input:checked + .toggle::before {
   transform: translate(22px, 50%);
 }
 
@@ -330,7 +343,7 @@ input:checked + .toggle:before {
   border-radius: 34px;
 }
 
-.toggle.round:before {
+.toggle.round::before {
   border-radius: 50%;
 }
 
@@ -344,12 +357,12 @@ input:checked + .toggle:before {
 
 /* The slider itself */
 .slider {
-  -webkit-appearance: none;
   position: relative;
   appearance: none;
   width: 100%;
   height: 9px;
   background: transparent;
+
   /* background: hsl(var(--Light-Grayish-Blue)); */
   border-radius: 5px;
   outline: none;
@@ -363,7 +376,6 @@ input:checked + .toggle:before {
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
   width: 40px;
   height: 40px;
@@ -372,7 +384,7 @@ input:checked + .toggle:before {
   background-size: 55% 35%;
   background-position: center;
   border-radius: 50%;
-  box-shadow: 0 10px 10px 5px hsla(var(--Soft-Cyan), 0.5);
+  box-shadow: 0 10px 10px 5px hsl(var(--Soft-Cyan), 0.5);
   cursor: pointer;
   transition: background 0.2s;
   transition: box-shadow 0.2s;
@@ -383,7 +395,7 @@ input:checked + .toggle:before {
   background-repeat: no-repeat;
   background-size: 55% 35%;
   background-position: center;
-  box-shadow: 0 10px 10px 5px hsla(var(--Soft-Cyan), 0.7);
+  box-shadow: 0 10px 10px 5px hsl(var(--Soft-Cyan), 0.7);
   cursor: grab;
 }
 
@@ -435,7 +447,7 @@ input:checked + .toggle:before {
 
 /*   8. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   .container {
     /* height: fit-content; */
     background: url('./images/bg-pattern.svg');
@@ -462,7 +474,7 @@ input:checked + .toggle:before {
 
   header p {
     padding: 0 5rem;
-    margin: 0.5rem 0 5rem 0;
+    margin: 0.5rem 0 5rem;
   }
 
   .grid {
@@ -484,13 +496,13 @@ input:checked + .toggle:before {
   }
 
   .page-views {
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 2rem;
   }
 
   .pricing {
     grid-column: 1;
     grid-row: 3;
-    margin: 2rem 0 0.75rem 0;
+    margin: 2rem 0 0.75rem;
   }
 
   .amount {
@@ -535,7 +547,7 @@ input:checked + .toggle:before {
 
   .flex-row .product-features {
     text-align: center;
-    margin: 0.5rem 0 0 0;
+    margin: 0.5rem 0 0;
   }
 
   .fl-2 .product-features div {
@@ -580,7 +592,7 @@ input:checked + .toggle:before {
 }
 
 /*      Tablet                      */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .card {
     height: fit-content;
     width: 80%;
@@ -594,7 +606,7 @@ input:checked + .toggle:before {
 
   .fl-1 {
     padding: 0;
-    margin: 0.5rem 0 0 0;
+    margin: 0.5rem 0 0;
   }
 
   .fl-2 {

@@ -9,7 +9,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports          */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap';
 
 /* -----|| Variables ||----- */
 :root {
@@ -23,7 +23,7 @@
   --light-grey: 0, 0%, 98%;
 }
 
-/* -----|| Globals || -----*/
+/* -----|| Globals || ----- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -33,7 +33,7 @@
 html,
 body {
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   line-height: 1.6;
   color: #111;
   background: hsl(var(--light-grey));
@@ -54,8 +54,7 @@ body {
   gap: 25px;
   height: auto;
   width: max-content;
-  justify-items: center;
-  align-items: center;
+  place-items: center center;
   margin: 0 auto 40px;
 }
 
@@ -88,7 +87,7 @@ header p {
   text-align: left;
   padding: 25px;
   border-radius: 5px;
-  box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px 1px rgb(0 0 0 / 10%);
 }
 
 .card img {
@@ -122,10 +121,10 @@ header p {
 }
 
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: hsl(228deg 45% 44%);
 }
 
-@media (max-width: 500px) {
+@media (width <= 500px) {
   header span {
     font-size: 1.8rem;
     font-weight: 200;

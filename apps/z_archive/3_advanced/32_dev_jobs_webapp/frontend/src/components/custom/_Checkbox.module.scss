@@ -4,6 +4,7 @@
 .checkboxControl {
   display: grid;
   grid-template-columns: auto auto;
+
   & label {
     grid-column: 3;
     font-size: 16px;
@@ -11,6 +12,7 @@
     padding-left: 16px;
     padding-top: 2px;
   }
+
   & input[type='checkbox'] {
     appearance: none;
     display: grid;
@@ -21,9 +23,11 @@
     width: 24px;
     height: 24px;
     border-radius: 3px;
+
     &:hover {
       background-color: $Fine_Violet;
     }
+
     &::before {
       content: '';
       width: 24px;
@@ -31,8 +35,9 @@
       border-radius: inherit;
       transition: background-color 1s;
     }
+
     &:checked::before {
-      background: url(../../assets/svg/desktop/icon-check.svg);
+      background: url('../../assets/svg/desktop/icon-check.svg');
       background-position: center;
       background-repeat: no-repeat;
       background-color: $Violet;

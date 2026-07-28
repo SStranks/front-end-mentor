@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'variables' as *;
 
 .card {
@@ -71,10 +72,11 @@
   background-color: $neon;
   padding: 0.65rem;
   transition: box-shadow 0.5s ease-out;
+
   &:hover {
     cursor: pointer;
     transition: box-shadow 0.25s ease-out;
-    background-color: scale-color($color: $neon, $lightness: 10%);
+    background-color: color.scale($color: $neon, $lightness: 10%);
     box-shadow: 0 0 20px 15px $neon-light;
   }
   @media (max-width: $mobile-l) {

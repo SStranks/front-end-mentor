@@ -14,7 +14,7 @@
 /*   website:   github.com/SStranks */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -40,84 +40,99 @@ img {
   display: block;
   height: 100%;
 }
+
 a {
   color: hsl(var(--Dark-Grayish-Violet));
   letter-spacing: 0.1rem;
   text-decoration: none;
 }
+
 a:visited {
   color: hsl(var(--Dark-Grayish-Violet));
 }
+
 a:active {
   color: hsl(var(--Dark-Grayish-Violet));
 }
+
 a:hover {
   color: hsl(var(--Very-Dark-Violet));
 }
+
 li {
   list-style: none;
 }
+
 h1 {
   font-size: 2rem;
   font-weight: 400;
   line-height: 0.9;
   color: hsl(var(--Grayish-Blue));
 }
+
 h2 {
   font-size: 4.25rem;
-  font-family: 'Inter';
+  font-family: Inter, serif;
   font-weight: 700;
   line-height: 1;
   color: hsl(var(--Very-Dark-Violet));
 }
+
 h3 {
   font-size: 1.75rem;
-  font-family: 'Inter';
+  font-family: Inter, serif;
   font-weight: 700;
   line-height: 1;
   color: hsl(var(--Very-Dark-Violet));
 }
+
 h4 {
   font-size: 1rem;
   color: #000;
 }
+
 p {
   font-size: 1rem;
-  font-family: 'Montserrat';
+  font-family: Montserrat, serif;
   font-weight: 700;
   color: hsl(var(--Grayish-Blue));
   line-height: 1.6;
 }
+
 span {
   font-size: 4.5rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
   line-height: 1;
 }
+
 button {
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   font-size: 0.85rem;
-  font-family: 'Montserrat';
+  font-family: Montserrat, serif;
   font-weight: 700;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   padding: 0.75rem 1.75rem;
   cursor: pointer;
 }
+
 input {
   font-size: inherit;
   font-family: inherit;
   font-weight: 700;
   color: #000;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
+
 label {
   font-size: 1rem;
   font-weight: bold;
@@ -130,21 +145,26 @@ label {
   justify-content: space-between;
   align-items: center;
 }
+
 .flex-col {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: left;
 }
+
 .hidden {
   display: none !important;
 }
+
 .show {
   display: inherit !important;
 }
+
 .modal-open {
   overflow: hidden;
 }
+
 .transition * {
   transition: none !important;
 }
@@ -157,7 +177,7 @@ body {
   width: 100%;
   font-size: 15px;
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   line-height: 1.6;
   background: hsl(var(--Very-Light-Grayish-Blue));
   background-image: url('./images/bg-bottom.svg'), url('./images/bg-top.svg');
@@ -207,7 +227,7 @@ main {
 }
 
 .card:nth-of-type(2) {
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  background: linear-gradient(to right, hsl(236deg 72% 79%), hsl(237deg 63% 64%));
   padding: 3.5rem 2rem;
 }
 
@@ -235,7 +255,7 @@ main {
 
 .card span {
   color: hsl(var(--Dark-Grayish-Blue));
-  margin: 2rem 2rem 0 2rem;
+  margin: 2rem 2rem 0;
 }
 
 .card ul {
@@ -257,7 +277,7 @@ main {
 .card button {
   width: 100%;
   font-family: inherit;
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  background: linear-gradient(to right, hsl(236deg 72% 79%), hsl(237deg 63% 64%));
   color: hsl(var(--White));
   border: 1px solid transparent;
   border-radius: 7px;
@@ -265,10 +285,9 @@ main {
 }
 
 .card button:hover {
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  background: linear-gradient(to right, hsl(236deg 72% 79%), hsl(237deg 63% 64%));
   color: transparent;
   background-clip: text;
-  -webkit-background-clip: text;
   border: 1px solid hsl(var(--Dark-Grayish-Blue));
 }
 
@@ -292,11 +311,8 @@ main {
 .toggle {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  inset: 0;
+  background: linear-gradient(to right, hsl(236deg 72% 79%), hsl(237deg 63% 64%));
   transition: 0.4s;
 }
 
@@ -348,7 +364,7 @@ input:checked + .toggle::before {
   width: 100%;
 }
 
-/* .attribution a { 
+/* .attribution a {
   color: hsl(var(--Dark-Desaturated-Blue));
 } */
 
@@ -362,7 +378,7 @@ input:checked + .toggle::before {
 }
 
 /*   6. || Media Queries            */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   body {
     background-image: url('./images/bg-top.svg');
     background-repeat: no-repeat;
@@ -379,7 +395,7 @@ input:checked + .toggle::before {
   }
 
   main h1 {
-    margin: 2.5rem 0 0 0;
+    margin: 2.5rem 0 0;
   }
 
   .cards {

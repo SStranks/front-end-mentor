@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'variables' as *;
 
 .card-container {
@@ -22,7 +23,7 @@
     transform: scale(80%);
     margin: 0 -0.25rem;
   }
-  @media (max-width: 600px) {
+  @media (width <= 600px) {
     transform: scale(60%);
     margin: 0 -1.25rem;
   }
@@ -69,6 +70,7 @@ h3 {
   position: absolute;
   height: 70px;
   width: 100%;
+
   &::before {
     content: '';
     position: absolute;
@@ -76,6 +78,7 @@ h3 {
     height: 8px;
     background-color: $Extremely-dark-blue;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -88,19 +91,22 @@ h3 {
 .card--top {
   top: 0;
   border-radius: 15px 15px 0 0;
-  background-color: darken($Dark-desaturated-blue, 5%);
+  background-color: color.adjust($Dark-desaturated-blue, $lightness: -5%);
   box-shadow: inset 0 -2px 3px -2px $Extremely-dark-blue;
   overflow: hidden;
+
   &::before {
     bottom: 0;
     left: 0;
     border-radius: 0 8px 0 0;
   }
+
   &::after {
     bottom: 0;
     right: 0;
-    border-radius: 8px 0 0 0;
+    border-radius: 8px 0 0;
   }
+
   & div {
     display: flex;
     flex-direction: column;
@@ -108,6 +114,7 @@ h3 {
     align-items: center;
     height: 100%;
   }
+
   & span {
     display: inline;
     width: fit-content;
@@ -121,18 +128,21 @@ h3 {
   bottom: 0;
   border-radius: 0 0 15px 15px;
   background-color: $Dark-desaturated-blue;
-  box-shadow: inset 0 2px 3px -2px rgba(221, 221, 221, 0.315);
+  box-shadow: inset 0 2px 3px -2px rgb(221 221 221 / 31.5%);
   overflow: hidden;
+
   &::before {
     top: 0;
     left: 0;
-    border-radius: 0 0 8px 0;
+    border-radius: 0 0 8px;
   }
+
   &::after {
     top: 0;
     right: 0;
     border-radius: 0 0 0 8px;
   }
+
   & div {
     display: flex;
     flex-direction: column;
@@ -140,6 +150,7 @@ h3 {
     align-items: center;
     height: 100%;
   }
+
   & span {
     display: inline;
     width: fit-content;
@@ -152,21 +163,24 @@ h3 {
 .card--flap {
   top: 0;
   border-radius: 15px 15px 0 0;
-  background-color: darken($Dark-desaturated-blue, 5%);
+  background-color: color.adjust($Dark-desaturated-blue, $lightness: -5%);
   box-shadow: inset 0 -2px 3px -2px $Extremely-dark-blue;
   transform-origin: bottom left;
   transform-style: preserve-3d;
+
   &::before {
     bottom: 0;
     left: 0;
     border-radius: 0 8px 0 0;
     z-index: 4;
   }
+
   &::after {
     bottom: 0;
     right: 0;
-    border-radius: 8px 0 0 0;
+    border-radius: 8px 0 0;
   }
+
   & div {
     position: absolute;
     display: flex;
@@ -178,6 +192,7 @@ h3 {
     align-items: center;
     backface-visibility: hidden;
     overflow: hidden;
+
     & span {
       display: inline;
       width: fit-content;
@@ -186,13 +201,16 @@ h3 {
       transform: translate(2%, 50%);
     }
   }
+
   & .flap-front {
     background-color: inherit;
   }
+
   & .flap-back {
     background-color: $Dark-desaturated-blue;
-    box-shadow: inset 0 -2px 3px -2px rgba(221, 221, 221, 0.315);
+    box-shadow: inset 0 -2px 3px -2px rgb(221 221 221 / 31.5%);
     transform: rotateY(180deg);
+
     & span {
       transform: rotateY(180deg) rotateX(180deg) translate(1.65%, -49%);
     }
@@ -211,6 +229,7 @@ h3 {
   0% {
     transform: rotateX(0deg);
   }
+
   100% {
     transform: rotateX(-180deg);
   }
@@ -220,6 +239,7 @@ h3 {
   0% {
     transform: rotateX(0deg);
   }
+
   100% {
     transform: rotateX(-180deg);
   }

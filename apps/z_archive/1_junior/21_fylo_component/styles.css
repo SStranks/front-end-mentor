@@ -14,13 +14,14 @@
 /*   website:   github.com/SStranks */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap';
 
 /*   2. || Variables                */
 :root {
   /* HSL Values                     */
   /* Primary                        */
-  --Gradient: linear-gradient(hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+  --Gradient: linear-gradient(hsl(6deg 100% 80%), hsl(335deg 100% 65%));
+
   /* Neutral                        */
   --Pale-Blue: 243, 100%, 93%;
   --Grayish-Blue: 229, 7%, 55%;
@@ -40,50 +41,61 @@ img {
   display: block;
   height: 100%;
 }
+
 a {
   text-decoration: none;
 }
+
 a:visited {
   color: inherit;
 }
+
 a:active {
   color: inherit;
 }
+
 li {
   list-style: none;
 }
+
 h1 {
   font-size: 1.7rem;
   color: #000;
 }
+
 h2 {
   font-size: 3.25rem;
-  font-family: 'Josefin Sans';
+  font-family: 'Josefin Sans', serif;
   font-weight: 400;
   line-height: 1;
   color: #000;
   text-transform: uppercase;
 }
+
 h3 {
   font-size: 2.2rem;
-  font-family: 'Josefin Sans';
+  font-family: 'Josefin Sans', serif;
   font-weight: 400;
   line-height: 1;
   color: #fff;
 }
+
 h4 {
   font-size: 1rem;
   color: #000;
 }
+
 p {
   font-size: 0.9rem;
   line-height: 1.8;
 }
+
 span {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
 }
+
 button {
   display: flex;
   justify-content: center;
@@ -92,17 +104,20 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+
 input {
   font-size: inherit;
   font-family: inherit;
   font-weight: 700;
   color: #000;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
+
 label {
   font-size: 1rem;
   font-weight: bold;
@@ -115,18 +130,22 @@ label {
   justify-content: space-between;
   align-items: center;
 }
+
 .flex-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
+
 .hidden {
   display: none !important;
 }
+
 .show {
   display: inherit !important;
 }
+
 .modal-open {
   overflow: hidden;
 }
@@ -137,7 +156,7 @@ body {
   height: 100%;
   width: 100%;
   font-size: 14px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400, 700;
   line-height: 1.6;
   color: hsl(var(--Pale-Blue));
@@ -173,7 +192,7 @@ body {
 }
 
 .c-1 .flex-row {
-  margin: 2.5rem 0 0 0;
+  margin: 2.5rem 0 0;
 }
 
 .c-1 .icon {
@@ -207,11 +226,10 @@ body {
   right: 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-items: center;
+  place-items: center center;
   background: hsl(var(--Pale-Blue));
   color: hsl(var(--Grayish-Blue));
-  border-radius: 12px 12px 0 12px;
+  border-radius: 12px 12px 0;
   padding: 1.25rem;
   transform: translate(0, -125%);
 }
@@ -240,7 +258,6 @@ body {
 }
 
 .c-2 .slider {
-  -webkit-appearance: none;
   appearance: none;
   position: absolute;
   top: 50%;
@@ -257,7 +274,7 @@ body {
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
-  background: hsla(var(--Very-Dark-Blue), 0.5);
+  background: hsl(var(--Very-Dark-Blue), 0.5);
   border-radius: 10px;
   pointer-events: none;
 }
@@ -270,12 +287,11 @@ body {
   width: 50%;
   max-width: 442px;
   transform: translate(0, -50%);
-  background: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+  background: linear-gradient(to right, hsl(6deg 100% 80%), hsl(335deg 100% 65%));
   border-radius: 10px;
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
   width: 10px;
   height: 10px;
@@ -298,21 +314,20 @@ body {
   width: 100%;
 }
 
-/* .attribution a { 
+/* .attribution a {
   color: hsl(var(--Dark-Desaturated-Blue));
 } */
 
 .attribution a:hover {
   /* background: hsl(var(--Moderate-violet)); */
-  background: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
-  -webkit-background-clip: text;
+  background: linear-gradient(to right, hsl(6deg 100% 80%), hsl(335deg 100% 65%));
   background-clip: text;
   color: transparent;
 }
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   body {
     background: hsl(var(--Very-Dark-Blue)) url('./images/bg-mobile.png');
     background-repeat: repeat-y;
@@ -341,7 +356,7 @@ body {
     width: 100%;
     border-radius: 10px 100px 10px 10px;
     padding: 3rem;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem;
   }
 
   .c-1 .flex-row {

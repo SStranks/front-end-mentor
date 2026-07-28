@@ -9,7 +9,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -17,8 +17,10 @@
   /* Primary */
   --Red: 0, 100%, 74%;
   --Green: 154, 59%, 51%;
+
   /* Accent */
   --Blue: 248, 32%, 49%;
+
   /* Neutral */
   --Dark-Blue: 249, 10%, 26%;
   --Grayish-Blue: 246, 25%, 77%;
@@ -34,7 +36,7 @@
 html,
 body {
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   width: 100%;
@@ -98,8 +100,8 @@ body {
   border: none;
   border-radius: 10px;
   background-color: hsl(var(--Blue));
-  box-shadow: 0 7px 2px 1px hsla(var(--Dark-Blue), 0.2);
-  color: hsla(100, 100%, 100%, 0.9);
+  box-shadow: 0 7px 2px 1px hsl(var(--Dark-Blue), 0.2);
+  color: hsl(100deg 100% 100% / 90%);
   font-family: inherit;
   font-weight: 400;
   font-size: 0.9rem;
@@ -114,7 +116,7 @@ body {
   width: 100%;
   height: min-content;
   border-radius: 10px;
-  box-shadow: 0 7px 2px 1px hsla(var(--Dark-Blue), 0.2);
+  box-shadow: 0 7px 2px 1px hsl(var(--Dark-Blue), 0.2);
   background: #fff;
   color: black;
   margin-top: 1.5rem;
@@ -126,14 +128,14 @@ body {
 }
 
 .form div:first-child {
-  margin-top: 0rem;
+  margin-top: 0;
 }
 
 .form input {
   position: relative;
   width: 100%;
   border-radius: 5px;
-  border: 1px solid hsla(0, 0%, 0%, 0.4);
+  border: 1px solid hsl(0deg 0% 0% / 40%);
   font-family: inherit;
   font-weight: 600;
   padding: 1rem 2rem;
@@ -142,7 +144,7 @@ body {
 .form button {
   background: hsl(var(--Green));
   border-radius: 5px;
-  box-shadow: 0 2px 2px 1px hsla(var(--Dark-Blue), 0.2);
+  box-shadow: 0 2px 2px 1px hsl(var(--Dark-Blue), 0.2);
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
@@ -150,13 +152,13 @@ body {
 }
 
 .form button:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .form p {
   text-align: center;
   font-size: 0.65rem;
-  color: hsla(0, 0%, 0%, 0.4);
+  color: hsl(0deg 0% 0% / 40%);
   margin-top: 1rem;
 }
 
@@ -204,7 +206,7 @@ body {
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   .container {
     width: 100%;
     height: 100%;
@@ -225,14 +227,14 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    margin: 5rem 0rem;
+    margin: 5rem 0;
     padding: 0 1.5rem;
   }
 
   .info-panel {
     grid-column: 1;
     grid-row: 1;
-    padding: 0rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -242,7 +244,7 @@ body {
   .form-panel {
     grid-column: 1;
     grid-row: 2;
-    padding: 0rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -278,14 +280,14 @@ body {
   }
 
   .form input {
-    border: 1px solid hsla(0, 0%, 0%, 0.2);
-    padding: 1rem 1rem;
+    border: 1px solid hsl(0deg 0% 0% / 20%);
+    padding: 1rem;
   }
 
   .form button {
     height: 55px;
     margin-top: 1rem;
-    padding: 0rem;
+    padding: 0;
   }
 
   .form p {

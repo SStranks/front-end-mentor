@@ -19,7 +19,7 @@
 @use 'main';
 @use 'card';
 @use 'modal';
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap';
 
 /*   2. || App                      */
 
@@ -42,11 +42,14 @@ footer {
   margin: 0 auto;
   transform: translate(-50%, -45%);
   z-index: 3;
+
   & a {
     color: variables.$DT__Dark-blue;
+
     // transition: all s ease;
     &:hover {
       color: variables.$DT__Dark-blue;
+
       // background: variables.$DT__Dark-blue;
       // color: transparent;
       // -webkit-background-clip: text;

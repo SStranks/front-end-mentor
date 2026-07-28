@@ -9,7 +9,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -20,6 +20,7 @@
   --Dark-desaturated-cyan: 167, 40%, 24%;
   --Dark-blue: 198, 62%, 26%;
   --Dark-moderate-cyan: 168, 34%, 41%;
+
   /* Neutral */
   --Very-dark-desaturated-blue: 212, 27%, 19%;
   --Very-dark-grayish-blue: 213, 9%, 39%;
@@ -41,7 +42,7 @@ body {
   width: 100%;
   font-size: 18px;
   font-weight: 600, 700, 900;
-  font-family: 'Barlow', 'Fraunces', serif;
+  font-family: Barlow, Fraunces, serif;
   line-height: 1.6;
   background: #fff;
   color: hsl(var(--Very-dark-desaturated-blue));
@@ -105,7 +106,7 @@ body {
   color: inherit;
   border-radius: 25px;
   font-size: 0.9rem;
-  font-family: 'Fraunces';
+  font-family: Fraunces, serif;
   font-weight: 700;
   text-transform: uppercase;
   padding: 0.8rem 1.5rem;
@@ -114,7 +115,7 @@ body {
 }
 
 #contact:hover {
-  background-color: hsla(100, 100%, 100%, 0.3);
+  background-color: hsl(100deg 100% 100% / 30%);
   color: #fff;
 }
 
@@ -124,7 +125,7 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 3rem;
-  font-family: 'Fraunces';
+  font-family: Fraunces, serif;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
   text-align: center;
@@ -153,7 +154,9 @@ body {
 }
 
 .service-text h3 {
-  font: 900 2.5rem 'Fraunces';
+  font:
+    900 2.5rem Fraunces,
+    serif;
   color: hsl(var(--Very-dark-desaturated-blue));
 }
 
@@ -161,7 +164,9 @@ body {
   position: relative;
   display: inline-block;
   width: fit-content;
-  font: 900 1rem 'Fraunces';
+  font:
+    900 1rem Fraunces,
+    serif;
   color: hsl(var(--Very-dark-desaturated-blue));
   text-transform: uppercase;
   padding: 0 10px;
@@ -177,12 +182,12 @@ body {
   width: 100%;
   border-radius: 5px;
   background-color: hsl(var(--Yellow));
-  opacity: 30%;
+  opacity: 0.3;
   z-index: -1;
 }
 
 .service-text span:hover::after {
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .span-red span::after {
@@ -190,7 +195,7 @@ body {
 }
 
 .span-red span:hover::after {
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .services img {
@@ -212,7 +217,9 @@ body {
 }
 
 .services-images h2 {
-  font: 900 1.5rem 'Fraunces';
+  font:
+    900 1.5rem Fraunces,
+    serif;
   margin-bottom: 1.5rem;
 }
 
@@ -236,7 +243,9 @@ body {
 }
 
 .testimonials h3 {
-  font: 700 1.15rem 'Fraunces';
+  font:
+    700 1.15rem Fraunces,
+    serif;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
   color: hsl(var(--Grayish-blue));
@@ -270,7 +279,9 @@ body {
 }
 
 .client h4 {
-  font: 900 1rem 'Fraunces';
+  font:
+    900 1rem Fraunces,
+    serif;
   margin: 0.5rem 0;
 }
 
@@ -293,8 +304,8 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: hsl(167, 32%, 83%);
-  color: hsla(var(--Dark-moderate-cyan));
+  background: hsl(167deg 32% 83%);
+  color: hsl(var(--Dark-moderate-cyan));
   padding: 4rem;
 }
 
@@ -328,7 +339,7 @@ footer > img {
 
 /*   5. || FrontEnd Mentor Footer   */
 /* .attribution {
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   text-align: center;
   color:inherit;
   display: block;
@@ -340,7 +351,7 @@ footer > img {
   width: 100%;
 }
 
-.attribution a { 
+.attribution a {
   color: hsl(var(--Blue));
 }
 
@@ -351,7 +362,7 @@ footer > img {
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   .container {
     height: fit-content;
     width: fit-content;
@@ -416,7 +427,9 @@ footer > img {
   }
 
   .main-header h1 {
-    font: 900 2rem 'Fraunces';
+    font:
+      900 2rem Fraunces,
+      serif;
   }
 
   .main-header #header-arrow {
@@ -427,6 +440,7 @@ footer > img {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+
     /* display: none; */
   }
 
@@ -441,7 +455,9 @@ footer > img {
   }
 
   .service-text h3 {
-    font: 900 1.75rem 'Fraunces';
+    font:
+      900 1.75rem Fraunces,
+      serif;
     color: hsl(var(--Very-dark-desaturated-blue));
     margin-bottom: 1rem;
   }
@@ -478,7 +494,9 @@ footer > img {
   }
 
   .testimonials h3 {
-    font: 700 0.85rem 'Fraunces';
+    font:
+      700 0.85rem Fraunces,
+      serif;
     margin-top: 3.5rem;
     margin-bottom: 0;
   }
@@ -487,9 +505,8 @@ footer > img {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    margin: 0;
     padding: 1.25rem;
-    margin: 0 0 3.5rem 0;
+    margin: 0 0 3.5rem;
   }
 
   .client {

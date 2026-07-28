@@ -8,15 +8,15 @@
 
   transition: $padding-transition;
   @include desktop-medium {
-    padding: 0 10% 56px 10%;
+    padding: 0 10% 56px;
   }
 
   @include media(desktop-small, tablet-regular, tablet-small) {
-    padding: 0 5% 56px 5%;
+    padding: 0 5% 56px;
   }
 
   @include media(mobile-large, mobile-medium, mobile-small) {
-    padding: 0 5% 56px 5%;
+    padding: 0 5% 56px;
   }
 }
 

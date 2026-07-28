@@ -1,26 +1,24 @@
 /*  Colours  */
-$white: hsl(100, 100%, 100%);
-$blue: hsl(246, 80%, 60%);
-$very-dark-blue: hsl(226, 43%, 10%);
-$dark-blue: hsl(235, 46%, 20%);
-$desaturated-blue: hsl(235, 45%, 61%);
-$pale-blue: hsl(236, 100%, 87%);
+$white: hsl(100deg 100% 100%);
+$blue: hsl(246deg 80% 60%);
+$very-dark-blue: hsl(226deg 43% 10%);
+$dark-blue: hsl(235deg 46% 20%);
+$desaturated-blue: hsl(235deg 45% 61%);
+$pale-blue: hsl(236deg 100% 87%);
 
 /*  Activities: Headers */
-$work: hsl(15, 100%, 70%);
-$play: hsl(195, 74%, 62%);
-$study: hsl(348, 100%, 68%);
-$exercise: hsl(145, 58%, 55%);
-$social: hsl(264, 64%, 52%);
-$self-care: hsl(43, 84%, 65%);
-
+$work: hsl(15deg 100% 70%);
+$play: hsl(195deg 74% 62%);
+$study: hsl(348deg 100% 68%);
+$exercise: hsl(145deg 58% 55%);
+$social: hsl(264deg 64% 52%);
+$self-care: hsl(43deg 84% 65%);
 $border-radius: 15px;
 
 /*  Breakpoints */
 $mobile-xs: 425px;
 $mobile-md: 768px;
 $mobile-lg: 1024px;
-
 $desktop-sm: 1200px;
 $desktop-lg: 1440px;
 $desktop-xl: 1600px;

@@ -10,7 +10,7 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap';
 
 /*   2. || Variables                */
 :root {
@@ -31,7 +31,7 @@
 html,
 body {
   font-size: 16px;
-  font-family: 'Karla', sans-serif;
+  font-family: Karla, sans-serif;
   line-height: 1.6;
   background-color: hsl(var(--gray));
   color: hsl(var(--gray));
@@ -53,7 +53,7 @@ body {
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr minmax(1fr, auto);
   max-width: 1000px;
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 5px rgb(0 0 0 / 20%);
   margin: 2em 3em;
   background-color: white;
   border-radius: 10px;
@@ -72,6 +72,7 @@ body {
   font-size: 2.5rem;
   margin-bottom: 0.25em;
 }
+
 .panel-join h4 {
   color: hsl(var(--yellow));
   font-size: 1.75rem;
@@ -128,7 +129,7 @@ body {
   height: 65px;
   border-radius: 7px;
   border: none;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 1px rgb(0 0 0 / 20%);
   transition: transform 0.25s ease-in-out;
 }
 
@@ -149,18 +150,18 @@ body {
 }
 
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: hsl(228deg 45% 44%);
 }
 
 /*   7. || Media Queries            */
 /*      Tablets and Under           */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     max-width: 100%;
-    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px 5px rgb(0 0 0 / 20%);
     margin: 5em 2em;
     background-color: white;
     border-radius: 10px;
@@ -192,12 +193,12 @@ body {
 }
 
 /*      Mobile                      */
-@media (max-width: 500px) {
+@media (width <= 500px) {
   .panel-join,
   .panel-subscribe,
   .panel-why {
     grid-column: 1;
-    padding: 2em 2em;
+    padding: 2em;
   }
 
   .panel-join h3 {

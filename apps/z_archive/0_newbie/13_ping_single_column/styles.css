@@ -9,16 +9,18 @@
 /* -------------------------------- */
 
 /*   1. || Imports                  */
-@import url(https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap);
+@import 'https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap';
 
 /*   2. || Variables                */
 :root {
   /* HSL Values */
   /* Primary */
   --Blue: 223, 87%, 63%;
+
   /* Secondary */
   --Pale-Blue: 223, 100%, 88%;
   --Light-Red: 354, 100%, 66%;
+
   /* Neutral */
   --Gray: 0, 0%, 59%;
   --Very-Dark-Blue: 209, 33%, 12%;
@@ -82,7 +84,7 @@ h1 span {
 .form-submit input {
   height: 50px;
   width: 100%;
-  border: 1px solid hsla(var(--Gray), 0.5);
+  border: 1px solid hsl(var(--Gray), 0.5);
   border-radius: 25px;
   font-family: inherit;
   color: hsl(var(--Very-Dark-Blue));
@@ -91,7 +93,7 @@ h1 span {
 }
 
 .form-submit input::placeholder {
-  color: hsla(var(--Gray), 0.5);
+  color: hsl(var(--Gray), 0.5);
 }
 
 .form-submit .error-msg {
@@ -119,7 +121,7 @@ h1 span {
 }
 
 .form-submit button:hover {
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .card #dashboard {
@@ -142,7 +144,7 @@ h1 span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid hsla(var(--Gray), 0.3);
+  border: 1px solid hsl(var(--Gray), 0.3);
   border-radius: 50%;
   color: hsl(var(--Blue));
   font-size: 0.75rem;
@@ -184,7 +186,7 @@ h1 span {
 
 /*   6. || Media Queries            */
 /*      Mobile                      */
-@media (max-width: 375px) {
+@media (width <= 375px) {
   .container {
     max-width: 375px;
   }
@@ -197,7 +199,7 @@ h1 span {
 
   .card #logo {
     transform: scale(75%);
-    margin: 4rem 0 2rem 0;
+    margin: 4rem 0 2rem;
   }
 
   h1 {
@@ -219,7 +221,7 @@ h1 span {
 
   .form-submit .error-msg {
     position: unset;
-    margin: 0.25rem 0 0.75rem 0;
+    margin: 0.25rem 0 0.75rem;
     font-size: 0.65rem;
   }
 
