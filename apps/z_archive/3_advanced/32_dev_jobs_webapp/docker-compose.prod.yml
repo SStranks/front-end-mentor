@@ -40,3 +40,4 @@ services:
 
 networks:
   FEM32:
+    driver: bridge

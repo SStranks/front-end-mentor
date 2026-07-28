@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const Card = React.forwardRef((props, ref) => {
   const { country, setCountrySelect, setModal } = props;
@@ -33,11 +33,11 @@ const Card = React.forwardRef((props, ref) => {
 
 Card.propTypes = {
   country: PropTypes.shape({
-    name: PropTypes.string,
+    capital: PropTypes.string,
     flag: PropTypes.string,
+    name: PropTypes.string,
     population: PropTypes.number,
     region: PropTypes.string,
-    capital: PropTypes.string,
   }),
   setCountrySelect: PropTypes.func,
   setModal: PropTypes.func,

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const ListItem = (props) => {
@@ -6,7 +5,7 @@ const ListItem = (props) => {
 
   return (
     <li
-      className={`card list__item ${!theme ? 'dark-card' : ''} ${dragging ? 'task-drag' : ''}`}
+      className={`card list__item ${theme ? '' : 'dark-card'} ${dragging ? 'task-drag' : ''}`}
       key={listItem.id}
       data-complete={listItem.complete ? listItem.id : ''}
       draggable
@@ -33,27 +32,27 @@ const ListItem = (props) => {
 export default ListItem;
 
 ListItem.propTypes = {
+  completeTask: PropTypes.func,
   deleteTask: PropTypes.func,
-  theme: PropTypes.bool,
+  dragEnter: PropTypes.func,
+  dragging: PropTypes.bool,
+  dragTask: PropTypes.func,
+  itemNum: PropTypes.number,
   listItem: PropTypes.shape({
     id: PropTypes.number,
     complete: PropTypes.bool,
     task: PropTypes.string,
   }),
-  completeTask: PropTypes.func,
-  dragTask: PropTypes.func,
-  dragEnter: PropTypes.func,
-  itemNum: PropTypes.number,
-  dragging: PropTypes.bool,
+  theme: PropTypes.bool,
 };
 
 ListItem.defaultProps = {
-  deleteTask: null,
-  theme: null,
-  listItem: null,
   completeTask: null,
-  dragTask: null,
+  deleteTask: null,
   dragEnter: null,
-  itemNum: null,
   dragging: null,
+  dragTask: null,
+  itemNum: null,
+  listItem: null,
+  theme: null,
 };

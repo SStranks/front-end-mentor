@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Search from '../search/Search';
-import Button from '../custom/Button';
+import { useEffect, useState } from 'react';
+
 import Card from '../card/Card';
+import Button from '../custom/Button';
+import Search from '../search/Search';
+
 import styles from './_Main.module.scss';
 
 function Main() {
@@ -15,12 +17,12 @@ function Main() {
       try {
         const response = await axios({
           method: 'GET',
-          url: `http://${process.env.API_HOST}/api/jobs`,
           timeout: 2000,
+          url: `http://${process.env.API_HOST}/api/jobs`,
         });
         setJobs(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     };
     apiGetAll();

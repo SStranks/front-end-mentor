@@ -8,15 +8,15 @@ const errorMsg = document.querySelector('.error-msg');
 var checkBool = false;
 
 // Email Validation
-const validate = (e) => {
-  var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const validate = () => {
+  var emailReg = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/;
   // e.preventDefault()
   if (emailInput.value == '') {
     errorIcon.classList.remove('hidden');
     errorMsg.classList.remove('hidden');
   }
 
-  if (emailInput.value.match(emailReg)) {
+  if (emailReg.test(emailInput.value)) {
     alert('Email Valid');
   } else {
     btn.style.background = 'linear-gradient(135deg, hsla(0, 80%, 86%, 0.5), hsla(0, 74%, 74%, 0.5))';
@@ -27,7 +27,7 @@ const validate = (e) => {
 };
 
 // Reset Styles
-const reset = (e) => {
+const reset = () => {
   if (checkBool == true) {
     btn.style.background = 'linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%))';
     errorIcon.classList.add('hidden');

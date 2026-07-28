@@ -36,7 +36,7 @@ function updatePricing() {
 }
 
 // Event Handlers
-range.oninput = (e) => updateSlider(e.target.value);
+range.addEventListener('input', (e) => updateSlider(e.target.value));
 inputToggle.addEventListener('click', updatePricing);
 
 // Initial State

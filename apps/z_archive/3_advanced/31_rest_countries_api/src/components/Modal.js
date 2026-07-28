@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 import useFlagRender from './useFlagRender';
 
 const Modal = (props) => {
@@ -83,17 +84,17 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
-  country: PropTypes.shape(),
-  countriesList: PropTypes.arrayOf(PropTypes.shape()),
   alphaList: PropTypes.shape({}),
+  countriesList: PropTypes.arrayOf(PropTypes.shape()),
+  country: PropTypes.shape(),
   setModal: PropTypes.func,
   setStateFilter: PropTypes.func,
 };
 
 Modal.defaultProps = {
-  country: {},
-  countriesList: null,
   alphaList: null,
+  countriesList: null,
+  country: {},
   setModal: null,
   setStateFilter: null,
 };

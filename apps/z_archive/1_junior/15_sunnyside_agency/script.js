@@ -3,7 +3,7 @@
 // Elements
 const menuButton = document.querySelector('.menu-button');
 const navMenu = document.querySelector('ul');
-const windowResize = window.matchMedia('(max-width: 375px)');
+const windowResize = globalThis.matchMedia('(max-width: 375px)');
 
 // Toggle Menu
 function toggleMenu() {

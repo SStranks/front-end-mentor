@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const Job = require('../models/jobModel');
+
 const jsonData = require('../dev-data/data.json');
+const Job = require('../models/jobModel');
 
 const { DB_PROTOCOL, DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_ARGS } = process.env;
 
@@ -28,8 +29,9 @@ const connectDB = async () => {
 
       docCount();
     })
-    .catch((err) => {
-      console.log(`*** ERROR: Cannot connect to database: ${DB_DATABASE} @ ${DB_HOST}`, err);
+    .catch((error) => {
+      console.log(`*** ERROR: Cannot connect to database: ${DB_DATABASE} @ ${DB_HOST}`, error);
+      // eslint-disable-next-line n/no-process-exit, unicorn/no-process-exit
       process.exit();
     });
 };

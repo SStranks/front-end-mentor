@@ -1,5 +1,6 @@
-import React, { useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useCallback, useRef } from 'react';
+
 import Card from './Card';
 
 const Grid = (props) => {
@@ -24,6 +25,7 @@ const Grid = (props) => {
       });
       if (node) observer.current.observe(node);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [loading, filteredCountries]
   );
 
@@ -46,21 +48,21 @@ const Grid = (props) => {
 
 Grid.propTypes = {
   filteredCountries: PropTypes.arrayOf(PropTypes.shape({})),
-  stateFilter: PropTypes.shape(),
-  setStateFilter: PropTypes.func,
-  setCountrySelect: PropTypes.func,
-  setModal: PropTypes.func,
   loading: PropTypes.bool,
   modal: PropTypes.bool,
+  setCountrySelect: PropTypes.func,
+  setModal: PropTypes.func,
+  setStateFilter: PropTypes.func,
+  stateFilter: PropTypes.shape(),
 };
 Grid.defaultProps = {
   filteredCountries: [],
-  stateFilter: null,
-  setStateFilter: null,
-  setCountrySelect: null,
-  setModal: null,
   loading: false,
   modal: false,
+  setCountrySelect: null,
+  setModal: null,
+  setStateFilter: null,
+  stateFilter: null,
 };
 
 export default Grid;

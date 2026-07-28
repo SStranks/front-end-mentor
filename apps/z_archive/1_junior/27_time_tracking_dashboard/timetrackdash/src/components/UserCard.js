@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+
 import StatSelector from './StatSelector';
 
 const UserCard = (props) => {
@@ -24,19 +24,19 @@ const UserCard = (props) => {
 };
 
 UserCard.propTypes = {
+  activePeriod: PropTypes.string,
+  click: PropTypes.func,
   img: PropTypes.string,
   name: PropTypes.string,
   timePeriods: PropTypes.arrayOf(PropTypes.object),
-  click: PropTypes.func,
-  activePeriod: PropTypes.string,
 };
 
 UserCard.defaultProps = {
+  activePeriod: null,
+  click: null,
   img: null,
   name: 'Jeremy Robson',
   timePeriods: null,
-  click: null,
-  activePeriod: null,
 };
 
 export default UserCard;

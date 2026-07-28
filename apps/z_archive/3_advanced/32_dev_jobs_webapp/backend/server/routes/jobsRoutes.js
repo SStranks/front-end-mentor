@@ -1,4 +1,5 @@
 const express = require('express');
+
 const jobController = require('../controllers/jobsController');
 
 const router = express.Router();

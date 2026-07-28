@@ -1,27 +1,28 @@
-import React from 'react';
-// import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import './_Header.module.scss';
-import Toggle from '../custom/Toggle';
-import Logo from '../../assets/svg/desktop/logo.svg';
-import IconThemeLight from '../../assets/svg/desktop/icon-sun.svg';
+
 import IconThemeDark from '../../assets/svg/desktop/icon-moon.svg';
+import IconThemeLight from '../../assets/svg/desktop/icon-sun.svg';
+import Logo from '../../assets/svg/desktop/logo.svg';
+import Toggle from '../custom/Toggle';
+
+import './_Header.module.scss';
 
 function Header() {
   // const themeBtnRef = useRef(null);
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   const btnThemeClickHandler = () => {
     const body = document.querySelector('body');
     body.classList.toggle('dark-theme');
   };
 
   // Toggle the dark theme if user has preferred color scheme set to dark
-  window.onload = () => {
-    const query = window.matchMedia('(prefers-color-scheme: dark)');
+  window.addEventListener('load', () => {
+    const query = globalThis.matchMedia('(prefers-color-scheme: dark)');
     if (query.matches) {
-      const btn = document.getElementById('dark-theme-slider');
+      const btn = document.querySelector('#dark-theme-slider');
       btn.click();
     }
-  };
+  });
 
   return (
     <header>

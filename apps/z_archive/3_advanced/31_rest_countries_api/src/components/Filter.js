@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+
+const btnMenuClickHandler = () => {
+  const menu = document.querySelector('.dropdown-content');
+  menu.classList.toggle('active');
+};
 
 const Filter = (props) => {
   const { stateFilter, setStateFilter } = props;
-
-  const btnMenuClickHandler = () => {
-    const menu = document.querySelector('.dropdown-content');
-    menu.classList.toggle('active');
-  };
 
   const btnFilterClickHandler = (option) => {
     setStateFilter((prev) => ({
@@ -111,12 +110,12 @@ const Filter = (props) => {
 };
 
 Filter.propTypes = {
-  stateFilter: PropTypes.shape(),
   setStateFilter: PropTypes.func,
+  stateFilter: PropTypes.shape(),
 };
 Filter.defaultProps = {
-  stateFilter: null,
   setStateFilter: null,
+  stateFilter: null,
 };
 
 export default Filter;

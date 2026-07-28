@@ -1,7 +1,7 @@
 'use strict';
 
 // Selectors
-const btnMobMenu = document.getElementById('btn-menu');
+const btnMobMenu = document.querySelector('#btn-menu');
 const navMenu = document.querySelector('header');
 const body = document.querySelector('body');
 const title = document.querySelector('.title');

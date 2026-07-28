@@ -1,14 +1,14 @@
 'use strict';
 
 // Elements
-const resetBtn = document.getElementById('reset');
+const resetBtn = document.querySelector('#reset');
 const tipBtns = document.querySelector('.buttons');
 const numBill = document.querySelector('input[name="bill"]');
 const numPeople = document.querySelector('input[name="people"]');
-const customPercent = document.getElementById('input-custom');
-const errorMsg = document.getElementById('error-msg');
-const tipPerson = document.getElementById('tip-person');
-const tipTotal = document.getElementById('tip-total');
+const customPercent = document.querySelector('#input-custom');
+const errorMsg = document.querySelector('#error-msg');
+const tipPerson = document.querySelector('#tip-person');
+const tipTotal = document.querySelector('#tip-total');
 
 // Number Validation
 function numValidate() {
@@ -33,9 +33,9 @@ function outputCalculation(tipPercent) {
   let tipPerPerson;
   let tipTotalAmount;
   tipPerPerson = (numBill.value * tipPercent) / numPeople.value;
-  tipPerson.innerText = `$${tipPerPerson.toFixed(2)}`;
+  tipPerson.textContent = `$${tipPerPerson.toFixed(2)}`;
   tipTotalAmount = numBill.value / numPeople.value + tipPerPerson;
-  tipTotal.innerText = `$${tipTotalAmount.toFixed(2)}`;
+  tipTotal.textContent = `$${tipTotalAmount.toFixed(2)}`;
 }
 
 // Add Tip
@@ -96,8 +96,8 @@ function reset() {
   numBill.value = '';
   numPeople.value = '';
   customPercent.value = '';
-  tipPerson.innerText = '$0.00';
-  tipTotal.innerText = '$0.00';
+  tipPerson.textContent = '$0.00';
+  tipTotal.textContent = '$0.00';
   resetBtn.classList.remove('reset-active');
   if (activeButton) activeButton.classList.remove('active');
 }

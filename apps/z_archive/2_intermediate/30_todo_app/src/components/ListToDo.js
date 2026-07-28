@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useRef, useState } from 'react';
+
 import ListItem from './ListItem';
+
 import '../styles/ListToDo.scss';
 
 const ListToDo = (props) => {
@@ -76,9 +78,9 @@ const ListToDo = (props) => {
   return (
     <>
       <ul>{listItems}</ul>
-      <div className={`card filter-list ${!theme ? 'dark-card' : ''}`}>
+      <div className={`card filter-list ${theme ? '' : 'dark-card'}`}>
         <span>{listItems.length} Items Left</span>
-        <div className={`filter-options ${!theme ? 'dark-card' : ''}`}>
+        <div className={`filter-options ${theme ? '' : 'dark-card'}`}>
           <button
             type="button"
             aria-label="show all tasks"
@@ -112,7 +114,9 @@ const ListToDo = (props) => {
 export default ListToDo;
 
 ListToDo.propTypes = {
-  setList: PropTypes.func,
+  clearTasks: PropTypes.func,
+  completeTask: PropTypes.func,
+  deleteTask: PropTypes.func,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -120,17 +124,15 @@ ListToDo.propTypes = {
       task: PropTypes.string,
     })
   ),
+  setList: PropTypes.func,
   theme: PropTypes.bool,
-  deleteTask: PropTypes.func,
-  clearTasks: PropTypes.func,
-  completeTask: PropTypes.func,
 };
 
 ListToDo.defaultProps = {
-  setList: null,
-  items: null,
-  theme: true,
-  deleteTask: null,
   clearTasks: null,
   completeTask: null,
+  deleteTask: null,
+  items: null,
+  setList: null,
+  theme: true,
 };

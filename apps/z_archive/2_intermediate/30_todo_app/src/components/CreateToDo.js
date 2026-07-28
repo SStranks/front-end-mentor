@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 import '../styles/CreateToDo.scss';
 
 const CreateToDo = (props) => {
@@ -12,13 +13,13 @@ const CreateToDo = (props) => {
 
   const addTaskHandler = (event) => {
     if (newTask === '' || event.key !== 'Enter') return;
-    const idx = Math.floor(Math.random() * 10000);
+    const idx = Math.floor(Math.random() * 10_000);
     newTaskHandler(idx, newTask);
     setNewTask('');
   };
 
   return (
-    <div className={`card create-todo ${!theme ? 'dark-card' : ''}`}>
+    <div className={`card create-todo ${theme ? '' : 'dark-card'}`}>
       <input type="checkbox" onClick={addTaskHandler} />
       <input
         type="text"
@@ -32,13 +33,13 @@ const CreateToDo = (props) => {
 };
 
 CreateToDo.propTypes = {
-  theme: PropTypes.bool,
   newTaskHandler: PropTypes.func,
+  theme: PropTypes.bool,
 };
 
 CreateToDo.defaultProps = {
-  theme: true,
   newTaskHandler: null,
+  theme: true,
 };
 
 export default CreateToDo;

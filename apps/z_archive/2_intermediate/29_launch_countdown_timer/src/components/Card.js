@@ -1,17 +1,18 @@
-import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 import '../styles/Card.scss';
 
 const Card = (props) => {
   const { period, time, prevTime } = props;
-  const prevTimeRef = useRef(time);
+  const [prevTimeState, setPrevTimeState] = useState(time);
 
-  if (prevTimeRef.current !== time) {
+  if (prevTimeState !== time) {
     const elemCard = document.querySelector(`[data-period=${period}]`);
     const elemFlap = elemCard.children[2];
     elemFlap.classList.toggle('rotate-active');
     elemFlap.classList.toggle('rotate-active-copy');
-    prevTimeRef.current = time;
+    setPrevTimeState(time);
   }
 
   return (
@@ -43,14 +44,14 @@ const Card = (props) => {
 
 Card.propTypes = {
   period: PropTypes.string,
-  time: PropTypes.string,
   prevTime: PropTypes.string,
+  time: PropTypes.string,
 };
 
 Card.defaultProps = {
   period: null,
-  time: null,
   prevTime: PropTypes.string,
+  time: null,
 };
 
 export default Card;

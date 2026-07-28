@@ -1,7 +1,8 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+
 import Home from '../pages/Home';
 import Job from '../pages/Job';
+
 import './App.scss';
 
 function App() {

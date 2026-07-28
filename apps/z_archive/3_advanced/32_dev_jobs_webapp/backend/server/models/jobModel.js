@@ -4,7 +4,19 @@ const jobSchema = new mongoose.Schema({
   id: {
     type: 'Number',
   },
+  apply: {
+    type: 'String',
+  },
   company: {
+    type: 'String',
+  },
+  contract: {
+    type: 'String',
+  },
+  description: {
+    type: 'String',
+  },
+  location: {
     type: 'String',
   },
   logo: {
@@ -17,21 +29,6 @@ const jobSchema = new mongoose.Schema({
     type: 'String',
   },
   postedAt: {
-    type: 'String',
-  },
-  contract: {
-    type: 'String',
-  },
-  location: {
-    type: 'String',
-  },
-  website: {
-    type: 'String',
-  },
-  apply: {
-    type: 'String',
-  },
-  description: {
     type: 'String',
   },
   requirements: {
@@ -49,6 +46,9 @@ const jobSchema = new mongoose.Schema({
     items: {
       type: ['String'],
     },
+  },
+  website: {
+    type: 'String',
   },
 });
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const Card = (props) => {
@@ -16,15 +15,15 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  title: PropTypes.number,
-  quote: PropTypes.string,
   click: PropTypes.func,
+  quote: PropTypes.string,
+  title: PropTypes.number,
 };
 
 Card.defaultProps = {
-  title: 'ADVICE #',
-  quote: null,
   click: null,
+  quote: null,
+  title: 'ADVICE #',
 };
 
 export default Card;

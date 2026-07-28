@@ -12,7 +12,7 @@ const errorMsg = document.querySelectorAll('.error-msg');
 var checkBool = false;
 
 // Validation
-const validate = (e) => {
+const validate = () => {
   // Reset Errors
   if (checkBool == true) {
     resetErrors();
@@ -32,8 +32,8 @@ const validate = (e) => {
     checkBool = true;
   }
 
-  var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (emailInput.value == '' || !emailInput.value.match(emailReg)) {
+  var emailReg = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/;
+  if (emailInput.value == '' || !emailReg.test(emailInput.value)) {
     errorIcon[2].classList.remove('hidden');
     errorMsg[2].classList.remove('hidden');
     inputFields[2].style.border = '2px solid hsla(var(--Red), 0.6)';

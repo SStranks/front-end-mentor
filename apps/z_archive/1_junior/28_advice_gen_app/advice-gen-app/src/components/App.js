@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useEffect, useRef, useState } from 'react';
+
 import Card from './Card';
 
 function App() {
@@ -21,11 +22,12 @@ function App() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchAdvice();
     gsap.from('.quote', {
-      opacity: 0,
       duration: 1.25,
       ease: 'power1.in',
+      opacity: 0,
       onComplete: () => {
         loading.current = false;
       },
@@ -36,19 +38,19 @@ function App() {
     if (loading.current === true) return;
     loading.current = true;
     const cardHeight = document.querySelector('.card').offsetHeight;
-    gsap.from('.dice', { rotate: -360, duration: 2, ease: 'power4.out' });
-    await gsap.to('.quote', { opacity: 0, duration: 0.5, ease: 'power1.in' });
+    gsap.from('.dice', { duration: 2, ease: 'power4.out', rotate: -360 });
+    await gsap.to('.quote', { duration: 0.5, ease: 'power1.in', opacity: 0 });
     await fetchAdvice();
     gsap.to('.quote', {
-      opacity: 1,
       duration: 1.5,
       ease: 'power1.in',
+      opacity: 1,
       onComplete: () => {
         loading.current = false;
       },
     });
     gsap.set('.card', { height: 'auto' });
-    gsap.from('.card', { height: `${cardHeight}px`, duration: 1 });
+    gsap.from('.card', { duration: 1, height: `${cardHeight}px` });
   };
 
   return <Card title={advice.id} quote={advice.quote} click={clickHandler} />;

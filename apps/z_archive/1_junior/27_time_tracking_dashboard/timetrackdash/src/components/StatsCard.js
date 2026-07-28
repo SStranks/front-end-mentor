@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const StatsCard = (props) => {
@@ -8,18 +7,21 @@ const StatsCard = (props) => {
   let currentPeriod;
   let previousPeriod;
   switch (true) {
-    case activePeriod === 'day':
+    case activePeriod === 'day': {
       currentPeriod = timeFrames.daily.current;
       previousPeriod = timeFrames.daily.previous;
       break;
-    case activePeriod === 'week':
+    }
+    case activePeriod === 'week': {
       currentPeriod = timeFrames.weekly.current;
       previousPeriod = timeFrames.weekly.previous;
       break;
-    case activePeriod === 'month':
+    }
+    case activePeriod === 'month': {
       currentPeriod = timeFrames.monthly.current;
       previousPeriod = timeFrames.monthly.previous;
       break;
+    }
     default:
   }
 
@@ -47,17 +49,17 @@ const StatsCard = (props) => {
 };
 
 StatsCard.propTypes = {
-  title: PropTypes.string,
   activePeriod: PropTypes.string,
-  timeFrames: PropTypes.objectOf(PropTypes.object),
   icon: PropTypes.string,
+  timeFrames: PropTypes.objectOf(PropTypes.object),
+  title: PropTypes.string,
 };
 
 StatsCard.defaultProps = {
-  title: null,
   activePeriod: null,
-  timeFrames: null,
   icon: null,
+  timeFrames: null,
+  title: null,
 };
 
 export default StatsCard;

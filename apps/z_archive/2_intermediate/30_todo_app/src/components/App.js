@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import CreateToDo from './CreateToDo';
 import ListToDo from './ListToDo';
 
@@ -80,11 +81,11 @@ function App() {
 
   return (
     <>
-      <div className={`header-background ${!theme ? 'dark-header' : ''}`} />
+      <div className={`header-background ${theme ? '' : 'dark-header'}`} />
       <header>
         <h1>Todo</h1>
         <button
-          className={`${!theme ? 'dark-button' : ''}`}
+          className={`${theme ? '' : 'dark-button'}`}
           type="button"
           aria-label="theme toggle button"
           onClick={themeHandler}

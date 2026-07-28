@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import Header from './Header';
 import Main from './Main';
 
@@ -22,13 +23,14 @@ function App() {
         createAlphaList(parseData);
         setCountriesData(parseData);
         localStorage.setItem('countries', JSON.stringify(parseData));
-      } catch (err) {
-        console.log('Error retreiving data: ', err);
+      } catch (error) {
+        console.log('Error retreiving data:', error);
       }
     };
     const getData = localStorage.getItem('countries');
     if (getData) {
       const parseData = JSON.parse(getData);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       createAlphaList(parseData);
       setCountriesData(parseData);
     } else {

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const StatSelector = (props) => {
@@ -18,16 +17,16 @@ const StatSelector = (props) => {
 };
 
 StatSelector.propTypes = {
+  id: PropTypes.string,
   active: PropTypes.bool,
   click: PropTypes.func,
-  id: PropTypes.string,
   txt: PropTypes.string,
 };
 
 StatSelector.defaultProps = {
+  id: null,
   active: null,
   click: null,
-  id: null,
   txt: null,
 };
 

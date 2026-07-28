@@ -4,7 +4,7 @@
 const btn_selectReward = document.querySelector('.card-3');
 const btn_bookmark = document.querySelector('.bookmarkSelect');
 const btn_backProject = document.querySelector('.backProj-btn');
-const btn_closeSuccess = document.getElementById('btn-gotIt');
+const btn_closeSuccess = document.querySelector('#btn-gotIt');
 const btn_closeBackProject = document.querySelector('.closeModal');
 const btn_radio = document.querySelectorAll('input[name="radio-btn-1"]');
 const btn_hamburger = document.querySelector('.icon-mobmenu');
@@ -13,7 +13,7 @@ const modalPledges = document.querySelectorAll('.modalPledge');
 const modalWindow = document.querySelector('.modal');
 const successWindow = document.querySelector('.modalSuccess');
 const navBar = document.querySelector('nav');
-const windowResize = window.matchMedia('(max-width: 375px)');
+const windowResize = globalThis.matchMedia('(max-width: 375px)');
 let btl_bookmark_icon;
 let circle;
 let path;
@@ -97,17 +97,19 @@ function donateAmount(e) {
 
 function processDonation(donation, element) {
   // Add Donation to Total Donations
-  let totalDonation = parseInt(document.querySelector('.totalDonation').textContent.replace('$', '').replace(',', ''));
-  totalDonation += parseInt(donation);
+  let totalDonation = Number.parseInt(
+    document.querySelector('.totalDonation').textContent.replace('$', '').replace(',', '')
+  );
+  totalDonation += Number.parseInt(donation);
   totalDonation = '$' + totalDonation.toLocaleString('en-US');
   document.querySelector('.totalDonation').textContent = totalDonation;
   // Add +1 Backer
   let totalBackers = document.querySelector('.totalBackers');
-  let total = parseInt(totalBackers.textContent.replace(',', ''));
+  let total = Number.parseInt(totalBackers.textContent.replace(',', ''));
   total += 1;
   totalBackers.textContent = total.toLocaleString('en-US');
   // Adjust Progress Bar
-  let progressVal = ((totalDonation.replace('$', '').replace(',', '') / 100000) * 100).toFixed(2);
+  let progressVal = ((totalDonation.replace('$', '').replace(',', '') / 100_000) * 100).toFixed(2);
   if (progressVal > 100) progressVal = 100;
   document.querySelector('.prog-bar-val').style.width = `${progressVal}%`;
 
@@ -115,7 +117,7 @@ function processDonation(donation, element) {
   let pledgeType = element.closest('.modalPledge');
   let rewardTotal;
   // Adjust Reward Number on Modal
-  rewardTotal = parseInt(pledgeType.querySelector('.total').textContent);
+  rewardTotal = Number.parseInt(pledgeType.querySelector('.total').textContent);
   pledgeType.querySelector('.total').textContent = `${rewardTotal - 1}`;
   // Search for reward on main-page by using the "Item-n" class of the modal reward selection
   let rewardItem = document.querySelector(`.${pledgeType.classList[1]}`);
@@ -162,19 +164,15 @@ function mobMenu() {
 
 // Window Resize Event
 function mobileLayout(x) {
-  if (x.matches) {
-    navBar.classList.add('hidden');
-  } else {
-    navBar.classList.remove('hidden');
-  }
+  navBar.classList.toggle('hidden', x.matches);
 }
 
 // Event Handlers
 btn_bookmark.addEventListener('click', bookmark);
 window.addEventListener('load', function () {
   btl_bookmark_icon = document.querySelector('.svgClass').contentDocument;
-  circle = btl_bookmark_icon.getElementsByTagName('circle');
-  path = btl_bookmark_icon.getElementsByTagName('path');
+  circle = btl_bookmark_icon.querySelectorAll('circle');
+  path = btl_bookmark_icon.querySelectorAll('path');
   // Alternative: Using ID (but requires editing of the SVG file to include IDs on elements)
   // circle = btl_bookmark_icon.getElementById('circle');
   // path = btl_bookmark_icon.getElementById('path');

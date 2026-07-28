@@ -1,9 +1,9 @@
 'use strict';
 
 // Selectors
-const mob_menu = document.getElementById('mob-menu');
+const mob_menu = document.querySelector('#mob-menu');
 const menu = document.querySelector('.menu-nav');
-const windowResize = window.matchMedia('(max-width: 375px)');
+const windowResize = globalThis.matchMedia('(max-width: 375px)');
 
 // Mobile Menu Toggle
 function menuActivate() {
@@ -13,11 +13,7 @@ function menuActivate() {
 
 // Window Resize Event
 function mobileLayout(x) {
-  if (x.matches) {
-    menu.classList.add('hidden');
-  } else {
-    menu.classList.remove('hidden');
-  }
+  menu.classList.toggle('hidden', x.matches);
 }
 
 // Event Handler

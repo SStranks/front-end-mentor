@@ -1,5 +1,6 @@
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
+
 // const path = require('path');
 const jobRouter = require('./routes/jobsRoutes');
 
@@ -16,7 +17,7 @@ app.use('/api', jobRouter);
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   const statusCode = err.statusCode || 500;
   const status = err.status || 'error';
 

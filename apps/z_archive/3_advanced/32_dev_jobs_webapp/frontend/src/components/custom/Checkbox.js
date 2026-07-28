@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+
 import styles from './_Checkbox.module.scss';
 
 function Checkbox(props) {
@@ -14,19 +14,19 @@ function Checkbox(props) {
 }
 
 Checkbox.propTypes = {
-  text: PropTypes.string,
   id: PropTypes.string,
-  name: PropTypes.string,
   checked: PropTypes.bool,
+  name: PropTypes.string,
   onChange: PropTypes.func,
+  text: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
-  text: PropTypes.string,
   id: PropTypes.string,
-  name: PropTypes.string,
   checked: PropTypes.bool,
+  name: PropTypes.string,
   onChange: PropTypes.func,
+  text: PropTypes.string,
 };
 
 export default Checkbox;

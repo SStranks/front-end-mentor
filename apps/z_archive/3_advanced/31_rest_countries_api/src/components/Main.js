@@ -1,17 +1,18 @@
-import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import useFlagRender from './useFlagRender';
-import Modal from './Modal';
-import Grid from './Grid';
-import Search from './Search';
+import { useMemo, useState } from 'react';
+
 import Filter from './Filter';
+import Grid from './Grid';
+import Modal from './Modal';
+import Search from './Search';
+import useFlagRender from './useFlagRender';
 
 const Main = (props) => {
   const { countriesList, alphaList } = props;
   const [stateFilter, setStateFilter] = useState({
     activeRegion: 'all',
-    searchQuery: '',
     countryIndex: [0, 8],
+    searchQuery: '',
   });
   const [modal, setModal] = useState(false);
   const [countrySelect, setCountrySelect] = useState();
@@ -38,7 +39,7 @@ const Main = (props) => {
 
   const currentSlice = useMemo(() => {
     return searchFilter.slice(stateFilter.countryIndex[0], stateFilter.countryIndex[1]);
-  }, [stateFilter.countryIndex, regionFilter, stateFilter.searchQuery, countrySelect]);
+  }, [searchFilter, stateFilter.countryIndex]);
 
   const { output, loading } = useFlagRender(
     currentSlice,
@@ -79,13 +80,13 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  countriesList: PropTypes.arrayOf(PropTypes.shape({})),
   alphaList: PropTypes.shape({}),
+  countriesList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 Main.defaultProps = {
-  countriesList: null,
   alphaList: null,
+  countriesList: null,
 };
 
 export default Main;

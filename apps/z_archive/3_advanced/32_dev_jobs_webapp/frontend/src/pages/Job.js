@@ -1,6 +1,5 @@
-import React from 'react';
-import Header from '../components/header/Header';
 import Advert from '../components/advert/Advert';
+import Header from '../components/header/Header';
 
 function Job() {
   return (

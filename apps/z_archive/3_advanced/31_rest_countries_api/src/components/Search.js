@@ -1,13 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
 const Search = (props) => {
   const { stateFilter, setStateFilter } = props;
 
   const searchHandler = (e) => {
-    if (/^[a-zA-Z]*$/.test(e.target.value) === false) {
+    if (/^[a-z]*$/i.test(e.target.value) === false) {
       setStateFilter((prev) => ({ ...prev }));
     }
     setStateFilter((prev) => ({
@@ -31,12 +30,12 @@ const Search = (props) => {
 };
 
 Search.propTypes = {
-  stateFilter: PropTypes.shape(),
   setStateFilter: PropTypes.func,
+  stateFilter: PropTypes.shape(),
 };
 Search.defaultProps = {
-  stateFilter: null,
   setStateFilter: null,
+  stateFilter: null,
 };
 
 export default Search;

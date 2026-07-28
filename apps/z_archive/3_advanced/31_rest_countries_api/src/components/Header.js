@@ -1,11 +1,9 @@
-import React from 'react';
+const btnThemeClickHandler = () => {
+  const body = document.querySelector('body');
+  body.classList.toggle('dark-theme');
+};
 
 const Header = () => {
-  const btnThemeClickHandler = () => {
-    const body = document.querySelector('body');
-    body.classList.toggle('dark-theme');
-  };
-
   return (
     <header>
       <h1>

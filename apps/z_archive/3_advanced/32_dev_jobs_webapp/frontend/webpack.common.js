@@ -1,17 +1,14 @@
-const ESLintPlugin = require('eslint-webpack-plugin');
+/* eslint-disable n/no-unpublished-require */
 const CopyPlugin = require('copy-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  target: 'web',
-  resolve: {
-    extensions: ['.js', '.jsx', '.json'],
-  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        test: /\.(js|jsx)$/,
         use: ['babel-loader'],
       },
       {
@@ -29,11 +26,15 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
+          context: 'src/assets/svg/',
           from: 'logos/',
           to: 'assets/logos/',
-          context: 'src/assets/svg/',
         },
       ],
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+  target: 'web',
 };

@@ -271,6 +271,10 @@ export default defineConfig([
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
+      globals: {
+        ...EslintConfigNode.languageOptions.globals,
+        ...EslintConfigExpress.languageOptions.globals,
+      },
       parserOptions: {
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/invoice-app/server'),
@@ -322,6 +326,10 @@ export default defineConfig([
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
+      globals: {
+        ...EslintConfigNode.languageOptions.globals,
+        ...EslintConfigExpress.languageOptions.globals,
+      },
       parserOptions: {
         ...EslintConfigNode.languageOptions.parserOptions,
         ...EslintConfigExpress.languageOptions.parserOptions,
@@ -385,11 +393,57 @@ export default defineConfig([
     languageOptions: {
       ...EslintConfigNode.languageOptions,
       ...EslintConfigExpress.languageOptions,
+      globals: {
+        ...EslintConfigNode.languageOptions.globals,
+        ...EslintConfigExpress.languageOptions.globals,
+      },
       parserOptions: {
         ...EslintConfigNode.languageOptions.parserOptions,
         ...EslintConfigExpress.languageOptions.parserOptions,
         projectService: true,
         tsconfigRootDir: path.join(import.meta.dirname, 'apps/project-feedback-app/server'),
+      },
+    },
+    plugins: { ...EslintConfigNode.plugins, ...EslintConfigExpress.plugins },
+    rules: { ...EslintConfigNode.rules, ...EslintConfigExpress.rules },
+    settings: {
+      ...EslintConfigExpress.settings,
+    },
+  },
+  // ------------------------------------
+  // ------------ z_archive -------------
+  // ------------------------------------
+  {
+    name: '@apps/z_archive/client',
+    files: ['apps/z_archive/**/*'],
+    ignores: ['apps/z_archive/3_advanced/32_dev_jobs_webapp/backend/**/*'],
+    languageOptions: {
+      ...EslintConfigReact.languageOptions,
+      ...EslintConfigBrowser.languageOptions,
+      globals: {
+        ...EslintConfigReact.languageOptions.globals,
+        ...EslintConfigBrowser.languageOptions.globals,
+        process: 'readonly',
+      },
+    },
+    plugins: { ...EslintConfigReact.plugins },
+    rules: { ...EslintConfigReact.rules },
+    settings: { ...EslintConfigReact.settings },
+  },
+  {
+    name: '@apps/z_archive/server',
+    files: ['apps/z_archive/3_advanced/32_dev_jobs_webapp/backend/**/*'],
+    languageOptions: {
+      ...EslintConfigNode.languageOptions,
+      ...EslintConfigExpress.languageOptions,
+      sourceType: 'commonjs',
+      globals: {
+        ...EslintConfigNode.languageOptions.globals,
+        ...EslintConfigExpress.languageOptions.globals,
+      },
+      parserOptions: {
+        ...EslintConfigNode.languageOptions.parserOptions,
+        ...EslintConfigExpress.languageOptions.parserOptions,
       },
     },
     plugins: { ...EslintConfigNode.plugins, ...EslintConfigExpress.plugins },

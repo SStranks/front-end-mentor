@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import UserCard from './UserCard';
+import { useEffect, useState } from 'react';
+
 import StatsCard from './StatsCard';
+import UserCard from './UserCard';
 
 function App() {
   const [userData, setUserData] = useState({ stats: [] });
@@ -22,17 +23,18 @@ function App() {
       const response = await fetch('data/data.json');
       const data = await response.json();
       const loadedData = {
-        name: data.name,
         img: data.img,
+        name: data.name,
         stats: data.stats,
       };
       setUserData(loadedData);
-    } catch (err) {
+    } catch {
       throw new Error('Data not found!');
     }
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchStats();
   }, []);
 

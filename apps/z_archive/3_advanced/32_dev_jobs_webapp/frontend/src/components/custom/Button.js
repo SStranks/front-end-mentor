@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+
 import styles from './_Button.module.scss';
 
 function Button(props) {
@@ -13,15 +13,15 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  text: PropTypes.string,
-  onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  text: PropTypes.string,
 };
 
 Button.defaultProps = {
-  text: null,
-  onClick: null,
   disabled: null,
+  onClick: null,
+  text: null,
 };
 
 export default Button;

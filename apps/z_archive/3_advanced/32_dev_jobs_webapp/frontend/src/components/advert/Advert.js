@@ -1,8 +1,9 @@
-import React from 'react';
 import { useLocation } from 'react-router-dom';
+
+import Button from '../custom/Button';
+
 // import PropTypes from 'prop-types';
 import styles from './_Advert.module.scss';
-import Button from '../custom/Button';
 
 function Advert() {
   const dataLocation = useLocation();
@@ -20,12 +21,8 @@ function Advert() {
     role,
   } = dataLocation.state;
 
-  const requirementList = requirements.items.map((el, i) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <li key={i}>{el}</li>
-  ));
+  const requirementList = requirements.items.map((el, i) => <li key={i}>{el}</li>);
 
-  // eslint-disable-next-line react/no-array-index-key
   const roleList = role.items.map((el, i) => <li key={i}>{el}</li>);
 
   return (

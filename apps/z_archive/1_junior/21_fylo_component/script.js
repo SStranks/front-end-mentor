@@ -5,7 +5,6 @@ const range = document.querySelector('.slider');
 const track = document.querySelector('.track-inner');
 const gbLeft1 = document.querySelector('#GBnum1');
 const gbLeft2 = document.querySelector('#GBnum2');
-const amount = document.querySelector('.amount');
 const slideContainer = document.querySelector('.slidercontainer');
 
 // Update the left-hand colour of the slider track
@@ -18,7 +17,7 @@ const updateSlider = (value) => {
 };
 
 // Event Handlers
-range.oninput = (e) => updateSlider(e.target.value);
+range.addEventListener('input', (e) => updateSlider(e.target.value));
 
 // Initial State
 updateSlider(50);

@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { CSSTransition } from 'react-transition-group';
+
 import IconFilter from '../../assets/svg/desktop/icon-location.svg';
 import ButtonSubmit from '../custom/ButtonSubmit';
 import Checkbox from '../custom/Checkbox';
+
 import styles from './_modal.module.scss';
 
 function Modal(props) {
@@ -47,29 +48,29 @@ function Modal(props) {
 }
 
 Modal.propTypes = {
+  isSearching: PropTypes.bool,
+  modalActive: PropTypes.bool,
   onChangeHandler: PropTypes.func,
   searchFields: PropTypes.shape({
-    search: PropTypes.string,
     filter: PropTypes.string,
+    search: PropTypes.string,
     time: PropTypes.bool,
   }),
-  setSearchFields: PropTypes.func,
   setModalActive: PropTypes.func,
-  modalActive: PropTypes.bool,
-  isSearching: PropTypes.bool,
+  setSearchFields: PropTypes.func,
 };
 
 Modal.defaultProps = {
+  isSearching: PropTypes.bool,
+  modalActive: PropTypes.bool,
   onChangeHandler: PropTypes.func,
   searchFields: PropTypes.shape({
-    search: PropTypes.string,
     filter: PropTypes.string,
+    search: PropTypes.string,
     time: PropTypes.bool,
   }),
-  setSearchFields: PropTypes.func,
   setModalActive: PropTypes.func,
-  modalActive: PropTypes.bool,
-  isSearching: PropTypes.bool,
+  setSearchFields: PropTypes.func,
 };
 
 export default Modal;

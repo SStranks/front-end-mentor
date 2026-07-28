@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import Card from './Card';
-import setupCSS from './setup';
 import updateGround from './ground';
+import setupCSS from './setup';
 import updateSky from './sky';
 import updateTime from './time';
 
@@ -12,13 +13,13 @@ function App() {
     { period: 'minutes', time: '55' },
     { period: 'seconds', time: '41' },
   ]);
+  const [prevCountdown, setPrevCountdown] = useState(countdown);
 
   const requestRef = useRef();
   const secondsRef = useRef();
   const previousTimeRef = useRef();
 
-  const previousCountdown = useRef(countdown);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const animate = (time) => {
     if (previousTimeRef.current !== undefined) {
       const deltaTime = time - previousTimeRef.current;
@@ -28,7 +29,7 @@ function App() {
       if (secondsRef.current !== getSeconds) {
         secondsRef.current = getSeconds;
         setCountdown((prevState) => {
-          previousCountdown.current = prevState;
+          setPrevCountdown(prevState);
           return updateTime(prevState);
         });
       }
@@ -42,10 +43,10 @@ function App() {
     secondsRef.current = new Date().getSeconds();
     requestRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(requestRef.current);
-  }, []);
+  }, [animate]);
 
   const time = countdown.map((item, i) => (
-    <Card key={item.period} period={item.period} time={item.time} prevTime={previousCountdown.current[i].time} />
+    <Card key={item.period} period={item.period} time={item.time} prevTime={prevCountdown[i].time} />
   ));
 
   return (

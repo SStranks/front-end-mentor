@@ -3,12 +3,11 @@
 const emailInput = document.querySelector('input[name="email"]');
 const submitButton = document.querySelector('button[name="submit"]');
 const errorMsg = document.querySelector('.error-msg');
-const checkBool = false;
 
 // Email Validation
 function validateEmail() {
-  var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (emailInput.value == '' || !emailInput.value.match(emailReg)) {
+  var emailReg = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/;
+  if (emailInput.value == '' || !emailReg.test(emailInput.value)) {
     emailInput.style.border = '2px solid hsla(var(--Light-Red), 0.5)';
     errorMsg.classList.remove('hidden');
   }

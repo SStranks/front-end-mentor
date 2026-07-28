@@ -1,3 +1,7 @@
+function checkSingleDigit(digit) {
+  return digit < 10 ? `0${digit}` : digit.toString();
+}
+
 export default function updateTime(currentCounter) {
   if (currentCounter.every((el) => el.time === '00')) return currentCounter;
 
@@ -7,10 +11,6 @@ export default function updateTime(currentCounter) {
     { period: 'minutes', time: currentCounter[2].time },
     { period: 'seconds', time: currentCounter[3].time },
   ];
-
-  function checkSingleDigit(digit) {
-    return digit < 10 ? `0${digit}` : digit.toString();
-  }
 
   const getDays = () => {
     let newDay = newCounter[0].time - 1;

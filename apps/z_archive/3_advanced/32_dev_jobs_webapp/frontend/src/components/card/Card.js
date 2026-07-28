@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+
 import styles from './_Card.module.scss';
 
 function Card(props) {
@@ -42,25 +43,25 @@ function Card(props) {
 
 Card.propTypes = {
   id: PropTypes.number,
+  company: PropTypes.string,
+  contract: PropTypes.string,
+  location: PropTypes.string,
   logo: PropTypes.string,
   logoBackground: PropTypes.string,
-  postedAt: PropTypes.string,
-  contract: PropTypes.string,
   position: PropTypes.string,
-  company: PropTypes.string,
-  location: PropTypes.string,
+  postedAt: PropTypes.string,
   timeStamp: PropTypes.number,
 };
 
 Card.defaultProps = {
   id: PropTypes.number,
+  company: PropTypes.string,
+  contract: PropTypes.string,
+  location: PropTypes.string,
   logo: PropTypes.string,
   logoBackground: PropTypes.string,
-  postedAt: PropTypes.string,
-  contract: PropTypes.string,
   position: PropTypes.string,
-  company: PropTypes.string,
-  location: PropTypes.string,
+  postedAt: PropTypes.string,
   timeStamp: null,
 };
 

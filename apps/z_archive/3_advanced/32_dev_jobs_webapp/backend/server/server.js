@@ -1,7 +1,6 @@
 require('dotenv').config();
-const connectDB = require('./config/db');
-
 const app = require('./app');
+const connectDB = require('./config/db');
 
 connectDB();
 
@@ -15,6 +14,7 @@ process.on('unhandledRejection', (err) => {
   console.log('Unhandled Rejection. Shutting down server');
   console.log(err.name, err.message);
   server.close(() => {
+    // eslint-disable-next-line n/no-process-exit
     process.exit(1);
   });
 });

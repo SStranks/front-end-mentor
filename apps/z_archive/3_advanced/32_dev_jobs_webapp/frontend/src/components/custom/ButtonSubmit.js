@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+
 import IconSearch from '../../assets/svg/desktop/icon-search.svg';
+
 import styles from './_Button.module.scss';
 
 function ButtonSubmit(props) {
@@ -15,17 +16,17 @@ function ButtonSubmit(props) {
 }
 
 ButtonSubmit.propTypes = {
-  text: PropTypes.string,
-  value: PropTypes.string,
   disabled: PropTypes.bool,
   modal: PropTypes.bool,
+  text: PropTypes.string,
+  value: PropTypes.string,
 };
 
 ButtonSubmit.defaultProps = {
-  text: PropTypes.string,
-  value: PropTypes.string,
   disabled: PropTypes.bool,
   modal: PropTypes.bool,
+  text: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default ButtonSubmit;

@@ -1,4 +1,4 @@
-name: 'fem32-dev-jobs-webapp'
+name: fem32-dev-jobs-webapp
 version: '3.7'
 services:
   # Backend: NodeJS Express
@@ -10,4 +10,4 @@ services:
   react-app:
     build:
       context: ./frontend
-    profiles: ['prod']
+    profiles: [prod]

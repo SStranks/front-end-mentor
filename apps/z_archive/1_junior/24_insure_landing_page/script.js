@@ -43,7 +43,7 @@ let pathFillDefault = [];
 window.addEventListener('load', function () {
   for (let [i, el] of iconsCol.entries()) {
     let svg = el.contentDocument;
-    path[i] = svg.getElementsByTagName('path');
+    path[i] = svg.querySelectorAll('path');
     pathFillDefault[i] = path[i][0].getAttribute('fill');
   }
 });
