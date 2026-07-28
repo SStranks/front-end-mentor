@@ -1,7 +1,7 @@
-@import "https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap";
+@import 'https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap';
 
 header {
-  background-image: url("f3307602ee5e7c6b4f50.svg");
+  background-image: url('f3307602ee5e7c6b4f50.svg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -15,35 +15,35 @@ header {
 
 @media (width >= 768px) and (width <= 1023px) {
   header {
-    background-image: url("b001bfbe78855f982b60.svg");
+    background-image: url('b001bfbe78855f982b60.svg');
     padding-top: 10px;
   }
 }
 
 @media (width >= 700px) and (width <= 767px) {
   header {
-    background-image: url("b001bfbe78855f982b60.svg");
+    background-image: url('b001bfbe78855f982b60.svg');
     padding-top: 10px;
   }
 }
 
 @media (width >= 425px) and (width <= 699px) {
   header {
-    background-image: url("ea1134f14277d29c5f40.svg");
+    background-image: url('ea1134f14277d29c5f40.svg');
     padding-top: 10px;
   }
 }
 
 @media (width >= 375px) and (width <= 424px) {
   header {
-    background-image: url("ea1134f14277d29c5f40.svg");
+    background-image: url('ea1134f14277d29c5f40.svg');
     padding-top: 10px;
   }
 }
 
 @media (width >= 320px) and (width <= 374px) {
   header {
-    background-image: url("ea1134f14277d29c5f40.svg");
+    background-image: url('ea1134f14277d29c5f40.svg');
     padding-top: 10px;
   }
 }
@@ -566,7 +566,7 @@ header > div {
 }
 
 .checkbox-control-Dj_iq input[type='checkbox']:checked::before {
-  background: url("7b769ecf9d90157efbc3.svg");
+  background: url('7b769ecf9d90157efbc3.svg');
   background-color: #5762e0;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -1250,9 +1250,7 @@ button:disabled {
 
 body,
 html {
-  font-family:
-    "Kumbh Sans",
-    sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 p {
