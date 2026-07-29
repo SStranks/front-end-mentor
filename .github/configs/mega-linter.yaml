@@ -5,20 +5,20 @@
 # Schema version: Megalinter v9.6
 ---
 ENABLE:
-  # - ACTION
-  # - BASH
+  - ACTION
+  - BASH
   - CSS
-  # - DOCKERFILE
-  # - EDITORCONFIG
-  # - ENV
-  # - HTML
-  # - JAVASCRIPT
-  # - JSON
-  # - MARKDOWN
-  # - REPOSITORY
-  # - TSX
-  # - TYPESCRIPT
-  # - YAML
+  - DOCKERFILE
+  - EDITORCONFIG
+  - ENV
+  - HTML
+  - JAVASCRIPT
+  - JSON
+  - MARKDOWN
+  - REPOSITORY
+  - TSX
+  - TYPESCRIPT
+  - YAML
 DISABLE_LINTERS:
   - JAVASCRIPT_STANDARD
   - TYPESCRIPT_STANDARD
