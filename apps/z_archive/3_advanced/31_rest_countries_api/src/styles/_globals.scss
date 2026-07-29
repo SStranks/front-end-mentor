@@ -1,0 +1,166 @@
+@use 'variables' as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400, 700;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.6;
+  background: var(--color-background);
+  transition: $Theme-transition;
+  color: black;
+}
+
+img {
+  display: block;
+  height: 100%;
+}
+
+a {
+  color: hsl(var(--Dark-Grayish-Violet));
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+
+  &:visited {
+    color: hsl(var(--Dark-Grayish-Violet));
+  }
+
+  &:active {
+    color: hsl(var(--Dark-Grayish-Violet));
+  }
+
+  a:hover {
+    color: hsl(var(--Very-Dark-Violet));
+  }
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-text);
+  transition: $Theme-transition;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text);
+  transition: $Theme-transition;
+}
+
+// h3 {
+//   font-size: 1.75rem;
+//   font-family: inherit;
+//   font-weight: 700;
+//   line-height: 1;
+//   color: hsl(var(--Very-Dark-Violet));
+// }
+
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+
+p {
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 400;
+  color: var(--color-text);
+  transition: $Theme-transition;
+  line-height: 1.4;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  color: var(--color-text);
+  transition: $Theme-transition;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  padding: 0.75rem 1.75rem;
+  cursor: pointer;
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--color-text);
+  transition: $Theme-transition;
+  background-color: transparent;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  &::placeholder {
+    color: var(--color-text);
+    transition: $Theme-transition;
+  }
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: inherit !important;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.transition * {
+  transition: none !important;
+}

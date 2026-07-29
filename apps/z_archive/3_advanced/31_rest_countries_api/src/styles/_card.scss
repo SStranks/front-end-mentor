@@ -1,0 +1,50 @@
+@use 'variables';
+
+.card-country {
+  background-color: var(--color-elements);
+  border-radius: 5px;
+  box-shadow: 0 -1px 10px 1px hsl(0deg 0% 0% / 10%);
+  transition:
+    variables.$Theme-transition,
+    transform 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(102%);
+  }
+}
+
+.card-flag {
+  min-width: 270px;
+  height: 45%;
+  width: 100%;
+  box-shadow: 0 -1px 10px 1px hsl(0deg 0% 0% / 10%);
+
+  & img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    object-fit: fill;
+  }
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem;
+
+  & h2 {
+    margin-bottom: 1rem;
+  }
+
+  & p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+
+    & span {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: unset;
+    }
+  }
+}

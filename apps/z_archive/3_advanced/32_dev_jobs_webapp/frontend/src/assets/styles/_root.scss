@@ -1,0 +1,39 @@
+/* -------------------------------- */
+/*   Root                           */
+/* -------------------------------- */
+/*   FrontEndMentor Challenge       */
+/*   #Dev-Jobs Web App              */
+/* -------------------------------- */
+/*   version:   1.0                 */
+/*   date:      13/09/2022          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+/* -------------------------------- */
+
+/*   Imports                        */
+@use './variables' as *;
+
+/*  Themes                          */
+:root {
+  --color-background: #{$Light_Grey};
+  --color-elements: #{$White};
+  --color-text-p: #{$Dark_Grey};
+  --color-text-h: #{$Very_Dark_Blue};
+  --color-placeholder: hsl(216deg 5% 57%);
+  --color-input-text: #{$Dark_Grey};
+  --color-advert-banner-btn: hsl(235deg 69% 61% / 10%);
+  --color-advert-banner-btn-hover: hsl(239deg 69% 86%);
+  --color-advert-banner-btn-text: #{$Violet};
+}
+
+.dark-theme {
+  --color-background: #{$Midnight};
+  --color-elements: #{$Very_Dark_Blue};
+  --color-text-p: #{$Dark_Grey};
+  --color-text-h: #{$White};
+  --color-placeholder: hsl(216deg 5% 57%);
+  --color-input-text: #{$White};
+  --color-advert-banner-btn: hsl(220deg 16% 22%);
+  --color-advert-banner-btn-hover: hsl(217deg 6% 44%);
+  --color-advert-banner-btn-text: #{$White};
+}

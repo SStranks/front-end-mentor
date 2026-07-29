@@ -1,0 +1,84 @@
+@use 'variables';
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-elements);
+  transition: variables.$Theme-transition;
+  box-shadow: 0 -1px 10px 1px hsl(0deg 0% 0% / 10%);
+  padding: 1.5rem 6rem;
+
+  & .theme-toggle {
+    display: flex;
+    align-items: center;
+
+    & span {
+      font-size: 1.25rem;
+      font-weight: 400;
+      transform: translate(0, 1px);
+    }
+
+    & button {
+      background-color: transparent;
+      padding: 0.75rem;
+      transition: all 1s ease;
+
+      &:hover {
+        transform: scale(125%);
+      }
+
+      & svg {
+        width: 20px;
+        height: 20px;
+
+        & path {
+          stroke: black;
+          stroke-width: 1px;
+          transition: all 1s ease;
+
+          &:hover {
+            fill: black;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: (variables.$desktop-m - 1px)) {
+    padding: 1.5rem 4rem;
+  }
+  @media (max-width: variables.$mobile-l) {
+    padding: 2rem 1.5rem;
+
+    & h1 {
+      font-size: 1.2rem;
+    }
+
+    & .theme-toggle {
+      span {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      & button {
+        padding: 0.75rem;
+
+        & svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+  @media (max-width: variables.$mobile-s) {
+    & h1 {
+      font-size: 0.9rem;
+    }
+
+    & .theme-toggle {
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

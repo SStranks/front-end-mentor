@@ -1,0 +1,83 @@
+/* -----|| Contents ||-----         */
+/* ------------------------         */
+/*   1. || Imports                  */
+/*   2. || App                      */
+/*   3. || FrontEnd Mentor Footer   */
+/* -------------------------------- */
+
+/*   FrontEndMentor Challenge       */
+/*   #Time Tracking Dashboard       */
+/*   version:   1.0                 */
+/*   date:      16/02/2022          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+
+/*   1. || Imports                  */
+@use 'globals';
+@use 'variables';
+@use 'StatsCard';
+@use 'UserCard';
+@import 'https://fonts.googleapis.com/css2?family=PT+Sans&family=Rubik:wght@300;400;500&display=swap';
+
+/*   2. || App                      */
+main {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr repeat(3, minmax(0, 1fr));
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+  padding: 12% 10%;
+
+  @media (max-width: variables.$desktop-sm) {
+    height: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 40px;
+    padding: 10% 5%;
+  }
+}
+
+.card {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  background-color: variables.$dark-blue;
+  color: white;
+}
+
+/*   3. || FrontEnd Mentor Footer   */
+footer {
+  position: relative;
+  height: fit-content;
+}
+
+.attribution {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+  color: variables.$desaturated-blue;
+  display: block;
+  margin: 0 auto;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  width: 100%;
+
+  & a {
+    color: variables.$pale-blue;
+
+    &:hover {
+      //  background: var(--Instagram);
+      //  color: hsl(var(--Dark-Blue));
+      //  -webkit-background-clip: text;
+      //  background-clip: text;
+      color: variables.$white;
+      text-decoration: none;
+    }
+  }
+  @media (max-width: variables.$mobile-xs) {
+    font-size: 0.7rem;
+  }
+}

@@ -3,6 +3,8 @@ packages:
   - 'packages/**'
 
 allowBuilds:
+  '@fortawesome/fontawesome-common-types': true
+  '@fortawesome/fontawesome-svg-core': true
   '@parcel/watcher': true
   '@swc/core': true
   core-js: true

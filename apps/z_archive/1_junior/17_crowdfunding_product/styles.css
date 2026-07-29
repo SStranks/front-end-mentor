@@ -1,0 +1,697 @@
+/* -----|| Contents ||-----         */
+/* ------------------------         */
+/*   1. || Imports                  */
+/*   2. || Variables                */
+/*   3. || Globals                  */
+/*   4. || Main                     */
+/*   5. || Main: Modal Windows      */
+/*   6. || FrontEnd Mentor Footer   */
+/*   7. || Media Queries            */
+/* -------------------------------- */
+
+/*   version:   1.0                 */
+/*   date:      31/08/2021          */
+/*   author:    Simon Stranks       */
+/*   website:   github.com/SStranks */
+
+/*   1. || Imports                  */
+@import 'https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap';
+
+/*   2. || Variables                */
+:root {
+  /* HSL Values                     */
+  /* Primary                        */
+  --Moderate-cyan: 176, 50%, 47%;
+  --Dark-cyan: 176, 72%, 28%;
+
+  /* Neutral                        */
+  --Black: 0, 0%, 0%;
+  --Dark-gray: 0, 0%, 48%;
+  --Background: 0, 0%, 98%;
+}
+
+/*   3. || Globals                  */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:active {
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #000;
+}
+
+h2 {
+  font-size: 1.3rem;
+  color: #000;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+h4 {
+  font-size: 1rem;
+  color: #000;
+}
+
+p {
+  line-height: 1.8;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: hsl(var(--Moderate-cyan));
+  font-family: Commissioner, sans-serif;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: hsl(var(--Dark-cyan));
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  color: #000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/*   4. || Main                     */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  font-family: Commissioner, sans-serif;
+  font-weight: 400, 500, 700;
+  color: #000;
+  background-color: hsl(var(--Background));
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('./images/image-hero-desktop.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10.5rem;
+  margin: 3rem 0 15rem;
+}
+
+header img:last-of-type {
+  display: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: #fff;
+}
+
+nav a {
+  margin: 0 1rem;
+}
+
+nav a:last-of-type {
+  margin-right: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 730px;
+  background: #fff;
+  color: hsl(var(--Dark-gray));
+  border: 1px solid hsl(var(--Dark-gray), 0.1);
+  border-radius: 8px;
+  text-align: left;
+  padding: 3rem;
+  margin: 0 auto 2rem;
+}
+
+.card-1 {
+  text-align: center;
+}
+
+.card-1 p {
+  margin: 0.75rem 0;
+}
+
+.card-1::before {
+  position: absolute;
+  content: url('./images/logo-mastercraft.svg');
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-1 .btns-flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btns-flex .c1-btn {
+  height: 55px;
+  width: 210px;
+  border-radius: 27.5px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.btns-flex .bookmark {
+  position: relative;
+  width: 190px;
+  background: hsl(var(--Dark-gray), 0.1);
+  color: hsl(var(--Dark-gray));
+  justify-content: flex-end;
+  padding: 0 1.5rem 0 0;
+}
+
+.btns-flex object {
+  transform: translate(100%, 0);
+}
+
+.bookmarked {
+  background: hsl(var(--Dark-cyan), 0.05) !important;
+  color: hsl(var(--Dark-cyan)) !important;
+}
+
+.card-2 .grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-row div {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.grid-row div::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-left: 1px solid hsl(var(--Dark-gray), 0.3);
+}
+
+.grid-row div:first-child {
+  padding-left: 0;
+}
+
+.grid-row div:first-child::after {
+  display: none;
+}
+
+/* .card-2 .flex-row .vl {
+  height: 50px;
+  border-left: 1px solid hsl(var(--Dark-gray), 0.3);
+} */
+
+.prog-bar {
+  height: 12px;
+  width: 100%;
+  background: hsl(var(--Dark-gray), 0.1);
+  border-radius: 6px;
+  margin-top: 2rem;
+}
+
+.prog-bar-val {
+  height: 12px;
+  width: 70%;
+  background: hsl(var(--Moderate-cyan));
+  border-radius: 6px;
+}
+
+.card-3 p {
+  margin: 2rem 0;
+}
+
+.pledge {
+  font-weight: 500;
+  color: hsl(var(--Moderate-cyan));
+}
+
+.total {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  margin-right: 0.5rem;
+}
+
+.reward {
+  width: 100%;
+  border: 1px solid hsl(var(--Dark-gray), 0.2);
+  border-radius: 5px;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reward button {
+  height: 48px;
+  width: 165px;
+  border-radius: 25px;
+  font-weight: 700;
+}
+
+.out-of-stock {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.out-of-stock button {
+  background: hsl(var(--Dark-gray));
+}
+
+/*   5. || Main: Modal Windows      */
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background: hsl(0deg 0% 0% / 50%);
+  overflow: auto;
+}
+
+.backProjectWindow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-bottom: 10rem;
+}
+
+.mobSpan {
+  margin-left: 0;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-200%, 200%);
+  cursor: pointer;
+}
+
+.closeModal path:hover {
+  opacity: 1;
+}
+
+.modalPledge {
+  width: 100%;
+  border: 1px solid hsl(var(--Dark-gray), 0.2);
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.modalPledge label:hover {
+  color: hsl(var(--Moderate-cyan));
+}
+
+.modalSelect {
+  display: grid;
+  grid-template-columns: auto auto 10% 10%;
+  grid-template-rows: auto auto;
+  padding: 2rem 1.5rem;
+}
+
+.modalSelect input {
+  grid-column: 1;
+  height: 24px;
+  width: 24px;
+  margin-right: 1.5rem;
+}
+
+.modalSelect .flex-row {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.pledge {
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.modalSelect p {
+  grid-column: 2 / span 3;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.total {
+  font-size: 1.15rem;
+  line-height: 1.15rem;
+  margin-left: auto;
+}
+
+.enterPledge {
+  grid-column: 1 / span 2;
+  border-top: 1px solid hsl(var(--Dark-gray), 0.1);
+  padding: 2rem 1.5rem;
+}
+
+.enterPledge button {
+  height: 48px;
+  width: 110px;
+  border-radius: 25px;
+  font-weight: 700;
+}
+
+.enterPledge .donation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 100px;
+  background: #fff;
+  color: #000;
+  border: 1px solid hsl(var(--Moderate-cyan));
+  border-radius: 25px;
+  margin-right: 1rem;
+  margin-left: auto;
+}
+
+.enterPledge .donation input {
+  position: relative;
+  width: 50%;
+  border: none;
+  text-align: center;
+}
+
+.enterPledge .donation input:focus {
+  outline: none;
+}
+
+.modalSuccess {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: #fff;
+  color: hsl(var(--Dark-gray));
+  border-radius: 5px;
+  text-align: center;
+  padding: 3rem 4rem;
+  margin: 0 auto 1.5rem;
+  z-index: 10;
+}
+
+.modalSuccess img {
+  margin-bottom: 2.5rem;
+}
+
+.modalSuccess h2,
+.modalSuccess p {
+  margin-bottom: 1.5rem;
+}
+
+.modalSuccess button {
+  height: 48px;
+  width: 100px;
+  border-radius: 25px;
+  font-weight: 700;
+}
+
+/*   6. || FrontEnd Mentor Footer   */
+
+/*   7. || Media Queries            */
+@media (width <= 375px) {
+  .container {
+    height: 100%;
+    width: 100%;
+    max-width: 375px;
+    background: url('./images/image-hero-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 375px;
+    text-align: left;
+    padding: 2rem;
+    margin: 0 auto 2rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  header {
+    padding: 0;
+    margin: 2rem 0 10rem;
+  }
+
+  header img:first-of-type {
+    margin-left: 1.5rem;
+  }
+
+  header img:last-of-type {
+    display: block;
+    margin-right: 1.5rem;
+    z-index: 20;
+  }
+
+  header nav {
+    position: absolute;
+    flex-direction: column;
+    width: 90%;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 0);
+    background: #fff;
+    color: #000;
+    border-radius: 8px;
+    z-index: 10;
+  }
+
+  header nav a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-bottom: 1px solid hsl(var(--Dark-gray), 0.1);
+    padding: 1.5rem;
+    margin: 0;
+  }
+
+  .exit {
+    content: url('./images/icon-close-menu.svg');
+  }
+
+  .card-1 {
+    text-align: center;
+  }
+
+  .card-1 h1 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .card-1 .bookmark {
+    display: none;
+  }
+
+  .btns-flex object {
+    transform: none;
+    margin-left: 0.5rem;
+    pointer-events: none;
+  }
+
+  .card-2 span {
+    font-size: 1.9rem;
+    margin: 0 0 1rem;
+  }
+
+  .card-2 p {
+    margin: 0.75rem 0;
+  }
+
+  .card-2 .grid-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    text-align: center;
+  }
+
+  .grid-row div {
+    position: relative;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .grid-row div::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 30%;
+    top: -35%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-top: 1px solid hsl(var(--Dark-gray), 0.3);
+  }
+
+  .grid-row div:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-2 .prog-bar {
+    margin: 0;
+  }
+
+  .card-3 .flex-row {
+    flex-direction: column;
+  }
+
+  .card-3 .pledge {
+    font-size: 0.85rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .reward .flex-row {
+    align-items: flex-start;
+  }
+
+  .reward p {
+    margin: 1.25rem 0 2rem;
+  }
+
+  .reward .flex-row .flex-row {
+    flex-direction: row;
+  }
+
+  .reward .total {
+    font-size: 2.2rem;
+  }
+
+  .reward button {
+    margin-top: 1.75rem;
+  }
+
+  .closeModal {
+    transform: translate(-200%, 250%);
+  }
+
+  .backProjectWindow > p {
+    margin: 1rem 0;
+  }
+
+  .modalSelect {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .modalSelect input {
+    margin: auto 1rem auto 0;
+  }
+
+  .modalSelect .flex-row {
+    flex-direction: column;
+  }
+
+  .pledge {
+    margin: 0.25rem 0 0;
+  }
+
+  .modalSelect .mobSpan {
+    grid-row: 3;
+  }
+
+  .modalSelect p {
+    grid-column: 1 / span 2;
+    margin: 1.5rem 0;
+  }
+
+  .total {
+    margin: 0;
+  }
+
+  .modalSuccess {
+    width: 90%;
+    top: 40%;
+    padding: 3rem 1.5rem;
+  }
+
+  .modalSuccess img {
+    margin-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,27 @@
+require('dotenv').config();
+const app = require('./app');
+const connectDB = require('./config/db');
+
+connectDB();
+
+const PORT = process.env.NODE_DOCKER_PORT || 3000;
+
+const server = app.listen(PORT, () => {
+  console.log(`Server running successfuly in ${process.env.NODE_ENV} mode on Port ${PORT}`);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log('Unhandled Rejection. Shutting down server');
+  console.log(err.name, err.message);
+  server.close(() => {
+    // eslint-disable-next-line n/no-process-exit
+    process.exit(1);
+  });
+});
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received. Shutting down server');
+  server.close(() => {
+    console.log('Server terminated');
+  });
+});

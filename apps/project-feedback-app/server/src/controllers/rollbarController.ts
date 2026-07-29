@@ -7,6 +7,7 @@ const rollbarClient = (req: Request) => {
   // NOTE:  Typescript has no type yet for fetch
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  // eslint-disable-next-line n/no-unsupported-features/node-builtins
   fetch('https://api.rollbar.com/api/1/item/', {
     body: JSON.stringify(req.body),
     headers: {
