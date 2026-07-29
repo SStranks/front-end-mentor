@@ -6,7 +6,14 @@ export default {
   overrides: [
     {
       // NOTE: Preserves early learning progress without refactoring
-      files: ['apps/z_archive/**/*.css', 'apps/z_archive/**/*.scss'],
+      // BUG: https://github.com/oxsecurity/megalinter/issues/8552
+      // BUG: duplicate 'files' entries to parent-dir; for megalinter, which set --config-basedir to '/node-deps', sibling of /tmp/lint where our files our.
+      files: [
+        'apps/z_archive/**/*.css',
+        'apps/z_archive/**/*.scss',
+        '../tmp/lint/apps/z_archive/**/*.css',
+        '../tmp/lint/apps/z_archive/**/*.scss',
+      ],
       rules: {
         'custom-property-pattern': null,
         'keyframes-name-pattern': null,
