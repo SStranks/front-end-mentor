@@ -1,6 +1,8 @@
 /** @type {import('stylelint').Config} */
 import '@packages/stylelint-config';
 
+import path from 'node:path';
+
 export default {
   extends: '@packages/stylelint-config',
   overrides: [
@@ -11,8 +13,10 @@ export default {
       files: [
         'apps/z_archive/**/*.css',
         'apps/z_archive/**/*.scss',
-        '../tmp/lint/apps/z_archive/**/*.css',
-        '../tmp/lint/apps/z_archive/**/*.scss',
+        path.resolve(import.meta.dirname, '../**', 'apps/z_archive', '**/*.css'),
+        path.resolve(import.meta.dirname, '../**', 'apps/z_archive', '**/*.scss'),
+        // '../tmp/lint/apps/z_archive/**/*.css',
+        // '../tmp/lint/apps/z_archive/**/*.scss',
       ],
       rules: {
         'custom-property-pattern': null,
