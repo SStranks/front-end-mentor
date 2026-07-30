@@ -10,7 +10,7 @@ services:
     volumes:
       - ./server:/server:ro
     env_file:
-      - ./server/.env.dev
+      - ${ENV_DIR}/designo-agency/.env.dev.server
     depends_on:
       - mongo-db
     security_opt:

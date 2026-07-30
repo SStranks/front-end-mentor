@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem36-nodejs-express-api
     env_file:
-      - ./server/.env.prod
+      - ${ENV_DIR}/designo-agency/.env.prod.server
     networks:
       - FEM36
     security_opt:
@@ -19,7 +19,7 @@ services:
       dockerfile: ./Dockerfile
     image: fem36-react-app
     env_file:
-      - ./client/.env.prod
+      - ${ENV_DIR}/designo-agency/.env.prod.client
     depends_on:
       - node-api
     networks:
