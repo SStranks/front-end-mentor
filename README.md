@@ -117,12 +117,40 @@ Each challenge contains a docker setup for both development and production; Ngin
 
 ###### Note: This is a generalized architecture diagram and may vary depending on the challenge.
 
+### Directory Structure
+
+```console
+./
+├─ .github/                           # github workflows
+├─ .husky/                            # commit workflows
+├─ .vscode/                           # vscode settings
+├─ apps/
+│  ├─ audiophile-ecommerce/           # guru challenge 1 of 5
+│  ├─ designo-agency/
+│  ├─ invoice-app/
+│  ├─ kanban-task-app/
+│  ├─ project-feedback-app/
+│  └─ z_archive/                      # archive of easy challenges
+├─ logs/
+├─ node_modules/
+├─ packages/                          # mono-repo configurations
+├─ scripts/                           # root package.json scripts
+├─ package.json
+└─ ...configuration files
+```
+
+> [!NOTE]
+> Please refer to the corresponding `README.md` for each challenge for instructions on how to setup the local Dockerized environment.
+> z_archive challenges can be viewed online through respective Netlify and Frontend-Mentor links; see respective `README.md`
+
 ## Setup and Usage
 
 Each solution contains Docker Compose files, used during the development process, which offers a chance to explore the designs locally - solutions are also hosted online at Netlify (see [Live Demos](#live-demos)).
 
-> [!TIP]
-> Please refer to the corresponding `README.md` for each challenge for instructions on how to setup the local Dockerized environment.
+> [!IMPORTANT]
+>
+> - Please refer to the corresponding `README.md` for each challenge for instructions on how to view the solution, and setup the local Dockerized environment if applicable.
+> - For env and secrets configuration, refer to [Environment Variables Setup](./apps/ENV.md)
 
 [`Audiophile Ecommerce - README.md`](./apps/audiophile-ecommerce/README.md)
 
@@ -149,6 +177,8 @@ Each solution contains Docker Compose files, used during the development process
 [Kanban Task App](www.google.com)
 
 [Project Feedback App](www.google.com)
+
+## Archive
 
 ## License
 
