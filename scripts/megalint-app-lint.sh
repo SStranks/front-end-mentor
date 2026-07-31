@@ -33,5 +33,5 @@ docker run --rm \
   -e MEGALINTER_CONFIG="/tmp/lint/.github/configs/mega-linter.yaml" \
   -e REPORT_OUTPUT_FOLDER="/tmp/lint/logs/megalinter/${TARGET_DIR}_${TIMESTAMP}" \
   -e FILTER_REGEX_INCLUDE="${TARGET_DIR}" \
-  -v /mnt/linux_data/projects/front-end-mentor:/tmp/lint \
+  -v /mnt/linux_data/projects/frontend-mentor:/tmp/lint \
   ghcr.io/oxsecurity/megalinter:v9.6.0
