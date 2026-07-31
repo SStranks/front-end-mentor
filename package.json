@@ -1,11 +1,11 @@
 {
-  "name": "front-end-mentor",
+  "name": "frontend-mentor",
   "version": "1.0.0",
   "description": "FrontEndMentor Challenges MonoRepo",
   "author": "Simon Stranks <sstranks0@gmail.com> <https://github.com/SStranks>",
   "repository": {
     "type": "github",
-    "url": "https://github.com/SStranks/front-end-mentor"
+    "url": "https://github.com/SStranks/frontend-mentor"
   },
   "license": "ISC",
   "type": "module",

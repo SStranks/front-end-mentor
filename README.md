@@ -1,15 +1,15 @@
-![Repository Banner](https://sstranks.github.io/front-end-mentor/assets/repo_banner.jpg)
+![Repository Banner](https://sstranks.github.io/frontend-mentor/assets/repo_banner.jpg)
 <br>
 
 _Frontend Mentor: My solutions to the 'Guru' level challenges available at https://www.frontendmentor.io/_.
 
-![Top Language Badge](https://img.shields.io/github/languages/top/SStranks/front-end-mentor)
-![RepoSize Badge](https://img.shields.io/github/repo-size/SStranks/front-end-mentor)
-![Last Commit Badge](https://img.shields.io/github/last-commit/SStranks/front-end-mentor)
+![Top Language Badge](https://img.shields.io/github/languages/top/SStranks/frontend-mentor)
+![RepoSize Badge](https://img.shields.io/github/repo-size/SStranks/frontend-mentor)
+![Last Commit Badge](https://img.shields.io/github/last-commit/SStranks/frontend-mentor)
 
-[![CodeQL Badge](https://github.com/SStranks/front-end-mentor/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/SStranks/front-end-mentor/actions/workflows/github-code-scanning/codeql)
-[![Lint Badge](https://github.com/SStranks/front-end-mentor/actions/workflows/lint.yaml/badge.svg)](https://github.com/SStranks/front-end-mentor/actions/workflows/lint.yaml)
-[![Vitest Badge](https://github.com/SStranks/front-end-mentor/actions/workflows/vitest.yaml/badge.svg)](https://github.com/SStranks/front-end-mentor/actions/workflows/vitest.yaml)
+[![CodeQL Badge](https://github.com/SStranks/frontend-mentor/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/SStranks/frontend-mentor/actions/workflows/github-code-scanning/codeql)
+[![Lint Badge](https://github.com/SStranks/frontend-mentor/actions/workflows/lint.yaml/badge.svg)](https://github.com/SStranks/frontend-mentor/actions/workflows/lint.yaml)
+[![Vitest Badge](https://github.com/SStranks/frontend-mentor/actions/workflows/vitest.yaml/badge.svg)](https://github.com/SStranks/frontend-mentor/actions/workflows/vitest.yaml)
 
 ---
 
@@ -96,7 +96,7 @@ Each challenge contains a docker setup for both development and production; Ngin
 <summary>Tools</summary>
 <br>
 
-[![Figma](https://sstranks.github.io/front-end-mentor/assets/figma_custom_shieldsIO.svg)](https://www.figma.com/) [![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://www.postman.com/) [![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)](https://prettier.io/) [![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/) [![Stylelint](https://img.shields.io/badge/stylelint-263238.svg?style=for-the-badge&logo=stylelint&logoColor=white)](https://stylelint.io/) [![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+[![Figma](https://sstranks.github.io/frontend-mentor/assets/figma_custom_shieldsIO.svg)](https://www.figma.com/) [![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://www.postman.com/) [![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)](https://prettier.io/) [![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/) [![Stylelint](https://img.shields.io/badge/stylelint-263238.svg?style=for-the-badge&logo=stylelint&logoColor=white)](https://stylelint.io/) [![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 
 </details>
 
@@ -113,7 +113,7 @@ Each challenge contains a docker setup for both development and production; Ngin
 
 ## Architecture
 
-![Architecture Diagram](https://sstranks.github.io/front-end-mentor/assets/architecture_diagram.jpg)
+![Architecture Diagram](https://sstranks.github.io/frontend-mentor/assets/architecture_diagram.jpg)
 
 ###### Note: This is a generalized architecture diagram and may vary depending on the challenge.
 
@@ -189,7 +189,7 @@ Licensed under the MIT License – see [`LICENSE`](./LICENSE) for details.
 <!-- markdown-link-check-disable -->
 
 ![Frontend Mentor](https://img.shields.io/badge/Frontend%20Mentor-3F54A3.svg?style=for-the-badge&logo=frontendmentor&logoColor=white)
-![CSS-Tricks](https://sstranks.github.io/front-end-mentor/assets/css-tricks_custom_shieldsIO.svg)
+![CSS-Tricks](https://sstranks.github.io/frontend-mentor/assets/css-tricks_custom_shieldsIO.svg)
 ![MDN Web Docs](https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white)
 ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)
 ![Stack Exchange](https://img.shields.io/badge/StackExchange-%23ffffff.svg?style=for-the-badge&logo=StackExchange&logoColor=black)
